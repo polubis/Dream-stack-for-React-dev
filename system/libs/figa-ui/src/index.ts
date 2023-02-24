@@ -1,1 +1,1 @@
-export * from './lib/figa-ui';
+export * from './lib/bell/bell';
