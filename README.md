@@ -50,3 +50,9 @@ Running all apps: `npx nx run-many --target=serve --all`
     },
 }
 ```
+
+## How to import libraries to apps
+
+```ts
+import { Bell } from '@system/figa-ui';
+```

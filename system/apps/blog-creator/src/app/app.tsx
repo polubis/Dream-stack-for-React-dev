@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import NxWelcome from './nx-welcome';
+import { Bell } from '@system/figa-ui';
 
 import { Route, Routes, Link } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ export function App() {
   return (
     <StyledApp>
       <NxWelcome title="blog-creator" />
+      <Bell />
 
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}
