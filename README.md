@@ -38,8 +38,9 @@ Next.js app for blog content: `npx nx serve blog`
 React SPA app for blog management: `npx nx serve blog-creator`
 Running dedicated apps: `npx nx run-many --parallel --target=serve --projects=blog,blog-creator`
 Running all apps: `npx nx run-many --target=serve --all`
+Migrating to latest nx and bumping packages: `npx nx migrate latest`
 
-> Remember to add different port numbers if you want to run more than 1 application in the same time in  **project.json** files.
+> Remember to add different port numbers if you want to run more than 1 application in the same time in **project.json** files.
 
 ```json
 "serve": {
@@ -49,10 +50,4 @@ Running all apps: `npx nx run-many --target=serve --all`
         "port": 3001
     },
 }
-```
-
-## How to import libraries to apps
-
-```ts
-import { Bell } from '@system/figa-ui';
 ```

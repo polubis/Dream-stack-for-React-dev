@@ -1,1 +1,2 @@
-export * from './lib/bell/bell';
+export * from './lib/font';
+export * from './global-style';
