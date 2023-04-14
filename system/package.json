@@ -2,7 +2,13 @@
   "name": "system",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "prepare": "cd .. && husky install system/.husky",
+    "lint:checkAll": "npx nx run-many --target=lint --all",
+    "lint:fixAll": "npx nx run-many --target=lint --all --fix",
+    "format:checkAll": "prettier --list-different \"./**/*.{js,ts,tsx}\"",
+    "format:fixAll": "prettier --write \"./**/*.{js,ts,tsx}\""
+  },
   "private": true,
   "dependencies": {
     "@nrwl/next": "15.7.2",
@@ -25,6 +31,7 @@
     "@nrwl/linter": "15.7.2",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/react": "15.7.2",
+    "@nrwl/storybook": "^15.7.2",
     "@nrwl/vite": "^15.7.2",
     "@nrwl/webpack": "15.7.2",
     "@nrwl/workspace": "15.7.2",
@@ -59,6 +66,7 @@
     "eslint-plugin-react": "7.31.11",
     "eslint-plugin-react-hooks": "4.6.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.3",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
     "jsdom": "~20.0.3",
@@ -74,7 +82,6 @@
     "vite-plugin-dts": "~1.7.1",
     "vite-plugin-eslint": "^1.8.1",
     "vite-tsconfig-paths": "^4.0.2",
-    "vitest": "^0.25.8",
-    "@nrwl/storybook": "^15.7.2"
+    "vitest": "^0.25.8"
   }
 }

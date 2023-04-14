@@ -39,6 +39,8 @@ React SPA app for blog management: `npx nx serve blog-creator`
 Running dedicated apps: `npx nx run-many --parallel --target=serve --projects=blog,blog-creator`
 Running all apps: `npx nx run-many --target=serve --all`
 Migrating to latest nx and bumping packages: `npx nx migrate latest`
+Running lint for all apps: `npx nx run-many --target=lint --all`
+Running lint for all apps and fix: `npx nx run-many --target=lint --all --fix`
 
 > Remember to add different port numbers if you want to run more than 1 application in the same time in **project.json** files.
 
