@@ -1,32 +1,38 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
+import type { Theme } from './defs';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     @font-face {
         font-family: 'LexendBold';
-        src: url('./fonts/LexendBold.ttf') format('truetype');
+        src: url('/assets/fonts/LexendBold.ttf') format('truetype');
     }
 
     @font-face {
         font-family: 'LexendLight';
-        src: url('./fonts/LexendLight.ttf') format('truetype');
+        src: url('/assets/fonts/LexendLight.ttf') format('truetype');
     }
-
 
     @font-face {
         font-family: 'LexendMedium';
-        src: url('./fonts/LexendMedium.ttf') format('truetype');
+        src: url('/assets/fonts/LexendMedium.ttf') format('truetype');
     }
-
 
     @font-face {
         font-family: 'LexendRegular';
-        src: url('./fonts/LexendRegular.ttf') format('truetype');
+        src: url('/assets/fonts/LexendRegular.ttf') format('truetype');
     }
 
     html {
         font-size: 62.5%;
+        height: 100%;
     }
 
+    body {
+        height: 100%;
+        ${(props) => css`
+          background: ${props.theme.background.body};
+        `};
+    }
 
     h1,
     h2,
@@ -47,6 +53,12 @@ const GlobalStyle = createGlobalStyle`
 
     * {
         box-sizing: border-box;
+    }
+
+    .font {
+        ${(props) => css`
+          color: ${props.theme.font.color};
+        `};
     }
 
     .h1 {

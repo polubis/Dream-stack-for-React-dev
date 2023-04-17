@@ -15,7 +15,7 @@ const FONT_VARIANT_ELEMENT_MAP: VariantElementMap = {
 
 const Font = ({ variant, children, element }: FontProps) => {
   return createElement(element ?? FONT_VARIANT_ELEMENT_MAP[variant], {
-    className: variant,
+    className: `font ${variant}`,
     children,
   });
 };
