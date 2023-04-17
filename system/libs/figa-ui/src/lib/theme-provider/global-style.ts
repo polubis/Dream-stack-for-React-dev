@@ -4,22 +4,22 @@ import type { Theme } from './defs';
 const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     @font-face {
         font-family: 'LexendBold';
-        src: url('/assets/fonts/LexendBold.ttf') format('truetype');
+        src: url('/fonts/LexendBold.ttf') format('truetype');
     }
 
     @font-face {
         font-family: 'LexendLight';
-        src: url('/assets/fonts/LexendLight.ttf') format('truetype');
+        src: url('/fonts/LexendLight.ttf') format('truetype');
     }
 
     @font-face {
         font-family: 'LexendMedium';
-        src: url('/assets/fonts/LexendMedium.ttf') format('truetype');
+        src: url('/fonts/LexendMedium.ttf') format('truetype');
     }
 
     @font-face {
         font-family: 'LexendRegular';
-        src: url('/assets/fonts/LexendRegular.ttf') format('truetype');
+        src: url('/fonts/LexendRegular.ttf') format('truetype');
     }
 
     html {

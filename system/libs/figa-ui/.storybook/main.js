@@ -8,6 +8,7 @@ module.exports = {
     '../src/lib/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: ['@storybook/addon-essentials'],
+  staticDirs: [{ from: '../../../assets', to: '/' }],
   async viteFinal(config, { configType }) {
     return mergeConfig(config, {
       plugins: [
