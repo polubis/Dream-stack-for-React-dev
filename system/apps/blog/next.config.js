@@ -27,6 +27,9 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  compiler: {
+    styledComponents: true,
+  },
   webpack: (config, { isServer }) => {
     // Important: return the modified config
 
