@@ -1,7 +1,6 @@
-import { createGlobalStyle, css } from 'styled-components';
-import type { Theme } from './defs';
+import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
+const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'LexendBold';
         src: url('/fonts/LexendBold.ttf') format('truetype');
@@ -29,9 +28,8 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
     body {
         height: 100%;
-        ${(props) => css`
-          background: ${props.theme.background.body};
-        `};
+        background: ${(props) => props.theme.background.body};
+        color: ${(props) => props.theme.font.color};
     }
 
     h1,
@@ -56,9 +54,7 @@ const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     }
 
     .font {
-        ${(props) => css`
-          color: ${props.theme.font.color};
-        `};
+        color: ${(props) => props.theme.font.color};
     }
 
     .h1 {

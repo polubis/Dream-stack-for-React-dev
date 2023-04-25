@@ -1,5 +1,3 @@
-import { useState, createContext, useMemo, useContext } from 'react';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import type {
   ThemeKey,
   ThemeProviderProps,
@@ -8,6 +6,9 @@ import type {
   UnsafeThemeProviderValue,
   GetDefaultValue,
 } from './defs';
+
+import { useState, createContext, useMemo, useContext } from 'react';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { themes } from './themes';
 import { GlobalStyle } from './global-style';
 

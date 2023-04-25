@@ -1,7 +1,7 @@
 import type { Story, Meta } from '@storybook/react';
+import type { FontProps } from './defs';
 
 import { Font } from './font';
-import { FontProps } from './defs';
 
 export default {
   component: Font,

@@ -29,6 +29,11 @@
 2. `npm i --save @nrwl/storybook --legacy-peer-deps`
 3. `npx nx g @nrwl/storybook:configuration figa-ui --uiFramework=@storybook/react`
 
+## Generating hooks library in React
+
+1. `cd .\system\`
+2. `npx nx generate @nrwl/react:library figa-hooks`
+
 ## Run commands
 
 1. `cd .\system\`

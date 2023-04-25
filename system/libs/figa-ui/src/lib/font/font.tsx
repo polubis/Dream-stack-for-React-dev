@@ -1,6 +1,6 @@
-import { createElement } from 'react';
-
 import type { FontProps, VariantElementMap } from './defs';
+
+import { createElement } from 'react';
 
 const FONT_VARIANT_ELEMENT_MAP: VariantElementMap = {
   h1: 'h1',
