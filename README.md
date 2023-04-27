@@ -46,6 +46,8 @@
 7. Migrating to latest nx and bumping packages: `npx nx migrate latest`
 8. Running lint for all apps: `npx nx run-many --target=lint --all`
 9. Running lint for all apps and fix: `npx nx run-many --target=lint --all --fix`
+10. Running tests with watch options for project: `npx nx run-many --target=test --projects=figa-hooks --watch`
+11. Displaying installed plugins and plugins to install: `npx nx list`
 
 > Remember to add different port numbers if you want to run more than 1 application in the same time in **project.json** files.
 

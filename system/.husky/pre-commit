@@ -8,3 +8,4 @@ echo "Runnig linting and fix..."
 
 npm run lint:fixAll
 npm run format:fixAll
+npm run test:checkAll

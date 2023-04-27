@@ -7,7 +7,8 @@
     "lint:checkAll": "npx nx run-many --target=lint --all",
     "lint:fixAll": "npx nx run-many --target=lint --all --fix",
     "format:checkAll": "prettier --list-different \"./**/*.{js,ts,tsx}\"",
-    "format:fixAll": "prettier --write \"./**/*.{js,ts,tsx}\""
+    "format:fixAll": "prettier --write \"./**/*.{js,ts,tsx}\"",
+    "test:checkAll": "npx nx run-many --target=test --all"
   },
   "private": true,
   "dependencies": {
@@ -42,6 +43,7 @@
     "@storybook/react": "^6.5.15",
     "@svgr/webpack": "^6.1.2",
     "@testing-library/react": "13.4.0",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/jest": "28.1.1",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
@@ -76,6 +78,7 @@
     "react-test-renderer": "18.2.0",
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
+    "typedoc": "^0.24.6",
     "typescript": "~4.8.2",
     "url-loader": "^4.1.1",
     "vite": "^4.0.1",
