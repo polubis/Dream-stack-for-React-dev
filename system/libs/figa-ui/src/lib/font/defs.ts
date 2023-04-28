@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
+import { FONT_VARIANTS } from './consts';
 
-type FontVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'b1' | 'b2';
+type FontVariant = (typeof FONT_VARIANTS)[number];
 
 type SupportedFontElement =
   | 'h1'

@@ -4,12 +4,49 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
+interface Spacing {
+  50: string;
+  100: string;
+  150: string;
+  200: string;
+  250: string;
+  300: string;
+  350: string;
+  400: string;
+  450: string;
+  500: string;
+  550: string;
+  600: string;
+  650: string;
+  700: string;
+  750: string;
+  800: string;
+  850: string;
+  900: string;
+  950: string;
+  full: string;
+}
+
+interface Palette {
+  50: string;
+  100: string;
+  150: string;
+  200: string;
+}
+
+interface PaletteColorsSetup {
+  color: string;
+  background: string;
+  borderColor?: string;
+}
+
 interface Tokens {
   backdrop: {
     50: string;
   };
   radius: {
     50: string;
+    full: string;
   };
   z: {
     50: string;
@@ -30,18 +67,8 @@ interface Tokens {
   dark: {
     50: string;
   };
-  padding: {
-    50: string;
-    100: string;
-    150: string;
-    200: string;
-    250: string;
-    300: string;
-    350: string;
-    400: string;
-    450: string;
-    500: string;
-  };
+  spacing: Spacing;
+  primary: Palette;
 }
 
 interface Theme {
@@ -55,6 +82,14 @@ interface Theme {
     border: string;
     background: string;
     backdrop: string;
+  };
+  button: {
+    outlined: {
+      primary: PaletteColorsSetup;
+    };
+    filled: {
+      primary: PaletteColorsSetup;
+    };
   };
 }
 
@@ -91,4 +126,6 @@ export type {
   Themes,
   ThemesList,
   GetDefaultValue,
+  Spacing,
+  Palette,
 };

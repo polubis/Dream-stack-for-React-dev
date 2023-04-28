@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button renders with custom props 1`] = `
+<DocumentFragment>
+  <button
+    class="button button-size-2 button-rounded button-outlined button-secondary my-button"
+    motive="secondary"
+    shape="rounded"
+    size="2"
+    variant="outlined"
+  />
+</DocumentFragment>
+`;
+
+exports[`Button renders with default props 1`] = `
+<DocumentFragment>
+  <button
+    class="button button-size-3 button-rectangle button-filled button-primary undefined"
+  />
+</DocumentFragment>
+`;

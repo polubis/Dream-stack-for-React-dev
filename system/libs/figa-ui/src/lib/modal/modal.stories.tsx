@@ -20,8 +20,8 @@ const Template: Story<ModalProps> = (args) => {
   );
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
+export const Default = Template.bind({});
+Default.args = {
   children: (
     <div style={{ width: '50px', height: '50px' }}>Content inside modal</div>
   ),

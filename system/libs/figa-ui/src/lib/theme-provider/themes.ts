@@ -1,4 +1,27 @@
-import type { Theme, Themes, Tokens } from './defs';
+import type { Spacing, Theme, Themes, Tokens } from './defs';
+
+const spacing: Spacing = {
+  50: '4px',
+  100: '8px',
+  150: '12px',
+  200: '16px',
+  250: '20px',
+  300: '24px',
+  350: '28px',
+  400: '32px',
+  450: '36px',
+  500: '40px',
+  550: '44px',
+  600: '48px',
+  650: '52px',
+  700: '56px',
+  750: '60px',
+  800: '64px',
+  850: '68px',
+  900: '72px',
+  950: '76px',
+  full: '80px',
+};
 
 // Check for reference: https://mui.com/joy-ui/customization/theme-colors/
 const tokens: Tokens = {
@@ -7,6 +30,7 @@ const tokens: Tokens = {
   },
   radius: {
     50: '4px',
+    full: '50%',
   },
   z: {
     50: '1',
@@ -27,17 +51,12 @@ const tokens: Tokens = {
   dark: {
     50: '#2D2D2D',
   },
-  padding: {
-    50: '4px',
-    100: '8px',
-    150: '12px',
-    200: '16px',
-    250: '20px',
-    300: '24px',
-    350: '28px',
-    400: '32px',
-    450: '36px',
-    500: '40px',
+  spacing,
+  primary: {
+    50: '#FF7878',
+    100: '#FFA47D',
+    150: '#FFD6AD',
+    200: '#C97550',
   },
 };
 
@@ -53,6 +72,21 @@ const light: Theme = {
     border: tokens.dark[50],
     backdrop: tokens.backdrop[50],
   },
+  button: {
+    filled: {
+      primary: {
+        color: tokens.common.black,
+        background: tokens.primary[50],
+      },
+    },
+    outlined: {
+      primary: {
+        color: tokens.primary[50],
+        background: 'transparent',
+        borderColor: tokens.primary[50],
+      },
+    },
+  },
 };
 
 const dark: Theme = {
@@ -66,6 +100,21 @@ const dark: Theme = {
     background: tokens.common.black,
     border: tokens.dark[50],
     backdrop: tokens.backdrop[50],
+  },
+  button: {
+    filled: {
+      primary: {
+        color: tokens.common.black,
+        background: tokens.primary[50],
+      },
+    },
+    outlined: {
+      primary: {
+        color: tokens.primary[50],
+        background: 'transparent',
+        borderColor: tokens.primary[50],
+      },
+    },
   },
 };
 

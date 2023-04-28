@@ -1,17 +1,16 @@
 import styled from 'styled-components';
-import { useThemeProvider } from '../theme-provider';
+import { tokens, useThemeProvider } from '../theme-provider';
 import type { ThemeKey } from '../theme-provider';
 import type { SandboxProps } from './defs';
+import { column, row } from '../shared';
 
 const Container = styled.div`
-  display: flex;
-  flex-flow: column;
+  ${column()}
 `;
 
 const Header = styled.header`
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
+  ${row()}
+  margin-bottom: ${tokens.spacing[150]};
 `;
 
 const Sandbox = ({ children }: SandboxProps) => {
