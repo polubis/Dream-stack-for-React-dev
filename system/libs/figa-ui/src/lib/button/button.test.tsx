@@ -1,15 +1,26 @@
 import { render, fireEvent, screen } from '@testing-library/react';
 import { Button } from './Button';
 
-describe(Button.name, () => {
+describe('button can be used when: ', () => {
   it('renders with default props', () => {
     const { asFragment } = render(<Button />);
 
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('renders with custom props', () => {
-    const { asFragment } = render(
+  it('renders content', () => {
+    render(
+      <Button>
+        Click Me! <b>please</b>
+      </Button>
+    );
+
+    screen.getByText(/Click Me!/);
+    screen.getByText(/please/);
+  });
+
+  it('[FRAGILE] assigns class names by properties', () => {
+    const { container } = render(
       <Button
         className="my-button"
         shape="rounded"
@@ -19,10 +30,20 @@ describe(Button.name, () => {
       />
     );
 
-    expect(asFragment()).toMatchSnapshot();
+    const button = container.querySelector('.button');
+
+    expect(button?.className).toBe(
+      'button button-size-2 button-rounded button-outlined button-secondary my-button'
+    );
   });
 
-  it('handles onClick event', () => {
+  it('injects native button properties', () => {
+    render(<Button role="button">Click me!</Button>);
+
+    screen.getByRole('button');
+  });
+
+  it('handles events', () => {
     const onClickSpy = jest.fn();
 
     render(<Button onClick={onClickSpy}>Click me!</Button>);

@@ -8,9 +8,11 @@ const Button = ({ className, ...rest }: ButtonProps) => {
     motive = 'primary',
   } = rest;
 
+  const formattedClassName = className ? ` ${className}` : '';
+
   return (
     <button
-      className={`button button-size-${size} button-${shape} button-${variant} button-${motive} ${className}`}
+      className={`button button-size-${size} button-${shape} button-${variant} button-${motive}${formattedClassName}`}
       {...rest}
     />
   );
