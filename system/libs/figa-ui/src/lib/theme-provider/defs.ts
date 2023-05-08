@@ -24,19 +24,18 @@ interface Spacing {
   850: string;
   900: string;
   950: string;
-  full: string;
+  1000: string;
 }
 
 interface Palette {
   50: string;
   100: string;
   150: string;
-  200: string;
 }
 
 interface PaletteColorsSetup {
   color: string;
-  background: string;
+  bg: string;
   borderColor?: string;
 }
 
@@ -46,7 +45,7 @@ interface Tokens {
   };
   radius: {
     50: string;
-    full: string;
+    1000: string;
   };
   z: {
     50: string;
@@ -67,20 +66,28 @@ interface Tokens {
   dark: {
     50: string;
   };
+  gray: {
+    50: string;
+    100: string;
+    150: string;
+    200: string;
+    250: string;
+  };
   spacing: Spacing;
   primary: Palette;
+  secondary: Palette;
 }
 
 interface Theme {
   font: {
     color: string;
   };
-  background: {
-    body: string;
+  body: {
+    bg: string;
   };
   modal: {
     border: string;
-    background: string;
+    bg: string;
     backdrop: string;
   };
   button: {
@@ -90,6 +97,14 @@ interface Theme {
     filled: {
       primary: PaletteColorsSetup;
     };
+  };
+  select: {
+    bg: string;
+    color: string;
+    placeholderColor: string;
+    hoverBg: string;
+    optionSeparator: string;
+    optionActiveColor: string;
   };
 }
 

@@ -20,7 +20,7 @@ const spacing: Spacing = {
   850: '68px',
   900: '72px',
   950: '76px',
-  full: '80px',
+  1000: '80px',
 };
 
 // Check for reference: https://mui.com/joy-ui/customization/theme-colors/
@@ -30,7 +30,7 @@ const tokens: Tokens = {
   },
   radius: {
     50: '4px',
-    full: '50%',
+    1000: '50%',
   },
   z: {
     50: '1',
@@ -51,12 +51,23 @@ const tokens: Tokens = {
   dark: {
     50: '#2D2D2D',
   },
+  gray: {
+    50: '#9d9d9d',
+    100: '#8D8D8D',
+    150: '#E9E9E9',
+    200: '#949494',
+    250: '#DADADA',
+  },
   spacing,
   primary: {
     50: '#FF7878',
-    100: '#FFA47D',
-    150: '#FFD6AD',
-    200: '#C97550',
+    100: '#FFD6AD',
+    150: '#C97550',
+  },
+  secondary: {
+    50: '#9FD1AA',
+    100: '#D1FFDC',
+    150: '#70A07B',
   },
 };
 
@@ -64,11 +75,11 @@ const light: Theme = {
   font: {
     color: tokens.common.black,
   },
-  background: {
-    body: tokens.common.white,
+  body: {
+    bg: tokens.common.white,
   },
   modal: {
-    background: tokens.common.white,
+    bg: tokens.common.white,
     border: tokens.dark[50],
     backdrop: tokens.backdrop[50],
   },
@@ -76,16 +87,24 @@ const light: Theme = {
     filled: {
       primary: {
         color: tokens.common.black,
-        background: tokens.primary[50],
+        bg: tokens.primary[50],
       },
     },
     outlined: {
       primary: {
         color: tokens.primary[50],
-        background: 'transparent',
+        bg: 'transparent',
         borderColor: tokens.primary[50],
       },
     },
+  },
+  select: {
+    bg: tokens.gray[150],
+    color: tokens.common.black,
+    placeholderColor: tokens.gray[200],
+    hoverBg: tokens.gray[250],
+    optionSeparator: tokens.gray[200],
+    optionActiveColor: tokens.secondary[150],
   },
 };
 
@@ -93,11 +112,11 @@ const dark: Theme = {
   font: {
     color: tokens.common.white,
   },
-  background: {
-    body: tokens.common.black,
+  body: {
+    bg: tokens.common.black,
   },
   modal: {
-    background: tokens.common.black,
+    bg: tokens.common.black,
     border: tokens.dark[50],
     backdrop: tokens.backdrop[50],
   },
@@ -105,16 +124,24 @@ const dark: Theme = {
     filled: {
       primary: {
         color: tokens.common.black,
-        background: tokens.primary[50],
+        bg: tokens.primary[50],
       },
     },
     outlined: {
       primary: {
         color: tokens.primary[50],
-        background: 'transparent',
+        bg: 'transparent',
         borderColor: tokens.primary[50],
       },
     },
+  },
+  select: {
+    bg: tokens.dark[50],
+    color: tokens.common.white,
+    placeholderColor: tokens.gray[50],
+    hoverBg: tokens.gray[100],
+    optionSeparator: tokens.gray[100],
+    optionActiveColor: tokens.secondary[50],
   },
 };
 

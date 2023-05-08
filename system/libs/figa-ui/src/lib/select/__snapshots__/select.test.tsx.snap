@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`select can be used when:  [FRAGILE] assigns correct HTML metadata when closed 1`] = `
+<DocumentFragment>
+  <div
+    class="select"
+  >
+    <button
+      class="select-expander select-expander-empty"
+    >
+      Choose an option
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`select can be used when:  [FRAGILE] assigns correct HTML metadata when element is choosed 1`] = `
+<DocumentFragment>
+  <div
+    class="select"
+  >
+    <button
+      class="select-expander select-expander-empty select-expander-opened"
+    >
+      Trigger
+    </button>
+    <ul
+      class="select-list"
+    >
+      <li
+        class="select-list-option"
+        data-key="0"
+      >
+        <div>
+          Child 0
+        </div>
+      </li>
+      <li
+        class="select-list-option"
+        data-key="1"
+      >
+        <div>
+          Child 1
+        </div>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`select can be used when:  [FRAGILE] assigns correct HTML metadata when opened 1`] = `
+<DocumentFragment>
+  <div
+    class="select"
+  >
+    <button
+      class="select-expander select-expander-empty select-expander-opened"
+    >
+      Choose an option
+    </button>
+    <ul
+      class="select-list"
+    >
+      <li
+        class="select-list-option"
+        data-key="0"
+      >
+        <div>
+          Child 0
+        </div>
+      </li>
+      <li
+        class="select-list-option"
+        data-key="1"
+      >
+        <div>
+          Child 1
+        </div>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`select can be used when:  renders with default props 1`] = `
+<DocumentFragment>
+  <div
+    class="select"
+  >
+    <button
+      class="select-expander select-expander-empty"
+    >
+      Choose an option
+    </button>
+  </div>
+</DocumentFragment>
+`;

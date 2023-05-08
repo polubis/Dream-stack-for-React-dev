@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { tokens } from './themes';
-import { center, font, size, streched } from '../shared';
+import { appearIn, center, font, row, size, streched } from '../shared';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         height: 100%;
-        background: ${(props) => props.theme.background.body};
+        background: ${(props) => props.theme.body.bg};
         color: ${(props) => props.theme.font.color};
     }
 
@@ -128,18 +128,17 @@ const GlobalStyle = createGlobalStyle`
 
     .button-rounded {
         ${center()}
-        border-radius: ${tokens.radius.full};
+        border-radius: ${tokens.radius[1000]};
     }
 
     .button-filled.button-primary {
         color: ${(props) => props.theme.button.filled.primary.color};
-        background: ${(props) => props.theme.button.filled.primary.background};
+        background: ${(props) => props.theme.button.filled.primary.bg};
     }
 
     .button-outlined.button-primary {
         color: ${(props) => props.theme.button.outlined.primary.color};
-        background: ${(props) =>
-          props.theme.button.outlined.primary.background};
+        background: ${(props) => props.theme.button.outlined.primary.bg};
         border: 2px solid ${(props) =>
           props.theme.button.outlined.primary.borderColor};
     }
@@ -202,7 +201,7 @@ const GlobalStyle = createGlobalStyle`
         max-height: 96vh;
         padding: ${tokens.spacing[250]};
         transform: translate(-50%, -50%);
-        background: ${(props) => props.theme.modal.background};
+        background: ${(props) => props.theme.modal.bg};
         border-radius: ${tokens.radius[50]};
         border: 1px solid ${(props) => props.theme.modal.border};
         z-index: ${tokens.z[500]};
@@ -214,8 +213,80 @@ const GlobalStyle = createGlobalStyle`
         background: ${(props) => props.theme.modal.backdrop};
         z-index: ${tokens.z[450]};
     }
-
+    
     /* modal.tsx */
+
+
+    /* select.tsx */
+
+    .select {
+        position: relative;
+        width: 100%;
+
+        .select-expander {
+            ${size(tokens.spacing[500], '100%')}
+            ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
+            ${row()}
+            padding: 0 ${tokens.spacing[150]};
+            border-radius: ${tokens.radius[50]};
+            background: ${(props) => props.theme.select.bg};
+            color: ${(props) => props.theme.select.color};
+            min-width: 220px;
+            cursor: pointer;
+            border: none;
+
+            &.select-expander-empty {
+                color: ${(props) => props.theme.select.placeholderColor};
+            }
+
+            &.select-expander-opened {
+                background: ${(props) => props.theme.select.hoverBg};
+                color: ${(props) => props.theme.select.color};
+                cursor: initial;
+            }
+
+            &:hover {
+                background: ${(props) => props.theme.select.hoverBg};
+                color: ${(props) => props.theme.select.color};
+            }
+        }
+
+        .select-list {
+            ${appearIn('16px', '8px')}
+            position: absolute;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            left: 0;
+            transform: translateY(8px);
+            width: 100%;
+            background: ${(props) => props.theme.select.bg};
+            border-radius: ${tokens.radius[50]};
+            z-index: 1;
+
+            .select-list-option {
+                ${font('1.4rem', '0.15px', 'LexendMedium', 500)}
+                padding: ${tokens.spacing[150]};
+                cursor: pointer;
+
+                &:not(:last-of-type) {
+                    border-bottom: 1px solid ${(props) =>
+                      props.theme.select.optionSeparator};
+                }
+
+                &.select-list-option-active {
+                    color: ${(props) => props.theme.select.optionActiveColor};
+                    cursor: initial;
+                }
+
+                &:hover:not(.select-list-option-active) {
+                    background: ${(props) => props.theme.select.hoverBg};
+                }
+            }
+        }
+    }
+
+    /* select.tsx */
 `;
 
 export { GlobalStyle };

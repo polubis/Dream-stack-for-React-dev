@@ -1,5 +1,6 @@
 import type { FontFamily, FontWeight, StrechablePosition } from './defs';
-import type { FlattenSimpleInterpolation } from 'styled-components';
+import type { FlattenSimpleInterpolation, Keyframes } from 'styled-components';
+import { keyframes } from 'styled-components';
 
 import { css } from 'styled-components';
 
@@ -46,4 +47,24 @@ const font = (
   font-weight: ${weight};
 `;
 
-export { font, size, center, streched, row, column };
+const appearInAnimation = (from = '15px', to = '0'): Keyframes => keyframes`
+  from {
+    transform: translateY(${from});
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(${to});
+    opacity: 1;
+  }
+`;
+
+const appearIn = (
+  from?: string,
+  to?: string
+): FlattenSimpleInterpolation => css`
+  opacity: 0;
+  animation: ${appearInAnimation(from, to)} 0.2s ease-in-out forwards;
+`;
+
+export { font, size, center, streched, row, column, appearIn };
