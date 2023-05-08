@@ -216,7 +216,6 @@ const GlobalStyle = createGlobalStyle`
     
     /* modal.tsx */
 
-
     /* select.tsx */
 
     .select {
