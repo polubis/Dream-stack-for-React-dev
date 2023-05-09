@@ -18,6 +18,7 @@ type SupportedFontElement =
 type VariantElementMap = Record<FontVariant, SupportedFontElement>;
 
 interface FontProps {
+  className?: string;
   element?: SupportedFontElement;
   variant: FontVariant;
   children: ReactNode;

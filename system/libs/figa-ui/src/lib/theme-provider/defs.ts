@@ -65,13 +65,16 @@ interface Tokens {
   };
   dark: {
     50: string;
+    100: string;
   };
   gray: {
+    0: string;
     50: string;
     100: string;
     150: string;
     200: string;
     250: string;
+    300: string;
   };
   spacing: Spacing;
   primary: Palette;
@@ -105,6 +108,14 @@ interface Theme {
     hoverBg: string;
     optionSeparator: string;
     optionActiveColor: string;
+  };
+  link: {
+    hoverColor: string;
+    color: string;
+  };
+  navigation: {
+    bg: string;
+    borderColor: string;
   };
 }
 

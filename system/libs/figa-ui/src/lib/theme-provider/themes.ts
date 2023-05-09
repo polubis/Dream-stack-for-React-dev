@@ -50,13 +50,16 @@ const tokens: Tokens = {
   },
   dark: {
     50: '#2D2D2D',
+    100: '#0a0a0a',
   },
   gray: {
+    0: '#fbfbfb',
     50: '#9d9d9d',
     100: '#8D8D8D',
     150: '#E9E9E9',
     200: '#949494',
     250: '#DADADA',
+    300: '#3c3c3c',
   },
   spacing,
   primary: {
@@ -106,6 +109,14 @@ const light: Theme = {
     optionSeparator: tokens.gray[200],
     optionActiveColor: tokens.secondary[150],
   },
+  link: {
+    hoverColor: tokens.primary[50],
+    color: tokens.common.black,
+  },
+  navigation: {
+    bg: tokens.gray[0],
+    borderColor: tokens.gray[50],
+  },
 };
 
 const dark: Theme = {
@@ -142,6 +153,14 @@ const dark: Theme = {
     hoverBg: tokens.gray[100],
     optionSeparator: tokens.gray[100],
     optionActiveColor: tokens.secondary[50],
+  },
+  link: {
+    hoverColor: tokens.primary[50],
+    color: tokens.common.white,
+  },
+  navigation: {
+    bg: tokens.dark[100],
+    borderColor: tokens.gray[300],
   },
 };
 

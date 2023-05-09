@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`navigation can be used when:  [FRAGILE] has the corresponding classes and DOM nodes generated 1`] = `
+<DocumentFragment>
+  <nav
+    class="navigation"
+  >
+    <div
+      class="navigation-logo"
+    >
+      <div>
+        Logo
+      </div>
+    </div>
+    <ul
+      class="navigation-links"
+    >
+      <li
+        class="navigation-link"
+      >
+        <div>
+          Link 1
+        </div>
+      </li>
+      <li
+        class="navigation-link"
+      >
+        <div>
+          Link 2
+        </div>
+      </li>
+    </ul>
+    <div
+      class="navigation-action"
+    >
+      <div>
+        Action
+      </div>
+    </div>
+  </nav>
+</DocumentFragment>
+`;

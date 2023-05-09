@@ -24,7 +24,7 @@ const Sandbox = ({ children }: SandboxProps) => {
           placeholder="Pick theme..."
           onChange={(e) => ctx.setTheme(e.target.value as ThemeKey)}
         >
-          {ctx.themesList.map(([themeKey], idx) => (
+          {ctx.themesList.map(([themeKey]) => (
             <option key={themeKey} value={themeKey}>
               {themeKey}
             </option>

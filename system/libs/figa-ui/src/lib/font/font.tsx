@@ -1,6 +1,7 @@
 import type { FontProps, VariantElementMap } from './defs';
 
 import { createElement } from 'react';
+import c from 'classnames';
 
 const FONT_VARIANT_ELEMENT_MAP: VariantElementMap = {
   h1: 'h1',
@@ -13,9 +14,9 @@ const FONT_VARIANT_ELEMENT_MAP: VariantElementMap = {
   b2: 'span',
 };
 
-const Font = ({ variant, children, element }: FontProps) => {
+const Font = ({ className, variant, children, element }: FontProps) => {
   return createElement(element ?? FONT_VARIANT_ELEMENT_MAP[variant], {
-    className: `font font-${variant}`,
+    className: c('font', `font-${variant}`, className),
     children,
   });
 };
