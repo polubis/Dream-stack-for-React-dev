@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 
 import { Navigation } from './navigation';
 
-describe('navigation can be used when: ', () => {
+describe('Navigation can be used when', () => {
   const LINKS = [<div key={0}>Link 1</div>, <div key={1}>Link 2</div>];
   const ACTION = <div>Action</div>;
   const LOGO = <div>Logo</div>;

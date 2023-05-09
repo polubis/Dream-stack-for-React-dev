@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`link can be used when:  [FRAGILE] renders with default props 1`] = `
+exports[`Link can be used when [FRAGILE] renders with default props 1`] = `
 <DocumentFragment>
   <span
     class="font font-h5 link"

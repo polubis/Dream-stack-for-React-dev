@@ -3,7 +3,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 
 import { useClickOutside } from './use-click-outside';
 
-describe('click outside detection works when: ', () => {
+describe('Click outside detection works when', () => {
   it('reference is defined', () => {
     const { result } = renderHook(() =>
       useClickOutside({

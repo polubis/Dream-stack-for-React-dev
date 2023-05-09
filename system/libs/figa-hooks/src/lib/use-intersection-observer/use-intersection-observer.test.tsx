@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import { useIntersectionObserver } from './use-intersection-observer';
 
-describe('intersection check works when: ', () => {
+describe('Intersection check works when', () => {
   interface Window {
     IntersectionObserver: unknown;
   }

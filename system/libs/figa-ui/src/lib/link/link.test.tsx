@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { Link } from './link';
 
-describe('link can be used when: ', () => {
+describe('Link can be used when', () => {
   it('[FRAGILE] renders with default props', () => {
     const { asFragment } = render(
       <Link variant="h5">
