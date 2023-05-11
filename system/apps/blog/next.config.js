@@ -4,6 +4,9 @@
 const { withNx } = require('@nrwl/next/plugins/with-nx');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+});
 
 const copyFonts = (config) => {
   config.plugins.push(
@@ -39,4 +42,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withNx(nextConfig);
+module.exports = withMDX(withNx(nextConfig));
