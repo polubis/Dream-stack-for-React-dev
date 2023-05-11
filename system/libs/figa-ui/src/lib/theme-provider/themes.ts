@@ -61,16 +61,30 @@ const tokens: Tokens = {
     250: '#DADADA',
     300: '#3c3c3c',
   },
+  blue: {
+    200: '#69B6CE',
+  },
+  purple: {
+    50: '#bf63bc',
+    100: '#ffdafe',
+  },
+  red: {
+    50: '#ff0000',
+  },
   spacing,
   primary: {
     50: '#FF7878',
     100: '#FFD6AD',
     150: '#C97550',
+    200: '#ff966a',
+    250: '#FBA81F',
   },
   secondary: {
     50: '#9FD1AA',
     100: '#D1FFDC',
     150: '#70A07B',
+    200: '#ffa47d',
+    250: '#00ff38',
   },
 };
 
@@ -117,6 +131,27 @@ const light: Theme = {
     bg: tokens.gray[0],
     borderColor: tokens.gray[50],
   },
+  logo: {
+    text: {
+      first: tokens.purple[50],
+      second: tokens.common.black,
+      last: tokens.primary[200],
+    },
+    bg: {
+      first: {
+        from: tokens.red[50],
+        to: tokens.primary[250],
+      },
+      second: {
+        from: tokens.secondary[250],
+        to: tokens.primary[250],
+      },
+      last: {
+        from: tokens.blue[200],
+        to: tokens.primary[250],
+      },
+    },
+  },
 };
 
 const dark: Theme = {
@@ -161,6 +196,27 @@ const dark: Theme = {
   navigation: {
     bg: tokens.dark[100],
     borderColor: tokens.gray[300],
+  },
+  logo: {
+    text: {
+      first: tokens.purple[100],
+      second: tokens.common.white,
+      last: tokens.secondary[200],
+    },
+    bg: {
+      first: {
+        from: tokens.red[50],
+        to: tokens.primary[250],
+      },
+      second: {
+        from: tokens.secondary[250],
+        to: tokens.primary[250],
+      },
+      last: {
+        from: tokens.blue[200],
+        to: tokens.primary[250],
+      },
+    },
   },
 };
 

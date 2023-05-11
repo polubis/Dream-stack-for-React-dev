@@ -3,6 +3,7 @@ import type { Story, Meta } from '@storybook/react';
 import { Navigation } from './navigation';
 import { Button } from '../button';
 import { Link } from '../link';
+import { Logo } from '../logo';
 
 export default {
   component: Navigation,
@@ -23,7 +24,7 @@ const LINKS = [
 
 const Template: Story = () => {
   const baseProps = {
-    logo: <Button variant="outlined">Logo</Button>,
+    logo: <Logo />,
     action: <Button>Click me</Button>,
   };
 

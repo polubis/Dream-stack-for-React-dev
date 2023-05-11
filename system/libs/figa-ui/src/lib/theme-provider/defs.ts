@@ -31,6 +31,8 @@ interface Palette {
   50: string;
   100: string;
   150: string;
+  200: string;
+  250: string;
 }
 
 interface PaletteColorsSetup {
@@ -67,6 +69,12 @@ interface Tokens {
     50: string;
     100: string;
   };
+  red: {
+    50: string;
+  };
+  blue: {
+    200: string;
+  };
   gray: {
     0: string;
     50: string;
@@ -75,6 +83,10 @@ interface Tokens {
     200: string;
     250: string;
     300: string;
+  };
+  purple: {
+    50: string;
+    100: string;
   };
   spacing: Spacing;
   primary: Palette;
@@ -116,6 +128,27 @@ interface Theme {
   navigation: {
     bg: string;
     borderColor: string;
+  };
+  logo: {
+    text: {
+      first: string;
+      second: string;
+      last: string;
+    };
+    bg: {
+      first: {
+        from: string;
+        to: string;
+      };
+      second: {
+        from: string;
+        to: string;
+      };
+      last: {
+        from: string;
+        to: string;
+      };
+    };
   };
 }
 

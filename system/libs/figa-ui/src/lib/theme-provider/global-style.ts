@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { tokens } from './themes';
-import { appearIn, center, font, row, size, streched } from '../shared';
+import { appearIn, center, column, font, row, size, streched } from '../shared';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -338,6 +338,63 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* navigation.tsx */
+
+    /* logo.tsx */
+
+    .logo {
+        ${row()}
+        cursor: pointer;
+
+        .logo-bg-first-from {
+            stop-color: ${(props) => props.theme.logo.bg.first.from};
+        }
+
+        .logo-bg-first-to {
+            stop-color: ${(props) => props.theme.logo.bg.first.to};
+        }
+
+        .logo-bg-second-from {
+            stop-color: ${(props) => props.theme.logo.bg.second.from};
+        }
+
+        .logo-bg-second-to {
+            stop-color: ${(props) => props.theme.logo.bg.second.to};
+        }
+
+        .logo-bg-last-from {
+            stop-color: ${(props) => props.theme.logo.bg.last.from};
+        }
+
+        .logo-bg-last-to {
+            stop-color: ${(props) => props.theme.logo.bg.last.to};
+        }
+
+        .logo-text {
+            flex-flow: wrap;
+            margin-left: ${tokens.spacing[200]};
+
+            span {
+                ${font('2rem', '0.15px', 'LexendBold', 500)}
+            }
+
+            .logo-text-top {
+                & > *:first-child {
+                    color: ${(props) => props.theme.logo.text.first};
+                }
+
+                & > *:last-child {
+                    color: ${(props) => props.theme.logo.text.second};
+                }
+            }
+
+            .logo-text-bottom {
+                color: ${(props) => props.theme.logo.text.last};
+            }
+        }
+    }
+
+    /* logo.tsx */
+
 `;
 
 export { GlobalStyle };
