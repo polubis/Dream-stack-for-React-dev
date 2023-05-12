@@ -8,7 +8,8 @@
     "lint:fixAll": "npx nx run-many --target=lint --all --fix",
     "format:checkAll": "prettier --list-different \"./**/*.{js,ts,tsx}\"",
     "format:fixAll": "prettier --write \"./**/*.{js,ts,tsx}\"",
-    "test:checkAll": "npx nx run-many --target=test --all"
+    "test:checkAll": "npx nx run-many --target=test --all",
+    "ts:checkAll": "npx nx run-many --target=type-check --all"
   },
   "private": true,
   "dependencies": {

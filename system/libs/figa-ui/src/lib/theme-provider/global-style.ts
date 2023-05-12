@@ -395,6 +395,23 @@ const GlobalStyle = createGlobalStyle`
 
     /* logo.tsx */
 
+    /* emoji-picker.tsx */
+
+    .emoji-picker {
+        .emoji-picker-header {
+            text-align: center;
+            margin-bottom: ${tokens.spacing[300]};
+        }
+
+        .emoji-picker-list {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            gap: ${tokens.spacing[200]};
+            justify-content: center;
+        }
+    }
+
+    /* emoji-picker.tsx */
 `;
 
 export { GlobalStyle };

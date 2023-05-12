@@ -6,7 +6,9 @@ cd system
 
 echo "Runnig linting and fix..."
 
+npm run ts:checkAll
+npm run test:checkAll
 npm run lint:fixAll
 npm run format:fixAll
 git add .
-npm run test:checkAll
+

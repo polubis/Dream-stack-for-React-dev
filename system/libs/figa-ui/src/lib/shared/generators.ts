@@ -19,6 +19,12 @@ const column = (): FlattenSimpleInterpolation => css`
   display: flex;
   flex-flow: column;
 `;
+
+const wrap = (): FlattenSimpleInterpolation => css`
+  display: flex;
+  flex-flow: wrap;
+`;
+
 const center = (): FlattenSimpleInterpolation => css`
   display: flex;
   align-items: center;
@@ -67,4 +73,4 @@ const appearIn = (
   animation: ${appearInAnimation(from, to)} 0.2s ease-in-out forwards;
 `;
 
-export { font, size, center, streched, row, column, appearIn };
+export { font, size, center, wrap, streched, row, column, appearIn };
