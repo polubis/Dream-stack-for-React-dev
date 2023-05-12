@@ -1,12 +1,12 @@
 import type { GetStaticProps, GetStaticPaths } from 'next';
-import type { ArticlePageParams, ArticlePageProps } from 'apps/blog/models';
+import type { ArticlePageParams, ArticlePageProps } from '../../../models';
 
-import { createArticlePath, getArticlesIds } from 'apps/blog/utils';
+import { createArticlePath, getArticlesIds } from '../../../utils';
 import { readFileSync } from 'fs';
 import { serialize } from 'next-mdx-remote/serialize';
-import { PageWrapper } from 'apps/blog/components';
+import { PageWrapper } from '../../../components';
 import { MDXRemote } from 'next-mdx-remote';
-import { lang } from 'apps/blog/constants';
+import { lang } from '../../../constants';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const ids = await getArticlesIds(lang.en);

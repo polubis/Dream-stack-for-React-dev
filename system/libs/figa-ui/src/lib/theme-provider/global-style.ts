@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { tokens } from './themes';
-import { appearIn, center, column, font, row, size, streched } from '../shared';
+import { appearIn, center, font, row, size, streched } from '../shared';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {

@@ -1,4 +1,4 @@
-import type { Lang } from 'apps/blog/models';
+import type { Lang } from '../models';
 
 const lang: Record<Lang, Lang> = {
   en: 'en',
