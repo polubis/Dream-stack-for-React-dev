@@ -10,21 +10,30 @@ describe('Emoji picker can be used when', () => {
   const TITLE: EmojiPickerProps['title'] = 'Pick your emoji';
   const DATA: EmojiPickerData = [{ emoji: '💀', name: 'skull' }];
 
+  // It's added to reduce duplication of code in each test.
+  const emojiPickerFixture = (props: Partial<EmojiPickerProps> = {}) => {
+    const result = render(
+      <EmojiPicker title={TITLE} onSelect={jest.fn()} {...props} />
+    );
+
+    return result;
+  };
+
   it('renders default emojis', () => {
-    render(<EmojiPicker title={TITLE} onSelect={jest.fn()} />);
+    emojiPickerFixture();
 
     screen.getByText(TITLE);
     screen.getByText(EMOJI_DATA[0].emoji);
   });
 
   it('allows to use own emoji data', () => {
-    render(<EmojiPicker title={TITLE} data={DATA} onSelect={jest.fn()} />);
+    emojiPickerFixture({ data: DATA });
 
     screen.getByText(DATA[0].emoji);
   });
 
   it('renders emoji list items with data attribute', () => {
-    render(<EmojiPicker data={DATA} title={TITLE} onSelect={jest.fn()} />);
+    emojiPickerFixture({ data: DATA });
 
     const element = screen.getByText(DATA[0].emoji);
 
@@ -32,9 +41,7 @@ describe('Emoji picker can be used when', () => {
   });
 
   it('classes are created', () => {
-    render(
-      <EmojiPicker title={TITLE} className="my-class" onSelect={jest.fn()} />
-    );
+    emojiPickerFixture({ className: 'my-class' });
 
     const element = screen.getByText(TITLE);
 
@@ -44,7 +51,7 @@ describe('Emoji picker can be used when', () => {
   it('allows to react on emoji select', () => {
     const selectSpy = jest.fn();
 
-    render(<EmojiPicker title={TITLE} data={DATA} onSelect={selectSpy} />);
+    emojiPickerFixture({ data: DATA, onSelect: selectSpy });
 
     fireEvent.click(screen.getByText(DATA[0].emoji));
 
