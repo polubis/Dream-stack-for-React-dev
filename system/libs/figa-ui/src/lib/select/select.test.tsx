@@ -16,7 +16,7 @@ describe('select can be used when: ', () => {
     },
   ];
 
-  it('renders with default props', () => {
+  it('[FRAGILE] renders with default props', () => {
     const { asFragment } = render(<Select options={[]} onChange={jest.fn()} />);
 
     expect(asFragment()).toMatchSnapshot();

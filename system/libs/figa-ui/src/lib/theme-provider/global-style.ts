@@ -267,7 +267,7 @@ const GlobalStyle = createGlobalStyle`
             width: 100%;
             background: ${(props) => props.theme.select.bg};
             border-radius: ${tokens.radius[50]};
-            z-index: 1;
+            z-index: ${tokens.z[50]};
 
             .select-list-option {
                 ${font('1.4rem', '0.15px', 'LexendMedium', 500)}

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`displays guitar fretboard strings when [FRAGILE] supported classes and heights are attached 1`] = `
+<DocumentFragment>
+  <div
+    class="guitar-fretboard-strings"
+  >
+    <div
+      class="guitar-fretboard-string-wrapper"
+    >
+      <div
+        class="guitar-fretboard-string"
+        style="height: 1px;"
+      />
+    </div>
+    <div
+      class="guitar-fretboard-string-wrapper"
+    >
+      <div
+        class="guitar-fretboard-string"
+        style="height: 2px;"
+      />
+    </div>
+    <div
+      class="guitar-fretboard-string-wrapper"
+    >
+      <div
+        class="guitar-fretboard-string"
+        style="height: 3px;"
+      />
+    </div>
+    <div
+      class="guitar-fretboard-string-wrapper"
+    >
+      <div
+        class="guitar-fretboard-string"
+        style="height: 4px;"
+      />
+    </div>
+    <div
+      class="guitar-fretboard-string-wrapper"
+    >
+      <div
+        class="guitar-fretboard-string"
+        style="height: 5px;"
+      />
+    </div>
+    <div
+      class="guitar-fretboard-string-wrapper"
+    >
+      <div
+        class="guitar-fretboard-string"
+        style="height: 6px;"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
