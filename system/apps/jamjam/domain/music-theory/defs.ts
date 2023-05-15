@@ -1,5 +1,6 @@
 import {
   BMOLL_NOTE_NOTATION_SYMBOLS,
+  GUITAR_FRETS,
   GUITAR_STRINGS_NUMBERS,
   NOTE_IDS,
   NOTE_NOTATIONS,
@@ -35,6 +36,11 @@ type SharpNoteNotationSymbol = (typeof SHARP_NOTE_NOTATION_SYMBOLS)[number];
 type BmollNoteNotationSymbol = (typeof BMOLL_NOTE_NOTATION_SYMBOLS)[number];
 
 /**
+ * Union for determine all possible symbols.
+ */
+type NoteNotationSymbol = SharpNoteNotationSymbol | BmollNoteNotationSymbol;
+
+/**
  * In music we have intervals - the octave is one of them.
  * It is the distance from the note C1, to the note C2,
  * or from the note C2 to C3, ...etc.
@@ -50,6 +56,11 @@ interface Note {
   id: NoteId;
   octave: NoteOctave;
 }
+
+/**
+ * Represents guitar fret. Zero means empty fret (open string).
+ */
+type GuitarFret = (typeof GUITAR_FRETS)[number];
 
 /**
  * The guitar can be left-handed or right-handed.
@@ -93,7 +104,7 @@ interface GuitarConfig {
  * So we can produce 25 or more sounds in total (including the sound of an empty string).
  */
 interface GuitarString {
-  string: GuitarStringNumber;
+  number: GuitarStringNumber;
   notes: Note[];
 }
 
@@ -101,6 +112,7 @@ interface GuitarString {
  * An abstraction to a real instrument - the guitar.
  */
 interface Guitar {
+  fretsCount: GuitarFret;
   strings: GuitarString[];
   tuning: Note[];
 }
@@ -116,4 +128,7 @@ export type {
   SharpNoteNotationSymbol,
   BmollNoteNotationSymbol,
   NoteNotation,
+  Note,
+  NoteNotationSymbol,
+  GuitarFret,
 };

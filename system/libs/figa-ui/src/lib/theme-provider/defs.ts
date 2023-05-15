@@ -5,6 +5,7 @@ interface ThemeProviderProps {
 }
 
 interface Spacing {
+  25: string;
   50: string;
   100: string;
   150: string;
@@ -74,6 +75,7 @@ interface Tokens {
   };
   blue: {
     200: string;
+    600: string;
   };
   gray: {
     0: string;

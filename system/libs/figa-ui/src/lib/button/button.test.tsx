@@ -2,7 +2,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import { Button } from './Button';
 
 describe('Button can be used when', () => {
-  it('renders with default props', () => {
+  it('[FRAGILE] renders with default props', () => {
     const { asFragment } = render(<Button />);
 
     expect(asFragment()).toMatchSnapshot();

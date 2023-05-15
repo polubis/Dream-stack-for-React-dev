@@ -82,7 +82,7 @@ exports[`select can be used when:  [FRAGILE] assigns correct HTML metadata when 
 </DocumentFragment>
 `;
 
-exports[`select can be used when:  renders with default props 1`] = `
+exports[`select can be used when:  [FRAGILE] renders with default props 1`] = `
 <DocumentFragment>
   <div
     class="select"
