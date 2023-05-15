@@ -1,6 +1,7 @@
-import { AppProps } from 'next/app';
+import { ThemeProvider } from '@system/figa-ui';
+
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import './styles.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
@@ -8,9 +9,9 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Welcome to jamjam!</title>
       </Head>
-      <main className="app">
+      <ThemeProvider>
         <Component {...pageProps} />
-      </main>
+      </ThemeProvider>
     </>
   );
 }
