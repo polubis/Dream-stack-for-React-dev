@@ -1,6 +1,7 @@
 import type { Spacing, Theme, Themes, Tokens } from './defs';
 
 const spacing: Spacing = {
+  25: '2px',
   50: '4px',
   100: '8px',
   150: '12px',
@@ -63,6 +64,7 @@ const tokens: Tokens = {
   },
   blue: {
     200: '#69B6CE',
+    600: '#354049',
   },
   purple: {
     50: '#bf63bc',
