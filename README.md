@@ -11,6 +11,11 @@
 ## Generating React SPA app
 
 1. `cd .\system\`
+2. `npx nx g @nrwl/next:application jamjam`
+
+## Generating Next.js app with TypeScript
+
+1. `cd .\system\`
 2. `npx nx g @nrwl/react:application blog-creator`
 
 ## Generating React styled-components based UI library
