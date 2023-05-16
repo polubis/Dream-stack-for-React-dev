@@ -1,5 +1,7 @@
 import type {
   BmollNoteNotationSymbol,
+  Guitar,
+  GuitarConfig,
   GuitarHand,
   GuitarTuning,
   Note,
@@ -18,13 +20,17 @@ describe('returns note symbol according to used notation', () => {
 });
 
 describe('creates guitar instrument when', () => {
-  it('tuning is created', () => {
-    const guitar = createGuitar({
+  const createGuitarFixture = (config: Partial<GuitarConfig> = {}): Guitar =>
+    createGuitar({
       tuningNotes: [{ id: 12, octave: 3 }],
       tuningName: 'custom',
       hand: 'right',
       fretsCount: 2,
+      ...config,
     });
+
+  it('tuning is created', () => {
+    const guitar = createGuitarFixture();
 
     expect(guitar.tuning).toEqual({
       name: 'custom',
@@ -33,24 +39,14 @@ describe('creates guitar instrument when', () => {
   });
 
   it('when hand is assigned', () => {
-    const guitar = createGuitar({
-      tuningNotes: [{ id: 12, octave: 3 }],
-      tuningName: 'custom',
-      hand: 'right',
-      fretsCount: 2,
-    });
+    const guitar = createGuitarFixture();
 
     expect(guitar.hand).toBe('right' as GuitarHand);
   });
 
   it('generates next octave B4 when passes B3 note', () => {
-    const guitar = createGuitar({
-      tuningNotes: [{ id: 12, octave: 3 }],
-      tuningName: 'custom',
-      hand: 'right',
-      fretsCount: 2,
-    });
-    const [firstString] = guitar.strings;
+    const { strings } = createGuitarFixture();
+    const [firstString] = strings;
 
     expect(firstString.notes).toEqual([
       { id: 12, octave: 3 },
@@ -59,13 +55,11 @@ describe('creates guitar instrument when', () => {
   });
 
   it('generates 3 notes from tuning E4 note', () => {
-    const guitar = createGuitar({
+    const { strings } = createGuitarFixture({
       tuningNotes: [{ id: 5, octave: 4 }],
-      tuningName: 'custom',
-      hand: 'right',
       fretsCount: 3,
     });
-    const [firstString] = guitar.strings;
+    const [firstString] = strings;
 
     expect(firstString.notes).toEqual([
       { id: 5, octave: 4 },
