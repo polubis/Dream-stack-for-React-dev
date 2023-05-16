@@ -1,7 +1,7 @@
+import { fireEvent, render, screen } from '@testing-library/react';
+
 import type { GuitarFretboardProps } from '../defs';
 import type { Guitar, Note } from '../../../domain';
-
-import { fireEvent, render, screen } from '@testing-library/react';
 import { GuitarFretboard } from '../guitar-fretboard';
 import { DEFAULT_FRETS_MARKERS } from '../consts';
 

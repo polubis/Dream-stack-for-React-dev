@@ -1,10 +1,11 @@
-import type { GuitarFretboardProps, NoteButtonProps } from './defs';
-import type { Note, NoteId, NoteOctave } from '../../domain';
-
 import { useMemo, useCallback } from 'react';
 import styled from 'styled-components';
 import c from 'classnames';
 import { center, column, size, tokens } from '@system/figa-ui';
+
+import type { Note, NoteId, NoteOctave } from '../../domain';
+
+import type { GuitarFretboardProps, NoteButtonProps } from './defs';
 import { NoteButton } from './note-button';
 import { DEFAULT_FRETS_MARKERS } from './consts';
 import { GuitarFretboardStrings } from './guitar-fretboard-strings';

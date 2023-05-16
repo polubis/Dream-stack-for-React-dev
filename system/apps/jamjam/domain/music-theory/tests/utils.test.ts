@@ -1,5 +1,4 @@
 import type { BmollNoteNotationSymbol, SharpNoteNotationSymbol } from '../defs';
-
 import { getNoteSymbol } from '../utils';
 
 describe('returns note symbol according to used notation', () => {
