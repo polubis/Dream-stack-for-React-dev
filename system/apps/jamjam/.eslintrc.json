@@ -10,7 +10,14 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "@next/next/no-html-link-for-pages": ["error", "apps/jamjam/pages"]
+        "@next/next/no-html-link-for-pages": ["error", "apps/jamjam/pages"],
+        "import/order": [
+          "error",
+          {
+            "groups": ["builtin", "external", "parent", "sibling", "index"],
+            "newlines-between": "always"
+          }
+        ]
       }
     },
     {

@@ -1,5 +1,4 @@
 import NextLink from 'next/link';
-
 import { Navigation, Link } from '@system/figa-ui';
 
 import { GuitarFretboard } from '../components';
