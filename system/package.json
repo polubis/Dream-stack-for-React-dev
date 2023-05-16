@@ -9,7 +9,8 @@
     "format:checkAll": "prettier --list-different \"./**/*.{js,ts,tsx}\"",
     "format:fixAll": "prettier --write \"./**/*.{js,ts,tsx}\"",
     "test:checkAll": "npx nx run-many --target=test --all",
-    "ts:checkAll": "npx nx run-many --target=type-check --all"
+    "ts:checkAll": "npx nx run-many --target=type-check --all",
+    "build-storybook": "npx nx run figa-ui:build-storybook -s public"
   },
   "private": true,
   "dependencies": {
@@ -65,6 +66,7 @@
     "babel-jest": "28.1.1",
     "babel-loader": "8.1.0",
     "babel-plugin-styled-components": "1.10.7",
+    "chromatic": "^6.17.4",
     "cypress": "^12.2.0",
     "eslint": "~8.15.0",
     "eslint-config-next": "13.1.1",
