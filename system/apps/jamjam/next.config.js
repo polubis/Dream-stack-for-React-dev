@@ -28,7 +28,10 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
-  webpack: (config, { isServer }) => {
+  compiler: {
+    styledComponents: true,
+  },
+  webpack: (config) => {
     // Important: return the modified config
 
     copyFonts(config);
