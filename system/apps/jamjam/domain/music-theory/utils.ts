@@ -1,5 +1,4 @@
 import type { NoteId, NoteNotation, NoteNotationSymbol } from './defs';
-
 import {
   BMOLL_NOTE_NOTATION_SYMBOLS,
   SHARP_NOTE_NOTATION_SYMBOLS,

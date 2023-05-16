@@ -1,5 +1,4 @@
 import { ThemeProvider, Sandbox } from '@system/figa-ui';
-
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 

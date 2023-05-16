@@ -1,4 +1,5 @@
 import type { MouseEventHandler } from 'react';
+
 import type {
   Guitar,
   GuitarFret,

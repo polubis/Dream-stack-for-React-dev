@@ -1,10 +1,10 @@
+import { fireEvent, render, screen } from '@testing-library/react';
+
 import type {
   BmollNoteNotationSymbol,
   SharpNoteNotationSymbol,
 } from '../../../domain';
 import type { NoteButtonProps } from '../defs';
-
-import { fireEvent, render, screen } from '@testing-library/react';
 import { NoteButton } from '../note-button';
 
 describe('note button component can be used when', () => {

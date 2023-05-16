@@ -1,7 +1,8 @@
-import type { NoteButtonProps } from './defs';
-
 import { Button } from '@system/figa-ui';
+
 import { getNoteSymbol } from '../../domain';
+
+import type { NoteButtonProps } from './defs';
 import { NOTES_COLORS } from './consts';
 
 const NoteButton = ({
