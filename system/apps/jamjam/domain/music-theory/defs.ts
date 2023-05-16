@@ -1,4 +1,4 @@
-import {
+import type {
   BMOLL_NOTE_NOTATION_SYMBOLS,
   GUITAR_FRETS,
   GUITAR_STRINGS_NUMBERS,
@@ -76,6 +76,13 @@ type GuitarHand = 'left' | 'right';
 type GuitarStringNumber = (typeof GUITAR_STRINGS_NUMBERS)[number];
 
 /**
+ * Types to reduce duplication.
+ */
+type GuitarTuningName = string;
+type GuitarTuningNotes = Note[];
+type GuitarStrings = GuitarString[];
+
+/**
  * Guitar tuning refers to the process of adjusting the pitch of
  * each of the guitar strings to achieve the desired musical
  * intervals between them.
@@ -84,8 +91,8 @@ type GuitarStringNumber = (typeof GUITAR_STRINGS_NUMBERS)[number];
  * starting from the thickest string to the thinnest, is usually E2-A2-D3-G3-B3-E4.
  */
 interface GuitarTuning {
-  name: string;
-  notes: Note[];
+  name: GuitarTuningName;
+  notes: GuitarTuningNotes;
 }
 
 /**
@@ -93,9 +100,9 @@ interface GuitarTuning {
  */
 interface GuitarConfig {
   hand: GuitarHand;
-  stringsCount: GuitarStringNumber;
-  fretsCount: number;
-  tuning: GuitarTuning[];
+  fretsCount: GuitarFret;
+  tuningName: GuitarTuningName;
+  tuningNotes: GuitarTuningNotes;
 }
 
 /**
@@ -113,8 +120,9 @@ interface GuitarString {
  */
 interface Guitar {
   fretsCount: GuitarFret;
-  strings: GuitarString[];
-  tuning: Note[];
+  strings: GuitarStrings;
+  tuning: GuitarTuning;
+  hand: GuitarHand;
 }
 
 export type {
@@ -131,4 +139,5 @@ export type {
   Note,
   NoteNotationSymbol,
   GuitarFret,
+  GuitarTuning,
 };
