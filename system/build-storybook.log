@@ -1,0 +1,56 @@
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
+
+> nx run figa-ui:build-storybook -s public --output-dir C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--7876-RYmEaQTPY8JS
+
+
+>  NX  ui framework: @storybook/react
+
+
+>  NX  Storybook builder starting ...
+
+info => Cleaning outputDir: C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--7876-RYmEaQTPY8JS
+info => Loading presets
+info => Copying static files: C:\Users\polub\Dream-stack-for-React-dev\system\assets at C:\Users\polub\AppData\Local\Temp\chromatic--7876-RYmEaQTPY8JS\
+info => Compiling manager..
+[36mvite v4.1.4 [32mbuilding for production...[36m[39m
+transforming...
+info => Manager built (24 s)
+Use of eval in "node_modules/telejson/dist/esm/index.js" is strongly discouraged as it poses security risks and may cause issues with minification.
+Use of eval in "node_modules/telejson/dist/esm/index.js" is strongly discouraged as it poses security risks and may cause issues with minification.
+Use of eval in "node_modules/@storybook/components/dist/esm/index-681e4b07.js" is strongly discouraged as it poses security risks and may cause issues with minification.
+[32m✓[39m 1729 modules transformed.
+rendering chunks...
+computing gzip size...
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[32miframe.html                                         [39m[1m[2m   13.65 kB[22m[1m[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36mes.string.from-code-point-dca60fcd.js        [39m[1m[2m    0.59 kB[22m[1m[22m[2m │ gzip:   0.44 kB[22m[2m │ map:     2.23 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36mes.regexp.flags-781075d5.js                  [39m[1m[2m    0.67 kB[22m[1m[22m[2m │ gzip:   0.47 kB[22m[2m │ map:     2.79 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36mclient-de08bbb2.js                           [39m[1m[2m    0.72 kB[22m[1m[22m[2m │ gzip:   0.46 kB[22m[2m │ map:     0.95 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36mrenderDocs-5967edf0.js                       [39m[1m[2m    2.67 kB[22m[1m[22m[2m │ gzip:   1.33 kB[22m[2m │ map:     9.87 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36mGlobalScrollAreaStyles-8793ce4a-26e96a3f.js  [39m[1m[2m   10.50 kB[22m[1m[22m[2m │ gzip:   2.39 kB[22m[2m │ map:    20.93 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36mColor-f953d088-3b6f8786.js                   [39m[1m[2m   34.27 kB[22m[1m[22m[2m │ gzip:  13.00 kB[22m[2m │ map:   134.15 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36mWithTooltip-167e9982-6828363b.js             [39m[1m[2m   40.96 kB[22m[1m[22m[2m │ gzip:  13.78 kB[22m[2m │ map:   181.35 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36mOverlayScrollbars-1355f44c-ab357ce9.js       [39m[1m[2m   64.54 kB[22m[1m[22m[2m │ gzip:  27.41 kB[22m[2m │ map:   443.99 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36msyntaxhighlighter-b07b042a-436349ed.js       [39m[1m[2m  117.17 kB[22m[1m[22m[2m │ gzip:  48.79 kB[22m[2m │ map:   468.62 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36mindex-99defb66.js                            [39m[1m[2m  495.77 kB[22m[1m[22m[2m │ gzip: 146.10 kB[22m[2m │ map: 1,180.20 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36mformatter-0d5cb0eb-72e273a4.js               [39m[1m[33m  742.26 kB[39m[22m[2m │ gzip: 239.76 kB[22m[2m │ map: 1,798.35 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--7876-RYmEaQTPY8JS/[22m[2massets/[22m[36miframe-7c93878b.js                           [39m[1m[33m1,307.71 kB[39m[22m[2m │ gzip: 373.81 kB[22m[2m │ map: 3,626.80 kB[22m
+[33m
+(!) Some chunks are larger than 500 kBs after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+info => Output directory: C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--7876-RYmEaQTPY8JS
+
+>  NX  Storybook builder finished ...
+
+
+>  NX  Storybook files available in C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--7876-RYmEaQTPY8JS
+
+
+ 
+
+ >  NX   Successfully ran target build-storybook for project figa-ui
+
+
+   View logs and investigate cache misses at https://nx.app/runs/YJqozd7KHF
+
