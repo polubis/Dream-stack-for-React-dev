@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress works when [FRAGILE] can change timer size 1`] = `
+<DocumentFragment>
+  <div
+    class="progress-circle"
+    style="width: 120px; height: 120px;"
+  >
+    <div
+      class="progress-circle-front"
+      style="transform: scale(1);"
+    />
+    <h6
+      class="font font-h6 progress-circle-text"
+    >
+      5.0s
+    </h6>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Progress works when [FRAGILE] renders with default properties setup 1`] = `
+<DocumentFragment>
+  <div
+    class="progress-circle"
+    style="width: 100px; height: 100px;"
+  >
+    <div
+      class="progress-circle-front"
+      style="transform: scale(1);"
+    />
+    <h6
+      class="font font-h6 progress-circle-text"
+    >
+      5.0s
+    </h6>
+  </div>
+</DocumentFragment>
+`;
