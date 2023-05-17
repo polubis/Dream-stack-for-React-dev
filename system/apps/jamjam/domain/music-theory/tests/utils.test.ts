@@ -9,7 +9,7 @@ import type {
 } from '../defs';
 import { createGuitar, getNoteSymbol } from '../utils';
 
-describe('returns note symbol according to used notation', () => {
+describe('Returns note symbol according to used notation', () => {
   it('note contains sharp notation postix', () => {
     expect(getNoteSymbol(2, 'sharp')).toBe('C#' as SharpNoteNotationSymbol);
   });
@@ -19,7 +19,7 @@ describe('returns note symbol according to used notation', () => {
   });
 });
 
-describe('creates guitar instrument when', () => {
+describe('Creates guitar instrument when', () => {
   const createGuitarFixture = (config: Partial<GuitarConfig> = {}): Guitar =>
     createGuitar({
       tuningNotes: [{ id: 12, octave: 3 }],
