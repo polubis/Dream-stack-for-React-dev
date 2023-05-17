@@ -154,6 +154,9 @@ const light: Theme = {
       },
     },
   },
+  progressCircle: {
+    bg: tokens.gray[150],
+  },
 };
 
 const dark: Theme = {
@@ -219,6 +222,9 @@ const dark: Theme = {
         to: tokens.primary[250],
       },
     },
+  },
+  progressCircle: {
+    bg: tokens.dark[50],
   },
 };
 

@@ -412,6 +412,32 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* emoji-picker.tsx */
+
+    /* progress-circle.tsx */
+
+    .progress-circle {
+        position: relative;
+
+        .progress-circle-back,
+        .progress-circle-front {
+            ${streched('absolute')}
+            border-radius: ${tokens.radius[1000]};
+        }
+
+        .progress-circle-front {
+            transition: 0.1s transform linear;
+            background: ${(props) => props.theme.progressCircle.bg};
+        }
+
+        .progress-circle-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    /* progress-circle.tsx */
 `;
 
 export { GlobalStyle };
