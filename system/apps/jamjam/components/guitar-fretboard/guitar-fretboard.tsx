@@ -93,7 +93,9 @@ const GuitarFretboard = ({
   const handleNoteClick: NoteButtonProps['onClick'] = useCallback((e) => {
     const { noteId, noteOctave } = e.currentTarget.dataset;
 
-    if (noteId === undefined || noteOctave === undefined) return;
+    if (noteId === undefined || noteOctave === undefined) {
+      throw Error('noteId or noteOctave is undefined');
+    }
 
     onNoteClick &&
       onNoteClick({
@@ -136,9 +138,9 @@ const GuitarFretboard = ({
                 marked: shouldBeMarked,
               })}
             >
-              {notes.map((note) => (
+              {notes.map((note, idx) => (
                 <NoteButton
-                  key={note.id}
+                  key={note.id + ':' + idx}
                   noteId={note.id}
                   noteOctave={note.octave}
                   notation={notation}
