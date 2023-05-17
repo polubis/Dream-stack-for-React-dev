@@ -13,6 +13,7 @@ const EmojiPicker = ({
   onSelect,
 }: EmojiPickerProps) => {
   const handleSelect: MouseEventHandler<HTMLButtonElement> = (e) => {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     onSelect(e.currentTarget.getAttribute('data-emoji')!);
   };
 

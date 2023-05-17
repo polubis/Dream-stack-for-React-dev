@@ -32,13 +32,7 @@ const ImprovisationAssistant = () => {
         ]}
         action={<div>Some action</div>}
       />
-      <div
-        style={{
-          padding: '24px',
-        }}
-      >
-        <GuitarFretboard notation="bmoll" guitar={guitar} />
-      </div>
+      <GuitarFretboard notation="bmoll" guitar={guitar} />
     </>
   );
 };

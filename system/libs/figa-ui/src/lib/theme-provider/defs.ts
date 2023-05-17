@@ -152,6 +152,9 @@ interface Theme {
       };
     };
   };
+  progressCircle: {
+    bg: string;
+  };
 }
 
 type ThemeKey = 'dark' | 'light';
