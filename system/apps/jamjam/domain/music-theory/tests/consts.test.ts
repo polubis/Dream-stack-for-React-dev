@@ -8,7 +8,7 @@ import {
   SHARP_NOTE_NOTATION_SYMBOLS,
 } from '../consts';
 
-describe('initial configuration refers to reality when', () => {
+describe('Initial configuration refers to reality when', () => {
   it('there is a sharp and bmoll notation', () => {
     expect(NOTE_NOTATIONS).toEqual(['sharp', 'bmoll']);
   });
