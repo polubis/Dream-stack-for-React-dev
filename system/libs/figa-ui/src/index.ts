@@ -8,4 +8,5 @@ export * from './lib/navigation';
 export * from './lib/logo';
 export * from './lib/link';
 export * from './lib/emoji-picker';
+export * from './lib/progress-circle';
 export * from './lib/shared';
