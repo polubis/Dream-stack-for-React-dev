@@ -4,6 +4,7 @@ import {
   appearIn,
   center,
   central,
+  column,
   font,
   row,
   size,
@@ -464,6 +465,18 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* input.tsx */
+
+    /* layout.tsx  */
+
+    .layout {
+        ${column()}
+        
+        .layout-content {
+            padding: ${tokens.spacing[350]} ${tokens.spacing[250]};
+        }
+    }
+
+    /* layout.tsx */
 `;
 
 export { GlobalStyle };
