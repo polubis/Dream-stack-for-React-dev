@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User is able to user input when [FRAGILE] renders with default setup 1`] = `
+<DocumentFragment>
+  <div
+    class="input"
+  >
+    <input />
+  </div>
+</DocumentFragment>
+`;

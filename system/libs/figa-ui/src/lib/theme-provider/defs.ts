@@ -155,6 +155,11 @@ interface Theme {
   progressCircle: {
     bg: string;
   };
+  input: {
+    bg: string;
+    color: string;
+    placeholderColor: string;
+  };
 }
 
 type ThemeKey = 'dark' | 'light';
