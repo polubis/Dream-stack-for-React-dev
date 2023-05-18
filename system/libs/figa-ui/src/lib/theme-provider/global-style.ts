@@ -437,7 +437,31 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
-    /* progress-circle.tsx */
+    /* input.tsx  */
+
+    .input {
+        border-radius: ${tokens.radius[50]};
+        background: ${(props) => props.theme.input.bg};
+        min-width: 220px;
+
+        input, input::placeholder {
+            ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
+        }
+
+        input {
+            padding: ${tokens.spacing[150]};
+            border: none;
+            width: 100%;
+            background: none;
+            color: ${(props) => props.theme.input.color};
+
+            &::placeholder {
+                color: ${(props) => props.theme.input.placeholderColor};
+            }
+        }
+    }
+
+    /* input.tsx */
 `;
 
 export { GlobalStyle };
