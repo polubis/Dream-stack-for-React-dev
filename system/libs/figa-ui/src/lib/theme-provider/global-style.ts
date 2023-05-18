@@ -1,6 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 import { tokens } from './themes';
-import { appearIn, center, font, row, size, streched } from '../shared';
+import {
+  appearIn,
+  center,
+  central,
+  font,
+  row,
+  size,
+  streched,
+} from '../shared';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -198,14 +206,11 @@ const GlobalStyle = createGlobalStyle`
     /* modal.tsx */
 
     .modal {
-        position: fixed;
-        top: 50%;
-        left: 50%;
+        ${central('fixed')}
         min-width: 280px;
         min-height: 280px;
         max-height: 96vh;
         padding: ${tokens.spacing[250]};
-        transform: translate(-50%, -50%);
         background: ${(props) => props.theme.modal.bg};
         border-radius: ${tokens.radius[50]};
         border: 1px solid ${(props) => props.theme.modal.border};
@@ -430,10 +435,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         .progress-circle-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            ${central('absolute')}
         }
     }
 
