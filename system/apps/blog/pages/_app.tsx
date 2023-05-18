@@ -1,4 +1,4 @@
-import { Sandbox, ThemeProvider } from '@system/figa-ui';
+import { ThemeProvider } from '@system/figa-ui';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
@@ -9,9 +9,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <title>Welcome to blog!</title>
       </Head>
       <ThemeProvider>
-        <Sandbox>
-          <Component {...pageProps} />
-        </Sandbox>
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );
