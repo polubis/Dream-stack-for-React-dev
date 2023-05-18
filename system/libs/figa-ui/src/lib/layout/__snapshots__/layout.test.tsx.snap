@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User is able to use layout when [FRAGILE] renders big contents 1`] = `
+<DocumentFragment>
+  <div
+    class="layout"
+  >
+    <header
+      class="layout-header"
+    >
+      <div>
+        Header
+      </div>
+    </header>
+    <main
+      class="layout-content"
+    >
+      <div
+        style="height: 110vh;"
+      >
+        Content
+      </div>
+    </main>
+    <footer
+      class="layout-footer"
+    >
+      <div>
+        Footer
+      </div>
+    </footer>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`User is able to use layout when [FRAGILE] renders with default setup 1`] = `
+<DocumentFragment>
+  <div
+    class="layout"
+  >
+    <header
+      class="layout-header"
+    >
+      <div>
+        Header
+      </div>
+    </header>
+    <main
+      class="layout-content"
+    >
+      <div>
+        Content
+      </div>
+    </main>
+    <footer
+      class="layout-footer"
+    >
+      <div>
+        Footer
+      </div>
+    </footer>
+  </div>
+</DocumentFragment>
+`;
