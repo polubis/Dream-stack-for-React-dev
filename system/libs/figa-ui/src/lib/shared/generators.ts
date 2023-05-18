@@ -31,6 +31,15 @@ const center = (): FlattenSimpleInterpolation => css`
   justify-content: center;
 `;
 
+const central = (
+  position: StrechablePosition
+): FlattenSimpleInterpolation => css`
+  position: ${position};
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 const streched = (
   position: StrechablePosition
 ): FlattenSimpleInterpolation => css`
@@ -73,4 +82,4 @@ const appearIn = (
   animation: ${appearInAnimation(from, to)} 0.2s ease-in-out forwards;
 `;
 
-export { font, size, center, wrap, streched, row, column, appearIn };
+export { font, size, center, wrap, streched, row, column, appearIn, central };
