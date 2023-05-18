@@ -5,4 +5,4 @@ type InputProps = DetailedHTMLProps<
   HTMLInputElement
 >;
 
-export { InputProps };
+export type { InputProps };
