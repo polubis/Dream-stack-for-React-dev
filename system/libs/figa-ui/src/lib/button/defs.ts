@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import {
+import type {
   BUTTON_MOTIVES,
   BUTTON_SHAPES,
   BUTTON_SIZES,

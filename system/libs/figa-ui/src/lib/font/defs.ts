@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { FONT_VARIANTS } from './consts';
+import type { FONT_VARIANTS } from './consts';
 
 type FontVariant = (typeof FONT_VARIANTS)[number];
 

@@ -28,6 +28,12 @@ const getNoteSymbol = (
   return BMOLL_NOTE_NOTATION_SYMBOLS[id];
 };
 
+const getNoteSymbols = (
+  noteIds: NoteId[],
+  notation: NoteNotation
+): NoteNotationSymbol[] =>
+  noteIds.map((noteId) => getNoteSymbol(noteId, notation));
+
 const createGuitar = (config: GuitarConfig): Guitar => {
   const { tuningNotes, fretsCount, hand, tuningName } = config;
   const stringsCount = tuningNotes.length;
@@ -84,4 +90,4 @@ const createGuitar = (config: GuitarConfig): Guitar => {
   };
 };
 
-export { getNoteSymbol, createGuitar };
+export { getNoteSymbol, getNoteSymbols, createGuitar };

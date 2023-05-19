@@ -4,6 +4,7 @@ import { createGuitar, NOTE_IDS } from '../../domain';
 import type {
   Answers,
   CountingState,
+  FinishedState,
   GuitarNotesTeacherSettings,
   GuitarNotesTeacherState,
   IdleState,
@@ -96,6 +97,21 @@ const Playing = (
   answers,
 });
 
+const Finished = (answers: Answers, questions: Questions): FinishedState => ({
+  key: 'finished',
+  questions,
+  answers,
+});
+
 const StartMachine = (): GuitarNotesTeacherState => Idle();
 
-export { StartMachine, Idle, Initial, Settings, Counting, Started, Playing };
+export {
+  StartMachine,
+  Idle,
+  Initial,
+  Settings,
+  Counting,
+  Started,
+  Playing,
+  Finished,
+};
