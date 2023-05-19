@@ -490,6 +490,40 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* layout.tsx */
+
+    /* box.tsx  */
+
+    .box {
+        &.filled, &.outlined {
+            border-radius: ${tokens.radius[50]};
+        }
+
+        &.filled {
+            background: ${(props) => props.theme.box.bg};
+        }
+
+        &.outlined {
+            border: 1px solid ${(props) => props.theme.box.borderColor};
+        }
+
+        &.column {
+            ${column()}
+        }
+
+        &.center-row {
+            ${center()}
+        }
+
+        &.center-column {
+            ${center('column')}
+        }
+
+        &.row {
+            ${row()}
+        }
+    }
+
+    /* box.tsx */
 `;
 
 export { GlobalStyle };
