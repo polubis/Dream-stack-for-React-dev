@@ -101,6 +101,7 @@ const GlobalStyle = createGlobalStyle`
 
     .font-b1 {
         ${font('1.6rem', '0.15px', 'LexendRegular', 400)}
+        line-height: 2.4rem;
     }
 
     .font-b2 {
@@ -208,6 +209,7 @@ const GlobalStyle = createGlobalStyle`
 
     .modal {
         ${central('fixed')}
+        ${column()}
         min-width: 280px;
         min-height: 280px;
         max-height: 96vh;
@@ -226,7 +228,6 @@ const GlobalStyle = createGlobalStyle`
     }
     
     /* modal.tsx */
-
 
     /* select.tsx */
 
@@ -470,7 +471,19 @@ const GlobalStyle = createGlobalStyle`
 
     .layout {
         ${column()}
-        
+
+        &.full {
+            .layout-content {
+                display: flex;
+                min-height: calc(100vh - 100px);
+                max-width: 100vw;
+
+                & > * {
+                    width: 100%;
+                }
+            }
+        }
+
         .layout-content {
             padding: ${tokens.spacing[350]} ${tokens.spacing[250]};
         }

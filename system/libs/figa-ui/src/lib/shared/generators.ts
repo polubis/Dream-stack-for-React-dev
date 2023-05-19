@@ -25,8 +25,11 @@ const wrap = (): FlattenSimpleInterpolation => css`
   flex-flow: wrap;
 `;
 
-const center = (): FlattenSimpleInterpolation => css`
+const center = (
+  flow: 'row' | 'column' = 'row'
+): FlattenSimpleInterpolation => css`
   display: flex;
+  flex-flow: ${flow};
   align-items: center;
   justify-content: center;
 `;
