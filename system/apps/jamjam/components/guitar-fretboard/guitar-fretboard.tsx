@@ -6,7 +6,7 @@ import { center, column, size, tokens } from '@system/figa-ui';
 import type { Note, NoteId, NoteOctave } from '../../domain';
 
 import type { GuitarFretboardProps, NoteButtonProps } from './defs';
-import { NoteButton } from './note-button';
+import { ColorfulNoteButton } from './note-button';
 import { DEFAULT_FRETS_MARKERS } from './consts';
 import { GuitarFretboardStrings } from './guitar-fretboard-strings';
 
@@ -57,6 +57,12 @@ const Container = styled.div`
         border-left: none;
         background: none;
         border-right: ${tokens.spacing[50]} solid ${tokens.gray[200]};
+
+        .guitar-fretboard-fret-note {
+          &.unobvious {
+            background: ${tokens.common.white};
+          }
+        }
       }
 
       &:nth-of-type(2) {
@@ -71,12 +77,17 @@ const Container = styled.div`
         z-index: ${tokens.z[50]};
         border: ${tokens.spacing[25]} solid ${tokens.dark[100]};
 
+        &.unobvious {
+          background: ${tokens.common.black};
+          border: none;
+        }
+
         &:not(:last-of-type) {
           margin-bottom: ${tokens.spacing[150]};
         }
 
         &:hover {
-          opacity: 0.9;
+          opacity: 0.7;
         }
       }
     }
@@ -88,6 +99,7 @@ const GuitarFretboard = ({
   guitar,
   fretsMarkers = DEFAULT_FRETS_MARKERS,
   notation,
+  NoteComponent = ColorfulNoteButton,
   onNoteClick,
 }: GuitarFretboardProps) => {
   const handleNoteClick: NoteButtonProps['onClick'] = useCallback((e) => {
@@ -139,7 +151,7 @@ const GuitarFretboard = ({
               })}
             >
               {notes.map((note, idx) => (
-                <NoteButton
+                <NoteComponent
                   key={note.id + ':' + idx}
                   noteId={note.id}
                   noteOctave={note.octave}
