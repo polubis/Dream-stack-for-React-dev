@@ -8,12 +8,21 @@ import {
   Box,
   Font,
   Logo,
+  tokens,
+  Button,
+  type BoxProps,
 } from '@system/figa-ui';
 
 import { GuitarFretboard, UnobviousNoteButton } from '../../components';
-import { useMachine } from '../../state-machines/guitar-notes-teacher';
+import {
+  getCurrentQuestion,
+  useMachine,
+} from '../../state-machines/guitar-notes-teacher';
 
-import { IntroSection } from './components';
+const commonBoxProps: Partial<BoxProps> = {
+  spacing: [150, 500],
+  padding: [350, 350, 350, 350],
+};
 
 const GuitarNotesTeacher = () => {
   const [state, actions] = useMachine();
@@ -36,7 +45,7 @@ const GuitarNotesTeacher = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                Check our blog!
+                Check our platform!
               </a>
             </Link>
           }
@@ -44,36 +53,39 @@ const GuitarNotesTeacher = () => {
       }
     >
       {state.key === 'idle' && (
-        <IntroSection
-          header="Hi, welcome! Mr Van Halen"
-          description="Take part in a fascinating sound guessing game. Learn our way to
-          learn the fluency of an instrument."
-          action="See our game!"
-          onConfirm={actions.initial}
-        />
+        <Box {...commonBoxProps}>
+          <Font variant="h6">Hi, welcome! Mr Van Halen</Font>
+          <Font variant="b1">
+            Take part in a fascinating sound guessing game. Learn our way to
+            learn the fluency of an instrument.
+          </Font>
+          <Button onClick={actions.initial}>See our game!</Button>
+        </Box>
       )}
 
       {state.key === 'initial' && (
         <Modal onClose={actions.idle}>
-          <IntroSection
-            header="How does it work?"
-            description="You will have the opportunity to choose the game mode. After
-            saving the settings - a countdown will be started, after which the
-            game will start."
-            action="Continue"
-            onConfirm={actions.settings}
-          />
+          <Box {...commonBoxProps}>
+            <Font variant="h6">How does it work?</Font>
+            <Font variant="b1">
+              You will have the opportunity to choose the game mode. After
+              saving the settings - a countdown will be started, after which the
+              game will start.
+            </Font>
+            <Button onClick={actions.settings}>Continue</Button>
+          </Box>
         </Modal>
       )}
 
       {state.key === 'settings' && (
         <Modal onClose={actions.idle}>
-          <IntroSection
-            header="Setup your game!"
-            description="Move a few sliders and start playing guitarist."
-            action="Start!"
-            onConfirm={actions.counting}
-          />
+          <Box {...commonBoxProps}>
+            <Font variant="h6">Setup your game!</Font>
+            <Font variant="b1">
+              Move a few sliders and start playing guitarist.
+            </Font>
+            <Button onClick={actions.counting}>Start!</Button>
+          </Box>
         </Modal>
       )}
 
@@ -91,18 +103,61 @@ const GuitarNotesTeacher = () => {
       {(state.key === 'started' || state.key === 'playing') && (
         <Box>
           <GuitarFretboard
-            notation="bmoll"
+            notation="sharp"
             guitar={state.guitar}
             NoteComponent={UnobviousNoteButton}
             onNoteClick={actions.answerQuestion}
           />
-
-          <Box orientation="center-column">
+          <Box orientation="center-column" spacing={[150]}>
+            <Font variant="h6">Find {getCurrentQuestion(state)} note!</Font>
             <ProgressCircle
               key={state.answers.length}
-              ms={10000}
-              onEnd={actions.timeEnd}
+              ms={1111}
+              onEnd={() => actions.answerQuestion()}
             />
+          </Box>
+        </Box>
+      )}
+
+      {state.key === 'finished' && (
+        <Box spacing={[250, 300]}>
+          <Font variant="h6">Thanks a lot for participating in the game!</Font>
+          <Font variant="b1">
+            If you liked the presentation, the code or the way I told the story
+            - watch me on LinkedIn for more. Below links to community profiles,
+            discord and the platform I am creating with my community.
+          </Font>
+          <Box spacing={[150, 150]} variant="outlined">
+            <Link variant="b1">
+              <a
+                href="https://www.linkedin.com/in/adrian-po%C5%82ubi%C5%84ski-281ab2172"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: tokens.primary[100] }}
+              >
+                Adrian Połubiński on LinkedIn
+              </a>
+            </Link>
+            <Link variant="b1">
+              <a
+                href="https://www.linkedin.com/company/greenon-software/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: tokens.primary[100] }}
+              >
+                GreenOn Software LinkedIn
+              </a>
+            </Link>
+            <Link variant="b1">
+              <a
+                href="https://greenonsoftware.com/"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: tokens.primary[100] }}
+              >
+                Check our platform!
+              </a>
+            </Link>
           </Box>
         </Box>
       )}
