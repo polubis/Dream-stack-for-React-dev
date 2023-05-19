@@ -15,4 +15,4 @@ interface BoxProps {
   spacing?: BoxSpacing;
 }
 
-export type { BoxOrientation, BoxVariant, BoxSpacing, BoxProps };
+export type { BoxOrientation, BoxVariant, BoxSpacing, BoxPadding, BoxProps };

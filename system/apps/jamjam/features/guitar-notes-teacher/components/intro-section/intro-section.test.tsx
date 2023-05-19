@@ -18,7 +18,7 @@ describe('User is able to user intro section when', () => {
     return result;
   };
 
-  it('head, description and title of interactive element are displayed', () => {
+  it('header, description and title of interactive element are displayed', () => {
     introSectionFixture();
 
     screen.getByText(/header/);
