@@ -1,4 +1,5 @@
-import { Button } from '@system/figa-ui';
+import { Button, type ButtonProps } from '@system/figa-ui';
+import c from 'classnames';
 
 import { getNoteSymbol } from '../../domain';
 
@@ -8,24 +9,32 @@ import { NOTES_COLORS } from './consts';
 const NoteButton = ({
   noteId,
   noteOctave,
-  notation,
-  onClick,
-}: NoteButtonProps) => {
-  return (
-    <Button
-      size={2}
-      className="guitar-fretboard-fret-note"
-      style={{
-        background: NOTES_COLORS[noteId - 1],
-      }}
-      shape="rounded"
-      data-note-id={noteId}
-      data-note-octave={noteOctave}
-      onClick={onClick}
-    >
-      {getNoteSymbol(noteId, notation)}
-    </Button>
-  );
-};
+  ...props
+}: ButtonProps & NoteButtonProps) => (
+  <Button
+    {...props}
+    size={2}
+    className={c('guitar-fretboard-fret-note', props.className)}
+    shape="rounded"
+    data-note-id={noteId}
+    data-note-octave={noteOctave}
+  />
+);
 
-export { NoteButton };
+const ColorfulNoteButton = (props: NoteButtonProps) => (
+  <NoteButton
+    {...props}
+    className="colorful"
+    style={{
+      background: NOTES_COLORS[props.noteId - 1],
+    }}
+  >
+    {getNoteSymbol(props.noteId, props.notation)}
+  </NoteButton>
+);
+
+const UnobviousNoteButton = (props: NoteButtonProps) => (
+  <NoteButton {...props} className="unobvious" />
+);
+
+export { ColorfulNoteButton, UnobviousNoteButton };
