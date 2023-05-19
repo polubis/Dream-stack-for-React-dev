@@ -10,8 +10,10 @@ import {
   Logo,
 } from '@system/figa-ui';
 
-import { GuitarFretboard, IntroSection } from '../components';
-import { useMachine } from '../state-machines/guitar-notes-teacher';
+import { GuitarFretboard } from '../../components';
+import { useMachine } from '../../state-machines/guitar-notes-teacher';
+
+import { IntroSection } from './components';
 
 const GuitarNotesTeacher = () => {
   const [state, actions] = useMachine();
@@ -24,12 +26,7 @@ const GuitarNotesTeacher = () => {
           logo={<Logo />}
           links={[
             <Link variant="h6" key={0}>
-              <NextLink href="/improvisation-assistant">Improvisation</NextLink>
-            </Link>,
-            <Link variant="h6" key={1}>
-              <NextLink href="/guitar-notes-teacher">
-                Learn guitar notes
-              </NextLink>
+              <NextLink href="/">Learn guitar notes</NextLink>
             </Link>,
           ]}
           action={
@@ -46,7 +43,7 @@ const GuitarNotesTeacher = () => {
         />
       }
     >
-      {state.key !== 'playing' && state.key !== 'started' && (
+      {state.key === 'idle' && (
         <IntroSection
           header="Hi, welcome! Mr Van Halen"
           description="Take part in a fascinating sound guessing game. Learn our way to
@@ -112,4 +109,4 @@ const GuitarNotesTeacher = () => {
   );
 };
 
-export default GuitarNotesTeacher;
+export { GuitarNotesTeacher };
