@@ -26,34 +26,22 @@ const useMachine = (initialState = startedMachine) => {
     setCounter((prev) => prev + 1);
   };
 
-  const answerQuestion = (note: Note): void => {
-    if (state.current.key === 'started' || state.current.key === 'playing') {
-      update(
-        M.Playing(
-          state.current.guitar,
-          [...state.current.answers, note.id],
-          state.current.questions
-        )
-      );
+  const answerQuestion = (note?: Note): void => {
+    if (state.current.key !== 'started' && state.current.key !== 'playing') {
+      logInvalidAction(answerQuestion.name);
       return;
     }
 
-    logInvalidAction(answerQuestion.name);
-  };
+    const newAnswers = [...state.current.answers, note ? note.id : undefined];
 
-  const timeEnd = (): void => {
-    if (state.current.key === 'started' || state.current.key === 'playing') {
-      update(
-        M.Playing(
-          state.current.guitar,
-          [...state.current.answers, undefined],
-          state.current.questions
-        )
-      );
+    if (newAnswers.length === state.current.questions.length) {
+      update(M.Finished(state.current.answers, state.current.questions));
       return;
     }
 
-    logInvalidAction(timeEnd.name);
+    update(
+      M.Playing(state.current.guitar, newAnswers, state.current.questions)
+    );
   };
 
   const initial = (): void => {
@@ -88,7 +76,6 @@ const useMachine = (initialState = startedMachine) => {
 
   const actions = {
     answerQuestion,
-    timeEnd,
     initial,
     idle,
     settings,
