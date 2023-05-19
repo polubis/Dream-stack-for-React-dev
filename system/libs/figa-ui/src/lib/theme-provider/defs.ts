@@ -4,7 +4,7 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-interface Spacing {
+type Spacing = {
   25: string;
   50: string;
   100: string;
@@ -26,7 +26,9 @@ interface Spacing {
   900: string;
   950: string;
   1000: string;
-}
+};
+
+type SpacingKey = keyof Spacing;
 
 interface Palette {
   50: string;
@@ -67,6 +69,10 @@ interface Tokens {
     white: string;
   };
   dark: {
+    50: string;
+    100: string;
+  };
+  light: {
     50: string;
     100: string;
   };
@@ -160,6 +166,10 @@ interface Theme {
     color: string;
     placeholderColor: string;
   };
+  box: {
+    bg: string;
+    borderColor: string;
+  };
 }
 
 type ThemeKey = 'dark' | 'light';
@@ -197,4 +207,5 @@ export type {
   GetDefaultValue,
   Spacing,
   Palette,
+  SpacingKey,
 };
