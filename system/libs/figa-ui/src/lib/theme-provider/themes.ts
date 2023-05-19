@@ -53,6 +53,10 @@ const tokens: Tokens = {
     50: '#2D2D2D',
     100: '#0a0a0a',
   },
+  light: {
+    50: '#f9f9f9',
+    100: '#e5e5e5',
+  },
   gray: {
     0: '#fbfbfb',
     50: '#9d9d9d',
@@ -162,6 +166,10 @@ const light: Theme = {
     color: tokens.common.black,
     placeholderColor: tokens.gray[200],
   },
+  box: {
+    bg: tokens.light[50],
+    borderColor: tokens.light[100],
+  },
 };
 
 const dark: Theme = {
@@ -235,6 +243,10 @@ const dark: Theme = {
     bg: tokens.dark[50],
     color: tokens.common.white,
     placeholderColor: tokens.gray[50],
+  },
+  box: {
+    bg: tokens.gray[300],
+    borderColor: tokens.gray[300],
   },
 };
 

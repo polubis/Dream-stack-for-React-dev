@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User is able to user intro section when [FRAGILE] classes are assigned and box component is used 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-dkrFOg kfxkmd"
+  >
+    <div
+      class="box column empty"
+      style="padding: 28px 28px 28px 28px;"
+    >
+      <div
+        class="box-item-wrapper"
+        style="margin-bottom: 12px;"
+      >
+        <h6
+          class="font font-h6"
+        >
+          header
+        </h6>
+      </div>
+      <div
+        class="box-item-wrapper"
+        style="margin-bottom: 40px;"
+      >
+        <span
+          class="font font-b1"
+        >
+          description
+        </span>
+      </div>
+      <div
+        class="box-item-wrapper"
+      >
+        <button
+          class="button button-size-3 button-rectangle button-filled button-primary"
+        >
+          action
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
