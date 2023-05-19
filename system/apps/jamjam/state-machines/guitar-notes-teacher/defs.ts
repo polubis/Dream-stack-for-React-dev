@@ -55,13 +55,20 @@ interface PlayingState {
   guitar: Guitar;
 }
 
+interface FinishedState {
+  key: 'finished';
+  answers: Answers;
+  questions: Questions;
+}
+
 type GuitarNotesTeacherState =
   | IdleState
   | InitialState
   | SettingsState
   | CountingState
   | StartedState
-  | PlayingState;
+  | PlayingState
+  | FinishedState;
 
 type GuitarNotesTeacherStateKey = GuitarNotesTeacherState['key'];
 
@@ -72,6 +79,7 @@ export type {
   CountingState,
   PlayingState,
   StartedState,
+  FinishedState,
   Question,
   Questions,
   Answers,

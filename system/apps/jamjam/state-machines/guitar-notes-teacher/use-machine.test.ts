@@ -66,7 +66,7 @@ describe('Guitar notes teacher works when', () => {
       const [, actions] = result.current;
 
       act(() => {
-        actions.timeEnd();
+        actions.answerQuestion();
       });
 
       const [state] = result.current;
