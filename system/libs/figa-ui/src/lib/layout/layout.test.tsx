@@ -34,4 +34,24 @@ describe('User is able to use layout when', () => {
     screen.getByText(/Content/);
     screen.getByText(/Footer/);
   });
+
+  it('[FRAGILE] allows to skip footer', () => {
+    const { asFragment } = render(
+      <Layout header={<div>Header</div>}>
+        <div>Content</div>
+      </Layout>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('[FRAGILE] allows to pass full property', () => {
+    const { container } = render(
+      <Layout header={<div>Header</div>} full>
+        <div>Content</div>
+      </Layout>
+    );
+
+    expect(container.querySelector('.layout.full')).toBeTruthy();
+  });
 });
