@@ -1,4 +1,4 @@
-import type { MouseEventHandler } from 'react';
+import type { MouseEventHandler, ReactElement } from 'react';
 
 import type {
   Guitar,
@@ -10,23 +10,24 @@ import type {
   NoteOctave,
 } from '../../domain';
 
-interface GuitarFretboardProps {
-  className?: string;
-  guitar: Guitar;
-  fretsMarkers?: GuitarFret[];
-  notation: NoteNotation;
-  onNoteClick?: (note: Note) => void;
-}
-
-interface GuitarFretboardStringsProps {
-  strings: GuitarString[];
-}
-
 interface NoteButtonProps {
   noteOctave: NoteOctave;
   noteId: NoteId;
   notation: NoteNotation;
   onClick: MouseEventHandler<HTMLButtonElement>;
+}
+
+interface GuitarFretboardProps {
+  className?: string;
+  guitar: Guitar;
+  fretsMarkers?: GuitarFret[];
+  notation: NoteNotation;
+  NoteComponent?: (props: NoteButtonProps) => ReactElement;
+  onNoteClick?: (note: Note) => void;
+}
+
+interface GuitarFretboardStringsProps {
+  strings: GuitarString[];
 }
 
 export type {

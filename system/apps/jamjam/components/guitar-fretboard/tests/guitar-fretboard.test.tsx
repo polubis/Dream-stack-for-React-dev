@@ -8,10 +8,14 @@ import { DEFAULT_FRETS_MARKERS } from '../consts';
 describe('guitar fretboard works when', () => {
   const guitar: Guitar = {
     fretsCount: 27,
-    tuning: [
-      { id: 1, octave: 4 },
-      { id: 4, octave: 3 },
-    ],
+    hand: 'right',
+    tuning: {
+      name: 'custom',
+      notes: [
+        { id: 1, octave: 4 },
+        { id: 4, octave: 3 },
+      ],
+    },
     strings: [],
   };
 
@@ -62,13 +66,42 @@ describe('guitar fretboard works when', () => {
     );
   });
 
+  it('allows to render own note', () => {
+    guitarFretboardFixture({
+      NoteComponent: () => <button>Own button</button>,
+      guitar: {
+        hand: 'right',
+        tuning: {
+          notes: [],
+          name: 'custom',
+        },
+        fretsCount: 2,
+        strings: [
+          {
+            number: 1,
+            notes: [
+              { id: 1, octave: 1 },
+              { id: 2, octave: 1 },
+            ],
+          },
+        ],
+      },
+    });
+
+    expect(screen.getAllByText(/Own button/).length).toBe(2);
+  });
+
   it('click on note is handled', () => {
     const onNoteClickSpy = jest.fn();
 
     guitarFretboardFixture({
       onNoteClick: onNoteClickSpy,
       guitar: {
-        tuning: [],
+        hand: 'right',
+        tuning: {
+          notes: [],
+          name: 'custom',
+        },
         fretsCount: 1,
         strings: [
           {

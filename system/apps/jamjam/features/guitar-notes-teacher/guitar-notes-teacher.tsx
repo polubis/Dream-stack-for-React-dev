@@ -10,7 +10,7 @@ import {
   Logo,
 } from '@system/figa-ui';
 
-import { GuitarFretboard } from '../../components';
+import { GuitarFretboard, UnobviousNoteButton } from '../../components';
 import { useMachine } from '../../state-machines/guitar-notes-teacher';
 
 import { IntroSection } from './components';
@@ -93,6 +93,7 @@ const GuitarNotesTeacher = () => {
           <GuitarFretboard
             notation="bmoll"
             guitar={state.guitar}
+            NoteComponent={UnobviousNoteButton}
             onNoteClick={actions.answerQuestion}
           />
 
