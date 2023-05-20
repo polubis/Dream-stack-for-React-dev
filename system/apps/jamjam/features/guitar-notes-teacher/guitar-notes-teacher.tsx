@@ -127,7 +127,7 @@ const GuitarNotesTeacher = () => {
             discord and the platform I am creating with my community.
           </Font>
           <Box spacing={[150, 150]} variant="outlined">
-            <Link variant="b1" motive='primary'>
+            <Link variant="b1" motive="primary">
               <a
                 href="https://www.linkedin.com/in/adrian-po%C5%82ubi%C5%84ski-281ab2172"
                 target="_blank"
@@ -136,7 +136,7 @@ const GuitarNotesTeacher = () => {
                 Adrian Połubiński on LinkedIn
               </a>
             </Link>
-            <Link variant="b1" motive='primary'>
+            <Link variant="b1" motive="primary">
               <a
                 href="https://www.linkedin.com/company/greenon-software/"
                 target="_blank"
@@ -145,7 +145,7 @@ const GuitarNotesTeacher = () => {
                 GreenOn Software LinkedIn
               </a>
             </Link>
-            <Link variant="b1" motive='primary'>
+            <Link variant="b1" motive="primary">
               <a
                 href="https://greenonsoftware.com/"
                 target="_blank"
