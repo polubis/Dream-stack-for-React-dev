@@ -130,8 +130,14 @@ interface Theme {
     optionActiveColor: string;
   };
   link: {
-    hoverColor: string;
-    color: string;
+    default: {
+      color: string;
+      hoverColor: string;
+    };
+    primary: {
+      color: string;
+      hoverColor: string;
+    };
   };
   navigation: {
     bg: string;

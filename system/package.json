@@ -10,7 +10,8 @@
     "format:fixAll": "prettier --write \"./**/*.{js,ts,tsx}\"",
     "test:checkAll": "npx nx run-many --target=test --all",
     "ts:checkAll": "npx nx run-many --target=type-check --all",
-    "build-storybook": "npx nx run figa-ui:build-storybook -s public"
+    "build-storybook": "npx nx run figa-ui:build-storybook -s public",
+    "storybook:figa-ui": "npx nx run figa-ui:storybook"
   },
   "private": true,
   "dependencies": {
