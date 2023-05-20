@@ -10,17 +10,30 @@ export default {
 
 const Template: Story = () => {
   return (
-    <>
-      {FONT_VARIANTS.map((variant) => (
-        <div key={variant} style={{ margin: '8px 0' }}>
-          <Link variant={variant}>
-            <a href="/">{variant}</a>
-          </Link>
-        </div>
-      ))}
-    </>
+    <div style={{ display: 'flex', gap: '12px' }}>
+      <div>
+        {FONT_VARIANTS.map((variant) => (
+          <div key={variant} style={{ margin: '8px 0' }}>
+            <Link variant={variant}>
+              <a href="/">{variant}</a>
+            </Link>
+          </div>
+        ))}
+      </div>
+      <div>
+        {FONT_VARIANTS.map((variant) => (
+          <div key={variant} style={{ margin: '8px 0' }}>
+            <Link motive='primary' variant={variant}>
+              <a href="/">{variant}</a>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 
 export const Default = Template.bind({});
 Default.args = {};
+
+
