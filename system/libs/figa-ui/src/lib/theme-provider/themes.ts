@@ -130,8 +130,14 @@ const light: Theme = {
     optionActiveColor: tokens.secondary[150],
   },
   link: {
-    hoverColor: tokens.primary[50],
-    color: tokens.common.black,
+    default: {
+      hoverColor: tokens.primary[50],
+      color: tokens.common.black,
+    },
+    primary: {
+      hoverColor: tokens.primary[50],
+      color: tokens.primary[50],
+    },
   },
   navigation: {
     bg: tokens.gray[0],
@@ -208,8 +214,14 @@ const dark: Theme = {
     optionActiveColor: tokens.secondary[50],
   },
   link: {
-    hoverColor: tokens.primary[50],
-    color: tokens.common.white,
+    default: {
+      hoverColor: tokens.primary[50],
+      color: tokens.common.white,
+    },
+    primary: {
+      hoverColor: tokens.primary[100],
+      color: tokens.primary[100],
+    },
   },
   navigation: {
     bg: tokens.dark[100],
