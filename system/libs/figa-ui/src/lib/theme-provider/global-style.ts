@@ -302,14 +302,36 @@ const GlobalStyle = createGlobalStyle`
 
     /* link.tsx */
 
-    .link > * {
-        color: ${(props) => props.theme.link.color};
-        text-decoration: none;
+    .link {
+        & > * {
+            text-decoration: none;
 
-        &:hover {
-            text-decoration: underline;
-            text-decoration-color: ${(props) => props.theme.link.hoverColor};
-            text-underline-offset: ${tokens.spacing[100]};
+            &:hover {
+                text-decoration: underline;
+                text-underline-offset: ${tokens.spacing[100]};
+            }
+        }
+
+        &.default {
+            & > * {
+                color: ${(props) => props.theme.link.default.color};
+
+                &:hover {
+                    text-decoration-color: ${(props) =>
+                      props.theme.link.default.hoverColor};
+                }
+            }
+        }
+
+        &.primary {
+            & > * {
+                color: ${(props) => props.theme.link.primary.color};
+
+                &:hover {
+                    text-decoration-color: ${(props) =>
+                      props.theme.link.primary.hoverColor};
+                }
+            }
         }
     }
 

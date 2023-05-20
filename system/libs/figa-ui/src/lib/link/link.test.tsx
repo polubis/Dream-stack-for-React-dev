@@ -23,6 +23,28 @@ describe('Link can be used when', () => {
     expect(link.parentElement?.className).toContain('class1 class2');
   });
 
+  it('[FRAGILE] assigns motive class', () => {
+    const { rerender } = render(
+      <Link variant="h2">
+        <a href="/">Link</a>
+      </Link>
+    );
+
+    expect(screen.getByText(/Link/).parentElement?.className).toBe(
+      'font font-h2 link default'
+    );
+
+    rerender(
+      <Link motive="primary" variant="h2">
+        <a href="/">Link</a>
+      </Link>
+    );
+
+    expect(screen.getByText(/Link/).parentElement?.className).toBe(
+      'font font-h2 link primary'
+    );
+  });
+
   it('[FRAGILE] the parent node is a span', () => {
     render(
       <Link variant="h2">
