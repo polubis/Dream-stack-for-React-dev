@@ -11,7 +11,9 @@
     "test:checkAll": "npx nx run-many --target=test --all",
     "ts:checkAll": "npx nx run-many --target=type-check --all",
     "build-storybook": "npx nx run figa-ui:build-storybook -s public",
-    "storybook:figa-ui": "npx nx run figa-ui:storybook"
+    "storybook:figa-ui": "npx nx run figa-ui:storybook",
+    "test:figa-ui": "npx nx run figa-ui:test --watch",
+    "nx:cloud-update": "npx nx g @nrwl/nx-cloud:init"
   },
   "private": true,
   "dependencies": {
