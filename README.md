@@ -54,6 +54,7 @@
 10. Running tests with watch options for project: `npx nx run-many --target=test --projects=figa-hooks --watch`
 11. Displaying installed plugins and plugins to install: `npx nx list`.
 12. Update nx cloud when 401: `npx nx g @nrwl/nx-cloud:init`
+13. Running e2e tests: `npx nx run jamjam-e2e:e2e --watch`
 
 > Remember to add different port numbers if you want to run more than 1 application in the same time in **project.json** files.
 
