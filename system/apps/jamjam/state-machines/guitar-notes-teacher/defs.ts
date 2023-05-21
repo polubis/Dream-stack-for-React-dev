@@ -34,6 +34,7 @@ interface SettingsState {
 interface CountingState {
   key: 'counting';
   guitar: Guitar;
+  settings: GuitarNotesTeacherSettings;
 }
 
 type Answer = NoteId | undefined;
@@ -56,6 +57,7 @@ interface StartedState {
   answers: [];
   questions: Questions;
   guitar: Guitar;
+  settings: GuitarNotesTeacherSettings;
 }
 
 interface PlayingState {
@@ -63,11 +65,13 @@ interface PlayingState {
   answers: Answers;
   questions: Questions;
   guitar: Guitar;
+  settings: GuitarNotesTeacherSettings;
 }
 
 interface FinishedState {
   key: 'finished';
   summary: GuitarNotesGameSummary;
+  settings: GuitarNotesTeacherSettings;
 }
 
 type GuitarNotesTeacherState =

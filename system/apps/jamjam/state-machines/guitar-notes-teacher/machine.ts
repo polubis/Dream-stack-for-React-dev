@@ -1,4 +1,4 @@
-import type { Guitar } from '../../domain';
+import type { Guitar, NoteNotation } from '../../domain';
 import { createGuitar, NOTE_IDS } from '../../domain';
 
 import type {
@@ -16,9 +16,11 @@ import type {
   StartedState,
 } from './defs';
 
-const initializeSettings = (): GuitarNotesTeacherSettings => {
+const initializeSettings = (
+  notation: NoteNotation
+): GuitarNotesTeacherSettings => {
   const settings: GuitarNotesTeacherSettings = {
-    notation: 'sharp',
+    notation,
     fretsCount: 25,
     hand: 'right',
     tuning: {
@@ -70,36 +72,48 @@ const Initial = (): InitialState => ({
   key: 'initial',
 });
 
-const Settings = (): SettingsState => ({
+const Settings = (notation: NoteNotation): SettingsState => ({
   key: 'settings',
-  settings: initializeSettings(),
+  settings: initializeSettings(notation),
 });
 
 const Counting = (settings: GuitarNotesTeacherSettings): CountingState => ({
   key: 'counting',
   guitar: initializeGuitar(settings),
+  settings,
 });
 
-const Started = (guitar: Guitar): StartedState => ({
+const Started = (
+  settings: GuitarNotesTeacherSettings,
+  guitar: Guitar
+): StartedState => ({
   key: 'started',
   questions: randomizeQuestions(),
   answers: [],
   guitar,
+  settings,
 });
 
 const Playing = (
+  settings: GuitarNotesTeacherSettings,
   guitar: Guitar,
   answers: Answers,
   questions: Questions
 ): PlayingState => ({
   key: 'playing',
+  settings,
   guitar,
   questions,
   answers,
 });
 
-const Finished = (answers: Answers, questions: Questions): FinishedState => ({
+const Finished = (
+  settings: GuitarNotesTeacherSettings,
+  answers: Answers,
+  questions: Questions
+): FinishedState => ({
   key: 'finished',
+  settings,
   summary: {
     result: questions.map<GuitarNotesGameResult>((question, idx) => ({
       question,

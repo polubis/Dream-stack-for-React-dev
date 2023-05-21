@@ -10,6 +10,7 @@ import {
   Logo,
   Button,
   type BoxProps,
+  Select,
 } from '@system/figa-ui';
 
 import { GuitarFretboard, UnobviousNoteButton } from '../../components';
@@ -17,7 +18,7 @@ import {
   getCurrentQuestion,
   useMachine,
 } from '../../state-machines/guitar-notes-teacher';
-import { getNoteSymbol } from '../../domain';
+import { getNoteSymbol, type NoteNotation } from '../../domain';
 
 import {
   AdriansLink,
@@ -80,11 +81,25 @@ const GuitarNotesTeacher = () => {
 
       {state.key === 'settings' && (
         <Modal onClose={actions.idle}>
-          <Box {...commonBoxProps}>
+          <Box {...commonBoxProps} spacing={[150, 500, 700]}>
             <Font variant="h6">Setup your game!</Font>
             <Font variant="b1">
               Move a few sliders and start playing guitarist.
             </Font>
+            <Select<NoteNotation>
+              value={state.settings.notation}
+              onChange={actions.setNotation}
+              options={[
+                {
+                  key: 'bmoll',
+                  child: <>Bmoll (Db, Gb, ...etc)</>,
+                },
+                {
+                  key: 'sharp',
+                  child: <>Sharp (C#, D#, ...etc)</>,
+                },
+              ]}
+            />
             <Button onClick={actions.counting}>Start!</Button>
           </Box>
         </Modal>
@@ -104,7 +119,7 @@ const GuitarNotesTeacher = () => {
       {(state.key === 'started' || state.key === 'playing') && (
         <Box>
           <GuitarFretboard
-            notation="sharp"
+            notation={state.settings.notation}
             guitar={state.guitar}
             NoteComponent={UnobviousNoteButton}
             onNoteClick={actions.answerQuestion}
@@ -130,14 +145,16 @@ const GuitarNotesTeacher = () => {
           <Font variant="b1">
             Your questions:{' '}
             {state.summary.result
-              .map(({ question }) => getNoteSymbol(question, 'bmoll'))
+              .map(({ question }) =>
+                getNoteSymbol(question, state.settings.notation)
+              )
               .join(' ')}
           </Font>
           <Font variant="b1">
             Your answers:{' '}
             {state.summary.result
               .map(({ answer }) =>
-                answer ? getNoteSymbol(answer, 'bmoll') : 'None'
+                answer ? getNoteSymbol(answer, state.settings.notation) : 'None'
               )
               .join(' ')}
           </Font>
@@ -152,7 +169,6 @@ const GuitarNotesTeacher = () => {
             - watch me on LinkedIn for more.
           </Font>
           <Font variant="b1">
-            {' '}
             Below links to community profiles, discord and the platform I am
             creating with my community.
           </Font>
