@@ -84,6 +84,17 @@ Margins.args = {
           <Button>Some button</Button>
         </Box>
       </div>
+      <div>
+        <Box
+          spacing={[100, 150, 200]}
+          maxWidth="350px"
+          margin={['auto', 'auto']}
+        >
+          <Font variant="h6">My header</Font>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </div>
     </>
   ),
 };
