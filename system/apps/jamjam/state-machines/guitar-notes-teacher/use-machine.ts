@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import type { Note } from '../../domain';
+import type { Note, NoteNotation } from '../../domain';
 
 import type { GuitarNotesTeacherState } from './defs';
 import * as M from './machine';
@@ -35,12 +35,19 @@ const useMachine = (initialState = startedMachine) => {
     const newAnswers = [...state.current.answers, note ? note.id : undefined];
 
     if (newAnswers.length === state.current.questions.length) {
-      update(M.Finished(newAnswers, state.current.questions));
+      update(
+        M.Finished(state.current.settings, newAnswers, state.current.questions)
+      );
       return;
     }
 
     update(
-      M.Playing(state.current.guitar, newAnswers, state.current.questions)
+      M.Playing(
+        state.current.settings,
+        state.current.guitar,
+        newAnswers,
+        state.current.questions
+      )
     );
   };
 
@@ -53,7 +60,7 @@ const useMachine = (initialState = startedMachine) => {
   };
 
   const settings = (): void => {
-    update(M.Settings());
+    update(M.Settings('sharp'));
   };
 
   const counting = (): void => {
@@ -67,11 +74,20 @@ const useMachine = (initialState = startedMachine) => {
 
   const started = (): void => {
     if (state.current.key === 'counting') {
-      update(M.Started(state.current.guitar));
+      update(M.Started(state.current.settings, state.current.guitar));
       return;
     }
 
     logInvalidAction(started.name);
+  };
+
+  const setNotation = (notation: NoteNotation): void => {
+    if (state.current.key === 'settings') {
+      update(M.Settings(notation));
+      return;
+    }
+
+    logInvalidAction(setNotation.name);
   };
 
   const actions = {
@@ -81,6 +97,7 @@ const useMachine = (initialState = startedMachine) => {
     settings,
     counting,
     started,
+    setNotation,
   };
 
   return [state.current, actions] as const;

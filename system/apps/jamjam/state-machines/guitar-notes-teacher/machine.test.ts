@@ -20,11 +20,11 @@ describe('Teaches the notes on the guitar when ', () => {
   };
 
   it('uses most popular guitar setup for initial settings', () => {
-    expect(M.Settings().settings).toEqual(SETTINGS);
+    expect(M.Settings('sharp').settings).toEqual(SETTINGS);
   });
 
   it('consumes settings to create guitar', () => {
-    const { settings } = M.Settings();
+    const { settings } = M.Settings('sharp');
     const { guitar } = M.Counting(settings);
 
     expect(guitar.fretsCount).toEqual(settings.fretsCount);
@@ -35,9 +35,9 @@ describe('Teaches the notes on the guitar when ', () => {
   it('randomizes questions', () => {
     const EXPECTED_LENGTH = 5;
 
-    const { settings } = M.Settings();
+    const { settings } = M.Settings('sharp');
     const { guitar } = M.Counting(settings);
-    const { questions } = M.Started(guitar);
+    const { questions } = M.Started(settings, guitar);
 
     expect(questions.length).toBe(EXPECTED_LENGTH);
     expect(questions.every((question) => typeof question === 'number'));

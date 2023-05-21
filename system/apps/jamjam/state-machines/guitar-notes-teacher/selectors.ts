@@ -16,7 +16,7 @@ const getCurrentQuestion = <S extends StartedState | PlayingState>(
     );
   }
 
-  return getNoteSymbol(noteId, 'bmoll');
+  return getNoteSymbol(noteId, state.settings.notation);
 };
 
 export { getCurrentQuestion };
