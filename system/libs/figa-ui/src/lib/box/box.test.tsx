@@ -27,6 +27,16 @@ describe('User is able to use box when', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  it('[FRAGILE] allows to set maximum width', () => {
+    const { asFragment } = render(
+      <Box maxWidth="350px" margin="auto">
+        <div>1</div>
+      </Box>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   it('[FRAGILE] creates space for rows', () => {
     const { asFragment } = render(
       <Box orientation="center-row" spacing={[100, 150, 200]}>
