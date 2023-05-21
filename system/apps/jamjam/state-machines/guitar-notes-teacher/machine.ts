@@ -5,6 +5,7 @@ import type {
   Answers,
   CountingState,
   FinishedState,
+  GuitarNotesGameResult,
   GuitarNotesTeacherSettings,
   GuitarNotesTeacherState,
   IdleState,
@@ -99,8 +100,13 @@ const Playing = (
 
 const Finished = (answers: Answers, questions: Questions): FinishedState => ({
   key: 'finished',
-  questions,
-  answers,
+  summary: {
+    result: questions.map<GuitarNotesGameResult>((question, idx) => ({
+      question,
+      answer: answers[idx],
+      correct: question === answers[idx],
+    })),
+  },
 });
 
 const StartMachine = (): GuitarNotesTeacherState => Idle();
