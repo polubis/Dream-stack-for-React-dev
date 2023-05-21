@@ -1,13 +1,23 @@
-import { getGreeting } from '../support/app.po';
-
-describe('jamjam', () => {
+describe('User is able to play guitar notes game when', () => {
   beforeEach(() => cy.visit('/'));
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
+  it('goes to result screen', () => {
+    cy.get('.button').contains('See our game').click();
 
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome jamjam');
+    cy.get('.button').contains('Continue').click();
+
+    cy.get('.button').contains('Start!').click();
+
+    cy.get('.font').contains('Prepare yourself');
+
+    cy.get('.font').contains('Find');
+
+    cy.get('.guitar-fretboard-fret-note').first().click();
+    cy.get('.guitar-fretboard-fret-note').first().click();
+    cy.get('.guitar-fretboard-fret-note').first().click();
+    cy.get('.guitar-fretboard-fret-note').first().click();
+    cy.get('.guitar-fretboard-fret-note').first().click();
+
+    cy.get('.font').contains('Thanks a lot');
   });
 });
