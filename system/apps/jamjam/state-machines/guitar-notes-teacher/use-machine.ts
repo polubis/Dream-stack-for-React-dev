@@ -1,11 +1,7 @@
-import { useRef, useState } from 'react';
-
 import type { Note, NoteNotation } from '../../domain';
 
-import type { GuitarNotesTeacherState } from './defs';
-import * as M from './machine';
-
-const startedMachine = M.StartMachine();
+import { createMachine } from './machine';
+import { useM } from './sm';
 
 const logInvalidAction = (actionName: string): void => {
   const message = 'Invalid action detected in ' + actionName;
@@ -17,55 +13,38 @@ const logInvalidAction = (actionName: string): void => {
   }
 };
 
-const useMachine = (initialState = startedMachine) => {
-  const [, setCounter] = useState(0);
-  const state = useRef(initialState);
-
-  const update = (newState: GuitarNotesTeacherState): void => {
-    state.current = newState;
-    setCounter((prev) => prev + 1);
-  };
+const useMachine = (initialState = createMachine()) => {
+  const [state, set] = useM(initialState);
 
   const answerQuestion = (note?: Note): void => {
-    if (state.current.key !== 'started' && state.current.key !== 'playing') {
+    if (state.key !== 'started' && state.key !== 'playing') {
       logInvalidAction(answerQuestion.name);
       return;
     }
 
-    const newAnswers = [...state.current.answers, note ? note.id : undefined];
+    const newAnswers = [...state.answers, note ? note.id : undefined];
 
-    if (newAnswers.length === state.current.questions.length) {
-      update(
-        M.Finished(state.current.settings, newAnswers, state.current.questions)
-      );
+    if (newAnswers.length === state.questions.length) {
+      set.finished({
+        ...state,
+        answers: newAnswers,
+      });
       return;
     }
 
-    update(
-      M.Playing(
-        state.current.settings,
-        state.current.guitar,
-        newAnswers,
-        state.current.questions
-      )
-    );
-  };
-
-  const initial = (): void => {
-    update(M.Initial());
-  };
-
-  const idle = (): void => {
-    update(M.Idle());
+    set.playing({
+      ...state,
+      answers: newAnswers,
+    });
   };
 
   const settings = (): void => {
-    update(M.Settings('sharp'));
+    set.settings({ notation: 'sharp' });
   };
 
   const counting = (): void => {
-    if (state.current.key === 'settings') {
-      update(M.Counting(state.current.settings));
+    if (state.key === 'settings') {
+      set.counting(state);
       return;
     }
 
@@ -73,8 +52,8 @@ const useMachine = (initialState = startedMachine) => {
   };
 
   const started = (): void => {
-    if (state.current.key === 'counting') {
-      update(M.Started(state.current.settings, state.current.guitar));
+    if (state.key === 'counting') {
+      set.started({ guitar: state.guitar, settings: state.settings });
       return;
     }
 
@@ -82,8 +61,8 @@ const useMachine = (initialState = startedMachine) => {
   };
 
   const setNotation = (notation: NoteNotation): void => {
-    if (state.current.key === 'settings') {
-      update(M.Settings(notation));
+    if (state.key === 'settings') {
+      set.settings({ notation });
       return;
     }
 
@@ -92,15 +71,15 @@ const useMachine = (initialState = startedMachine) => {
 
   const actions = {
     answerQuestion,
-    initial,
-    idle,
+    initial: set.initial,
+    idle: set.idle,
     settings,
     counting,
     started,
     setNotation,
   };
 
-  return [state.current, actions] as const;
+  return [state, actions] as const;
 };
 
 export { useMachine };

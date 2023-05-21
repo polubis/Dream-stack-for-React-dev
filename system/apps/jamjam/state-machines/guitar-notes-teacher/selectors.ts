@@ -1,10 +1,12 @@
 import { getNoteSymbol } from '../../domain';
 
-import type { PlayingState, StartedState } from './defs';
+import type { Answers, GuitarNotesTeacherSettings, Questions } from './defs';
 
-const getCurrentQuestion = <S extends StartedState | PlayingState>(
-  state: S
-) => {
+const getCurrentQuestion = (state: {
+  questions: Questions;
+  answers: Answers;
+  settings: GuitarNotesTeacherSettings;
+}) => {
   const {
     answers: { length },
   } = state;

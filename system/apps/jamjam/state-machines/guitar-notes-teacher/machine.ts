@@ -3,17 +3,9 @@ import { createGuitar, NOTE_IDS } from '../../domain';
 
 import type {
   Answers,
-  CountingState,
-  FinishedState,
   GuitarNotesGameResult,
   GuitarNotesTeacherSettings,
-  GuitarNotesTeacherState,
-  IdleState,
-  InitialState,
-  PlayingState,
   Questions,
-  SettingsState,
-  StartedState,
 } from './defs';
 
 const initializeSettings = (
@@ -64,74 +56,48 @@ const randomizeQuestions = (amount = 5): Questions => {
   return ids;
 };
 
-const Idle = (): IdleState => ({
-  key: 'idle',
+const createMachine = () => ({
+  idle: () => {},
+  initial: () => {},
+  settings: ({ notation }: { notation: NoteNotation }) => ({
+    settings: initializeSettings(notation),
+  }),
+  counting: ({ settings }: { settings: GuitarNotesTeacherSettings }) => ({
+    guitar: initializeGuitar(settings),
+    settings,
+  }),
+  started: (payload: {
+    settings: GuitarNotesTeacherSettings;
+    guitar: Guitar;
+  }) => ({
+    ...payload,
+    questions: randomizeQuestions(),
+    answers: [] as Answers,
+  }),
+  playing: (payload: {
+    settings: GuitarNotesTeacherSettings;
+    guitar: Guitar;
+    answers: Answers;
+    questions: Questions;
+  }) => payload,
+  finished: ({
+    settings,
+    questions,
+    answers,
+  }: {
+    settings: GuitarNotesTeacherSettings;
+    answers: Answers;
+    questions: Questions;
+  }) => ({
+    settings,
+    summary: {
+      result: questions.map<GuitarNotesGameResult>((question, idx) => ({
+        question,
+        answer: answers[idx],
+        correct: question === answers[idx],
+      })),
+    },
+  }),
 });
 
-const Initial = (): InitialState => ({
-  key: 'initial',
-});
-
-const Settings = (notation: NoteNotation): SettingsState => ({
-  key: 'settings',
-  settings: initializeSettings(notation),
-});
-
-const Counting = (settings: GuitarNotesTeacherSettings): CountingState => ({
-  key: 'counting',
-  guitar: initializeGuitar(settings),
-  settings,
-});
-
-const Started = (
-  settings: GuitarNotesTeacherSettings,
-  guitar: Guitar
-): StartedState => ({
-  key: 'started',
-  questions: randomizeQuestions(),
-  answers: [],
-  guitar,
-  settings,
-});
-
-const Playing = (
-  settings: GuitarNotesTeacherSettings,
-  guitar: Guitar,
-  answers: Answers,
-  questions: Questions
-): PlayingState => ({
-  key: 'playing',
-  settings,
-  guitar,
-  questions,
-  answers,
-});
-
-const Finished = (
-  settings: GuitarNotesTeacherSettings,
-  answers: Answers,
-  questions: Questions
-): FinishedState => ({
-  key: 'finished',
-  settings,
-  summary: {
-    result: questions.map<GuitarNotesGameResult>((question, idx) => ({
-      question,
-      answer: answers[idx],
-      correct: question === answers[idx],
-    })),
-  },
-});
-
-const StartMachine = (): GuitarNotesTeacherState => Idle();
-
-export {
-  StartMachine,
-  Idle,
-  Initial,
-  Settings,
-  Counting,
-  Started,
-  Playing,
-  Finished,
-};
+export { createMachine };
