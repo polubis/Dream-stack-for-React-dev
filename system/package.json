@@ -13,7 +13,8 @@
     "build-storybook": "npx nx run figa-ui:build-storybook -s public",
     "storybook:figa-ui": "npx nx run figa-ui:storybook",
     "test:figa-ui": "npx nx run figa-ui:test --watch",
-    "nx:cloud-update": "npx nx g @nrwl/nx-cloud:init"
+    "nx:cloud-update": "npx nx g @nrwl/nx-cloud:init",
+    "e2e:jamjam": "npx nx run jamjam-e2e:e2e --watch"
   },
   "private": true,
   "dependencies": {
