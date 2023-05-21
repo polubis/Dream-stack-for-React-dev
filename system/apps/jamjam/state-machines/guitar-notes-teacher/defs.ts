@@ -41,6 +41,16 @@ type Answers = Answer[];
 type Question = NoteId;
 type Questions = Question[];
 
+interface GuitarNotesGameResult {
+  answer: Answer;
+  question: Question;
+  correct: boolean;
+}
+
+interface GuitarNotesGameSummary {
+  result: GuitarNotesGameResult[];
+}
+
 interface StartedState {
   key: 'started';
   answers: [];
@@ -57,8 +67,7 @@ interface PlayingState {
 
 interface FinishedState {
   key: 'finished';
-  answers: Answers;
-  questions: Questions;
+  summary: GuitarNotesGameSummary;
 }
 
 type GuitarNotesTeacherState =
@@ -87,4 +96,6 @@ export type {
   GuitarNotesTeacherSettings,
   GuitarNotesTeacherState,
   GuitarNotesTeacherStateKey,
+  GuitarNotesGameSummary,
+  GuitarNotesGameResult,
 };

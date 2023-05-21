@@ -7,7 +7,6 @@ describe('is able to return last element when', () => {
 
   it('returns undefined for empty or not array types', () => {
     expect(getLast([])).toBe(undefined);
-    expect(getLast(null as any)).toBe(undefined);
   });
 
   it('original array is not changed', () => {

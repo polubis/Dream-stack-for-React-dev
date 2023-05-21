@@ -17,6 +17,7 @@ import {
   getCurrentQuestion,
   useMachine,
 } from '../../state-machines/guitar-notes-teacher';
+import { getNoteSymbol } from '../../domain';
 
 const commonBoxProps: Partial<BoxProps> = {
   spacing: [150, 500],
@@ -113,7 +114,7 @@ const GuitarNotesTeacher = () => {
             <Font variant="h6">Find {getCurrentQuestion(state)} note!</Font>
             <ProgressCircle
               key={state.answers.length}
-              ms={1111}
+              ms={10000}
               onEnd={() => actions.answerQuestion()}
             />
           </Box>
@@ -121,14 +122,42 @@ const GuitarNotesTeacher = () => {
       )}
 
       {state.key === 'finished' && (
-        <Box spacing={[250, 300]} maxWidth="600px" margin="auto">
+        <Box
+          spacing={[250, 100, 100, 300, 100, 300, 300, 100, 300]}
+          maxWidth="600px"
+          margin="auto"
+        >
           <Font variant="h6">Thanks a lot for participating in the game!</Font>
           <Font variant="b1">
-            If you liked the presentation, the code or the way I told the story
-            - watch me on LinkedIn for more. Below links to community profiles,
-            discord and the platform I am creating with my community.
+            Your questions:{' '}
+            {state.summary.result
+              .map(({ question }) => getNoteSymbol(question, 'bmoll'))
+              .join(' ')}
           </Font>
-          <Box spacing={[150, 150]} variant="outlined">
+          <Font variant="b1">
+            Your answers:{' '}
+            {state.summary.result
+              .map(({ answer }) =>
+                answer ? getNoteSymbol(answer, 'bmoll') : 'None'
+              )
+              .join(' ')}
+          </Font>
+          <Font variant="b1">
+            Your score:{' '}
+            {state.summary.result
+              .map((result) => (result.correct ? '✅' : '❌'))
+              .join(' ')}
+          </Font>
+          <Font variant="b1">
+            If you liked the presentation, the code or the way I told the story
+            - watch me on LinkedIn for more.
+          </Font>
+          <Font variant="b1">
+            {' '}
+            Below links to community profiles, discord and the platform I am
+            creating with my community.
+          </Font>
+          <Box spacing={[150, 150, 150, 150]} variant="outlined">
             <Link variant="b1" motive="primary">
               <a
                 href="https://www.linkedin.com/in/adrian-po%C5%82ubi%C5%84ski-281ab2172"
@@ -156,7 +185,41 @@ const GuitarNotesTeacher = () => {
                 Check our platform!
               </a>
             </Link>
+            <Link variant="b1" motive="primary">
+              <a
+                href="https://github.com/polubis/Dream-stack-for-React-dev"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Our repository with this code
+              </a>
+            </Link>
+            <Link variant="b1" motive="primary">
+              <a
+                href="https://github.com/polubis/WebBlog"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Our platform repository
+              </a>
+            </Link>
           </Box>
+          <Font variant="b1">
+            Dont be afraid to join us. We learn together by doing projects
+            together. We provide designs, written requirements, help in looking
+            for the first job, event, materials, the opportunity to work on the
+            project and add it to the portfolio, and all this for free.
+          </Font>
+          <Link variant="b1" motive="primary">
+            <a
+              href="https://github.com/users/polubis/projects/1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Our board and how we work
+            </a>
+          </Link>
+          <Button onClick={actions.settings}>Play again!</Button>
         </Box>
       )}
     </Layout>

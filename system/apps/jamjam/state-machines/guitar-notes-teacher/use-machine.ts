@@ -35,7 +35,7 @@ const useMachine = (initialState = startedMachine) => {
     const newAnswers = [...state.current.answers, note ? note.id : undefined];
 
     if (newAnswers.length === state.current.questions.length) {
-      update(M.Finished(state.current.answers, state.current.questions));
+      update(M.Finished(newAnswers, state.current.questions));
       return;
     }
 
