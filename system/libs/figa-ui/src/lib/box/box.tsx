@@ -22,10 +22,6 @@ const Box = ({
   const cachedPadding = useMemo(() => toCSSSpacingProp(padding), []);
 
   const cachedMargin = useMemo(() => {
-    if (margin === undefined) {
-      return margin;
-    }
-
     if (Array.isArray(margin)) {
       return toCSSSpacingProp(margin);
     }
