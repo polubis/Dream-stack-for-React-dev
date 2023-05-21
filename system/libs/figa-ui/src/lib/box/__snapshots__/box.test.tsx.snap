@@ -38,10 +38,10 @@ exports[`User is able to use box when [FRAGILE] assigns orientation classes 1`] 
 </DocumentFragment>
 `;
 
-exports[`User is able to use box when [FRAGILE] creates space 1`] = `
+exports[`User is able to use box when [FRAGILE] creates space for columns 1`] = `
 <DocumentFragment>
   <div
-    class="box center-row empty"
+    class="box column empty"
     style="padding: 28px 20px 28px 20px;"
   >
     <div
@@ -63,6 +63,40 @@ exports[`User is able to use box when [FRAGILE] creates space 1`] = `
     <div
       class="box-item-wrapper"
       style="margin-bottom: 16px;"
+    >
+      <div>
+        3
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`User is able to use box when [FRAGILE] creates space for rows 1`] = `
+<DocumentFragment>
+  <div
+    class="box center-row empty"
+    style="padding: 28px 20px 28px 20px;"
+  >
+    <div
+      class="box-item-wrapper"
+      style="margin-right: 8px;"
+    >
+      <div>
+        1
+      </div>
+    </div>
+    <div
+      class="box-item-wrapper"
+      style="margin-right: 12px;"
+    >
+      <div>
+        2
+      </div>
+    </div>
+    <div
+      class="box-item-wrapper"
+      style="margin-right: 16px;"
     >
       <div>
         3
