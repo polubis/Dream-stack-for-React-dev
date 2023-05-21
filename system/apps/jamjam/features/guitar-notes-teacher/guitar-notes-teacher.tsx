@@ -21,6 +21,8 @@ import {
 const commonBoxProps: Partial<BoxProps> = {
   spacing: [150, 500],
   padding: [350, 350, 350, 350],
+  margin: 'auto',
+  maxWidth: '450px',
 };
 
 const GuitarNotesTeacher = () => {
@@ -119,7 +121,7 @@ const GuitarNotesTeacher = () => {
       )}
 
       {state.key === 'finished' && (
-        <Box spacing={[250, 300]}>
+        <Box spacing={[250, 300]} maxWidth="600px" margin="auto">
           <Font variant="h6">Thanks a lot for participating in the game!</Font>
           <Font variant="b1">
             If you liked the presentation, the code or the way I told the story

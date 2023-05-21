@@ -19,6 +19,7 @@ interface BoxProps {
   padding?: BoxPadding;
   spacing?: BoxSpacing;
   margin?: BoxMargin;
+  maxWidth?: string;
 }
 
 export type {
