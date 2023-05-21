@@ -5,6 +5,11 @@ type BoxOrientation = 'row' | 'column' | 'center-row' | 'center-column';
 type BoxVariant = 'outlined' | 'filled' | 'empty';
 type BoxPadding = [SpacingKey, SpacingKey, SpacingKey, SpacingKey];
 type BoxSpacing = SpacingKey[];
+type BoxMarginValue = 'auto' | SpacingKey;
+type BoxMargin =
+  | 'auto'
+  | [BoxMarginValue, BoxMarginValue]
+  | [BoxMarginValue, BoxMarginValue, BoxMarginValue, BoxMarginValue];
 
 interface BoxProps {
   className?: string;
@@ -13,6 +18,15 @@ interface BoxProps {
   variant?: BoxVariant;
   padding?: BoxPadding;
   spacing?: BoxSpacing;
+  margin?: BoxMargin;
 }
 
-export type { BoxOrientation, BoxVariant, BoxSpacing, BoxPadding, BoxProps };
+export type {
+  BoxOrientation,
+  BoxVariant,
+  BoxSpacing,
+  BoxMargin,
+  BoxMarginValue,
+  BoxPadding,
+  BoxProps,
+};
