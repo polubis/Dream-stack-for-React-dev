@@ -1,18 +1,18 @@
-import type { SelectProps } from './defs';
+import type { SelectOptionKey, SelectProps } from './defs';
 import type { MouseEventHandler } from 'react';
 
 import { useMemo } from 'react';
 import { useClickOutside, useToggle } from '@system/figa-hooks';
 import c from 'classnames';
 
-const Select = ({
+const Select = <K extends SelectOptionKey = SelectOptionKey>({
   className,
   placeholder = 'Choose an option',
   value,
   options,
   initialOpen,
   onChange,
-}: SelectProps) => {
+}: SelectProps<K>) => {
   const { isOpen, toggle, close } = useToggle(initialOpen);
   const { ref } = useClickOutside<HTMLDivElement>({
     onOutside: close,
@@ -26,7 +26,7 @@ const Select = ({
     }
 
     close();
-    onChange(key);
+    onChange(key as K);
   };
 
   const valueToDisplay = useMemo(

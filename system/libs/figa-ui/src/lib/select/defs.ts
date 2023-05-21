@@ -2,18 +2,18 @@ import type { ReactNode } from 'react';
 
 type SelectOptionKey = string;
 
-interface SelectOption {
+interface SelectOption<K extends SelectOptionKey = SelectOptionKey> {
   child: ReactNode;
-  key: SelectOptionKey;
+  key: K;
 }
 
-interface SelectProps {
+interface SelectProps<K extends SelectOptionKey = SelectOptionKey> {
   className?: string;
   placeholder?: ReactNode;
   initialOpen?: boolean;
-  value?: SelectOptionKey;
-  options: SelectOption[];
-  onChange: (key: SelectOptionKey) => void;
+  value?: K;
+  options: SelectOption<K>[];
+  onChange: (key: K) => void;
 }
 
 export type { SelectProps, SelectOption, SelectOptionKey };

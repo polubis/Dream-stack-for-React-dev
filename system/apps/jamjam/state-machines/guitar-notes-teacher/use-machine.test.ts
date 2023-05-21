@@ -16,8 +16,11 @@ describe('Guitar notes teacher works when', () => {
 
   describe('allows to answer question when user', () => {
     it('just started', () => {
-      const { guitar } = Counting(Settings().settings);
-      const { result } = renderHook(() => useMachine(Started(guitar)));
+      const { settings } = Settings('sharp');
+      const { guitar } = Counting(settings);
+      const { result } = renderHook(() =>
+        useMachine(Started(settings, guitar))
+      );
 
       const [, actions] = result.current;
 
@@ -32,12 +35,14 @@ describe('Guitar notes teacher works when', () => {
     });
 
     it('is already playing', () => {
+      const { settings } = Settings('sharp');
       const { questions, answers, guitar } = Started(
-        Counting(Settings().settings).guitar
+        settings,
+        Counting(settings).guitar
       );
 
       const { result } = renderHook(() =>
-        useMachine(Playing(guitar, answers, questions))
+        useMachine(Playing(settings, guitar, answers, questions))
       );
 
       const [, actions] = result.current;
@@ -55,12 +60,14 @@ describe('Guitar notes teacher works when', () => {
 
   describe('sets empty answer when user', () => {
     it('forgot to answer during playing', () => {
+      const { settings } = Settings('bmoll');
       const { questions, answers, guitar } = Started(
-        Counting(Settings().settings).guitar
+        settings,
+        Counting(settings).guitar
       );
 
       const { result } = renderHook(() =>
-        useMachine(Playing(guitar, answers, questions))
+        useMachine(Playing(settings, guitar, answers, questions))
       );
 
       const [, actions] = result.current;
