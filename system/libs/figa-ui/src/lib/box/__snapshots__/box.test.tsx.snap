@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`User is able to use box when [FRAGILE] allows to set maximum width 1`] = `
+<DocumentFragment>
+  <div
+    class="box column empty"
+    style="padding: 28px 20px 28px 20px; margin: auto; max-width: 350px;"
+  >
+    <div>
+      1
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`User is able to use box when [FRAGILE] allows to use padding and assigns custom classes 1`] = `
 <DocumentFragment>
   <div

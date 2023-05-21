@@ -17,6 +17,7 @@ const Box = ({
   padding = [350, 250, 350, 250],
   margin,
   spacing,
+  maxWidth,
 }: BoxProps) => {
   const cachedPadding = useMemo(() => toCSSSpacingProp(padding), []);
 
@@ -60,6 +61,7 @@ const Box = ({
       style={{
         padding: cachedPadding,
         margin: cachedMargin,
+        maxWidth,
       }}
     >
       {enhancedChildren}
