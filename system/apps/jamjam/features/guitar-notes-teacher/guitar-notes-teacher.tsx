@@ -19,6 +19,15 @@ import {
 } from '../../state-machines/guitar-notes-teacher';
 import { getNoteSymbol } from '../../domain';
 
+import {
+  AdriansLink,
+  DreamStackRepoLink,
+  PlatformBoardLink,
+  PlatformLink,
+  PlatformLinkedInLink,
+  PlatformRepoLink,
+} from './components';
+
 const commonBoxProps: Partial<BoxProps> = {
   spacing: [150, 500],
   padding: [350, 350, 350, 350],
@@ -40,17 +49,7 @@ const GuitarNotesTeacher = () => {
               <NextLink href="/">Learn guitar notes</NextLink>
             </Link>,
           ]}
-          action={
-            <Link variant="h6">
-              <a
-                href="https://greenonsoftware.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Check our platform!
-              </a>
-            </Link>
-          }
+          action={<PlatformLink variant="h6">Check our platform</PlatformLink>}
         />
       }
     >
@@ -158,51 +157,21 @@ const GuitarNotesTeacher = () => {
             creating with my community.
           </Font>
           <Box spacing={[150, 150, 150, 150]} variant="outlined">
-            <Link variant="b1" motive="primary">
-              <a
-                href="https://www.linkedin.com/in/adrian-po%C5%82ubi%C5%84ski-281ab2172"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Adrian Połubiński on LinkedIn
-              </a>
-            </Link>
-            <Link variant="b1" motive="primary">
-              <a
-                href="https://www.linkedin.com/company/greenon-software/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GreenOn Software LinkedIn
-              </a>
-            </Link>
-            <Link variant="b1" motive="primary">
-              <a
-                href="https://greenonsoftware.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Check our platform!
-              </a>
-            </Link>
-            <Link variant="b1" motive="primary">
-              <a
-                href="https://github.com/polubis/Dream-stack-for-React-dev"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Our repository with this code
-              </a>
-            </Link>
-            <Link variant="b1" motive="primary">
-              <a
-                href="https://github.com/polubis/WebBlog"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Our platform repository
-              </a>
-            </Link>
+            <AdriansLink variant="b1" motive="primary">
+              Adrian Połubiński on LinkedIn
+            </AdriansLink>
+            <PlatformLinkedInLink variant="b1" motive="primary">
+              GreenOn Software LinkedIn
+            </PlatformLinkedInLink>
+            <PlatformLink variant="b1" motive="primary">
+              Check our platform
+            </PlatformLink>
+            <DreamStackRepoLink variant="b1" motive="primary">
+              Our repository with this code
+            </DreamStackRepoLink>
+            <PlatformRepoLink variant="b1" motive="primary">
+              Our platform repository
+            </PlatformRepoLink>
           </Box>
           <Font variant="b1">
             Dont be afraid to join us. We learn together by doing projects
@@ -210,15 +179,9 @@ const GuitarNotesTeacher = () => {
             for the first job, event, materials, the opportunity to work on the
             project and add it to the portfolio, and all this for free.
           </Font>
-          <Link variant="b1" motive="primary">
-            <a
-              href="https://github.com/users/polubis/projects/1"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Our board and how we work
-            </a>
-          </Link>
+          <PlatformBoardLink variant="b1" motive="primary">
+            Our board
+          </PlatformBoardLink>
           <Button onClick={actions.settings}>Play again!</Button>
         </Box>
       )}
