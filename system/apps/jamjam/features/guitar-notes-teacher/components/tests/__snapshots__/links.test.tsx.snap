@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 1`] = `
+<DocumentFragment>
+  <span
+    class="font font-h6 link primary"
+  >
+    <a
+      href="https://greenonsoftware.com/"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Platform
+    </a>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 2`] = `
+<DocumentFragment>
+  <span
+    class="font font-b1 link primary"
+  >
+    <a
+      href="https://www.linkedin.com/in/adrian-po%C5%82ubi%C5%84ski-281ab2172"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Adrian Połubiński
+    </a>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 3`] = `
+<DocumentFragment>
+  <span
+    class="font font-b1 link primary"
+  >
+    <a
+      href="https://www.linkedin.com/company/greenon-software/"
+      rel="noreferrer"
+      target="_blank"
+    >
+      GreenOn Software Linkedin
+    </a>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 4`] = `
+<DocumentFragment>
+  <span
+    class="font font-b1 link primary"
+  >
+    <a
+      href="https://github.com/polubis/Dream-stack-for-React-dev"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Dream stack repo link
+    </a>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 5`] = `
+<DocumentFragment>
+  <span
+    class="font font-b1 link primary"
+  >
+    <a
+      href="https://github.com/polubis/WebBlog"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Platform repo link
+    </a>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 6`] = `
+<DocumentFragment>
+  <span
+    class="font font-b1 link primary"
+  >
+    <a
+      href="https://github.com/users/polubis/projects/1"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Platform board link
+    </a>
+  </span>
+</DocumentFragment>
+`;
