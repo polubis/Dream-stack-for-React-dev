@@ -3,6 +3,7 @@ import type {
   GuitarFret,
   GuitarHand,
   GuitarTuning,
+  Note,
   NoteId,
   NoteNotation,
 } from '../../domain';
@@ -16,6 +17,21 @@ interface GuitarNotesTeacherSettings {
   tuning: GuitarTuning;
   hand: GuitarHand;
   notation: NoteNotation;
+}
+
+type Answer = NoteId | undefined;
+type Answers = Answer[];
+type Question = NoteId;
+type Questions = Question[];
+
+interface GuitarNotesGameResult {
+  answer: Answer;
+  question: Question;
+  correct: boolean;
+}
+
+interface GuitarNotesGameSummary {
+  result: GuitarNotesGameResult[];
 }
 
 interface IdleState {
@@ -35,21 +51,6 @@ interface CountingState {
   key: 'counting';
   guitar: Guitar;
   settings: GuitarNotesTeacherSettings;
-}
-
-type Answer = NoteId | undefined;
-type Answers = Answer[];
-type Question = NoteId;
-type Questions = Question[];
-
-interface GuitarNotesGameResult {
-  answer: Answer;
-  question: Question;
-  correct: boolean;
-}
-
-interface GuitarNotesGameSummary {
-  result: GuitarNotesGameResult[];
 }
 
 interface StartedState {
@@ -85,6 +86,16 @@ type GuitarNotesTeacherState =
 
 type GuitarNotesTeacherStateKey = GuitarNotesTeacherState['key'];
 
+interface GuitarNotesTeacherActions {
+  answerQuestion: (note?: Note) => void;
+  initial: () => void;
+  idle: () => void;
+  settings: () => void;
+  counting: () => void;
+  started: () => void;
+  setNotation: (notation: NoteNotation) => void;
+}
+
 export type {
   IdleState,
   InitialState,
@@ -102,4 +113,5 @@ export type {
   GuitarNotesTeacherStateKey,
   GuitarNotesGameSummary,
   GuitarNotesGameResult,
+  GuitarNotesTeacherActions,
 };
