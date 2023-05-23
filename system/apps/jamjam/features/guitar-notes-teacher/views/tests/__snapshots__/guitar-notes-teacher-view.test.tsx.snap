@@ -1,0 +1,4109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Guitar notes teacher works when displays counting panel 1`] = `
+<DocumentFragment>
+  <div
+    class="layout full"
+  >
+    <header
+      class="layout-header"
+    >
+      <nav
+        class="navigation"
+      >
+        <div
+          class="navigation-logo"
+        >
+          <div
+            class="logo"
+          >
+            <svg
+              fill="none"
+              height="52"
+              viewBox="0 0 52 52"
+              width="52"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M39.3784 12.1375C44.1761 16.3698 50.2363 19.057 50.9307 22.819C51.6252 26.5811 46.9537 31.418 43.3554 35.919C39.7572 40.3528 37.2321 44.3836 33.255 47.2723C29.3411 50.0938 23.9122 51.7061 18.6095 50.6984C13.3067 49.6236 8.06716 45.9959 4.7214 40.7559C1.43877 35.4487 0.0499603 28.5964 1.69128 22.9534C3.33259 17.3103 8.00403 12.8765 12.7386 8.57704C17.5363 4.27756 22.5234 0.246812 26.7529 1.12014C30.9825 1.99347 34.5176 7.83806 39.3784 12.1375Z"
+                stroke="url(#paint0_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M36.0338 15.6032C39.6321 18.7774 44.1773 20.7927 44.6981 23.6143C45.2189 26.4358 41.7153 30.0635 39.0166 33.4392C36.3179 36.7646 34.4241 39.7877 31.4413 41.9542C28.5058 44.0704 24.4341 45.2796 20.4571 44.5238C16.4801 43.7177 12.5504 40.9969 10.041 37.0669C7.57907 33.0865 6.53747 27.9473 7.76846 23.715C8.99944 19.4828 12.503 16.1574 16.0539 12.9328C19.6522 9.70817 23.3925 6.68511 26.5647 7.34011C29.7368 7.9951 32.3882 12.3785 36.0338 15.6032Z"
+                stroke="url(#paint1_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M32.6892 19.0688C35.0881 21.1849 38.1182 22.5285 38.4654 24.4095C38.8126 26.2905 36.4769 28.709 34.6777 30.9595C32.8786 33.1764 31.616 35.1918 29.6275 36.6361C27.6706 38.0469 24.9561 38.8531 22.3047 38.3492C19.6534 37.8118 17.0336 35.9979 15.3607 33.3779C13.7194 30.7244 13.025 27.2982 13.8456 24.4767C14.6663 21.6552 17.002 19.4383 19.3693 17.2885C21.7681 15.1388 24.2617 13.1234 26.3765 13.5601C28.4912 13.9967 30.2588 16.919 32.6892 19.0688Z"
+                stroke="url(#paint2_linear_102_163)"
+                stroke-width="2"
+              />
+              <defs>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint0_linear_102_163"
+                  x1="1"
+                  x2="51"
+                  y1="51"
+                  y2="1"
+                >
+                  <stop
+                    class="logo-bg-first-from"
+                  />
+                  <stop
+                    class="logo-bg-first-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint1_linear_102_163"
+                  x1="7.25"
+                  x2="44.75"
+                  y1="44.75"
+                  y2="7.25"
+                >
+                  <stop
+                    class="logo-bg-second-from"
+                  />
+                  <stop
+                    class="logo-bg-second-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint2_linear_102_163"
+                  x1="13.5"
+                  x2="38.5"
+                  y1="38.5"
+                  y2="13.5"
+                >
+                  <stop
+                    class="logo-bg-last-from"
+                  />
+                  <stop
+                    class="logo-bg-last-to"
+                    offset="1"
+                  />
+                </lineargradient>
+              </defs>
+            </svg>
+            <div
+              class="logo-text"
+            >
+              <div
+                class="logo-text-top"
+              >
+                <span>
+                  Green
+                </span>
+                <span>
+                  On
+                </span>
+              </div>
+              <span
+                class="logo-text-bottom"
+              >
+                Software
+              </span>
+            </div>
+          </div>
+        </div>
+        <ul
+          class="navigation-links"
+        >
+          <li
+            class="navigation-link"
+          >
+            <span
+              class="font font-h6 link default"
+            >
+              <a
+                href="/"
+              >
+                Learn guitar notes
+              </a>
+            </span>
+          </li>
+        </ul>
+        <div
+          class="navigation-action"
+        >
+          <span
+            class="font font-h6 link default"
+          >
+            <a
+              href="https://greenonsoftware.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Check our platform
+            </a>
+          </span>
+        </div>
+      </nav>
+    </header>
+    <main
+      class="layout-content"
+    />
+    <footer
+      class="layout-footer"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Guitar notes teacher works when displays first screen after loading page 1`] = `
+<DocumentFragment>
+  <div
+    class="layout full"
+  >
+    <header
+      class="layout-header"
+    >
+      <nav
+        class="navigation"
+      >
+        <div
+          class="navigation-logo"
+        >
+          <div
+            class="logo"
+          >
+            <svg
+              fill="none"
+              height="52"
+              viewBox="0 0 52 52"
+              width="52"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M39.3784 12.1375C44.1761 16.3698 50.2363 19.057 50.9307 22.819C51.6252 26.5811 46.9537 31.418 43.3554 35.919C39.7572 40.3528 37.2321 44.3836 33.255 47.2723C29.3411 50.0938 23.9122 51.7061 18.6095 50.6984C13.3067 49.6236 8.06716 45.9959 4.7214 40.7559C1.43877 35.4487 0.0499603 28.5964 1.69128 22.9534C3.33259 17.3103 8.00403 12.8765 12.7386 8.57704C17.5363 4.27756 22.5234 0.246812 26.7529 1.12014C30.9825 1.99347 34.5176 7.83806 39.3784 12.1375Z"
+                stroke="url(#paint0_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M36.0338 15.6032C39.6321 18.7774 44.1773 20.7927 44.6981 23.6143C45.2189 26.4358 41.7153 30.0635 39.0166 33.4392C36.3179 36.7646 34.4241 39.7877 31.4413 41.9542C28.5058 44.0704 24.4341 45.2796 20.4571 44.5238C16.4801 43.7177 12.5504 40.9969 10.041 37.0669C7.57907 33.0865 6.53747 27.9473 7.76846 23.715C8.99944 19.4828 12.503 16.1574 16.0539 12.9328C19.6522 9.70817 23.3925 6.68511 26.5647 7.34011C29.7368 7.9951 32.3882 12.3785 36.0338 15.6032Z"
+                stroke="url(#paint1_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M32.6892 19.0688C35.0881 21.1849 38.1182 22.5285 38.4654 24.4095C38.8126 26.2905 36.4769 28.709 34.6777 30.9595C32.8786 33.1764 31.616 35.1918 29.6275 36.6361C27.6706 38.0469 24.9561 38.8531 22.3047 38.3492C19.6534 37.8118 17.0336 35.9979 15.3607 33.3779C13.7194 30.7244 13.025 27.2982 13.8456 24.4767C14.6663 21.6552 17.002 19.4383 19.3693 17.2885C21.7681 15.1388 24.2617 13.1234 26.3765 13.5601C28.4912 13.9967 30.2588 16.919 32.6892 19.0688Z"
+                stroke="url(#paint2_linear_102_163)"
+                stroke-width="2"
+              />
+              <defs>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint0_linear_102_163"
+                  x1="1"
+                  x2="51"
+                  y1="51"
+                  y2="1"
+                >
+                  <stop
+                    class="logo-bg-first-from"
+                  />
+                  <stop
+                    class="logo-bg-first-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint1_linear_102_163"
+                  x1="7.25"
+                  x2="44.75"
+                  y1="44.75"
+                  y2="7.25"
+                >
+                  <stop
+                    class="logo-bg-second-from"
+                  />
+                  <stop
+                    class="logo-bg-second-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint2_linear_102_163"
+                  x1="13.5"
+                  x2="38.5"
+                  y1="38.5"
+                  y2="13.5"
+                >
+                  <stop
+                    class="logo-bg-last-from"
+                  />
+                  <stop
+                    class="logo-bg-last-to"
+                    offset="1"
+                  />
+                </lineargradient>
+              </defs>
+            </svg>
+            <div
+              class="logo-text"
+            >
+              <div
+                class="logo-text-top"
+              >
+                <span>
+                  Green
+                </span>
+                <span>
+                  On
+                </span>
+              </div>
+              <span
+                class="logo-text-bottom"
+              >
+                Software
+              </span>
+            </div>
+          </div>
+        </div>
+        <ul
+          class="navigation-links"
+        >
+          <li
+            class="navigation-link"
+          >
+            <span
+              class="font font-h6 link default"
+            >
+              <a
+                href="/"
+              >
+                Learn guitar notes
+              </a>
+            </span>
+          </li>
+        </ul>
+        <div
+          class="navigation-action"
+        >
+          <span
+            class="font font-h6 link default"
+          >
+            <a
+              href="https://greenonsoftware.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Check our platform
+            </a>
+          </span>
+        </div>
+      </nav>
+    </header>
+    <main
+      class="layout-content"
+    >
+      <div
+        class="box column empty"
+        style="padding: 28px 28px 28px 28px; margin: auto; max-width: 450px;"
+      >
+        <div
+          class="box-item-wrapper"
+          style="margin-bottom: 12px;"
+        >
+          <h6
+            class="font font-h6"
+          >
+            Hi, welcome! Mr Van Halen
+          </h6>
+        </div>
+        <div
+          class="box-item-wrapper"
+          style="margin-bottom: 40px;"
+        >
+          <span
+            class="font font-b1"
+          >
+            Take part in a fascinating sound guessing game. Learn our way to learn the fluency of an instrument.
+          </span>
+        </div>
+        <div
+          class="box-item-wrapper"
+        >
+          <button
+            class="button button-size-3 button-rectangle button-filled button-primary"
+          >
+            See our game!
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="layout-footer"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Guitar notes teacher works when displays guitar notes trainer fretboard when user is playing 1`] = `
+<DocumentFragment>
+  <div
+    class="layout full"
+  >
+    <header
+      class="layout-header"
+    >
+      <nav
+        class="navigation"
+      >
+        <div
+          class="navigation-logo"
+        >
+          <div
+            class="logo"
+          >
+            <svg
+              fill="none"
+              height="52"
+              viewBox="0 0 52 52"
+              width="52"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M39.3784 12.1375C44.1761 16.3698 50.2363 19.057 50.9307 22.819C51.6252 26.5811 46.9537 31.418 43.3554 35.919C39.7572 40.3528 37.2321 44.3836 33.255 47.2723C29.3411 50.0938 23.9122 51.7061 18.6095 50.6984C13.3067 49.6236 8.06716 45.9959 4.7214 40.7559C1.43877 35.4487 0.0499603 28.5964 1.69128 22.9534C3.33259 17.3103 8.00403 12.8765 12.7386 8.57704C17.5363 4.27756 22.5234 0.246812 26.7529 1.12014C30.9825 1.99347 34.5176 7.83806 39.3784 12.1375Z"
+                stroke="url(#paint0_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M36.0338 15.6032C39.6321 18.7774 44.1773 20.7927 44.6981 23.6143C45.2189 26.4358 41.7153 30.0635 39.0166 33.4392C36.3179 36.7646 34.4241 39.7877 31.4413 41.9542C28.5058 44.0704 24.4341 45.2796 20.4571 44.5238C16.4801 43.7177 12.5504 40.9969 10.041 37.0669C7.57907 33.0865 6.53747 27.9473 7.76846 23.715C8.99944 19.4828 12.503 16.1574 16.0539 12.9328C19.6522 9.70817 23.3925 6.68511 26.5647 7.34011C29.7368 7.9951 32.3882 12.3785 36.0338 15.6032Z"
+                stroke="url(#paint1_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M32.6892 19.0688C35.0881 21.1849 38.1182 22.5285 38.4654 24.4095C38.8126 26.2905 36.4769 28.709 34.6777 30.9595C32.8786 33.1764 31.616 35.1918 29.6275 36.6361C27.6706 38.0469 24.9561 38.8531 22.3047 38.3492C19.6534 37.8118 17.0336 35.9979 15.3607 33.3779C13.7194 30.7244 13.025 27.2982 13.8456 24.4767C14.6663 21.6552 17.002 19.4383 19.3693 17.2885C21.7681 15.1388 24.2617 13.1234 26.3765 13.5601C28.4912 13.9967 30.2588 16.919 32.6892 19.0688Z"
+                stroke="url(#paint2_linear_102_163)"
+                stroke-width="2"
+              />
+              <defs>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint0_linear_102_163"
+                  x1="1"
+                  x2="51"
+                  y1="51"
+                  y2="1"
+                >
+                  <stop
+                    class="logo-bg-first-from"
+                  />
+                  <stop
+                    class="logo-bg-first-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint1_linear_102_163"
+                  x1="7.25"
+                  x2="44.75"
+                  y1="44.75"
+                  y2="7.25"
+                >
+                  <stop
+                    class="logo-bg-second-from"
+                  />
+                  <stop
+                    class="logo-bg-second-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint2_linear_102_163"
+                  x1="13.5"
+                  x2="38.5"
+                  y1="38.5"
+                  y2="13.5"
+                >
+                  <stop
+                    class="logo-bg-last-from"
+                  />
+                  <stop
+                    class="logo-bg-last-to"
+                    offset="1"
+                  />
+                </lineargradient>
+              </defs>
+            </svg>
+            <div
+              class="logo-text"
+            >
+              <div
+                class="logo-text-top"
+              >
+                <span>
+                  Green
+                </span>
+                <span>
+                  On
+                </span>
+              </div>
+              <span
+                class="logo-text-bottom"
+              >
+                Software
+              </span>
+            </div>
+          </div>
+        </div>
+        <ul
+          class="navigation-links"
+        >
+          <li
+            class="navigation-link"
+          >
+            <span
+              class="font font-h6 link default"
+            >
+              <a
+                href="/"
+              >
+                Learn guitar notes
+              </a>
+            </span>
+          </li>
+        </ul>
+        <div
+          class="navigation-action"
+        >
+          <span
+            class="font font-h6 link default"
+          >
+            <a
+              href="https://greenonsoftware.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Check our platform
+            </a>
+          </span>
+        </div>
+      </nav>
+    </header>
+    <main
+      class="layout-content"
+    >
+      <div
+        class="box column empty"
+        style="padding: 28px 20px 28px 20px;"
+      >
+        <div
+          class="sc-dkrFOg djpinA guitar-fretboard"
+        >
+          <div
+            class="guitar-fretboard-frets"
+          >
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="6"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="6"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="6"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="6"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="6"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-strings"
+            >
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 1px;"
+                />
+              </div>
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 2px;"
+                />
+              </div>
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 3px;"
+                />
+              </div>
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 4px;"
+                />
+              </div>
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 5px;"
+                />
+              </div>
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 6px;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="box center-column empty"
+          style="padding: 28px 20px 28px 20px;"
+        >
+          <div
+            class="box-item-wrapper"
+            style="margin-bottom: 12px;"
+          >
+            <h6
+              class="font font-h6"
+            >
+              Find C# note!
+            </h6>
+          </div>
+          <div
+            class="box-item-wrapper"
+          >
+            <div
+              class="progress-circle"
+              style="width: 100px; height: 100px;"
+            >
+              <div
+                class="progress-circle-front"
+                style="transform: scale(1);"
+              />
+              <h6
+                class="font font-h6 progress-circle-text"
+              >
+                10.0s
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="layout-footer"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Guitar notes teacher works when displays guitar notes trainer fretboard when user just started 1`] = `
+<DocumentFragment>
+  <div
+    class="layout full"
+  >
+    <header
+      class="layout-header"
+    >
+      <nav
+        class="navigation"
+      >
+        <div
+          class="navigation-logo"
+        >
+          <div
+            class="logo"
+          >
+            <svg
+              fill="none"
+              height="52"
+              viewBox="0 0 52 52"
+              width="52"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M39.3784 12.1375C44.1761 16.3698 50.2363 19.057 50.9307 22.819C51.6252 26.5811 46.9537 31.418 43.3554 35.919C39.7572 40.3528 37.2321 44.3836 33.255 47.2723C29.3411 50.0938 23.9122 51.7061 18.6095 50.6984C13.3067 49.6236 8.06716 45.9959 4.7214 40.7559C1.43877 35.4487 0.0499603 28.5964 1.69128 22.9534C3.33259 17.3103 8.00403 12.8765 12.7386 8.57704C17.5363 4.27756 22.5234 0.246812 26.7529 1.12014C30.9825 1.99347 34.5176 7.83806 39.3784 12.1375Z"
+                stroke="url(#paint0_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M36.0338 15.6032C39.6321 18.7774 44.1773 20.7927 44.6981 23.6143C45.2189 26.4358 41.7153 30.0635 39.0166 33.4392C36.3179 36.7646 34.4241 39.7877 31.4413 41.9542C28.5058 44.0704 24.4341 45.2796 20.4571 44.5238C16.4801 43.7177 12.5504 40.9969 10.041 37.0669C7.57907 33.0865 6.53747 27.9473 7.76846 23.715C8.99944 19.4828 12.503 16.1574 16.0539 12.9328C19.6522 9.70817 23.3925 6.68511 26.5647 7.34011C29.7368 7.9951 32.3882 12.3785 36.0338 15.6032Z"
+                stroke="url(#paint1_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M32.6892 19.0688C35.0881 21.1849 38.1182 22.5285 38.4654 24.4095C38.8126 26.2905 36.4769 28.709 34.6777 30.9595C32.8786 33.1764 31.616 35.1918 29.6275 36.6361C27.6706 38.0469 24.9561 38.8531 22.3047 38.3492C19.6534 37.8118 17.0336 35.9979 15.3607 33.3779C13.7194 30.7244 13.025 27.2982 13.8456 24.4767C14.6663 21.6552 17.002 19.4383 19.3693 17.2885C21.7681 15.1388 24.2617 13.1234 26.3765 13.5601C28.4912 13.9967 30.2588 16.919 32.6892 19.0688Z"
+                stroke="url(#paint2_linear_102_163)"
+                stroke-width="2"
+              />
+              <defs>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint0_linear_102_163"
+                  x1="1"
+                  x2="51"
+                  y1="51"
+                  y2="1"
+                >
+                  <stop
+                    class="logo-bg-first-from"
+                  />
+                  <stop
+                    class="logo-bg-first-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint1_linear_102_163"
+                  x1="7.25"
+                  x2="44.75"
+                  y1="44.75"
+                  y2="7.25"
+                >
+                  <stop
+                    class="logo-bg-second-from"
+                  />
+                  <stop
+                    class="logo-bg-second-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint2_linear_102_163"
+                  x1="13.5"
+                  x2="38.5"
+                  y1="38.5"
+                  y2="13.5"
+                >
+                  <stop
+                    class="logo-bg-last-from"
+                  />
+                  <stop
+                    class="logo-bg-last-to"
+                    offset="1"
+                  />
+                </lineargradient>
+              </defs>
+            </svg>
+            <div
+              class="logo-text"
+            >
+              <div
+                class="logo-text-top"
+              >
+                <span>
+                  Green
+                </span>
+                <span>
+                  On
+                </span>
+              </div>
+              <span
+                class="logo-text-bottom"
+              >
+                Software
+              </span>
+            </div>
+          </div>
+        </div>
+        <ul
+          class="navigation-links"
+        >
+          <li
+            class="navigation-link"
+          >
+            <span
+              class="font font-h6 link default"
+            >
+              <a
+                href="/"
+              >
+                Learn guitar notes
+              </a>
+            </span>
+          </li>
+        </ul>
+        <div
+          class="navigation-action"
+        >
+          <span
+            class="font font-h6 link default"
+          >
+            <a
+              href="https://greenonsoftware.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Check our platform
+            </a>
+          </span>
+        </div>
+      </nav>
+    </header>
+    <main
+      class="layout-content"
+    >
+      <div
+        class="box column empty"
+        style="padding: 28px 20px 28px 20px;"
+      >
+        <div
+          class="sc-dkrFOg djpinA guitar-fretboard"
+        >
+          <div
+            class="guitar-fretboard-frets"
+          >
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="2"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="3"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="6"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="6"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="6"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="6"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="1"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="6"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="11"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="7"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="2"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="9"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="4"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-fret marked"
+            >
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="6"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="12"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="8"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="3"
+                data-note-octave="5"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="10"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+              <button
+                class="button button-size-2 button-rounded button-filled button-primary guitar-fretboard-fret-note unobvious"
+                data-note-id="5"
+                data-note-octave="4"
+                notation="sharp"
+                shape="rounded"
+                size="2"
+              />
+            </div>
+            <div
+              class="guitar-fretboard-strings"
+            >
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 1px;"
+                />
+              </div>
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 2px;"
+                />
+              </div>
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 3px;"
+                />
+              </div>
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 4px;"
+                />
+              </div>
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 5px;"
+                />
+              </div>
+              <div
+                class="guitar-fretboard-string-wrapper"
+              >
+                <div
+                  class="guitar-fretboard-string"
+                  style="height: 6px;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="box center-column empty"
+          style="padding: 28px 20px 28px 20px;"
+        >
+          <div
+            class="box-item-wrapper"
+            style="margin-bottom: 12px;"
+          >
+            <h6
+              class="font font-h6"
+            >
+              Find C note!
+            </h6>
+          </div>
+          <div
+            class="box-item-wrapper"
+          >
+            <div
+              class="progress-circle"
+              style="width: 100px; height: 100px;"
+            >
+              <div
+                class="progress-circle-front"
+                style="transform: scale(1);"
+              />
+              <h6
+                class="font font-h6 progress-circle-text"
+              >
+                10.0s
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="layout-footer"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Guitar notes teacher works when displays next screen after first interaction 1`] = `
+<DocumentFragment>
+  <div
+    class="layout full"
+  >
+    <header
+      class="layout-header"
+    >
+      <nav
+        class="navigation"
+      >
+        <div
+          class="navigation-logo"
+        >
+          <div
+            class="logo"
+          >
+            <svg
+              fill="none"
+              height="52"
+              viewBox="0 0 52 52"
+              width="52"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M39.3784 12.1375C44.1761 16.3698 50.2363 19.057 50.9307 22.819C51.6252 26.5811 46.9537 31.418 43.3554 35.919C39.7572 40.3528 37.2321 44.3836 33.255 47.2723C29.3411 50.0938 23.9122 51.7061 18.6095 50.6984C13.3067 49.6236 8.06716 45.9959 4.7214 40.7559C1.43877 35.4487 0.0499603 28.5964 1.69128 22.9534C3.33259 17.3103 8.00403 12.8765 12.7386 8.57704C17.5363 4.27756 22.5234 0.246812 26.7529 1.12014C30.9825 1.99347 34.5176 7.83806 39.3784 12.1375Z"
+                stroke="url(#paint0_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M36.0338 15.6032C39.6321 18.7774 44.1773 20.7927 44.6981 23.6143C45.2189 26.4358 41.7153 30.0635 39.0166 33.4392C36.3179 36.7646 34.4241 39.7877 31.4413 41.9542C28.5058 44.0704 24.4341 45.2796 20.4571 44.5238C16.4801 43.7177 12.5504 40.9969 10.041 37.0669C7.57907 33.0865 6.53747 27.9473 7.76846 23.715C8.99944 19.4828 12.503 16.1574 16.0539 12.9328C19.6522 9.70817 23.3925 6.68511 26.5647 7.34011C29.7368 7.9951 32.3882 12.3785 36.0338 15.6032Z"
+                stroke="url(#paint1_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M32.6892 19.0688C35.0881 21.1849 38.1182 22.5285 38.4654 24.4095C38.8126 26.2905 36.4769 28.709 34.6777 30.9595C32.8786 33.1764 31.616 35.1918 29.6275 36.6361C27.6706 38.0469 24.9561 38.8531 22.3047 38.3492C19.6534 37.8118 17.0336 35.9979 15.3607 33.3779C13.7194 30.7244 13.025 27.2982 13.8456 24.4767C14.6663 21.6552 17.002 19.4383 19.3693 17.2885C21.7681 15.1388 24.2617 13.1234 26.3765 13.5601C28.4912 13.9967 30.2588 16.919 32.6892 19.0688Z"
+                stroke="url(#paint2_linear_102_163)"
+                stroke-width="2"
+              />
+              <defs>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint0_linear_102_163"
+                  x1="1"
+                  x2="51"
+                  y1="51"
+                  y2="1"
+                >
+                  <stop
+                    class="logo-bg-first-from"
+                  />
+                  <stop
+                    class="logo-bg-first-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint1_linear_102_163"
+                  x1="7.25"
+                  x2="44.75"
+                  y1="44.75"
+                  y2="7.25"
+                >
+                  <stop
+                    class="logo-bg-second-from"
+                  />
+                  <stop
+                    class="logo-bg-second-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint2_linear_102_163"
+                  x1="13.5"
+                  x2="38.5"
+                  y1="38.5"
+                  y2="13.5"
+                >
+                  <stop
+                    class="logo-bg-last-from"
+                  />
+                  <stop
+                    class="logo-bg-last-to"
+                    offset="1"
+                  />
+                </lineargradient>
+              </defs>
+            </svg>
+            <div
+              class="logo-text"
+            >
+              <div
+                class="logo-text-top"
+              >
+                <span>
+                  Green
+                </span>
+                <span>
+                  On
+                </span>
+              </div>
+              <span
+                class="logo-text-bottom"
+              >
+                Software
+              </span>
+            </div>
+          </div>
+        </div>
+        <ul
+          class="navigation-links"
+        >
+          <li
+            class="navigation-link"
+          >
+            <span
+              class="font font-h6 link default"
+            >
+              <a
+                href="/"
+              >
+                Learn guitar notes
+              </a>
+            </span>
+          </li>
+        </ul>
+        <div
+          class="navigation-action"
+        >
+          <span
+            class="font font-h6 link default"
+          >
+            <a
+              href="https://greenonsoftware.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Check our platform
+            </a>
+          </span>
+        </div>
+      </nav>
+    </header>
+    <main
+      class="layout-content"
+    />
+    <footer
+      class="layout-footer"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Guitar notes teacher works when displays settings panel 1`] = `
+<DocumentFragment>
+  <div
+    class="layout full"
+  >
+    <header
+      class="layout-header"
+    >
+      <nav
+        class="navigation"
+      >
+        <div
+          class="navigation-logo"
+        >
+          <div
+            class="logo"
+          >
+            <svg
+              fill="none"
+              height="52"
+              viewBox="0 0 52 52"
+              width="52"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M39.3784 12.1375C44.1761 16.3698 50.2363 19.057 50.9307 22.819C51.6252 26.5811 46.9537 31.418 43.3554 35.919C39.7572 40.3528 37.2321 44.3836 33.255 47.2723C29.3411 50.0938 23.9122 51.7061 18.6095 50.6984C13.3067 49.6236 8.06716 45.9959 4.7214 40.7559C1.43877 35.4487 0.0499603 28.5964 1.69128 22.9534C3.33259 17.3103 8.00403 12.8765 12.7386 8.57704C17.5363 4.27756 22.5234 0.246812 26.7529 1.12014C30.9825 1.99347 34.5176 7.83806 39.3784 12.1375Z"
+                stroke="url(#paint0_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M36.0338 15.6032C39.6321 18.7774 44.1773 20.7927 44.6981 23.6143C45.2189 26.4358 41.7153 30.0635 39.0166 33.4392C36.3179 36.7646 34.4241 39.7877 31.4413 41.9542C28.5058 44.0704 24.4341 45.2796 20.4571 44.5238C16.4801 43.7177 12.5504 40.9969 10.041 37.0669C7.57907 33.0865 6.53747 27.9473 7.76846 23.715C8.99944 19.4828 12.503 16.1574 16.0539 12.9328C19.6522 9.70817 23.3925 6.68511 26.5647 7.34011C29.7368 7.9951 32.3882 12.3785 36.0338 15.6032Z"
+                stroke="url(#paint1_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M32.6892 19.0688C35.0881 21.1849 38.1182 22.5285 38.4654 24.4095C38.8126 26.2905 36.4769 28.709 34.6777 30.9595C32.8786 33.1764 31.616 35.1918 29.6275 36.6361C27.6706 38.0469 24.9561 38.8531 22.3047 38.3492C19.6534 37.8118 17.0336 35.9979 15.3607 33.3779C13.7194 30.7244 13.025 27.2982 13.8456 24.4767C14.6663 21.6552 17.002 19.4383 19.3693 17.2885C21.7681 15.1388 24.2617 13.1234 26.3765 13.5601C28.4912 13.9967 30.2588 16.919 32.6892 19.0688Z"
+                stroke="url(#paint2_linear_102_163)"
+                stroke-width="2"
+              />
+              <defs>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint0_linear_102_163"
+                  x1="1"
+                  x2="51"
+                  y1="51"
+                  y2="1"
+                >
+                  <stop
+                    class="logo-bg-first-from"
+                  />
+                  <stop
+                    class="logo-bg-first-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint1_linear_102_163"
+                  x1="7.25"
+                  x2="44.75"
+                  y1="44.75"
+                  y2="7.25"
+                >
+                  <stop
+                    class="logo-bg-second-from"
+                  />
+                  <stop
+                    class="logo-bg-second-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint2_linear_102_163"
+                  x1="13.5"
+                  x2="38.5"
+                  y1="38.5"
+                  y2="13.5"
+                >
+                  <stop
+                    class="logo-bg-last-from"
+                  />
+                  <stop
+                    class="logo-bg-last-to"
+                    offset="1"
+                  />
+                </lineargradient>
+              </defs>
+            </svg>
+            <div
+              class="logo-text"
+            >
+              <div
+                class="logo-text-top"
+              >
+                <span>
+                  Green
+                </span>
+                <span>
+                  On
+                </span>
+              </div>
+              <span
+                class="logo-text-bottom"
+              >
+                Software
+              </span>
+            </div>
+          </div>
+        </div>
+        <ul
+          class="navigation-links"
+        >
+          <li
+            class="navigation-link"
+          >
+            <span
+              class="font font-h6 link default"
+            >
+              <a
+                href="/"
+              >
+                Learn guitar notes
+              </a>
+            </span>
+          </li>
+        </ul>
+        <div
+          class="navigation-action"
+        >
+          <span
+            class="font font-h6 link default"
+          >
+            <a
+              href="https://greenonsoftware.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Check our platform
+            </a>
+          </span>
+        </div>
+      </nav>
+    </header>
+    <main
+      class="layout-content"
+    />
+    <footer
+      class="layout-footer"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Guitar notes teacher works when displays summary 1`] = `
+<DocumentFragment>
+  <div
+    class="layout full"
+  >
+    <header
+      class="layout-header"
+    >
+      <nav
+        class="navigation"
+      >
+        <div
+          class="navigation-logo"
+        >
+          <div
+            class="logo"
+          >
+            <svg
+              fill="none"
+              height="52"
+              viewBox="0 0 52 52"
+              width="52"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M39.3784 12.1375C44.1761 16.3698 50.2363 19.057 50.9307 22.819C51.6252 26.5811 46.9537 31.418 43.3554 35.919C39.7572 40.3528 37.2321 44.3836 33.255 47.2723C29.3411 50.0938 23.9122 51.7061 18.6095 50.6984C13.3067 49.6236 8.06716 45.9959 4.7214 40.7559C1.43877 35.4487 0.0499603 28.5964 1.69128 22.9534C3.33259 17.3103 8.00403 12.8765 12.7386 8.57704C17.5363 4.27756 22.5234 0.246812 26.7529 1.12014C30.9825 1.99347 34.5176 7.83806 39.3784 12.1375Z"
+                stroke="url(#paint0_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M36.0338 15.6032C39.6321 18.7774 44.1773 20.7927 44.6981 23.6143C45.2189 26.4358 41.7153 30.0635 39.0166 33.4392C36.3179 36.7646 34.4241 39.7877 31.4413 41.9542C28.5058 44.0704 24.4341 45.2796 20.4571 44.5238C16.4801 43.7177 12.5504 40.9969 10.041 37.0669C7.57907 33.0865 6.53747 27.9473 7.76846 23.715C8.99944 19.4828 12.503 16.1574 16.0539 12.9328C19.6522 9.70817 23.3925 6.68511 26.5647 7.34011C29.7368 7.9951 32.3882 12.3785 36.0338 15.6032Z"
+                stroke="url(#paint1_linear_102_163)"
+                stroke-width="2"
+              />
+              <path
+                d="M32.6892 19.0688C35.0881 21.1849 38.1182 22.5285 38.4654 24.4095C38.8126 26.2905 36.4769 28.709 34.6777 30.9595C32.8786 33.1764 31.616 35.1918 29.6275 36.6361C27.6706 38.0469 24.9561 38.8531 22.3047 38.3492C19.6534 37.8118 17.0336 35.9979 15.3607 33.3779C13.7194 30.7244 13.025 27.2982 13.8456 24.4767C14.6663 21.6552 17.002 19.4383 19.3693 17.2885C21.7681 15.1388 24.2617 13.1234 26.3765 13.5601C28.4912 13.9967 30.2588 16.919 32.6892 19.0688Z"
+                stroke="url(#paint2_linear_102_163)"
+                stroke-width="2"
+              />
+              <defs>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint0_linear_102_163"
+                  x1="1"
+                  x2="51"
+                  y1="51"
+                  y2="1"
+                >
+                  <stop
+                    class="logo-bg-first-from"
+                  />
+                  <stop
+                    class="logo-bg-first-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint1_linear_102_163"
+                  x1="7.25"
+                  x2="44.75"
+                  y1="44.75"
+                  y2="7.25"
+                >
+                  <stop
+                    class="logo-bg-second-from"
+                  />
+                  <stop
+                    class="logo-bg-second-to"
+                    offset="1"
+                  />
+                </lineargradient>
+                <lineargradient
+                  gradientUnits="userSpaceOnUse"
+                  id="paint2_linear_102_163"
+                  x1="13.5"
+                  x2="38.5"
+                  y1="38.5"
+                  y2="13.5"
+                >
+                  <stop
+                    class="logo-bg-last-from"
+                  />
+                  <stop
+                    class="logo-bg-last-to"
+                    offset="1"
+                  />
+                </lineargradient>
+              </defs>
+            </svg>
+            <div
+              class="logo-text"
+            >
+              <div
+                class="logo-text-top"
+              >
+                <span>
+                  Green
+                </span>
+                <span>
+                  On
+                </span>
+              </div>
+              <span
+                class="logo-text-bottom"
+              >
+                Software
+              </span>
+            </div>
+          </div>
+        </div>
+        <ul
+          class="navigation-links"
+        >
+          <li
+            class="navigation-link"
+          >
+            <span
+              class="font font-h6 link default"
+            >
+              <a
+                href="/"
+              >
+                Learn guitar notes
+              </a>
+            </span>
+          </li>
+        </ul>
+        <div
+          class="navigation-action"
+        >
+          <span
+            class="font font-h6 link default"
+          >
+            <a
+              href="https://greenonsoftware.com/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Check our platform
+            </a>
+          </span>
+        </div>
+      </nav>
+    </header>
+    <main
+      class="layout-content"
+    >
+      <div
+        class="box column empty"
+        style="padding: 28px 20px 28px 20px; margin: auto; max-width: 600px;"
+      >
+        <div
+          class="box-item-wrapper"
+          style="margin-bottom: 20px;"
+        >
+          <h6
+            class="font font-h6"
+          >
+            Thanks a lot for participating in the game!
+          </h6>
+        </div>
+        <div
+          class="box-item-wrapper"
+          style="margin-bottom: 8px;"
+        >
+          <span
+            class="font font-b1"
+          >
+            Your questions: C C# D D# E
+          </span>
+        </div>
+        <div
+          class="box-item-wrapper"
+          style="margin-bottom: 8px;"
+        >
+          <span
+            class="font font-b1"
+          >
+            Your answers: C C D# D E
+          </span>
+        </div>
+        <div
+          class="box-item-wrapper"
+          style="margin-bottom: 24px;"
+        >
+          <span
+            class="font font-b1"
+          >
+            Your score: ✅ ❌ ❌ ❌ ✅
+          </span>
+        </div>
+        <div
+          class="box-item-wrapper"
+          style="margin-bottom: 8px;"
+        >
+          <span
+            class="font font-b1"
+          >
+            If you liked the presentation, the code or the way I told the story - watch me on LinkedIn for more.
+          </span>
+        </div>
+        <div
+          class="box-item-wrapper"
+          style="margin-bottom: 24px;"
+        >
+          <span
+            class="font font-b1"
+          >
+            Below links to community profiles, discord and the platform I am creating with my community.
+          </span>
+        </div>
+        <div
+          class="box-item-wrapper"
+          style="margin-bottom: 24px;"
+        >
+          <div
+            class="box column outlined"
+            style="padding: 28px 20px 28px 20px;"
+          >
+            <div
+              class="box-item-wrapper"
+              style="margin-bottom: 12px;"
+            >
+              <span
+                class="font font-b1 link primary"
+              >
+                <a
+                  href="https://www.linkedin.com/in/adrian-po%C5%82ubi%C5%84ski-281ab2172"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Adrian Połubiński on LinkedIn
+                </a>
+              </span>
+            </div>
+            <div
+              class="box-item-wrapper"
+              style="margin-bottom: 12px;"
+            >
+              <span
+                class="font font-b1 link primary"
+              >
+                <a
+                  href="https://www.linkedin.com/company/greenon-software/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  GreenOn Software LinkedIn
+                </a>
+              </span>
+            </div>
+            <div
+              class="box-item-wrapper"
+              style="margin-bottom: 12px;"
+            >
+              <span
+                class="font font-b1 link primary"
+              >
+                <a
+                  href="https://greenonsoftware.com/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Check our platform
+                </a>
+              </span>
+            </div>
+            <div
+              class="box-item-wrapper"
+              style="margin-bottom: 12px;"
+            >
+              <span
+                class="font font-b1 link primary"
+              >
+                <a
+                  href="https://github.com/polubis/Dream-stack-for-React-dev"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Our repository with this code
+                </a>
+              </span>
+            </div>
+            <div
+              class="box-item-wrapper"
+            >
+              <span
+                class="font font-b1 link primary"
+              >
+                <a
+                  href="https://github.com/polubis/WebBlog"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Our platform repository
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="box-item-wrapper"
+          style="margin-bottom: 8px;"
+        >
+          <span
+            class="font font-b1"
+          >
+            Dont be afraid to join us. We learn together by doing projects together. We provide designs, written requirements, help in looking for the first job, event, materials, the opportunity to work on the project and add it to the portfolio, and all this for free.
+          </span>
+        </div>
+        <div
+          class="box-item-wrapper"
+          style="margin-bottom: 24px;"
+        >
+          <span
+            class="font font-b1 link primary"
+          >
+            <a
+              href="https://github.com/users/polubis/projects/1"
+              rel="noreferrer"
+              target="_blank"
+            >
+              Our board
+            </a>
+          </span>
+        </div>
+        <div
+          class="box-item-wrapper"
+        >
+          <button
+            class="button button-size-3 button-rectangle button-filled button-primary"
+          >
+            Play again!
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="layout-footer"
+    />
+  </div>
+</DocumentFragment>
+`;

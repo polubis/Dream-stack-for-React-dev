@@ -7,7 +7,6 @@ import type {
   FinishedState,
   GuitarNotesGameResult,
   GuitarNotesTeacherSettings,
-  GuitarNotesTeacherState,
   IdleState,
   InitialState,
   PlayingState,
@@ -123,15 +122,4 @@ const Finished = (
   },
 });
 
-const StartMachine = (): GuitarNotesTeacherState => Idle();
-
-export {
-  StartMachine,
-  Idle,
-  Initial,
-  Settings,
-  Counting,
-  Started,
-  Playing,
-  Finished,
-};
+export { Idle, Initial, Settings, Counting, Started, Playing, Finished };

@@ -2,10 +2,21 @@ import { useRef, useState } from 'react';
 
 import type { Note, NoteNotation } from '../../domain';
 
-import type { GuitarNotesTeacherState } from './defs';
-import * as M from './machine';
+import type {
+  GuitarNotesTeacherActions,
+  GuitarNotesTeacherState,
+} from './defs';
+import {
+  Counting,
+  Finished,
+  Idle,
+  Initial,
+  Playing,
+  Settings,
+  Started,
+} from './machine';
 
-const startedMachine = M.StartMachine();
+const DEFAULT_INITIAL_STATE = Idle() as GuitarNotesTeacherState;
 
 const logInvalidAction = (actionName: string): void => {
   const message = 'Invalid action detected in ' + actionName;
@@ -17,7 +28,7 @@ const logInvalidAction = (actionName: string): void => {
   }
 };
 
-const useMachine = (initialState = startedMachine) => {
+const useMachine = (initialState = DEFAULT_INITIAL_STATE) => {
   const [, setCounter] = useState(0);
   const state = useRef(initialState);
 
@@ -36,13 +47,13 @@ const useMachine = (initialState = startedMachine) => {
 
     if (newAnswers.length === state.current.questions.length) {
       update(
-        M.Finished(state.current.settings, newAnswers, state.current.questions)
+        Finished(state.current.settings, newAnswers, state.current.questions)
       );
       return;
     }
 
     update(
-      M.Playing(
+      Playing(
         state.current.settings,
         state.current.guitar,
         newAnswers,
@@ -52,20 +63,20 @@ const useMachine = (initialState = startedMachine) => {
   };
 
   const initial = (): void => {
-    update(M.Initial());
+    update(Initial());
   };
 
   const idle = (): void => {
-    update(M.Idle());
+    update(Idle());
   };
 
   const settings = (): void => {
-    update(M.Settings('sharp'));
+    update(Settings('sharp'));
   };
 
   const counting = (): void => {
     if (state.current.key === 'settings') {
-      update(M.Counting(state.current.settings));
+      update(Counting(state.current.settings));
       return;
     }
 
@@ -74,7 +85,7 @@ const useMachine = (initialState = startedMachine) => {
 
   const started = (): void => {
     if (state.current.key === 'counting') {
-      update(M.Started(state.current.settings, state.current.guitar));
+      update(Started(state.current.settings, state.current.guitar));
       return;
     }
 
@@ -83,14 +94,14 @@ const useMachine = (initialState = startedMachine) => {
 
   const setNotation = (notation: NoteNotation): void => {
     if (state.current.key === 'settings') {
-      update(M.Settings(notation));
+      update(Settings(notation));
       return;
     }
 
     logInvalidAction(setNotation.name);
   };
 
-  const actions = {
+  const actions: GuitarNotesTeacherActions = {
     answerQuestion,
     initial,
     idle,
@@ -100,7 +111,7 @@ const useMachine = (initialState = startedMachine) => {
     setNotation,
   };
 
-  return [state.current, actions] as const;
+  return { state: state.current, actions };
 };
 
 export { useMachine };

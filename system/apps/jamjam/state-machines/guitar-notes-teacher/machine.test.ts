@@ -1,5 +1,5 @@
 import type { GuitarNotesTeacherSettings, Questions } from './defs';
-import * as M from './machine';
+import { Counting, Settings, Started } from './machine';
 
 describe('Teaches the notes on the guitar when ', () => {
   const SETTINGS: GuitarNotesTeacherSettings = {
@@ -20,12 +20,12 @@ describe('Teaches the notes on the guitar when ', () => {
   };
 
   it('uses most popular guitar setup for initial settings', () => {
-    expect(M.Settings('sharp').settings).toEqual(SETTINGS);
+    expect(Settings('sharp').settings).toEqual(SETTINGS);
   });
 
   it('consumes settings to create guitar', () => {
-    const { settings } = M.Settings('sharp');
-    const { guitar } = M.Counting(settings);
+    const { settings } = Settings('sharp');
+    const { guitar } = Counting(settings);
 
     expect(guitar.fretsCount).toEqual(settings.fretsCount);
     expect(guitar.hand).toEqual(settings.hand);
@@ -35,9 +35,9 @@ describe('Teaches the notes on the guitar when ', () => {
   it('randomizes questions', () => {
     const EXPECTED_LENGTH = 5;
 
-    const { settings } = M.Settings('sharp');
-    const { guitar } = M.Counting(settings);
-    const { questions } = M.Started(settings, guitar);
+    const { settings } = Settings('sharp');
+    const { guitar } = Counting(settings);
+    const { questions } = Started(settings, guitar);
 
     expect(questions.length).toBe(EXPECTED_LENGTH);
     expect(questions.every((question) => typeof question === 'number'));
