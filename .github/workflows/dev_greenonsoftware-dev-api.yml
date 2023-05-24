@@ -6,7 +6,7 @@ name: GreenOnSoftware-dev-api
 on:
   push:
     branches:
-      - feature/github-workflows-for-backend
+      - develop
     paths:
       - 'dotnet/GreenOnSoftware/**'
   workflow_dispatch:
