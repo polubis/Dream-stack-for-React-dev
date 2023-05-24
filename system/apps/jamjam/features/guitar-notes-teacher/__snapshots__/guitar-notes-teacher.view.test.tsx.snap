@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Guitar notes teacher works when displays counting panel 1`] = `
+exports[`Guitar notes teacher works when [FRAGILE] displays counting panel 1`] = `
 <DocumentFragment>
   <div
     class="layout full"
@@ -155,7 +155,7 @@ exports[`Guitar notes teacher works when displays counting panel 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Guitar notes teacher works when displays first screen after loading page 1`] = `
+exports[`Guitar notes teacher works when [FRAGILE] displays first screen after loading page 1`] = `
 <DocumentFragment>
   <div
     class="layout full"
@@ -345,7 +345,7 @@ exports[`Guitar notes teacher works when displays first screen after loading pag
 </DocumentFragment>
 `;
 
-exports[`Guitar notes teacher works when displays guitar notes trainer fretboard when user is playing 1`] = `
+exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer fretboard when user is playing 1`] = `
 <DocumentFragment>
   <div
     class="layout full"
@@ -1899,7 +1899,7 @@ exports[`Guitar notes teacher works when displays guitar notes trainer fretboard
 </DocumentFragment>
 `;
 
-exports[`Guitar notes teacher works when displays guitar notes trainer fretboard when user just started 1`] = `
+exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer fretboard when user just started 1`] = `
 <DocumentFragment>
   <div
     class="layout full"
@@ -3453,7 +3453,7 @@ exports[`Guitar notes teacher works when displays guitar notes trainer fretboard
 </DocumentFragment>
 `;
 
-exports[`Guitar notes teacher works when displays next screen after first interaction 1`] = `
+exports[`Guitar notes teacher works when [FRAGILE] displays next screen after first interaction 1`] = `
 <DocumentFragment>
   <div
     class="layout full"
@@ -3608,7 +3608,7 @@ exports[`Guitar notes teacher works when displays next screen after first intera
 </DocumentFragment>
 `;
 
-exports[`Guitar notes teacher works when displays settings panel 1`] = `
+exports[`Guitar notes teacher works when [FRAGILE] displays settings panel 1`] = `
 <DocumentFragment>
   <div
     class="layout full"
@@ -3763,7 +3763,7 @@ exports[`Guitar notes teacher works when displays settings panel 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Guitar notes teacher works when displays summary 1`] = `
+exports[`Guitar notes teacher works when [FRAGILE] displays summary 1`] = `
 <DocumentFragment>
   <div
     class="layout full"

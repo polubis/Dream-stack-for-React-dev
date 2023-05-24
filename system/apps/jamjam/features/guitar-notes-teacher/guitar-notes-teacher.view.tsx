@@ -13,9 +13,10 @@ import {
   Select,
 } from '@system/figa-ui';
 
-import { GuitarFretboard, UnobviousNoteButton } from '../../../components';
-import { getCurrentQuestion } from '../../../state-machines/guitar-notes-teacher';
-import { getNoteSymbol, type NoteNotation } from '../../../domain';
+import { GuitarFretboard, UnobviousNoteButton } from '../../components';
+import { getNoteSymbol, type NoteNotation } from '../../domain';
+
+import { getCurrentQuestion } from './guitar-notes-teacher.selectors';
 import {
   AdriansLink,
   DreamStackRepoLink,
@@ -23,9 +24,8 @@ import {
   PlatformLink,
   PlatformLinkedInLink,
   PlatformRepoLink,
-} from '../components';
-
-import type { GuitarNotesTeacherViewProps } from './defs';
+} from './components';
+import type { GuitarNotesTeacherViewProps } from './guitar-notes-teacher.defs';
 
 const commonBoxProps: Partial<BoxProps> = {
   spacing: [150, 500],

@@ -1,5 +1,8 @@
-import type { GuitarNotesTeacherSettings, Questions } from './defs';
-import { Counting, Settings, Started } from './machine';
+import type {
+  GuitarNotesTeacherSettings,
+  Questions,
+} from './guitar-notes-teacher.defs';
+import { Counting, Settings, Started } from './guitar-notes-teacher.actions';
 
 describe('Teaches the notes on the guitar when ', () => {
   const SETTINGS: GuitarNotesTeacherSettings = {

@@ -13,7 +13,7 @@ import type {
   Questions,
   SettingsState,
   StartedState,
-} from './defs';
+} from './guitar-notes-teacher.defs';
 
 const initializeSettings = (
   notation: NoteNotation

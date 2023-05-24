@@ -5,7 +5,7 @@ import type { Note, NoteNotation } from '../../domain';
 import type {
   GuitarNotesTeacherActions,
   GuitarNotesTeacherState,
-} from './defs';
+} from './guitar-notes-teacher.defs';
 import {
   Counting,
   Finished,
@@ -14,7 +14,7 @@ import {
   Playing,
   Settings,
   Started,
-} from './machine';
+} from './guitar-notes-teacher.actions';
 
 const DEFAULT_INITIAL_STATE = Idle() as GuitarNotesTeacherState;
 
@@ -28,7 +28,7 @@ const logInvalidAction = (actionName: string): void => {
   }
 };
 
-const useMachine = (initialState = DEFAULT_INITIAL_STATE) => {
+const useGuitarNotesTeacherFacade = (initialState = DEFAULT_INITIAL_STATE) => {
   const [, setCounter] = useState(0);
   const state = useRef(initialState);
 
@@ -114,4 +114,4 @@ const useMachine = (initialState = DEFAULT_INITIAL_STATE) => {
   return { state: state.current, actions };
 };
 
-export { useMachine };
+export { useGuitarNotesTeacherFacade };

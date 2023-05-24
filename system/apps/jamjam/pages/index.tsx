@@ -1,7 +1,7 @@
-import { GuitarNotesTeacher } from '../features/guitar-notes-teacher';
+import { GuitarNotesTeacherFeature } from '../features/guitar-notes-teacher';
 
 const Index = () => {
-  return <GuitarNotesTeacher />;
+  return <GuitarNotesTeacherFeature />;
 };
 
 export default Index;

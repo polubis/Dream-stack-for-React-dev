@@ -1,1 +1,1 @@
-export * from './guitar-notes-teacher';
+export * from './guitar-notes-teacher.feature';

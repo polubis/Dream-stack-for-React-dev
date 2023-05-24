@@ -96,6 +96,11 @@ interface GuitarNotesTeacherActions {
   setNotation: (notation: NoteNotation) => void;
 }
 
+interface GuitarNotesTeacherViewProps {
+  state: GuitarNotesTeacherState;
+  actions: GuitarNotesTeacherActions;
+}
+
 export type {
   IdleState,
   InitialState,
@@ -114,4 +119,5 @@ export type {
   GuitarNotesGameSummary,
   GuitarNotesGameResult,
   GuitarNotesTeacherActions,
+  GuitarNotesTeacherViewProps,
 };
