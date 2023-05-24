@@ -138,12 +138,8 @@ public class Article : Entity
 
         if (isAuthenticated)
         {
-            var rate = Rates.FirstOrDefault(x => x.UserId == userId);
-
-            if (rate is null)
-            {
-                throw new InvalidOperationException("This article is not rated by user!");
-            }
+            var rate = Rates.FirstOrDefault(x => x.UserId == userId)
+                ?? throw new InvalidOperationException("This article is not rated by user!");
 
             rate.Update(value, avatarName, operationDate);
         }
