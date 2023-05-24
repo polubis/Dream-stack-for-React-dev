@@ -29,13 +29,13 @@ jobs:
         run: dotnet build '.\dotnet\GreenOnSoftware\GreenOnSoftware.Api\GreenOnSoftware.Api.csproj' --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish '.\dotnet\GreenOnSoftware\GreenOnSoftware.Api\GreenOnSoftware.Api.csproj' -c Release -o ${{env.DOTNET_ROOT}}/gos.api
+        run: dotnet publish '.\dotnet\GreenOnSoftware\GreenOnSoftware.Api\GreenOnSoftware.Api.csproj' -c Release -o ${{env.DOTNET_ROOT}}/gos.dev.api
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/gos.api
+          path: ${{env.DOTNET_ROOT}}/gos.dev.api
 
   deploy:
     runs-on: windows-latest
