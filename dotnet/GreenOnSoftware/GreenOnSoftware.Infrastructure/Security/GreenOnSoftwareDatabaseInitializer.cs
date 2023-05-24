@@ -7,7 +7,7 @@ namespace GreenOnSoftware.Infrastructure.DataSeeder;
 
 public static class GreenOnSoftwareDataSeeder
 {
-    private static string TempEmailValue = "@greenonsoftware.com";
+    private readonly static string TempEmailValue = "@greenonsoftware.com";
 
     public static void SeedData(UserManager<User> userManager, RoleManager<IdentityRole<Guid>> roleManager, SecurityConfiguration configuration)
     {
