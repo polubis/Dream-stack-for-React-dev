@@ -7,7 +7,7 @@ import type {
   Note,
   SharpNoteNotationSymbol,
 } from '../defs';
-import { createGuitar, getNoteSymbol } from '../utils';
+import { createGuitar, getNoteSymbol } from '../core';
 
 describe('Returns note symbol according to used notation', () => {
   it('note contains sharp notation postix', () => {

@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 
-import type { GuitarNotesTeacherViewProps } from '../defs';
-import { GuitarNotesTeacherView } from '../guitar-notes-teacher-view';
+import type { GuitarNotesTeacherViewProps } from './guitar-notes-teacher.defs';
+import { GuitarNotesTeacherView } from './guitar-notes-teacher.view';
 import {
   Counting,
   Finished,
@@ -9,7 +9,7 @@ import {
   Initial,
   Playing,
   Settings,
-} from '../../../../state-machines/guitar-notes-teacher';
+} from './guitar-notes-teacher.actions';
 
 describe('Guitar notes teacher works when', () => {
   const guitarNotesTeacherViewFixture = (
@@ -24,25 +24,25 @@ describe('Guitar notes teacher works when', () => {
     expect(asFragment()).toMatchSnapshot();
   };
 
-  it('displays first screen after loading page', () => {
+  it('[FRAGILE] displays first screen after loading page', () => {
     guitarNotesTeacherViewFixture();
   });
 
-  it('displays next screen after first interaction', () => {
+  it('[FRAGILE] displays next screen after first interaction', () => {
     guitarNotesTeacherViewFixture({ state: Initial() });
   });
 
-  it('displays settings panel', () => {
+  it('[FRAGILE] displays settings panel', () => {
     guitarNotesTeacherViewFixture({ state: Settings('sharp') });
   });
 
-  it('displays counting panel', () => {
+  it('[FRAGILE] displays counting panel', () => {
     guitarNotesTeacherViewFixture({
       state: Counting(Settings('sharp').settings),
     });
   });
 
-  it('displays guitar notes trainer fretboard when user just started', () => {
+  it('[FRAGILE] displays guitar notes trainer fretboard when user just started', () => {
     const { guitar, settings } = Counting(Settings('sharp').settings);
 
     guitarNotesTeacherViewFixture({
@@ -56,14 +56,14 @@ describe('Guitar notes teacher works when', () => {
     });
   });
 
-  it('displays guitar notes trainer fretboard when user is playing', () => {
+  it('[FRAGILE] displays guitar notes trainer fretboard when user is playing', () => {
     const { guitar, settings } = Counting(Settings('sharp').settings);
     guitarNotesTeacherViewFixture({
       state: Playing(settings, guitar, [1], [1, 2, 3, 4, 5]),
     });
   });
 
-  it('displays summary', () => {
+  it('[FRAGILE] displays summary', () => {
     const { settings } = Counting(Settings('sharp').settings);
     guitarNotesTeacherViewFixture({
       state: Finished(settings, [1, 1, 4, 3, 5], [1, 2, 3, 4, 5]),
