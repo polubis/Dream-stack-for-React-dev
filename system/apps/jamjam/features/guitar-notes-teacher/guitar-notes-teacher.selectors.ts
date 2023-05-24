@@ -1,6 +1,6 @@
 import { getNoteSymbol } from '../../domain';
 
-import type { PlayingState, StartedState } from './defs';
+import type { PlayingState, StartedState } from './guitar-notes-teacher.defs';
 
 const getCurrentQuestion = <S extends StartedState | PlayingState>(
   state: S

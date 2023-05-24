@@ -1,12 +1,21 @@
 import { act, renderHook } from '@testing-library/react';
 
-import { useMachine } from './use-machine';
-import type { Answers, GuitarNotesTeacherStateKey, StartedState } from './defs';
-import { Counting, Playing, Settings, Started } from './machine';
+import { useGuitarNotesTeacherFacade } from './use-guitar-notes-teacher.facade';
+import type {
+  Answers,
+  GuitarNotesTeacherStateKey,
+  StartedState,
+} from './guitar-notes-teacher.defs';
+import {
+  Counting,
+  Playing,
+  Settings,
+  Started,
+} from './guitar-notes-teacher.actions';
 
 describe('Guitar notes teacher works when', () => {
   it('initial state is assigned and there is an option to start interaction', () => {
-    const { result } = renderHook(() => useMachine());
+    const { result } = renderHook(() => useGuitarNotesTeacherFacade());
 
     const { state, actions } = result.current;
 
@@ -19,7 +28,7 @@ describe('Guitar notes teacher works when', () => {
       const { settings } = Settings('sharp');
       const { guitar } = Counting(settings);
       const { result } = renderHook(() =>
-        useMachine(Started(settings, guitar))
+        useGuitarNotesTeacherFacade(Started(settings, guitar))
       );
 
       const { actions } = result.current;
@@ -42,7 +51,9 @@ describe('Guitar notes teacher works when', () => {
       );
 
       const { result } = renderHook(() =>
-        useMachine(Playing(settings, guitar, answers, questions))
+        useGuitarNotesTeacherFacade(
+          Playing(settings, guitar, answers, questions)
+        )
       );
 
       const { actions } = result.current;
@@ -67,7 +78,9 @@ describe('Guitar notes teacher works when', () => {
       );
 
       const { result } = renderHook(() =>
-        useMachine(Playing(settings, guitar, answers, questions))
+        useGuitarNotesTeacherFacade(
+          Playing(settings, guitar, answers, questions)
+        )
       );
 
       const { actions } = result.current;
