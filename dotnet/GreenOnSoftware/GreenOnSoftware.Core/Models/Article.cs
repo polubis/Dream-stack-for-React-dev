@@ -138,24 +138,16 @@ public class Article : Entity
 
         if (isAuthenticated)
         {
-            var rate = Rates.FirstOrDefault(x => x.UserId == userId);
-
-            if (rate is null)
-            {
-                throw new InvalidOperationException("This article is not rated by user!");
-            }
+            var rate = Rates.FirstOrDefault(x => x.UserId == userId)
+                ?? throw new InvalidOperationException("This article is not rated by user!");
 
             rate.Update(value, avatarName, operationDate);
         }
         else
         {
-            var annonymousRate = AnnonymousRates.FirstOrDefault(x => x.UserId == userId);
-
-            if (annonymousRate is null)
-            {
-                throw new InvalidOperationException("This article is not rated by user!");
-            }
-
+            var annonymousRate = AnnonymousRates.FirstOrDefault(x => x.UserId == userId)
+                ?? throw new InvalidOperationException("This article is not rated by user!");
+            
             annonymousRate.Update(value, avatarName, operationDate);
         }
     }
@@ -208,13 +200,10 @@ public class Article : Entity
             .Select(x => new { x.AvatarName, x.Value })
             .FirstOrDefault();
 
-        if (result == null)
-        {
-            result = AnnonymousRates
+        result ??= AnnonymousRates
                 .Where(x => x.UserId == userId)
                 .Select(x => new { x.AvatarName, x.Value })
                 .FirstOrDefault();
-        }
 
         return (result?.AvatarName, result?.Value);
 
@@ -232,36 +221,24 @@ public class Article : Entity
 
     public void UpdateReview(Guid reviewId, string reviewContent, Guid reviewerId, DateTime operationDate)
     {
-        var review = Reviews.FirstOrDefault(x => x.Id == reviewId && x.ReviewerId == reviewerId);
-
-        if(review == null)
-        {
-            throw new InvalidOperationException("Review does not exists!");
-        }
+        var review = Reviews.FirstOrDefault(x => x.Id == reviewId && x.ReviewerId == reviewerId) 
+            ?? throw new InvalidOperationException("Review does not exists!");
 
         review.Update(reviewContent, operationDate);
     }
 
     public void DeleteReview(Guid reviewId, Guid reviewerId)
     {
-        var review = Reviews.FirstOrDefault(x => x.Id == reviewId && x.ReviewerId == reviewerId);
-
-        if(review == null)
-        {
-            throw new InvalidOperationException("Review does not exists!");
-        }
+        var review = Reviews.FirstOrDefault(x => x.Id == reviewId && x.ReviewerId == reviewerId) 
+            ?? throw new InvalidOperationException("Review does not exists!");
 
         Reviews.Remove(review);
     }
 
     public Review GetReview(Guid reviewId)
     {
-        var review = Reviews.FirstOrDefault(x => x.Id == reviewId);
-
-        if (review == null)
-        {
-            throw new InvalidOperationException("Review does not exists!");
-        }
+        var review = Reviews.FirstOrDefault(x => x.Id == reviewId) 
+            ?? throw new InvalidOperationException("Review does not exists!");
 
         return review;
     }
