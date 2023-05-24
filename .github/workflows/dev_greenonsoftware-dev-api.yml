@@ -1,13 +1,16 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App - GreenOnSoftware-api
+name: GreenOnSoftware-dev-api
 
 on:
   push:
     branches:
-      - master
+      - feature/github-workflows-for-backend
+    paths:
+      - 'dotnet/GreenOnSoftware/**'
   workflow_dispatch:
+
 
 jobs:
   build:
@@ -23,16 +26,16 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build '.\dotnet\GreenOnSoftware\GreenOnSoftware.Api\GreenOnSoftware.Api.csproj' --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish '.\dotnet\GreenOnSoftware\GreenOnSoftware.Api\GreenOnSoftware.Api.csproj' -c Release -o ${{env.DOTNET_ROOT}}/gos.api
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          path: ${{env.DOTNET_ROOT}}/gos.api
 
   deploy:
     runs-on: windows-latest
@@ -51,7 +54,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'GreenOnSoftware-api'
+          app-name: 'GreenOnSoftware-dev-api'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C15FDBD8BC4E48B58DB7DA1F0C3780AF }}
+          publish-profile: ${{ secrets.GREENONSOFTWARE_API_DEV_PUBLISH_PROFILE }}
           package: .
