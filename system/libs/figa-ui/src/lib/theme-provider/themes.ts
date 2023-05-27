@@ -26,6 +26,9 @@ const spacing: Spacing = {
 
 // Check for reference: https://mui.com/joy-ui/customization/theme-colors/
 const tokens: Tokens = {
+  width: {
+    50: '1080px',
+  },
   backdrop: {
     50: '#0000003d',
   },
@@ -176,6 +179,10 @@ const light: Theme = {
     bg: tokens.light[50],
     borderColor: tokens.light[100],
   },
+  footer: {
+    bg: tokens.common.white,
+    borderColor: tokens.gray[50],
+  },
 };
 
 const dark: Theme = {
@@ -258,6 +265,10 @@ const dark: Theme = {
   },
   box: {
     bg: tokens.gray[300],
+    borderColor: tokens.gray[300],
+  },
+  footer: {
+    bg: tokens.common.black,
     borderColor: tokens.gray[300],
   },
 };

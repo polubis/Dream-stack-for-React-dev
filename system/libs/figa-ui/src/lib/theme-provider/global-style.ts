@@ -546,6 +546,54 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* box.tsx */
+
+    /* footer.tsx */
+
+    .footer {
+        background: ${(props) => props.theme.footer.bg};
+
+        .footer-container {
+            ${column()}
+            margin: 0 auto;
+            max-width: ${tokens.width[50]};
+            padding: ${tokens.spacing[300]} 0;
+
+            .footer-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                border-bottom: 1px solid ${(props) =>
+                  props.theme.footer.borderColor};
+                padding-bottom: ${tokens.spacing[200]};
+
+                @media (max-width: 900px) {
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 1fr 1fr 1fr;
+                }
+
+                & > * {
+                    padding: ${tokens.spacing[250]};
+                }
+            }
+
+            .footer-bar {
+                ${row()}
+                justify-content: space-between;
+                padding: ${tokens.spacing[250]} ${tokens.spacing[250]} 0 ${
+  tokens.spacing[250]
+};
+
+                .footer-bar-left {
+                    ${row()}
+                }
+
+                .footer-bar-right {
+                    ${row()}
+                }
+            }
+        }
+    }
+
+    /* footer.tsx */
 `;
 
 export { GlobalStyle };
