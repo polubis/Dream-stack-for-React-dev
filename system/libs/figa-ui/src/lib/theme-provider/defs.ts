@@ -45,6 +45,9 @@ interface PaletteColorsSetup {
 }
 
 interface Tokens {
+  width: {
+    50: string;
+  };
   backdrop: {
     50: string;
   };
@@ -173,6 +176,10 @@ interface Theme {
     placeholderColor: string;
   };
   box: {
+    bg: string;
+    borderColor: string;
+  };
+  footer: {
     bg: string;
     borderColor: string;
   };

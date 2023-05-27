@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer can be used when [FRAGILE] renders with classes 1`] = `
+<DocumentFragment>
+  <div
+    class="footer"
+  >
+    <div
+      class="footer-container"
+    >
+      <div
+        class="footer-content"
+      >
+        <div>
+          A
+        </div>
+        <div>
+          B
+        </div>
+        <div>
+          C
+        </div>
+      </div>
+      <div
+        class="footer-bar"
+      >
+        <div
+          class="footer-bar-left"
+        >
+          <div>
+            I
+          </div>
+        </div>
+        <div
+          class="footer-bar-right"
+        >
+          <div>
+            Logo
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
