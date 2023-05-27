@@ -1,1 +1,2 @@
-export * from './lib/blog-api-models';
+export * from './lib/general';
+export * from './lib/articles';
