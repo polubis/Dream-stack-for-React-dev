@@ -10,6 +10,7 @@ import {
   size,
   streched,
 } from '../shared';
+import { T_DOWN } from './viewport';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -564,8 +565,8 @@ const GlobalStyle = createGlobalStyle`
                 border-bottom: 1px solid ${(props) =>
                   props.theme.footer.borderColor};
                 padding-bottom: ${tokens.spacing[200]};
-
-                @media (max-width: 900px) {
+                
+                @media ${T_DOWN} {
                     grid-template-columns: 1fr;
                     grid-template-rows: 1fr 1fr 1fr;
                 }
