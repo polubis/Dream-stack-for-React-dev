@@ -361,7 +361,7 @@ const GlobalStyle = createGlobalStyle`
                 flex-shrink: 0;
 
                 &:not(:last-of-type) {
-                    margin-right: ${tokens.spacing[300]};
+                    margin-right: ${tokens.spacing[550]};
                 }
             }
         }

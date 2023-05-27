@@ -1,27 +1,12 @@
-import { Font, Footer, Layout, Logo, Navigation } from '@system/figa-ui';
+import { Font } from '@system/figa-ui';
 import type { HomeViewProps } from './defs';
+import { MainLayout } from '../../components';
 
 const HomeView = ({ articles }: HomeViewProps) => {
   return (
-    <Layout
-      full
-      header={<Navigation logo={<Logo />} links={[]} action={<></>} />}
-      footer={
-        <Footer
-          logo={<div>L</div>}
-          socials={<>a</>}
-          blocks={
-            <>
-              <div>A</div>
-              <div>A</div>
-              <div>A</div>
-            </>
-          }
-        />
-      }
-    >
+    <MainLayout>
       <Font variant="h1">Headline1</Font>
-    </Layout>
+    </MainLayout>
   );
 };
 
