@@ -4,6 +4,16 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
+type ViewportValue = number;
+
+interface Viewport {
+  smallMobile: ViewportValue;
+  mobile: ViewportValue;
+  tablet: ViewportValue;
+  laptop: ViewportValue;
+  desktop: ViewportValue;
+}
+
 type Spacing = {
   25: string;
   50: string;
@@ -221,4 +231,6 @@ export type {
   Spacing,
   Palette,
   SpacingKey,
+  Viewport,
+  ViewportValue,
 };
