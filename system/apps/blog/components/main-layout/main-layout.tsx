@@ -5,6 +5,8 @@ import {
   Navigation,
   Link as FigaUILink,
   Button,
+  Font,
+  Box,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -45,9 +47,34 @@ const MainLayout = ({ children }: MainLayoutProps) => {
           socials={<>a</>}
           blocks={
             <>
-              <div>A</div>
-              <div>A</div>
-              <div>A</div>
+              <Box spacing={[150]}>
+                <Font variant="h5">About us</Font>
+                <Font variant="b1">
+                  We are an educational platform that produces high quality
+                  articles, courses and teaching materials. You can join our
+                  community via{' '}
+                  <FigaUILink variant="b1" motive="primary">
+                    <Link href="/community-form/">this form</Link>
+                  </FigaUILink>
+                  .
+                </Font>
+              </Box>
+              <Box spacing={[150]}>
+                <Font variant="h5">Recommended articles</Font>
+                <Font variant="b1">
+                  We are an educational platform that produces high quality
+                  articles, courses and teaching materials. You can join our
+                  community via{' '}
+                  <FigaUILink variant="b1" motive="primary">
+                    <Link href="/community-form/">this form</Link>
+                  </FigaUILink>
+                  .
+                </Font>
+              </Box>
+              <Box spacing={[150, 100, 100, 100, 100, 100]}>
+                <Font variant="h5">Navigation</Font>
+                {links}
+              </Box>
             </>
           }
         />
