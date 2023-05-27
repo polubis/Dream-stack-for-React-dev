@@ -1,12 +1,7 @@
-import { Font, Footer, Layout, Logo, Navigation } from '@system/figa-ui';
 import type { GetStaticProps } from 'next';
-import type { Article } from '@system/blog-models';
+import { HomeView, type HomeViewProps } from '../views/home';
 
-interface HomePageProps {
-  articles: Article[];
-}
-
-export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+export const getStaticProps: GetStaticProps<HomeViewProps> = async () => {
   return {
     props: {
       articles: [],
@@ -14,28 +9,8 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   };
 };
 
-const Index = ({ articles }: HomePageProps) => {
-  return (
-    <Layout
-      full
-      header={<Navigation logo={<Logo />} links={[]} action={<></>} />}
-      footer={
-        <Footer
-          logo={<div>L</div>}
-          socials={<>a</>}
-          blocks={
-            <>
-              <div>A</div>
-              <div>A</div>
-              <div>A</div>
-            </>
-          }
-        />
-      }
-    >
-      <Font variant="h1">Headline1</Font>
-    </Layout>
-  );
+const HomePage = ({ articles }: HomeViewProps) => {
+  return <HomeView articles={articles} />;
 };
 
-export default Index;
+export default HomePage;
