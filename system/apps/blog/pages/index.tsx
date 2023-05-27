@@ -1,7 +1,20 @@
-import { Font, Footer, Layout, Link, Logo, Navigation } from '@system/figa-ui';
-import NextLink from 'next/link';
+import { Font, Footer, Layout, Logo, Navigation } from '@system/figa-ui';
+import type { GetStaticProps } from 'next';
+import type { Article } from '@system/blog-models';
 
-const Index = () => {
+interface HomePageProps {
+  articles: Article[];
+}
+
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+  return {
+    props: {
+      articles: [],
+    },
+  };
+};
+
+const Index = ({ articles }: HomePageProps) => {
   return (
     <Layout
       full

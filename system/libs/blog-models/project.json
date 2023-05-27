@@ -1,0 +1,26 @@
+{
+  "name": "blog-models",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/blog-models/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/blog-models",
+        "main": "libs/blog-models/src/index.ts",
+        "tsConfig": "libs/blog-models/tsconfig.lib.json",
+        "assets": ["libs/blog-models/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/blog-models/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
