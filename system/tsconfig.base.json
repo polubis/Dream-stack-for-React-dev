@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@system/blog-api": ["libs/blog-api/src/index.ts"],
+      "@system/blog-api-models": ["libs/blog-api-models/src/index.ts"],
       "@system/blog-models": ["libs/blog-models/src/index.ts"],
       "@system/figa-hooks": ["libs/figa-hooks/src/index.ts"],
       "@system/figa-ui": ["libs/figa-ui/src/index.ts"],
