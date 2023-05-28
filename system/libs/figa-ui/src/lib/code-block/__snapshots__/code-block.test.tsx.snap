@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Code block can be used when [FRAGILE] assigns class names by properties 1`] = `
+<DocumentFragment>
+  <div
+    class="code-block my-class"
+  >
+    <div
+      class="code-block-header"
+    >
+      <div
+        class="code-block-header-dots"
+      >
+        <div />
+        <div />
+        <div />
+      </div>
+    </div>
+    <div
+      class="code-block-content"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Code block can be used when [FRAGILE] renders default dots as header 1`] = `
+<DocumentFragment>
+  <div
+    class="code-block"
+  >
+    <div
+      class="code-block-header"
+    >
+      <div
+        class="code-block-header-dots"
+      >
+        <div />
+        <div />
+        <div />
+      </div>
+    </div>
+    <div
+      class="code-block-content"
+    />
+  </div>
+</DocumentFragment>
+`;

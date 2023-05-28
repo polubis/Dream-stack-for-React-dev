@@ -5,6 +5,7 @@ import {
   center,
   central,
   column,
+  shape,
   font,
   row,
   size,
@@ -595,6 +596,57 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* footer.tsx */
+
+    /* code-block.tsx */
+
+    .code-block {
+        ${column()}
+
+        .code-block-header {
+            ${row()}
+            justify-content: space-between;
+            padding: ${tokens.spacing[150]} ${tokens.spacing[200]};
+            background: ${(props) => props.theme.codeBlock.header.bg};
+            border-top-right-radius: ${tokens.radius[50]};
+            border-top-left-radius: ${tokens.radius[50]};
+
+            .code-block-header-dots {
+                ${row()}
+
+                & > *:not(:last-child) {
+                    margin-right: ${tokens.spacing[150]};
+                }
+
+                & > * {
+                    ${shape(tokens.spacing[200], tokens.radius[1000])}
+
+                    &:first-of-type {
+                        background: ${(props) =>
+                          props.theme.codeBlock.header.dots.first.bg};
+                    }
+
+                    &:nth-of-type(2) {
+                        background: ${(props) =>
+                          props.theme.codeBlock.header.dots.second.bg};
+                    }
+
+                    &:last-of-type {
+                        background: ${(props) =>
+                          props.theme.codeBlock.header.dots.third.bg};
+                    }
+                }
+            }
+        }
+
+        .code-block-content {
+            padding: ${tokens.spacing[200]};
+            background: ${(props) => props.theme.codeBlock.content.bg};
+            border-bottom-right-radius: ${tokens.radius[50]};
+            border-bottom-left-radius: ${tokens.radius[50]};
+        }
+    }
+
+    /* code-block.tsx */
 `;
 
 export { GlobalStyle };
