@@ -16,4 +16,5 @@ export * from './lib/layout';
 export * from './lib/left-bar';
 export * from './lib/code-block';
 export * from './lib/logo-graphic';
+export * from './lib/icon';
 export * from './lib/shared';

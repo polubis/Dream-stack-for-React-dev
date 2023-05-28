@@ -151,6 +151,10 @@ const GlobalStyle = createGlobalStyle`
     .button-filled.button-primary {
         color: ${(props) => props.theme.button.filled.primary.color};
         background: ${(props) => props.theme.button.filled.primary.bg};
+
+        .icon path {
+            fill: ${(props) => props.theme.button.filled.primary.color};
+        }
     }
 
     .button-outlined.button-primary {
@@ -158,6 +162,10 @@ const GlobalStyle = createGlobalStyle`
         background: ${(props) => props.theme.button.outlined.primary.bg};
         border: 2px solid ${(props) =>
           props.theme.button.outlined.primary.borderColor};
+
+        .icon path {
+            fill: ${(props) => props.theme.button.outlined.primary.color};
+        }
     }
 
     .button-rounded.button-size-1 {
@@ -613,7 +621,7 @@ const GlobalStyle = createGlobalStyle`
         .code-block-header {
             ${row()}
             justify-content: space-between;
-            padding: ${tokens.spacing[150]} ${tokens.spacing[200]};
+            padding: ${tokens.spacing[200]};
             background: ${(props) => props.theme.codeBlock.header.bg};
             border-top-right-radius: ${tokens.radius[50]};
             border-top-left-radius: ${tokens.radius[50]};
@@ -679,6 +687,16 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* left-bar.tsx */
+
+    /* icon.tsx */
+
+    .icon {
+        path {
+            fill: ${(props) => props.theme.font.color};
+        }
+    }
+
+    /* icon.tsx */
 `;
 
 export { GlobalStyle };
