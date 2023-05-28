@@ -11,6 +11,11 @@ import {
 } from '@system/figa-ui';
 import type { HomeViewProps } from './defs';
 import { MainLayout } from '../../components';
+import {
+  GREEN_ON_SOFTWARE_AUTHOR,
+  GREEN_ON_SOFTWARE_DISCORD,
+  GREEN_ON_SOFTWARE_LINKEDIN,
+} from '../../constants';
 
 const HomeView = ({ articles }: HomeViewProps) => {
   return (
@@ -27,8 +32,7 @@ const HomeView = ({ articles }: HomeViewProps) => {
           <ArrowTopIcon />
         </Button>
         <a
-          className="icon-link"
-          href="https://discord.gg/PxXQayT3x3"
+          href={GREEN_ON_SOFTWARE_DISCORD}
           title="GreenOn Software Discord channel"
           target="_blank"
           rel="noreferrer"
@@ -38,7 +42,7 @@ const HomeView = ({ articles }: HomeViewProps) => {
           </Button>
         </a>
         <a
-          href="https://www.linkedin.com/in/adrian-po%C5%82ubi%C5%84ski-281ab2172/"
+          href={GREEN_ON_SOFTWARE_AUTHOR}
           title="Adrian Połubiński Linkedin"
           target="_blank"
           rel="noreferrer"
@@ -48,7 +52,7 @@ const HomeView = ({ articles }: HomeViewProps) => {
           </Button>
         </a>
         <a
-          href="https://www.linkedin.com/company/greenon-software/"
+          href={GREEN_ON_SOFTWARE_LINKEDIN}
           title="Linkedin GreenOn Software profile"
           target="_blank"
           rel="noreferrer"
