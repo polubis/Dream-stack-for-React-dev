@@ -3,6 +3,7 @@ import type { ButtonProps } from './defs';
 
 import { Button } from './button';
 import { BUTTON_SIZES } from './consts';
+import { DiscordIcon } from '../icon';
 
 export default {
   component: Button,
@@ -15,7 +16,7 @@ const Template: Story<{ variant: ButtonProps['variant'] }> = ({ variant }) => {
       {BUTTON_SIZES.map((size) => (
         <div key={'rounded-' + size} style={{ margin: '8px 0' }}>
           <Button shape="rounded" variant={variant} size={size}>
-            A
+            <DiscordIcon />
           </Button>
         </div>
       ))}

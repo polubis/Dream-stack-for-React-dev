@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon can be used when [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <svg
+    class="icon my-class"
+    fill="none"
+    height="24"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M13.0001 20H11.0001V8L5.50008 13.5L4.08008 12.08L12.0001 4.16L19.9201 12.08L18.5001 13.5L13.0001 8V20Z"
+    />
+  </svg>
+</DocumentFragment>
+`;
+
+exports[`Icon can be used when [FRAGILE] renders path with given size 1`] = `
+<DocumentFragment>
+  <svg
+    class="icon my-class"
+    fill="none"
+    height="36"
+    viewBox="0 0 24 24"
+    width="36"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M13.0001 20H11.0001V8L5.50008 13.5L4.08008 12.08L12.0001 4.16L19.9201 12.08L18.5001 13.5L13.0001 8V20Z"
+    />
+  </svg>
+</DocumentFragment>
+`;
