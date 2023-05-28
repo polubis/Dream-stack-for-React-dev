@@ -18,6 +18,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays counting panel 1`] =
             class="logo"
           >
             <svg
+              class="logo-graphic"
               fill="none"
               height="52"
               viewBox="0 0 52 52"
@@ -173,6 +174,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays first screen after l
             class="logo"
           >
             <svg
+              class="logo-graphic"
               fill="none"
               height="52"
               viewBox="0 0 52 52"
@@ -363,6 +365,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
             class="logo"
           >
             <svg
+              class="logo-graphic"
               fill="none"
               height="52"
               viewBox="0 0 52 52"
@@ -1917,6 +1920,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
             class="logo"
           >
             <svg
+              class="logo-graphic"
               fill="none"
               height="52"
               viewBox="0 0 52 52"
@@ -3471,6 +3475,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays next screen after fi
             class="logo"
           >
             <svg
+              class="logo-graphic"
               fill="none"
               height="52"
               viewBox="0 0 52 52"
@@ -3626,6 +3631,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays settings panel 1`] =
             class="logo"
           >
             <svg
+              class="logo-graphic"
               fill="none"
               height="52"
               viewBox="0 0 52 52"
@@ -3781,6 +3787,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays summary 1`] = `
             class="logo"
           >
             <svg
+              class="logo-graphic"
               fill="none"
               height="52"
               viewBox="0 0 52 52"
