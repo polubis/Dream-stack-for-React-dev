@@ -19,7 +19,7 @@ import {
   GREEN_ON_SOFTWARE_DISCORD,
   GREEN_ON_SOFTWARE_LINKEDIN,
   GREEN_ON_SOFTWARE_COMPANY,
-} from '../../constants';
+} from '../../consts';
 
 const LABELS = ['Home', 'Articles', 'Authors', 'Creator', 'Courses'] as const;
 const URLS = [
