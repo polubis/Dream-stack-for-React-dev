@@ -8,7 +8,7 @@ import {
   Url,
 } from './general';
 
-type ArticleStatus = 'Draft' | 'SendForApproval' | 'Rejected' | 'Published';
+type ArticleStatus = 'Draft' | 'WaitingForApproval' | 'NeedWork' | 'Accepted';
 
 interface ArticleDto {
   id: Id;
@@ -22,5 +22,15 @@ interface ArticleDto {
 }
 
 type GetArticlesResponse = PaginatedResponse<ArticleDto[]>;
+interface GetArticlesPayload {
+  Search?: string;
+  ItemsPerPage?: number;
+  CurrentPage?: number;
+}
 
-export type { ArticleDto, ArticleStatus, GetArticlesResponse };
+export type {
+  ArticleDto,
+  ArticleStatus,
+  GetArticlesResponse,
+  GetArticlesPayload,
+};
