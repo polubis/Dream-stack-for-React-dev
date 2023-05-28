@@ -374,6 +374,37 @@ const GlobalStyle = createGlobalStyle`
 
     .logo {
         ${row()}
+
+        .logo-text {
+            cursor: pointer;
+            flex-flow: wrap;
+            margin-left: ${tokens.spacing[200]};
+
+            span {
+                ${font('2rem', '0.15px', 'LexendBold', 500)}
+            }
+
+            .logo-text-top {
+                & > *:first-child {
+                    color: ${(props) => props.theme.logo.text.first};
+                }
+
+                & > *:last-child {
+                    color: ${(props) => props.theme.logo.text.second};
+                }
+            }
+
+            .logo-text-bottom {
+                color: ${(props) => props.theme.logo.text.last};
+            }
+        }
+    }
+
+    /* logo.tsx */
+
+    /* logo-graphic.tsx */
+
+    .logo-graphic {
         cursor: pointer;
 
         .logo-bg-first-from {
@@ -399,32 +430,9 @@ const GlobalStyle = createGlobalStyle`
         .logo-bg-last-to {
             stop-color: ${(props) => props.theme.logo.bg.last.to};
         }
-
-        .logo-text {
-            flex-flow: wrap;
-            margin-left: ${tokens.spacing[200]};
-
-            span {
-                ${font('2rem', '0.15px', 'LexendBold', 500)}
-            }
-
-            .logo-text-top {
-                & > *:first-child {
-                    color: ${(props) => props.theme.logo.text.first};
-                }
-
-                & > *:last-child {
-                    color: ${(props) => props.theme.logo.text.second};
-                }
-            }
-
-            .logo-text-bottom {
-                color: ${(props) => props.theme.logo.text.last};
-            }
-        }
     }
 
-    /* logo.tsx */
+    /* logo-graphic.tsx */
 
     /* emoji-picker.tsx */
 

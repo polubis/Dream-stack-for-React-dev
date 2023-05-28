@@ -6,6 +6,7 @@ exports[`Logo can be used when [FRAGILE] renders with default setup 1`] = `
     class="logo"
   >
     <svg
+      class="logo-graphic"
       fill="none"
       height="52"
       viewBox="0 0 52 52"
