@@ -46,7 +46,7 @@ interface UseScrollYConfig {
 /**
  * We'll return this object from hook.
  */
-interface UseScrollYReturn<T extends HTMLElement> {
+interface UseScrollYReturn<T extends HTMLElement = HTMLElement> {
   /**
    * Reference to any HTML element.
    * The @T parameter is the type of the element we'll
