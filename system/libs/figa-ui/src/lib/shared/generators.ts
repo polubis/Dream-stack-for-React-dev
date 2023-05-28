@@ -85,4 +85,22 @@ const appearIn = (
   animation: ${appearInAnimation(from, to)} 0.2s ease-in-out forwards;
 `;
 
-export { font, size, center, wrap, streched, row, column, appearIn, central };
+const shape = (size: string, radius: string): FlattenSimpleInterpolation =>
+  css`
+    height: ${size};
+    width: ${size};
+    border-radius: ${radius};
+  `;
+
+export {
+  font,
+  size,
+  center,
+  wrap,
+  streched,
+  row,
+  column,
+  appearIn,
+  central,
+  shape,
+};

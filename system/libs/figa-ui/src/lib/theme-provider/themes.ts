@@ -55,10 +55,12 @@ const tokens: Tokens = {
   dark: {
     50: '#2D2D2D',
     100: '#0a0a0a',
+    150: '#292929',
   },
   light: {
     50: '#f9f9f9',
     100: '#e5e5e5',
+    150: '#f3f3f3',
   },
   gray: {
     0: '#fbfbfb',
@@ -68,14 +70,23 @@ const tokens: Tokens = {
     200: '#949494',
     250: '#DADADA',
     300: '#3c3c3c',
+    350: '#565656',
+    400: '#dfdfdf',
+  },
+  green: {
+    50: '#b2d9ba',
   },
   blue: {
     200: '#69B6CE',
     600: '#354049',
+    650: '#79C1F3',
   },
   purple: {
     50: '#bf63bc',
     100: '#ffdafe',
+  },
+  yellow: {
+    50: '#FFD200',
   },
   red: {
     50: '#ff0000',
@@ -183,6 +194,25 @@ const light: Theme = {
     bg: tokens.common.white,
     borderColor: tokens.gray[50],
   },
+  codeBlock: {
+    header: {
+      bg: tokens.light[150],
+      dots: {
+        first: {
+          bg: tokens.green[50],
+        },
+        second: {
+          bg: tokens.yellow[50],
+        },
+        third: {
+          bg: tokens.blue[650],
+        },
+      },
+    },
+    content: {
+      bg: tokens.gray[400],
+    },
+  },
 };
 
 const dark: Theme = {
@@ -270,6 +300,25 @@ const dark: Theme = {
   footer: {
     bg: tokens.common.black,
     borderColor: tokens.gray[300],
+  },
+  codeBlock: {
+    header: {
+      bg: tokens.gray[350],
+      dots: {
+        first: {
+          bg: tokens.green[50],
+        },
+        second: {
+          bg: tokens.yellow[50],
+        },
+        third: {
+          bg: tokens.blue[650],
+        },
+      },
+    },
+    content: {
+      bg: tokens.dark[150],
+    },
   },
 };
 

@@ -84,10 +84,12 @@ interface Tokens {
   dark: {
     50: string;
     100: string;
+    150: string;
   };
   light: {
     50: string;
     100: string;
+    150: string;
   };
   red: {
     50: string;
@@ -95,6 +97,10 @@ interface Tokens {
   blue: {
     200: string;
     600: string;
+    650: string;
+  };
+  green: {
+    50: string;
   };
   gray: {
     0: string;
@@ -104,6 +110,11 @@ interface Tokens {
     200: string;
     250: string;
     300: string;
+    350: string;
+    400: string;
+  };
+  yellow: {
+    50: string;
   };
   purple: {
     50: string;
@@ -192,6 +203,25 @@ interface Theme {
   footer: {
     bg: string;
     borderColor: string;
+  };
+  codeBlock: {
+    header: {
+      bg: string;
+      dots: {
+        first: {
+          bg: string;
+        };
+        second: {
+          bg: string;
+        };
+        third: {
+          bg: string;
+        };
+      };
+    };
+    content: {
+      bg: string;
+    };
   };
 }
 
