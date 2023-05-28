@@ -15,7 +15,7 @@ import {
   GREEN_ON_SOFTWARE_AUTHOR,
   GREEN_ON_SOFTWARE_DISCORD,
   GREEN_ON_SOFTWARE_LINKEDIN,
-} from '../../constants';
+} from '../../consts';
 
 const HomeView = ({ articles }: HomeViewProps) => {
   return (

@@ -1,10 +1,3 @@
-import type { Lang } from '../models';
-
-const LANG: Record<Lang, Lang> = {
-  en: 'en',
-  pl: 'pl',
-};
-
 const GREEN_ON_SOFTWARE_COMPANY = 'https://greenonsoftware.com/';
 const GREEN_ON_SOFTWARE_LINKEDIN =
   'https://www.linkedin.com/company/greenon-software/';
@@ -13,7 +6,6 @@ const GREEN_ON_SOFTWARE_AUTHOR =
 const GREEN_ON_SOFTWARE_DISCORD = 'https://discord.gg/PxXQayT3x3';
 
 export {
-  LANG,
   GREEN_ON_SOFTWARE_COMPANY,
   GREEN_ON_SOFTWARE_AUTHOR,
   GREEN_ON_SOFTWARE_LINKEDIN,
