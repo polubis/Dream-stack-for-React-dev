@@ -1,8 +1,33 @@
 import type { ReactNode } from 'react';
 
 import { MDXProvider } from '@mdx-js/react';
+import { CodeBlock, Font, Link } from '@system/figa-ui';
+import type { Components } from '@mdx-js/react/lib';
 
-const components = {};
+const components: Components = {
+  h1: ({ children }) => <Font variant="h1">{children}</Font>,
+  h2: ({ children }) => <Font variant="h2">{children}</Font>,
+  h3: ({ children }) => <Font variant="h3">{children}</Font>,
+  h4: ({ children }) => <Font variant="h4">{children}</Font>,
+  h5: ({ children }) => <Font variant="h5">{children}</Font>,
+  h6: ({ children }) => <Font variant="h6">{children}</Font>,
+  p: ({ children }) => (
+    <Font element="p" variant="b1">
+      {children}
+    </Font>
+  ),
+  strong: ({ children }) => (
+    <Font element="strong" variant="b1">
+      {children}
+    </Font>
+  ),
+  a: (props) => (
+    <Link motive="primary" variant="b1">
+      <a {...props} />
+    </Link>
+  ),
+  pre: ({ children }) => <CodeBlock>{children}</CodeBlock>,
+};
 
 interface PageWrapperProps {
   children: ReactNode;

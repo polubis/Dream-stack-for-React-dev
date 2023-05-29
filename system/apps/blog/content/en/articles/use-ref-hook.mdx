@@ -1,14 +1,86 @@
----
-title: 'Hello, world!'
-layout: 'post'
----
+#### Prelude
 
-My MDX page
- 
-This is a list in markdown:
- 
-- One
-- Two
-- Three
- 
-Checkout my React component:
+We grouped our tests into functionalities, and now we need to understand how
+to divide tests by the context that they verify.
+
+#### What are the types of tests?
+
+Taking into account the area we are testing, the test can be divided into
+the following types:
+
+- Unit tests
+- Integration tests
+- E2e tests
+
+**Unit tests** are fast and precise. They are focused on a specific thing
+and answer concrete questions.
+
+In the context of a pizza creation it will be the following situations:
+
+```ts
+describe('Pizza meets standards when', () => {
+  // Take a meter and measure this.
+  it('size is between 30-40 cm', () => {});
+
+  // It's easy to check.
+  it('cake is brown', () => {});
+
+  // This is visible.
+  it('cheese is melted', () => {});
+
+  // You can touch cake.
+  it('cake is warm', () => {});
+
+  // This is visible.
+  it('plate is clean', () => {});
+});
+```
+
+**Integration tests** verifies cooperation. They are also quite fast. When we
+write them, we don't focus on specific things as in unit tests but on checking
+that "something" has been used as intended.
+
+Instead of checking if the pizza size, color, and other, we can check if it
+was made according to the recipe in the book. Below is an example of such
+tests:
+
+```ts
+describe('Pizza meets standards when', () => {
+  // We assume that the recipe contains the necessary steps.
+  it('recipe is used from page 31', () => {});
+
+  // Instead of verifying the size of the pizza and other
+  // necessary things, we assume that the cook
+  // already "knows" this and he will check it.
+  it('the person making the pizza is supervised by the cook', () => {});
+});
+```
+
+**E2e tests** focus on the user's perspective, not the implementation.
+They are technologically agnostic and usually execute for a long time (they
+operate on the finished application, not code fragments).
+
+Instead of checking what's going on in the kitchen, how the pizza is made
+and based on what recipe - we simply ask the customer what he thinks about
+the taste (the customer is our application).
+
+```ts
+describe('Pizza meets standards when', () => {
+  it('customer enjoys the taste', () => {});
+});
+```
+
+#### Summary
+
+As you might have noticed, mainly the context changes. We started with a
+single employee (code file), we moved to a communication perspective
+(several code files), and at the very end we left the implementation behind
+and simply asked the customer (application) what he thinks about our
+product.
+
+That's the difference between the different types of tests. Don't worry, it
+will get into your blood in the next lessons.
+
+If you enjoyed it, be sure to visit us on our
+[Linkedin](https://www.linkedin.com/in/adrian-po%C5%82ubi%C5%84ski-281ab2172/)
+where we regularly upload content from programming.

@@ -10,8 +10,8 @@ const FONT_VARIANT_ELEMENT_MAP: VariantElementMap = {
   h4: 'h4',
   h5: 'h5',
   h6: 'h6',
-  b1: 'span',
-  b2: 'span',
+  b1: 'p',
+  b2: 'p',
 };
 
 const Font = ({ className, variant, children, element }: FontProps) => {
