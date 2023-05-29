@@ -4,8 +4,9 @@ import type { ArticlePageParams, ArticlePageProps } from '../../../models';
 import { createArticlePath, getArticlesIds } from '../../../utils';
 import { readFileSync } from 'fs';
 import { serialize } from 'next-mdx-remote/serialize';
-import { PageWrapper } from '../../../components';
+import { MainLayout, PageWrapper } from '../../../components';
 import { MDXRemote } from 'next-mdx-remote';
+import { ArticleLayout } from '@system/figa-ui';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const ids = await getArticlesIds('en');
@@ -34,11 +35,15 @@ export const getStaticProps: GetStaticProps<ArticlePageProps> = async ({
   };
 };
 
-const ArticlePage = (props: ArticlePageProps) => {
+const ArticlePage = ({ source }: ArticlePageProps) => {
   return (
-    <PageWrapper>
-      <MDXRemote {...props.source} />
-    </PageWrapper>
+    <MainLayout>
+      <ArticleLayout>
+        <PageWrapper>
+          <MDXRemote {...source} />
+        </PageWrapper>
+      </ArticleLayout>
+    </MainLayout>
   );
 };
 

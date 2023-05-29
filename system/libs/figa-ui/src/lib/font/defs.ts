@@ -13,7 +13,8 @@ type SupportedFontElement =
   | 'span'
   | 'b'
   | 'strong'
-  | 'i';
+  | 'i'
+  | 'p';
 
 type VariantElementMap = Record<FontVariant, SupportedFontElement>;
 
