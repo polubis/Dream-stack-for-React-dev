@@ -323,11 +323,11 @@ exports[`Guitar notes teacher works when [FRAGILE] displays first screen after l
           class="box-item-wrapper"
           style="margin-bottom: 40px;"
         >
-          <span
+          <p
             class="font font-b1"
           >
             Take part in a fascinating sound guessing game. Learn our way to learn the fluency of an instrument.
-          </span>
+          </p>
         </div>
         <div
           class="box-item-wrapper"
@@ -501,7 +501,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
         style="padding: 28px 20px 28px 20px;"
       >
         <div
-          class="sc-dkrFOg djpinA guitar-fretboard"
+          class="sc-hLBbgP hoKKtc guitar-fretboard"
         >
           <div
             class="guitar-fretboard-frets"
@@ -2056,7 +2056,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
         style="padding: 28px 20px 28px 20px;"
       >
         <div
-          class="sc-dkrFOg djpinA guitar-fretboard"
+          class="sc-hLBbgP hoKKtc guitar-fretboard"
         >
           <div
             class="guitar-fretboard-frets"
@@ -3936,51 +3936,51 @@ exports[`Guitar notes teacher works when [FRAGILE] displays summary 1`] = `
           class="box-item-wrapper"
           style="margin-bottom: 8px;"
         >
-          <span
+          <p
             class="font font-b1"
           >
             Your questions: C C# D D# E
-          </span>
+          </p>
         </div>
         <div
           class="box-item-wrapper"
           style="margin-bottom: 8px;"
         >
-          <span
+          <p
             class="font font-b1"
           >
             Your answers: C C D# D E
-          </span>
+          </p>
         </div>
         <div
           class="box-item-wrapper"
           style="margin-bottom: 24px;"
         >
-          <span
+          <p
             class="font font-b1"
           >
             Your score: ✅ ❌ ❌ ❌ ✅
-          </span>
+          </p>
         </div>
         <div
           class="box-item-wrapper"
           style="margin-bottom: 8px;"
         >
-          <span
+          <p
             class="font font-b1"
           >
             If you liked the presentation, the code or the way I told the story - watch me on LinkedIn for more.
-          </span>
+          </p>
         </div>
         <div
           class="box-item-wrapper"
           style="margin-bottom: 24px;"
         >
-          <span
+          <p
             class="font font-b1"
           >
             Below links to community profiles, discord and the platform I am creating with my community.
-          </span>
+          </p>
         </div>
         <div
           class="box-item-wrapper"
@@ -4075,11 +4075,11 @@ exports[`Guitar notes teacher works when [FRAGILE] displays summary 1`] = `
           class="box-item-wrapper"
           style="margin-bottom: 8px;"
         >
-          <span
+          <p
             class="font font-b1"
           >
             Dont be afraid to join us. We learn together by doing projects together. We provide designs, written requirements, help in looking for the first job, event, materials, the opportunity to work on the project and add it to the portfolio, and all this for free.
-          </span>
+          </p>
         </div>
         <div
           class="box-item-wrapper"

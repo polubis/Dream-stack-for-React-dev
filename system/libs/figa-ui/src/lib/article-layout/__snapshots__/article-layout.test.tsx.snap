@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Article layout can be used when [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe cEfgB article-layout my-class"
+  />
+</DocumentFragment>
+`;
