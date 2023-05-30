@@ -5,4 +5,4 @@ interface ArticleLayoutProps {
   children: ReactNode;
 }
 
-export { ArticleLayoutProps };
+export type { ArticleLayoutProps };
