@@ -33,7 +33,14 @@
     "react-router-dom": "6.4.3",
     "rxjs": "^7.8.1",
     "styled-components": "5.3.6",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@codemirror/autocomplete": "^6.6.1",
+    "@codemirror/commands": "^6.2.4",
+    "@codemirror/lang-markdown": "^6.1.1",
+    "@codemirror/search": "^6.4.0",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@codemirror/view": "^6.11.0",
+    "codemirror": "^6.0.1"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",
