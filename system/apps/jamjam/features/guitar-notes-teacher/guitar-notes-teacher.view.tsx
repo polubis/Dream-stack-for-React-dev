@@ -106,7 +106,11 @@ const GuitarNotesTeacherView = ({
 
       {state.key === 'counting' && (
         <Modal>
-          <Box orientation="center-column" spacing={[150]}>
+          <Box
+            orientation="center-column"
+            spacing={[150]}
+            padding={[350, 250, 350, 250]}
+          >
             <ProgressCircle ms={3000} onEnd={actions.started} />
             <Font variant="b2">
               Prepare yourself! We will start for second...
@@ -116,14 +120,18 @@ const GuitarNotesTeacherView = ({
       )}
 
       {(state.key === 'started' || state.key === 'playing') && (
-        <Box>
+        <Box padding={[350, 250, 350, 250]}>
           <GuitarFretboard
             notation={state.settings.notation}
             guitar={state.guitar}
             NoteComponent={UnobviousNoteButton}
             onNoteClick={actions.answerQuestion}
           />
-          <Box orientation="center-column" spacing={[150]}>
+          <Box
+            orientation="center-column"
+            spacing={[150]}
+            padding={[350, 250, 350, 250]}
+          >
             <Font variant="h6">Find {getCurrentQuestion(state)} note!</Font>
             <ProgressCircle
               key={state.answers.length}
@@ -137,6 +145,7 @@ const GuitarNotesTeacherView = ({
       {state.key === 'finished' && (
         <Box
           spacing={[250, 100, 100, 300, 100, 300, 300, 100, 300]}
+          padding={[350, 250, 350, 250]}
           maxWidth="600px"
           margin="auto"
         >
@@ -171,7 +180,11 @@ const GuitarNotesTeacherView = ({
             Below links to community profiles, discord and the platform I am
             creating with my community.
           </Font>
-          <Box spacing={[150, 150, 150, 150]} variant="outlined">
+          <Box
+            spacing={[150, 150, 150, 150]}
+            padding={[350, 250, 350, 250]}
+            variant="outlined"
+          >
             <AdriansLink variant="b1" motive="primary">
               Adrian Połubiński on LinkedIn
             </AdriansLink>
