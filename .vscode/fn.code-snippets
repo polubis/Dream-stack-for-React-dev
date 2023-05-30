@@ -1,0 +1,23 @@
+{
+	"fn": {
+		"prefix": "fn",
+		"body": [
+		  "const ${1:example} = (${2:example}: ${3:example}): ${4:example} => {\"\": {",
+		  "  \"prefix\": \"\",",
+		  "  \"body\": [",
+		  "    \"const ${1:example} = (${2:example}: ${3:example}): ${4:example} => {\",",
+		  "    \"   return;\",",
+		  "    \"}\",",
+		  "    \"\",",
+		  "    \"export { ${1:example}}\"",
+		  "  ],",
+		  "  \"description\": \"\"",
+		  "}",
+		  "   return ${5:example};",
+		  "}",
+		  "",
+		  "export { ${1:example}}"
+		],
+		"description": ""
+	  }
+}
