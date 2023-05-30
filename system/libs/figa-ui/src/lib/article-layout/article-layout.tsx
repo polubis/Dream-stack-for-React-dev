@@ -1,6 +1,6 @@
 import c from 'classnames';
 import styled from 'styled-components';
-import { ArticleLayoutProps } from './defs';
+import type { ArticleLayoutProps } from './defs';
 import { tokens } from '../theme-provider';
 
 const Container = styled.div`
