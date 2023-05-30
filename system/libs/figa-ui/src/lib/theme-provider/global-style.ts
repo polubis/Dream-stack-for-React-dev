@@ -569,6 +569,7 @@ const GlobalStyle = createGlobalStyle`
 
     .footer {
         background: ${(props) => props.theme.footer.bg};
+        border-top: 1px solid ${(props) => props.theme.footer.borderColor};
 
         .footer-container {
             ${column()}
@@ -584,8 +585,8 @@ const GlobalStyle = createGlobalStyle`
                 padding-bottom: ${tokens.spacing[200]};
                 
                 @media ${T_DOWN} {
-                    grid-template-columns: 1fr;
-                    grid-template-rows: 1fr 1fr 1fr;
+                    grid-template-columns: auto;
+                    grid-template-rows: auto auto auto;
                 }
 
                 & > * {

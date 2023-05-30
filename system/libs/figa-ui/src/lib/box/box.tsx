@@ -14,12 +14,15 @@ const Box = ({
   children,
   orientation = 'column',
   variant = 'empty',
-  padding = [350, 250, 350, 250],
+  padding,
   margin,
   spacing,
   maxWidth,
 }: BoxProps) => {
-  const cachedPadding = useMemo(() => toCSSSpacingProp(padding), []);
+  const cachedPadding = useMemo(
+    () => (padding ? toCSSSpacingProp(padding) : undefined),
+    []
+  );
 
   const cachedMargin = useMemo(() => {
     if (Array.isArray(margin)) {

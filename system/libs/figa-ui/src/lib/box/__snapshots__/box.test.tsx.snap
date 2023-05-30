@@ -4,7 +4,7 @@ exports[`User is able to use box when [FRAGILE] allows to set maximum width 1`] 
 <DocumentFragment>
   <div
     class="box column empty"
-    style="padding: 28px 20px 28px 20px; margin: auto; max-width: 350px;"
+    style="margin: auto; max-width: 350px;"
   >
     <div>
       1
@@ -36,7 +36,6 @@ exports[`User is able to use box when [FRAGILE] assigns orientation classes 1`] 
 <DocumentFragment>
   <div
     class="box center-column empty"
-    style="padding: 28px 20px 28px 20px;"
   >
     <div>
       1
@@ -55,7 +54,6 @@ exports[`User is able to use box when [FRAGILE] creates space for columns 1`] = 
 <DocumentFragment>
   <div
     class="box column empty"
-    style="padding: 28px 20px 28px 20px;"
   >
     <div
       class="box-item-wrapper"
@@ -89,7 +87,6 @@ exports[`User is able to use box when [FRAGILE] creates space for rows 1`] = `
 <DocumentFragment>
   <div
     class="box center-row empty"
-    style="padding: 28px 20px 28px 20px;"
   >
     <div
       class="box-item-wrapper"
@@ -123,7 +120,6 @@ exports[`User is able to use box when [FRAGILE] renders with default setup 1`] =
 <DocumentFragment>
   <div
     class="box column empty"
-    style="padding: 28px 20px 28px 20px;"
   >
     <div>
       1

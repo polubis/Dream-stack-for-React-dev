@@ -1,6 +1,7 @@
 import type { Spacing, Theme, Themes, Tokens } from './defs';
 
 const spacing: Spacing = {
+  0: '0',
   25: '2px',
   50: '4px',
   100: '8px',
