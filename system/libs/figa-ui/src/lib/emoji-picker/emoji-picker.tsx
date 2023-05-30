@@ -5,6 +5,7 @@ import { Modal } from '../modal';
 import { Font } from '../font';
 import { EMOJI_DATA } from './consts';
 import { Button } from '../button';
+import c from 'classnames';
 
 const EmojiPicker = ({
   className,
@@ -17,11 +18,9 @@ const EmojiPicker = ({
     onSelect(e.currentTarget.getAttribute('data-emoji')!);
   };
 
-  const formattedClassName = className ? ` ${className}` : '';
-
   return (
     <Modal>
-      <div className={`emoji-picker${formattedClassName}`}>
+      <div className={c('emoji-picker', className)}>
         <Font className="emoji-picker-header" variant="h6">
           {title}
         </Font>
