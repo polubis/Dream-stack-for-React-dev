@@ -6,4 +6,4 @@ interface CodeBlockProps {
   children: ReactNode;
 }
 
-export { CodeBlockProps };
+export type { CodeBlockProps };
