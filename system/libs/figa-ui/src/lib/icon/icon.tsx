@@ -1,4 +1,4 @@
-import { IconProps } from './defs';
+import type { IconProps } from './defs';
 
 import c from 'classnames';
 

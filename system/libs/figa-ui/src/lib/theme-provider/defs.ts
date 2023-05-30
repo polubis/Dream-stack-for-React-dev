@@ -223,6 +223,11 @@ interface Theme {
       bg: string;
     };
   };
+  list: {
+    marker: {
+      bg: string;
+    };
+  };
 }
 
 type ThemeKey = 'dark' | 'light';
