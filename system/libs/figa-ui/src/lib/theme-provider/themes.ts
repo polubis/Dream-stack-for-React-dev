@@ -213,6 +213,11 @@ const light: Theme = {
       bg: tokens.gray[400],
     },
   },
+  list: {
+    marker: {
+      bg: tokens.primary[50],
+    },
+  },
 };
 
 const dark: Theme = {
@@ -318,6 +323,11 @@ const dark: Theme = {
     },
     content: {
       bg: tokens.dark[150],
+    },
+  },
+  list: {
+    marker: {
+      bg: tokens.primary[50],
     },
   },
 };

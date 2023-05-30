@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List can be used when [FRAGILE] allows to render ordered list 1`] = `
+<DocumentFragment>
+  <ol
+    class="list"
+  >
+    <li>
+      First item
+    </li>
+    <li>
+      Second item
+    </li>
+    <li>
+      Third item
+    </li>
+    <li>
+      Fourth item
+    </li>
+  </ol>
+</DocumentFragment>
+`;
+
+exports[`List can be used when [FRAGILE] allows to render unordered list 1`] = `
+<DocumentFragment>
+  <ul
+    class="list"
+  >
+    <li>
+      First item
+    </li>
+    <li>
+      Second item
+    </li>
+    <li>
+      Third item
+    </li>
+    <li>
+      Fourth item
+    </li>
+  </ul>
+</DocumentFragment>
+`;
+
+exports[`List can be used when [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <ul
+    class="list my-class"
+  >
+    <li
+      class="first-item-class"
+    >
+      First item
+    </li>
+    <li>
+      Second item
+    </li>
+  </ul>
+</DocumentFragment>
+`;

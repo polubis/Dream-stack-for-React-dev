@@ -2,4 +2,4 @@ interface CodeProps {
   children: string;
 }
 
-export { CodeProps };
+export type { CodeProps };

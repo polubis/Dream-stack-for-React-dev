@@ -697,6 +697,52 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* icon.tsx */
+
+    /* list.tsx */
+
+    .list {
+        list-style: none;
+
+        & > *:not(:last-child) {
+            margin-bottom: ${tokens.spacing[150]};
+        }
+
+        li {
+            ${row()}
+            ${font('1.6rem', '0.15px', 'LexendBold', 500)}
+
+            &::before {
+                margin-right: ${tokens.spacing[150]};
+            }
+        }
+    }
+    
+    ul.list {
+        li {
+            &::before {
+                content: '';
+                ${shape(tokens.spacing[100], tokens.radius[1000])}
+                background: ${(props) => props.theme.list.marker.bg};
+            }
+
+        }
+    }
+    
+    ol.list {
+        counter-reset: numbers;
+
+        li {
+            counter-increment: numbers;
+
+            &::before {
+                content: counter(numbers) ". ";
+                ${font('2rem', '0.15px', 'LexendBold', 500)}
+                color: ${(props) => props.theme.list.marker.bg};
+            }
+        }
+    }
+
+    /* list.tsx */
 `;
 
 export { GlobalStyle };
