@@ -21,8 +21,4 @@
     <ProjectReference Include="..\GreenOnSoftware.DataAccess\GreenOnSoftware.DataAccess.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="SnippetCreator\" />
-  </ItemGroup>
-
 </Project>
