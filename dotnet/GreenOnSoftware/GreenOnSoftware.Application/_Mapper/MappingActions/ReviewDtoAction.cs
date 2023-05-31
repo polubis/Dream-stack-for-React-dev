@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using GreenOnSoftware.Application.Dtos;
 using GreenOnSoftware.Commons.Context;
-using GreenOnSoftware.Core.Models;
+using GreenOnSoftware.Core.Models.Reviews;
 
 namespace GreenOnSoftware.Application.Mapper.MappingActions;
 

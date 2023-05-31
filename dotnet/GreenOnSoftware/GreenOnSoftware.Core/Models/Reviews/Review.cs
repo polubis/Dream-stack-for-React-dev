@@ -1,7 +1,7 @@
 ﻿using GreenOnSoftware.Core.Identity;
 using Microsoft.AspNetCore.Identity;
 
-namespace GreenOnSoftware.Core.Models;
+namespace GreenOnSoftware.Core.Models.Reviews;
 
 public class Review : Entity
 {

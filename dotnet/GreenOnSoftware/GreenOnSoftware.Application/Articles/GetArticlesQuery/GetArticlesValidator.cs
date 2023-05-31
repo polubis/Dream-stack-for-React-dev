@@ -1,6 +1,6 @@
-﻿using GreenOnSoftware.Core.Models;
-using FluentValidation;
+﻿using FluentValidation;
 using GreenOnSoftware.Commons.Context;
+using GreenOnSoftware.Core.Enums;
 
 namespace GreenOnSoftware.Application.Articles.GetArticlesQuery;
 

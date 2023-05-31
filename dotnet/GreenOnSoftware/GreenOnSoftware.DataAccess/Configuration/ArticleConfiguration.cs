@@ -1,4 +1,5 @@
 ﻿using GreenOnSoftware.Commons.Extensions;
+using GreenOnSoftware.Core.Enums;
 using GreenOnSoftware.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
