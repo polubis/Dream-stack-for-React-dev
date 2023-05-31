@@ -3,7 +3,7 @@ using GreenOnSoftware.Commons.Context;
 using GreenOnSoftware.Commons.Dtos;
 using GreenOnSoftware.Commons.Extensions;
 using GreenOnSoftware.Commons.Resources;
-using GreenOnSoftware.Core.Models;
+using GreenOnSoftware.Core.Enums;
 using GreenOnSoftware.DataAccess;
 using MediatR;
 using Microsoft.EntityFrameworkCore;

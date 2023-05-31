@@ -9,7 +9,7 @@ using GreenOnSoftware.Commons.Context;
 
 namespace GreenOnSoftware.Application.Articles.UpdateArticleCommand;
 
-internal class UpdateArticleHandler : IRequestHandler<UpdateArticle, Result>
+internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Result>
 {
     private readonly GreenOnSoftwareDbContext _dbContext;
     private readonly IClock _clock;

@@ -6,7 +6,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using GreenOnSoftware.Application.Services.Interfaces;
 using GreenOnSoftware.Commons.Context;
-using GreenOnSoftware.Core.Models;
+using GreenOnSoftware.Core.Enums;
 
 namespace GreenOnSoftware.Application.Articles.DeleteArticleCommand;
 

@@ -1,4 +1,7 @@
-﻿using GreenOnSoftware.Core.Identity;
+﻿using GreenOnSoftware.Core.Enums;
+using GreenOnSoftware.Core.Identity;
+using GreenOnSoftware.Core.Models.Ratings;
+using GreenOnSoftware.Core.Models.Reviews;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 
@@ -147,7 +150,7 @@ public class Article : Entity
         {
             var annonymousRate = AnnonymousRates.FirstOrDefault(x => x.UserId == userId)
                 ?? throw new InvalidOperationException("This article is not rated by user!");
-            
+
             annonymousRate.Update(value, avatarName, operationDate);
         }
     }
@@ -211,7 +214,7 @@ public class Article : Entity
 
     public void AddReview(string reviewContent, Guid reviewerId, DateTime operationDate)
     {
-        if(Status == Status.Draft)
+        if (Status == Status.Draft)
         {
             throw new InvalidOperationException("Draft article cannot be reviewed!");
         }
@@ -221,7 +224,7 @@ public class Article : Entity
 
     public void UpdateReview(Guid reviewId, string reviewContent, Guid reviewerId, DateTime operationDate)
     {
-        var review = Reviews.FirstOrDefault(x => x.Id == reviewId && x.ReviewerId == reviewerId) 
+        var review = Reviews.FirstOrDefault(x => x.Id == reviewId && x.ReviewerId == reviewerId)
             ?? throw new InvalidOperationException("Review does not exists!");
 
         review.Update(reviewContent, operationDate);
@@ -229,7 +232,7 @@ public class Article : Entity
 
     public void DeleteReview(Guid reviewId, Guid reviewerId)
     {
-        var review = Reviews.FirstOrDefault(x => x.Id == reviewId && x.ReviewerId == reviewerId) 
+        var review = Reviews.FirstOrDefault(x => x.Id == reviewId && x.ReviewerId == reviewerId)
             ?? throw new InvalidOperationException("Review does not exists!");
 
         Reviews.Remove(review);
@@ -237,7 +240,7 @@ public class Article : Entity
 
     public Review GetReview(Guid reviewId)
     {
-        var review = Reviews.FirstOrDefault(x => x.Id == reviewId) 
+        var review = Reviews.FirstOrDefault(x => x.Id == reviewId)
             ?? throw new InvalidOperationException("Review does not exists!");
 
         return review;

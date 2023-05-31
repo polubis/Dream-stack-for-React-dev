@@ -1,5 +1,7 @@
 ﻿using GreenOnSoftware.Core.Identity;
 using GreenOnSoftware.Core.Models;
+using GreenOnSoftware.Core.Models.Reviews;
+using GreenOnSoftware.Core.Models.Snippets;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +18,7 @@ namespace GreenOnSoftware.DataAccess
         public DbSet<Article> Articles { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Snippet> Snippets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
