@@ -5,6 +5,7 @@ using GreenOnSoftware.Application.Articles.GetArticlesQuery;
 using GreenOnSoftware.Application.Mapper.MappingActions;
 using GreenOnSoftware.Application.Dtos;
 using Microsoft.AspNetCore.Identity;
+using GreenOnSoftware.Core.Models.Reviews;
 
 namespace GreenOnSoftware.Application.Mapper;
 

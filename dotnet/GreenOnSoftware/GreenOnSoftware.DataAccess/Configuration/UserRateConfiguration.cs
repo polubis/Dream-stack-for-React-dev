@@ -1,4 +1,4 @@
-﻿using GreenOnSoftware.Core.Models;
+﻿using GreenOnSoftware.Core.Models.Ratings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

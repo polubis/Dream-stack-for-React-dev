@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using GreenOnSoftware.Commons.Context;
 using GreenOnSoftware.Commons.Dtos;
 using GreenOnSoftware.Commons.Extensions;
+using GreenOnSoftware.Core.Enums;
 using GreenOnSoftware.Core.Models;
 using GreenOnSoftware.DataAccess;
 using MediatR;

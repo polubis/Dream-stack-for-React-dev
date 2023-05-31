@@ -4,6 +4,6 @@ public static class StringExtensions
 {
     public static T ToEnum<T>(this string description) where T : Enum
     {
-        return (T)Enum.Parse(typeof(T), description, true);
+        return (T)Enum.Parse(typeof(T), description, ignoreCase: true);
     }
 }
