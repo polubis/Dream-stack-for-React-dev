@@ -1,0 +1,22 @@
+name: Tests
+
+on:
+  pull_request:
+    branches: ["develop", "main"]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install dependencies
+        run: |
+          cd system
+          npm install --legacy-peer-deps
+      - name: Jest run test
+        run: |
+          cd system
+          npm run test:checkAll
