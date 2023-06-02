@@ -3,6 +3,8 @@ import type { Extension } from '@codemirror/state';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
 import { tags as t } from '@lezer/highlight';
 
+const CODE_LINE_HEIGHT = 22;
+
 const dark0 = '#282828',
   dark1 = '#3c3836',
   dark3 = '#665c54',
@@ -52,6 +54,7 @@ const gruvboxDarkTheme = EditorView.theme(
 
     '.cm-content': {
       caretColor: cursor,
+      padding: 0,
     },
 
     '.cm-scroller': {
@@ -220,7 +223,9 @@ const gruvboxDarkHighlightStyle = HighlightStyle.define([
   { tag: t.invalid, color: orange, borderBottom: `1px dotted ${invalid}` },
 ]);
 
-export const DEFAULT_THEME: Extension = [
+const DEFAULT_THEME: Extension = [
   gruvboxDarkTheme,
   syntaxHighlighting(gruvboxDarkHighlightStyle),
 ];
+
+export { CODE_LINE_HEIGHT, DEFAULT_THEME };
