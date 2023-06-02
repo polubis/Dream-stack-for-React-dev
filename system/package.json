@@ -16,7 +16,8 @@
     "test:jamjam": "npx nx run jamjam:test --watch",
     "nx:cloud-update": "npx nx g @nrwl/nx-cloud:init",
     "e2e:jamjam": "npx nx run jamjam-e2e:e2e --watch",
-    "e2e:checkAll": "npx nx run-many --target=e2e --all --parallel"
+    "e2e:checkAll": "npx nx run-many --target=e2e --all --parallel",
+    "chromatic": "npx run chromatic"
   },
   "private": true,
   "dependencies": {

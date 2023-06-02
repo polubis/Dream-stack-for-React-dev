@@ -2,7 +2,7 @@ name: Chromatic
 
 on:
   pull_request:
-    branches: ["main"]
+    branches: ["develop", "main"]
 
 jobs:
   chromatic-deployment:
@@ -16,9 +16,11 @@ jobs:
         run: |
           cd system
           npm install --legacy-peer-deps
-      - name: Publish to Chromatic
-        uses: chromaui/action@v1
-        with:
-          projectToken: ${{ secrets.FIGA_UI_CHROMATIC_TOKEN }}
-          buildScriptName: build-storybook
-          workingDir: system/libs/figa-ui/.storybook
+      - name: Build storybook
+          run: |
+            cd system
+            npm run build-storybook
+      - name: Build storybook
+          run: |
+            cd system/dist/storybook/figa-ui
+            npm run chromatic --project-token=${{ secrets.FIGA_UI_CHROMATIC_TOKEN }}
