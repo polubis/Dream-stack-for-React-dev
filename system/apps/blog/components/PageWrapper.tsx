@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import { MDXProvider } from '@mdx-js/react';
 import { Code, CodeBlock, Font, Link } from '@system/figa-ui';
-import { Components } from '@mdx-js/react/lib';
+import type { Components } from '@mdx-js/react/lib';
 
 const components: Components = {
   h1: ({ children }) => <Font variant="h1">{children}</Font>,
