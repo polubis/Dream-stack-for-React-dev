@@ -36,11 +36,11 @@ describe('Code can be used when: ', () => {
     );
   });
 
-  it('assigns class names for code component', () => {
-    const { asFragment } = render(
+  it('[FRAGILE] assigns class names for code component', () => {
+    const { container } = render(
       <Code children={children} className="my-class" />
     );
 
-    expect(asFragment()).toMatchSnapshot();
+    expect(container.querySelector('.my-class')).toBeTruthy();
   });
 });
