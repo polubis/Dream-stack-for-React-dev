@@ -9,7 +9,7 @@ public class Snippet : Entity
         
     }
 
-    public Snippet(string name, string description, IList<SnippetFrame> frames, string gifUrl)
+    public Snippet(string name, string description, IList<SnippetFrame> frames, string? gifUrl)
     {
         Id = Guid.NewGuid();
         Name = name;
@@ -24,5 +24,5 @@ public class Snippet : Entity
 
     public IList<SnippetFrame> Frames { get; private set; }
 
-    public string GifUrl { get; private set; }
+    public string? GifUrl { get; private set; }
 }

@@ -20,8 +20,7 @@ public class SnippetConfiguration : IEntityTypeConfiguration<Snippet>
             .IsRequired();
 
         builder.Property(x => x.GifUrl)
-            .HasMaxLength(300)
-            .IsRequired();
+            .HasMaxLength(300);
 
         builder.Property(x => x.Frames)
             .HasConversion<SnippetFramesValueConverter>();
