@@ -18,6 +18,7 @@ using GreenOnSoftware.Application.Articles.AddArticleCommand;
 using GreenOnSoftware.Api.Filters;
 using GreenOnSoftware.Api.Context;
 using GreenOnSoftware.Application.Mapper;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,8 @@ builder.Services.AddDbContext<GreenOnSoftwareDbContext>(options =>
   options.UseSqlServer(builder.Configuration.GetConnectionString("GreenOnSoftware")));
 
 builder.Services.AddIdentity();
+
+builder.Services.AddCors();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(opt => {
@@ -85,6 +88,13 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 app.UseSession();
+
+app.UseCors(bulider =>
+    bulider
+        .WithOrigins(builder.Configuration.GetSection("CorsOriginsUrls").Get<string[]>())
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
 
 app.UseAuthentication();
 app.UseAuthorization();
