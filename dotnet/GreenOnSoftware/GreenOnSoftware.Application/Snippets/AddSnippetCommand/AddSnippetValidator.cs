@@ -19,8 +19,7 @@ public class AddSnippetValidator : AbstractValidator<AddSnippet>
             .NotEmpty();
 
         RuleFor(x => x.GifUrl)
-            .MaximumLength(300)
-            .NotEmpty();
+            .MaximumLength(300);
 
         //SnippetFrame
 
