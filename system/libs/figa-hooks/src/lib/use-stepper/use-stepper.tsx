@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import type { Step } from './defs';
+import type { Step, UseStepperPayload, UseStepperReturn } from './defs';
 
 const cannotFindStepError = 'Cannot find step';
 
@@ -28,13 +28,21 @@ const is = <S extends Step, K extends S['key']>(
  * @returns {UseStepperReturn} - API to consume.
  */
 const useStepper = <S extends Step, R extends readonly Step[]>(
-  initialKey: S['key'],
-  steps: R
-) => {
+  ...payload: UseStepperPayload<S, R>
+): UseStepperReturn<S> => {
+  const [initialKey, steps] = payload;
   const [key, setKey] = useState(initialKey);
 
   const set = <K extends S['key']>(key: K): void => {
     setKey(key);
+  };
+
+  const first = (): void => {
+    setKey(steps[0].key);
+  };
+
+  const last = (): void => {
+    setKey(steps[steps.length - 1].key);
   };
 
   const previous = (): void => {
@@ -61,7 +69,7 @@ const useStepper = <S extends Step, R extends readonly Step[]>(
     return foundStep as S;
   }, [key, steps]);
 
-  return [step, { is, set, previous, next }] as const;
+  return [step, { is, set, previous, next, first, last }];
 };
 
 export { useStepper };
