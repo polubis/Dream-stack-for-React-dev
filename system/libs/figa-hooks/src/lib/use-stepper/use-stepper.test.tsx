@@ -79,4 +79,28 @@ describe('Step can be changed when', () => {
 
     expect(result.current[0]).toEqual(steps[2]);
   });
+
+  it('goes to first step', () => {
+    const { result } = renderHook(() =>
+      useStepper<UnionOfSteps, Steps>('1', steps)
+    );
+
+    act(() => {
+      result.current[1].first();
+    });
+
+    expect(result.current[0]).toEqual(steps[0]);
+  });
+
+  it('goes to last step', () => {
+    const { result } = renderHook(() =>
+      useStepper<UnionOfSteps, Steps>('1', steps)
+    );
+
+    act(() => {
+      result.current[1].last();
+    });
+
+    expect(result.current[0]).toEqual(steps[2]);
+  });
 });
