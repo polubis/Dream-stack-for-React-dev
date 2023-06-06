@@ -744,6 +744,18 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* list.tsx */
+
+    /* blackquote.tsx */
+
+    .blackquote {
+        font-size: 18px;
+        color: #000000;
+        background-color: #f5f5f5;
+        width: fit-content;
+        padding: 12px;
+    }
+
+    /* blackquote.tsx */
 `;
 
 export { GlobalStyle };
