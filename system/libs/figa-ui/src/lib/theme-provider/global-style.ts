@@ -744,6 +744,19 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* list.tsx */
+
+    /* image.tsx */
+
+    .image {
+        position: relative;
+        ${column()}
+
+        .image-caption {
+            margin-top: ${tokens.spacing[100]};
+        }
+    }
+
+    /* image.tsx */
 `;
 
 export { GlobalStyle };

@@ -30,6 +30,22 @@ const Container = styled.div`
   .code-block + .font-b1 {
     margin-top: ${tokens.spacing[200]};
   }
+
+  .list + .font-b1 {
+    margin-top: ${tokens.spacing[250]};
+  }
+
+  .font-b1 + .list {
+    margin-top: ${tokens.spacing[250]};
+  }
+
+  .image + .font-b1 {
+    margin-top: ${tokens.spacing[250]};
+  }
+
+  .font-b1 + .image {
+    margin-top: ${tokens.spacing[250]};
+  }
 `;
 
 const ArticleLayout = ({ className, children }: ArticleLayoutProps) => {

@@ -15,6 +15,10 @@ the following types:
 **Unit tests** are fast and precise. They are focused on a specific thing
 and answer concrete questions.
 
+1. Unit tests
+2. Integration tests
+3. E2e tests
+
 In the context of a pizza creation it will be the following situations:
 
 ```ts
@@ -36,9 +40,12 @@ describe('Pizza meets standards when', () => {
 });
 ```
 
-**Integration tests** verifies cooperation. They are also quite fast. When we
+**Integration tests** *verifies cooperation*. They are also quite fast. When we
 write them, we don't focus on specific things as in unit tests but on checking
 that "something" has been used as intended.
+
+![Any image alt text](https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg)
+*Any image caption*
 
 Instead of checking if the pizza size, color, and other, we can check if it
 was made according to the recipe in the book. Below is an example of such

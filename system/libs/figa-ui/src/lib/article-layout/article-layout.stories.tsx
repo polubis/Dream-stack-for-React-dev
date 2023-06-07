@@ -6,6 +6,8 @@ import { CodeBlock } from '../code-block';
 import { Link } from '../link';
 import { Box } from '../box';
 import { Code } from '../code';
+import { Image } from '../image'
+import { List, ListItem } from '../list';
 
 export default {
   component: ArticleLayout,
@@ -26,10 +28,20 @@ const Template: Story = () => {
           Taking into account the area we are testing, the test can be divided
           into the following types:
         </Font>
+        <List >
+          <ListItem>First</ListItem>
+          <ListItem>Second</ListItem>
+          <ListItem>Last</ListItem>
+        </List>
         <Font variant="b1">
           **Unit tests** are fast and precise. They are focused on a specific
           thing and answer concrete questions.
         </Font>
+        <List ordered>
+          <ListItem>First</ListItem>
+          <ListItem>Second</ListItem>
+          <ListItem>Last</ListItem>
+        </List>
         <Font variant="b1">
           In the context of a pizza creation it will be the following
           situations:
@@ -102,10 +114,16 @@ const Template: Story = () => {
           behind and simply asked the customer (application) what he thinks
           about our product.
         </Font>
+        <Image>
+          <img src="https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg" />
+        </Image>
         <Font variant="b1">
           That's the difference between the different types of tests. Don't
           worry, it will get into your blood in the next lessons.
         </Font>
+        <Image caption='My kitty'>
+          <img src="https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg" />
+        </Image>
         <Font variant="b1">
           If you enjoyed it, be sure to visit us on our{' '}
           <Link variant="b1" motive="primary">
