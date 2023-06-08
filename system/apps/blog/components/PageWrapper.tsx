@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 import { MDXProvider } from '@mdx-js/react';
-import { Code, CodeBlock, Font, Link } from '@system/figa-ui';
+import { Code, CodeBlock, Font, Link, List, ListItem } from '@system/figa-ui';
 import type { Components } from '@mdx-js/react/lib';
 
 const components: Components = {
@@ -28,6 +28,9 @@ const components: Components = {
   ),
   pre: CodeBlock,
   code: Code,
+  ul: List,
+  ol: ({ children }) => <List ordered>{children}</List>,
+  li: ListItem,
 };
 
 interface PageWrapperProps {
