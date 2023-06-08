@@ -3,7 +3,7 @@
 exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 1`] = `
 <DocumentFragment>
   <span
-    class="font font-h6 link primary"
+    class="font h6 link primary"
   >
     <a
       href="https://greenonsoftware.com/"
@@ -19,7 +19,7 @@ exports[`User is able to use common links when [FRAGILE] links contains urls and
 exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 2`] = `
 <DocumentFragment>
   <span
-    class="font font-b1 link primary"
+    class="font b1 link primary"
   >
     <a
       href="https://www.linkedin.com/in/adrian-po%C5%82ubi%C5%84ski-281ab2172"
@@ -35,7 +35,7 @@ exports[`User is able to use common links when [FRAGILE] links contains urls and
 exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 3`] = `
 <DocumentFragment>
   <span
-    class="font font-b1 link primary"
+    class="font b1 link primary"
   >
     <a
       href="https://www.linkedin.com/company/greenon-software/"
@@ -51,7 +51,7 @@ exports[`User is able to use common links when [FRAGILE] links contains urls and
 exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 4`] = `
 <DocumentFragment>
   <span
-    class="font font-b1 link primary"
+    class="font b1 link primary"
   >
     <a
       href="https://github.com/polubis/Dream-stack-for-React-dev"
@@ -67,7 +67,7 @@ exports[`User is able to use common links when [FRAGILE] links contains urls and
 exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 5`] = `
 <DocumentFragment>
   <span
-    class="font font-b1 link primary"
+    class="font b1 link primary"
   >
     <a
       href="https://github.com/polubis/WebBlog"
@@ -83,7 +83,7 @@ exports[`User is able to use common links when [FRAGILE] links contains urls and
 exports[`User is able to use common links when [FRAGILE] links contains urls and attributes 6`] = `
 <DocumentFragment>
   <span
-    class="font font-b1 link primary"
+    class="font b1 link primary"
   >
     <a
       href="https://github.com/users/polubis/projects/1"

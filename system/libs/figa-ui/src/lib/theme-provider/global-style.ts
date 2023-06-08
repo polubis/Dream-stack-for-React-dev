@@ -75,39 +75,43 @@ const GlobalStyle = createGlobalStyle`
 
     .font {
         color: ${(props) => props.theme.font.color};
-    }
 
-    .font-h1 {
-        ${font('9.8rem', '-1.5px', 'LexendLight', 300)}
-    }
+        &.h1 {
+            ${font('9.8rem', '-1.5px', 'LexendLight', 300)}
+        }
 
-    .font-h2 {
-        ${font('6.1rem', '-0.5px', 'LexendLight', 300)}
-    }
+        &.h2 {
+            ${font('6.1rem', '-0.5px', 'LexendLight', 300)}
+        }
 
-    .font-h3 {
-        ${font('4.9rem', '0px', 'LexendRegular', 400)}
-    }
+        &.h3 {
+            ${font('4.9rem', '0px', 'LexendRegular', 400)}
+        }
 
-    .font-h4 {
-        ${font('3.5rem', '0.25px', 'LexendRegular', 400)}
-    }
+        &.h4 {
+            ${font('3.5rem', '0.25px', 'LexendRegular', 400)}
+        }
 
-    .font-h5 {
-        ${font('2.4rem', '0px', 'LexendRegular', 400)}
-    }
+        &.h5 {
+            ${font('2.4rem', '0px', 'LexendRegular', 400)}
+        }
 
-    .font-h6 {
-        ${font('2rem', '0.15px', 'LexendMedium', 500)}
-    }
+        &.h6 {
+            ${font('2rem', '0.15px', 'LexendMedium', 500)}
+        }
 
-    .font-b1 {
-        ${font('1.6rem', '0.15px', 'LexendRegular', 400)}
-        line-height: 2.4rem;
-    }
+        &.b1 {
+            ${font('1.6rem', '0.15px', 'LexendRegular', 400)}
+            line-height: 2.4rem;
+        }
 
-    .font-b2 {
-        ${font('1.4rem', '0.1px', 'LexendMedium', 500)}
+        &.b2 {
+            ${font('1.4rem', '0.1px', 'LexendMedium', 500)}
+        }
+
+        &.italic {
+            font-style: italic;
+        }
     }
 
     /* font.tsx */
