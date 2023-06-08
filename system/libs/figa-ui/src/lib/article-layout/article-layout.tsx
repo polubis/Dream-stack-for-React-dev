@@ -30,6 +30,14 @@ const Container = styled.div`
   .code-block + .b1 {
     margin-top: ${tokens.spacing[200]};
   }
+
+  .list + .b1 {
+    margin-top: ${tokens.spacing[250]};
+  }
+
+  .b1 + .list {
+    margin-top: ${tokens.spacing[250]};
+  }
 `;
 
 const ArticleLayout = ({ className, children }: ArticleLayoutProps) => {
