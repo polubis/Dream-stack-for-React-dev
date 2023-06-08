@@ -111,7 +111,12 @@ const tokens: Tokens = {
 
 const light: Theme = {
   font: {
-    color: tokens.common.black,
+    default: {
+      color: tokens.common.black,
+    },
+    primary: {
+      color: tokens.primary[50],
+    },
   },
   body: {
     bg: tokens.common.white,
@@ -143,16 +148,6 @@ const light: Theme = {
     hoverBg: tokens.gray[250],
     optionSeparator: tokens.gray[200],
     optionActiveColor: tokens.secondary[150],
-  },
-  link: {
-    default: {
-      hoverColor: tokens.primary[50],
-      color: tokens.common.black,
-    },
-    primary: {
-      hoverColor: tokens.primary[50],
-      color: tokens.primary[50],
-    },
   },
   navigation: {
     bg: tokens.gray[0],
@@ -223,7 +218,12 @@ const light: Theme = {
 
 const dark: Theme = {
   font: {
-    color: tokens.common.white,
+    default: {
+      color: tokens.common.white,
+    },
+    primary: {
+      color: tokens.primary[100],
+    },
   },
   body: {
     bg: tokens.common.black,
@@ -255,16 +255,6 @@ const dark: Theme = {
     hoverBg: tokens.gray[100],
     optionSeparator: tokens.gray[100],
     optionActiveColor: tokens.secondary[50],
-  },
-  link: {
-    default: {
-      hoverColor: tokens.primary[50],
-      color: tokens.common.white,
-    },
-    primary: {
-      hoverColor: tokens.primary[100],
-      color: tokens.primary[100],
-    },
   },
   navigation: {
     bg: tokens.dark[100],

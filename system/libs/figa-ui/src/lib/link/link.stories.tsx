@@ -23,7 +23,7 @@ const Template: Story = () => {
       <div>
         {FONT_VARIANTS.map((variant) => (
           <div key={variant} style={{ margin: '8px 0' }}>
-            <Link motive="primary" variant={variant}>
+            <Link motive="primary" variant={variant} italic>
               <a href="/">{variant}</a>
             </Link>
           </div>

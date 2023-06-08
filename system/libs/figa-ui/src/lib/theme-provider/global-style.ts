@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         height: 100%;
         background: ${(props) => props.theme.body.bg};
-        color: ${(props) => props.theme.font.color};
+        color: ${(props) => props.theme.font.default.color};
     }
 
     .sb-main-padded {
@@ -74,7 +74,13 @@ const GlobalStyle = createGlobalStyle`
     /* font.tsx */
 
     .font {
-        color: ${(props) => props.theme.font.color};
+        &.default, &.default > * {
+            color: ${(props) => props.theme.font.default.color};
+        }
+
+        &.primary, &.primary > *  {
+            color: ${(props) => props.theme.font.primary.color};
+        }
 
         &.h1 {
             ${font('9.8rem', '-1.5px', 'LexendLight', 300)}
@@ -109,7 +115,7 @@ const GlobalStyle = createGlobalStyle`
             ${font('1.4rem', '0.1px', 'LexendMedium', 500)}
         }
 
-        &.italic {
+        &.italic, &.italic > * {
             font-style: italic;
         }
     }
@@ -323,28 +329,6 @@ const GlobalStyle = createGlobalStyle`
             &:hover {
                 text-decoration: underline;
                 text-underline-offset: ${tokens.spacing[100]};
-            }
-        }
-
-        &.default {
-            & > * {
-                color: ${(props) => props.theme.link.default.color};
-
-                &:hover {
-                    text-decoration-color: ${(props) =>
-                      props.theme.link.default.hoverColor};
-                }
-            }
-        }
-
-        &.primary {
-            & > * {
-                color: ${(props) => props.theme.link.primary.color};
-
-                &:hover {
-                    text-decoration-color: ${(props) =>
-                      props.theme.link.primary.hoverColor};
-                }
             }
         }
     }
@@ -697,7 +681,7 @@ const GlobalStyle = createGlobalStyle`
 
     .icon {
         path {
-            fill: ${(props) => props.theme.font.color};
+            fill: ${(props) => props.theme.font.default.color};
         }
     }
 
