@@ -3,7 +3,7 @@
 exports[`Link can be used when [FRAGILE] renders with default props 1`] = `
 <DocumentFragment>
   <span
-    class="font font-h5 link default"
+    class="font h5 link default"
   >
     <a
       href="/"
