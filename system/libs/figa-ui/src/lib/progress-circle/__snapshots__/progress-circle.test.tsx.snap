@@ -11,7 +11,7 @@ exports[`Progress works when [FRAGILE] can change timer size 1`] = `
       style="transform: scale(1);"
     />
     <h6
-      class="font h6 progress-circle-text"
+      class="font h6 default progress-circle-text"
     >
       5.0s
     </h6>
@@ -30,7 +30,7 @@ exports[`Progress works when [FRAGILE] renders with default properties setup 1`]
       style="transform: scale(1);"
     />
     <h6
-      class="font h6 progress-circle-text"
+      class="font h6 default progress-circle-text"
     >
       5.0s
     </h6>
