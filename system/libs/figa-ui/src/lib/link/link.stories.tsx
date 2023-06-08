@@ -2,6 +2,7 @@ import type { Story, Meta } from '@storybook/react';
 
 import { Link } from './link';
 import { FONT_VARIANTS } from '../font';
+import { Box } from '../box';
 
 export default {
   component: Link,
@@ -10,8 +11,8 @@ export default {
 
 const Template: Story = () => {
   return (
-    <div style={{ display: 'flex', gap: '12px' }}>
-      <div>
+    <Box orientation="row" spacing={[200, 200, 200]}>
+      <Box>
         {FONT_VARIANTS.map((variant) => (
           <div key={variant} style={{ margin: '8px 0' }}>
             <Link variant={variant}>
@@ -19,8 +20,8 @@ const Template: Story = () => {
             </Link>
           </div>
         ))}
-      </div>
-      <div>
+      </Box>
+      <Box>
         {FONT_VARIANTS.map((variant) => (
           <div key={variant} style={{ margin: '8px 0' }}>
             <Link motive="primary" variant={variant} italic>
@@ -28,8 +29,17 @@ const Template: Story = () => {
             </Link>
           </div>
         ))}
-      </div>
-    </div>
+      </Box>
+      <Box>
+        {FONT_VARIANTS.map((variant) => (
+          <div key={variant} style={{ margin: '8px 0' }}>
+            <Link motive="primary" variant={variant} bold>
+              <a href="/">{variant}</a>
+            </Link>
+          </div>
+        ))}
+      </Box>
+    </Box>
   );
 };
 

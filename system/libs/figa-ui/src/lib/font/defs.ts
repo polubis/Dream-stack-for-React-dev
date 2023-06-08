@@ -27,6 +27,7 @@ interface FontProps {
   children: ReactNode;
   italic?: boolean;
   motive?: FontMotive;
+  bold?: boolean;
 }
 
 export type {
