@@ -1,8 +1,10 @@
-type UseToggle = (initialOpen?: boolean) => {
+interface UseToggleReturn {
   isOpen: boolean;
   open: () => void;
   close: () => void;
   toggle: () => void;
-};
+}
 
-export type { UseToggle };
+type UseTogglePayload = [boolean?];
+
+export type { UseTogglePayload, UseToggleReturn };
