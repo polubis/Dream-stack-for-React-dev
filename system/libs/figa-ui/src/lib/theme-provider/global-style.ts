@@ -289,7 +289,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         .select-list {
-            ${appearIn('16px', '8px')}
+            ${appearIn(tokens.spacing[200], tokens.spacing[100])}
             position: absolute;
             list-style: none;
             margin: 0;
@@ -737,6 +737,20 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* list.tsx */
+
+    /* popover.tsx */
+
+    .popover {
+        position: relative;
+
+        &-content {
+            ${appearIn(tokens.spacing[0], tokens.spacing[150])}
+            position: fixed;
+            padding: ${tokens.spacing[250]};
+        }
+    }
+
+    /* popover.tsx */
 `;
 
 export { GlobalStyle };

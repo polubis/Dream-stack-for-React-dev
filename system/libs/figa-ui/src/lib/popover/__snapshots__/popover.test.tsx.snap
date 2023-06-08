@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popover can be used when [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="popover my-class"
+  >
+    <button>
+      Click
+    </button>
+  </div>
+</DocumentFragment>
+`;
