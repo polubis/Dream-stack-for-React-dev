@@ -14,7 +14,8 @@ type SupportedFontElement =
   | 'b'
   | 'strong'
   | 'i'
-  | 'p';
+  | 'p'
+  | 'em';
 
 type VariantElementMap = Record<FontVariant, SupportedFontElement>;
 
@@ -23,6 +24,7 @@ interface FontProps {
   element?: SupportedFontElement;
   variant: FontVariant;
   children: ReactNode;
+  italic?: boolean;
 }
 
 export type { FontProps, FontVariant, SupportedFontElement, VariantElementMap };
