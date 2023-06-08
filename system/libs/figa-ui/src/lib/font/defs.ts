@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
-import type { FONT_VARIANTS } from './consts';
+import type { FONT_MOTIVES, FONT_VARIANTS } from './consts';
 
 type FontVariant = (typeof FONT_VARIANTS)[number];
+type FontMotive = (typeof FONT_MOTIVES)[number];
 
 type SupportedFontElement =
   | 'h1'
@@ -25,6 +26,13 @@ interface FontProps {
   variant: FontVariant;
   children: ReactNode;
   italic?: boolean;
+  motive?: FontMotive;
 }
 
-export type { FontProps, FontVariant, SupportedFontElement, VariantElementMap };
+export type {
+  FontProps,
+  FontVariant,
+  SupportedFontElement,
+  VariantElementMap,
+  FontMotive,
+};

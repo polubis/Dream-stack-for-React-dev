@@ -14,9 +14,16 @@ const FONT_VARIANT_ELEMENT_MAP: VariantElementMap = {
   b2: 'p',
 };
 
-const Font = ({ className, variant, children, element, italic }: FontProps) => {
+const Font = ({
+  className,
+  variant,
+  children,
+  element,
+  italic,
+  motive = 'default',
+}: FontProps) => {
   return createElement(element ?? FONT_VARIANT_ELEMENT_MAP[variant], {
-    className: c('font', variant, className, { italic }),
+    className: c('font', variant, motive, className, { italic }),
     children,
   });
 };
