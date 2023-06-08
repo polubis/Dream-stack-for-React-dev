@@ -31,7 +31,7 @@ describe('Link can be used when', () => {
     );
 
     expect(screen.getByText(/Link/).parentElement?.className).toBe(
-      'font font-h2 link default'
+      'font h2 link default'
     );
 
     rerender(
@@ -41,7 +41,7 @@ describe('Link can be used when', () => {
     );
 
     expect(screen.getByText(/Link/).parentElement?.className).toBe(
-      'font font-h2 link primary'
+      'font h2 link primary'
     );
   });
 
