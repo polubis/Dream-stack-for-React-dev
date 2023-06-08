@@ -118,6 +118,11 @@ const GlobalStyle = createGlobalStyle`
         &.italic, &.italic > * {
             font-style: italic;
         }
+
+        &.bold, &.bold > * {
+            font-weight: bold;
+            letter-spacing: 0.40px;
+        }
     }
 
     /* font.tsx */

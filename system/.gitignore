@@ -4,7 +4,6 @@
 dist
 tmp
 /out-tsc
-build-storybook.log
 
 # dependencies
 node_modules

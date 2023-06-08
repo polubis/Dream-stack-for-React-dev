@@ -12,7 +12,7 @@ export default {
 
 const Template: Story<FontProps> = (args) => {
   return (
-    <Box orientation="row">
+    <Box orientation="row" spacing={[200, 200, 200, 200]}>
       <Box>
         {FONT_VARIANTS.map((variant) => (
           <div key={variant} style={{ margin: '8px 0' }}>
@@ -25,6 +25,14 @@ const Template: Story<FontProps> = (args) => {
         {FONT_VARIANTS.map((variant) => (
           <div key={'italic' + variant} style={{ margin: '8px 0' }}>
             <Font {...args} italic variant={variant} children={variant} />
+          </div>
+        ))}
+      </Box>
+
+      <Box>
+        {FONT_VARIANTS.map((variant) => (
+          <div key={'bold' + variant} style={{ margin: '8px 0' }}>
+            <Font {...args} variant={variant} children="Some text" bold />
           </div>
         ))}
       </Box>
