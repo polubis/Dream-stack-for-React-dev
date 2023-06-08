@@ -6,6 +6,7 @@ import { CodeBlock } from '../code-block';
 import { Link } from '../link';
 import { Box } from '../box';
 import { Code } from '../code';
+import { List, ListItem } from '../list';
 
 export default {
   component: ArticleLayout,
@@ -102,6 +103,20 @@ const Template: Story = () => {
           behind and simply asked the customer (application) what he thinks
           about our product.
         </Font>
+        <List>
+          <ListItem>First</ListItem>
+          <ListItem>Second</ListItem>
+          <ListItem>Last</ListItem>
+        </List>
+        <Font variant="b1">
+          **Unit tests** are fast and precise. They are focused on a specific
+          thing and answer concrete questions.
+        </Font>
+        <List ordered>
+          <ListItem>First</ListItem>
+          <ListItem>Second</ListItem>
+          <ListItem>Last</ListItem>
+        </List>
         <Font variant="b1">
           That's the difference between the different types of tests. Don't
           worry, it will get into your blood in the next lessons.
