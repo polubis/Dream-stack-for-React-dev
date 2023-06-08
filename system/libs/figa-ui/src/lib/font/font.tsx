@@ -21,9 +21,10 @@ const Font = ({
   element,
   italic,
   motive = 'default',
+  bold,
 }: FontProps) => {
   return createElement(element ?? FONT_VARIANT_ELEMENT_MAP[variant], {
-    className: c('font', variant, motive, className, { italic }),
+    className: c('font', variant, motive, className, { italic }, { bold }),
     children,
   });
 };
