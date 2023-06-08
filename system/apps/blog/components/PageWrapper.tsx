@@ -1,10 +1,7 @@
-import type { ReactNode } from 'react';
-
-import { MDXProvider } from '@mdx-js/react';
 import { Code, CodeBlock, Font, Link, List, ListItem } from '@system/figa-ui';
 import type { Components } from '@mdx-js/react/lib';
 
-const components: Components = {
+export const ARTICLE_COMPONENTS: Components = {
   h1: ({ children }) => <Font variant="h1">{children}</Font>,
   h2: ({ children }) => <Font variant="h2">{children}</Font>,
   h3: ({ children }) => <Font variant="h3">{children}</Font>,
@@ -33,12 +30,3 @@ const components: Components = {
   li: ListItem,
 };
 
-interface PageWrapperProps {
-  children: ReactNode;
-}
-
-const PageWrapper = ({ children }: PageWrapperProps) => {
-  return <MDXProvider components={components}>{children}</MDXProvider>;
-};
-
-export { PageWrapper };

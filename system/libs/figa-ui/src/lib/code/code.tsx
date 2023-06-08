@@ -7,7 +7,7 @@ import { useLayoutEffect, useRef } from 'react';
 import { CODE_LINE_HEIGHT, DEFAULT_THEME } from './consts';
 import c from 'classnames';
 
-const CodeContent = ({ children, className }: CodeProps) => {
+const CodeContent = ({ children, className, onChange }: CodeProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -17,7 +17,20 @@ const CodeContent = ({ children, className }: CodeProps) => {
 
     const view = new EditorView({
       doc: children,
-      extensions: [basicSetup, javascript(), DEFAULT_THEME],
+      extensions: [
+        basicSetup,
+        javascript(),
+        DEFAULT_THEME,
+        ...(onChange
+          ? [
+              EditorView.updateListener.of((v) => {
+                if (v.docChanged) {
+                  onChange(view.state.doc.toString());
+                }
+              }),
+            ]
+          : []),
+      ],
       parent,
     });
 
@@ -30,7 +43,7 @@ const CodeContent = ({ children, className }: CodeProps) => {
   return <div className={c('code', className)} ref={ref} />;
 };
 
-const Code = ({ children, className }: CodeProps) => {
+const Code = ({ children, className, onChange }: CodeProps) => {
   if (typeof children !== 'string') {
     throw Error('Children must be a string');
   }
@@ -44,7 +57,13 @@ const Code = ({ children, className }: CodeProps) => {
     );
   }
 
-  return <CodeContent children={children} className={className} />;
+  return (
+    <CodeContent
+      children={children}
+      className={className}
+      onChange={onChange}
+    />
+  );
 };
 
 export { Code };
