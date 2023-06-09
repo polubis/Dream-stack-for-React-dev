@@ -81,7 +81,7 @@ If you have problems or there is a help required just ask for help on **Discord*
 Check **COMMANDS.MD** file or **main package.json** file. 
 
 
-# Commands
+# Generation and install commands
 
 ## Install nx script
 
@@ -122,7 +122,7 @@ Check **COMMANDS.MD** file or **main package.json** file.
 1. `cd .\system\`
 2. `npx nx generate @nrwl/react:library figa-hooks`
 
-## Run commands
+# Run commands
 
 1. `cd .\system\`
 
