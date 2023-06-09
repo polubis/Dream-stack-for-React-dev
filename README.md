@@ -8,13 +8,59 @@
 
 3. Create a branch with ticket number and name it via convention - **ticket number**/**feature**-name-of-the-branch.
 
-4. After finshing your work, raise a **pull request** to **develop** branch and move ticket status to **review**. 
+4. After finshing your work, raise a **pull request** to **develop** branch and move ticket status to **review**.
+
+> There is no time limit to task. You can work on it long as you can. 
+> If you have problems just ask for help on **Discord**.
 
 For better transparency you can add small description or provide **gif** if your changes impacts visual aspects of any application.
 
 5. Someone will perform review. After this you will have provided any additional changes that needs to be applied. 
 
-6. After successful review 
+6. After successful review your ticket will be merged in next stable **release**.
+
+After this you are **co-author** and you can add this project to your portfolio.
+
+# Structure of repository
+
+We have two main parts in this repo. First is an API in **.NET** ecosystem and second is monorepo in **JavaScript**. 
+
+We used monorepo because it gives us easy way to give permissions for devs in easy way and it provides linear git history of changes in whole system. 
+
+## Description of repository elements
+
+Currently we have several applications:
+
+1.First is a blog platform currently available at [GreenOn Software](https://greenonsoftware.com). We migrating it to **Next** from **Gatsby**.
+2.Second is an app for musicans [jamjam](https://jamjambeings.com) - we are migrating it from **CRA** to **Next**.
+3. Third is **design-system** implementation with reusable not domain specific UI. Its called **figa-ui**.
+4. We have also other reusable parts like **figa-hooks** which implements reusable not app specific hooks. 
+
+## I have idea for app
+
+That's great. We can implement it together faster by using currently prepared codebase. 
+
+Describe it on a dedicated channel in **Discord**.
+
+## I have suggestions
+
+That's great. If it's related to codebase just prepare PR with showcase and describe it. 
+
+You can also describe it on **Discord**
+.
+
+## I see a bug in app or other ugly crap
+
+Raise an issue and add images or gifs - we'll cover it. 
+
+## Do I need to write tests? 
+
+Yes 👍. We want to have scalable and easy to spot problems codebase so we need tests. 
+
+If you have problems or there is a help required just ask for help on **Discord** or in **PR**. 
+
+
+# FAQ
 
 
 # Commands
