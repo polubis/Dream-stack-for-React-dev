@@ -45,7 +45,7 @@ We used monorepo because it gives us easy way to give permissions for devs in ea
 
 Currently we have several applications:
 
-1.First is a blog platform currently available at [GreenOn Software](https://greenonsoftware.com). We migrating it to **Next** from **Gatsby**.
+1. First is a blog platform currently available at [GreenOn Software](https://greenonsoftware.com). We migrating it to **Next** from **Gatsby**.
 
 2. Second is an app for musicans [jamjam](https://jamjambeings.com) - we are migrating it from **CRA** to **Next**.
 
