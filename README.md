@@ -1,3 +1,22 @@
+# FAQ
+
+## How to contribute
+
+1. Ask for being a collaborator in our **Discord** channel - [Invite link](https://discord.gg/PxXQayT3x3). We'll add you do repository and project board with tickets. 
+
+2. Pick a ticket without assignment. Assign it to yourself and change status to **In progress**.
+
+3. Create a branch with ticket number and name it via convention - **ticket number**/**feature**-name-of-the-branch.
+
+4. After finshing your work, raise a **pull request** to **develop** branch and move ticket status to **review**. 
+
+For better transparency you can add small description or provide **gif** if your changes impacts visual aspects of any application.
+
+5. Someone will perform review. After this you will have provided any additional changes that needs to be applied. 
+
+6. After successful review 
+
+
 # Commands
 
 ## Install nx script
