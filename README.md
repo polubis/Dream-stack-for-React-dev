@@ -32,8 +32,11 @@ We used monorepo because it gives us easy way to give permissions for devs in ea
 Currently we have several applications:
 
 1.First is a blog platform currently available at [GreenOn Software](https://greenonsoftware.com). We migrating it to **Next** from **Gatsby**.
+
 2.Second is an app for musicans [jamjam](https://jamjambeings.com) - we are migrating it from **CRA** to **Next**.
+
 3. Third is **design-system** implementation with reusable not domain specific UI. Its called **figa-ui**.
+
 4. We have also other reusable parts like **figa-hooks** which implements reusable not app specific hooks. 
 
 ## I have idea for app
@@ -59,6 +62,9 @@ Yes 👍. We want to have scalable and easy to spot problems codebase so we need
 
 If you have problems or there is a help required just ask for help on **Discord** or in **PR**. 
 
+## How to run app, lib or tests? 
+
+Check **COMMANDS.MD** file or **main package.json** file. 
 
 # FAQ
 
