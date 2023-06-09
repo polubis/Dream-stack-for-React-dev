@@ -21,7 +21,21 @@ For better transparency you can add small description or provide **gif** if your
 
 After this you are **co-author** and you can add this project to your portfolio.
 
-# Structure of repository
+## Quick start
+
+We're using **node 18+** and **npm 6+**, so make sure you have correct versions installed. 
+
+If you have your projects in other versions just install **nvm** to maintain it. 
+
+Clone repository, open it in #IDE.
+
+If you want to run single app you need to type in terminal:
+
+1. `cd system`.
+2. `npm install --legacy-peer-deeps`.
+3. Use **here** and commands from **COMMANDS.MD** file. 
+
+## Structure of repository
 
 We have two main parts in this repo. First is an API in **.NET** ecosystem and second is monorepo in **JavaScript**. 
 
@@ -33,7 +47,7 @@ Currently we have several applications:
 
 1.First is a blog platform currently available at [GreenOn Software](https://greenonsoftware.com). We migrating it to **Next** from **Gatsby**.
 
-2.Second is an app for musicans [jamjam](https://jamjambeings.com) - we are migrating it from **CRA** to **Next**.
+2. Second is an app for musicans [jamjam](https://jamjambeings.com) - we are migrating it from **CRA** to **Next**.
 
 3. Third is **design-system** implementation with reusable not domain specific UI. Its called **figa-ui**.
 
@@ -65,8 +79,6 @@ If you have problems or there is a help required just ask for help on **Discord*
 ## How to run app, lib or tests? 
 
 Check **COMMANDS.MD** file or **main package.json** file. 
-
-# FAQ
 
 
 # Commands
