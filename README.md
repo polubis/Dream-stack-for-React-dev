@@ -1,17 +1,3 @@
-## Quick start
-
-We're using **node 18+** and **npm 6+**, so make sure you have correct versions installed. 
-
-If you have your projects in other versions just install **nvm** to maintain it. 
-
-Clone repository, open it in #IDE.
-
-If you want to run single app you need to type in terminal:
-
-1. `cd system`.
-2. `npm install --legacy-peer-deeps`.
-3. Use **here** and commands from **COMMANDS.MD** file. 
-
 ## Structure of repository
 
 We have two main parts in this repo. First is an API in **.NET** ecosystem and second is monorepo in **JavaScript**. 
