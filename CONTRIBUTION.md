@@ -1,4 +1,4 @@
-# Contribution guide
+# Contribution guide 
 
 This document contains core information for future contributors. 
 
