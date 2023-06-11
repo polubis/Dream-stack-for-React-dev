@@ -34,10 +34,7 @@ if you using other one in your projects.
 
 ## How to run app? 
 
-Type:
-
-1. `cd system`.
-2. To run storybook: `npx nx run figa-ui:storybook`.
+Check **COMMANDS.md** file.
 
 
 
