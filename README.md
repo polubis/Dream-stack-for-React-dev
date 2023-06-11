@@ -2,6 +2,16 @@
 
 Here you find basic info and useful links. 
 
+## First run
+
+Clone repository and open it in your IDE. Remember to have `node 18+` and `npm 6+` versions. 
+
+Next type following commands:
+
+1. `cd system`
+2. `npm i --legacy-peer-deps`
+3. Then run anything you want. It can be app, more than one apps, storybook or other. Check **COMMANDS.md** file for more. 
+
 ## Structure of repository
 
 We have two main parts in this repo. First is an API in **.NET** ecosystem and second is monorepo in **JavaScript**. 
