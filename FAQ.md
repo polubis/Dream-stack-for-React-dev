@@ -32,7 +32,7 @@ repo versions of:
 You can use **nvm** to change node version
 if you using other one in your projects.
 
-## How to run app? 
+## How to run app or library? 
 
 Check **COMMANDS.md** file.
 
