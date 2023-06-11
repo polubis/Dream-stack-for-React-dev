@@ -6,7 +6,9 @@ Here you find basic info and useful links.
 
 We have two main parts in this repo. First is an API in **.NET** ecosystem and second is monorepo in **JavaScript**. 
 
-We used monorepo because it gives us easy way to give permissions for devs in easy way and it provides linear git history of changes in whole system. 
+We used monorepo because it gives us easy way to give permissions for devs and it provides linear git history of changes in whole system. 
+
+Thanks to this everyone will be able to track progress. 
 
 ## Description of repository elements
 
