@@ -16,6 +16,10 @@ application for guitarists.
 If you have idea for app or lib just add it
 on **Discord** channel.
 
+## I want to be on authors page
+
+Finsh one task and send on **Discord** your profile, description and role. We'll add you. 
+
 ## I see an errors
 
 Make sure you changed directory to **system**.
