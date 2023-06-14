@@ -749,10 +749,10 @@ const GlobalStyle = createGlobalStyle`
 
     .blackquote {
         font-size: 18px;
-        color: #000000;
-        background-color: #f5f5f5;
+        color: ${(props) => props.theme.blackquote.color};
+        background-color: ${(props) => props.theme.blackquote.bg};
         width: fit-content;
-        padding: 12px;
+        padding: ${tokens.spacing[150]};
     }
 
     /* blackquote.tsx */
