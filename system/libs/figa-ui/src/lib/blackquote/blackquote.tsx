@@ -1,4 +1,4 @@
-import { BlackquoteProps } from './defs';
+import type { BlackquoteProps } from './defs';
 
 const Blackquote = ({ title }: BlackquoteProps) => {
   return (

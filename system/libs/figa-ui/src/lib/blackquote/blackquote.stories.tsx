@@ -1,6 +1,7 @@
-import { Story, Meta } from '@storybook/react';
+import type { Story, Meta } from '@storybook/react';
+import type { BlackquoteProps } from './defs';
+
 import { Blackquote } from './blackquote';
-import { BlackquoteProps } from './defs';
 
 export default {
   component: Blackquote,
