@@ -127,6 +127,10 @@ interface Tokens {
 }
 
 interface Theme {
+  blackquote: {
+    color: string;
+    bg: string;
+  }
   font: {
     color: string;
   };

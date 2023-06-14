@@ -110,6 +110,10 @@ const tokens: Tokens = {
 };
 
 const light: Theme = {
+  blackquote: {
+    color: tokens.common.black,
+    bg: tokens.gray[150]
+  },
   font: {
     color: tokens.common.black,
   },
@@ -222,6 +226,10 @@ const light: Theme = {
 };
 
 const dark: Theme = {
+  blackquote: {
+    color: tokens.common.black,
+    bg: tokens.gray[150]
+  },
   font: {
     color: tokens.common.white,
   },
