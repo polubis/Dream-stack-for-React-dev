@@ -149,6 +149,9 @@ interface Theme {
     },
     warning: {
       color: string
+    },
+    info: {
+      color: string
     }
   }
   button: {

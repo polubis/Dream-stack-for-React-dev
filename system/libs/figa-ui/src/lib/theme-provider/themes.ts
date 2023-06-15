@@ -132,6 +132,9 @@ const light: Theme = {
     },
     warning: {
       color: tokens.yellow[50]
+    },
+    info: {
+      color: tokens.blue[200]
     }
   },
   button: {
@@ -248,6 +251,9 @@ const dark: Theme = {
     warning: {
       color: tokens.yellow[50]
     },
+    info: {
+      color: tokens.blue[200]
+    }
   },
   button: {
     filled: {

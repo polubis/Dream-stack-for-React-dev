@@ -698,6 +698,12 @@ const GlobalStyle = createGlobalStyle`
                 fill: ${(props) => props.theme.alert.warning.color}};
             }
         }
+        &.alert-info {
+            path {
+                fill: ${(props) => props.theme.alert.info.color}};
+                rotate: 180deg;
+            }
+        }
     }
 
     /* icon.tsx */
