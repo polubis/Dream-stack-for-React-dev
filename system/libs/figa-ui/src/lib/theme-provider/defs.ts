@@ -143,6 +143,14 @@ interface Theme {
     bg: string;
     backdrop: string;
   };
+  alert: {
+    error: {
+      color: string
+    },
+    warning: {
+      color: string
+    }
+  }
   button: {
     outlined: {
       primary: PaletteColorsSetup;

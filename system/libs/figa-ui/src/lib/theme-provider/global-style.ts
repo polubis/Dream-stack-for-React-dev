@@ -688,6 +688,11 @@ const GlobalStyle = createGlobalStyle`
         path {
             fill: ${(props) => props.theme.font.default.color};
         }
+        &.alert-error {
+            path {
+                fill: ${(props) => props.theme.alert.error.color}};
+            }
+        }
     }
 
     /* icon.tsx */
