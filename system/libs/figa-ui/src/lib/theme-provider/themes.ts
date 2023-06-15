@@ -73,6 +73,7 @@ const tokens: Tokens = {
     300: '#3c3c3c',
     350: '#565656',
     400: '#dfdfdf',
+    450: '#272727',
   },
   green: {
     50: '#b2d9ba',
@@ -214,6 +215,10 @@ const light: Theme = {
       bg: tokens.primary[50],
     },
   },
+  blockquote: {
+    bg: tokens.light[50],
+    borderColor: tokens.light[100],
+  },
 };
 
 const dark: Theme = {
@@ -320,6 +325,10 @@ const dark: Theme = {
     marker: {
       bg: tokens.primary[50],
     },
+  },
+  blockquote: {
+    bg: tokens.gray[450],
+    borderColor: tokens.gray[300],
   },
 };
 

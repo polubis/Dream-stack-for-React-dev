@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Code } from './Code';
+import { Code } from './code';
 
 describe('Code can be used when: ', () => {
   const children = `  const { mergeConfig } = require('vite');
