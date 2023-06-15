@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from '@testing-library/react';
-import { Button } from './Button';
+import { Button } from './button';
 
 describe('Button can be used when', () => {
   it('[FRAGILE] renders with default props', () => {
