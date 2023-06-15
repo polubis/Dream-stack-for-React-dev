@@ -152,6 +152,9 @@ interface Theme {
     },
     info: {
       color: string
+    },
+    success: {
+      color: string
     }
   }
   button: {

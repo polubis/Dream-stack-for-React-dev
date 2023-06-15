@@ -135,6 +135,9 @@ const light: Theme = {
     },
     info: {
       color: tokens.blue[200]
+    },
+    success: {
+      color: tokens.green[50]
     }
   },
   button: {
@@ -253,6 +256,9 @@ const dark: Theme = {
     },
     info: {
       color: tokens.blue[200]
+    },
+    success: {
+      color: tokens.green[50]
     }
   },
   button: {

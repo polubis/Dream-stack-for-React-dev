@@ -704,6 +704,11 @@ const GlobalStyle = createGlobalStyle`
                 rotate: 180deg;
             }
         }
+        &.alert-success {
+            path {
+                fill: ${(props) => props.theme.alert.success.color}};
+            }
+        }
     }
 
     /* icon.tsx */
