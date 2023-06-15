@@ -1,6 +1,11 @@
 interface CodeProps {
   className?: string;
   children: string;
+  readonly?: boolean;
 }
 
-export type { CodeProps };
+interface SetupConfig extends Pick<CodeProps, 'children' | 'readonly'> {
+  parent: Element;
+}
+
+export type { CodeProps, SetupConfig };

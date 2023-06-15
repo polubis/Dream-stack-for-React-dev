@@ -36,7 +36,7 @@ const Template: Story = () => {
           situations:
         </Font>
         <CodeBlock>
-          <Code>
+          <Code readonly>
             {`describe('Pizza meets standards when', () => {
   // Take a meter and measure this.
   it('size is between 30-40 cm', () => {});
@@ -66,7 +66,7 @@ const Template: Story = () => {
           example of such tests:
         </Font>
         <CodeBlock>
-          <Code>
+          <Code readonly>
             {`describe('Pizza meets standards when', () => {
   // We assume that the recipe contains the necessary steps.
   it('recipe is used from page 31', () => {});
@@ -89,7 +89,7 @@ const Template: Story = () => {
           thinks about the taste (the customer is our application).
         </Font>
         <CodeBlock>
-          <Code>
+          <Code readonly>
             {`describe('Pizza meets standards when', () => {
   it('customer enjoys the taste', () => {});
 });`}

@@ -27,7 +27,8 @@ const components: Components = {
     </Link>
   ),
   pre: CodeBlock,
-  code: Code,
+  code: ({ children }) =>
+    typeof children === 'string' ? <Code readonly>{children}</Code> : null,
   ul: List,
   ol: ({ children }) => <List ordered>{children}</List>,
   li: ListItem,
