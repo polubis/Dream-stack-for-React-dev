@@ -1,14 +1,5 @@
-import type { ReactNode } from 'react';
-import type { FontVariant } from '../font';
-import type { LINK_MOTIVES } from './consts';
+import type { FontProps } from '../font';
 
-type LinkMotive = (typeof LINK_MOTIVES)[number];
+type LinkProps = Omit<FontProps, 'element'>;
 
-interface LinkProps {
-  className?: string;
-  variant: FontVariant;
-  children: ReactNode;
-  motive?: LinkMotive;
-}
-
-export type { LinkProps, LinkMotive };
+export type { LinkProps };

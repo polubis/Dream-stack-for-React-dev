@@ -35,4 +35,12 @@ describe('Code can be used when: ', () => {
       /To customize your Vite configuration you can use the viteFinal field./
     );
   });
+
+  it('[FRAGILE] assigns class names for code component', () => {
+    const { container } = render(
+      <Code children={children} className="my-class" />
+    );
+
+    expect(container.querySelector('.my-class')).toBeTruthy();
+  });
 });

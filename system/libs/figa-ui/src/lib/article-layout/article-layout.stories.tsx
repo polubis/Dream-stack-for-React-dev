@@ -5,6 +5,8 @@ import { Font } from '../font';
 import { CodeBlock } from '../code-block';
 import { Link } from '../link';
 import { Box } from '../box';
+import { Code } from '../code';
+import { List, ListItem } from '../list';
 
 export default {
   component: ArticleLayout,
@@ -25,9 +27,7 @@ const Template: Story = () => {
           Taking into account the area we are testing, the test can be divided
           into the following types:
         </Font>
-        // - Unit tests // - Integration tests // - E2e tests
         <Font variant="b1">
-          {' '}
           **Unit tests** are fast and precise. They are focused on a specific
           thing and answer concrete questions.
         </Font>
@@ -36,7 +36,8 @@ const Template: Story = () => {
           situations:
         </Font>
         <CodeBlock>
-          {`describe('Pizza meets standards when', () => {
+          <Code>
+            {`describe('Pizza meets standards when', () => {
   // Take a meter and measure this.
   it('size is between 30-40 cm', () => {});
 
@@ -52,6 +53,7 @@ const Template: Story = () => {
   // This is visible.
   it('plate is clean', () => {});
 });`}
+          </Code>
         </CodeBlock>
         <Font variant="b1">
           **Integration tests** verifies cooperation. They are also quite fast.
@@ -64,7 +66,8 @@ const Template: Story = () => {
           example of such tests:
         </Font>
         <CodeBlock>
-          {`describe('Pizza meets standards when', () => {
+          <Code>
+            {`describe('Pizza meets standards when', () => {
   // We assume that the recipe contains the necessary steps.
   it('recipe is used from page 31', () => {});
 
@@ -73,6 +76,7 @@ const Template: Story = () => {
   // already "knows" this and he will check it.
   it('the person making the pizza is supervised by the cook', () => {});
 });`}
+          </Code>
         </CodeBlock>
         <Font variant="b1">
           **E2e tests** focus on the user's perspective, not the implementation.
@@ -85,9 +89,11 @@ const Template: Story = () => {
           thinks about the taste (the customer is our application).
         </Font>
         <CodeBlock>
-          {`describe('Pizza meets standards when', () => {
+          <Code>
+            {`describe('Pizza meets standards when', () => {
   it('customer enjoys the taste', () => {});
 });`}
+          </Code>
         </CodeBlock>
         <Font variant="h4">Summary</Font>
         <Font variant="b1">
@@ -97,6 +103,20 @@ const Template: Story = () => {
           behind and simply asked the customer (application) what he thinks
           about our product.
         </Font>
+        <List>
+          <ListItem>First</ListItem>
+          <ListItem>Second</ListItem>
+          <ListItem>Last</ListItem>
+        </List>
+        <Font variant="b1">
+          **Unit tests** are fast and precise. They are focused on a specific
+          thing and answer concrete questions.
+        </Font>
+        <List ordered>
+          <ListItem>First</ListItem>
+          <ListItem>Second</ListItem>
+          <ListItem>Last</ListItem>
+        </List>
         <Font variant="b1">
           That's the difference between the different types of tests. Don't
           worry, it will get into your blood in the next lessons.

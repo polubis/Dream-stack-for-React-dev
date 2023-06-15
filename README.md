@@ -1,69 +1,33 @@
-# Commands
+# Quick start
 
-## Install nx script
+Here you find basic info and useful links. 
 
-1. `npm i -g create-nx-workspace@latest --legacy-peer-deps`
+## First run
 
-## Generating repository
+Clone repository and open it in your IDE. Remember to have `node 18+` and `npm 6+` versions. 
 
-1. `npx create-nx-workspace@latest`
+Next type following commands:
 
-## Generating React SPA app
+1. `cd system`
+2. `npm i --legacy-peer-deps`
+3. Then run anything you want. It can be app, more than one apps, storybook or other. Check **COMMANDS.md** file for more. 
 
-1. `cd .\system\`
-2. `npx nx g @nrwl/next:application jamjam`
+## Structure of repository
 
-## Generating Next.js app with TypeScript
+We have two main parts in this repo. First is an API in **.NET** ecosystem and second is monorepo in **JavaScript**. 
 
-1. `cd .\system\`
-2. `npx nx g @nrwl/react:application blog-creator`
+We used monorepo because it gives us easy way to give permissions for devs and it provides linear git history of changes in whole system. 
 
-## Generating React styled-components based UI library
+Thanks to this everyone will be able to track progress. 
 
-1. `cd .\system\`
-2. `npx nx g @nrwl/react:lib figa-ui`
+## Description of repository elements
 
-## Generating pure TS library
+Currently we have several applications:
 
-1. `cd .\system\`
-2. `npx nx generate @nrwl/js:lib utils`
+1. First is a blog platform currently available at [GreenOn Software](https://greenonsoftware.com). We migrating it to **Next** from **Gatsby**.
 
-## Adding storybook to figa-ui library
+2. Second is an app for musicans [jamjam](https://jamjambeings.com) - we are migrating it from **CRA** to **Next**.
 
-1. `cd .\system\`
-2. `npm i --save @nrwl/storybook --legacy-peer-deps`
-3. `npx nx g @nrwl/storybook:configuration figa-ui --uiFramework=@storybook/react`
+3. Third is **design-system** implementation with reusable not domain specific UI. Its called **figa-ui**.
 
-## Generating hooks library in React
-
-1. `cd .\system\`
-2. `npx nx generate @nrwl/react:library figa-hooks`
-
-## Run commands
-
-1. `cd .\system\`
-
-2. Storybook for figa-ui: `npx nx run figa-ui:storybook`
-3. Next.js app for blog content: `npx nx serve blog`
-4. React SPA app for blog management: `npx nx serve blog-creator`
-5. Running dedicated apps: `npx nx run-many --parallel --target=serve --projects=blog,blog-creator`
-6. Running all apps: `npx nx run-many --target=serve --all`
-7. Migrating to latest nx and bumping packages: `npx nx migrate latest`
-8. Running lint for all apps: `npx nx run-many --target=lint --all`
-9. Running lint for all apps and fix: `npx nx run-many --target=lint --all --fix`
-10. Running tests with watch options for project: `npx nx run-many --target=test --projects=figa-hooks --watch`
-11. Displaying installed plugins and plugins to install: `npx nx list`.
-12. Update nx cloud when 401: `npx nx g @nrwl/nx-cloud:init`
-13. Running e2e tests: `npx nx run jamjam-e2e:e2e --watch`
-
-> Remember to add different port numbers if you want to run more than 1 application in the same time in **project.json** files.
-
-```json
-"serve": {
-    "options": {
-        "buildTarget": "blog:build",
-        "dev": true,
-        "port": 3001
-    },
-}
-```
+4. We have also other reusable parts like **figa-hooks** which implements reusable not app specific hooks.

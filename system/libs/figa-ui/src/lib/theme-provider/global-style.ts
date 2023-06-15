@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         height: 100%;
         background: ${(props) => props.theme.body.bg};
-        color: ${(props) => props.theme.font.color};
+        color: ${(props) => props.theme.font.default.color};
     }
 
     .sb-main-padded {
@@ -74,40 +74,55 @@ const GlobalStyle = createGlobalStyle`
     /* font.tsx */
 
     .font {
-        color: ${(props) => props.theme.font.color};
-    }
+        &.default, &.default > * {
+            color: ${(props) => props.theme.font.default.color};
+        }
 
-    .font-h1 {
-        ${font('9.8rem', '-1.5px', 'LexendLight', 300)}
-    }
+        &.primary, &.primary > *  {
+            color: ${(props) => props.theme.font.primary.color};
+        }
 
-    .font-h2 {
-        ${font('6.1rem', '-0.5px', 'LexendLight', 300)}
-    }
+        &.h1 {
+            ${font('9.8rem', '-1.5px', 'LexendLight', 300)}
+        }
 
-    .font-h3 {
-        ${font('4.9rem', '0px', 'LexendRegular', 400)}
-    }
+        &.h2 {
+            ${font('6.1rem', '-0.5px', 'LexendLight', 300)}
+        }
 
-    .font-h4 {
-        ${font('3.5rem', '0.25px', 'LexendRegular', 400)}
-    }
+        &.h3 {
+            ${font('4.9rem', '0px', 'LexendRegular', 400)}
+        }
 
-    .font-h5 {
-        ${font('2.4rem', '0px', 'LexendRegular', 400)}
-    }
+        &.h4 {
+            ${font('3.5rem', '0.25px', 'LexendRegular', 400)}
+        }
 
-    .font-h6 {
-        ${font('2rem', '0.15px', 'LexendMedium', 500)}
-    }
+        &.h5 {
+            ${font('2.4rem', '0px', 'LexendRegular', 400)}
+        }
 
-    .font-b1 {
-        ${font('1.6rem', '0.15px', 'LexendRegular', 400)}
-        line-height: 2.4rem;
-    }
+        &.h6 {
+            ${font('2rem', '0.15px', 'LexendMedium', 500)}
+        }
 
-    .font-b2 {
-        ${font('1.4rem', '0.1px', 'LexendMedium', 500)}
+        &.b1 {
+            ${font('1.6rem', '0.15px', 'LexendRegular', 400)}
+            line-height: 2.4rem;
+        }
+
+        &.b2 {
+            ${font('1.4rem', '0.1px', 'LexendMedium', 500)}
+        }
+
+        &.italic, &.italic > * {
+            font-style: italic;
+        }
+
+        &.bold, &.bold > * {
+            font-weight: bold;
+            letter-spacing: 0.40px;
+        }
     }
 
     /* font.tsx */
@@ -274,7 +289,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         .select-list {
-            ${appearIn('16px', '8px')}
+            ${appearIn(tokens.spacing[200], tokens.spacing[100])}
             position: absolute;
             list-style: none;
             margin: 0;
@@ -319,28 +334,6 @@ const GlobalStyle = createGlobalStyle`
             &:hover {
                 text-decoration: underline;
                 text-underline-offset: ${tokens.spacing[100]};
-            }
-        }
-
-        &.default {
-            & > * {
-                color: ${(props) => props.theme.link.default.color};
-
-                &:hover {
-                    text-decoration-color: ${(props) =>
-                      props.theme.link.default.hoverColor};
-                }
-            }
-        }
-
-        &.primary {
-            & > * {
-                color: ${(props) => props.theme.link.primary.color};
-
-                &:hover {
-                    text-decoration-color: ${(props) =>
-                      props.theme.link.primary.hoverColor};
-                }
             }
         }
     }
@@ -693,7 +686,7 @@ const GlobalStyle = createGlobalStyle`
 
     .icon {
         path {
-            fill: ${(props) => props.theme.font.color};
+            fill: ${(props) => props.theme.font.default.color};
         }
     }
 
@@ -744,6 +737,20 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* list.tsx */
+
+    /* popover.tsx */
+
+    .popover {
+        position: relative;
+
+        &-content {
+            ${appearIn(tokens.spacing[0], tokens.spacing[150])}
+            position: fixed;
+            padding: ${tokens.spacing[250]};
+        }
+    }
+
+    /* popover.tsx */
 
     /* blackquote.tsx */
 

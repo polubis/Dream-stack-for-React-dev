@@ -3,20 +3,9 @@ import type { LinkProps } from './defs';
 import c from 'classnames';
 import { Font } from '../font';
 
-const Link = ({
-  className,
-  variant,
-  children,
-  motive = 'default',
-}: LinkProps) => {
+const Link = (props: LinkProps) => {
   return (
-    <Font
-      className={c('link', className, motive)}
-      variant={variant}
-      element="span"
-    >
-      {children}
-    </Font>
+    <Font {...props} className={c('link', props.className)} element="span" />
   );
 };
 

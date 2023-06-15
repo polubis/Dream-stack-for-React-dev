@@ -132,7 +132,12 @@ interface Theme {
     bg: string;
   }
   font: {
-    color: string;
+    default: {
+      color: string;
+    };
+    primary: {
+      color: string;
+    };
   };
   body: {
     bg: string;
@@ -157,16 +162,6 @@ interface Theme {
     hoverBg: string;
     optionSeparator: string;
     optionActiveColor: string;
-  };
-  link: {
-    default: {
-      color: string;
-      hoverColor: string;
-    };
-    primary: {
-      color: string;
-      hoverColor: string;
-    };
   };
   navigation: {
     bg: string;
