@@ -752,17 +752,16 @@ const GlobalStyle = createGlobalStyle`
 
     /* popover.tsx */
 
-    /* blackquote.tsx */
+    /* blockquote.tsx */
 
-    .blackquote {
-        font-size: 18px;
+    .blockquote {
         color: ${(props) => props.theme.blackquote.color};
         background-color: ${(props) => props.theme.blackquote.bg};
         width: fit-content;
         padding: ${tokens.spacing[150]};
     }
 
-    /* blackquote.tsx */
+    /* blockquote.tsx */
 `;
 
 export { GlobalStyle };

@@ -28,6 +28,7 @@ interface FontProps {
   italic?: boolean;
   motive?: FontMotive;
   bold?: boolean;
+  blockquote?: boolean;
 }
 
 export type {
