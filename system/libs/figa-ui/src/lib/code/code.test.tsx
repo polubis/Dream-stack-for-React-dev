@@ -43,4 +43,16 @@ describe('Code can be used when: ', () => {
 
     expect(container.querySelector('.my-class')).toBeTruthy();
   });
+
+  describe('during readonly mode', () => {
+    it('[FRAGILE] disables selection', () => {
+      const readonly = render(<Code children={children} readonly />);
+
+      expect(readonly.container.querySelector('.cm-activeLine')).toBeFalsy();
+
+      const editable = render(<Code children={children} />);
+
+      expect(editable.container.querySelector('.cm-activeLine')).toBeTruthy();
+    });
+  });
 });
