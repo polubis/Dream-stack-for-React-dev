@@ -2,7 +2,7 @@ import type { SelectOption } from './defs';
 
 import { render, fireEvent, screen } from '@testing-library/react';
 import { useState } from 'react';
-import { Select } from './Select';
+import { Select } from './select';
 
 describe('select can be used when: ', () => {
   const OPTIONS: SelectOption[] = [
