@@ -62,7 +62,8 @@ const GlobalStyle = createGlobalStyle`
     ul,
     ol,
     body,
-    html {
+    html,
+    blockquote {
         margin: 0;
         padding: 0;
     }
@@ -744,13 +745,35 @@ const GlobalStyle = createGlobalStyle`
         position: relative;
 
         &-content {
-            ${appearIn(tokens.spacing[0], tokens.spacing[150])}
+            ${appearIn(tokens.spacing[0], tokens.spacing[150])};
             position: fixed;
             padding: ${tokens.spacing[250]};
         }
     }
 
     /* popover.tsx */
+
+    /* blockquote.tsx */
+
+    .blockquote {
+        border-radius: ${tokens.radius[50]};
+        background: ${(props) => props.theme.blockquote.bg};
+        border: 1px solid ${(props) => props.theme.blockquote.borderColor};
+
+        &.h1, &.h2, &.h3 {
+            padding: ${tokens.spacing[200]};
+        }
+
+        &.h4, &.h5, &.h6 {
+            padding: ${tokens.spacing[150]};
+        }
+
+        &.b1, &.b2 {
+            padding: ${tokens.spacing[50]};
+        }
+    }
+
+    /* blockquote.tsx */
 `;
 
 export { GlobalStyle };

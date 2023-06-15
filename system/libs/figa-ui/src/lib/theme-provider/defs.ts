@@ -113,6 +113,7 @@ interface Tokens {
     300: string;
     350: string;
     400: string;
+    450: string;
   };
   yellow: {
     50: string;
@@ -223,6 +224,10 @@ interface Theme {
     marker: {
       bg: string;
     };
+  };
+  blockquote: {
+    bg: string;
+    borderColor: string;
   };
 }
 

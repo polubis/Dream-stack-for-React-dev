@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Blockquote can be used when [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <blockquote
+    class="blockquote my-class b2"
+  >
+    <p
+      class="font b2 default"
+    >
+      My text
+    </p>
+  </blockquote>
+</DocumentFragment>
+`;
