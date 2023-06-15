@@ -693,6 +693,11 @@ const GlobalStyle = createGlobalStyle`
                 fill: ${(props) => props.theme.alert.error.color}};
             }
         }
+        &.alert-warning {
+            path {
+                fill: ${(props) => props.theme.alert.warning.color}};
+            }
+        }
     }
 
     /* icon.tsx */
