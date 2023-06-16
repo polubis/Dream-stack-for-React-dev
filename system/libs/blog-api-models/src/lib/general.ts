@@ -4,6 +4,9 @@ type Title = string;
 type Email = string;
 type Name = string;
 type Url = string;
+type Login = string;
+type Password = string;
+type DateStamp = string;
 
 interface ResponseError {
   key: string;
@@ -31,6 +34,9 @@ export type {
   Name,
   Email,
   Url,
+  Password,
+  Login,
   Response,
   PaginatedResponse,
+  DateStamp,
 };

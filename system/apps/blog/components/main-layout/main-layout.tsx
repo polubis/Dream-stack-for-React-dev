@@ -20,6 +20,7 @@ import {
   GREEN_ON_SOFTWARE_LINKEDIN,
   GREEN_ON_SOFTWARE_COMPANY,
 } from '../../consts';
+import { UserSection } from './user-section';
 
 const LABELS = ['Home', 'Articles', 'Authors', 'Creator', 'Courses'] as const;
 const URLS = [
@@ -30,7 +31,7 @@ const URLS = [
   '/courses/',
 ] as const;
 
-const MainLayout = ({ children }: MainLayoutProps) => {
+const MainLayout = ({ className, children }: MainLayoutProps) => {
   const links = LABELS.map((label, idx) => (
     <FigaUILink variant="h6" key={label}>
       <Link href={URLS[idx]}>{label}</Link>
@@ -39,17 +40,10 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
   return (
     <Layout
+      className={className}
       full
       header={
-        <Navigation
-          logo={<Logo />}
-          links={links}
-          action={
-            <Link href="/login/">
-              <Button>Join us</Button>
-            </Link>
-          }
-        />
+        <Navigation logo={<Logo />} links={links} action={<UserSection />} />
       }
       footer={
         <Footer
