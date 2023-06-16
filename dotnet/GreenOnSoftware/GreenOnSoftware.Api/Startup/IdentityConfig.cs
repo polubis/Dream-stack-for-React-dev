@@ -36,6 +36,7 @@ public static class IdentityConfig
         services.ConfigureApplicationCookie(options => {
             // Cookie settings
             options.Cookie.HttpOnly = true;
+            options.Cookie.SameSite = SameSiteMode.None;
             options.ExpireTimeSpan = TimeSpan.FromDays(1);
 
             options.SlidingExpiration = true;
