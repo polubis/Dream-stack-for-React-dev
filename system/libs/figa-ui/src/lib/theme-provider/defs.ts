@@ -134,6 +134,18 @@ interface Theme {
     primary: {
       color: string;
     };
+    error: {
+      color: string;
+    };
+    warning: {
+      color: string;
+    };
+    success: {
+      color: string;
+    };
+    info: {
+      color: string;
+    }
   };
   body: {
     bg: string;
@@ -143,20 +155,20 @@ interface Theme {
     bg: string;
     backdrop: string;
   };
-  alert: {
-    error: {
-      color: string
-    },
-    warning: {
-      color: string
-    },
-    info: {
-      color: string
-    },
-    success: {
-      color: string
-    }
-  }
+  // alert: {
+  //   error: {
+  //     color: string
+  //   },
+  //   warning: {
+  //     color: string
+  //   },
+  //   info: {
+  //     color: string
+  //   },
+  //   success: {
+  //     color: string
+  //   }
+  // }
   button: {
     outlined: {
       primary: PaletteColorsSetup;

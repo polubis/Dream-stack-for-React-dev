@@ -688,25 +688,25 @@ const GlobalStyle = createGlobalStyle`
         path {
             fill: ${(props) => props.theme.font.default.color};
         }
-        &.alert-error {
+        &.error {
             path {
-                fill: ${(props) => props.theme.alert.error.color}};
+                fill: ${(props) => props.theme.font.error.color}};
             }
         }
-        &.alert-warning {
+        &.warning {
             path {
-                fill: ${(props) => props.theme.alert.warning.color}};
+                fill: ${(props) => props.theme.font.warning.color}};
             }
         }
-        &.alert-info {
+        &.info {
             path {
-                fill: ${(props) => props.theme.alert.info.color}};
+                fill: ${(props) => props.theme.font.info.color}};
                 rotate: 180deg;
             }
         }
-        &.alert-success {
+        &.success {
             path {
-                fill: ${(props) => props.theme.alert.success.color}};
+                fill: ${(props) => props.theme.font.success.color}};
             }
         }
     }

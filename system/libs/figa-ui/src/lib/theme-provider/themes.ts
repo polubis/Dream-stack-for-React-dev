@@ -117,6 +117,18 @@ const light: Theme = {
     primary: {
       color: tokens.primary[50],
     },
+    error: {
+      color: tokens.red[50]
+    },
+    warning: {
+      color: tokens.yellow[50]
+    },
+    success: {
+      color: tokens.green[50]
+    },
+    info: {
+      color: tokens.blue[200]
+    }
   },
   body: {
     bg: tokens.common.white,
@@ -126,20 +138,20 @@ const light: Theme = {
     border: tokens.dark[50],
     backdrop: tokens.backdrop[50],
   },
-  alert: {
-    error: {
-      color: tokens.red[50]
-    },
-    warning: {
-      color: tokens.yellow[50]
-    },
-    info: {
-      color: tokens.blue[200]
-    },
-    success: {
-      color: tokens.green[50]
-    }
-  },
+  // alert: {
+  //   error: {
+  //     color: tokens.red[50]
+  //   },
+  //   warning: {
+  //     color: tokens.yellow[50]
+  //   },
+  //   info: {
+  //     color: tokens.blue[200]
+  //   },
+  //   success: {
+  //     color: tokens.green[50]
+  //   }
+  // },
   button: {
     filled: {
       primary: {
@@ -238,6 +250,18 @@ const dark: Theme = {
     primary: {
       color: tokens.primary[100],
     },
+    error: {
+      color: tokens.red[50]
+    },
+    warning: {
+      color: tokens.yellow[50]
+    },
+    success: {
+      color: tokens.green[50]
+    },
+    info: {
+      color: tokens.blue[200]
+    }
   },
   body: {
     bg: tokens.common.black,
@@ -247,20 +271,20 @@ const dark: Theme = {
     border: tokens.dark[50],
     backdrop: tokens.backdrop[50],
   },
-  alert: {
-    error: {
-      color: tokens.red[50]
-    },
-    warning: {
-      color: tokens.yellow[50]
-    },
-    info: {
-      color: tokens.blue[200]
-    },
-    success: {
-      color: tokens.green[50]
-    }
-  },
+  // alert: {
+  //   error: {
+  //     color: tokens.red[50]
+  //   },
+  //   warning: {
+  //     color: tokens.yellow[50]
+  //   },
+  //   info: {
+  //     color: tokens.blue[200]
+  //   },
+  //   success: {
+  //     color: tokens.green[50]
+  //   }
+  // },
   button: {
     filled: {
       primary: {
