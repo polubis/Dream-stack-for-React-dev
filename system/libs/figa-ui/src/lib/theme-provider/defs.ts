@@ -155,20 +155,20 @@ interface Theme {
     bg: string;
     backdrop: string;
   };
-  // alert: {
-  //   error: {
-  //     color: string
-  //   },
-  //   warning: {
-  //     color: string
-  //   },
-  //   info: {
-  //     color: string
-  //   },
-  //   success: {
-  //     color: string
-  //   }
-  // }
+  alert: {
+    error: {
+      color: string
+    },
+    warning: {
+      color: string
+    },
+    info: {
+      color: string
+    },
+    success: {
+      color: string
+    }
+  };
   button: {
     outlined: {
       primary: PaletteColorsSetup;

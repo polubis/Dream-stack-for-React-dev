@@ -138,20 +138,20 @@ const light: Theme = {
     border: tokens.dark[50],
     backdrop: tokens.backdrop[50],
   },
-  // alert: {
-  //   error: {
-  //     color: tokens.red[50]
-  //   },
-  //   warning: {
-  //     color: tokens.yellow[50]
-  //   },
-  //   info: {
-  //     color: tokens.blue[200]
-  //   },
-  //   success: {
-  //     color: tokens.green[50]
-  //   }
-  // },
+  alert: {
+    error: {
+      color: tokens.red[50]
+    },
+    warning: {
+      color: tokens.yellow[50]
+    },
+    info: {
+      color: tokens.blue[200]
+    },
+    success: {
+      color: tokens.green[50]
+    }
+  },
   button: {
     filled: {
       primary: {
@@ -271,20 +271,20 @@ const dark: Theme = {
     border: tokens.dark[50],
     backdrop: tokens.backdrop[50],
   },
-  // alert: {
-  //   error: {
-  //     color: tokens.red[50]
-  //   },
-  //   warning: {
-  //     color: tokens.yellow[50]
-  //   },
-  //   info: {
-  //     color: tokens.blue[200]
-  //   },
-  //   success: {
-  //     color: tokens.green[50]
-  //   }
-  // },
+  alert: {
+    error: {
+      color: tokens.red[50]
+    },
+    warning: {
+      color: tokens.yellow[50]
+    },
+    info: {
+      color: tokens.blue[200]
+    },
+    success: {
+      color: tokens.green[50]
+    }
+  },
   button: {
     filled: {
       primary: {

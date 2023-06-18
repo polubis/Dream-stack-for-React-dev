@@ -129,6 +129,82 @@ const GlobalStyle = createGlobalStyle`
 
     /* button.tsx */
 
+    .alert {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 5px;
+        border: 2px solid;
+    }
+    .alert-error {
+        ${(props) => props.theme.alert.error};
+    }
+    .alert-warning {
+        ${(props) => props.theme.alert.warning};
+    }
+    .alert-info {
+        ${(props) => props.theme.alert.info};
+    }
+    .alert-success {
+        ${(props) => props.theme.alert.success};
+    }
+ /* outlined-variations */
+    .alert-outlined.alert-error {
+        .font {
+            ${(props) => props.theme.alert.error};
+        }
+    }
+    .alert-outlined.alert-warning {
+        .font {
+            ${(props) => props.theme.alert.warning};
+        }
+    }
+    .alert-outlined.alert-info {
+        .font {
+            ${(props) => props.theme.alert.info};
+        }
+    }
+    .alert-outlined.alert-success {
+        .font {
+            ${(props) => props.theme.alert.success};
+        }
+    }
+
+/*  filled variations */
+    .alert-filled.alert-error {
+        .font {
+            ${(props) => props.theme.alert.error};
+        }
+    }
+    .alert-filled.alert-warning {
+        .font {
+            ${(props) => props.theme.alert.warning};
+        }
+    }
+    .alert-filled.alert-info {
+        .font {
+            ${(props) => props.theme.alert.info};
+        }
+    }
+    .alert-filled.alert-success {
+        .font {
+            ${(props) => props.theme.alert.success};
+        }
+        background-${(props) => props.theme.alert.success}; // jak to rozjasnic w takim zapisie, da sie ?
+    }
+
+
+    .alert-size-1 {
+        ${font('1rem', '0.12px', 'LexendMedium', 300)}
+    }
+    .alert-size-2 {
+        ${font('1.3rem', '0.15px', 'LexendMedium', 300)}
+    }
+    .alert-size-3 {
+        ${font('1.5rem', '0.17px', 'LexendMedium', 300)}
+    }
+
     .button {
         cursor: pointer;
         border: none;
