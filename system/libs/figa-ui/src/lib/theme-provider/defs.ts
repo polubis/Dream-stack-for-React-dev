@@ -94,14 +94,17 @@ interface Tokens {
   };
   red: {
     50: string;
+    100: string;
   };
   blue: {
+    100: string;
     200: string;
     600: string;
     650: string;
   };
   green: {
     50: string;
+    100: string;
   };
   gray: {
     0: string;
@@ -114,6 +117,10 @@ interface Tokens {
     350: string;
     400: string;
   };
+  orange: {
+    50: string;
+    100: string;
+  }
   yellow: {
     50: string;
   };
@@ -157,16 +164,20 @@ interface Theme {
   };
   alert: {
     error: {
-      color: string
+      color: string;
+      bg: string;
     },
     warning: {
-      color: string
+      color: string;
+      bg: string;
     },
     info: {
-      color: string
+      bg: string;
+      color: string;
     },
     success: {
-      color: string
+      bg: string;
+      color: string;
     }
   };
   button: {

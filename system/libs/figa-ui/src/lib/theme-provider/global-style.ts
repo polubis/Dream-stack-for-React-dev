@@ -174,24 +174,27 @@ const GlobalStyle = createGlobalStyle`
 /*  filled variations */
     .alert-filled.alert-error {
         .font {
-            ${(props) => props.theme.alert.error};
+            color: ${(props) => props.theme.alert.error.color};
         }
+        background: ${(props) => props.theme.alert.error.bg}; 
     }
     .alert-filled.alert-warning {
         .font {
-            ${(props) => props.theme.alert.warning};
+            color: ${(props) => props.theme.alert.warning.color};
         }
+        background: ${(props) => props.theme.alert.warning.bg}; 
     }
     .alert-filled.alert-info {
         .font {
-            ${(props) => props.theme.alert.info};
+            color: ${(props) => props.theme.alert.info.color};
         }
+        background: ${(props) => props.theme.alert.info.bg}; 
     }
     .alert-filled.alert-success {
         .font {
-            ${(props) => props.theme.alert.success};
+            color: ${(props) => props.theme.alert.success.color};
         }
-        background-${(props) => props.theme.alert.success}; // jak to rozjasnic w takim zapisie, da sie ?
+        background: ${(props) => props.theme.alert.success.bg}; 
     }
 
 

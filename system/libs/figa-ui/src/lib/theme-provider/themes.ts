@@ -76,8 +76,10 @@ const tokens: Tokens = {
   },
   green: {
     50: '#b2d9ba',
+    100: '#d7f2e6',
   },
   blue: {
+    100: '#b7cfe2',
     200: '#69B6CE',
     600: '#354049',
     650: '#79C1F3',
@@ -89,8 +91,13 @@ const tokens: Tokens = {
   yellow: {
     50: '#FFD200',
   },
+  orange: {
+    50: '#ffd9b6',
+    100: '#ff5900',
+  },
   red: {
     50: '#ff0000',
+    100: '#cc8787',
   },
   spacing,
   primary: {
@@ -121,7 +128,7 @@ const light: Theme = {
       color: tokens.red[50]
     },
     warning: {
-      color: tokens.yellow[50]
+      color: tokens.orange[100]
     },
     success: {
       color: tokens.green[50]
@@ -140,16 +147,20 @@ const light: Theme = {
   },
   alert: {
     error: {
-      color: tokens.red[50]
+      color: tokens.red[50],
+      bg: tokens.red[100]
     },
     warning: {
-      color: tokens.yellow[50]
+      color: tokens.orange[100],
+      bg: tokens.orange[50]
     },
     info: {
-      color: tokens.blue[200]
+      color: tokens.blue[200],
+      bg: tokens.blue[100],
     },
     success: {
-      color: tokens.green[50]
+      color: tokens.green[50],
+      bg: tokens.green[100]
     }
   },
   button: {
@@ -254,7 +265,7 @@ const dark: Theme = {
       color: tokens.red[50]
     },
     warning: {
-      color: tokens.yellow[50]
+      color: tokens.orange[100]
     },
     success: {
       color: tokens.green[50]
@@ -273,16 +284,20 @@ const dark: Theme = {
   },
   alert: {
     error: {
-      color: tokens.red[50]
+      color: tokens.red[50],
+      bg: tokens.red[100]
     },
     warning: {
-      color: tokens.yellow[50]
+      color: tokens.orange[100],
+      bg: tokens.orange[50],
     },
     info: {
-      color: tokens.blue[200]
+      color: tokens.blue[200],
+      bg: tokens.blue[100],
     },
     success: {
-      color: tokens.green[50]
+      color: tokens.green[50],
+      bg: tokens.green[100],
     }
   },
   button: {
