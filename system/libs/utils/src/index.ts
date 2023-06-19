@@ -1,1 +1,2 @@
-export * from './lib/utils';
+export * from './lib/is-client';
+export * from './lib/is-server';
