@@ -149,6 +149,7 @@ const GlobalStyle = createGlobalStyle`
     .alert-success {
         ${(props) => props.theme.alert.success};
     }
+
  /* outlined-variations */
     .alert-outlined.alert-error {
         .font {
@@ -172,6 +173,9 @@ const GlobalStyle = createGlobalStyle`
     }
 
 /*  filled variations */
+    .alert-filled {
+        border: none;
+    }
     .alert-filled.alert-error {
         .font {
             color: ${(props) => props.theme.alert.error.color};
@@ -195,17 +199,6 @@ const GlobalStyle = createGlobalStyle`
             color: ${(props) => props.theme.alert.success.color};
         }
         background: ${(props) => props.theme.alert.success.bg}; 
-    }
-
-
-    .alert-size-1 {
-        ${font('1rem', '0.12px', 'LexendMedium', 300)}
-    }
-    .alert-size-2 {
-        ${font('1.3rem', '0.15px', 'LexendMedium', 300)}
-    }
-    .alert-size-3 {
-        ${font('1.5rem', '0.17px', 'LexendMedium', 300)}
     }
 
     .button {

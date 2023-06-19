@@ -13,7 +13,7 @@ export default {
     <>
         {ALERT_TYPES.map(type => (
             <div style={{margin: '8px 0'}}>
-                <Alert alertType={type} variant={variant} message={`this is an ${type} alert`} />
+                <Alert alertType={type} variant={variant} message={`this is a ${type} alert - check it out !`} />
             </div>
         ))}
     </>
