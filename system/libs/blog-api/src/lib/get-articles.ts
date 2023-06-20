@@ -1,15 +1,11 @@
 import type {
+  GetArticlesSearchParams,
   GetArticlesResponse,
-  GetArticlesPayload,
 } from '@system/blog-api-models';
-import { url } from './url';
+import { http } from './source';
 
-export const getArticles = async (
-  payload: GetArticlesPayload = {}
-): Promise<GetArticlesResponse> => {
-  const response = await fetch(url('/api/Articles'));
+const getArticles = http<GetArticlesResponse, GetArticlesSearchParams>({
+  url: '/api/Articles',
+});
 
-  const json = await response.json();
-
-  return json;
-};
+export { getArticles };
