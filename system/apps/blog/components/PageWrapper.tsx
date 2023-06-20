@@ -1,8 +1,9 @@
-import type { ReactNode } from 'react';
+import { type ReactNode, useEffect } from 'react';
 
 import { MDXProvider } from '@mdx-js/react';
 import { Code, CodeBlock, Font, Link, List, ListItem } from '@system/figa-ui';
 import type { Components } from '@mdx-js/react/lib';
+import { signIn } from '@system/blog-api';
 
 const components: Components = {
   h1: ({ children }) => <Font variant="h1">{children}</Font>,
@@ -39,6 +40,18 @@ interface PageWrapperProps {
 }
 
 const PageWrapper = ({ children }: PageWrapperProps) => {
+  useEffect(() => {
+    const handleGet = async () => {
+      await signIn({
+        body: {
+          login: '',
+          password: ''
+        }
+      })
+    }
+
+    handleGet()
+  }, [])
   return <MDXProvider components={components}>{children}</MDXProvider>;
 };
 
