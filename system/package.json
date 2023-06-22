@@ -42,7 +42,8 @@
     "react-router-dom": "6.4.3",
     "rxjs": "^7.8.1",
     "styled-components": "5.3.6",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",
@@ -78,6 +79,7 @@
     "@typescript-eslint/parser": "^5.36.1",
     "@vitejs/plugin-react": "^3.0.0",
     "@vitest/ui": "^0.25.8",
+    "axios-mock-adapter": "^1.21.5",
     "babel-jest": "28.1.1",
     "babel-loader": "8.1.0",
     "babel-plugin-styled-components": "1.10.7",
@@ -96,6 +98,7 @@
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
     "jsdom": "~20.0.3",
+    "msw": "^1.2.2",
     "nx": "15.7.2",
     "prettier": "^2.6.2",
     "react-refresh": "^0.10.0",

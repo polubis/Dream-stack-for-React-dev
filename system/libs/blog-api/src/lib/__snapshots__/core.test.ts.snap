@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Errors detection works when:  returns default errors for other cases 1`] = `
+Array [
+  Object {
+    "key": "unknown",
+    "message": "Something went wrong...",
+  },
+]
+`;
+
+exports[`Errors detection works when:  returns default errors for other cases 2`] = `
+Object {
+  "key": "unknown",
+  "message": "Something went wrong...",
+}
+`;

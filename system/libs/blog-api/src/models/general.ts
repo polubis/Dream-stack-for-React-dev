@@ -10,7 +10,7 @@ type DateStamp = string;
 
 interface ResponseError {
   key: string;
-  message: 'string';
+  message: string;
 }
 
 interface Response<D> {
@@ -18,6 +18,12 @@ interface Response<D> {
   hasErrors: boolean;
   errors: ResponseError[];
   data: D;
+}
+
+interface ErrorResponse {
+  success: boolean;
+  hasErrors: boolean;
+  errors: ResponseError[];
 }
 
 interface PaginatedResponse<D> extends Response<D> {
@@ -33,10 +39,12 @@ export type {
   Title,
   Name,
   Email,
+  ResponseError,
   Url,
   Response,
   PaginatedResponse,
   Login,
   Password,
   DateStamp,
+  ErrorResponse,
 };

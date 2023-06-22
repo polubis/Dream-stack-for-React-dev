@@ -1,8 +1,11 @@
 import { ThemeProvider } from '@system/figa-ui';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { useAuth } from '../dk/use-auth';
 
 const App = ({ Component, pageProps }: AppProps) => {
+  useAuth();
+
   return (
     <>
       <Head>

@@ -21,6 +21,7 @@ const Box = ({
 }: BoxProps) => {
   const cachedPadding = useMemo(
     () => (padding ? toCSSSpacingProp(padding) : undefined),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
@@ -30,6 +31,7 @@ const Box = ({
     }
 
     return margin;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const enhancedChildren = Array.isArray(spacing)
