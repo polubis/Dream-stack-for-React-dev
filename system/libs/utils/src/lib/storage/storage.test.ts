@@ -8,8 +8,8 @@ describe('Storage can be used when: ', () => {
     delete (global as never)['localStorage'];
     delete (global as never)['sessionStorage'];
 
-    expect(() => storage()).toThrow();
-    expect(() => storage('session')).toThrow();
+    expect(() => storage().get('key')).toThrow();
+    expect(() => storage('session').get('key')).toThrow();
 
     global.localStorage = localStorage;
     global.sessionStorage = sessionStorage;

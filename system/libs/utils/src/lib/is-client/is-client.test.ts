@@ -1,4 +1,4 @@
-import { isClient } from '../is-client';
+import { isClient } from './is-client';
 
 describe('Client side is detected when: ', () => {
   it('window object is not equal to undefined', () => {

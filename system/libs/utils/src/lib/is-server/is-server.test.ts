@@ -1,4 +1,4 @@
-import { isServer } from '../is-server';
+import { isServer } from './is-server';
 
 describe('Server side is detected when: ', () => {
   const initialWindow = global.window;
