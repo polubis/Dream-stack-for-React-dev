@@ -1,1 +1,2 @@
-export * from './lib/get-articles';
+export * from './models';
+export * from './lib';

@@ -1,7 +1,7 @@
-import { ArticleModel } from '@system/blog-models';
+import type { ArticleDto } from '@system/blog-api';
 
 interface HomeViewProps {
-  articles: ArticleModel[];
+  articles: ArticleDto[];
 }
 
 export type { HomeViewProps };
