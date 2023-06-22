@@ -1,4 +1,4 @@
-import { isServer } from './is-server';
+import { isServer } from '../is-server';
 
 const isClient = (): boolean => !isServer();
 
