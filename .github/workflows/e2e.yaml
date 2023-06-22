@@ -16,6 +16,12 @@ jobs:
         run: |
           cd system
           npm install --legacy-peer-deps
+      - name: 'Create env file'
+        run: |
+          cd system
+          touch .env
+          echo NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} >> .env
+          cat .env
       - name: Cypress e2e tests
         run: |
           cd system
