@@ -22,7 +22,7 @@ interface ArticleDto {
 }
 
 type GetArticlesResponse = PaginatedResponse<ArticleDto[]>;
-interface GetArticlesPayload {
+interface GetArticlesSearchParams {
   Search?: string;
   ItemsPerPage?: number;
   CurrentPage?: number;
@@ -32,5 +32,5 @@ export type {
   ArticleDto,
   ArticleStatus,
   GetArticlesResponse,
-  GetArticlesPayload,
+  GetArticlesSearchParams,
 };
