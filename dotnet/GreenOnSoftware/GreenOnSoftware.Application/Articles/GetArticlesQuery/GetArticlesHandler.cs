@@ -43,6 +43,7 @@ internal class GetArticlesHandler : IRequestHandler<GetArticles, PagedResult<Art
 
         IQueryable<Article> queryable = _dbContext.Articles
             .Include(x => x.Author)
+            .Where(x => !x.IsDeleted)
             .Where(() => statuses != null, x => statuses!.Contains(x.Status))
             .Where(() => isAnnonymous, x => x.Status == Status.Accepted)
             .Where(() => isGeneralUser, x => x.Status == Status.Accepted || x.AuthorId == _context.Identity.Id)

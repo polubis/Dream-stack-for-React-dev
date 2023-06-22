@@ -51,7 +51,7 @@ public class AccountController : ControllerBase
             return BadRequest(result);
         }
 
-        return Ok();
+        return NoContent();
     }
 
     [HttpPost("SignOut")]
