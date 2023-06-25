@@ -56,6 +56,9 @@ interface PaletteColorsSetup {
 }
 
 interface Tokens {
+  shadow: {
+    50: string;
+  };
   width: {
     50: string;
   };

@@ -27,6 +27,9 @@ const spacing: Spacing = {
 
 // Check for reference: https://mui.com/joy-ui/customization/theme-colors/
 const tokens: Tokens = {
+  shadow: {
+    50: '0 3px 4px rgba(0, 0, 0, .14)',
+  },
   width: {
     50: '1080px',
   },
