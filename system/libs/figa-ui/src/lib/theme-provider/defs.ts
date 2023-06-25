@@ -232,6 +232,10 @@ interface Theme {
     bg: string;
     borderColor: string;
   };
+  loader: {
+    primary: string;
+    secondary: string;
+  };
 }
 
 type ThemeKey = 'dark' | 'light';

@@ -810,10 +810,10 @@ const GlobalStyle = createGlobalStyle`
     /* loader.tsx */
 
     .loader {
-        --loader-default-color: ${(props) => props.theme.font.default.color};
-        --loader-primary-color: ${(props) => props.theme.font.primary.color};
+        --loader-primary-color: ${(props) => props.theme.loader.primary};
+        --loader-secondary-color: ${(props) => props.theme.loader.secondary};
 
-        @keyframes loaderRotate {
+        @keyframes rotate {
             0% {
                 transform: rotate(0deg);
             }
@@ -825,71 +825,67 @@ const GlobalStyle = createGlobalStyle`
             }
         }
 
-        @keyframes loaderRotate2 {
+        @keyframes rotateAndChangeColor {
             0% {
                 transform: rotate(0deg);
-                border-top-color: var(--loader-primary-color);
+                border-top-color: var(--loader-secondary-color);
             }
             50% {
                 transform: rotate(180deg);
-                border-top-color: var(--loader-default-color);
+                border-top-color: var(--loader-primary-color);
             }
             100% {
                 transform: rotate(360deg);
-                border-top-color: var(--loader-primary-color);
+                border-top-color: var(--loader-secondary-color);
             }
         }
 
         .loader-animation {
+            ${size('150px')}
             position: relative;
-            margin: 35px auto;
-            width: 150px;
-            height: 150px;
-            display: block;
             overflow: hidden;
-            border-radius: 50%;
-            padding: 8px;
-            border: 2px solid transparent;
-            animation: loaderRotate linear 3.5s infinite;
+            border-radius: ${tokens.radius[1000]};
+            padding: ${tokens.spacing[100]};
+            border: ${tokens.spacing[25]} solid transparent;
+            animation: rotate linear 3.5s infinite;
 
             div {
                 height: 100%;
-                border-radius: 50%;
-                padding: 8px;
-                border: 2px solid transparent;
-                animation: loaderRotate linear 3.5s infinite;
+                border-radius: ${tokens.radius[1000]};
+                padding: ${tokens.spacing[100]};
+                border: ${tokens.spacing[25]} solid transparent;
+                animation: rotate linear 3.5s infinite;
             }
 
-
             &.loader-1, &.loader-1 div {
-                border-top-color: var(--loader-primary-color);
-                border-bottom-color: var(--loader-default-color);
+                border-top-color: var(--loader-secondary-color);
+                border-bottom-color: var(--loader-primary-color);
             }
 
             &.loader-2, &.loader-2 div {
-                border-top-color: var(--loader-default-color);
-                border-left-color: var(--loader-primary-color);
-                border-right-color: var(--loader-primary-color);
+                border-top-color: var(--loader-primary-color);
+                border-left-color: var(--loader-secondary-color);
+                border-right-color: var(--loader-secondary-color);
             }
 
             &.loader-3, &.loader-3 div {
-                border-top-color: var(--loader-primary-color);
-                border-left-color: var(--loader-default-color);
+                border-top-color: var(--loader-secondary-color);
+                border-left-color: var(--loader-primary-color);
                 animation-timing-function: cubic-bezier(.55, .38, .21, .88);
                 animation-duration: 3s;
             }
 
             &.loader-4, &.loader-4 div {
-                border-radius: 50%;
-                padding: 4px;
-                animation: loaderRotate2 4s infinite linear;
+                border-radius: ${tokens.radius[1000]};
+                padding: ${tokens.spacing[50]};
+                animation: rotateAndChangeColor 4s infinite linear;
             }
 
             &.loader-animation:hover, &.loader-animation div:hover {
                 animation-play-state: paused !important;
             }
 
-            &.loader-animation, &.loader-animation  div {
+            &.loader-animation, &.loader-animation div {
                 will-change: transform;
             }
         }

@@ -222,6 +222,10 @@ const light: Theme = {
     bg: tokens.light[50],
     borderColor: tokens.light[100],
   },
+  loader: {
+    primary: tokens.common.black,
+    secondary: tokens.primary[50],
+  },
 };
 
 const dark: Theme = {
@@ -332,6 +336,10 @@ const dark: Theme = {
   blockquote: {
     bg: tokens.gray[450],
     borderColor: tokens.gray[300],
+  },
+  loader: {
+    primary: tokens.common.white,
+    secondary: tokens.primary[50],
   },
 };
 
