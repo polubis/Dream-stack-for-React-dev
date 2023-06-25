@@ -8,9 +8,11 @@ type Login = string;
 type Password = string;
 type DateStamp = string;
 
+type APIPath = 'Account/SignIn' | 'Account/SignOut' | 'Articles';
+
 interface ResponseError {
   key: string;
-  message: 'string';
+  message: string;
 }
 
 interface Response<D> {
@@ -18,6 +20,12 @@ interface Response<D> {
   hasErrors: boolean;
   errors: ResponseError[];
   data: D;
+}
+
+interface ErrorResponse {
+  success: boolean;
+  hasErrors: boolean;
+  errors: ResponseError[];
 }
 
 interface PaginatedResponse<D> extends Response<D> {
@@ -36,7 +44,10 @@ export type {
   Url,
   Response,
   PaginatedResponse,
+  ErrorResponse,
   Login,
+  ResponseError,
   Password,
   DateStamp,
+  APIPath,
 };
