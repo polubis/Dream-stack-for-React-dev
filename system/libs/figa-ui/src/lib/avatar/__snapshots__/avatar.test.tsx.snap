@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar can be used when:  [FRAGILE] allows to use custom image element 1`] = `
+<DocumentFragment>
+  <figure
+    class="avatar medium rounded"
+  >
+    <img
+      alt="My image"
+      class="avatar-image"
+      src="https://media-cldnry.s-nbcnews.com"
+    />
+  </figure>
+</DocumentFragment>
+`;
+
+exports[`Avatar can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <figure
+    class="avatar medium rounded my-class"
+  >
+    <img
+      alt="My image"
+      class="avatar-image"
+      src="https://media-cldnry.s-nbcnews.com"
+    />
+  </figure>
+</DocumentFragment>
+`;

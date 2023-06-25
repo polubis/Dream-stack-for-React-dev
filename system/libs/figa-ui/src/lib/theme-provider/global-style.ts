@@ -774,6 +774,38 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* blockquote.tsx */
+
+    /* avatar.tsx */
+
+    .avatar {
+        .avatar-image {
+            height: 100%;
+            width: 100%;
+            box-shadow: ${tokens.shadow[50]};
+        }
+
+        &.rounded .avatar-image  {
+            border-radius: ${tokens.radius[1000]};
+        }
+
+        &.rectangle .avatar-image  {
+            border-radius: ${tokens.radius[50]};
+        }
+
+        &.small {
+            ${size(tokens.spacing[400])};
+        }
+
+        &.medium {
+            ${size(tokens.spacing[600])};
+        }
+
+        &.big {
+            ${size(tokens.spacing[800])};
+        }
+    }
+
+    /* avatar.tsx */
 `;
 
 export { GlobalStyle };
