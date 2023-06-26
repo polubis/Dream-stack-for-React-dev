@@ -37,4 +37,10 @@ describe('Avatar can be used when: ', () => {
 
     screen.getByAltText(ALT);
   });
+
+  it('allows to pass other props for container element', () => {
+    render(<Avatar alt={ALT} src={SRC} title="Title" />);
+
+    screen.getByTitle(/Title/);
+  });
 });

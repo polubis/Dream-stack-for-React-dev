@@ -806,6 +806,33 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* avatar.tsx */
+
+    /* avatars.tsx */
+
+    .avatars {
+        ${row()}
+        width: max-content;
+
+        &.rounded .avatars-rest-count {
+            border-radius: ${tokens.radius[1000]};
+        }
+        
+        &.rectangle .avatars-rest-count {
+            border-radius: ${tokens.radius[50]};
+        }
+
+        .avatars-rest-count {
+            ${center()}
+            background: ${(props) => props.theme.avatars.restCounter.bg};
+            box-shadow: ${tokens.shadow[50]};
+  
+            .font {
+                color: ${(props) => props.theme.avatars.restCounter.color};
+            }
+        }
+    }
+
+    /* avatars.tsx */
 `;
 
 export { GlobalStyle };
