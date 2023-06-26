@@ -1,2 +1,2 @@
-export * from './articles';
-export * from './account';
+export * from './methods';
+export * from './interceptors';

@@ -226,6 +226,12 @@ const light: Theme = {
     primary: tokens.common.black,
     secondary: tokens.primary[50],
   },
+  avatars: {
+    restCounter: {
+      bg: tokens.primary[50],
+      color: tokens.common.black,
+    },
+  },
 };
 
 const dark: Theme = {
@@ -340,6 +346,12 @@ const dark: Theme = {
   loader: {
     primary: tokens.common.white,
     secondary: tokens.primary[50],
+  },
+  avatars: {
+    restCounter: {
+      bg: tokens.primary[50],
+      color: tokens.common.black,
+    },
   },
 };
 

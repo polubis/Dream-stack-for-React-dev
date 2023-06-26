@@ -236,6 +236,12 @@ interface Theme {
     primary: string;
     secondary: string;
   };
+  avatars: {
+    restCounter: {
+      bg: string;
+      color: string;
+    };
+  };
 }
 
 type ThemeKey = 'dark' | 'light';
