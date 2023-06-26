@@ -37,6 +37,8 @@ type Spacing = {
   900: string;
   950: string;
   1000: string;
+  1500: string;
+  2000: string;
 };
 
 type SpacingKey = keyof Spacing;

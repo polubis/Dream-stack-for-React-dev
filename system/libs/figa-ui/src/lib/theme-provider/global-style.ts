@@ -840,20 +840,59 @@ const GlobalStyle = createGlobalStyle`
             }
         }
 
+        &.tiny .loader-animation {
+            ${size(tokens.spacing[250])}
+            padding: ${tokens.spacing[25]};
+            border: ${tokens.spacing[25]} solid transparent;
+        }
+
+        &.small .loader-animation {
+            ${size(tokens.spacing[500])}
+            padding: ${tokens.spacing[25]};
+            border: ${tokens.spacing[25]} solid transparent;
+        }
+
+        &.medium .loader-animation {
+            ${size(tokens.spacing[1000])}
+            padding: ${tokens.spacing[50]};
+            border: ${tokens.spacing[25]} solid transparent;
+
+            div {
+                padding: ${tokens.spacing[50]};
+                border: ${tokens.spacing[25]} solid transparent;
+            }
+
+            &.loader-4, &.loader-4 div {
+                border-radius: ${tokens.radius[1000]};
+                padding: ${tokens.spacing[50]};
+            }
+        }
+
+        &.big .loader-animation {
+            ${size(tokens.spacing[1500])}
+            padding: ${tokens.spacing[100]};
+            border: ${tokens.spacing[25]} solid transparent;
+
+            div {
+                padding: ${tokens.spacing[100]};
+                border: ${tokens.spacing[25]} solid transparent;
+            }
+
+            &.loader-4, &.loader-4 div {
+                border-radius: ${tokens.radius[1000]};
+                padding: ${tokens.spacing[100]};
+            }
+        }
+
         .loader-animation {
-            ${size('150px')}
             position: relative;
             overflow: hidden;
             border-radius: ${tokens.radius[1000]};
-            padding: ${tokens.spacing[100]};
-            border: ${tokens.spacing[25]} solid transparent;
             animation: rotate linear 3.5s infinite;
 
             div {
                 height: 100%;
                 border-radius: ${tokens.radius[1000]};
-                padding: ${tokens.spacing[100]};
-                border: ${tokens.spacing[25]} solid transparent;
                 animation: rotate linear 3.5s infinite;
             }
 
@@ -876,8 +915,6 @@ const GlobalStyle = createGlobalStyle`
             }
 
             &.loader-4, &.loader-4 div {
-                border-radius: ${tokens.radius[1000]};
-                padding: ${tokens.spacing[50]};
                 animation: rotateAndChangeColor 4s infinite linear;
             }
 

@@ -1,6 +1,12 @@
+import type { LOADER_SIZES, LOADER_VARIANTS } from './consts';
+
+type LoaderSize = (typeof LOADER_SIZES)[number];
+type LoaderVariant = (typeof LOADER_VARIANTS)[number];
+
 interface LoaderProps {
   className?: string;
-  variant?: '1' | '2' | '3' | '4';
+  variant?: LoaderVariant;
+  size?: LoaderSize;
 }
 
-export type { LoaderProps };
+export type { LoaderProps, LoaderSize };
