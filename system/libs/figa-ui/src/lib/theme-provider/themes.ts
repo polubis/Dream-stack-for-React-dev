@@ -23,6 +23,8 @@ const spacing: Spacing = {
   900: '72px',
   950: '76px',
   1000: '80px',
+  1500: '140px',
+  2000: '180px',
 };
 
 // Check for reference: https://mui.com/joy-ui/customization/theme-colors/
@@ -222,6 +224,10 @@ const light: Theme = {
     bg: tokens.light[50],
     borderColor: tokens.light[100],
   },
+  loader: {
+    primary: tokens.common.black,
+    secondary: tokens.primary[50],
+  },
   avatars: {
     restCounter: {
       bg: tokens.primary[50],
@@ -338,6 +344,10 @@ const dark: Theme = {
   blockquote: {
     bg: tokens.gray[450],
     borderColor: tokens.gray[300],
+  },
+  loader: {
+    primary: tokens.common.white,
+    secondary: tokens.primary[50],
   },
   avatars: {
     restCounter: {

@@ -807,6 +807,129 @@ const GlobalStyle = createGlobalStyle`
 
     /* avatar.tsx */
 
+    /* loader.tsx */
+
+    .loader {
+        --loader-primary-color: ${(props) => props.theme.loader.primary};
+        --loader-secondary-color: ${(props) => props.theme.loader.secondary};
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotateAndChangeColor {
+            0% {
+                transform: rotate(0deg);
+                border-top-color: var(--loader-secondary-color);
+            }
+            50% {
+                transform: rotate(180deg);
+                border-top-color: var(--loader-primary-color);
+            }
+            100% {
+                transform: rotate(360deg);
+                border-top-color: var(--loader-secondary-color);
+            }
+        }
+
+        &.tiny .loader-animation {
+            ${size(tokens.spacing[250])}
+            padding: ${tokens.spacing[25]};
+            border: ${tokens.spacing[25]} solid transparent;
+        }
+
+        &.small .loader-animation {
+            ${size(tokens.spacing[500])}
+            padding: ${tokens.spacing[25]};
+            border: ${tokens.spacing[25]} solid transparent;
+        }
+
+        &.medium .loader-animation {
+            ${size(tokens.spacing[1000])}
+            padding: ${tokens.spacing[50]};
+            border: ${tokens.spacing[25]} solid transparent;
+
+            div {
+                padding: ${tokens.spacing[50]};
+                border: ${tokens.spacing[25]} solid transparent;
+            }
+
+            &.loader-4, &.loader-4 div {
+                border-radius: ${tokens.radius[1000]};
+                padding: ${tokens.spacing[50]};
+            }
+        }
+
+        &.big .loader-animation {
+            ${size(tokens.spacing[1500])}
+            padding: ${tokens.spacing[100]};
+            border: ${tokens.spacing[25]} solid transparent;
+
+            div {
+                padding: ${tokens.spacing[100]};
+                border: ${tokens.spacing[25]} solid transparent;
+            }
+
+            &.loader-4, &.loader-4 div {
+                border-radius: ${tokens.radius[1000]};
+                padding: ${tokens.spacing[100]};
+            }
+        }
+
+        .loader-animation {
+            position: relative;
+            overflow: hidden;
+            border-radius: ${tokens.radius[1000]};
+            animation: rotate linear 3.5s infinite;
+
+            div {
+                height: 100%;
+                border-radius: ${tokens.radius[1000]};
+                animation: rotate linear 3.5s infinite;
+            }
+
+            &.loader-1, &.loader-1 div {
+                border-top-color: var(--loader-secondary-color);
+                border-bottom-color: var(--loader-primary-color);
+            }
+
+            &.loader-2, &.loader-2 div {
+                border-top-color: var(--loader-primary-color);
+                border-left-color: var(--loader-secondary-color);
+                border-right-color: var(--loader-secondary-color);
+            }
+
+            &.loader-3, &.loader-3 div {
+                border-top-color: var(--loader-secondary-color);
+                border-left-color: var(--loader-primary-color);
+                animation-timing-function: cubic-bezier(.55, .38, .21, .88);
+                animation-duration: 3s;
+            }
+
+            &.loader-4, &.loader-4 div {
+                animation: rotateAndChangeColor 4s infinite linear;
+            }
+
+            &.loader-animation:hover, &.loader-animation div:hover {
+                animation-play-state: paused !important;
+            }
+
+            &.loader-animation, &.loader-animation div {
+                will-change: transform;
+            }
+        }
+    }    
+
+    /* loader.tsx */
+    
     /* avatars.tsx */
 
     .avatars {
