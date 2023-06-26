@@ -222,6 +222,12 @@ const light: Theme = {
     bg: tokens.light[50],
     borderColor: tokens.light[100],
   },
+  avatars: {
+    restCounter: {
+      bg: tokens.primary[50],
+      color: tokens.common.black,
+    },
+  },
 };
 
 const dark: Theme = {
@@ -332,6 +338,12 @@ const dark: Theme = {
   blockquote: {
     bg: tokens.gray[450],
     borderColor: tokens.gray[300],
+  },
+  avatars: {
+    restCounter: {
+      bg: tokens.primary[50],
+      color: tokens.common.black,
+    },
   },
 };
 

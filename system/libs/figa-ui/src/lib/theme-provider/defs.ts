@@ -232,6 +232,12 @@ interface Theme {
     bg: string;
     borderColor: string;
   };
+  avatars: {
+    restCounter: {
+      bg: string;
+      color: string;
+    };
+  };
 }
 
 type ThemeKey = 'dark' | 'light';

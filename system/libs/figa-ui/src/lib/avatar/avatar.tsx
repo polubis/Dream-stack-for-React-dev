@@ -2,17 +2,25 @@ import type { AvatarProps, ImageProps } from './defs';
 
 import c from 'classnames';
 
-const Avatar = (props: AvatarProps) => {
-  const { size = 'medium', shape = 'rounded' } = props;
-  const { className, renderImage, ...imagePartialProps } = props;
-  const imageClassName = 'avatar-image';
+const Avatar = ({
+  className,
+  renderImage,
+  size = 'medium',
+  shape = 'rounded',
+  alt,
+  src,
+  loading,
+  ...props
+}: AvatarProps) => {
   const imageProps: ImageProps = {
-    ...imagePartialProps,
-    className: imageClassName,
+    alt,
+    src,
+    loading,
+    className: 'avatar-image',
   };
 
   return (
-    <figure className={c('avatar', size, shape, className)}>
+    <figure className={c('avatar', size, shape, className)} {...props}>
       {renderImage ? (
         renderImage(imageProps)
       ) : (

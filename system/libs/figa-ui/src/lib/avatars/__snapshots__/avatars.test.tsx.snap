@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatars can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="avatars my-class rounded"
+  >
+    <div
+      style="transform: translateX(-0px);"
+    >
+      <figure
+        class="avatar medium rounded"
+      >
+        <img
+          alt="image"
+          class="avatar-image"
+          src="https://"
+        />
+      </figure>
+    </div>
+    <div
+      class="avatars-rest-count"
+      style="height: 48px; width: 48px; transform: translateX(-24px);"
+    >
+      <p
+        class="font b2 default"
+      >
+        +1
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Avatars can be used when:  [FRAGILE] calculates offset for children elements 1`] = `
+<DocumentFragment>
+  <div
+    class="avatars rounded"
+  >
+    <div
+      style="transform: translateX(-0px);"
+    >
+      <figure
+        class="avatar big rounded"
+      >
+        <img
+          alt="image"
+          class="avatar-image"
+          src="https://"
+        />
+      </figure>
+    </div>
+    <div
+      style="transform: translateX(-32px);"
+    >
+      <figure
+        class="avatar big rounded"
+      >
+        <img
+          alt="image"
+          class="avatar-image"
+          src="https://"
+        />
+      </figure>
+    </div>
+    <div
+      style="transform: translateX(-64px);"
+    >
+      <figure
+        class="avatar big rounded"
+      >
+        <img
+          alt="image"
+          class="avatar-image"
+          src="https://"
+        />
+      </figure>
+    </div>
+    <div
+      class="avatars-rest-count"
+      style="height: 64px; width: 64px; transform: translateX(-96px);"
+    >
+      <p
+        class="font b2 default"
+      >
+        +1
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Avatars can be used when:  [FRAGILE] injects properties to avatar component 1`] = `
+<DocumentFragment>
+  <div
+    class="avatars rectangle"
+  >
+    <div
+      style="transform: translateX(-0px);"
+    >
+      <figure
+        class="avatar medium rectangle"
+      >
+        <img
+          alt="image"
+          class="avatar-image"
+          src="https://"
+        />
+      </figure>
+    </div>
+    <div
+      class="avatars-rest-count"
+      style="height: 48px; width: 48px; transform: translateX(-24px);"
+    >
+      <p
+        class="font b2 default"
+      >
+        +1
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
