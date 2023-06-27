@@ -12,4 +12,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/libs/blog-api',
+  setupFiles: ['<rootDir>/set-env.ts'],
 };
