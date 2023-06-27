@@ -16,21 +16,25 @@ import { T_DOWN } from './viewport';
 const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'LexendBold';
+        font-weight: 700;
         src: url('/fonts/LexendBold.ttf') format('truetype');
     }
 
     @font-face {
         font-family: 'LexendMedium';
+        font-weight: 500;
         src: url('/fonts/LexendMedium.ttf') format('truetype');
     }
     
     @font-face {
         font-family: 'LexendRegular';
+        font-weight: 400;
         src: url('/fonts/LexendRegular.ttf') format('truetype');
     }
 
     @font-face {
         font-family: 'LexendLight';
+        font-weight: 300;
         src: url('/fonts/LexendLight.ttf') format('truetype');
     }
 

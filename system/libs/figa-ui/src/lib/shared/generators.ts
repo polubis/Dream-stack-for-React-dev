@@ -61,7 +61,7 @@ const font = (
 ): FlattenSimpleInterpolation => css`
   font-size: ${size};
   letter-spacing: ${spacing};
-  font-family: ${family}, sans-serif;
+  font-family: ${family}, Verdana, sans-serif;
   font-weight: ${weight};
 `;
 
