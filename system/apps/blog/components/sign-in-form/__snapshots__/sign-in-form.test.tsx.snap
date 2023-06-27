@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User can use form to sign in when:  after typing login and password sign in starts, and confirm button is loading 1`] = `
+<DocumentFragment>
+  <div
+    class="box column empty"
+    style="margin: auto; max-width: 320px;"
+  >
+    <div
+      class="box-item-wrapper"
+      style="margin-bottom: 32px;"
+    >
+      <h6
+        class="font h6 default"
+      >
+        Sign in into your account
+      </h6>
+    </div>
+    <div
+      class="box-item-wrapper"
+      style="margin-bottom: 12px;"
+    >
+      <div
+        class="input"
+      >
+        <input
+          placeholder="Login*"
+          value="tom19944"
+        />
+      </div>
+    </div>
+    <div
+      class="box-item-wrapper"
+      style="margin-bottom: 32px;"
+    >
+      <div
+        class="input"
+      >
+        <input
+          placeholder="Password*"
+          type="password"
+          value="my-password-1994"
+        />
+      </div>
+    </div>
+    <div
+      class="box-item-wrapper"
+      style="margin-bottom: 32px;"
+    >
+      <button
+        class="button size-3 rectangle filled primary loading"
+        disabled=""
+      >
+        <span
+          class="child"
+        >
+          Confirm
+        </span>
+        <div
+          class="loader tiny"
+        >
+          <div
+            class="loader-animation loader-1"
+          >
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
