@@ -6,6 +6,34 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
+        <link
+          rel="preload"
+          href="/fonts/LexendMedium.ttf"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/ttf"
+        />
+        <link
+          rel="preload"
+          href="/fonts/LexendBold.ttf"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/ttf"
+        />
+        <link
+          rel="preload"
+          href="/fonts/LexendRegular.ttf"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/ttf"
+        />
+        <link
+          rel="preload"
+          href="/fonts/LexendLight.ttf"
+          as="font"
+          crossOrigin="anonymous"
+          type="font/ttf"
+        />
         <title>Welcome to blog!</title>
       </Head>
       <ThemeProvider>
