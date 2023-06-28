@@ -51,10 +51,11 @@ interface Palette {
   250: string;
 }
 
-interface PaletteColorsSetup {
+interface ButtonSetup {
   color: string;
   bg: string;
   borderColor?: string;
+  outlineColor: string;
 }
 
 interface Tokens {
@@ -151,10 +152,10 @@ interface Theme {
   };
   button: {
     outlined: {
-      primary: PaletteColorsSetup;
+      primary: ButtonSetup;
     };
     filled: {
-      primary: PaletteColorsSetup;
+      primary: ButtonSetup;
     };
   };
   select: {
