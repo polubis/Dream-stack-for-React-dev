@@ -17,7 +17,7 @@ const Template: Story<Pick<ButtonProps, 'variant' | 'motive'>> = ({
   motive,
 }) => {
   return (
-    <Box padding={[300, 300, 300, 300]} spacing={[200, 200, 200, 200]}>
+    <Box padding={[300, 300, 300, 300]} spacing={[200, 200, 200, 200, 200]}>
       <Box spacing={[200]}>
         <Font variant="h5">Rounded</Font>
         <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
@@ -70,6 +70,41 @@ const Template: Story<Pick<ButtonProps, 'variant' | 'motive'>> = ({
           {BUTTON_SIZES.map((size) => (
             <Button
               disabled
+              key={size}
+              size={size}
+              variant={variant}
+              motive={motive}
+            >
+              Click Me!
+            </Button>
+          ))}
+        </Box>
+      </Box>
+
+      <Box spacing={[200]}>
+        <Font variant="h5">Rounded but loading</Font>
+        <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
+          {BUTTON_SIZES.map((size) => (
+            <Button
+              key={size}
+              loading
+              shape="rounded"
+              motive={motive}
+              variant={variant}
+              size={size}
+            >
+              <DiscordIcon />
+            </Button>
+          ))}
+        </Box>
+      </Box>
+
+      <Box spacing={[200]}>
+        <Font variant="h5">Rectangle but loading</Font>
+        <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
+          {BUTTON_SIZES.map((size) => (
+            <Button
+              loading
               key={size}
               size={size}
               variant={variant}

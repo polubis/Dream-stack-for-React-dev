@@ -98,6 +98,18 @@ const buttonBaseEffects = (outlineColor: string): FlattenSimpleInterpolation =>
     outline: 2px solid transparent;
     outline-offset: 4px;
 
+    &.loading {
+      position: relative;
+
+      & > .child {
+        opacity: 0;
+      }
+
+      & > .loader {
+        ${central('absolute')}
+      }
+    }
+
     &:not(:disabled) {
       &:hover {
         opacity: 0.8;
