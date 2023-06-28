@@ -98,16 +98,23 @@ const buttonBaseEffects = (outlineColor: string): FlattenSimpleInterpolation =>
     outline: 2px solid transparent;
     outline-offset: 4px;
 
-    &:hover {
-      opacity: 0.8;
+    &:not(:disabled) {
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:active {
+        opacity: 0.4;
+      }
+
+      &:focus {
+        outline-color: ${outlineColor};
+      }
     }
 
-    &:active {
-      opacity: 0.4;
-    }
-
-    &:focus {
-      outline-color: ${outlineColor};
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   `;
 
