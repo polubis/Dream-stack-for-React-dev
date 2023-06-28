@@ -33,7 +33,7 @@ describe('Button can be used when', () => {
     const button = container.querySelector('.button');
 
     expect(button?.className).toBe(
-      'button button-size-2 button-rounded button-outlined button-secondary my-button'
+      'button size-2 rounded outlined secondary my-button'
     );
   });
 
