@@ -137,100 +137,100 @@ const GlobalStyle = createGlobalStyle`
     .button {
         cursor: pointer;
         border: none;
-    }
 
-    .button-size-1 {
-        ${font('1.3rem', '0.15px', 'LexendMedium', 500)}
-    }
-
-    .button-size-2 {
-        ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
-    }
-
-    .button-size-3 {
-        ${font('1.8rem', '0.15px', 'LexendMedium', 500)}
-    }
-
-    .button-size-4 {
-        ${font('2.1rem', '0.15px', 'LexendMedium', 500)}
-    }
-
-    .button-size-5 {
-        ${font('2.4rem', '0.15px', 'LexendMedium', 500)}
-    }
-
-    .button-rectangle {
-        border-radius: ${tokens.radius[50]};
-    }
-
-    .button-rounded {
-        ${center()}
-        border-radius: ${tokens.radius[1000]};
-    }
-
-    .button-filled.button-primary {
-        color: ${(props) => props.theme.button.filled.primary.color};
-        background: ${(props) => props.theme.button.filled.primary.bg};
-
-        .icon path {
-            fill: ${(props) => props.theme.button.filled.primary.color};
+        &.size-1 {
+            ${font('1.3rem', '0.15px', 'LexendMedium', 500)}
         }
-    }
 
-    .button-outlined.button-primary {
-        color: ${(props) => props.theme.button.outlined.primary.color};
-        background: ${(props) => props.theme.button.outlined.primary.bg};
-        border: 2px solid ${(props) =>
-          props.theme.button.outlined.primary.borderColor};
-
-        .icon path {
-            fill: ${(props) => props.theme.button.outlined.primary.color};
+        &.size-2 {
+            ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
         }
-    }
 
-    .button-rounded.button-size-1 {
-        ${size(tokens.spacing[400])}
-    }
+        &.size-3 {
+            ${font('1.8rem', '0.15px', 'LexendMedium', 500)}
+        }
 
-    .button-rounded.button-size-2 {
-        ${size(tokens.spacing[500])}
-    }
+        &.size-4 {
+            ${font('2.1rem', '0.15px', 'LexendMedium', 500)}
+        }
 
-    .button-rounded.button-size-3 {
-        ${size(tokens.spacing[600])}
-    }
+        &.size-5 {
+            ${font('2.4rem', '0.15px', 'LexendMedium', 500)}
+        }
 
-    .button-rounded.button-size-4 {
-        ${size(tokens.spacing[700])}
-    }
+        &.rectangle {
+            border-radius: ${tokens.radius[50]};
+        }
 
-    .button-rounded.button-size-5 {
-        ${size(tokens.spacing[800])}
-    }
+        &.rounded {
+            ${center()}
+            border-radius: ${tokens.radius[1000]};
+        }
 
-    .button-rectangle.button-size-1 {
-        ${size(tokens.spacing[400], 'max-content')}
-        padding: 0 ${tokens.spacing[100]};
-    }
+        &.filled.primary {
+            color: ${(props) => props.theme.button.filled.primary.color};
+            background: ${(props) => props.theme.button.filled.primary.bg};
 
-    .button-rectangle.button-size-2 {
-        ${size(tokens.spacing[500], 'max-content')}
-        padding: 0 ${tokens.spacing[150]};
-    }
+            .icon path {
+                fill: ${(props) => props.theme.button.filled.primary.color};
+            }
+        }
 
-    .button-rectangle.button-size-3 {
-        ${size(tokens.spacing[600], 'max-content')}
-        padding: 0 ${tokens.spacing[200]};
-    }
+        &.outlined.primary {
+            color: ${(props) => props.theme.button.outlined.primary.color};
+            background: ${(props) => props.theme.button.outlined.primary.bg};
+            border: 2px solid ${(props) =>
+              props.theme.button.outlined.primary.borderColor};
 
-    .button-rectangle.button-size-4 {
-        ${size(tokens.spacing[700], 'max-content')}
-        padding: 0 ${tokens.spacing[250]};
-    }
+            .icon path {
+                fill: ${(props) => props.theme.button.outlined.primary.color};
+            }
+        }
 
-    .button-rectangle.button-size-5 {
-        ${size(tokens.spacing[800], 'max-content')}
-        padding: 0 ${tokens.spacing[300]};
+        &.rounded.size-1 {
+            ${size(tokens.spacing[400])}
+        }
+
+        &.rounded.size-2 {
+            ${size(tokens.spacing[500])}
+        }
+
+        &.rounded.size-3 {
+            ${size(tokens.spacing[600])}
+        }
+
+        &.rounded.size-4 {
+            ${size(tokens.spacing[700])}
+        }
+
+        &.rounded.size-5 {
+            ${size(tokens.spacing[800])}
+        }
+
+        &.rectangle.size-1 {
+            ${size(tokens.spacing[400], 'max-content')}
+            padding: 0 ${tokens.spacing[100]};
+        }
+
+        &.rectangle.size-2 {
+            ${size(tokens.spacing[500], 'max-content')}
+            padding: 0 ${tokens.spacing[150]};
+        }
+
+        &.rectangle.size-3 {
+            ${size(tokens.spacing[600], 'max-content')}
+            padding: 0 ${tokens.spacing[200]};
+        }
+
+        &.rectangle.size-4 {
+            ${size(tokens.spacing[700], 'max-content')}
+            padding: 0 ${tokens.spacing[250]};
+        }
+
+        &.rectangle.size-5 {
+            ${size(tokens.spacing[800], 'max-content')}
+            padding: 0 ${tokens.spacing[300]};
+        }
     }
 
     /* button.tsx */

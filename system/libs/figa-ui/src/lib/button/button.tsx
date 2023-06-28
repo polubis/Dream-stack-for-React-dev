@@ -1,5 +1,7 @@
 import type { ButtonProps } from './defs';
 
+import c from 'classnames';
+
 const Button = ({ className, ...rest }: ButtonProps) => {
   const {
     shape = 'rectangle',
@@ -8,11 +10,9 @@ const Button = ({ className, ...rest }: ButtonProps) => {
     motive = 'primary',
   } = rest;
 
-  const formattedClassName = className ? ` ${className}` : '';
-
   return (
     <button
-      className={`button button-size-${size} button-${shape} button-${variant} button-${motive}${formattedClassName}`}
+      className={c('button', 'size-' + size, shape, variant, motive, className)}
       {...rest}
     />
   );
