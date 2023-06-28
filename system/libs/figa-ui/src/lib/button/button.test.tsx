@@ -53,4 +53,38 @@ describe('Button can be used when', () => {
 
     expect(onClickSpy).toHaveBeenCalledTimes(2);
   });
+
+  it('allows to make button disabled', () => {
+    const onClickSpy = jest.fn();
+
+    render(
+      <Button disabled onClick={onClickSpy}>
+        Click me!
+      </Button>
+    );
+
+    fireEvent.click(screen.getByText(/Click me!/));
+
+    expect(onClickSpy).toHaveBeenCalledTimes(0);
+  });
+
+  it('makes button disabled if loading', () => {
+    const onClickSpy = jest.fn();
+
+    render(
+      <Button loading onClick={onClickSpy}>
+        Click me!
+      </Button>
+    );
+
+    fireEvent.click(screen.getByText(/Click me!/));
+
+    expect(onClickSpy).toHaveBeenCalledTimes(0);
+  });
+
+  it('hides text and displays loader if loading', () => {
+    const { asFragment } = render(<Button loading>Click me!</Button>);
+
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

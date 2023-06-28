@@ -1,21 +1,38 @@
+import { Loader } from '../loader';
 import type { ButtonProps } from './defs';
 
 import c from 'classnames';
 
-const Button = ({ className, ...rest }: ButtonProps) => {
+const Button = ({ className, loading, ...props }: ButtonProps) => {
   const {
     shape = 'rectangle',
     size = 3,
     variant = 'filled',
     motive = 'primary',
-  } = rest;
+  } = props;
 
-  return (
-    <button
-      className={c('button', 'size-' + size, shape, variant, motive, className)}
-      {...rest}
-    />
+  const classes = c(
+    'button',
+    'size-' + size,
+    shape,
+    variant,
+    motive,
+    { loading },
+    className
   );
+
+  if (loading) {
+    const { children, disabled, ...btnProps } = props;
+
+    return (
+      <button className={classes} disabled {...btnProps}>
+        <span className="child">{children}</span>
+        <Loader size="tiny" />
+      </button>
+    );
+  }
+
+  return <button className={classes} {...props} />;
 };
 
 export { Button };

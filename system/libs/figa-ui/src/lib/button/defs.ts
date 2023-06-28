@@ -20,6 +20,7 @@ interface ButtonProps
   shape?: ButtonShape;
   variant?: ButtonVariant;
   motive?: ButtonMotive;
+  loading?: boolean;
 }
 
 export type {
