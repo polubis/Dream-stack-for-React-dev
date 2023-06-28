@@ -82,6 +82,9 @@ const tokens: Tokens = {
   },
   green: {
     50: '#b2d9ba',
+    100: '#d7f2e6',
+    150: '#84e798',
+    200: '#54a17f',
   },
   blue: {
     200: '#69B6CE',
@@ -94,9 +97,12 @@ const tokens: Tokens = {
   },
   yellow: {
     50: '#FFD200',
+    100: '#a8922c',
   },
   red: {
     50: '#ff0000',
+    100: '#cc8787',
+    150: '#e27373',
   },
   spacing,
   primary: {
@@ -126,6 +132,40 @@ const light: Theme = {
   },
   body: {
     bg: tokens.common.white,
+  },
+  alert: {
+    filled: {
+      info: {
+        bg: tokens.gray[150],
+        color: tokens.common.black,
+      },
+      ok: {
+        bg: tokens.green[150],
+        color: tokens.common.black,
+      },
+      error: {
+        bg: tokens.red[50],
+        color: tokens.common.white,
+      },
+      warn: {
+        bg: tokens.yellow[50],
+        color: tokens.common.black,
+      },
+    },
+    outlined: {
+      info: {
+        color: tokens.common.black,
+      },
+      ok: {
+        color: tokens.green[200],
+      },
+      error: {
+        color: tokens.red[100],
+      },
+      warn: {
+        color: tokens.yellow[100],
+      },
+    },
   },
   modal: {
     bg: tokens.common.white,
@@ -249,6 +289,40 @@ const dark: Theme = {
   },
   body: {
     bg: tokens.common.black,
+  },
+  alert: {
+    filled: {
+      info: {
+        bg: tokens.gray[150],
+        color: tokens.common.black,
+      },
+      ok: {
+        bg: tokens.green[150],
+        color: tokens.common.black,
+      },
+      error: {
+        bg: tokens.red[50],
+        color: tokens.common.white,
+      },
+      warn: {
+        bg: tokens.yellow[50],
+        color: tokens.common.black,
+      },
+    },
+    outlined: {
+      info: {
+        color: tokens.common.white,
+      },
+      ok: {
+        color: tokens.green[150],
+      },
+      error: {
+        color: tokens.red[150],
+      },
+      warn: {
+        color: tokens.yellow[50],
+      },
+    },
   },
   modal: {
     bg: tokens.common.black,

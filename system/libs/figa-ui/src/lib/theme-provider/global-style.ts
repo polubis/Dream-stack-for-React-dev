@@ -11,6 +11,9 @@ import {
   size,
   streched,
   buttonBaseEffects,
+  setupFilledIcon,
+  setupOutlinedIcon,
+  trim,
 } from '../shared';
 import { T_DOWN } from './viewport';
 
@@ -965,6 +968,95 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* avatars.tsx */
+
+    /* alert.tsx */
+
+    .alert {
+        ${row()}
+        justify-content: space-between;
+        padding: ${tokens.spacing[100]} ${tokens.spacing[150]};
+        border-radius: ${tokens.radius[50]};
+        border: 2px solid transparent;
+
+        .icon {
+            flex-shrink: 0;
+        }
+
+        .font {
+            padding-right: ${tokens.spacing[150]};
+        }
+
+        &.fixed {
+            position: fixed;
+            top: ${tokens.spacing[150]};
+            left: ${tokens.spacing[250]};
+            right: ${tokens.spacing[250]};
+        }
+
+        &.trimmed .font {
+            ${trim()}
+        }
+
+        &.filled {
+            box-shadow: ${tokens.shadow[50]};
+
+            &.info {
+                ${(props) =>
+                  setupFilledIcon(
+                    props.theme.alert.filled.info.bg,
+                    props.theme.alert.filled.info.color
+                  )}
+            }
+
+            &.ok {
+                ${(props) =>
+                  setupFilledIcon(
+                    props.theme.alert.filled.ok.bg,
+                    props.theme.alert.filled.ok.color
+                  )}
+            }
+
+            &.error {
+                ${(props) =>
+                  setupFilledIcon(
+                    props.theme.alert.filled.error.bg,
+                    props.theme.alert.filled.error.color
+                  )}
+            }
+
+            &.warn {
+                ${(props) =>
+                  setupFilledIcon(
+                    props.theme.alert.filled.warn.bg,
+                    props.theme.alert.filled.warn.color
+                  )}
+            }
+        }
+
+        &.outlined {
+            &.info {
+                ${(props) =>
+                  setupOutlinedIcon(props.theme.alert.outlined.info.color)}
+            }
+
+            &.ok {
+                ${(props) =>
+                  setupOutlinedIcon(props.theme.alert.outlined.ok.color)}
+            }
+
+            &.error {
+                ${(props) =>
+                  setupOutlinedIcon(props.theme.alert.outlined.error.color)}
+            }
+
+            &.warn {
+                ${(props) =>
+                  setupOutlinedIcon(props.theme.alert.outlined.warn.color)}
+            }
+        }
+    }
+    
+    /* alert.tsx */
 `;
 
 export { GlobalStyle };

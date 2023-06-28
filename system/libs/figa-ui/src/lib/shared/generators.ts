@@ -92,6 +92,33 @@ const shape = (size: string, radius: string): FlattenSimpleInterpolation =>
     border-radius: ${radius};
   `;
 
+const setupFilledIcon = (
+  bg: string,
+  color: string
+): FlattenSimpleInterpolation => css`
+  background: ${bg};
+
+  .font {
+    color: ${color};
+  }
+
+  .icon path {
+    fill: ${color};
+  }
+`;
+
+const setupOutlinedIcon = (color: string): FlattenSimpleInterpolation => css`
+  border-color: ${color};
+
+  .font {
+    color: ${color};
+  }
+
+  .icon path {
+    fill: ${color};
+  }
+`;
+
 const buttonBaseEffects = (outlineColor: string): FlattenSimpleInterpolation =>
   css`
     transition: 0.2s all ease-in-out;
@@ -130,6 +157,13 @@ const buttonBaseEffects = (outlineColor: string): FlattenSimpleInterpolation =>
     }
   `;
 
+const trim = (): FlattenSimpleInterpolation =>
+  css`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  `;
+
 export {
   font,
   size,
@@ -138,8 +172,11 @@ export {
   streched,
   row,
   column,
+  trim,
   appearIn,
   central,
   shape,
   buttonBaseEffects,
+  setupFilledIcon,
+  setupOutlinedIcon,
 };

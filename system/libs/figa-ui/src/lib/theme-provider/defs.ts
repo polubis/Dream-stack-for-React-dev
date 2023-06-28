@@ -100,6 +100,8 @@ interface Tokens {
   };
   red: {
     50: string;
+    100: string;
+    150: string;
   };
   blue: {
     200: string;
@@ -108,6 +110,9 @@ interface Tokens {
   };
   green: {
     50: string;
+    100: string;
+    150: string;
+    200: string;
   };
   gray: {
     0: string;
@@ -123,6 +128,7 @@ interface Tokens {
   };
   yellow: {
     50: string;
+    100: string;
   };
   purple: {
     50: string;
@@ -144,6 +150,40 @@ interface Theme {
   };
   body: {
     bg: string;
+  };
+  alert: {
+    outlined: {
+      info: {
+        color: string;
+      };
+      ok: {
+        color: string;
+      };
+      error: {
+        color: string;
+      };
+      warn: {
+        color: string;
+      };
+    };
+    filled: {
+      info: {
+        bg: string;
+        color: string;
+      };
+      ok: {
+        bg: string;
+        color: string;
+      };
+      error: {
+        bg: string;
+        color: string;
+      };
+      warn: {
+        bg: string;
+        color: string;
+      };
+    };
   };
   modal: {
     border: string;
