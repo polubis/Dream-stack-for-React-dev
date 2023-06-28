@@ -4,30 +4,118 @@ import type { ButtonProps } from './defs';
 import { Button } from './button';
 import { BUTTON_SIZES } from './consts';
 import { DiscordIcon } from '../icon';
+import { Box } from '../box';
+import { Font } from '../font';
 
 export default {
   component: Button,
   title: 'Button',
 } as Meta;
 
-const Template: Story<{ variant: ButtonProps['variant'] }> = ({ variant }) => {
+const Template: Story<Pick<ButtonProps, 'variant' | 'motive'>> = ({
+  variant,
+  motive,
+}) => {
   return (
-    <>
-      {BUTTON_SIZES.map((size) => (
-        <div key={'rounded-' + size} style={{ margin: '8px 0' }}>
-          <Button shape="rounded" variant={variant} size={size}>
-            <DiscordIcon />
-          </Button>
-        </div>
-      ))}
-      {BUTTON_SIZES.map((size) => (
-        <div key={'rectangle-' + size} style={{ margin: '8px 0' }}>
-          <Button size={size} variant={variant}>
-            Click Me!
-          </Button>
-        </div>
-      ))}
-    </>
+    <Box padding={[300, 300, 300, 300]} spacing={[200, 200, 200, 200, 200]}>
+      <Box spacing={[200]}>
+        <Font variant="h5">Rounded</Font>
+        <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
+          {BUTTON_SIZES.map((size) => (
+            <Button
+              key={size}
+              shape="rounded"
+              motive={motive}
+              variant={variant}
+              size={size}
+            >
+              <DiscordIcon />
+            </Button>
+          ))}
+        </Box>
+      </Box>
+
+      <Box spacing={[200]}>
+        <Font variant="h5">Rectangle</Font>
+        <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
+          {BUTTON_SIZES.map((size) => (
+            <Button key={size} size={size} variant={variant} motive={motive}>
+              Click Me!
+            </Button>
+          ))}
+        </Box>
+      </Box>
+
+      <Box spacing={[200]}>
+        <Font variant="h5">Rounded but disabled</Font>
+        <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
+          {BUTTON_SIZES.map((size) => (
+            <Button
+              key={size}
+              disabled
+              shape="rounded"
+              motive={motive}
+              variant={variant}
+              size={size}
+            >
+              <DiscordIcon />
+            </Button>
+          ))}
+        </Box>
+      </Box>
+
+      <Box spacing={[200]}>
+        <Font variant="h5">Rectangle but disabled</Font>
+        <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
+          {BUTTON_SIZES.map((size) => (
+            <Button
+              disabled
+              key={size}
+              size={size}
+              variant={variant}
+              motive={motive}
+            >
+              Click Me!
+            </Button>
+          ))}
+        </Box>
+      </Box>
+
+      <Box spacing={[200]}>
+        <Font variant="h5">Rounded but loading</Font>
+        <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
+          {BUTTON_SIZES.map((size) => (
+            <Button
+              key={size}
+              loading
+              shape="rounded"
+              motive={motive}
+              variant={variant}
+              size={size}
+            >
+              <DiscordIcon />
+            </Button>
+          ))}
+        </Box>
+      </Box>
+
+      <Box spacing={[200]}>
+        <Font variant="h5">Rectangle but loading</Font>
+        <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
+          {BUTTON_SIZES.map((size) => (
+            <Button
+              loading
+              key={size}
+              size={size}
+              variant={variant}
+              motive={motive}
+            >
+              Click Me!
+            </Button>
+          ))}
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

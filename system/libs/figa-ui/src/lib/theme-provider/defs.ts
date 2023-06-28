@@ -37,6 +37,8 @@ type Spacing = {
   900: string;
   950: string;
   1000: string;
+  1500: string;
+  2000: string;
 };
 
 type SpacingKey = keyof Spacing;
@@ -49,13 +51,17 @@ interface Palette {
   250: string;
 }
 
-interface PaletteColorsSetup {
+interface ButtonSetup {
   color: string;
   bg: string;
   borderColor?: string;
+  outlineColor: string;
 }
 
 interface Tokens {
+  shadow: {
+    50: string;
+  };
   width: {
     50: string;
   };
@@ -95,9 +101,9 @@ interface Tokens {
   red: {
     50: string;
     100: string;
+    150: string;
   };
   blue: {
-    100: string;
     200: string;
     600: string;
     650: string;
@@ -105,6 +111,8 @@ interface Tokens {
   green: {
     50: string;
     100: string;
+    150: string;
+    200: string;
   };
   gray: {
     0: string;
@@ -116,13 +124,11 @@ interface Tokens {
     300: string;
     350: string;
     400: string;
+    450: string;
   };
-  orange: {
-    50: string;
-    100: string;
-  }
   yellow: {
     50: string;
+    100: string;
   };
   purple: {
     50: string;
@@ -141,51 +147,55 @@ interface Theme {
     primary: {
       color: string;
     };
-    error: {
-      color: string;
-    };
-    warning: {
-      color: string;
-    };
-    success: {
-      color: string;
-    };
-    info: {
-      color: string;
-    }
   };
   body: {
     bg: string;
+  };
+  alert: {
+    outlined: {
+      info: {
+        color: string;
+      };
+      ok: {
+        color: string;
+      };
+      error: {
+        color: string;
+      };
+      warn: {
+        color: string;
+      };
+    };
+    filled: {
+      info: {
+        bg: string;
+        color: string;
+      };
+      ok: {
+        bg: string;
+        color: string;
+      };
+      error: {
+        bg: string;
+        color: string;
+      };
+      warn: {
+        bg: string;
+        color: string;
+      };
+    };
   };
   modal: {
     border: string;
     bg: string;
     backdrop: string;
   };
-  alert: {
-    error: {
-      color: string;
-      bg: string;
-    },
-    warning: {
-      color: string;
-      bg: string;
-    },
-    info: {
-      bg: string;
-      color: string;
-    },
-    success: {
-      bg: string;
-      color: string;
-    }
-  };
   button: {
     outlined: {
-      primary: PaletteColorsSetup;
+      primary: ButtonSetup;
     };
     filled: {
-      primary: PaletteColorsSetup;
+      primary: ButtonSetup;
     };
   };
   select: {
@@ -259,6 +269,20 @@ interface Theme {
   list: {
     marker: {
       bg: string;
+    };
+  };
+  blockquote: {
+    bg: string;
+    borderColor: string;
+  };
+  loader: {
+    primary: string;
+    secondary: string;
+  };
+  avatars: {
+    restCounter: {
+      bg: string;
+      color: string;
     };
   };
 }

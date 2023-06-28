@@ -3,7 +3,41 @@
 exports[`Button can be used when [FRAGILE] renders with default props 1`] = `
 <DocumentFragment>
   <button
-    class="button button-size-3 button-rectangle button-filled button-primary"
+    class="button size-3 rectangle filled primary"
   />
+</DocumentFragment>
+`;
+
+exports[`Button can be used when hides text and displays loader if loading 1`] = `
+<DocumentFragment>
+  <button
+    class="button size-3 rectangle filled primary loading"
+    disabled=""
+  >
+    <span
+      class="child"
+    >
+      Click me!
+    </span>
+    <div
+      class="loader tiny"
+    >
+      <div
+        class="loader-animation loader-1"
+      >
+        <div>
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </button>
 </DocumentFragment>
 `;

@@ -1,0 +1,241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader can be used when:  [FRAGILE] allows to add custom class 1`] = `
+<DocumentFragment>
+  <div
+    class="loader medium my-class"
+  >
+    <div
+      class="loader-animation loader-1"
+    >
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Loader can be used when:  [FRAGILE] renders with default setup 1`] = `
+<DocumentFragment>
+  <div
+    class="loader medium"
+  >
+    <div
+      class="loader-animation loader-1"
+    >
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Loader can be used when:  renders with all sizes 1`] = `
+<DocumentFragment>
+  <div
+    class="loader tiny"
+  >
+    <div
+      class="loader-animation loader-1"
+    >
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Loader can be used when:  renders with all sizes 2`] = `
+<DocumentFragment>
+  <div
+    class="loader small"
+  >
+    <div
+      class="loader-animation loader-1"
+    >
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Loader can be used when:  renders with all sizes 3`] = `
+<DocumentFragment>
+  <div
+    class="loader medium"
+  >
+    <div
+      class="loader-animation loader-1"
+    >
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Loader can be used when:  renders with all sizes 4`] = `
+<DocumentFragment>
+  <div
+    class="loader big"
+  >
+    <div
+      class="loader-animation loader-1"
+    >
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Loader can be used when:  renders with all variants 1`] = `
+<DocumentFragment>
+  <div
+    class="loader medium"
+  >
+    <div
+      class="loader-animation loader-1"
+    >
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Loader can be used when:  renders with all variants 2`] = `
+<DocumentFragment>
+  <div
+    class="loader medium"
+  >
+    <div
+      class="loader-animation loader-2"
+    >
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Loader can be used when:  renders with all variants 3`] = `
+<DocumentFragment>
+  <div
+    class="loader medium"
+  >
+    <div
+      class="loader-animation loader-3"
+    >
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Loader can be used when:  renders with all variants 4`] = `
+<DocumentFragment>
+  <div
+    class="loader medium"
+  >
+    <div
+      class="loader-animation loader-4"
+    >
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

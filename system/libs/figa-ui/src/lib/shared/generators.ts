@@ -61,7 +61,7 @@ const font = (
 ): FlattenSimpleInterpolation => css`
   font-size: ${size};
   letter-spacing: ${spacing};
-  font-family: ${family}, sans-serif;
+  font-family: ${family}, Verdana, sans-serif;
   font-weight: ${weight};
 `;
 
@@ -92,6 +92,78 @@ const shape = (size: string, radius: string): FlattenSimpleInterpolation =>
     border-radius: ${radius};
   `;
 
+const setupFilledIcon = (
+  bg: string,
+  color: string
+): FlattenSimpleInterpolation => css`
+  background: ${bg};
+
+  .font {
+    color: ${color};
+  }
+
+  .icon path {
+    fill: ${color};
+  }
+`;
+
+const setupOutlinedIcon = (color: string): FlattenSimpleInterpolation => css`
+  border-color: ${color};
+
+  .font {
+    color: ${color};
+  }
+
+  .icon path {
+    fill: ${color};
+  }
+`;
+
+const buttonBaseEffects = (outlineColor: string): FlattenSimpleInterpolation =>
+  css`
+    transition: 0.2s all ease-in-out;
+    outline: 2px solid transparent;
+    outline-offset: 4px;
+
+    &.loading {
+      position: relative;
+
+      & > .child {
+        opacity: 0;
+      }
+
+      & > .loader {
+        ${central('absolute')}
+      }
+    }
+
+    &:not(:disabled) {
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:active {
+        opacity: 0.4;
+      }
+
+      &:focus {
+        outline-color: ${outlineColor};
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  `;
+
+const trim = (): FlattenSimpleInterpolation =>
+  css`
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  `;
+
 export {
   font,
   size,
@@ -100,7 +172,11 @@ export {
   streched,
   row,
   column,
+  trim,
   appearIn,
   central,
   shape,
+  buttonBaseEffects,
+  setupFilledIcon,
+  setupOutlinedIcon,
 };

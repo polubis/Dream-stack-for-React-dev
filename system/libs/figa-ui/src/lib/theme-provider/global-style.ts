@@ -10,27 +10,35 @@ import {
   row,
   size,
   streched,
+  buttonBaseEffects,
+  setupFilledIcon,
+  setupOutlinedIcon,
+  trim,
 } from '../shared';
 import { T_DOWN } from './viewport';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: 'LexendBold';
+        font-weight: 700;
         src: url('/fonts/LexendBold.ttf') format('truetype');
     }
 
     @font-face {
         font-family: 'LexendMedium';
+        font-weight: 500;
         src: url('/fonts/LexendMedium.ttf') format('truetype');
     }
     
     @font-face {
         font-family: 'LexendRegular';
+        font-weight: 400;
         src: url('/fonts/LexendRegular.ttf') format('truetype');
     }
 
     @font-face {
         font-family: 'LexendLight';
+        font-weight: 300;
         src: url('/fonts/LexendLight.ttf') format('truetype');
     }
 
@@ -62,7 +70,8 @@ const GlobalStyle = createGlobalStyle`
     ul,
     ol,
     body,
-    html {
+    html,
+    blockquote {
         margin: 0;
         padding: 0;
     }
@@ -129,175 +138,107 @@ const GlobalStyle = createGlobalStyle`
 
     /* button.tsx */
 
-    .alert {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        padding: 5px;
-        border: 2px solid;
-    }
-    .alert-error {
-        ${(props) => props.theme.alert.error};
-    }
-    .alert-warning {
-        ${(props) => props.theme.alert.warning};
-    }
-    .alert-info {
-        ${(props) => props.theme.alert.info};
-    }
-    .alert-success {
-        ${(props) => props.theme.alert.success};
-    }
-
- /* outlined-variations */
-    .alert-outlined.alert-error {
-        .font {
-            ${(props) => props.theme.alert.error};
-        }
-    }
-    .alert-outlined.alert-warning {
-        .font {
-            ${(props) => props.theme.alert.warning};
-        }
-    }
-    .alert-outlined.alert-info {
-        .font {
-            ${(props) => props.theme.alert.info};
-        }
-    }
-    .alert-outlined.alert-success {
-        .font {
-            ${(props) => props.theme.alert.success};
-        }
-    }
-
-/*  filled variations */
-    .alert-filled {
-        border: none;
-    }
-    .alert-filled.alert-error {
-        .font {
-            color: ${(props) => props.theme.alert.error.color};
-        }
-        background: ${(props) => props.theme.alert.error.bg}; 
-    }
-    .alert-filled.alert-warning {
-        .font {
-            color: ${(props) => props.theme.alert.warning.color};
-        }
-        background: ${(props) => props.theme.alert.warning.bg}; 
-    }
-    .alert-filled.alert-info {
-        .font {
-            color: ${(props) => props.theme.alert.info.color};
-        }
-        background: ${(props) => props.theme.alert.info.bg}; 
-    }
-    .alert-filled.alert-success {
-        .font {
-            color: ${(props) => props.theme.alert.success.color};
-        }
-        background: ${(props) => props.theme.alert.success.bg}; 
-    }
-
     .button {
         cursor: pointer;
         border: none;
-    }
 
-    .button-size-1 {
-        ${font('1.3rem', '0.15px', 'LexendMedium', 500)}
-    }
-
-    .button-size-2 {
-        ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
-    }
-
-    .button-size-3 {
-        ${font('1.8rem', '0.15px', 'LexendMedium', 500)}
-    }
-
-    .button-size-4 {
-        ${font('2.1rem', '0.15px', 'LexendMedium', 500)}
-    }
-
-    .button-size-5 {
-        ${font('2.4rem', '0.15px', 'LexendMedium', 500)}
-    }
-
-    .button-rectangle {
-        border-radius: ${tokens.radius[50]};
-    }
-
-    .button-rounded {
-        ${center()}
-        border-radius: ${tokens.radius[1000]};
-    }
-
-    .button-filled.button-primary {
-        color: ${(props) => props.theme.button.filled.primary.color};
-        background: ${(props) => props.theme.button.filled.primary.bg};
-
-        .icon path {
-            fill: ${(props) => props.theme.button.filled.primary.color};
+        &.size-1 {
+            ${font('1.3rem', '0.15px', 'LexendMedium', 500)}
         }
-    }
 
-    .button-outlined.button-primary {
-        color: ${(props) => props.theme.button.outlined.primary.color};
-        background: ${(props) => props.theme.button.outlined.primary.bg};
-        border: 2px solid ${(props) =>
-          props.theme.button.outlined.primary.borderColor};
-
-        .icon path {
-            fill: ${(props) => props.theme.button.outlined.primary.color};
+        &.size-2 {
+            ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
         }
-    }
 
-    .button-rounded.button-size-1 {
-        ${size(tokens.spacing[400])}
-    }
+        &.size-3 {
+            ${font('1.8rem', '0.15px', 'LexendMedium', 500)}
+        }
 
-    .button-rounded.button-size-2 {
-        ${size(tokens.spacing[500])}
-    }
+        &.size-4 {
+            ${font('2.1rem', '0.15px', 'LexendMedium', 500)}
+        }
 
-    .button-rounded.button-size-3 {
-        ${size(tokens.spacing[600])}
-    }
+        &.size-5 {
+            ${font('2.4rem', '0.15px', 'LexendMedium', 500)}
+        }
 
-    .button-rounded.button-size-4 {
-        ${size(tokens.spacing[700])}
-    }
+        &.rectangle {
+            border-radius: ${tokens.radius[50]};
+        }
 
-    .button-rounded.button-size-5 {
-        ${size(tokens.spacing[800])}
-    }
+        &.rounded {
+            ${center()}
+            border-radius: ${tokens.radius[1000]};
+        }
 
-    .button-rectangle.button-size-1 {
-        ${size(tokens.spacing[400], 'max-content')}
-        padding: 0 ${tokens.spacing[100]};
-    }
+        &.filled.primary {
+            ${(props) =>
+              buttonBaseEffects(props.theme.button.filled.primary.outlineColor)}
+            color: ${(props) => props.theme.button.filled.primary.color};
+            background: ${(props) => props.theme.button.filled.primary.bg};
 
-    .button-rectangle.button-size-2 {
-        ${size(tokens.spacing[500], 'max-content')}
-        padding: 0 ${tokens.spacing[150]};
-    }
+            .icon path {
+                fill: ${(props) => props.theme.button.filled.primary.color};
+            }
+        }
 
-    .button-rectangle.button-size-3 {
-        ${size(tokens.spacing[600], 'max-content')}
-        padding: 0 ${tokens.spacing[200]};
-    }
+        &.outlined.primary {
+            ${(props) =>
+              buttonBaseEffects(props.theme.button.filled.primary.outlineColor)}
+            color: ${(props) => props.theme.button.outlined.primary.color};
+            background: ${(props) => props.theme.button.outlined.primary.bg};
+            border: 2px solid ${(props) =>
+              props.theme.button.outlined.primary.borderColor};
 
-    .button-rectangle.button-size-4 {
-        ${size(tokens.spacing[700], 'max-content')}
-        padding: 0 ${tokens.spacing[250]};
-    }
+            .icon path {
+                fill: ${(props) => props.theme.button.outlined.primary.color};
+            }
+        }
 
-    .button-rectangle.button-size-5 {
-        ${size(tokens.spacing[800], 'max-content')}
-        padding: 0 ${tokens.spacing[300]};
+        &.rounded.size-1 {
+            ${size(tokens.spacing[400])}
+        }
+
+        &.rounded.size-2 {
+            ${size(tokens.spacing[500])}
+        }
+
+        &.rounded.size-3 {
+            ${size(tokens.spacing[600])}
+        }
+
+        &.rounded.size-4 {
+            ${size(tokens.spacing[700])}
+        }
+
+        &.rounded.size-5 {
+            ${size(tokens.spacing[800])}
+        }
+
+        &.rectangle.size-1 {
+            ${size(tokens.spacing[400], 'max-content')}
+            padding: 0 ${tokens.spacing[100]};
+        }
+
+        &.rectangle.size-2 {
+            ${size(tokens.spacing[500], 'max-content')}
+            padding: 0 ${tokens.spacing[150]};
+        }
+
+        &.rectangle.size-3 {
+            ${size(tokens.spacing[600], 'max-content')}
+            padding: 0 ${tokens.spacing[200]};
+        }
+
+        &.rectangle.size-4 {
+            ${size(tokens.spacing[700], 'max-content')}
+            padding: 0 ${tokens.spacing[250]};
+        }
+
+        &.rectangle.size-5 {
+            ${size(tokens.spacing[800], 'max-content')}
+            padding: 0 ${tokens.spacing[300]};
+        }
     }
 
     /* button.tsx */
@@ -760,27 +701,6 @@ const GlobalStyle = createGlobalStyle`
         path {
             fill: ${(props) => props.theme.font.default.color};
         }
-        &.error {
-            path {
-                fill: ${(props) => props.theme.font.error.color}};
-            }
-        }
-        &.warning {
-            path {
-                fill: ${(props) => props.theme.font.warning.color}};
-            }
-        }
-        &.info {
-            path {
-                fill: ${(props) => props.theme.font.info.color}};
-                rotate: 180deg;
-            }
-        }
-        &.success {
-            path {
-                fill: ${(props) => props.theme.font.success.color}};
-            }
-        }
     }
 
     /* icon.tsx */
@@ -837,13 +757,306 @@ const GlobalStyle = createGlobalStyle`
         position: relative;
 
         &-content {
-            ${appearIn(tokens.spacing[0], tokens.spacing[150])}
+            ${appearIn(tokens.spacing[0], tokens.spacing[150])};
             position: fixed;
             padding: ${tokens.spacing[250]};
         }
     }
 
     /* popover.tsx */
+
+    /* blockquote.tsx */
+
+    .blockquote {
+        border-radius: ${tokens.radius[50]};
+        background: ${(props) => props.theme.blockquote.bg};
+        border: 1px solid ${(props) => props.theme.blockquote.borderColor};
+
+        &.h1, &.h2, &.h3 {
+            padding: ${tokens.spacing[200]};
+        }
+
+        &.h4, &.h5, &.h6 {
+            padding: ${tokens.spacing[150]};
+        }
+
+        &.b1, &.b2 {
+            padding: ${tokens.spacing[50]};
+        }
+    }
+
+    /* blockquote.tsx */
+
+    /* avatar.tsx */
+
+    .avatar {
+        .avatar-image {
+            height: 100%;
+            width: 100%;
+            box-shadow: ${tokens.shadow[50]};
+        }
+
+        &.rounded .avatar-image  {
+            border-radius: ${tokens.radius[1000]};
+        }
+
+        &.rectangle .avatar-image  {
+            border-radius: ${tokens.radius[50]};
+        }
+
+        &.small {
+            ${size(tokens.spacing[400])};
+        }
+
+        &.medium {
+            ${size(tokens.spacing[600])};
+        }
+
+        &.big {
+            ${size(tokens.spacing[800])};
+        }
+    }
+
+    /* avatar.tsx */
+
+    /* loader.tsx */
+
+    .loader {
+        --loader-primary-color: ${(props) => props.theme.loader.primary};
+        --loader-secondary-color: ${(props) => props.theme.loader.secondary};
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            50% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotateAndChangeColor {
+            0% {
+                transform: rotate(0deg);
+                border-top-color: var(--loader-secondary-color);
+            }
+            50% {
+                transform: rotate(180deg);
+                border-top-color: var(--loader-primary-color);
+            }
+            100% {
+                transform: rotate(360deg);
+                border-top-color: var(--loader-secondary-color);
+            }
+        }
+
+        &.tiny .loader-animation {
+            ${size(tokens.spacing[250])}
+            padding: ${tokens.spacing[25]};
+            border: ${tokens.spacing[25]} solid transparent;
+        }
+
+        &.small .loader-animation {
+            ${size(tokens.spacing[500])}
+            padding: ${tokens.spacing[25]};
+            border: ${tokens.spacing[25]} solid transparent;
+        }
+
+        &.medium .loader-animation {
+            ${size(tokens.spacing[1000])}
+            padding: ${tokens.spacing[50]};
+            border: ${tokens.spacing[25]} solid transparent;
+
+            div {
+                padding: ${tokens.spacing[50]};
+                border: ${tokens.spacing[25]} solid transparent;
+            }
+
+            &.loader-4, &.loader-4 div {
+                border-radius: ${tokens.radius[1000]};
+                padding: ${tokens.spacing[50]};
+            }
+        }
+
+        &.big .loader-animation {
+            ${size(tokens.spacing[1500])}
+            padding: ${tokens.spacing[100]};
+            border: ${tokens.spacing[25]} solid transparent;
+
+            div {
+                padding: ${tokens.spacing[100]};
+                border: ${tokens.spacing[25]} solid transparent;
+            }
+
+            &.loader-4, &.loader-4 div {
+                border-radius: ${tokens.radius[1000]};
+                padding: ${tokens.spacing[100]};
+            }
+        }
+
+        .loader-animation {
+            position: relative;
+            overflow: hidden;
+            border-radius: ${tokens.radius[1000]};
+            animation: rotate linear 3.5s infinite;
+
+            div {
+                height: 100%;
+                border-radius: ${tokens.radius[1000]};
+                animation: rotate linear 3.5s infinite;
+            }
+
+            &.loader-1, &.loader-1 div {
+                border-top-color: var(--loader-secondary-color);
+                border-bottom-color: var(--loader-primary-color);
+            }
+
+            &.loader-2, &.loader-2 div {
+                border-top-color: var(--loader-primary-color);
+                border-left-color: var(--loader-secondary-color);
+                border-right-color: var(--loader-secondary-color);
+            }
+
+            &.loader-3, &.loader-3 div {
+                border-top-color: var(--loader-secondary-color);
+                border-left-color: var(--loader-primary-color);
+                animation-timing-function: cubic-bezier(.55, .38, .21, .88);
+                animation-duration: 3s;
+            }
+
+            &.loader-4, &.loader-4 div {
+                animation: rotateAndChangeColor 4s infinite linear;
+            }
+
+            &.loader-animation:hover, &.loader-animation div:hover {
+                animation-play-state: paused !important;
+            }
+
+            &.loader-animation, &.loader-animation div {
+                will-change: transform;
+            }
+        }
+    }    
+
+    /* loader.tsx */
+    
+    /* avatars.tsx */
+
+    .avatars {
+        ${row()}
+        width: max-content;
+
+        &.rounded .avatars-rest-count {
+            border-radius: ${tokens.radius[1000]};
+        }
+        
+        &.rectangle .avatars-rest-count {
+            border-radius: ${tokens.radius[50]};
+        }
+
+        .avatars-rest-count {
+            ${center()}
+            background: ${(props) => props.theme.avatars.restCounter.bg};
+            box-shadow: ${tokens.shadow[50]};
+  
+            .font {
+                color: ${(props) => props.theme.avatars.restCounter.color};
+            }
+        }
+    }
+
+    /* avatars.tsx */
+
+    /* alert.tsx */
+
+    .alert {
+        ${row()}
+        justify-content: space-between;
+        padding: ${tokens.spacing[100]} ${tokens.spacing[150]};
+        border-radius: ${tokens.radius[50]};
+        border: 2px solid transparent;
+
+        .icon {
+            flex-shrink: 0;
+        }
+
+        .font {
+            padding-right: ${tokens.spacing[150]};
+        }
+
+        &.fixed {
+            position: fixed;
+            top: ${tokens.spacing[150]};
+            left: ${tokens.spacing[250]};
+            right: ${tokens.spacing[250]};
+        }
+
+        &.trimmed .font {
+            ${trim()}
+        }
+
+        &.filled {
+            box-shadow: ${tokens.shadow[50]};
+
+            &.info {
+                ${(props) =>
+                  setupFilledIcon(
+                    props.theme.alert.filled.info.bg,
+                    props.theme.alert.filled.info.color
+                  )}
+            }
+
+            &.ok {
+                ${(props) =>
+                  setupFilledIcon(
+                    props.theme.alert.filled.ok.bg,
+                    props.theme.alert.filled.ok.color
+                  )}
+            }
+
+            &.error {
+                ${(props) =>
+                  setupFilledIcon(
+                    props.theme.alert.filled.error.bg,
+                    props.theme.alert.filled.error.color
+                  )}
+            }
+
+            &.warn {
+                ${(props) =>
+                  setupFilledIcon(
+                    props.theme.alert.filled.warn.bg,
+                    props.theme.alert.filled.warn.color
+                  )}
+            }
+        }
+
+        &.outlined {
+            &.info {
+                ${(props) =>
+                  setupOutlinedIcon(props.theme.alert.outlined.info.color)}
+            }
+
+            &.ok {
+                ${(props) =>
+                  setupOutlinedIcon(props.theme.alert.outlined.ok.color)}
+            }
+
+            &.error {
+                ${(props) =>
+                  setupOutlinedIcon(props.theme.alert.outlined.error.color)}
+            }
+
+            &.warn {
+                ${(props) =>
+                  setupOutlinedIcon(props.theme.alert.outlined.warn.color)}
+            }
+        }
+    }
+    
+    /* alert.tsx */
 `;
 
 export { GlobalStyle };

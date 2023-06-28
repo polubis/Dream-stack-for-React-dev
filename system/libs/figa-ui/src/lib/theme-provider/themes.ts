@@ -23,10 +23,15 @@ const spacing: Spacing = {
   900: '72px',
   950: '76px',
   1000: '80px',
+  1500: '140px',
+  2000: '180px',
 };
 
 // Check for reference: https://mui.com/joy-ui/customization/theme-colors/
 const tokens: Tokens = {
+  shadow: {
+    50: '0 3px 4px rgba(0, 0, 0, .14)',
+  },
   width: {
     50: '1080px',
   },
@@ -73,13 +78,15 @@ const tokens: Tokens = {
     300: '#3c3c3c',
     350: '#565656',
     400: '#dfdfdf',
+    450: '#272727',
   },
   green: {
     50: '#b2d9ba',
     100: '#d7f2e6',
+    150: '#84e798',
+    200: '#54a17f',
   },
   blue: {
-    100: '#b7cfe2',
     200: '#69B6CE',
     600: '#354049',
     650: '#79C1F3',
@@ -90,14 +97,12 @@ const tokens: Tokens = {
   },
   yellow: {
     50: '#FFD200',
-  },
-  orange: {
-    50: '#ffd9b6',
-    100: '#ff5900',
+    100: '#a8922c',
   },
   red: {
     50: '#ff0000',
     100: '#cc8787',
+    150: '#e27373',
   },
   spacing,
   primary: {
@@ -124,50 +129,55 @@ const light: Theme = {
     primary: {
       color: tokens.primary[50],
     },
-    error: {
-      color: tokens.red[50]
-    },
-    warning: {
-      color: tokens.orange[100]
-    },
-    success: {
-      color: tokens.green[50]
-    },
-    info: {
-      color: tokens.blue[200]
-    }
   },
   body: {
     bg: tokens.common.white,
+  },
+  alert: {
+    filled: {
+      info: {
+        bg: tokens.gray[150],
+        color: tokens.common.black,
+      },
+      ok: {
+        bg: tokens.green[150],
+        color: tokens.common.black,
+      },
+      error: {
+        bg: tokens.red[50],
+        color: tokens.common.white,
+      },
+      warn: {
+        bg: tokens.yellow[50],
+        color: tokens.common.black,
+      },
+    },
+    outlined: {
+      info: {
+        color: tokens.common.black,
+      },
+      ok: {
+        color: tokens.green[200],
+      },
+      error: {
+        color: tokens.red[100],
+      },
+      warn: {
+        color: tokens.yellow[100],
+      },
+    },
   },
   modal: {
     bg: tokens.common.white,
     border: tokens.dark[50],
     backdrop: tokens.backdrop[50],
   },
-  alert: {
-    error: {
-      color: tokens.red[50],
-      bg: tokens.red[100]
-    },
-    warning: {
-      color: tokens.orange[100],
-      bg: tokens.orange[50]
-    },
-    info: {
-      color: tokens.blue[200],
-      bg: tokens.blue[100],
-    },
-    success: {
-      color: tokens.green[50],
-      bg: tokens.green[100]
-    }
-  },
   button: {
     filled: {
       primary: {
         color: tokens.common.black,
         bg: tokens.primary[50],
+        outlineColor: tokens.common.black,
       },
     },
     outlined: {
@@ -175,6 +185,7 @@ const light: Theme = {
         color: tokens.primary[50],
         bg: 'transparent',
         borderColor: tokens.primary[50],
+        outlineColor: tokens.common.black,
       },
     },
   },
@@ -251,6 +262,20 @@ const light: Theme = {
       bg: tokens.primary[50],
     },
   },
+  blockquote: {
+    bg: tokens.light[50],
+    borderColor: tokens.light[100],
+  },
+  loader: {
+    primary: tokens.common.black,
+    secondary: tokens.primary[50],
+  },
+  avatars: {
+    restCounter: {
+      bg: tokens.primary[50],
+      color: tokens.common.black,
+    },
+  },
 };
 
 const dark: Theme = {
@@ -261,50 +286,55 @@ const dark: Theme = {
     primary: {
       color: tokens.primary[100],
     },
-    error: {
-      color: tokens.red[50]
-    },
-    warning: {
-      color: tokens.orange[100]
-    },
-    success: {
-      color: tokens.green[50]
-    },
-    info: {
-      color: tokens.blue[200]
-    }
   },
   body: {
     bg: tokens.common.black,
+  },
+  alert: {
+    filled: {
+      info: {
+        bg: tokens.gray[150],
+        color: tokens.common.black,
+      },
+      ok: {
+        bg: tokens.green[150],
+        color: tokens.common.black,
+      },
+      error: {
+        bg: tokens.red[50],
+        color: tokens.common.white,
+      },
+      warn: {
+        bg: tokens.yellow[50],
+        color: tokens.common.black,
+      },
+    },
+    outlined: {
+      info: {
+        color: tokens.common.white,
+      },
+      ok: {
+        color: tokens.green[150],
+      },
+      error: {
+        color: tokens.red[150],
+      },
+      warn: {
+        color: tokens.yellow[50],
+      },
+    },
   },
   modal: {
     bg: tokens.common.black,
     border: tokens.dark[50],
     backdrop: tokens.backdrop[50],
   },
-  alert: {
-    error: {
-      color: tokens.red[50],
-      bg: tokens.red[100]
-    },
-    warning: {
-      color: tokens.orange[100],
-      bg: tokens.orange[50],
-    },
-    info: {
-      color: tokens.blue[200],
-      bg: tokens.blue[100],
-    },
-    success: {
-      color: tokens.green[50],
-      bg: tokens.green[100],
-    }
-  },
   button: {
     filled: {
       primary: {
         color: tokens.common.black,
         bg: tokens.primary[50],
+        outlineColor: tokens.common.white,
       },
     },
     outlined: {
@@ -312,6 +342,7 @@ const dark: Theme = {
         color: tokens.primary[50],
         bg: 'transparent',
         borderColor: tokens.primary[50],
+        outlineColor: tokens.common.white,
       },
     },
   },
@@ -386,6 +417,20 @@ const dark: Theme = {
   list: {
     marker: {
       bg: tokens.primary[50],
+    },
+  },
+  blockquote: {
+    bg: tokens.gray[450],
+    borderColor: tokens.gray[300],
+  },
+  loader: {
+    primary: tokens.common.white,
+    secondary: tokens.primary[50],
+  },
+  avatars: {
+    restCounter: {
+      bg: tokens.primary[50],
+      color: tokens.common.black,
     },
   },
 };

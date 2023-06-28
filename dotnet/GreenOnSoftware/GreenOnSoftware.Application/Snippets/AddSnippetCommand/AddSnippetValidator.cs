@@ -16,7 +16,9 @@ public class AddSnippetValidator : AbstractValidator<AddSnippet>
             .NotEmpty();
 
         RuleFor(x => x.Frames)
-            .NotEmpty();
+            .NotEmpty()
+            .Must(x=>x.Count <= 16)
+            .WithMessage("Too many frames. 16 is max.");
 
         RuleFor(x => x.GifUrl)
             .MaximumLength(300);
@@ -26,7 +28,9 @@ public class AddSnippetValidator : AbstractValidator<AddSnippet>
         RuleForEach(x => x.Frames).ChildRules(frame =>
             frame.RuleFor(x => x.Code)
                 .NotEmpty()
-                .MaximumLength(5000));
+                .MaximumLength(1000)
+                .Must(x => x.Count(c => c == '\n') <= 100)
+                .WithMessage("Too many code lines in frame. 100 is max."));
 
         RuleForEach(x => x.Frames).ChildRules(frame =>
             frame.RuleFor(x => x.Name)

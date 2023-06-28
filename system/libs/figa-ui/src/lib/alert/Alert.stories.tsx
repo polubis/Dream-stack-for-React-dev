@@ -1,50 +1,105 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import type { Story, Meta } from '@storybook/react';
+
 import { Alert } from './alert';
-import { ALERT_TYPES } from './consts';
+import { Box } from '../box';
+import { Font } from '../font';
+import { ALERT_TYPES, ALERT_VARIANTS } from './consts';
+import type { AlertProps } from './defs';
 
 export default {
-    title: 'Alert',
-    component: Alert,
-  } as ComponentMeta<typeof Alert>;
+  component: Alert,
+  title: 'Alert',
+} as Meta;
 
-  const Template: ComponentStory<typeof Alert> = ({variant}) => {
-    return (
-    <>
-        {ALERT_TYPES.map(type => (
-            <div style={{margin: '8px 0'}}>
-                <Alert alertType={type} variant={variant} message={`this is a ${type} alert - check it out !`} />
-            </div>
+const StaticTemplate: Story = () => {
+  return (
+    <Box padding={[300, 300, 300, 300]} spacing={[300, 300]}>
+      <Font variant="h4">Default</Font>
+
+      {ALERT_VARIANTS.map((variant) => (
+        <Box key={variant} spacing={ALERT_VARIANTS.map(() => 250)}>
+          <Font variant="h5">Variant {variant}</Font>
+          <Box orientation="row" spacing={ALERT_TYPES.map(() => 150)}>
+            {ALERT_TYPES.map((type) => (
+              <Alert key={type} type={type} variant={variant}>
+                This is [{variant}] variant with type [{type}].
+              </Alert>
+            ))}
+          </Box>
+        </Box>
+      ))}
+
+      <Box spacing={[200, 200]}>
+        <Font variant="h4">Trimmed</Font>
+
+        {ALERT_VARIANTS.map((variant) => (
+          <Box key={variant} spacing={ALERT_VARIANTS.map(() => 250)}>
+            <Font variant="h5">Variant {variant}</Font>
+            <Box orientation="row" spacing={ALERT_TYPES.map(() => 150)}>
+              {ALERT_TYPES.map((type) => (
+                <Alert
+                  trimmed
+                  key={type}
+                  type={type}
+                  maxWidth="150px"
+                  variant={variant}
+                >
+                  This is [{variant}] variant with type [{type}].
+                </Alert>
+              ))}
+            </Box>
+          </Box>
         ))}
+      </Box>
+    </Box>
+  );
+};
+
+const FixedTemplate: Story<Pick<AlertProps, 'maxWidth' | 'trimmed'>> = (
+  props
+) => {
+  return (
+    <>
+      {ALERT_TYPES.map((type, typeIdx) => (
+        <Alert
+          key={type}
+          type={type}
+          fixed
+          variant="filled"
+          style={{
+            top: typeIdx * 50 + 40 + 'px',
+          }}
+          {...props}
+        >
+          This is filled variant with type [{type}].
+        </Alert>
+      ))}
+      {ALERT_TYPES.map((type, typeIdx) => (
+        <Alert
+          key={type}
+          type={type}
+          fixed
+          variant="outlined"
+          style={{
+            top: typeIdx * 50 + 300 + 'px',
+          }}
+          {...props}
+        >
+          This is outlined variant with type [{type}].
+        </Alert>
+      ))}
     </>
-    )
-}
-
-const EditableTemplate: ComponentStory<typeof Alert> = ({variant, message, alertType}) => {
-    return (
-        <Alert alertType={alertType} variant={variant} message={message}/>
-    )
-}
-
-export const Filled = Template.bind({});
-Filled.args = {
-  variant: 'filled',
+  );
 };
 
-export const Outlined = Template.bind({});
-Outlined.args = {
-  variant: 'outlined',
+export const Static = StaticTemplate.bind({});
+Static.args = {};
+
+export const Fixed = FixedTemplate.bind({});
+Fixed.args = {};
+
+export const FixedAndTrimmed = FixedTemplate.bind({});
+FixedAndTrimmed.args = {
+  maxWidth: '300px',
+  trimmed: true,
 };
-
-export const Editable = EditableTemplate.bind({});
-Editable.args = {
-    variant: "outlined",
-    message: 'add text',
-    alertType: "error"
-}
-
-Editable.argTypes = {
-    alertType: {
-      control: { type: "select", options: ["error", "warning", "info", "success"] },
-    },
-  };
