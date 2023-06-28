@@ -92,6 +92,25 @@ const shape = (size: string, radius: string): FlattenSimpleInterpolation =>
     border-radius: ${radius};
   `;
 
+const buttonBaseEffects = (outlineColor: string): FlattenSimpleInterpolation =>
+  css`
+    transition: 0.2s all ease-in-out;
+    outline: 2px solid transparent;
+    outline-offset: 4px;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.4;
+    }
+
+    &:focus {
+      outline-color: ${outlineColor};
+    }
+  `;
+
 export {
   font,
   size,
@@ -103,4 +122,5 @@ export {
   appearIn,
   central,
   shape,
+  buttonBaseEffects,
 };

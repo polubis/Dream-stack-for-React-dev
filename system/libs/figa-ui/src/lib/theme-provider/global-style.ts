@@ -10,6 +10,7 @@ import {
   row,
   size,
   streched,
+  buttonBaseEffects,
 } from '../shared';
 import { T_DOWN } from './viewport';
 
@@ -168,6 +169,8 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.filled.primary {
+            ${(props) =>
+              buttonBaseEffects(props.theme.button.filled.primary.outlineColor)}
             color: ${(props) => props.theme.button.filled.primary.color};
             background: ${(props) => props.theme.button.filled.primary.bg};
 
@@ -177,6 +180,8 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.outlined.primary {
+            ${(props) =>
+              buttonBaseEffects(props.theme.button.filled.primary.outlineColor)}
             color: ${(props) => props.theme.button.outlined.primary.color};
             background: ${(props) => props.theme.button.outlined.primary.bg};
             border: 2px solid ${(props) =>
