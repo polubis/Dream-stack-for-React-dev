@@ -3,16 +3,14 @@ import { setupServer } from 'msw/node';
 import { getPath } from '../core';
 import { mockOkGetArticlesResponse } from '../test-utils';
 
-const server = setupServer();
-
-server.use(
-  rest.get(getPath('Articles'), (req, res, ctx) => {
+const server = setupServer(
+  rest.get(getPath('Articles'), (_, res, ctx) => {
     return res(ctx.status(200), ctx.json(mockOkGetArticlesResponse()));
   }),
-  rest.post(getPath('Account/SignIn'), (req, res, ctx) => {
+  rest.post(getPath('Account/SignIn'), (_, res, ctx) => {
     return res(ctx.status(201));
   }),
-  rest.post(getPath('Account/SignOut'), (req, res, ctx) => {
+  rest.post(getPath('Account/SignOut'), (_, res, ctx) => {
     return res(ctx.status(201));
   })
 );

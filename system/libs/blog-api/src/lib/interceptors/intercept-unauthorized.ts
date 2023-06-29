@@ -3,7 +3,11 @@ import { blogAPI } from '../instances';
 import type { Intercept, Interceptable } from './defs';
 
 const interceptUnauthorized: Intercept = (cb: () => void) => {
-  let id: number;
+  let id: number | undefined;
+
+  const clean: Interceptable['clean'] = (): void => {
+    id !== undefined && blogAPI.interceptors.response.eject(id);
+  };
 
   const listen: Interceptable['listen'] = () => {
     id = blogAPI.interceptors.response.use(
@@ -14,10 +18,6 @@ const interceptUnauthorized: Intercept = (cb: () => void) => {
         return Promise.reject(error);
       }
     );
-  };
-
-  const clean: Interceptable['clean'] = (): void => {
-    blogAPI.interceptors.response.eject(id);
   };
 
   return {

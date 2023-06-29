@@ -1,17 +1,5 @@
-declare const process: {
-  env: {
-    NEXT_PUBLIC_API_URL?: string;
-  };
-};
+import { blogEnv } from '../env';
 
-const getUrl = () => {
-  const url = process.env.NEXT_PUBLIC_API_URL;
-
-  if (url === undefined) {
-    throw Error('Lack of process.env.NEXT_PUBLIC_API_URL');
-  }
-
-  return url;
-};
+const getUrl = () => blogEnv.get('NEXT_PUBLIC_API_URL');
 
 export { getUrl };
