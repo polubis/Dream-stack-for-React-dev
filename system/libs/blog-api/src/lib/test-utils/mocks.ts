@@ -3,6 +3,7 @@ import type {
   GetArticlesResponse,
   GetArticlesSearchParams,
   PaginatedResponse,
+  ResponseError,
 } from '../../models';
 
 const mockErrorResponse = (data?: Partial<ErrorResponse>): ErrorResponse => ({
@@ -39,6 +40,16 @@ const mockGetArticlesSearchParams = (
   ...params,
 });
 
+const mockResponseError = (
+  error: Partial<ResponseError> = {}
+): ResponseError => {
+  return {
+    key: 'unknown',
+    message: 'Something went wrong...',
+    ...error,
+  };
+};
+
 const mockOkGetArticlesResponse = (
   response?: Partial<GetArticlesResponse>
 ): GetArticlesResponse => {
@@ -72,5 +83,6 @@ export {
   mockErrorResponse,
   mockOkPaginatedResponse,
   mockGetArticlesSearchParams,
+  mockResponseError,
   mockOkGetArticlesResponse,
 };

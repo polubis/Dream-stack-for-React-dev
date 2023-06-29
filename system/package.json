@@ -42,7 +42,8 @@
     "react-router-dom": "6.4.3",
     "rxjs": "^7.8.1",
     "styled-components": "5.3.6",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@babel/core": "7.12.13",
