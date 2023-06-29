@@ -4,7 +4,7 @@ import { mockErrorResponse, requestFixture } from '../test-utils';
 import { interceptUnauthorized } from './intercept-unauthorized';
 
 describe('Unauthorized interceptor works when: ', () => {
-  const { adapter, clean, server } = requestFixture();
+  const { clean, server, rest } = requestFixture();
 
   beforeAll(() => {
     server.listen();
@@ -19,8 +19,11 @@ describe('Unauthorized interceptor works when: ', () => {
   });
 
   it('detects 401 status, calls callback, allows to listen and cleans', async () => {
-    adapter.onPost(getPath('Account/SignOut')).reply(401, mockErrorResponse());
-
+    server.use(
+      rest.post(getPath('Account/SignOut'), (_, res, ctx) => {
+        return res(ctx.status(401), ctx.json(mockErrorResponse()));
+      })
+    );
     const useSpy = jest.fn();
 
     const { clean, listen } = interceptUnauthorized(useSpy);
@@ -38,7 +41,7 @@ describe('Unauthorized interceptor works when: ', () => {
     try {
       await blogAPI.post(getPath('Account/SignOut'));
     } catch {
-      expect(useSpy).toHaveBeenCalledTimes(0);
+      expect(useSpy).toHaveBeenCalledTimes(1);
     }
   });
 });

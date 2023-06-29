@@ -1,23 +1,14 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
 import { server } from '../msw';
-
-const createMockAdapter = () => {
-  const mock = new MockAdapter(axios);
-  return mock;
-};
+import { rest } from 'msw';
 
 const requestFixture = () => {
-  const adapter = createMockAdapter();
-
   return {
+    rest,
     server,
-    adapter,
     clean: () => {
       server.resetHandlers();
-      adapter.reset();
     },
   };
 };
 
-export { createMockAdapter, requestFixture };
+export { requestFixture };
