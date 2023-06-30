@@ -9,4 +9,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../coverage/apps/blog',
+  setupFiles: ['../../libs/blog-api/src/lib/test-utils/setup-env.ts'],
 };

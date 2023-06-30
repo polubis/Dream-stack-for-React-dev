@@ -3,17 +3,23 @@ import type {
   GetArticlesResponse,
   GetArticlesSearchParams,
   PaginatedResponse,
+  ResponseError,
 } from '../../models';
+
+const mockResponseError = (
+  error: Partial<ResponseError> = {}
+): ResponseError => {
+  return {
+    key: 'unknown',
+    message: 'Something went wrong...',
+    ...error,
+  };
+};
 
 const mockErrorResponse = (data?: Partial<ErrorResponse>): ErrorResponse => ({
   hasErrors: true,
   success: false,
-  errors: [
-    {
-      key: 'unauthorized',
-      message: 'Invalid login or password',
-    },
-  ],
+  errors: [mockResponseError()],
   ...data,
 });
 
@@ -73,4 +79,5 @@ export {
   mockOkPaginatedResponse,
   mockGetArticlesSearchParams,
   mockOkGetArticlesResponse,
+  mockResponseError,
 };
