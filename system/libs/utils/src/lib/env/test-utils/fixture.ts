@@ -1,11 +1,18 @@
-import type { EnvironmentObject } from '../defs';
-import { getEnv } from '../env';
+import type { EnvironmentObject, Environment } from '../defs';
 
-const setupDefaults = (defaults: Record<string, string | undefined>): void => {
+declare const process: {
+  env: Record<string, string>;
+};
+
+const setupDefaults = (defaults: EnvironmentObject): void => {
   Object.keys(defaults).forEach((key) => {
     const initial = process.env[key];
     process.env[key] = initial ?? defaults[key];
   });
+};
+
+const getEnv = <T extends EnvironmentObject>(): Environment<T> => {
+  return process.env as Environment<T>;
 };
 
 const envFixture = <T extends EnvironmentObject>(defaults: T) => {

@@ -1,12 +1,27 @@
-type Environment<T> = {
-  [K in keyof T]: T[K];
-};
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type EnvironmentObject = Record<string, any>;
 
-type PartialEnvironment<T extends EnvironmentObject> = {
-  [K in keyof T]?: T[K];
+type EnvironmentGetter = () => string | undefined;
+
+type SafeEnvironmentGetter = () => string;
+
+type EnvironmentGetters<T extends EnvironmentObject> = {
+  [K in keyof T]: EnvironmentGetter;
 };
 
-export type { Environment, EnvironmentObject, PartialEnvironment };
+type SafeEnvironmentGetters<T extends EnvironmentGetters<T>> = {
+  [K in keyof T]: SafeEnvironmentGetter;
+};
+
+type Environment<T extends EnvironmentObject> = {
+  [K in keyof T]: T[K];
+};
+
+export type {
+  EnvironmentGetters,
+  EnvironmentGetter,
+  SafeEnvironmentGetters,
+  SafeEnvironmentGetter,
+  EnvironmentObject,
+  Environment,
+};
