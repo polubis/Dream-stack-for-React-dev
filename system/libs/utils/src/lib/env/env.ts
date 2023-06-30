@@ -1,15 +1,17 @@
-import type { Environment, EnvironmentObject } from './defs';
+import type {
+  EnvironmentGetters,
+  SafeEnvironmentGetters,
+  EnvironmentGetter,
+  SafeEnvironmentGetter,
+} from './defs';
 
-declare const process: {
-  env: Record<string, string>;
-};
-
-const getEnv = <T>(): Environment<T> => {
-  return process.env as Environment<T>;
-};
-
-const env = <T extends EnvironmentObject>(...keys: (keyof T)[]) => {
-  const undefinedEntries = keys.filter((key) => getEnv<T>()[key] === undefined);
+const toSafeGetters = <T extends EnvironmentGetters<T>>(
+  getters: T
+): SafeEnvironmentGetters<T> => {
+  const entries = Object.entries(getters) as [keyof T, EnvironmentGetter][];
+  const undefinedEntries = entries.filter(
+    ([, getter]) => getter() === undefined
+  );
 
   if (undefinedEntries.length > 0) {
     throw Error(
@@ -19,11 +21,25 @@ const env = <T extends EnvironmentObject>(...keys: (keyof T)[]) => {
     );
   }
 
+  return getters as SafeEnvironmentGetters<T>;
+};
+
+const env = <T extends EnvironmentGetters<T>>(getters: T) => {
+  const safeGetters = toSafeGetters(getters);
+
   return {
-    get: <K extends keyof T>(key: K): T[K] => {
-      return getEnv<T>()[key];
+    get: <K extends keyof T>(key: K): string => {
+      return safeGetters[key]();
+    },
+    getAll: () => {
+      return (
+        Object.entries(safeGetters) as [keyof T, SafeEnvironmentGetter][]
+      ).reduce<Record<keyof T, string>>((acc, [key, getter]) => {
+        acc[key] = getter();
+        return acc;
+      }, {} as Record<keyof T, string>);
     },
   };
 };
 
-export { env, getEnv };
+export { env };

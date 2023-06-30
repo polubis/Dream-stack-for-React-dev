@@ -6,12 +6,7 @@ describe('Environment util can be used when: ', () => {
   const API_URL = 'https://localhost:3000/api';
   const ACCESS_TOKEN = 'https://localhost:3000/api';
 
-  interface MyVars {
-    API_URL: string;
-    ACCESS_TOKEN: string;
-  }
-
-  const fixture = envFixture<MyVars>({ API_URL, ACCESS_TOKEN });
+  const fixture = envFixture({ API_URL, ACCESS_TOKEN });
 
   beforeAll(() => {
     fixture.setup();
@@ -22,7 +17,10 @@ describe('Environment util can be used when: ', () => {
   });
 
   it('allows to get environment variable', () => {
-    const myEnv = env<MyVars>('ACCESS_TOKEN', 'API_URL');
+    const myEnv = env({
+      ACCESS_TOKEN: () => process.env['ACCESS_TOKEN'],
+      API_URL: () => process.env['API_URL'],
+    });
 
     myEnv.get('API_URL');
     myEnv.get('ACCESS_TOKEN');
@@ -31,9 +29,26 @@ describe('Environment util can be used when: ', () => {
     expect(myEnv.get('ACCESS_TOKEN')).toBe(ACCESS_TOKEN);
   });
 
+  it('allows to get all environment variables', () => {
+    const myEnv = env({
+      ACCESS_TOKEN: () => process.env['ACCESS_TOKEN'],
+      API_URL: () => process.env['API_URL'],
+    });
+
+    expect(myEnv.getAll()).toEqual({
+      API_URL,
+      ACCESS_TOKEN,
+    });
+  });
+
   it('throws an error if at least one variable is undefined', () => {
     fixture.delete('API_URL');
 
-    expect(() => env<MyVars>('ACCESS_TOKEN', 'API_URL')).toThrow();
+    expect(() =>
+      env({
+        ACCESS_TOKEN: () => process.env['ACCESS_TOKEN'],
+        API_URL: () => process.env['API_URL'],
+      })
+    ).toThrow();
   });
 });

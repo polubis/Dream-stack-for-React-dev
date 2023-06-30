@@ -1,7 +1,5 @@
-import type { PartialEnvironment } from '@system/utils';
+import type { blogEnv } from '../lib/env';
 
-type BlogEnv = PartialEnvironment<{
-  NEXT_PUBLIC_API_URL: string;
-}>;
+type BlogEnv = ReturnType<(typeof blogEnv)['getAll']>;
 
 export type { BlogEnv };
