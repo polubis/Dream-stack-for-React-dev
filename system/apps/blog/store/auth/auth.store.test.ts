@@ -9,7 +9,7 @@ describe('Authorization works when: ', () => {
 
   afterEach(() => {
     jest.clearAllMocks();
-    authStorage.remove('authorized');
+    authStorage.clear();
   });
 
   it('marks as authorized if authorization information is stored in local storage', () => {

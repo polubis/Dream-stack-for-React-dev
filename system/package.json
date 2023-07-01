@@ -8,7 +8,7 @@
     "lint:fixAll": "npx nx run-many --target=lint --all --fix",
     "format:checkAll": "prettier --list-different \"./**/*.{js,ts,tsx}\"",
     "format:fixAll": "prettier --write \"./**/*.{js,ts,tsx}\"",
-    "test:checkAll": "npx nx run-many --target=test --all",
+    "test:checkAll": "npx nx run-many --target=test --all --skip-nx-cache",
     "ts:checkAll": "npx nx run-many --target=type-check --all",
     "build-storybook": "npx nx run figa-ui:build-storybook -s public",
     "storybook:figa-ui": "npx nx run figa-ui:storybook",
@@ -16,7 +16,7 @@
     "test:jamjam": "npx nx run jamjam:test --watch",
     "nx:cloud-update": "npx nx g @nrwl/nx-cloud:init",
     "e2e:jamjam": "npx nx run jamjam-e2e:e2e --watch",
-    "e2e:checkAll": "npx nx run-many --target=e2e --all --parallel",
+    "e2e:checkAll": "npx nx run-many --target=e2e --all --parallel --skip-nx-cache",
     "chromatic": "npx run chromatic"
   },
   "private": true,
