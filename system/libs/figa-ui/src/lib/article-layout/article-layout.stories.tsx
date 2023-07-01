@@ -7,6 +7,7 @@ import { Link } from '../link';
 import { Box } from '../box';
 import { Code } from '../code';
 import { List, ListItem } from '../list';
+import { Image } from '../image';
 
 export default {
   component: ArticleLayout,
@@ -121,6 +122,28 @@ const Template: Story = () => {
           That's the difference between the different types of tests. Don't
           worry, it will get into your blood in the next lessons.
         </Font>
+        <Image
+          alt="My image"
+          src="https://img.freepik.com/premium-wektory/dobry-widok-na-gory-grafika-ilustracja-projekt-koszulki-wektor-sztuki_24519-2593.jpg?w=2000"
+        />
+        <Font variant="b1" italic>
+          Some description
+        </Font>
+        <Font variant="b1">
+          If you enjoyed it, be sure to visit us on our{' '}
+          <Link variant="b1" motive="primary">
+            <a href="a">Linkedin</a>
+          </Link>{' '}
+          where we regularly upload content from programming.
+        </Font>
+        <Font variant="b1">
+          That's the difference between the different types of tests. Don't
+          worry, it will get into your blood in the next lessons.
+        </Font>
+        <Image
+          alt="My image"
+          src="https://img.freepik.com/premium-wektory/dobry-widok-na-gory-grafika-ilustracja-projekt-koszulki-wektor-sztuki_24519-2593.jpg?w=2000"
+        />
         <Font variant="b1">
           If you enjoyed it, be sure to visit us on our{' '}
           <Link variant="b1" motive="primary">

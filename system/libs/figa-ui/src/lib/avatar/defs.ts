@@ -18,19 +18,19 @@ interface AvatarProps extends AvatarHTMLElementProps {
   renderImage?: RenderImage;
 }
 
-interface ImageProps {
+interface AvatarImageProps {
   loading?: AvatarProps['loading'];
   alt: AvatarProps['alt'];
   src: AvatarProps['src'];
   className?: string;
 }
 
-type RenderImage = (props: ImageProps) => ReactNode;
+type RenderImage = (props: AvatarImageProps) => ReactNode;
 
 export type {
   AvatarProps,
   RenderImage,
-  ImageProps,
+  AvatarImageProps,
   AvatarShape,
   AvatarSize,
   AvatarHTMLElementProps,

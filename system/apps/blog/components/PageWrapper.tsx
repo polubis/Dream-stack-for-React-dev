@@ -1,7 +1,15 @@
 import type { ReactNode } from 'react';
 
 import { MDXProvider } from '@mdx-js/react';
-import { Code, CodeBlock, Font, Link, List, ListItem } from '@system/figa-ui';
+import {
+  Code,
+  CodeBlock,
+  Font,
+  Link,
+  List,
+  ListItem,
+  Image,
+} from '@system/figa-ui';
 import type { Components } from '@mdx-js/react/lib';
 
 const components: Components = {
@@ -32,6 +40,12 @@ const components: Components = {
   ul: List,
   ol: ({ children }) => <List ordered>{children}</List>,
   li: ListItem,
+  img: ({ src, alt }) => <Image src={src} alt={alt} lazy />,
+  em: ({ children }) => (
+    <Font italic variant="b1" element="em">
+      {children}
+    </Font>
+  ),
 };
 
 interface PageWrapperProps {
