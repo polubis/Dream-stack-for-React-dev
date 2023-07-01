@@ -31,6 +31,20 @@ const Container = styled.div`
     margin-top: ${tokens.spacing[200]};
   }
 
+  .image {
+    display: block;
+    padding: ${tokens.spacing[200]} 0;
+
+    img {
+      max-width: 100%;
+    }
+
+    & + .italic {
+      display: block;
+      transform: translateY(-${tokens.spacing[150]});
+    }
+  }
+
   .list + .b1 {
     margin-top: ${tokens.spacing[250]};
   }

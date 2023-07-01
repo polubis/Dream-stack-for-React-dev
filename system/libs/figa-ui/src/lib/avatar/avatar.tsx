@@ -1,4 +1,4 @@
-import type { AvatarProps, ImageProps } from './defs';
+import type { AvatarProps, AvatarImageProps } from './defs';
 
 import c from 'classnames';
 
@@ -12,7 +12,7 @@ const Avatar = ({
   loading,
   ...props
 }: AvatarProps) => {
-  const imageProps: ImageProps = {
+  const imageProps: AvatarImageProps = {
     alt,
     src,
     loading,

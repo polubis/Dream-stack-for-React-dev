@@ -20,6 +20,7 @@ export * from './lib/code-block';
 export * from './lib/logo-graphic';
 export * from './lib/list';
 export * from './lib/blockquote';
+export * from './lib/image';
 export * from './lib/code';
 export * from './lib/icon';
 export * from './lib/avatar';
