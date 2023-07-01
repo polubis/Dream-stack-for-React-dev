@@ -1,6 +1,11 @@
 import { storage } from '../storage';
 
 describe('Storage can be used when: ', () => {
+  interface UserData {
+    id: number;
+    name: string;
+  }
+
   it('throws an error if any storage is undefined', () => {
     const localStorage = global.localStorage;
     const sessionStorage = global.sessionStorage;
@@ -15,17 +20,40 @@ describe('Storage can be used when: ', () => {
     global.sessionStorage = sessionStorage;
   });
 
-  it('picks local storage or session storage', () => {
-    expect(storage().getKeys()).toEqual([]);
-    expect(storage('session').getKeys()).toEqual([]);
+  it('picks keys from local storage or session storage', () => {
+    const ls = storage<UserData>();
+    const ss = storage<UserData>('session');
+
+    ls.set('id', 1);
+    ss.set('id', 1);
+
+    expect(ls.getKeys()).toEqual(['id']);
+    expect(ss.getKeys()).toEqual(['id']);
+  });
+
+  it('allows to set several values', () => {
+    const ls = storage<UserData>();
+
+    ls.patch({ id: 1 });
+
+    expect(ls.getKeys()).toEqual(['id']);
+    expect(ls.get('id')).toBe(1);
+    expect(ls.get('name')).toBe(null);
+  });
+
+  it('allows to get all values', () => {
+    const ls = storage<UserData>();
+
+    ls.patch({ id: 1 });
+
+    expect(ls.getAll()).toEqual({ id: 1 });
+
+    ls.patch({ id: 1, name: 'piotr' });
+
+    expect(ls.getAll()).toEqual({ id: 1, name: 'piotr' });
   });
 
   it('allows to work with storage', () => {
-    interface UserData {
-      id: number;
-      name: string;
-    }
-
     const specificStorage = storage<UserData>();
 
     specificStorage.set('id', 0);
