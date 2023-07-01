@@ -59,10 +59,33 @@ const storage = <T extends Record<string, any>>(
     keys.forEach(remove);
   };
 
+  const patch = (obj: Partial<T>): void => {
+    Object.entries(obj).forEach(([key, value]) => {
+      if (value !== undefined) set(key, value);
+    });
+  };
+
+  const getAll = (): Record<keyof T, T[keyof T] | null> => {
+    const allStorageItems = keys.reduce<T>((acc, key) => {
+      const value = get(key);
+
+      if (value === null) return acc;
+
+      return {
+        ...acc,
+        [key]: value,
+      };
+    }, {} as T);
+
+    return allStorageItems;
+  };
+
   return {
     remove,
     set,
+    patch,
     get,
+    getAll,
     getKeys,
     clear,
   };
