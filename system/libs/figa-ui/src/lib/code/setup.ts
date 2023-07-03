@@ -11,6 +11,7 @@ export const setup = ({
   readonly,
   children,
   parent,
+  onChange,
 }: SetupConfig): EditorView => {
   let setup = basicSetup;
   const extensions: Extension[] = [javascript(), DEFAULT_THEME];
@@ -26,7 +27,19 @@ export const setup = ({
 
   const view = new EditorView({
     doc: children,
-    extensions,
+    extensions: [
+      ...extensions,
+      ...(!readonly && onChange
+        ? [
+            EditorView.updateListener.of((v) => {
+              if (v.docChanged) {
+                console.log('siema');
+                onChange(view.state.doc.toString());
+              }
+            }),
+          ]
+        : []),
+    ],
     parent,
   });
 

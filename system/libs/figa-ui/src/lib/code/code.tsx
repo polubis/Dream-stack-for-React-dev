@@ -5,7 +5,12 @@ import { CODE_LINE_HEIGHT } from './consts';
 import c from 'classnames';
 import { setup } from './setup';
 
-const CodeContent = ({ children, className, readonly }: CodeProps) => {
+const CodeContent = ({
+  children,
+  className,
+  readonly,
+  onChange,
+}: CodeProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -13,7 +18,7 @@ const CodeContent = ({ children, className, readonly }: CodeProps) => {
 
     if (!parent) return;
 
-    const view = setup({ children, readonly, parent });
+    const view = setup({ children, readonly, parent, onChange });
 
     return () => {
       view.destroy();
@@ -24,7 +29,7 @@ const CodeContent = ({ children, className, readonly }: CodeProps) => {
   return <div className={c('code', className)} ref={ref} />;
 };
 
-const Code = ({ children, className, readonly }: CodeProps) => {
+const Code = ({ children, className, readonly, onChange }: CodeProps) => {
   if (typeof window === 'undefined') {
     return (
       <div
@@ -39,6 +44,7 @@ const Code = ({ children, className, readonly }: CodeProps) => {
       children={children}
       className={className}
       readonly={readonly}
+      onChange={onChange}
     />
   );
 };
