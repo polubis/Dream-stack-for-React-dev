@@ -21,20 +21,29 @@ import {
   GREEN_ON_SOFTWARE_COMPANY,
 } from '../../consts';
 import { UserSection } from './user-section';
+import { useLang } from '../../dk/use-lang';
 
-const LABELS = ['Home', 'Articles', 'Authors', 'Creator', 'Courses'] as const;
+const LABELS = [
+  'Home',
+  'Articles',
+  'Authors',
+  'Articles creator',
+  'Courses',
+] as const;
 const URLS = [
   '/home/',
   '/articles/',
   '/authors/',
-  '/creator/',
+  '/articles-creator/',
   '/courses/',
 ] as const;
 
 const MainLayout = ({ children, className }: MainLayoutProps) => {
+  const lang = useLang();
+
   const links = LABELS.map((label, idx) => (
     <FigaUILink variant="h6" key={label}>
-      <Link href={URLS[idx]}>{label}</Link>
+      <Link href={'/' + lang + URLS[idx]}>{label}</Link>
     </FigaUILink>
   ));
 
