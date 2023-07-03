@@ -1,51 +1,45 @@
 import type { FontFamily, FontWeight, StrechablePosition } from './defs';
-import type { FlattenSimpleInterpolation, Keyframes } from 'styled-components';
+import type { Keyframes } from 'styled-components';
 import { keyframes } from 'styled-components';
 
 import { css } from 'styled-components';
 
-const size = (height: string, width?: string): FlattenSimpleInterpolation =>
+const size = (height: string, width?: string) =>
   css`
     height: ${height};
     width: ${width ?? height};
   `;
 
-const row = (): FlattenSimpleInterpolation => css`
+const row = () => css`
   display: flex;
   align-items: center;
 `;
 
-const column = (): FlattenSimpleInterpolation => css`
+const column = () => css`
   display: flex;
   flex-flow: column;
 `;
 
-const wrap = (): FlattenSimpleInterpolation => css`
+const wrap = () => css`
   display: flex;
   flex-flow: wrap;
 `;
 
-const center = (
-  flow: 'row' | 'column' = 'row'
-): FlattenSimpleInterpolation => css`
+const center = (flow: 'row' | 'column' = 'row') => css`
   display: flex;
   flex-flow: ${flow};
   align-items: center;
   justify-content: center;
 `;
 
-const central = (
-  position: StrechablePosition
-): FlattenSimpleInterpolation => css`
+const central = (position: StrechablePosition) => css`
   position: ${position};
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 `;
 
-const streched = (
-  position: StrechablePosition
-): FlattenSimpleInterpolation => css`
+const streched = (position: StrechablePosition) => css`
   position: ${position};
   top: 0;
   left: 0;
@@ -58,7 +52,7 @@ const font = (
   spacing: string,
   family: FontFamily,
   weight: FontWeight
-): FlattenSimpleInterpolation => css`
+) => css`
   font-size: ${size};
   letter-spacing: ${spacing};
   font-family: ${family}, Verdana, sans-serif;
@@ -77,25 +71,19 @@ const appearInAnimation = (from = '15px', to = '0'): Keyframes => keyframes`
   }
 `;
 
-const appearIn = (
-  from?: string,
-  to?: string
-): FlattenSimpleInterpolation => css`
+const appearIn = (from?: string, to?: string) => css`
   opacity: 0;
   animation: ${appearInAnimation(from, to)} 0.2s ease-in-out forwards;
 `;
 
-const shape = (size: string, radius: string): FlattenSimpleInterpolation =>
+const shape = (size: string, radius: string) =>
   css`
     height: ${size};
     width: ${size};
     border-radius: ${radius};
   `;
 
-const setupFilledIcon = (
-  bg: string,
-  color: string
-): FlattenSimpleInterpolation => css`
+const setupFilledIcon = (bg: string, color: string) => css`
   background: ${bg};
 
   .font {
@@ -107,7 +95,7 @@ const setupFilledIcon = (
   }
 `;
 
-const setupOutlinedIcon = (color: string): FlattenSimpleInterpolation => css`
+const setupOutlinedIcon = (color: string) => css`
   border-color: ${color};
 
   .font {
@@ -119,7 +107,7 @@ const setupOutlinedIcon = (color: string): FlattenSimpleInterpolation => css`
   }
 `;
 
-const buttonBaseEffects = (outlineColor: string): FlattenSimpleInterpolation =>
+const buttonBaseEffects = (outlineColor: string) =>
   css`
     transition: 0.2s all ease-in-out;
     outline: 2px solid transparent;
@@ -157,7 +145,7 @@ const buttonBaseEffects = (outlineColor: string): FlattenSimpleInterpolation =>
     }
   `;
 
-const trim = (): FlattenSimpleInterpolation =>
+const trim = () =>
   css`
     white-space: nowrap;
     overflow: hidden;

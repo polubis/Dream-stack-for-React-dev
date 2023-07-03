@@ -290,6 +290,10 @@ interface Theme {
       color: string;
     };
   };
+  creatorLayout: {
+    bg: string;
+    borderColor: string;
+  };
 }
 
 type ThemeKey = 'dark' | 'light';

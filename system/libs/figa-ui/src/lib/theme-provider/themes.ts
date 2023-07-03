@@ -281,6 +281,10 @@ const light: Theme = {
       color: tokens.common.black,
     },
   },
+  creatorLayout: {
+    bg: tokens.common.white,
+    borderColor: tokens.light[100],
+  },
 };
 
 const dark: Theme = {
@@ -442,6 +446,10 @@ const dark: Theme = {
       bg: tokens.primary[50],
       color: tokens.common.black,
     },
+  },
+  creatorLayout: {
+    borderColor: tokens.gray[300],
+    bg: tokens.common.black,
   },
 };
 
