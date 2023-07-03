@@ -38,7 +38,8 @@ const storage = <T extends Record<string, any>>(
 
   const set = <K extends keyof T>(key: K, value: T[K]): void => {
     getStorage(type).setItem(key as string, JSON.stringify(value));
-    keys.push(key);
+
+    !keys.includes(key) && keys.push(key);
   };
 
   const get = <K extends keyof T>(key: K): T[K] | null => {
