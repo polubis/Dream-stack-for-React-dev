@@ -16,11 +16,20 @@ const getUpViewport = (value: ViewportValue): string =>
 const getDownViewport = (value: ViewportValue): string =>
   `(max-width: ${value - 1}px)`;
 
+const isUp = (limit: number) => (value: number) => value >= limit;
+const isDown = (limit: number) => (value: number) => value < limit;
+
 const SM_UP = getUpViewport(smallMobile);
 const M_UP = getUpViewport(mobile);
 const T_UP = getUpViewport(tablet);
 const L_UP = getUpViewport(laptop);
 const D_UP = getUpViewport(desktop);
+
+const isSmUp = isUp(smallMobile);
+const isMUp = isUp(mobile);
+const isTUp = isUp(tablet);
+const isLUp = isUp(laptop);
+const isDUp = isUp(desktop);
 
 const SM_DOWN = getDownViewport(smallMobile);
 const M_DOWN = getDownViewport(mobile);
@@ -28,7 +37,27 @@ const T_DOWN = getDownViewport(tablet);
 const L_DOWN = getDownViewport(laptop);
 const D_DOWN = getDownViewport(desktop);
 
+const isSmDown = isDown(smallMobile);
+const isMDown = isDown(mobile);
+const isTDown = isDown(tablet);
+const isLDown = isDown(laptop);
+const isDDown = isDown(desktop);
+
 export {
+  isSmUp,
+  isMUp,
+  isTUp,
+  isLUp,
+  isDUp,
+  isSmDown,
+  isMDown,
+  isTDown,
+  isLDown,
+  isDDown,
+  getDownViewport,
+  getUpViewport,
+  isUp,
+  isDown,
   SM_UP,
   M_UP,
   T_UP,
@@ -40,6 +69,4 @@ export {
   L_DOWN,
   D_DOWN,
   VIEWPORT,
-  getDownViewport,
-  getUpViewport,
 };
