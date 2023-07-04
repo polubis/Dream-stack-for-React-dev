@@ -1,8 +1,14 @@
 import styled, { css } from 'styled-components';
-import type { CreatorLayoutProps } from './defs';
-import { T_DOWN, tokens } from '../theme-provider';
+import type {
+  CreatorLayoutPayload,
+  CreatorLayoutProps,
+  CreatorLayoutView,
+} from './defs';
+import { T_DOWN, T_UP, isTDown, isTUp, tokens } from '../theme-provider';
 import { appearIn, column, row } from '../shared';
-import { useToggle } from '@system/figa-hooks';
+import { useEffect, useState } from 'react';
+import c from 'classnames';
+import { useElementSize } from '@system/figa-hooks';
 
 const HEADER_HEIGHT = tokens.spacing[1000];
 const TOOLBOX_WIDTH = tokens.spacing[700];
@@ -44,10 +50,14 @@ const PreviewToolboxWrapper = styled.div`
 
 const NavigationWrapper = styled.div`
   ${row()}
-  padding: 0 ${tokens.spacing[250]};
+  padding: 0 ${tokens.spacing[150]} 0 ${tokens.spacing[200]};
   grid-area: nav;
   background: ${(props) => props.theme.creatorLayout.bg};
   border-bottom: 1px solid ${(props) => props.theme.creatorLayout.borderColor};
+
+  & > * {
+    width: 100%;
+  }
 `;
 
 const Container = styled.div`
@@ -59,6 +69,20 @@ const Container = styled.div`
     'nav nav nav nav'
     'code codeToolbox preview previewToolbox';
   min-height: 100vh;
+
+  @media ${T_UP} {
+    &.code-full {
+      grid-template-areas:
+        'nav nav nav nav'
+        'code code code codeToolbox';
+    }
+
+    &.preview-full {
+      grid-template-areas:
+        'nav nav nav nav'
+        'preview preview preview previewToolbox';
+    }
+  }
 
   @media ${T_DOWN} {
     grid-template-columns: 1fr ${TOOLBOX_WIDTH};
@@ -94,29 +118,99 @@ const CreatorLayout = ({
   children,
   previewToolbox,
   codeToolbox,
+  navigation,
   ...props
 }: CreatorLayoutProps) => {
-  const preview = useToggle(true);
-  const code = useToggle(true);
-  const [Navigation, Code, Preview] = children;
+  const [view, setView] = useState<CreatorLayoutView>('undetected');
+  const { state: size } = useElementSize({ delay: 20 });
+
+  const [Code, Preview] = children;
+
+  const expandCode = (): void => {
+    if (size.status !== 'detected') return;
+
+    const { width } = size;
+
+    if (isTDown(width)) {
+      setView('code');
+      return;
+    }
+
+    setView('code-full');
+  };
+
+  const expandPreview = (): void => {
+    if (size.status !== 'detected') return;
+
+    const { width } = size;
+
+    if (isTDown(width)) {
+      setView('preview');
+      return;
+    }
+
+    setView('preview-full');
+  };
+
+  const expandBoth = (): void => {
+    if (size.status !== 'detected') return;
+
+    const { width } = size;
+
+    if (!isTUp(width)) return;
+
+    setView('both');
+  };
+
+  useEffect(() => {
+    if (size.status !== 'detected') return;
+
+    const { width } = size;
+
+    if (isTDown(width)) {
+      setView('code');
+      return;
+    }
+
+    if (isTUp(width)) {
+      setView('both');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [size]);
+
+  const payload: CreatorLayoutPayload = {
+    expandCode,
+    expandPreview,
+    expandBoth,
+    view,
+    size,
+  };
 
   return (
-    <Container className={className} {...(props as Record<string, unknown>)}>
-      <NavigationWrapper>{Navigation}</NavigationWrapper>
-      {code.isOpen && (
+    <Container
+      className={c('creator-layout', view, className)}
+      {...(props as Record<string, unknown>)}
+    >
+      <NavigationWrapper>{navigation(payload)}</NavigationWrapper>
+
+      {view !== 'undetected' && (
         <>
-          <CodeWrapper>{Code}</CodeWrapper>
-          <CodeToolboxWrapper>
-            {codeToolbox({ code, preview })}
-          </CodeToolboxWrapper>
-        </>
-      )}
-      {preview.isOpen && (
-        <>
-          <PreviewWrapper>{Preview}</PreviewWrapper>
-          <PreviewToolboxWrapper>
-            {previewToolbox({ code, preview })}
-          </PreviewToolboxWrapper>
+          {(view === 'both' || view === 'code' || view === 'code-full') && (
+            <>
+              <CodeWrapper>{Code}</CodeWrapper>
+              <CodeToolboxWrapper>{codeToolbox(payload)}</CodeToolboxWrapper>
+            </>
+          )}
+          {(view === 'both' ||
+            view === 'preview' ||
+            view === 'preview-full') && (
+            <>
+              <PreviewWrapper>{Preview}</PreviewWrapper>
+              <PreviewToolboxWrapper>
+                {previewToolbox(payload)}
+              </PreviewToolboxWrapper>
+            </>
+          )}
         </>
       )}
     </Container>

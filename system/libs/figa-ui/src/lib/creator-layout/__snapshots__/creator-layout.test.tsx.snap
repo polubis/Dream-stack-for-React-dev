@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Creator layout can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-jSUZER DFtOs creator-layout undetected my-class"
+  >
+    <div
+      class="sc-eDvSVe kyLWFC"
+    >
+      <button>
+        Navigation
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Creator layout can be used when:  renders code and code toolbox by default on smaller devices 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-jSUZER DFtOs creator-layout code"
+  >
+    <div
+      class="sc-eDvSVe kyLWFC"
+    >
+      <button>
+        Navigation
+      </button>
+    </div>
+    <div
+      class="sc-bcXHqe hTMHBV"
+    >
+      <div>
+        Code content
+      </div>
+    </div>
+    <div
+      class="sc-dkrFOg fPnWkf"
+    >
+      <button>
+        Code Toolbox Button
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Creator layout can be used when:  renders preview, code and their toolboxes if there is enough width 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-jSUZER DFtOs creator-layout both"
+  >
+    <div
+      class="sc-eDvSVe kyLWFC"
+    >
+      <button>
+        Navigation
+      </button>
+    </div>
+    <div
+      class="sc-bcXHqe hTMHBV"
+    >
+      <div>
+        Code content
+      </div>
+    </div>
+    <div
+      class="sc-dkrFOg fPnWkf"
+    >
+      <button>
+        Code Toolbox Button
+      </button>
+    </div>
+    <div
+      class="sc-gswNZR kKkUlh"
+    >
+      <div>
+        Preview content
+      </div>
+    </div>
+    <div
+      class="sc-hLBbgP jPnqra"
+    >
+      <button>
+        Preview Toolbox Button
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

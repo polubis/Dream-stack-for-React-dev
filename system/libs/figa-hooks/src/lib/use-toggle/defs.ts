@@ -5,6 +5,6 @@ interface UseToggleReturn {
   toggle: () => void;
 }
 
-type UseTogglePayload = [boolean?];
+type UseTogglePayload = [(boolean | (() => boolean))?];
 
 export type { UseTogglePayload, UseToggleReturn };

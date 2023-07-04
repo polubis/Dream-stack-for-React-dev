@@ -25,17 +25,17 @@ const T_UP = getUpViewport(tablet);
 const L_UP = getUpViewport(laptop);
 const D_UP = getUpViewport(desktop);
 
-const SM_DOWN = getDownViewport(smallMobile);
-const M_DOWN = getDownViewport(mobile);
-const T_DOWN = getDownViewport(tablet);
-const L_DOWN = getDownViewport(laptop);
-const D_DOWN = getDownViewport(desktop);
-
 const isSmUp = isUp(smallMobile);
 const isMUp = isUp(mobile);
 const isTUp = isUp(tablet);
 const isLUp = isUp(laptop);
 const isDUp = isUp(desktop);
+
+const SM_DOWN = getDownViewport(smallMobile);
+const M_DOWN = getDownViewport(mobile);
+const T_DOWN = getDownViewport(tablet);
+const L_DOWN = getDownViewport(laptop);
+const D_DOWN = getDownViewport(desktop);
 
 const isSmDown = isDown(smallMobile);
 const isMDown = isDown(mobile);
@@ -54,6 +54,10 @@ export {
   isTDown,
   isLDown,
   isDDown,
+  getDownViewport,
+  getUpViewport,
+  isUp,
+  isDown,
   SM_UP,
   M_UP,
   T_UP,
@@ -65,6 +69,4 @@ export {
   L_DOWN,
   D_DOWN,
   VIEWPORT,
-  getDownViewport,
-  getUpViewport,
 };

@@ -32,13 +32,11 @@ const ArticlesCreatorView = () => {
         </Box>
       )}
       {key === 'loaded' && (
-        <Box orientation="row">
-          <ArticlesCreatorFeature
-            components={ARTICLE_COMPONENTS}
-            code={code}
-            onChange={change}
-          />
-        </Box>
+        <ArticlesCreatorFeature
+          components={ARTICLE_COMPONENTS}
+          code={code}
+          onChange={change}
+        />
       )}
     </MainLayout>
   );

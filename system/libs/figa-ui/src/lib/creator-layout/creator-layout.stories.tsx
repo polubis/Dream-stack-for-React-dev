@@ -10,7 +10,7 @@ import { List, ListItem } from '../list';
 import { CodeBlock } from '../code-block';
 import { ArticleLayout } from '../article-layout';
 import { Button } from '../button';
-import { DiscordIcon, ErrorIcon } from '../icon';
+import { CloseIcon, CodeIcon, PageIcon } from '../icon';
 
 export default {
   component: CreatorLayout,
@@ -20,61 +20,35 @@ export default {
 const Template: Story = () => {
   return (
     <CreatorLayout
-      codeToolbox={({ code, preview }) => (
-        <>
-          <Button
-            shape="rounded"
-            size={1}
-            onClick={() => {
-              code.close();
-              preview.open();
-            }}
-          >
-            <DiscordIcon />
+      navigation={() => (
+        <Box orientation="row" between>
+          <Font variant="h5">Article creator</Font>
+          <Button shape="rounded" size={1}>
+            <CloseIcon />
           </Button>
-          <Button
-            shape="rounded"
-            size={1}
-            onClick={() => {
-              code.close();
-              preview.open();
-            }}
-          >
-            <DiscordIcon />
+        </Box>
+      )}
+      codeToolbox={({ expandPreview, expandBoth }) => (
+        <>
+          <Button shape="rounded" size={1} onClick={expandPreview}>
+            <CodeIcon />
+          </Button>
+          <Button shape="rounded" size={1} onClick={expandBoth}>
+            <PageIcon />
           </Button>
         </>
       )}
-      previewToolbox={({ preview, code }) => (
+      previewToolbox={({ expandCode, expandBoth }) => (
         <>
-          <Button
-            shape="rounded"
-            size={1}
-            onClick={() => {
-              code.open();
-              preview.close();
-            }}
-          >
-            <DiscordIcon />
+          <Button shape="rounded" size={1} onClick={expandCode}>
+            <CodeIcon />
           </Button>
-          <Button
-            shape="rounded"
-            size={1}
-            onClick={() => {
-              code.open();
-              preview.close();
-            }}
-          >
-            <DiscordIcon />
+          <Button shape="rounded" size={1} onClick={expandBoth}>
+            <PageIcon />
           </Button>
         </>
       )}
     >
-      <Box orientation="row">
-        <Font variant="h5">Article creator</Font>
-        <Button shape="rounded" size={1}>
-          <ErrorIcon />
-        </Button>
-      </Box>
       <Code>
         {`"use strict"
 // Abstraction with additional methods.

@@ -1,4 +1,4 @@
-import type { UseToggleReturn } from '@system/figa-hooks';
+import type { ElementSizeState } from '@system/figa-hooks';
 import type { ReactNode, DetailedHTMLProps, HTMLAttributes } from 'react';
 
 type CreatorLayoutHTMLElementProps = Omit<
@@ -6,19 +6,32 @@ type CreatorLayoutHTMLElementProps = Omit<
   'children'
 >;
 
+type CreatorLayoutView =
+  | 'undetected'
+  | 'both'
+  | 'code'
+  | 'preview'
+  | 'code-full'
+  | 'preview-full';
+
 interface CreatorLayoutPayload {
-  code: UseToggleReturn;
-  preview: UseToggleReturn;
+  expandCode: () => void;
+  expandPreview: () => void;
+  expandBoth: () => void;
+  view: CreatorLayoutView;
+  size: ElementSizeState;
 }
 
 interface CreatorLayoutProps extends CreatorLayoutHTMLElementProps {
-  children: [ReactNode, ReactNode, ReactNode];
+  children: [ReactNode, ReactNode];
   codeToolbox: (payload: CreatorLayoutPayload) => ReactNode;
   previewToolbox: (payload: CreatorLayoutPayload) => ReactNode;
+  navigation: (payload: CreatorLayoutPayload) => ReactNode;
 }
 
 export type {
   CreatorLayoutProps,
   CreatorLayoutHTMLElementProps,
   CreatorLayoutPayload,
+  CreatorLayoutView,
 };
