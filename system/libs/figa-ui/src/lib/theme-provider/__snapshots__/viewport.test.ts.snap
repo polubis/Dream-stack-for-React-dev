@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Creates viewport when:  viewport object have supported values 1`] = `
+Object {
+  "desktop": 1920,
+  "laptop": 1440,
+  "mobile": 600,
+  "smallMobile": 420,
+  "tablet": 900,
+}
+`;
