@@ -1,45 +1,130 @@
-import { Box, Loader } from '@system/figa-ui';
+import {
+  Box,
+  Button,
+  Loader,
+  Font,
+  List,
+  ListItem,
+  CreatorLayout,
+  CloseIcon,
+  Code,
+} from '@system/figa-ui';
 import { MainLayout } from '../../components';
 import { ARTICLE_COMPONENTS } from '../../core';
-import dynamic from 'next/dynamic';
-import { useArticlesCreatorStore } from '../../store/articles-creator';
-import { useEffect } from 'react';
+import { useArticlesCreatorStore, reset } from '../../store/articles-creator';
+import { ArticleMdRenderer } from '../../features/articles-creator';
 
-const ArticlesCreatorFeature = dynamic(() =>
-  import('../../features/articles-creator').then((m) => m.ArticlesCreator)
-);
+const MDX = `#### Quick start
 
-const MDX = `#### Hello, MDX!
-  This is a **dynamic** MDX rendering example using Next.js.
-  - List item 1
-  - List item 2`;
+Here you find basic info and useful links. 
+
+#### First run
+
+Clone repository and open it in your IDE. Remember to have \`node 18+\` and \`npm 6+\` versions. 
+
+Next type following commands:
+
+1. \`cd system\`
+2. \`npm i --legacy-peer-deps\`
+3. Then run anything you want. It can be app, more than one apps, storybook or other. Check **COMMANDS.md** file for more. 
+
+#### Structure of repository
+
+We have two main parts in this repo. First is an API in **.NET** ecosystem and second is monorepo in **JavaScript**. 
+
+We used monorepo because it gives us easy way to give permissions for devs and it provides linear git history of changes in whole system. 
+
+Thanks to this everyone will be able to track progress. 
+
+## Description of repository elements
+
+Currently we have several applications:
+
+1. First is a blog platform currently available at [GreenOn Software](https://greenonsoftware.com). We migrating it to **Next** from **Gatsby**.
+
+2. Second is an app for musicans [jamjam](https://jamjambeings.com) - we are migrating it from **CRA** to **Next**.
+
+3. Third is **design-system** implementation with reusable not domain specific UI. Its called **figa-ui**.
+
+4. We have also other reusable parts like **figa-hooks** which implements reusable not app specific hooks.
+`;
 
 const ArticlesCreatorView = () => {
   const { key, code, change, load } = useArticlesCreatorStore();
 
-  useEffect(() => {
-    load(MDX);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  if (key === 'idle') {
+    return (
+      <MainLayout>
+        <Box
+          margin="auto"
+          maxWidth="400px"
+          variant="outlined"
+          spacing={[150, 250, 500]}
+          padding={[250, 250, 250, 250]}
+        >
+          <Font variant="h6">Try to use our editor</Font>
+          <Font variant="b1">Create an article in the following way: </Font>
+          <List ordered>
+            <ListItem>Write article content in md syntax</ListItem>
+            <ListItem>
+              Check how it looks like on mobile/tablet/desktop devices
+            </ListItem>
+            <ListItem>Confirm an article and wait for review</ListItem>
+            <ListItem>
+              Improve required stuff and get your article published!
+            </ListItem>
+          </List>
+          <Box right>
+            <Button onClick={() => load(MDX)}>Start</Button>
+          </Box>
+        </Box>
+      </MainLayout>
+    );
+  }
 
-  return (
-    <MainLayout>
-      {key === 'idle' && (
+  if (key === 'loading') {
+    return (
+      <MainLayout>
         <Box margin="auto">
           <Box margin="auto">
             <Loader size="big" />
           </Box>
         </Box>
-      )}
-      {key === 'loaded' && (
-        <ArticlesCreatorFeature
-          components={ARTICLE_COMPONENTS}
-          code={code}
-          onChange={change}
-        />
-      )}
-    </MainLayout>
-  );
+      </MainLayout>
+    );
+  }
+
+  if (key === 'loaded') {
+    return (
+      <CreatorLayout
+        navigation={() => (
+          <Box orientation="row" between>
+            <Font variant="h5">Article creator</Font>
+            <Button size={1} shape="rounded" onClick={reset}>
+              <CloseIcon />
+            </Button>
+          </Box>
+        )}
+        codeToolbox={() => (
+          <>
+            <Button size={1} shape="rounded">
+              <CloseIcon />
+            </Button>
+          </>
+        )}
+        previewToolbox={() => (
+          <Button size={1} shape="rounded">
+            <CloseIcon />
+          </Button>
+        )}
+      >
+        <Code onChange={change}>{code}</Code>
+        <ArticleMdRenderer code={code} components={ARTICLE_COMPONENTS} />
+      </CreatorLayout>
+    );
+  }
+
+  throw new Error('Lack of component support for this key ' + key);
 };
 
 export { ArticlesCreatorView };

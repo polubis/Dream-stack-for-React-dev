@@ -758,6 +758,7 @@ const GlobalStyle = createGlobalStyle`
                 content: '';
                 ${shape(tokens.spacing[100], tokens.radius[1000])}
                 background: ${(props) => props.theme.list.marker.bg};
+                flex-shrink: 0;
             }
 
         }

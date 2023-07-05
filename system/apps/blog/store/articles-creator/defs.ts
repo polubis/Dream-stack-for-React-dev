@@ -4,7 +4,7 @@ interface ArticlesCreatorActions {
 }
 
 interface ArticlesCreatorState extends ArticlesCreatorActions {
-  key: 'idle' | 'loaded';
+  key: 'idle' | 'loading' | 'loaded';
   code: string;
 }
 

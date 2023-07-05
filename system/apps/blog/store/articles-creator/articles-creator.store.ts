@@ -4,12 +4,22 @@ import type { ArticlesCreatorStore } from './defs';
 const useArticlesCreatorStore = create<ArticlesCreatorStore>((set) => ({
   key: 'idle',
   code: '',
-  load: (code) => {
-    set({ key: 'loaded', code });
+  load: async (code) => {
+    set({ key: 'loading', code });
+
+    await new Promise(() => {
+      setTimeout(() => {
+        set({ key: 'loaded' });
+      }, 1000);
+    });
   },
   change: (code) => {
     set({ code });
   },
 }));
 
-export { useArticlesCreatorStore };
+const reset = () => {
+  useArticlesCreatorStore.setState({ key: 'idle' });
+};
+
+export { useArticlesCreatorStore, reset };

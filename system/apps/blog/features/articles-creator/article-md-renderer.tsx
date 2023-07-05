@@ -1,5 +1,5 @@
 import { ArticleLayout } from '@system/figa-ui';
-import type { ClientRendererProps, Components } from './defs';
+import type { ArticleMdRendererProps, Components } from './defs';
 import Markdown, { MarkdownToJSX } from 'markdown-to-jsx';
 
 const createOverrides = (components: Components): MarkdownToJSX.Overrides => {
@@ -14,7 +14,7 @@ const createOverrides = (components: Components): MarkdownToJSX.Overrides => {
   return overrides;
 };
 
-const ClientRenderer = ({ code, components }: ClientRendererProps) => {
+const ArticleMdRenderer = ({ code, components }: ArticleMdRendererProps) => {
   const overrides = createOverrides(components);
 
   return (
@@ -31,4 +31,4 @@ const ClientRenderer = ({ code, components }: ClientRendererProps) => {
   );
 };
 
-export { ClientRenderer };
+export { ArticleMdRenderer };
