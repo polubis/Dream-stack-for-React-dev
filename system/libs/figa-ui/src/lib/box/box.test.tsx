@@ -15,34 +15,39 @@ describe('User is able to use box when', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  it('[FRAGILE] allows to set minimum/maximum width and styles', () => {
+    const { asFragment } = render(
+      <Box
+        maxWidth="350px"
+        minWidth="200px"
+        margin="auto"
+        style={{
+          background: 'red',
+          maxWidth: '300px',
+          minWidth: '150px',
+        }}
+      >
+        <div>1</div>
+      </Box>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('[FRAGILE] assigns positioning classes', () => {
+    const { asFragment } = render(
+      <Box center right between>
+        <div>1</div>
+      </Box>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   it('[FRAGILE] assigns orientation classes', () => {
     const { asFragment } = render(
-      <Box orientation="center-column">
+      <Box orientation="row">
         <div>1</div>
-        <div>2</div>
-        <div>3</div>
-      </Box>
-    );
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('[FRAGILE] allows to set maximum width', () => {
-    const { asFragment } = render(
-      <Box maxWidth="350px" margin="auto">
-        <div>1</div>
-      </Box>
-    );
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('[FRAGILE] creates space for rows', () => {
-    const { asFragment } = render(
-      <Box orientation="center-row" spacing={[100, 150, 200]}>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
       </Box>
     );
 

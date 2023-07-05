@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`User is able to use box when [FRAGILE] allows to set maximum width 1`] = `
+exports[`User is able to use box when [FRAGILE] allows to set minimum/maximum width and styles 1`] = `
 <DocumentFragment>
   <div
     class="box column empty"
-    style="margin: auto; max-width: 350px;"
+    style="background: red; max-width: 350px; min-width: 200px; margin: auto;"
   >
     <div>
       1
@@ -35,16 +35,22 @@ exports[`User is able to use box when [FRAGILE] allows to use padding and assign
 exports[`User is able to use box when [FRAGILE] assigns orientation classes 1`] = `
 <DocumentFragment>
   <div
-    class="box center-column empty"
+    class="box row empty"
   >
     <div>
       1
     </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`User is able to use box when [FRAGILE] assigns positioning classes 1`] = `
+<DocumentFragment>
+  <div
+    class="box column empty right center between"
+  >
     <div>
-      2
-    </div>
-    <div>
-      3
+      1
     </div>
   </div>
 </DocumentFragment>
@@ -74,39 +80,6 @@ exports[`User is able to use box when [FRAGILE] creates space for columns 1`] = 
     <div
       class="box-item-wrapper"
       style="margin-bottom: 16px;"
-    >
-      <div>
-        3
-      </div>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`User is able to use box when [FRAGILE] creates space for rows 1`] = `
-<DocumentFragment>
-  <div
-    class="box center-row empty"
-  >
-    <div
-      class="box-item-wrapper"
-      style="margin-right: 8px;"
-    >
-      <div>
-        1
-      </div>
-    </div>
-    <div
-      class="box-item-wrapper"
-      style="margin-right: 12px;"
-    >
-      <div>
-        2
-      </div>
-    </div>
-    <div
-      class="box-item-wrapper"
-      style="margin-right: 16px;"
     >
       <div>
         3

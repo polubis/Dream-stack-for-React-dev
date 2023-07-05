@@ -57,6 +57,9 @@ describe('Sign in works when: ', () => {
     get('app-nav-sign-out-btn').should('not.be.disabled').click();
     get('app-nav-sign-out-btn').should('be.disabled');
     get('sign-in-confirm-btn').should('be.disabled');
+
+    cy.wait(['@signOut']);
+
     get('app-nav-sign-in-btn').should('not.be.disabled');
     get('sign-in-confirm-btn').should('not.be.disabled');
   });

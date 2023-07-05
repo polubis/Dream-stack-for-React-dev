@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react';
 import type { Story, Meta } from '@storybook/react';
 
 import { Box } from './box';
@@ -10,109 +9,138 @@ export default {
   title: 'Box',
 } as Meta;
 
-const Template: Story<{ children: ReactNode }> = (props) => {
+const Template: Story = () => {
   return (
-    <div
-      style={{ display: 'flex', flexFlow: 'column', gap: 12, padding: '24px' }}
+    <Box
+      spacing={[
+        400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
+        400, 400, 400, 400, 400, 400, 400, 400,
+      ]}
+      padding={[300, 300, 300, 300]}
     >
-      {props.children}
-    </div>
+      <Font variant="h3">Orientations</Font>
+      <Box spacing={[150]}>
+        <Font variant="h5">Row box</Font>
+        <Box orientation="row" spacing={[200]}>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Box spacing={[150]}>
+        <Font variant="h5">Column box</Font>
+        <Box spacing={[200]}>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Box spacing={[150]}>
+        <Font variant="h5">Row right</Font>
+        <Box orientation="row" spacing={[200]} right>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Box spacing={[150]}>
+        <Font variant="h5">Row between</Font>
+        <Box orientation="row" spacing={[200]} between>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Box spacing={[150]}>
+        <Font variant="h5">Column between</Font>
+        <Box spacing={[200]} between style={{ height: '120px' }}>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Box spacing={[150]}>
+        <Font variant="h5">Column right</Font>
+        <Box spacing={[200]} right>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Box spacing={[150]}>
+        <Font variant="h5">Column center</Font>
+        <Box spacing={[200]} center>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Box spacing={[150]}>
+        <Font variant="h5">Column between</Font>
+        <Box spacing={[200]} between style={{ height: '120px' }}>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Font variant="h3">Variants</Font>
+      <Box spacing={[150]}>
+        <Font variant="h5">Empty</Font>
+        <Box spacing={[200]}>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Box spacing={[150]}>
+        <Font variant="h5">Outlined with padding</Font>
+        <Box variant="outlined" spacing={[200]} padding={[250, 250, 250, 250]}>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Box spacing={[150]}>
+        <Font variant="h5">Filled with padding</Font>
+        <Box variant="filled" spacing={[200]} padding={[250, 250, 250, 250]}>
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Font variant="h3">Positioning</Font>
+      <Box spacing={[150]}>
+        <Font variant="h5">Filled with max width 420px</Font>
+        <Box
+          variant="filled"
+          spacing={[200]}
+          padding={[250, 250, 250, 250]}
+          maxWidth="420px"
+        >
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Box spacing={[150]}>
+        <Font variant="h5">
+          Filled with min width 420px and max width 500px
+        </Font>
+        <Box
+          variant="filled"
+          spacing={[200]}
+          padding={[250, 250, 250, 250]}
+          minWidth="420px"
+          maxWidth="500px"
+        >
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+      <Box spacing={[150]}>
+        <Font variant="h5">Filled with max width 420px and auto margin</Font>
+        <Box
+          variant="filled"
+          spacing={[200]}
+          padding={[250, 250, 250, 250]}
+          maxWidth="420px"
+          margin="auto"
+        >
+          <Font variant="b1">My header content</Font>
+          <Button>Some button</Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
-export const OrientationAndSpacing = Template.bind({});
-OrientationAndSpacing.args = {
-  children: (
-    <>
-      <Box orientation="row" spacing={[100, 150, 200]}>
-        <Font variant="h6">My header</Font>
-        <Font variant="b1">My header content</Font>
-        <Button>Some button</Button>
-      </Box>
-      <Box spacing={[100, 150, 200]}>
-        <Font variant="h6">My header</Font>
-        <Font variant="b1">My header content</Font>
-        <Button>Some button</Button>
-      </Box>
-      <Box orientation="center-column" spacing={[100, 150, 200]}>
-        <Font variant="h6">My header</Font>
-        <Font variant="b1">My header content</Font>
-        <Button>Some button</Button>
-      </Box>
-      <Box orientation="center-row" spacing={[100, 150, 200]}>
-        <Font variant="h6">My header</Font>
-        <Font variant="b1">My header content</Font>
-        <Button>Some button</Button>
-      </Box>
-    </>
-  ),
-};
-
-export const Padding = Template.bind({});
-Padding.args = {
-  children: (
-    <Box spacing={[100, 150, 200]} padding={[950, 950, 950, 950]}>
-      <Font variant="h6">My header</Font>
-      <Font variant="b1">My header content</Font>
-      <Button>Some button</Button>
-    </Box>
-  ),
-};
-
-export const Margins = Template.bind({});
-Margins.args = {
-  children: (
-    <>
-      <div>
-        <Box spacing={[100, 150, 200]} margin="auto">
-          <Font variant="h6">My header</Font>
-          <Font variant="b1">My header content</Font>
-          <Button>Some button</Button>
-        </Box>
-      </div>
-      <div>
-        <Box spacing={[100, 150, 200]} margin={['auto', 300, 150, 'auto']}>
-          <Font variant="h6">My header</Font>
-          <Font variant="b1">My header content</Font>
-          <Button>Some button</Button>
-        </Box>
-      </div>
-      <div>
-        <Box spacing={[100, 150, 200]} margin={[500, 500, 500, 500]}>
-          <Font variant="h6">My header</Font>
-          <Font variant="b1">My header content</Font>
-          <Button>Some button</Button>
-        </Box>
-      </div>
-      <div>
-        <Box
-          spacing={[100, 150, 200]}
-          maxWidth="350px"
-          margin={['auto', 'auto']}
-        >
-          <Font variant="h6">My header</Font>
-          <Font variant="b1">My header content</Font>
-          <Button>Some button</Button>
-        </Box>
-      </div>
-    </>
-  ),
-};
-
-export const Variants = Template.bind({});
-Variants.args = {
-  children: (
-    <>
-      <Box variant="outlined" spacing={[100, 150, 200]}>
-        <Font variant="h6">My header</Font>
-        <Font variant="b1">My header content</Font>
-        <Button>Some button</Button>
-      </Box>
-      <Box variant="filled" spacing={[100, 150, 200]}>
-        <Font variant="h6">My header</Font>
-        <Font variant="b1">My header content</Font>
-        <Button>Some button</Button>
-      </Box>
-    </>
-  ),
-};
+export const Default = Template.bind({});
+Default.args = {};

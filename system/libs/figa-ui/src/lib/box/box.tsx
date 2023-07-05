@@ -18,9 +18,16 @@ const Box = ({
   margin,
   spacing,
   maxWidth,
+  minWidth,
+  style,
+  center,
+  right,
+  between,
+  ...props
 }: BoxProps) => {
   const cachedPadding = useMemo(
     () => (padding ? toCSSSpacingProp(padding) : undefined),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
@@ -30,6 +37,7 @@ const Box = ({
     }
 
     return margin;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const enhancedChildren = Array.isArray(spacing)
@@ -38,8 +46,7 @@ const Box = ({
           return null;
         }
 
-        const isColumnOrientation =
-          orientation === 'column' || orientation === 'center-column';
+        const isColumnOrientation = orientation === 'column';
 
         const style: CSSProperties = {
           [isColumnOrientation ? 'marginBottom' : 'marginRight']:
@@ -56,11 +63,22 @@ const Box = ({
 
   return (
     <div
-      className={c('box', className, orientation, variant)}
+      {...props}
+      className={c(
+        'box',
+        className,
+        orientation,
+        variant,
+        { right },
+        { center },
+        { between }
+      )}
       style={{
+        ...style,
         padding: cachedPadding,
         margin: cachedMargin,
         maxWidth,
+        minWidth,
       }}
     >
       {enhancedChildren}
