@@ -3,7 +3,7 @@
 exports[`List can be used when [FRAGILE] allows to render ordered list 1`] = `
 <DocumentFragment>
   <ol
-    class="list"
+    class="list ordered"
   >
     <li>
       First item
@@ -24,7 +24,7 @@ exports[`List can be used when [FRAGILE] allows to render ordered list 1`] = `
 exports[`List can be used when [FRAGILE] allows to render unordered list 1`] = `
 <DocumentFragment>
   <ul
-    class="list"
+    class="list unordered"
   >
     <li>
       First item
@@ -45,7 +45,7 @@ exports[`List can be used when [FRAGILE] allows to render unordered list 1`] = `
 exports[`List can be used when [FRAGILE] assigns classes 1`] = `
 <DocumentFragment>
   <ul
-    class="list my-class"
+    class="list my-class unordered"
   >
     <li
       class="first-item-class"

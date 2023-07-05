@@ -22,7 +22,7 @@ const ARTICLE_COMPONENTS: Components = {
     </Font>
   ),
   strong: ({ children }) => (
-    <Font element="strong" variant="b1">
+    <Font element="strong" bold variant="b1">
       {children}
     </Font>
   ),

@@ -6,7 +6,7 @@ const ListItem = ({ className, children }: ListItemProps) => {
 };
 
 const List = ({ className, children, ordered }: ListProps) => {
-  const classes = c('list', className);
+  const classes = c('list', className, { ordered }, { unordered: !ordered });
 
   if (ordered) {
     return <ol className={classes}>{children}</ol>;

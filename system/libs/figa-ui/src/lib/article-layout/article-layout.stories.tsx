@@ -18,7 +18,42 @@ const Template: Story = () => {
   return (
     <Box>
       <ArticleLayout>
-        <Font variant="h4">Prelude</Font>
+        <Font variant="h1">Header 1 asd sadasdasadadas d</Font>
+        <Font variant="b1">
+          It is a long established fact that a reader will be distracted by the
+          readable content of a page when looking at its layout. The point of
+          using Lorem Ipsum is that it has a more-or-less normal distribution of
+          letters, as opposed to using 'Content here, content here', making it
+          look like read
+        </Font>
+        <Font variant="h2">Header 2</Font>
+        <Font variant="b1">
+          It is a long established fact that a reader will be distracted by the
+          look like read
+        </Font>
+        <Font variant="b1">
+          It is a long established fact that a reader will be distracted by the
+          look like read
+        </Font>
+        <Font variant="b1">
+          It is a long established fact that a reader will be distracted by the
+          look like read
+        </Font>
+        <Font variant="h3">Header 3</Font>
+        <Font variant="b1">
+          It is a long established fact that a reader will be distracted by the
+        </Font>
+        <Font variant="h4">Header 4</Font>
+        <Font variant="b1">
+          We grouped our tests into functionalities, and now we need to
+          understand how to divide tests by the context that they verify.
+        </Font>
+        <Font variant="h5">Header 5</Font>
+        <Font variant="b1">
+          We grouped our tests into functionalities, and now we need to
+          understand how to divide tests by the context that they verify.
+        </Font>
+        <Font variant="h6">Header 6</Font>
         <Font variant="b1">
           We grouped our tests into functionalities, and now we need to
           understand how to divide tests by the context that they verify.
@@ -99,12 +134,17 @@ const Template: Story = () => {
         <Font variant="h4">Summary</Font>
         <Font variant="b1">
           As you might have noticed, mainly the context changes. We started with
-          a single employee (code file), we moved to a communication perspective
-          (several code files), and at the very end we left the implementation
-          behind and simply asked the customer (application) what he thinks
-          about our product.
+          a single employee (code file), we moved <Code>{`code sample`}</Code>{' '}
+          pective (several code files), and at the very end we left the
+          implementation behind and simply asked the customer (application) what
+          he thinks about our product.
         </Font>
-        <List>
+        <List ordered>
+          <ListItem>First</ListItem>
+          <ListItem>Second</ListItem>
+          <ListItem>Last</ListItem>
+        </List>
+        <List >
           <ListItem>First</ListItem>
           <ListItem>Second</ListItem>
           <ListItem>Last</ListItem>
@@ -119,7 +159,14 @@ const Template: Story = () => {
           <ListItem>Last</ListItem>
         </List>
         <Font variant="b1">
-          That's the difference between the different types of tests. Don't
+          That's the difference between the different{' '}
+          <Font variant="b1" italic element="i">
+            italic
+          </Font>{' '}
+          of tests. Don't{' '}
+          <Font variant="b1" bold element="b">
+            bold
+          </Font>{' '}
           worry, it will get into your blood in the next lessons.
         </Font>
         <Image
