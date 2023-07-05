@@ -1,4 +1,7 @@
-type AppSelectors = 'app-nav-sign-in-btn' | 'app-nav-sign-out-btn';
+type AppSelectors =
+  | 'app-nav-sign-in-btn'
+  | 'app-nav-sign-out-btn'
+  | 'app-nav-user-avatar-btn';
 type SignInSelectors =
   | 'sign-in-login-input'
   | 'sign-in-password-input'

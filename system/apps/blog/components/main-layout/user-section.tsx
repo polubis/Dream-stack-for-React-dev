@@ -3,8 +3,8 @@ import { Link } from '../link';
 import { useLang } from '../../dk';
 import { useAuthStore } from '../../store/auth';
 import { useSignInStore } from '../../store/sign-in';
-import { useSignOutStore } from '../../store/sign-out';
 import { get } from '@system/blog-selectors';
+import { UserPopover } from './user-popover';
 
 const SignInButton = () => {
   const lang = useLang();
@@ -25,20 +25,6 @@ const SignInButton = () => {
   );
 };
 
-const SignOutButton = () => {
-  const { key, signOut } = useSignOutStore();
-
-  return (
-    <Button
-      onClick={signOut}
-      data-i={get('app-nav-sign-out-btn')}
-      loading={key === 'pending'}
-    >
-      Sign Out
-    </Button>
-  );
-};
-
 const UserSection = () => {
   const { key } = useAuthStore();
 
@@ -51,7 +37,7 @@ const UserSection = () => {
   }
 
   if (key === 'authorized') {
-    return <SignOutButton />;
+    return <UserPopover />;
   }
 
   return <SignInButton />;
