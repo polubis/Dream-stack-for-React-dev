@@ -1,5 +1,12 @@
 import { ArticlesCreatorProps } from './defs';
-import { Code } from '@system/figa-ui';
+import {
+  Box,
+  Button,
+  CloseIcon,
+  Code,
+  CreatorLayout,
+  Font,
+} from '@system/figa-ui';
 import { ClientRenderer } from './client-renderer';
 
 const ArticlesCreator = ({
@@ -8,10 +15,29 @@ const ArticlesCreator = ({
   onChange,
 }: ArticlesCreatorProps) => {
   return (
-    <>
+    <CreatorLayout
+      navigation={() => (
+        <Box orientation="row" between>
+          <Font variant="h5">Article creator</Font>
+          <Button>Submit</Button>
+        </Box>
+      )}
+      codeToolbox={() => (
+        <>
+          <Button size={1} shape="rounded">
+            <CloseIcon />
+          </Button>
+        </>
+      )}
+      previewToolbox={() => (
+        <Button size={1} shape="rounded">
+          <CloseIcon />
+        </Button>
+      )}
+    >
       <Code onChange={onChange}>{code}</Code>
-      <ClientRenderer code={code} components={components} />;
-    </>
+      <ClientRenderer code={code} components={components} />
+    </CreatorLayout>
   );
 };
 

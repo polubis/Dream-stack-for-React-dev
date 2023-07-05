@@ -10,6 +10,10 @@ const Container = styled.div`
 
 const Header = styled.header`
   ${row()}
+  position: fixed;
+  left: ${tokens.spacing[250]};
+  bottom: ${tokens.spacing[250]};
+  z-index: ${tokens.z[500]};
   margin-bottom: ${tokens.spacing[150]};
 `;
 
