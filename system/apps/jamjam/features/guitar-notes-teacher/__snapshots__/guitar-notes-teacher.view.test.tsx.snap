@@ -1861,7 +1861,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
           </div>
         </div>
         <div
-          class="box center-column empty"
+          class="box column empty center"
           style="padding: 28px 20px 28px 20px;"
         >
           <div
@@ -3416,7 +3416,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
           </div>
         </div>
         <div
-          class="box center-column empty"
+          class="box column empty center"
           style="padding: 28px 20px 28px 20px;"
         >
           <div

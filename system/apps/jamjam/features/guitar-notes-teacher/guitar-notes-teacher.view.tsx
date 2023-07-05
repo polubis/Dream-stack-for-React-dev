@@ -106,11 +106,7 @@ const GuitarNotesTeacherView = ({
 
       {state.key === 'counting' && (
         <Modal>
-          <Box
-            orientation="center-column"
-            spacing={[150]}
-            padding={[350, 250, 350, 250]}
-          >
+          <Box center spacing={[150]} padding={[350, 250, 350, 250]}>
             <ProgressCircle ms={3000} onEnd={actions.started} />
             <Font variant="b2">
               Prepare yourself! We will start for second...
@@ -127,11 +123,7 @@ const GuitarNotesTeacherView = ({
             NoteComponent={UnobviousNoteButton}
             onNoteClick={actions.answerQuestion}
           />
-          <Box
-            orientation="center-column"
-            spacing={[150]}
-            padding={[350, 250, 350, 250]}
-          >
+          <Box center spacing={[150]} padding={[350, 250, 350, 250]}>
             <Font variant="h6">Find {getCurrentQuestion(state)} note!</Font>
             <ProgressCircle
               key={state.answers.length}

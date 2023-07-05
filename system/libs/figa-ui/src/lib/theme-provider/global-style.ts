@@ -140,6 +140,7 @@ const GlobalStyle = createGlobalStyle`
 
     .button {
         cursor: pointer;
+        position: relative;
         border: none;
 
         &.size-1 {
@@ -169,6 +170,14 @@ const GlobalStyle = createGlobalStyle`
         &.rounded {
             ${center()}
             border-radius: ${tokens.radius[1000]};
+
+            .avatar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
         }
 
         &.filled.primary {
@@ -556,19 +565,36 @@ const GlobalStyle = createGlobalStyle`
 
         &.column {
             ${column()}
-        }
 
-        &.center-row {
-            ${center()}
-        }
+            &.right {
+                align-items: flex-end;
+            }
 
-        &.center-column {
-            ${center('column')}
+            &.center {
+                align-items: center;
+            }
+
+            &.between {
+                justify-content: space-between;
+            }
         }
 
         &.row {
             ${row()}
+
+            &.right {
+                justify-content: flex-end;
+            }
+
+            &.center {
+                justify-content: center;
+            }
+
+            &.between {
+                justify-content: space-between;
+            }
         }
+
     }
 
     /* box.tsx */
