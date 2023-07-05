@@ -1,12 +1,12 @@
 import type { Components } from '@mdx-js/react/lib';
 
-interface ClientRendererProps {
+interface ArticleMdRendererProps {
   code: string;
   components: Components;
 }
 
-interface ArticlesCreatorProps extends ClientRendererProps {
+interface ArticlesCreatorProps extends ArticleMdRendererProps {
   onChange: (code: string) => void;
 }
 
-export type { ClientRendererProps, ArticlesCreatorProps, Components };
+export type { ArticleMdRendererProps, ArticlesCreatorProps, Components };
