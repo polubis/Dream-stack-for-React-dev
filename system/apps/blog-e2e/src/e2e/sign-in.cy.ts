@@ -54,7 +54,9 @@ describe('Sign in works when: ', () => {
     get('sign-in-ok-alert');
 
     get('sign-in-confirm-btn').should('not.be.disabled');
-    get('app-nav-sign-out-btn').should('not.be.disabled').click();
+    get('app-nav-user-avatar-btn').click();
+    get('app-nav-sign-out-btn').should('not.be.disabled').should('be.visible');
+    get('app-nav-sign-out-btn').click();
     get('app-nav-sign-out-btn').should('be.disabled');
     get('sign-in-confirm-btn').should('be.disabled');
 
@@ -94,7 +96,8 @@ describe('Sign in works when: ', () => {
 
     cy.wait(['@signIn']);
 
-    get('sign-in-ok-alert').not('to');
+    get('app-nav-user-avatar-btn').should('not.be.disabled');
+    get('sign-in-ok-alert');
   });
 
   it('user cannot sign in the interface display error message', () => {
@@ -133,6 +136,8 @@ describe('Sign in works when: ', () => {
 
     cy.wait(['@signIn']);
 
+    get('app-nav-sign-in-btn').should('not.be.disabled');
+    get('sign-in-confirm-btn').should('not.be.disabled');
     get('sign-in-error-alert');
   });
 });
