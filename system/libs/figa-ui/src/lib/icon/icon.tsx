@@ -111,6 +111,24 @@ const CloseIcon = () => {
   );
 };
 
+const FullScreenIcon = () => {
+  return (
+    <Icon className="full-screen-icon">
+      <path d="M5 19V14H7V17H10V19H5ZM5 10V5H10V7H7V10H5ZM14 19V17H17V14H19V19H14ZM17 10V7H14V5H19V10H17Z" />
+    </Icon>
+  );
+};
+
+const FullScreenCloseIcon = () => {
+  return (
+    <Icon className="full-screen-close-icon">
+      <path
+        d="M3.4 22L2 20.6L8.6 14H4V12H12V20H10V15.4L3.4 22ZM12 12V4H14V8.6L20.6 2L22 3.4L15.4 10H20V12H12Z"
+      />
+    </Icon>
+  );
+};
+
 export {
   Icon,
   DiscordIcon,
@@ -121,6 +139,8 @@ export {
   WarnIcon,
   InfoIcon,
   OkIcon,
+  FullScreenIcon,
+  FullScreenCloseIcon,
   CodeIcon,
   PageIcon,
   CloseIcon,

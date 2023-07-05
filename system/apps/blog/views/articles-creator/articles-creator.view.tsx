@@ -8,6 +8,10 @@ import {
   CreatorLayout,
   CloseIcon,
   Code,
+  FullScreenCloseIcon,
+  FullScreenIcon,
+  PageIcon,
+  CodeIcon,
 } from '@system/figa-ui';
 import { MainLayout } from '../../components';
 import { ARTICLE_COMPONENTS } from '../../core';
@@ -105,17 +109,43 @@ const ArticlesCreatorView = () => {
             </Button>
           </Box>
         )}
-        codeToolbox={() => (
+        codeToolbox={({ view, expandBoth, expandCode, expandPreview }) => (
           <>
-            <Button size={1} shape="rounded">
-              <CloseIcon />
-            </Button>
+            {view === 'code' && (
+              <Button size={1} shape="rounded" onClick={expandPreview}>
+                <PageIcon />
+              </Button>
+            )}
+            {view === 'code-full' && (
+              <Button size={1} shape="rounded" onClick={expandBoth}>
+                <FullScreenCloseIcon />
+              </Button>
+            )}
+            {view === 'both' && (
+              <Button size={1} shape="rounded" onClick={expandCode}>
+                <FullScreenIcon />
+              </Button>
+            )}
           </>
         )}
-        previewToolbox={() => (
-          <Button size={1} shape="rounded">
-            <CloseIcon />
-          </Button>
+        previewToolbox={({ view, expandBoth, expandPreview, expandCode }) => (
+          <>
+            {view === 'preview' && (
+              <Button size={1} shape="rounded" onClick={expandCode}>
+                <CodeIcon />
+              </Button>
+            )}
+            {view === 'preview-full' && (
+              <Button size={1} shape="rounded" onClick={expandBoth}>
+                <FullScreenCloseIcon />
+              </Button>
+            )}
+            {view === 'both' && (
+              <Button size={1} shape="rounded" onClick={expandPreview}>
+                <FullScreenIcon />
+              </Button>
+            )}
+          </>
         )}
       >
         <Code onChange={change}>{code}</Code>
