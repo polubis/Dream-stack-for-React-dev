@@ -545,11 +545,13 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.filled {
-            background: ${(props) => props.theme.box.bg};
+            background: ${(props) => props.theme.box.filled.bg};
         }
 
         &.outlined {
-            border: 1px solid ${(props) => props.theme.box.borderColor};
+            background: ${(props) => props.theme.box.outlined.bg};
+            border: 1px solid ${(props) =>
+              props.theme.box.outlined.borderColor};
         }
 
         &.column {
@@ -757,9 +759,9 @@ const GlobalStyle = createGlobalStyle`
         position: relative;
 
         &-content {
-            ${appearIn(tokens.spacing[0], tokens.spacing[150])};
-            position: fixed;
-            padding: ${tokens.spacing[250]};
+            ${appearIn(tokens.spacing[0], tokens.spacing[0])};
+            position: absolute;
+            z-index: ${tokens.z[50]};
         }
     }
 

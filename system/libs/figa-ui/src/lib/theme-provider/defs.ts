@@ -14,7 +14,7 @@ interface Viewport {
   desktop: ViewportValue;
 }
 
-type Spacing = {
+type Spacing = Readonly<{
   0: string;
   25: string;
   50: string;
@@ -39,7 +39,7 @@ type Spacing = {
   1000: string;
   1500: string;
   2000: string;
-};
+}>;
 
 type SpacingKey = keyof Spacing;
 
@@ -240,8 +240,13 @@ interface Theme {
     placeholderColor: string;
   };
   box: {
-    bg: string;
-    borderColor: string;
+    filled: {
+      bg: string;
+    };
+    outlined: {
+      borderColor: string;
+      bg: string;
+    };
   };
   footer: {
     bg: string;

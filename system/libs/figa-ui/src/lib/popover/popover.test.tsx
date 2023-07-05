@@ -50,4 +50,41 @@ describe('Popover can be used when', () => {
 
     expect(screen.queryByText(/Content/)).toBeFalsy();
   });
+
+  it('[FRAGILE] shifts popover content to left/right and top/bottom', () => {
+    const initialWidth = window.innerWidth;
+    const initialHeight = window.innerHeight;
+
+    window.innerWidth = 900;
+    window.innerHeight = 800;
+
+    const { asFragment } = render(
+      <Popover
+        trigger={({ toggle }) => (
+          <button style={{ width: '150px', height: '100px' }} onClick={toggle}>
+            Click
+          </button>
+        )}
+      >
+        {({ toggle }) => (
+          <div
+            style={{
+              height: '200px',
+              width: '200px',
+            }}
+            onClick={toggle}
+          >
+            Content
+          </div>
+        )}
+      </Popover>
+    );
+
+    fireEvent.click(screen.getByText(/Click/));
+
+    expect(asFragment()).toMatchSnapshot();
+
+    window.innerWidth = initialWidth;
+    window.innerHeight = initialHeight;
+  });
 });

@@ -5,9 +5,41 @@ exports[`Popover can be used when [FRAGILE] assigns classes 1`] = `
   <div
     class="popover my-class"
   >
-    <button>
-      Click
-    </button>
+    <div
+      class="popover-trigger"
+    >
+      <button>
+        Click
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Popover can be used when [FRAGILE] shifts popover content to left/right and top/bottom 1`] = `
+<DocumentFragment>
+  <div
+    class="popover"
+  >
+    <div
+      class="popover-trigger"
+    >
+      <button
+        style="width: 150px; height: 100px;"
+      >
+        Click
+      </button>
+    </div>
+    <div
+      class="popover-content"
+      style="right: -0px; top: 12px;"
+    >
+      <div
+        style="height: 200px; width: 200px;"
+      >
+        Content
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;

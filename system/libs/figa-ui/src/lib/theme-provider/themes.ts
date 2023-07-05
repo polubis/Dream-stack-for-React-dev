@@ -231,8 +231,13 @@ const light: Theme = {
     placeholderColor: tokens.gray[200],
   },
   box: {
-    bg: tokens.light[50],
-    borderColor: tokens.light[100],
+    filled: {
+      bg: tokens.light[50],
+    },
+    outlined: {
+      bg: tokens.common.white,
+      borderColor: tokens.light[100],
+    },
   },
   footer: {
     bg: tokens.common.white,
@@ -388,8 +393,13 @@ const dark: Theme = {
     placeholderColor: tokens.gray[50],
   },
   box: {
-    bg: tokens.gray[300],
-    borderColor: tokens.gray[300],
+    filled: {
+      bg: tokens.gray[300],
+    },
+    outlined: {
+      bg: tokens.common.black,
+      borderColor: tokens.gray[300],
+    },
   },
   footer: {
     bg: tokens.common.black,

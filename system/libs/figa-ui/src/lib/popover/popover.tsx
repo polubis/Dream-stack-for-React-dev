@@ -1,28 +1,36 @@
-import { useClickOutside, useToggle } from '@system/figa-hooks';
 import type { PopoverProps } from './defs';
 import c from 'classnames';
-import { Box } from '../box';
+import { tokens } from '../theme-provider';
+import { useMemo } from 'react';
+import { usePopover } from '@system/figa-hooks';
 
 const Popover = ({
   className,
   children,
   trigger,
+  offsetY = 150,
   initialOpen,
 }: PopoverProps) => {
-  const toggler = useToggle(initialOpen);
-
-  const { ref } = useClickOutside<HTMLDivElement>({
-    onOutside: toggler.close,
-  });
+  const spacing = useMemo(
+    () => +tokens.spacing[offsetY].replace('px', ''),
+    [offsetY]
+  );
+  const { popoverRef, popover, triggerRef, contentRef } = usePopover<
+    HTMLDivElement,
+    HTMLDivElement,
+    HTMLDivElement
+  >(spacing, initialOpen);
 
   return (
-    <div className={c('popover', className)} ref={ref}>
-      {trigger(toggler)}
+    <div className={c('popover', className)} ref={popoverRef}>
+      <div className="popover-trigger" ref={triggerRef}>
+        {trigger(popover)}
+      </div>
 
-      {toggler.isOpen && (
-        <Box className="popover-content" variant="outlined">
-          {children(toggler)}
-        </Box>
+      {popover.isOpen && (
+        <div className="popover-content" ref={contentRef}>
+          {children(popover)}
+        </div>
       )}
     </div>
   );

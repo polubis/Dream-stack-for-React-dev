@@ -28,16 +28,12 @@ const SignInButton = () => {
 const SignOutButton = () => {
   const { key, signOut } = useSignOutStore();
 
-  if (key === 'pending') {
-    return (
-      <Button data-i={get('app-nav-sign-out-btn')} loading>
-        Sign Out
-      </Button>
-    );
-  }
-
   return (
-    <Button onClick={signOut} data-i={get('app-nav-sign-out-btn')}>
+    <Button
+      onClick={signOut}
+      data-i={get('app-nav-sign-out-btn')}
+      loading={key === 'pending'}
+    >
       Sign Out
     </Button>
   );
