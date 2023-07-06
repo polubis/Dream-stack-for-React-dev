@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register feature works when:  allows to submit and validates 1`] = `
+Object {
+  "dirty": false,
+  "errors": Object {
+    "confirmPassword": null,
+    "email": null,
+    "login": null,
+    "password": null,
+  },
+  "invalid": false,
+  "invalidCount": 0,
+  "keys": Array [
+    "login",
+    "email",
+    "password",
+    "confirmPassword",
+  ],
+  "pristine": true,
+  "progress": 100,
+  "result": Object {
+    "confirmPassword": false,
+    "email": false,
+    "login": false,
+    "password": false,
+  },
+  "touch": Object {
+    "confirmPassword": true,
+    "email": true,
+    "login": true,
+    "password": true,
+  },
+  "touched": true,
+  "untouched": false,
+  "valid": true,
+  "validCount": 4,
+  "values": Object {
+    "confirmPassword": "piotr1994",
+    "email": "piotr@wp.pl",
+    "login": "piotr1994",
+    "password": "piotr1994",
+  },
+}
+`;
+
+exports[`Register feature works when:  initial state is correct 1`] = `
+Object {
+  "error": null,
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "confirmPassword": null,
+      "email": null,
+      "login": null,
+      "password": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "login",
+      "email",
+      "password",
+      "confirmPassword",
+    ],
+    "pristine": true,
+    "progress": 0,
+    "result": Object {
+      "confirmPassword": false,
+      "email": false,
+      "login": false,
+      "password": false,
+    },
+    "touch": Object {
+      "confirmPassword": false,
+      "email": false,
+      "login": false,
+      "password": false,
+    },
+    "touched": false,
+    "untouched": true,
+    "valid": true,
+    "validCount": 4,
+    "values": Object {
+      "confirmPassword": "",
+      "email": "",
+      "login": "",
+      "password": "",
+    },
+  },
+  "key": "idle",
+}
+`;
+
+exports[`Register feature works when:  skips request call when form is invalid 1`] = `
+Object {
+  "dirty": true,
+  "errors": Object {
+    "confirmPassword": "required",
+    "email": "required",
+    "login": "required",
+    "password": "required",
+  },
+  "invalid": true,
+  "invalidCount": 4,
+  "keys": Array [
+    "login",
+    "email",
+    "password",
+    "confirmPassword",
+  ],
+  "pristine": false,
+  "progress": 0,
+  "result": Object {
+    "confirmPassword": true,
+    "email": true,
+    "login": true,
+    "password": true,
+  },
+  "touch": Object {
+    "confirmPassword": false,
+    "email": false,
+    "login": false,
+    "password": false,
+  },
+  "touched": false,
+  "untouched": true,
+  "valid": false,
+  "validCount": 0,
+  "values": Object {
+    "confirmPassword": "",
+    "email": "",
+    "login": "",
+    "password": "",
+  },
+}
+`;

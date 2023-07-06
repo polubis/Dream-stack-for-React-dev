@@ -8,4 +8,18 @@ interface SignInPayload {
 
 type SignOutResponse = void;
 
-export type { SignInResponse, SignInPayload, SignOutResponse };
+type RegisterResponse = void;
+interface RegisterPayload {
+  login: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+export type {
+  SignInResponse,
+  SignInPayload,
+  SignOutResponse,
+  RegisterResponse,
+  RegisterPayload,
+};

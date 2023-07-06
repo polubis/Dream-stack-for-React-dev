@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User can register when:  validation messages are displayed 1`] = `
+<DocumentFragment>
+  <div
+    class="box column empty"
+    style="margin: auto; max-width: 320px;"
+  >
+    <div
+      class="box-item-wrapper"
+      style="margin-bottom: 32px;"
+    >
+      <h6
+        class="font h6 default"
+      >
+        Sign in into your account
+      </h6>
+    </div>
+    <div
+      class="box-item-wrapper"
+      style="margin-bottom: 12px;"
+    >
+      <div
+        class="box field invalid column empty"
+      >
+        <p
+          class="font b2 default field-label"
+        >
+          Login*
+        </p>
+        <div
+          class="filled invalid input"
+        >
+          <svg
+            class="icon error-icon input-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.5 12C1.5 14.0767 2.11581 16.1068 3.26957 17.8335C4.42332 19.5602 6.0632 20.906 7.98182 21.7007C9.90045 22.4955 12.0116 22.7034 14.0484 22.2982C16.0852 21.8931 17.9562 20.8931 19.4246 19.4246C20.8931 17.9562 21.8931 16.0852 22.2982 14.0484C22.7034 12.0116 22.4955 9.90045 21.7007 7.98182C20.906 6.0632 19.5602 4.42332 17.8335 3.26957C16.1068 2.11581 14.0767 1.5 12 1.5C9.21523 1.5 6.54451 2.60625 4.57538 4.57538C2.60625 6.54451 1.5 9.21523 1.5 12ZM18.8625 17.8125L6.1875 5.1375C7.91298 3.70125 10.1129 2.96173 12.3556 3.0641C14.5983 3.16646 16.7218 4.10331 18.3092 5.69077C19.8967 7.27824 20.8335 9.40169 20.9359 11.6444C21.0383 13.8871 20.2988 16.087 18.8625 17.8125ZM6.18 18.87C4.36374 17.3276 3.23325 15.1279 3.03642 12.7533C2.83959 10.3787 3.59248 8.02286 5.13 6.2025L17.7975 18.87C16.1732 20.2425 14.1153 20.9955 11.9887 20.9955C9.86219 20.9955 7.80433 20.2425 6.18 18.87Z"
+            />
+          </svg>
+          <input
+            data-i="register-login-input"
+            value="23"
+          />
+        </div>
+        <p
+          class="font b3 default field-hint italic"
+        >
+          minLength
+        </p>
+      </div>
+    </div>
+    <div
+      class="box-item-wrapper"
+      style="margin-bottom: 12px;"
+    >
+      <div
+        class="box field invalid column empty"
+      >
+        <p
+          class="font b2 default field-label"
+        >
+          Email*
+        </p>
+        <div
+          class="filled invalid input"
+        >
+          <svg
+            class="icon error-icon input-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.5 12C1.5 14.0767 2.11581 16.1068 3.26957 17.8335C4.42332 19.5602 6.0632 20.906 7.98182 21.7007C9.90045 22.4955 12.0116 22.7034 14.0484 22.2982C16.0852 21.8931 17.9562 20.8931 19.4246 19.4246C20.8931 17.9562 21.8931 16.0852 22.2982 14.0484C22.7034 12.0116 22.4955 9.90045 21.7007 7.98182C20.906 6.0632 19.5602 4.42332 17.8335 3.26957C16.1068 2.11581 14.0767 1.5 12 1.5C9.21523 1.5 6.54451 2.60625 4.57538 4.57538C2.60625 6.54451 1.5 9.21523 1.5 12ZM18.8625 17.8125L6.1875 5.1375C7.91298 3.70125 10.1129 2.96173 12.3556 3.0641C14.5983 3.16646 16.7218 4.10331 18.3092 5.69077C19.8967 7.27824 20.8335 9.40169 20.9359 11.6444C21.0383 13.8871 20.2988 16.087 18.8625 17.8125ZM6.18 18.87C4.36374 17.3276 3.23325 15.1279 3.03642 12.7533C2.83959 10.3787 3.59248 8.02286 5.13 6.2025L17.7975 18.87C16.1732 20.2425 14.1153 20.9955 11.9887 20.9955C9.86219 20.9955 7.80433 20.2425 6.18 18.87Z"
+            />
+          </svg>
+          <input
+            data-i="register-email-input"
+            type="email"
+            value=""
+          />
+        </div>
+        <p
+          class="font b3 default field-hint italic"
+        >
+          required
+        </p>
+      </div>
+    </div>
+    <div
+      class="box-item-wrapper"
+      style="margin-bottom: 12px;"
+    >
+      <div
+        class="box field invalid column empty"
+      >
+        <p
+          class="font b2 default field-label"
+        >
+          Password*
+        </p>
+        <div
+          class="filled invalid input"
+        >
+          <svg
+            class="icon error-icon input-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.5 12C1.5 14.0767 2.11581 16.1068 3.26957 17.8335C4.42332 19.5602 6.0632 20.906 7.98182 21.7007C9.90045 22.4955 12.0116 22.7034 14.0484 22.2982C16.0852 21.8931 17.9562 20.8931 19.4246 19.4246C20.8931 17.9562 21.8931 16.0852 22.2982 14.0484C22.7034 12.0116 22.4955 9.90045 21.7007 7.98182C20.906 6.0632 19.5602 4.42332 17.8335 3.26957C16.1068 2.11581 14.0767 1.5 12 1.5C9.21523 1.5 6.54451 2.60625 4.57538 4.57538C2.60625 6.54451 1.5 9.21523 1.5 12ZM18.8625 17.8125L6.1875 5.1375C7.91298 3.70125 10.1129 2.96173 12.3556 3.0641C14.5983 3.16646 16.7218 4.10331 18.3092 5.69077C19.8967 7.27824 20.8335 9.40169 20.9359 11.6444C21.0383 13.8871 20.2988 16.087 18.8625 17.8125ZM6.18 18.87C4.36374 17.3276 3.23325 15.1279 3.03642 12.7533C2.83959 10.3787 3.59248 8.02286 5.13 6.2025L17.7975 18.87C16.1732 20.2425 14.1153 20.9955 11.9887 20.9955C9.86219 20.9955 7.80433 20.2425 6.18 18.87Z"
+            />
+          </svg>
+          <input
+            data-i="register-password-input"
+            type="password"
+            value="dd"
+          />
+        </div>
+        <p
+          class="font b3 default field-hint italic"
+        >
+          minLength
+        </p>
+      </div>
+    </div>
+    <div
+      class="box-item-wrapper"
+      style="margin-bottom: 32px;"
+    >
+      <div
+        class="box field invalid column empty"
+      >
+        <p
+          class="font b2 default field-label"
+        >
+          Repeat your password*
+        </p>
+        <div
+          class="filled invalid input"
+        >
+          <svg
+            class="icon error-icon input-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.5 12C1.5 14.0767 2.11581 16.1068 3.26957 17.8335C4.42332 19.5602 6.0632 20.906 7.98182 21.7007C9.90045 22.4955 12.0116 22.7034 14.0484 22.2982C16.0852 21.8931 17.9562 20.8931 19.4246 19.4246C20.8931 17.9562 21.8931 16.0852 22.2982 14.0484C22.7034 12.0116 22.4955 9.90045 21.7007 7.98182C20.906 6.0632 19.5602 4.42332 17.8335 3.26957C16.1068 2.11581 14.0767 1.5 12 1.5C9.21523 1.5 6.54451 2.60625 4.57538 4.57538C2.60625 6.54451 1.5 9.21523 1.5 12ZM18.8625 17.8125L6.1875 5.1375C7.91298 3.70125 10.1129 2.96173 12.3556 3.0641C14.5983 3.16646 16.7218 4.10331 18.3092 5.69077C19.8967 7.27824 20.8335 9.40169 20.9359 11.6444C21.0383 13.8871 20.2988 16.087 18.8625 17.8125ZM6.18 18.87C4.36374 17.3276 3.23325 15.1279 3.03642 12.7533C2.83959 10.3787 3.59248 8.02286 5.13 6.2025L17.7975 18.87C16.1732 20.2425 14.1153 20.9955 11.9887 20.9955C9.86219 20.9955 7.80433 20.2425 6.18 18.87Z"
+            />
+          </svg>
+          <input
+            data-i="register-repeated-password-input"
+            type="password"
+            value="D3"
+          />
+        </div>
+        <p
+          class="font b3 default field-hint italic"
+        >
+          minLength
+        </p>
+      </div>
+    </div>
+    <div
+      class="box-item-wrapper"
+      style="margin-bottom: 32px;"
+    >
+      <div
+        class="box column empty right"
+      >
+        <button
+          class="button size-3 rectangle filled primary"
+          data-i="register-confirm-btn"
+          disabled=""
+        >
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

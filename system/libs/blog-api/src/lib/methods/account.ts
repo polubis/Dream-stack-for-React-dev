@@ -2,6 +2,8 @@ import type {
   SignInPayload,
   SignInResponse,
   SignOutResponse,
+  RegisterPayload,
+  RegisterResponse,
 } from '../../models';
 import { getPath } from '../core';
 import { blogAPI } from '../instances';
@@ -14,4 +16,10 @@ const signOut = async (): Promise<SignOutResponse> => {
   await blogAPI.post<SignOutResponse>(getPath('Account/SignOut'));
 };
 
-export { signIn, signOut };
+const register = async (
+  payload: RegisterPayload
+): Promise<RegisterResponse> => {
+  await blogAPI.post<RegisterResponse>(getPath('Account/Register'), payload);
+};
+
+export { signIn, signOut, register };

@@ -4,6 +4,7 @@ type AppSelectors =
   | 'app-nav-user-avatar-btn'
   | 'app-footer-recommended-articles-section'
   | 'app-footer-recommended-articles-list';
+
 type SignInSelectors =
   | 'sign-in-login-input'
   | 'sign-in-password-input'
@@ -11,7 +12,16 @@ type SignInSelectors =
   | 'sign-in-error-alert'
   | 'sign-in-ok-alert';
 
-type BlogSelectors = AppSelectors | SignInSelectors;
+type RegisterSelectors =
+  | 'register-login-input'
+  | 'register-email-input'
+  | 'register-password-input'
+  | 'register-repeated-password-input'
+  | 'register-confirm-btn'
+  | 'register-error-alert'
+  | 'register-ok-alert';
+
+type BlogSelectors = AppSelectors | SignInSelectors | RegisterSelectors;
 
 type BlogSelectorAttr = 'data-i';
 
