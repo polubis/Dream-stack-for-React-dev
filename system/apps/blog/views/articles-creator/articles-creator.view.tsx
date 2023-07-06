@@ -29,7 +29,9 @@ Clone repository and open it in your IDE. Remember to have \`node 18+\` and \`np
 Next type following commands:
 
 1. \`cd system\`
+
 2. \`npm i --legacy-peer-deps\`
+
 3. Then run anything you want. It can be app, more than one apps, storybook or other. Check **COMMANDS.md** file for more. 
 
 #### Structure of repository
@@ -46,11 +48,28 @@ Currently we have several applications:
 
 1. First is a blog platform currently available at [GreenOn Software](https://greenonsoftware.com). We migrating it to **Next** from **Gatsby**.
 
-2. Second is an app for musicans [jamjam](https://jamjambeings.com) - we are migrating it from **CRA** to **Next**.
+2. Second is an app for musicans [jamjam](https://jamjambeings.com) 
+
+- we are migrating it from **CRA** to **Next**.
+
+- we are migrating it from **CRA** to **Next**.
+
+- we are migrating it from **CRA** to **Next**.
 
 3. Third is **design-system** implementation with reusable not domain specific UI. Its called **figa-ui**.
 
 4. We have also other reusable parts like **figa-hooks** which implements reusable not app specific hooks.
+
+1. Second is an app for musicans [jamjam](https://jamjambeings.com) 
+
+- we are migrating it from **CRA** to **Next**.
+
+- we are migrating it from **CRA** to **Next**.
+
+- we are migrating it from **CRA** to **Next**.
+
+![My image description](https://img.freepik.com/premium-wektory/dobry-widok-na-gory-grafika-ilustracja-projekt-koszulki-wektor-sztuki_24519-2593.jpg?w=2000)
+*my description of image!*
 `;
 
 const ArticlesCreatorView = () => {

@@ -738,7 +738,7 @@ const GlobalStyle = createGlobalStyle`
     .list {
         list-style: none;
 
-        & > *:not(:last-child) {
+        & > *:not(:last-of-type) {
             margin-bottom: ${tokens.spacing[150]};
         }
 
@@ -752,19 +752,7 @@ const GlobalStyle = createGlobalStyle`
         }
     }
     
-    ul.list {
-        li {
-            &::before {
-                content: '';
-                ${shape(tokens.spacing[100], tokens.radius[1000])}
-                background: ${(props) => props.theme.list.marker.bg};
-                flex-shrink: 0;
-            }
-
-        }
-    }
-    
-    ol.list {
+    .ordered {
         counter-reset: numbers;
 
         li {
@@ -775,6 +763,18 @@ const GlobalStyle = createGlobalStyle`
                 ${font('2rem', '0.15px', 'LexendBold', 500)}
                 color: ${(props) => props.theme.list.marker.bg};
             }
+        }
+    }
+    
+    .unordered {
+        li {
+            &::before {
+                content: '';
+                ${shape(tokens.spacing[100], tokens.radius[1000])}
+                background: ${(props) => props.theme.list.marker.bg};
+                flex-shrink: 0;
+            }
+
         }
     }
 
