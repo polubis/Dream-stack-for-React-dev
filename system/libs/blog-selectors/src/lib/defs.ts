@@ -1,7 +1,9 @@
 type AppSelectors =
   | 'app-nav-sign-in-btn'
   | 'app-nav-sign-out-btn'
-  | 'app-nav-user-avatar-btn';
+  | 'app-nav-user-avatar-btn'
+  | 'app-footer-recommended-articles-section'
+  | 'app-footer-recommended-articles-list';
 type SignInSelectors =
   | 'sign-in-login-input'
   | 'sign-in-password-input'

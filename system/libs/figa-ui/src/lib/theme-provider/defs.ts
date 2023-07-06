@@ -140,6 +140,9 @@ interface Tokens {
 }
 
 interface Theme {
+  outline: {
+    color: string;
+  };
   font: {
     default: {
       color: string;

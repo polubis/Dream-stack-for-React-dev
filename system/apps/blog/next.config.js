@@ -33,6 +33,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    domains: ['greenonsoftwaresa.blob.core.windows.net'],
+  },
   webpack: (config, { isServer }) => {
     // Important: return the modified config
 

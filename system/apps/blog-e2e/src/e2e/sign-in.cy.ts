@@ -1,41 +1,37 @@
 import { getter } from '@system/blog-selectors';
 
 describe('Sign in works when: ', () => {
-  beforeEach(() => {
-    cy.visit('/');
-  });
-
   const get = getter(cy);
 
   it('after sign in, user is able to sign out', () => {
     cy.intercept(
       'POST',
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignOut',
-      (req) => {
-        req.reply((res) => {
-          res.body = {
-            success: true,
-            hasErrors: false,
-            errors: [],
-          };
-          res.send(201);
-        });
+      {
+        statusCode: 201,
+        body: {
+          success: true,
+          hasErrors: false,
+          errors: [],
+        },
+        delay: 1000,
       }
     ).as('signOut');
     cy.intercept(
       'POST',
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
-      (req) => {
-        req.reply((res) => {
-          res.body = {
-            success: true,
-            hasErrors: false,
-            errors: [],
-          };
-          res.send(201);
-        });
+      {
+        statusCode: 201,
+        body: {
+          success: true,
+          hasErrors: false,
+          errors: [],
+        },
+        delay: 1000,
       }
     ).as('signIn');
+
+    cy.visit('/');
 
     get('app-nav-sign-in-btn').should('be.disabled');
     get('app-nav-sign-in-btn').should('not.be.disabled').click();
@@ -70,17 +66,18 @@ describe('Sign in works when: ', () => {
     cy.intercept(
       'POST',
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
-      (req) => {
-        req.reply((res) => {
-          res.body = {
-            success: true,
-            hasErrors: false,
-            errors: [],
-          };
-          res.send(201);
-        });
+      {
+        statusCode: 201,
+        body: {
+          success: true,
+          hasErrors: false,
+          errors: [],
+        },
+        delay: 1000,
       }
     ).as('signIn');
+
+    cy.visit('/');
 
     get('app-nav-sign-in-btn').should('be.disabled');
     get('app-nav-sign-in-btn').should('not.be.disabled').click();
@@ -114,13 +111,14 @@ describe('Sign in works when: ', () => {
     cy.intercept(
       'POST',
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
-      (req) => {
-        req.reply((res) => {
-          res.body = errorResponse;
-          res.send(400);
-        });
+      {
+        statusCode: 400,
+        body: errorResponse,
+        delay: 1000,
       }
     ).as('signIn');
+
+    cy.visit('/');
 
     get('app-nav-sign-in-btn').should('be.disabled');
     get('app-nav-sign-in-btn').should('not.be.disabled').click();

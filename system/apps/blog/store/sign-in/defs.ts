@@ -4,19 +4,19 @@ interface SignInActions {
   signIn: (payload: SignInPayload) => Promise<void>;
 }
 
-interface IdleState extends SignInActions {
+interface IdleState {
   key: 'idle';
 }
 
-interface PendingState extends SignInActions {
+interface PendingState {
   key: 'pending';
 }
 
-interface OkState extends SignInActions {
+interface OkState {
   key: 'ok';
 }
 
-interface ErrorState extends SignInActions {
+interface ErrorState {
   key: 'error';
   response: ResponseError;
 }
