@@ -1,8 +1,6 @@
 import {
   Box,
   Button,
-  CodeBlock,
-  Font,
   DiscordIcon,
   LeftBar,
   LinkedinIcon,
@@ -16,16 +14,13 @@ import {
   GREEN_ON_SOFTWARE_DISCORD,
   GREEN_ON_SOFTWARE_LINKEDIN,
 } from '../../consts';
+import { BlackHoleJumbo } from './black-hole/black-hole-jumbo';
 
 const HomeView = ({ articles }: HomeViewProps) => {
   return (
     <>
       <MainLayout>
-        <Box spacing={[150]}>
-          <CodeBlock>
-            <Font variant="h5">{articles.length} articles</Font>
-          </CodeBlock>
-        </Box>
+        <BlackHoleJumbo />
       </MainLayout>
       <LeftBar>
         <Button shape="rounded" size={2}>
