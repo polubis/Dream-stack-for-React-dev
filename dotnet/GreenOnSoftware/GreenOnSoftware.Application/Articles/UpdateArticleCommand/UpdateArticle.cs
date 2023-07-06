@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace GreenOnSoftware.Application.Articles.UpdateArticleCommand;
 
-public record UpdateArticle(string Title, string? Description, string Content, IFormFile? Thumbnail, string Url) : IRequest<Result>
+public record UpdateArticle(string Title, string? Description, string Content, IFormFile? Thumbnail, string Url, string Lang) : IRequest<Result>
 {
     internal Guid Id { get; private set; }
 

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using GreenOnSoftware.Core.Enums;
 
 namespace GreenOnSoftware.Application.Articles.AddArticleCommand;
 
@@ -16,5 +17,10 @@ public class AddArticleValidator : AbstractValidator<AddArticle>
         RuleFor(x => x.Url)
             .NotEmpty()
             .MaximumLength(300);
+        RuleFor(x=>x.Lang)
+            .NotEmpty()
+            .MaximumLength(2)
+            .Must(x=> Enum.TryParse<Language>(x, ignoreCase: true, out _))
+            .WithMessage("Lang must have valid values");
     }
 }

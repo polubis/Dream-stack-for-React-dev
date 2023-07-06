@@ -13,7 +13,7 @@ public class Article : Entity
 
     }
 
-    public Article(string title, string? description, string content, string? thumbnailUrl, string url, Guid authorId, DateTime operationDate)
+    public Article(string title, string? description, string content, string? thumbnailUrl, string url, string lang, Guid authorId, DateTime operationDate)
     {
         CreatedDate = ModifiedDate = operationDate;
         Title = title;
@@ -23,6 +23,7 @@ public class Article : Entity
         Url = url;
         AuthorId = authorId;
         Status = Status.Draft;
+        Lang = Enum.Parse<Language>(lang, ignoreCase: true);
     }
 
     public DateTime CreatedDate { get; private set; }
@@ -34,6 +35,7 @@ public class Article : Entity
     public string Url { get; private set; }
     public Status Status { get; private set; }
     public bool IsDeleted { get; private set; }
+    public Language Lang { get; private set; }
 
     public Guid? AuthorId { get; private set; }
 
@@ -47,7 +49,7 @@ public class Article : Entity
 
     public List<Review> Reviews { get; private set; } = new();
 
-    public void Update(string title, string? description, string content, string? thumbnailUrl, string url, DateTime operationDate)
+    public void Update(string title, string? description, string content, string? thumbnailUrl, string url, string lang, DateTime operationDate)
     {
         Title = title;
         Description = description;
@@ -55,6 +57,7 @@ public class Article : Entity
         ThumbnailUrl = thumbnailUrl;
         Url = url;
         ModifiedDate = operationDate;
+        Lang = Enum.Parse<Language>(lang, ignoreCase: true);
     }
 
     public void SendForApproval()

@@ -4,6 +4,7 @@ using GreenOnSoftware.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenOnSoftware.DataAccess.Migrations
 {
     [DbContext(typeof(GreenOnSoftwareDbContext))]
-    partial class GreenOnSoftwareDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230706084825_AddLangField")]
+    partial class AddLangField
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
