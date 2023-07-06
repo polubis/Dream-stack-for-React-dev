@@ -1,9 +1,11 @@
 import type { ReactNode } from 'react';
 
-interface IconProps {
+interface IconBaseProps {
   size?: number;
   className?: string;
   children: ReactNode;
 }
 
-export type { IconProps };
+type IconProps = Omit<IconBaseProps, 'children'>;
+
+export type { IconBaseProps, IconProps };

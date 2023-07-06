@@ -235,9 +235,21 @@ interface Theme {
     bg: string;
   };
   input: {
-    bg: string;
-    color: string;
-    placeholderColor: string;
+    filled: {
+      bg: string;
+      color: string;
+      placeholderColor: string;
+    };
+    outlined: {
+      borderColor: string;
+      color: string;
+      placeholderColor: string;
+    };
+    empty: {
+      color: string;
+      placeholderColor: string;
+    };
+    invalid: string;
   };
   box: {
     filled: {

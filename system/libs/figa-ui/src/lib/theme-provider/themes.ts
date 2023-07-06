@@ -226,9 +226,21 @@ const light: Theme = {
     bg: tokens.gray[150],
   },
   input: {
-    bg: tokens.gray[150],
-    color: tokens.common.black,
-    placeholderColor: tokens.gray[200],
+    filled: {
+      bg: tokens.gray[150],
+      color: tokens.common.black,
+      placeholderColor: tokens.gray[200],
+    },
+    outlined: {
+      borderColor: tokens.common.black,
+      color: tokens.common.black,
+      placeholderColor: tokens.gray[200],
+    },
+    empty: {
+      color: tokens.common.black,
+      placeholderColor: tokens.gray[200],
+    },
+    invalid: tokens.red[150],
   },
   box: {
     filled: {
@@ -392,9 +404,21 @@ const dark: Theme = {
     bg: tokens.dark[50],
   },
   input: {
-    bg: tokens.dark[50],
-    color: tokens.common.white,
-    placeholderColor: tokens.gray[50],
+    filled: {
+      bg: tokens.dark[50],
+      color: tokens.common.white,
+      placeholderColor: tokens.gray[50],
+    },
+    outlined: {
+      borderColor: tokens.common.white,
+      color: tokens.common.white,
+      placeholderColor: tokens.gray[50],
+    },
+    empty: {
+      color: tokens.common.white,
+      placeholderColor: tokens.gray[50],
+    },
+    invalid: tokens.red[150],
   },
   box: {
     filled: {
