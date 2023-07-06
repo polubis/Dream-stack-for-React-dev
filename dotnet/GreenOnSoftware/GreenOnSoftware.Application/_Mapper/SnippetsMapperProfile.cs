@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GreenOnSoftware.Application.Snippets.GetSnippetByIdQuery;
+using GreenOnSoftware.Application.Snippets.GetSnippetsQuery;
 using GreenOnSoftware.Core.Models.Snippets;
 
 namespace GreenOnSoftware.Application.Mapper;
@@ -14,5 +15,7 @@ public class SnippetsMapperProfile : Profile
                 DisplayTime = src.AnimationDisplayTime,
                 Type = src.AnimationType.ToString()
             }));
+
+        CreateProjection<Snippet, SnippetLookupDto>();
     }
 }

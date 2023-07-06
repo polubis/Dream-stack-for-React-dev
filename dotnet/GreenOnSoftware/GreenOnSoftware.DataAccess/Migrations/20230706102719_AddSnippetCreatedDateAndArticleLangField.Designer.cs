@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GreenOnSoftware.DataAccess.Migrations
 {
     [DbContext(typeof(GreenOnSoftwareDbContext))]
-    [Migration("20230706084825_AddLangField")]
-    partial class AddLangField
+    [Migration("20230706102719_AddSnippetCreatedDateAndArticleLangField")]
+    partial class AddSnippetCreatedDateAndArticleLangField
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -296,6 +296,9 @@ namespace GreenOnSoftware.DataAccess.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()

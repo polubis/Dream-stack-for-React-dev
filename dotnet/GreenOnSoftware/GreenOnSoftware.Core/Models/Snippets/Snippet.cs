@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace GreenOnSoftware.Core.Models.Snippets;
+﻿namespace GreenOnSoftware.Core.Models.Snippets;
 
 public class Snippet : Entity
 {
@@ -9,14 +7,17 @@ public class Snippet : Entity
         
     }
 
-    public Snippet(string name, string description, IList<SnippetFrame> frames, string? gifUrl)
+    public Snippet(string name, string description, IList<SnippetFrame> frames, string? gifUrl, DateTime operationDate)
     {
         Id = Guid.NewGuid();
         Name = name;
         Description = description;
         Frames = frames;
         GifUrl = gifUrl;
+        CreatedDate = operationDate;
     }
+
+    public DateTime CreatedDate { get; private set; }
 
     public string Name { get; private set; }
 
