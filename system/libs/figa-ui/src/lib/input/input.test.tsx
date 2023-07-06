@@ -19,6 +19,38 @@ describe('User is able to user input when', () => {
     screen.getByPlaceholderText(PLACEHOLDER);
   });
 
+  it('renders loader if loading', () => {
+    const { asFragment } = render(<Input placeholder={PLACEHOLDER} loading />);
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('makes input disabled', () => {
+    const { asFragment } = render(<Input placeholder={PLACEHOLDER} disabled />);
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('renders error icon if invalid', () => {
+    const { asFragment } = render(<Input placeholder={PLACEHOLDER} invalid />);
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('assigns classes when additional options passed', () => {
+    const { asFragment } = render(
+      <Input
+        placeholder={PLACEHOLDER}
+        className="my-input"
+        disabled
+        loading
+        invalid
+      />
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   it('allows to use native input properties', () => {
     const onChangeSpy = jest.fn();
 
@@ -36,6 +68,6 @@ describe('User is able to user input when', () => {
 
     const element = screen.getByPlaceholderText(PLACEHOLDER);
 
-    expect(element.parentElement?.className).toBe('input my-class');
+    expect(element.parentElement?.className).toBe('input filled my-class');
   });
 });

@@ -144,7 +144,7 @@ const Template: Story = () => {
           <ListItem>Second</ListItem>
           <ListItem>Last</ListItem>
         </List>
-        <List >
+        <List>
           <ListItem>First</ListItem>
           <ListItem>Second</ListItem>
           <ListItem>Last</ListItem>

@@ -499,24 +499,126 @@ const GlobalStyle = createGlobalStyle`
     /* input.tsx  */
 
     .input {
-        border-radius: ${tokens.radius[50]};
-        background: ${(props) => props.theme.input.bg};
-        min-width: 220px;
-
-        input, input::placeholder {
-            ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
-        }
+        position: relative;
 
         input {
+            ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
             padding: ${tokens.spacing[150]};
-            border: none;
+            border: 2px solid transparent;
             width: 100%;
             background: none;
-            color: ${(props) => props.theme.input.color};
 
             &::placeholder {
-                color: ${(props) => props.theme.input.placeholderColor};
+                ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
             }
+
+            &:focus {
+                outline-offset: ${tokens.spacing[25]};
+                outline-width: ${tokens.spacing[25]};
+            }
+        }
+
+        .input-loader, .input-icon {
+            position: absolute;
+            top: 0;
+            right: ${tokens.spacing[100]};
+            margin: auto 0;
+            bottom: 0;
+
+            & ~ input {
+                padding-right: ${tokens.spacing[550]};
+            }
+        }
+
+        .input-loader {
+            ${row()}
+            right: ${tokens.spacing[150]};
+        }
+
+        .input-icon {
+            &.error-icon path {
+                fill: ${(props) => props.theme.input.invalid};
+            }
+        }
+
+        &.filled {
+            input {
+                border-radius: ${tokens.radius[50]};
+                background: ${(props) => props.theme.input.filled.bg};
+                color: ${(props) => props.theme.input.filled.color};
+
+                &::placeholder {
+                    color: ${(props) =>
+                      props.theme.input.filled.placeholderColor};
+                }
+            }
+
+            &.invalid:not(.disabled) {
+                input {
+                    border-color: ${(props) => props.theme.input.invalid};
+
+                    &:focus {
+                        outline-color: ${(props) => props.theme.input.invalid};
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+
+        &.outlined {
+            input {
+                color: ${(props) => props.theme.input.outlined.color};
+                border-color: ${(props) =>
+                  props.theme.input.outlined.borderColor};
+                border-radius: ${tokens.radius[50]};
+
+                &::placeholder {
+                    color: ${(props) =>
+                      props.theme.input.outlined.placeholderColor};
+                }
+
+                &:focus {
+                    border-color: transparent;
+                }
+            }
+            
+            &.invalid:not(.disabled) {
+                input {
+                    color: ${(props) => props.theme.input.invalid};
+                    border-color: ${(props) => props.theme.input.invalid};
+
+                    &:focus {
+                        outline-color: ${(props) => props.theme.input.invalid};
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+
+        &.empty {
+            input {
+                color: ${(props) => props.theme.input.empty.color};
+
+                &::placeholder {
+                    color: ${(props) =>
+                      props.theme.input.empty.placeholderColor};
+                }
+            }
+
+            &.invalid:not(.disabled) {
+                input {
+                    color: ${(props) => props.theme.input.invalid};
+
+                    &:focus {
+                        outline-color: ${(props) => props.theme.input.invalid};
+                    }
+                }
+            }
+        }
+
+        &.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
         }
     }
 

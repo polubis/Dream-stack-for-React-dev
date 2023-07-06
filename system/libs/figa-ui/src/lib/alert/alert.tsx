@@ -3,9 +3,9 @@ import { Font } from '../font';
 import type { AlertProps, AlertType } from './defs';
 
 import c from 'classnames';
-import { ErrorIcon, InfoIcon, OkIcon, WarnIcon } from '../icon';
+import { ErrorIcon, type IconProps, InfoIcon, OkIcon, WarnIcon } from '../icon';
 
-const ICONS_MAP: Record<AlertType, () => ReactElement> = {
+const ICONS_MAP: Record<AlertType, (props: IconProps) => ReactElement> = {
   info: InfoIcon,
   ok: OkIcon,
   error: ErrorIcon,
