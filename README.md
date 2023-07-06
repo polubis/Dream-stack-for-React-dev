@@ -4,7 +4,7 @@ Here you find basic info and useful links.
 
 ## First run
 
-Clone repository and open it in your IDE. Remember to have `node 18+` and `npm 6+` versions. 
+Clone repository and open it in your IDE. Remember to have `node v16.20.1` and `npm 8.8.0` versions. 
 
 Next type following commands:
 
