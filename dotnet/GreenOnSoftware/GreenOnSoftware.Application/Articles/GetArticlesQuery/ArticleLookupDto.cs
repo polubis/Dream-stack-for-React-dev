@@ -1,4 +1,8 @@
-﻿namespace GreenOnSoftware.Application.Articles.GetArticlesQuery;
+﻿using GreenOnSoftware.Application.Serialization;
+using GreenOnSoftware.Core.Enums;
+using System.Text.Json.Serialization;
+
+namespace GreenOnSoftware.Application.Articles.GetArticlesQuery;
 
 public class ArticleLookupDto
 {
@@ -10,4 +14,7 @@ public class ArticleLookupDto
     public string? ThumbnailUrl { get; set; }
     public string Status { get; set; }
     public string Url { get; set; }
+
+    [JsonConverter(typeof(LanguageToTextConverter))]
+    public Language Lang { get; set; }
 }

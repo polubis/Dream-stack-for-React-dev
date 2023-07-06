@@ -37,7 +37,7 @@ public class AccountController : ControllerBase
             return BadRequest(result);
         }
 
-        return Ok();
+        return NoContent();
     }
 
     [AllowAnonymous]
@@ -51,7 +51,7 @@ public class AccountController : ControllerBase
             return BadRequest(result);
         }
 
-        return NoContent();
+        return Ok(result);
     }
 
     [HttpPost("SignOut")]
@@ -64,7 +64,7 @@ public class AccountController : ControllerBase
             return BadRequest(result);
         }
 
-        return Ok();
+        return NoContent();
     }
 
     [AllowAnonymous]

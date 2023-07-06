@@ -33,6 +33,12 @@ public class ArticleConfiguration : IEntityTypeConfiguration<Article>
         builder.Property(x => x.ThumbnailUrl)
             .HasMaxLength(300);
 
+        builder.Property(x => x.Lang)
+            .IsRequired()
+            .HasMaxLength(2)
+            .HasConversion(x => x.ToString().ToLower(), x => x.ToEnum<Language>())
+            .HasDefaultValue(Language.En);
+
         builder.HasOne(x => x.Author)
             .WithMany()
             .HasForeignKey(x=>x.AuthorId)

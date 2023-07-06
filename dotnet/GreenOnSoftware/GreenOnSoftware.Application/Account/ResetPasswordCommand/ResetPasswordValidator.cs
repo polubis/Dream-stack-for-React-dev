@@ -17,11 +17,11 @@ internal class ResetPasswordValidator : AbstractValidator<ResetPassword>
 
         RuleFor(x => x.NewPassword)
             .NotEmpty()
-            .MaximumLength(100);
+            .MaximumLength(30);
 
         RuleFor(x => x.ConfirmNewPassword)
             .NotEmpty()
-            .MaximumLength(100)
+            .MaximumLength(30)
             .Matches(x => x.NewPassword);
     }
 }

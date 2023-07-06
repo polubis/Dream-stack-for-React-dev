@@ -1,4 +1,8 @@
-﻿namespace GreenOnSoftware.Application.Articles.GetArticleByIdQuery;
+﻿using GreenOnSoftware.Application.Serialization;
+using GreenOnSoftware.Core.Enums;
+using System.Text.Json.Serialization;
+
+namespace GreenOnSoftware.Application.Articles.GetArticleByIdQuery;
 
 public class ArticleDto
 {
@@ -11,6 +15,9 @@ public class ArticleDto
     public string? ThumbnailUrl { get; set; }
     public string Status { get; set; }
     public string Url { get; set; }
+
+    [JsonConverter(typeof(LanguageToTextConverter))]
+    public Language Lang { get; set; }
 
     public DateTime CreatedDate { get; set; }
     public DateTime ModifiedDate { get; set; }

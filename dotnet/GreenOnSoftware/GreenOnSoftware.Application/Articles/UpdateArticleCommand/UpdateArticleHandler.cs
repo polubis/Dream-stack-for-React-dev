@@ -67,7 +67,7 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
             thumbnailUrl = uploadPictureResult.Data;
         }
 
-        currentArticle.Update(command.Title, command.Description, command.Content, thumbnailUrl, command.Url, _clock.UtcNow);
+        currentArticle.Update(command.Title, command.Description, command.Content, thumbnailUrl, command.Url, command.Lang, _clock.UtcNow);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
 

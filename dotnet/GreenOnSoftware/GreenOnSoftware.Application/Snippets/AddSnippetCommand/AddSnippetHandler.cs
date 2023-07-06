@@ -1,4 +1,5 @@
-﻿using GreenOnSoftware.Commons.Dtos;
+﻿using GreenOnSoftware.Commons.Clock;
+using GreenOnSoftware.Commons.Dtos;
 using GreenOnSoftware.Core.Enums;
 using GreenOnSoftware.Core.Models.Snippets;
 using GreenOnSoftware.DataAccess;
@@ -9,10 +10,12 @@ namespace GreenOnSoftware.Application.Snippets.AddSnippetCommand;
 internal sealed class AddSnippetHandler : IRequestHandler<AddSnippet, Result>
 {
     private readonly GreenOnSoftwareDbContext _dbContext;
+    private readonly IClock _clock;
 
-    public AddSnippetHandler(GreenOnSoftwareDbContext dbContext)
+    public AddSnippetHandler(GreenOnSoftwareDbContext dbContext, IClock clock)
     {
         _dbContext = dbContext;
+        _clock = clock;
     }
 
     public async Task<Result> Handle(AddSnippet command, CancellationToken cancellationToken)
@@ -30,7 +33,8 @@ internal sealed class AddSnippetHandler : IRequestHandler<AddSnippet, Result>
                     Enum.Parse<SnippetFrameAnimationType>(x.Animation.Type, ignoreCase: true),
                     x.Animation.DisplayTime))
                 .ToList(),
-            command.GifUrl);
+            command.GifUrl,
+            _clock.UtcNow);
 
         result.SetData(newSnippet.Id);
 

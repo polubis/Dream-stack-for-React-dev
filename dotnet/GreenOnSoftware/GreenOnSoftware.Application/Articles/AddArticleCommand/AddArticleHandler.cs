@@ -45,7 +45,7 @@ internal class AddArticleHandler : IRequestHandler<AddArticle, Result<Guid>>
             thumbnailUrl = uploadPictureResult.Data;
         }
 
-        var newArticle = new Article(request.Title, request.Description, request.Content, thumbnailUrl, request.Url, _context.Identity.Id!, _clock.UtcNow);
+        var newArticle = new Article(request.Title, request.Description, request.Content, thumbnailUrl, request.Url, request.Lang, _context.Identity.Id!, _clock.UtcNow);
 
         _dbContext.Articles.Add(newArticle);
         await _dbContext.SaveChangesAsync();

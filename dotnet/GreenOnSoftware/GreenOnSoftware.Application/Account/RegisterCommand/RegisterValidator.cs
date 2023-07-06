@@ -9,7 +9,7 @@ internal class RegisterValidator : AbstractValidator<Register>
     {
         RuleFor(x => x.Login)
             .NotEmpty()
-            .MaximumLength(100);
+            .MaximumLength(20);
 
         RuleFor(x => x.Email)
             .NotEmpty()
@@ -17,11 +17,11 @@ internal class RegisterValidator : AbstractValidator<Register>
 
         RuleFor(x => x.Password)
             .NotEmpty()
-            .MaximumLength(100);
+            .MaximumLength(30);
 
         RuleFor(x => x.ConfirmPassword)
             .NotEmpty()
-            .MaximumLength(100)
+            .MaximumLength(30)
             .Matches(x => x.Password);
     }
 }

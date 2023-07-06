@@ -3,4 +3,4 @@ using MediatR;
 
 namespace GreenOnSoftware.Application.Account.SignInCommand;
 
-public record SignIn(string Login, string Password) : IRequest<Result>;
+public record SignIn(string Login, string Password) : IRequest<Result<UserDataDto>>;
