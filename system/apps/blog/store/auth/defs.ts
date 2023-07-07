@@ -6,15 +6,15 @@ interface AuthActions {
   check: () => void;
 }
 
-interface IdleState extends AuthActions {
+interface IdleState {
   key: 'idle';
 }
 
-interface AuthorizedState extends AuthActions {
+interface AuthorizedState {
   key: 'authorized';
 }
 
-interface UnauthorizedState extends AuthActions {
+interface UnauthorizedState {
   key: 'unauthorized';
 }
 
