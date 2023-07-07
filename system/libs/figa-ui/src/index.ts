@@ -29,3 +29,4 @@ export * from './lib/alert';
 export * from './lib/avatars';
 export * from './lib/loader';
 export * from './lib/shared';
+export * from './lib/bullshit-meter'
