@@ -1,6 +1,6 @@
 import { ArticleLayout } from '@system/figa-ui';
 import type { ArticleMdRendererProps, Components } from './defs';
-import Markdown, { MarkdownToJSX } from 'markdown-to-jsx';
+import Markdown, { type MarkdownToJSX } from 'markdown-to-jsx';
 
 const createOverrides = (components: Components): MarkdownToJSX.Overrides => {
   const overrides: MarkdownToJSX.Overrides = {};

@@ -1,4 +1,4 @@
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 
 const getStatus = (error: unknown): number => {
   const axiosError = <Partial<AxiosError>>error;

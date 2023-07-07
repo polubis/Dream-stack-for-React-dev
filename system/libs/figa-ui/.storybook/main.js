@@ -1,22 +1,30 @@
 const { mergeConfig } = require('vite');
-const viteTsConfigPaths = require('vite-tsconfig-paths').default;
 
 module.exports = {
-  core: { builder: '@storybook/builder-vite' },
   stories: [
     '../src/lib/**/*.stories.mdx',
     '../src/lib/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: ['@storybook/addon-essentials'],
-  staticDirs: [{ from: '../../../assets', to: '/' }],
+  staticDirs: [
+    {
+      from: '../../../assets',
+      to: '/',
+    },
+  ],
   async viteFinal(config, { configType }) {
-    return mergeConfig(config, {
-      plugins: [
-        viteTsConfigPaths({
-          root: '../../../',
-        }),
-      ],
-    });
+    return mergeConfig(config, {});
+  },
+  framework: {
+    name: '@storybook/react-vite',
+    options: {
+      builder: {
+        viteConfigPath: 'libs/figa-ui/vite.config.ts',
+      },
+    },
+  },
+  docs: {
+    autodocs: true,
   },
 };
 
