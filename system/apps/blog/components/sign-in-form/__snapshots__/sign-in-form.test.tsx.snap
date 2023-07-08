@@ -21,7 +21,7 @@ exports[`User can use form to sign in when:  goes through failure flow 1`] = `
       style="margin-bottom: 12px;"
     >
       <div
-        class="input filled"
+        class="filled input"
       >
         <input
           data-i="sign-in-login-input"
@@ -35,7 +35,7 @@ exports[`User can use form to sign in when:  goes through failure flow 1`] = `
       style="margin-bottom: 32px;"
     >
       <div
-        class="input filled"
+        class="filled input"
       >
         <input
           data-i="sign-in-password-input"
@@ -107,7 +107,7 @@ exports[`User can use form to sign in when:  goes through success flow 1`] = `
       style="margin-bottom: 12px;"
     >
       <div
-        class="input filled"
+        class="filled input"
       >
         <input
           data-i="sign-in-login-input"
@@ -121,7 +121,7 @@ exports[`User can use form to sign in when:  goes through success flow 1`] = `
       style="margin-bottom: 32px;"
     >
       <div
-        class="input filled"
+        class="filled input"
       >
         <input
           data-i="sign-in-password-input"

@@ -504,17 +504,18 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
-    /* input.tsx  */
+    /*  input.tsx */
 
-    .input {
+    .input, .textarea {
         position: relative;
 
-        input {
+        input, textarea {
             ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
             padding: ${tokens.spacing[150]};
             border: 2px solid transparent;
             width: 100%;
             background: none;
+            color: inherit;
 
             &::placeholder {
                 ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
@@ -537,8 +538,22 @@ const GlobalStyle = createGlobalStyle`
                 padding-right: ${tokens.spacing[550]};
             }
         }
+        
+        &.textarea {
+            textarea {
+                resize: vertical;
+            }
 
-        .input-loader {
+            .input-loader, .input-icon {
+                right: ${tokens.spacing[300]};
+                bottom: ${tokens.spacing[150]};
+                top: unset;
+                left: unset;
+                margin: unset;
+            }
+        }
+
+        .input-loader { 
             ${row()}
             right: ${tokens.spacing[150]};
         }
@@ -550,7 +565,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.filled {
-            input {
+            input, textarea {
                 border-radius: ${tokens.radius[50]};
                 background: ${(props) => props.theme.input.filled.bg};
                 color: ${(props) => props.theme.input.filled.color};
@@ -562,7 +577,7 @@ const GlobalStyle = createGlobalStyle`
             }
 
             &.invalid:not(.disabled) {
-                input {
+                input, textarea {
                     border-color: ${(props) => props.theme.input.invalid};
 
                     &:focus {
@@ -574,7 +589,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.outlined {
-            input {
+            input, textarea {
                 color: ${(props) => props.theme.input.outlined.color};
                 border-color: ${(props) =>
                   props.theme.input.outlined.borderColor};
@@ -591,7 +606,7 @@ const GlobalStyle = createGlobalStyle`
             }
             
             &.invalid:not(.disabled) {
-                input {
+                input, textarea {
                     color: ${(props) => props.theme.input.invalid};
                     border-color: ${(props) => props.theme.input.invalid};
 
@@ -604,7 +619,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.empty {
-            input {
+            input, textarea {
                 color: ${(props) => props.theme.input.empty.color};
 
                 &::placeholder {
@@ -614,7 +629,7 @@ const GlobalStyle = createGlobalStyle`
             }
 
             &.invalid:not(.disabled) {
-                input {
+                input, textarea {
                     color: ${(props) => props.theme.input.invalid};
 
                     &:focus {
