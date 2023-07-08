@@ -1,7 +1,9 @@
 import {
+  Content,
   Description,
   Email,
   Id,
+  Lang,
   Name,
   PaginatedResponse,
   Title,
@@ -28,9 +30,21 @@ interface GetArticlesSearchParams {
   CurrentPage?: number;
 }
 
+interface CreateArticlePayload {
+  title: Title;
+  description: Description;
+  content: Content;
+  lang: Lang;
+  url: Url;
+  thumbnail: unknown;
+}
+type CreateArticleResponse = void;
+
 export type {
   ArticleDto,
   ArticleStatus,
   GetArticlesResponse,
   GetArticlesSearchParams,
+  CreateArticlePayload,
+  CreateArticleResponse,
 };

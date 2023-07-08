@@ -37,6 +37,7 @@ const tokens: Tokens = {
   },
   backdrop: {
     50: '#0000003d',
+    100: '#00000073',
   },
   radius: {
     50: '4px',
@@ -126,7 +127,7 @@ const light: Theme = {
     color: tokens.common.black,
   },
   thumbnail: {
-    bg: tokens.backdrop[50],
+    bg: tokens.backdrop[100],
     color: tokens.common.white,
   },
   filePicker: {
@@ -328,7 +329,7 @@ const dark: Theme = {
     color: tokens.common.white,
   },
   thumbnail: {
-    bg: tokens.backdrop[50],
+    bg: tokens.backdrop[100],
     color: tokens.common.white,
   },
   filePicker: {

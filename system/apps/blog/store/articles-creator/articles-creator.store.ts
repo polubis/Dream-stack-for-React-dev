@@ -1,11 +1,22 @@
 import { create } from 'zustand';
 import type { ArticlesCreatorStore } from './defs';
+import { createArticle, getError } from '@system/blog-api';
 
-const useArticlesCreatorStore = create<ArticlesCreatorStore>((set) => ({
+const useArticlesCreatorStore = create<ArticlesCreatorStore>((set, get) => ({
   key: 'idle',
-  code: '',
-  load: async (code) => {
-    set({ key: 'loading', code });
+  submitKey: 'idle',
+  content: '',
+  title: '',
+  description: '',
+  url: '',
+  thumbnail: {
+    file: null,
+    preview: [],
+  },
+  lang: null,
+  submitResponse: null,
+  load: async (content) => {
+    set({ key: 'loading', content });
 
     await new Promise(() => {
       setTimeout(() => {
@@ -13,8 +24,32 @@ const useArticlesCreatorStore = create<ArticlesCreatorStore>((set) => ({
       }, 1000);
     });
   },
-  change: (code) => {
-    set({ code });
+  setField: (key, value) => {
+    if (key === 'title') {
+      set({ url: (value as string).replace(/ /g, '/').toLowerCase() });
+    }
+
+    set({ [key]: value });
+  },
+  submit: async () => {
+    set({ submitKey: 'pending' });
+
+    try {
+      const { title, url, description, content, lang, thumbnail } = get();
+
+      await createArticle({
+        title,
+        url,
+        description,
+        content,
+        lang,
+        thumbnail: thumbnail.file,
+      });
+
+      set({ submitKey: 'done' });
+    } catch (error: unknown) {
+      set({ submitKey: 'error', submitResponse: getError(error) });
+    }
   },
 }));
 

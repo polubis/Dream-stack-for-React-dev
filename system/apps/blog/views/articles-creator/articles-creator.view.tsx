@@ -12,11 +12,23 @@ import {
   FullScreenIcon,
   PageIcon,
   CodeIcon,
+  Input,
+  CheckIcon,
+  FormIcon,
+  MobileIcon,
+  FilePicker,
+  Modal,
+  Select,
+  Thumbnail,
+  Field,
+  Textarea,
+  Alert,
 } from '@system/figa-ui';
 import { MainLayout } from '../../components';
 import { ARTICLE_COMPONENTS } from '../../core';
 import { useArticlesCreatorStore, reset } from '../../store/articles-creator';
 import { ArticleMdRenderer } from '../../features/articles-creator';
+import { useToggle } from '@system/figa-hooks';
 
 const MDX = `#### Quick start
 
@@ -73,7 +85,30 @@ Currently we have several applications:
 `;
 
 const ArticlesCreatorView = () => {
-  const { key, code, change, load } = useArticlesCreatorStore();
+  const {
+    key,
+    content,
+    setField,
+    load,
+    submit,
+    title,
+    submitKey,
+    description,
+    lang,
+    thumbnail,
+    url,
+    submitResponse,
+  } = useArticlesCreatorStore();
+
+  const form = useToggle();
+  const mobileView = useToggle();
+  const confirmModal = useToggle();
+
+  const handleConfirmClose = (): void => {
+    if (submitKey === 'pending') return;
+
+    confirmModal.close();
+  };
 
   if (key === 'idle') {
     return (
@@ -118,62 +153,224 @@ const ArticlesCreatorView = () => {
   }
 
   if (key === 'loaded') {
+    const ArticleContent = (
+      <ArticleMdRenderer
+        code={content}
+        components={ARTICLE_COMPONENTS}
+        thumbnail={
+          thumbnail.preview.length > 0 && (
+            <Thumbnail
+              src={thumbnail.preview[0]}
+              alt="Article thumbnail"
+              title={title}
+            />
+          )
+        }
+      />
+    );
+
     return (
-      <CreatorLayout
-        navigation={() => (
-          <Box orientation="row" between>
-            <Font variant="h5">Article creator</Font>
-            <Button size={1} shape="rounded" onClick={reset}>
-              <CloseIcon />
-            </Button>
-          </Box>
+      <>
+        {confirmModal.isOpen && (
+          <Modal onClose={handleConfirmClose}>
+            <Box
+              maxWidth="400px"
+              spacing={[200, 150, 400, submitKey === 'error' ? 250 : 0]}
+            >
+              <Font variant="h5">
+                Do you want to submit an article for review?
+              </Font>
+              <Font variant="b1">What will happen now: </Font>
+              <List ordered>
+                <ListItem>Your article will be sent to review</ListItem>
+                <ListItem>
+                  Moderators will check its content and suggest corrections
+                </ListItem>
+                <ListItem>
+                  Then you will have to introduce them - don&apos;t worry you
+                  will get an email notification
+                </ListItem>
+                <ListItem>
+                  Then your article will be published and will appear in the tab
+                  of your articles.
+                </ListItem>
+              </List>
+              <Box orientation="row" spacing={[150]} right>
+                <Button
+                  disabled={submitKey === 'pending'}
+                  variant="outlined"
+                  onClick={handleConfirmClose}
+                >
+                  Not now
+                </Button>
+                <Button loading={submitKey === 'pending'} onClick={submit}>
+                  Submit
+                </Button>
+              </Box>
+              {submitKey === 'error' && (
+                <Alert type="error">{submitResponse.message}</Alert>
+              )}
+            </Box>
+          </Modal>
         )}
-        codeToolbox={({ view, expandBoth, expandCode, expandPreview }) => (
-          <>
-            {view === 'code' && (
-              <Button size={1} shape="rounded" onClick={expandPreview}>
-                <PageIcon />
+        <CreatorLayout
+          navigation={() => (
+            <Box orientation="row" between>
+              <Font variant="h5">Article creator</Font>
+              <Box orientation="row" spacing={[150]}>
+                <Button
+                  size={1}
+                  shape="rounded"
+                  variant="outlined"
+                  onClick={reset}
+                >
+                  <CloseIcon />
+                </Button>
+                <Button size={1} shape="rounded" onClick={confirmModal.toggle}>
+                  <CheckIcon />
+                </Button>
+              </Box>
+            </Box>
+          )}
+          codeToolbox={({ view, expandBoth, expandCode, expandPreview }) => (
+            <>
+              {view === 'code' && (
+                <Button size={1} shape="rounded" onClick={expandPreview}>
+                  <PageIcon />
+                </Button>
+              )}
+              {view === 'code-full' && (
+                <Button size={1} shape="rounded" onClick={expandBoth}>
+                  <FullScreenCloseIcon />
+                </Button>
+              )}
+              {view === 'both' && (
+                <Button size={1} shape="rounded" onClick={expandCode}>
+                  <FullScreenIcon />
+                </Button>
+              )}
+              <Button
+                size={1}
+                shape="rounded"
+                variant={form.isOpen ? 'filled' : 'outlined'}
+                onClick={form.toggle}
+              >
+                <FormIcon />
               </Button>
-            )}
-            {view === 'code-full' && (
-              <Button size={1} shape="rounded" onClick={expandBoth}>
-                <FullScreenCloseIcon />
+            </>
+          )}
+          previewToolbox={({ view, expandBoth, expandPreview, expandCode }) => (
+            <>
+              {view === 'preview' && (
+                <Button size={1} shape="rounded" onClick={expandCode}>
+                  <CodeIcon />
+                </Button>
+              )}
+              {view === 'preview-full' && (
+                <Button size={1} shape="rounded" onClick={expandBoth}>
+                  <FullScreenCloseIcon />
+                </Button>
+              )}
+              {view === 'both' && (
+                <Button size={1} shape="rounded" onClick={expandPreview}>
+                  <FullScreenIcon />
+                </Button>
+              )}
+              <Button
+                size={1}
+                shape="rounded"
+                variant={mobileView.isOpen ? 'filled' : 'outlined'}
+                onClick={mobileView.toggle}
+              >
+                <MobileIcon />
               </Button>
-            )}
-            {view === 'both' && (
-              <Button size={1} shape="rounded" onClick={expandCode}>
-                <FullScreenIcon />
-              </Button>
-            )}
-          </>
-        )}
-        previewToolbox={({ view, expandBoth, expandPreview, expandCode }) => (
-          <>
-            {view === 'preview' && (
-              <Button size={1} shape="rounded" onClick={expandCode}>
-                <CodeIcon />
-              </Button>
-            )}
-            {view === 'preview-full' && (
-              <Button size={1} shape="rounded" onClick={expandBoth}>
-                <FullScreenCloseIcon />
-              </Button>
-            )}
-            {view === 'both' && (
-              <Button size={1} shape="rounded" onClick={expandPreview}>
-                <FullScreenIcon />
-              </Button>
-            )}
-          </>
-        )}
-      >
-        <Code onChange={change}>{code}</Code>
-        <ArticleMdRenderer
-          code={code}
-          components={ARTICLE_COMPONENTS}
-          thumbnail={null}
-        />
-      </CreatorLayout>
+            </>
+          )}
+        >
+          {form.isOpen ? (
+            <Box
+              padding={[200, 150, 200, 200]}
+              spacing={[200, 200, 200, 200, 400]}
+              maxWidth="600px"
+              margin="auto"
+            >
+              <FilePicker
+                preview={thumbnail.preview}
+                onChange={(files, preview) =>
+                  setField('thumbnail', {
+                    file: files[0],
+                    preview,
+                  })
+                }
+                onConfirm={() => {
+                  setField('thumbnail', {
+                    file: null,
+                    preview: [],
+                  });
+                }}
+              >
+                <Font variant="h5">Pick the thumbnail from your disc</Font>
+              </FilePicker>
+              <Field label="Title*">
+                <Input
+                  autoFocus
+                  value={title}
+                  placeholder="The best title is between 80 and 130 characters"
+                  onChange={(e) => setField('title', e.target.value)}
+                />
+              </Field>
+              <Field label="URL to article">
+                <Input
+                  placeholder="I will be automatically generated"
+                  value={url}
+                  disabled
+                  onChange={(e) => setField('url', e.target.value)}
+                />
+              </Field>
+              <Field label="Description*">
+                <Textarea
+                  value={description}
+                  placeholder="The best description is between 80 and 130 characters"
+                  onChange={(e) => setField('description', e.target.value)}
+                />
+              </Field>
+              <Field label="Language*">
+                <Select
+                  placeholder="You can write in English or Polish language"
+                  value={lang}
+                  onChange={(lang) => setField('lang', lang)}
+                  options={[
+                    {
+                      key: 'pl',
+                      child: <>Polish</>,
+                    },
+                    { key: 'en', child: <>English</> },
+                  ]}
+                />
+              </Field>
+              <Box orientation="row" right>
+                <Button onClick={confirmModal.toggle}>Confirm</Button>
+              </Box>
+            </Box>
+          ) : (
+            <Code onChange={(code) => setField('content', code)}>
+              {content}
+            </Code>
+          )}
+          {mobileView.isOpen ? (
+            <Box
+              variant="outlined"
+              padding={[200, 200, 200, 200]}
+              maxWidth="320px"
+              margin="auto"
+            >
+              {ArticleContent}
+            </Box>
+          ) : (
+            ArticleContent
+          )}
+        </CreatorLayout>
+      </>
     );
   }
 

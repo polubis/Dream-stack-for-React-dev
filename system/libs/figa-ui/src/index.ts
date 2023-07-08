@@ -29,5 +29,6 @@ export * from './lib/alert';
 export * from './lib/avatars';
 export * from './lib/field';
 export * from './lib/thumbnail';
+export * from './lib/file-picker';
 export * from './lib/loader';
 export * from './lib/shared';
