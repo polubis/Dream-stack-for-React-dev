@@ -1,14 +1,19 @@
+import { Box } from '../box';
 import type { ModalProps } from './defs';
 
 import { usePortal } from '@system/figa-hooks';
 
-const Modal = ({ children, onClose }: ModalProps) => {
+import c from 'classnames';
+
+const Modal = ({ className, children, onClose, ...props }: ModalProps) => {
   const { render } = usePortal();
 
   return render(
     <>
       <div className="backdrop" onClick={onClose} />
-      <div className="modal">{children}</div>
+      <Box className={c('modal', className)} {...props}>
+        {children}
+      </Box>
     </>
   );
 };

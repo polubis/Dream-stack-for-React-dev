@@ -1,7 +1,6 @@
-import type { ReactNode } from 'react';
+import type { BoxProps } from '../box';
 
-interface ModalProps {
-  children: ReactNode;
+interface ModalProps extends BoxProps {
   onClose?: () => void;
 }
 
