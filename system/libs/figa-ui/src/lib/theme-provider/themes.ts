@@ -125,6 +125,14 @@ const light: Theme = {
   outline: {
     color: tokens.common.black,
   },
+  field: {
+    invalid: {
+      color: tokens.red[100],
+    },
+    hint: {
+      color: tokens.common.black,
+    },
+  },
   font: {
     default: {
       color: tokens.common.black,
@@ -305,6 +313,14 @@ const light: Theme = {
 const dark: Theme = {
   outline: {
     color: tokens.common.white,
+  },
+  field: {
+    invalid: {
+      color: tokens.red[100],
+    },
+    hint: {
+      color: tokens.common.white,
+    },
   },
   font: {
     default: {

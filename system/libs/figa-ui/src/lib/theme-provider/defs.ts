@@ -309,6 +309,14 @@ interface Theme {
     bg: string;
     borderColor: string;
   };
+  field: {
+    invalid: {
+      color: string;
+    };
+    hint: {
+      color: string;
+    };
+  };
 }
 
 type ThemeKey = 'dark' | 'light';

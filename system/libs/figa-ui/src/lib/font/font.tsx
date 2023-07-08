@@ -12,6 +12,7 @@ const FONT_VARIANT_ELEMENT_MAP: VariantElementMap = {
   h6: 'h6',
   b1: 'p',
   b2: 'p',
+  b3: 'p',
 };
 
 const Font = ({

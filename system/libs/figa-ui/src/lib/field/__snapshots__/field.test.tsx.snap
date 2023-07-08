@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Field can be used when:  [FRAGILE] assigns classes if error passed 1`] = `
+<DocumentFragment>
+  <div
+    class="box field my-class invalid column empty"
+  >
+    <p
+      class="font b3 default field-hint italic"
+    >
+      My error
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Field can be used when:  [FRAGILE] assigns classes if no error passed 1`] = `
+<DocumentFragment>
+  <div
+    class="box field my-class column empty"
+  >
+    <p
+      class="font b3 default field-hint italic"
+    >
+      My content
+    </p>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Field can be used when:  allows to pass any other native property 1`] = `
+<DocumentFragment>
+  <div
+    class="box field column empty"
+    style="max-width: 300px; min-width: 200px;"
+  >
+    <div
+      class="box-item-wrapper"
+      style="margin-bottom: 16px;"
+    >
+      <p
+        class="font b3 default field-hint italic"
+      >
+        My content
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

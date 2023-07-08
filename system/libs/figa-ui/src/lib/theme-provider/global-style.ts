@@ -124,6 +124,10 @@ const GlobalStyle = createGlobalStyle`
             ${font('1.4rem', '0.1px', 'LexendMedium', 500)}
         }
 
+        &.b3 {
+            ${font('1.2rem', '0.1px', 'LexendRegular', 400)}
+        }
+
         &.italic, &.italic > * {
             font-style: italic;
         }
@@ -1188,6 +1192,33 @@ const GlobalStyle = createGlobalStyle`
     }
     
     /* alert.tsx */
+
+    /* field.tsx */
+
+    .field {
+        ${column()}
+
+        &-hint {
+            color: ${(props) => props.theme.field.hint.color};
+        }
+
+        &.invalid {
+            .field-hint {
+                color: ${(props) => props.theme.field.invalid.color};
+            }
+        }
+
+        &-label {
+            ${trim()}
+            margin-bottom: ${tokens.spacing[100]};
+        }
+  
+        &-hint {
+            margin-top: ${tokens.spacing[100]};
+        }
+    }
+
+    /* field.tsx */
 `;
 
 export { GlobalStyle };
