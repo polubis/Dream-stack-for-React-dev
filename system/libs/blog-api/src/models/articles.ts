@@ -1,9 +1,11 @@
 import {
+  Content,
   Description,
   Email,
   Id,
   Name,
   PaginatedResponse,
+  Response,
   Title,
   Url,
 } from './general';
@@ -21,16 +23,25 @@ interface ArticleDto {
   url: Url;
 }
 
+interface FullArticleDto extends ArticleDto {
+  content: Content;
+}
+
 type GetArticlesResponse = PaginatedResponse<ArticleDto[]>;
-interface GetArticlesSearchParams {
+interface GetArticlesParams {
   Search?: string;
   ItemsPerPage?: number;
   CurrentPage?: number;
 }
 
+type GetArticleParams = { id: Id };
+type GetArticleResponse = Response<FullArticleDto>;
+
 export type {
   ArticleDto,
   ArticleStatus,
   GetArticlesResponse,
-  GetArticlesSearchParams,
+  GetArticlesParams,
+  GetArticleParams,
+  GetArticleResponse,
 };

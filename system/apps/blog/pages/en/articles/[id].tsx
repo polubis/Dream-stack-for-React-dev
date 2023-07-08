@@ -1,18 +1,17 @@
 import type { GetStaticProps, GetStaticPaths } from 'next';
 import type { ArticlePageParams, ArticlePageProps } from '../../../models';
 
-import { createArticlePath, getArticlesIds } from '../../../utils';
-import { readFileSync } from 'fs';
 import { serialize } from 'next-mdx-remote/serialize';
 import { MainLayout, PageWrapper } from '../../../components';
 import { MDXRemote } from 'next-mdx-remote';
 import { ArticleLayout } from '@system/figa-ui';
+import { getArticles, getArticle } from '@system/blog-api';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const ids = await getArticlesIds('en');
+  const { data } = await getArticles({ ItemsPerPage: 50 })
 
   return {
-    paths: ids.map((id) => ({
+    paths: data.map(({ id }) => ({
       params: {
         id,
       },
@@ -24,8 +23,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<ArticlePageProps> = async ({
   params,
 }: ArticlePageParams) => {
-  const filePath = createArticlePath('en', params.id + '.mdx');
-  const source = await serialize(readFileSync(filePath, 'utf8'));
+  const { data } = await getArticle(params)
+  const source = await serialize(data.content);
 
   return {
     props: {

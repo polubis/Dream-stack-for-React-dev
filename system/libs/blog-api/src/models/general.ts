@@ -7,6 +7,7 @@ type Url = string;
 type Login = string;
 type Password = string;
 type DateStamp = string;
+type Content = string;
 
 type APIPath = 'Account/SignIn' | 'Account/SignOut' | 'Articles';
 
@@ -49,5 +50,6 @@ export type {
   ResponseError,
   Password,
   DateStamp,
+  Content,
   APIPath,
 };

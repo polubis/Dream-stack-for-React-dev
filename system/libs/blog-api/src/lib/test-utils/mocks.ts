@@ -1,7 +1,7 @@
 import type {
   ErrorResponse,
   GetArticlesResponse,
-  GetArticlesSearchParams,
+  GetArticlesParams,
   PaginatedResponse,
   ResponseError,
 } from '../../models';
@@ -37,8 +37,8 @@ const mockOkPaginatedResponse = <T>(
 });
 
 const mockGetArticlesSearchParams = (
-  params?: Partial<GetArticlesSearchParams>
-): GetArticlesSearchParams => ({
+  params?: Partial<GetArticlesParams>
+): GetArticlesParams => ({
   Search: 'react',
   CurrentPage: 1,
   ItemsPerPage: 15,
