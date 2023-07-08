@@ -30,7 +30,7 @@ const Template: Story = () => {
       </Field>
       <Font variant="h5">Field with error and label</Font>
       <Field
-        maxWidth='300px'
+        maxWidth="300px"
         label="Example of label ads adda ssada dsadsa dsadsad asd sad saasdasdasdad "
         hint="Some description..."
         error="Some error..."

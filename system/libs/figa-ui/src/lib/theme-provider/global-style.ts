@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { tokens } from './themes';
 import {
-  appearIn,
+  slideIn,
   center,
   central,
   column,
@@ -14,6 +14,7 @@ import {
   setupFilledIcon,
   setupOutlinedIcon,
   trim,
+  appearIn,
 } from '../shared';
 import { T_DOWN } from './viewport';
 
@@ -261,9 +262,12 @@ const GlobalStyle = createGlobalStyle`
     .modal {
         ${central('fixed')}
         ${column()}
+        ${appearIn()}
         min-width: 280px;
         min-height: 280px;
-        max-height: 96vh;
+        max-height: calc(100% - ${tokens.spacing[250]});
+        width: 100%;
+        max-width: 380px;
         padding: ${tokens.spacing[250]};
         background: ${(props) => props.theme.modal.bg};
         border-radius: ${tokens.radius[50]};
@@ -315,7 +319,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         .select-list {
-            ${appearIn(tokens.spacing[200], tokens.spacing[100])}
+            ${slideIn(tokens.spacing[200], tokens.spacing[100])}
             position: absolute;
             list-style: none;
             margin: 0;
@@ -892,7 +896,7 @@ const GlobalStyle = createGlobalStyle`
         position: relative;
 
         &-content {
-            ${appearIn(tokens.spacing[0], tokens.spacing[0])};
+            ${slideIn(tokens.spacing[0], tokens.spacing[0])};
             position: absolute;
             z-index: ${tokens.z[50]};
         }

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="backdrop"
+  />
+  <div
+    class="box modal my-class column empty"
+  />
+</DocumentFragment>
+`;

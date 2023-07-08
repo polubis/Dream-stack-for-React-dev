@@ -5,7 +5,7 @@ import type {
   CreatorLayoutView,
 } from './defs';
 import { T_DOWN, T_UP, isTDown, isTUp, tokens } from '../theme-provider';
-import { appearIn, column, row } from '../shared';
+import { slideIn, column, row } from '../shared';
 import { useEffect, useState } from 'react';
 import c from 'classnames';
 import { useElementSize } from '@system/figa-hooks';
@@ -92,22 +92,22 @@ const Container = styled.div`
       'content toolbox';
 
     ${CodeWrapper} {
-      ${appearIn('0px', '0px')}
+      ${slideIn('0px', '0px')}
       grid-area: content;
     }
 
     ${CodeToolboxWrapper} {
-      ${appearIn('0px', '0px')}
+      ${slideIn('0px', '0px')}
       grid-area: toolbox;
     }
 
     ${PreviewWrapper} {
-      ${appearIn('0px', '0px')}
+      ${slideIn('0px', '0px')}
       grid-area: content;
     }
 
     ${PreviewToolboxWrapper} {
-      ${appearIn('0px', '0px')}
+      ${slideIn('0px', '0px')}
       grid-area: toolbox;
     }
   }

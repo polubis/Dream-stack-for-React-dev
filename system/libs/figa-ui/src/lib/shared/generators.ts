@@ -1,5 +1,4 @@
 import type { FontFamily, FontWeight, StrechablePosition } from './defs';
-import type { Keyframes } from 'styled-components';
 import { keyframes } from 'styled-components';
 
 import { css } from 'styled-components';
@@ -59,7 +58,17 @@ const font = (
   font-weight: ${weight};
 `;
 
-const appearInAnimation = (from = '15px', to = '0'): Keyframes => keyframes`
+const appearInAnimation = () => keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const slideInAnimation = (from = '15px', to = '0') => keyframes`
   from {
     transform: translateY(${from});
     opacity: 0;
@@ -71,9 +80,14 @@ const appearInAnimation = (from = '15px', to = '0'): Keyframes => keyframes`
   }
 `;
 
-const appearIn = (from?: string, to?: string) => css`
+const slideIn = (from?: string, to?: string) => css`
   opacity: 0;
-  animation: ${appearInAnimation(from, to)} 0.2s ease-in-out forwards;
+  animation: ${slideInAnimation(from, to)} 0.2s ease-in-out forwards;
+`;
+
+const appearIn = () => css`
+  opacity: 0;
+  animation: ${appearInAnimation()} 0.2s ease-in-out forwards;
 `;
 
 const shape = (size: string, radius: string) =>
@@ -161,10 +175,12 @@ export {
   row,
   column,
   trim,
-  appearIn,
+  slideIn,
   central,
   shape,
   buttonBaseEffects,
+  appearInAnimation,
   setupFilledIcon,
   setupOutlinedIcon,
+  appearIn,
 };
