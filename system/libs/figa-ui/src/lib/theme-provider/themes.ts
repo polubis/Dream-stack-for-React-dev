@@ -125,6 +125,15 @@ const light: Theme = {
   outline: {
     color: tokens.common.black,
   },
+  filePicker: {
+    outline: {
+      color: tokens.primary[50],
+    },
+    invalid: {
+      color: tokens.red[150],
+      outline: tokens.red[150],
+    },
+  },
   field: {
     invalid: {
       color: tokens.red[100],
@@ -313,6 +322,15 @@ const light: Theme = {
 const dark: Theme = {
   outline: {
     color: tokens.common.white,
+  },
+  filePicker: {
+    outline: {
+      color: tokens.primary[50],
+    },
+    invalid: {
+      color: tokens.red[150],
+      outline: tokens.red[150],
+    },
   },
   field: {
     invalid: {

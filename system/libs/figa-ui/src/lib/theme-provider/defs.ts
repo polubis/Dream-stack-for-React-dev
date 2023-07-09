@@ -317,6 +317,15 @@ interface Theme {
       color: string;
     };
   };
+  filePicker: {
+    outline: {
+      color: string;
+    };
+    invalid: {
+      color: string;
+      outline: string;
+    };
+  };
 }
 
 type ThemeKey = 'dark' | 'light';

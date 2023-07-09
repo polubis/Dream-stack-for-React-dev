@@ -15,6 +15,8 @@ import {
   setupOutlinedIcon,
   trim,
   appearIn,
+  disabled,
+  wrap,
 } from '../shared';
 import { T_DOWN } from './viewport';
 
@@ -264,7 +266,6 @@ const GlobalStyle = createGlobalStyle`
         ${column()}
         ${appearIn()}
         min-width: 280px;
-        min-height: 280px;
         max-height: calc(100% - ${tokens.spacing[250]});
         width: 100%;
         max-width: 380px;
@@ -640,8 +641,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
+            ${disabled()}
         }
     }
 
@@ -1238,6 +1238,75 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* field.tsx */
+
+    /* file-picker.tsx */
+
+    .file-picker {
+        position: relative;
+        cursor: pointer;
+        padding: ${tokens.spacing[250]};
+        min-height: ${tokens.spacing[900]};
+
+        &.previewing {
+            padding: ${tokens.spacing[250]} ${tokens.spacing[250]} ${
+  tokens.spacing[150]
+} ${tokens.spacing[250]};
+        }
+
+        &.previewing:not(.disabled, .loading) {
+            .file-picker-preview-image img {
+                &:hover {
+                    outline: 2px solid ${(props) =>
+                      props.theme.filePicker.outline.color};
+                }
+            }
+        }
+
+        &:hover:not(.disabled, .loading) {
+            opacity: 0.8;
+        }
+
+        &.disabled, &.loading {
+            ${disabled()}
+        }
+
+        &.invalid {
+            outline: 2px solid ${(props) =>
+              props.theme.filePicker.invalid.outline};
+              
+            .font {
+                color: ${(props) => props.theme.filePicker.invalid.color};
+            }
+        }
+
+        .file-picker-input {
+            visibility: hidden;
+            position: absolute;
+        }
+        
+        .file-picker-loader {
+            ${center()}
+            ${streched('absolute')}
+        }
+
+        .file-picker-preview {
+            ${wrap()}
+
+            .file-picker-preview-image {
+                ${size(tokens.spacing[550])}
+                box-shadow: ${tokens.shadow[50]};
+                margin: 0 ${tokens.spacing[100]} ${tokens.spacing[100]} 0;
+
+                img {
+                    ${size('100%')}
+                    object-fit: cover;
+                    border-radius: ${tokens.radius[50]};
+                }
+            }
+        }
+    }
+
+    /* file-picker.tsx */
 `;
 
 export { GlobalStyle };
