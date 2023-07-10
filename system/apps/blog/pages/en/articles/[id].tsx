@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<ArticlePageProps> = async ({
 const ArticlePage = ({ source }: ArticlePageProps) => {
   return (
     <MainLayout>
-      <ArticleLayout>
+      <ArticleLayout thumbnail={null}>
         <PageWrapper>
           <MDXRemote {...source} />
         </PageWrapper>
