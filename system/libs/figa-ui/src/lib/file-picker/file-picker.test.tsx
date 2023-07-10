@@ -44,4 +44,21 @@ describe('File picker can be used when: ', () => {
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(PREVIEW[0]);
   });
+
+  it('[FRAGILE] assigns additional classes if only one preview item passed', () => {
+    const { asFragment } = render(
+      <FilePicker
+        multiple
+        className="my-class"
+        invalid
+        disabled
+        loading
+        preview={[PREVIEW[0]]}
+      >
+        Pick file
+      </FilePicker>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
