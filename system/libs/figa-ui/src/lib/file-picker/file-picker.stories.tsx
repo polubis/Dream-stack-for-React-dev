@@ -76,6 +76,13 @@ Default.args = {
   preview: [],
 };
 
+export const OnePreview = Template.bind({});
+OnePreview.args = {
+  preview: [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOBl5eA3gwpjJrMFmbJaY3VIZNjH1O6iJYTg&usqp=CAU',
+  ],
+};
+
 export const WithContent = Template.bind({});
 WithContent.args = {
   preview: [

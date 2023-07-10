@@ -1304,6 +1304,10 @@ const GlobalStyle = createGlobalStyle`
                 }
             }
         }
+
+        &.one .file-picker-preview-image {
+            ${size('100%', 'auto')}
+        }
     }
 
     /* file-picker.tsx */

@@ -89,6 +89,7 @@ const FilePicker = ({
           'file-picker',
           { disabled },
           { previewing },
+          { one: preview.length === 1 },
           { loading: progress },
           { invalid },
           className

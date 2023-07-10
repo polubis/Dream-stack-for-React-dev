@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 interface ArticleMdRendererProps {
   code: string;
   components: Components;
-  thumbnail: ReactNode
+  thumbnail: ReactNode;
 }
 
 interface ArticlesCreatorProps extends ArticleMdRendererProps {
