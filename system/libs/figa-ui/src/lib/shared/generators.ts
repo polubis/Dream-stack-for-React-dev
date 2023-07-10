@@ -166,10 +166,16 @@ const trim = () =>
     text-overflow: ellipsis;
   `;
 
+const disabled = () => css`
+  opacity: 0.4;
+  cursor: not-allowed;
+`;
+
 export {
   font,
   size,
   center,
+  disabled,
   wrap,
   streched,
   row,

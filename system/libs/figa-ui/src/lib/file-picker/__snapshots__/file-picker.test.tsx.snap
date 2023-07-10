@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`File picker can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="box file-picker disabled previewing loading invalid my-class column filled"
+  >
+    <input
+      class="file-picker-input"
+      disabled=""
+      multiple=""
+      type="file"
+    />
+    <div
+      class="file-picker-preview"
+    >
+      <picture
+        class="image file-picker-preview-image"
+      >
+        <img
+          alt="File picker preview"
+          loading="eager"
+          src="https://i.ytimg.com/vi/hy7tHQUR3TM/maxresdefault.jpg"
+        />
+      </picture>
+      <picture
+        class="image file-picker-preview-image"
+      >
+        <img
+          alt="File picker preview"
+          loading="eager"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOBl5eA3gwpjJrMFmbJaY3VIZNjH1O6iJYTg&usqp=CAU"
+        />
+      </picture>
+    </div>
+    <div
+      class="loader small file-picker-loader"
+    >
+      <div
+        class="loader-animation loader-1"
+      >
+        <div>
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
