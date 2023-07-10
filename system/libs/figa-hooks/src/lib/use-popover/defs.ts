@@ -1,5 +1,5 @@
 import type { RefObject } from 'react';
-import type { UseToggleReturn } from '../use-toggle';
+import type { ToggleReturn } from '../use-toggle';
 
 interface UsePopoverReturn<
   T extends HTMLElement,
@@ -9,7 +9,7 @@ interface UsePopoverReturn<
   popoverRef: RefObject<P>;
   triggerRef: RefObject<T>;
   contentRef: RefObject<C>;
-  popover: UseToggleReturn;
+  popover: ToggleReturn;
 }
 
 export type { UsePopoverReturn };

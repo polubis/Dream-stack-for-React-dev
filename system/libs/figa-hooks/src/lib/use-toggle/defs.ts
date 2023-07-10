@@ -1,10 +1,14 @@
-interface UseToggleReturn {
+type ToggleData<T = null> = T | null;
+
+interface ToggleReturn<T = null> {
   isOpen: boolean;
-  open: () => void;
+  data: ToggleData<T>;
+  open: (data?: ToggleData<T>) => void;
   close: () => void;
-  toggle: () => void;
+  toggle: (data?: ToggleData<T>) => void;
+  override: (data?: ToggleData<T>) => void;
 }
 
-type UseTogglePayload = [(boolean | (() => boolean))?];
+type TogglePayload<T = null> = [boolean?, ToggleData<T>?];
 
-export type { UseTogglePayload, UseToggleReturn };
+export type { TogglePayload, ToggleReturn, ToggleData };
