@@ -168,7 +168,11 @@ const ArticlesCreatorView = () => {
         )}
       >
         <Code onChange={change}>{code}</Code>
-        <ArticleMdRenderer code={code} components={ARTICLE_COMPONENTS} />
+        <ArticleMdRenderer
+          code={code}
+          components={ARTICLE_COMPONENTS}
+          thumbnail={null}
+        />
       </CreatorLayout>
     );
   }

@@ -65,6 +65,10 @@ const Container = styled.div`
     }
   }
 
+  .thumbnail .image {
+    padding: 0;
+  }
+
   .image {
     display: block;
 
@@ -79,9 +83,16 @@ const Container = styled.div`
   }
 `;
 
-const ArticleLayout = ({ className, children }: ArticleLayoutProps) => {
+const ArticleLayout = ({
+  className,
+  children,
+  thumbnail,
+}: ArticleLayoutProps) => {
   return (
-    <Container className={c('article-layout', className)}>{children}</Container>
+    <Container className={c('article-layout', className)}>
+      {thumbnail}
+      {children}
+    </Container>
   );
 };
 

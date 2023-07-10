@@ -1307,6 +1307,34 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* file-picker.tsx */
+
+    /* thumbnail.tsx */
+
+    .thumbnail {
+        position: relative;
+        height: 320px;
+
+        img {
+            ${streched('absolute')}
+            ${size('100%')}
+            object-fit: cover;
+        }
+        
+        &-content {
+            ${center()}
+            ${streched('absolute')}
+            padding: ${tokens.spacing[350]} ${tokens.spacing[250]};
+            background: ${(props) => props.theme.thumbnail.bg};
+
+            .h2 {
+                text-align: center;
+                color: ${(props) => props.theme.thumbnail.color};
+                text-shadow: ${tokens.shadow[50]};
+            }
+        }
+    }
+
+    /* thumbnail.tsx */
 `;
 
 export { GlobalStyle };

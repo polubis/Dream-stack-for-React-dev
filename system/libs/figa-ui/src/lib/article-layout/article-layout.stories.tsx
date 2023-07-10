@@ -8,6 +8,7 @@ import { Box } from '../box';
 import { Code } from '../code';
 import { List, ListItem } from '../list';
 import { Image } from '../image';
+import { Thumbnail } from '../thumbnail';
 
 export default {
   component: ArticleLayout,
@@ -17,7 +18,15 @@ export default {
 const Template: Story = () => {
   return (
     <Box>
-      <ArticleLayout>
+      <ArticleLayout
+        thumbnail={
+          <Thumbnail
+            alt="Thumbnail"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqMoD_dTTKX7ZPPEdDaSFDzOfKk7WNfPDq8w&usqp=CAU"
+            title="Example of thumbnail"
+          />
+        }
+      >
         <Font variant="h1">Header 1 asd sadasdasadadas d</Font>
         <Font variant="b1">
           It is a long established fact that a reader will be distracted by the

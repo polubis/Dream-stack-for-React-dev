@@ -151,6 +151,10 @@ interface Theme {
       color: string;
     };
   };
+  thumbnail: {
+    bg: string;
+    color: string;
+  };
   body: {
     bg: string;
   };

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Thumbnail can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="thumbnail my-class"
+  >
+    <picture
+      class="image"
+    >
+      <img
+        alt="My thumbnail"
+        loading="eager"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqMoD_dTTKX7ZPPEdDaSFDzOfKk7WNfPDq8w&usqp=CAU"
+      />
+    </picture>
+    <div
+      class="thumbnail-content"
+    >
+      <h2
+        class="font h2 default"
+      >
+        My thumbnail
+      </h2>
+    </div>
+  </div>
+</DocumentFragment>
+`;

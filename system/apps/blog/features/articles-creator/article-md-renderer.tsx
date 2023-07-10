@@ -14,11 +14,11 @@ const createOverrides = (components: Components): MarkdownToJSX.Overrides => {
   return overrides;
 };
 
-const ArticleMdRenderer = ({ code, components }: ArticleMdRendererProps) => {
+const ArticleMdRenderer = ({ code, components, thumbnail }: ArticleMdRendererProps) => {
   const overrides = createOverrides(components);
 
   return (
-    <ArticleLayout>
+    <ArticleLayout thumbnail={thumbnail}>
       <Markdown
         key={code}
         options={{

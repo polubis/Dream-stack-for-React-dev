@@ -11,6 +11,7 @@ import { CodeBlock } from '../code-block';
 import { ArticleLayout } from '../article-layout';
 import { Button } from '../button';
 import { CloseIcon, CodeIcon, PageIcon } from '../icon';
+import { Thumbnail } from '../thumbnail';
 
 export default {
   component: CreatorLayout,
@@ -145,7 +146,15 @@ usersList.handleRemove(9);
 // Returns 9 elements.
 console.log(usersList.list.items);`}
       </Code>
-      <ArticleLayout>
+      <ArticleLayout
+        thumbnail={
+          <Thumbnail
+            alt="Thumbnail"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqMoD_dTTKX7ZPPEdDaSFDzOfKk7WNfPDq8w&usqp=CAU"
+            title="Example of thumbnail"
+          />
+        }
+      >
         <Font variant="h4">Prelude</Font>
         <Font variant="b1">
           We grouped our tests into functionalities, and now we need to

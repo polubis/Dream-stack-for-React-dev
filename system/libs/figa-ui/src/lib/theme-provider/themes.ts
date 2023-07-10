@@ -125,6 +125,10 @@ const light: Theme = {
   outline: {
     color: tokens.common.black,
   },
+  thumbnail: {
+    bg: tokens.backdrop[50],
+    color: tokens.common.white,
+  },
   filePicker: {
     outline: {
       color: tokens.primary[50],
@@ -321,6 +325,10 @@ const light: Theme = {
 
 const dark: Theme = {
   outline: {
+    color: tokens.common.white,
+  },
+  thumbnail: {
+    bg: tokens.backdrop[50],
     color: tokens.common.white,
   },
   filePicker: {
