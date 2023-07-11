@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form can be used when:  allows to change field value and validates 1`] = `
+Object {
+  "dirty": false,
+  "errors": Object {
+    "code": "max",
+    "flags": null,
+    "password": "minLength",
+    "username": "required",
+  },
+  "invalid": true,
+  "invalidCount": 3,
+  "keys": Array [
+    "username",
+    "password",
+    "code",
+    "flags",
+  ],
+  "pristine": true,
+  "progress": 25,
+  "result": Object {
+    "code": true,
+    "flags": false,
+    "password": true,
+    "username": true,
+  },
+  "touch": Object {
+    "code": true,
+    "flags": false,
+    "password": true,
+    "username": true,
+  },
+  "touched": true,
+  "untouched": false,
+  "valid": false,
+  "validCount": 1,
+  "values": Object {
+    "code": 4,
+    "flags": Array [
+      true,
+      false,
+    ],
+    "password": "d",
+    "username": "",
+  },
+}
+`;
+
+exports[`Form can be used when:  allows to confirm and validates 1`] = `
+Object {
+  "dirty": true,
+  "errors": Object {
+    "code": "max",
+    "flags": null,
+    "password": "minLength",
+    "username": "required",
+  },
+  "invalid": true,
+  "invalidCount": 3,
+  "keys": Array [
+    "username",
+    "password",
+    "code",
+    "flags",
+  ],
+  "pristine": false,
+  "progress": 25,
+  "result": Object {
+    "code": true,
+    "flags": false,
+    "password": true,
+    "username": true,
+  },
+  "touch": Object {
+    "code": false,
+    "flags": false,
+    "password": false,
+    "username": false,
+  },
+  "touched": false,
+  "untouched": true,
+  "valid": false,
+  "validCount": 1,
+  "values": Object {
+    "code": 3,
+    "flags": Array [
+      true,
+      false,
+    ],
+    "password": "",
+    "username": "",
+  },
+}
+`;
+
+exports[`Form can be used when:  initializes state 1`] = `
+Object {
+  "dirty": false,
+  "errors": Object {
+    "code": null,
+    "flags": null,
+    "password": null,
+    "username": null,
+  },
+  "invalid": false,
+  "invalidCount": 0,
+  "keys": Array [
+    "username",
+    "password",
+    "code",
+    "flags",
+  ],
+  "pristine": true,
+  "progress": 0,
+  "result": Object {
+    "code": false,
+    "flags": false,
+    "password": false,
+    "username": false,
+  },
+  "touch": Object {
+    "code": false,
+    "flags": false,
+    "password": false,
+    "username": false,
+  },
+  "touched": false,
+  "untouched": true,
+  "valid": true,
+  "validCount": 4,
+  "values": Object {
+    "code": 1,
+    "flags": Array [
+      true,
+      false,
+    ],
+    "password": "",
+    "username": "",
+  },
+}
+`;
+
+exports[`Form can be used when:  validates on init if passed in configuration 1`] = `
+Object {
+  "dirty": false,
+  "errors": Object {
+    "code": "max",
+    "flags": null,
+    "password": "minLength",
+    "username": "required",
+  },
+  "invalid": true,
+  "invalidCount": 3,
+  "keys": Array [
+    "username",
+    "password",
+    "code",
+    "flags",
+  ],
+  "pristine": true,
+  "progress": 25,
+  "result": Object {
+    "code": true,
+    "flags": false,
+    "password": true,
+    "username": true,
+  },
+  "touch": Object {
+    "code": false,
+    "flags": false,
+    "password": false,
+    "username": false,
+  },
+  "touched": true,
+  "untouched": false,
+  "valid": false,
+  "validCount": 1,
+  "values": Object {
+    "code": 3,
+    "flags": Array [
+      true,
+      false,
+    ],
+    "password": "",
+    "username": "",
+  },
+}
+`;
