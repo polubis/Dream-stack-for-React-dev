@@ -1,6 +1,6 @@
-import type { Login, Password } from './general';
+import type { Email, Login, Password, Response, SignedInUser } from './general';
 
-type SignInResponse = void;
+type SignInResponse = Response<SignedInUser>;
 interface SignInPayload {
   login: Login;
   password: Password;
@@ -10,10 +10,10 @@ type SignOutResponse = void;
 
 type RegisterResponse = void;
 interface RegisterPayload {
-  login: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
+  login: Login;
+  email: Email;
+  password: Password;
+  confirmPassword: Password;
 }
 
 export type {

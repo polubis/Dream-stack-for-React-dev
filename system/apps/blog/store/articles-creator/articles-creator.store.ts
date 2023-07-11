@@ -18,7 +18,7 @@ const useArticlesCreatorStore = create<ArticlesCreatorStore>((set) => ({
   },
 }));
 
-const reset = () => {
+const reset = (): void => {
   useArticlesCreatorStore.setState({ key: 'idle' });
 };
 

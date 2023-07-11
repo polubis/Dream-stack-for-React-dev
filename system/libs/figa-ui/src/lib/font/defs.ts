@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import type { FONT_MOTIVES, FONT_VARIANTS } from './consts';
 
 type FontVariant = (typeof FONT_VARIANTS)[number];
@@ -20,8 +20,12 @@ type SupportedFontElement =
 
 type VariantElementMap = Record<FontVariant, SupportedFontElement>;
 
-interface FontProps {
-  className?: string;
+type FontHTMLElementProps = Omit<
+  DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
+  'children'
+>;
+
+interface FontProps extends FontHTMLElementProps {
   element?: SupportedFontElement;
   variant: FontVariant;
   children: ReactNode;

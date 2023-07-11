@@ -5,22 +5,23 @@ import { authorize } from '../auth';
 
 const useSignInStore = create<SignInStore>((set) => ({
   key: 'idle',
+  error: null,
   signIn: async (payload) => {
     set({ key: 'pending' });
 
     try {
-      await signIn(payload);
+      const { data } = await signIn(payload);
 
-      authorize();
+      authorize(data);
 
       set({ key: 'ok' });
     } catch (error: unknown) {
-      set({ key: 'error', response: getError(error) });
+      set({ key: 'error', error: getError(error) });
     }
   },
 }));
 
-const reset = () => {
+const reset = (): void => {
   useSignInStore.setState({ key: 'idle' });
 };
 

@@ -2,6 +2,9 @@ type AppSelectors =
   | 'app-nav-sign-in-btn'
   | 'app-nav-sign-out-btn'
   | 'app-nav-user-avatar-btn'
+  | 'app-nav-user-email'
+  | 'app-nav-user-roles'
+  | 'app-nav-user-username'
   | 'app-footer-recommended-articles-section'
   | 'app-footer-recommended-articles-list';
 

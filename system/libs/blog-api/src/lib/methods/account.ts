@@ -9,7 +9,12 @@ import { getPath } from '../core';
 import { blogAPI } from '../instances';
 
 const signIn = async (payload: SignInPayload): Promise<SignInResponse> => {
-  await blogAPI.post<SignInResponse>(getPath('Account/SignIn'), payload);
+  const { data } = await blogAPI.post<SignInResponse>(
+    getPath('Account/SignIn'),
+    payload
+  );
+
+  return data;
 };
 
 const signOut = async (): Promise<SignOutResponse> => {
