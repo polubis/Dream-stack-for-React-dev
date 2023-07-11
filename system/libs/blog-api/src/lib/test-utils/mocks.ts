@@ -3,6 +3,7 @@ import type {
   GetArticlesResponse,
   GetArticlesSearchParams,
   PaginatedResponse,
+  RegisterPayload,
   ResponseError,
 } from '../../models';
 
@@ -74,10 +75,19 @@ const mockOkGetArticlesResponse = (
   };
 };
 
+const mockRegisterPayload = (payload?: Partial<RegisterPayload>) => ({
+  login: 'piotr1994',
+  password: 'piotr1994',
+  confirmPassword: 'piotr1994',
+  email: 'piotr@wp.pl',
+  ...payload,
+});
+
 export {
   mockErrorResponse,
   mockOkPaginatedResponse,
   mockGetArticlesSearchParams,
   mockOkGetArticlesResponse,
   mockResponseError,
+  mockRegisterPayload,
 };

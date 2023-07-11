@@ -8,7 +8,11 @@ type Login = string;
 type Password = string;
 type DateStamp = string;
 
-type APIPath = 'Account/SignIn' | 'Account/SignOut' | 'Articles';
+type APIPath =
+  | 'Account/SignIn'
+  | 'Account/SignOut'
+  | 'Articles'
+  | 'Account/Register';
 
 interface ResponseError {
   key: string;
