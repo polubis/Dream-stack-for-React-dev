@@ -1,4 +1,4 @@
-import type { APIPath } from '../../models';
+import type { APIPath } from '@system/blog-api-models';
 import { getPath } from './get-path';
 
 const API_URL = 'https://localhost:3000';

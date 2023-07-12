@@ -1,4 +1,4 @@
-import type { SignedInUser } from '@system/blog-api';
+import type { SignedInUser } from '@system/blog-api-models';
 
 type NullableSignedInUser = SignedInUser | null;
 

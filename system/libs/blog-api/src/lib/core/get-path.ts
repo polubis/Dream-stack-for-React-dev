@@ -1,4 +1,4 @@
-import type { APIPath } from '../../models';
+import type { APIPath } from '@system/blog-api-models';
 import { getUrl } from './get-url';
 
 const getPath = (path: APIPath): string => {

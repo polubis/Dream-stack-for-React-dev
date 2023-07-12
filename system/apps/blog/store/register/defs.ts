@@ -1,4 +1,4 @@
-import type { RegisterPayload, ResponseError } from '@system/blog-api';
+import type { RegisterPayload, ResponseError } from '@system/blog-api-models';
 import type { FormState } from '@system/utils';
 
 interface RegisterActions {

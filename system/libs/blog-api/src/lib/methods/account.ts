@@ -4,7 +4,7 @@ import type {
   SignOutResponse,
   RegisterPayload,
   RegisterResponse,
-} from '../../models';
+} from '@system/blog-api-models';
 import { getPath } from '../core';
 import { blogAPI } from '../instances';
 
