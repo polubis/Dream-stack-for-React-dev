@@ -1,24 +1,19 @@
+import type { SignedInUser } from '@system/blog-api';
+
+type NullableSignedInUser = SignedInUser | null;
+
 interface AuthStorage {
-  authorized: boolean;
+  user: NullableSignedInUser;
 }
 
 interface AuthActions {
   check: () => void;
 }
 
-interface IdleState {
-  key: 'idle';
+interface AuthState {
+  key: 'idle' | 'authorized' | 'unauthorized';
+  user: NullableSignedInUser;
 }
-
-interface AuthorizedState {
-  key: 'authorized';
-}
-
-interface UnauthorizedState {
-  key: 'unauthorized';
-}
-
-type AuthState = IdleState | AuthorizedState | UnauthorizedState;
 
 type AuthStore = AuthState & AuthActions;
 
@@ -29,8 +24,6 @@ export type {
   AuthActions,
   AuthState,
   AuthStorage,
-  IdleState,
-  AuthorizedState,
-  UnauthorizedState,
   AuthStoreStateKey,
+  NullableSignedInUser,
 };

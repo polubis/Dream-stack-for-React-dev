@@ -1,49 +1,50 @@
-import type { SignInPayload } from '../../models';
 import { getPath } from '../core';
 import { blogAPI } from '../instances';
-import { mockRegisterPayload } from '../test-utils';
+import {
+  mockAxiosResponse,
+  mockRegisterPayload,
+  mockSignInPayload,
+  mockSignInResponse,
+} from '../test-utils';
 import { register, signIn, signOut } from './account';
 
 jest.mock('../instances');
 
 describe('Account methods works when: ', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('sign in endpoint is called with payload', async () => {
-    const postSpy = jest.fn();
+    const response = mockAxiosResponse(mockSignInResponse());
+    const spy = jest.spyOn(blogAPI, 'post').mockResolvedValueOnce(response);
 
-    jest.spyOn(blogAPI, 'post').mockImplementationOnce(postSpy);
+    const payload = mockSignInPayload();
 
-    const PAYLOAD: SignInPayload = {
-      login: 'login',
-      password: 'password',
-    };
+    const signInResponse = await signIn(payload);
 
-    await signIn(PAYLOAD);
-
-    expect(postSpy).toHaveBeenCalledTimes(1);
-    expect(postSpy).toHaveBeenCalledWith(getPath('Account/SignIn'), PAYLOAD);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(getPath('Account/SignIn'), payload);
+    expect(signInResponse).toEqual(response.data);
   });
 
   it('sign out method is called with payload', async () => {
-    const postSpy = jest.fn();
-
-    jest.spyOn(blogAPI, 'post').mockImplementationOnce(postSpy);
+    const spy = jest.spyOn(blogAPI, 'post').mockResolvedValueOnce(null);
 
     await signOut();
 
-    expect(postSpy).toHaveBeenCalledTimes(1);
-    expect(postSpy).toHaveBeenCalledWith(getPath('Account/SignOut'));
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(getPath('Account/SignOut'));
   });
 
   it('register method is called with payload', async () => {
-    const postSpy = jest.fn();
-
-    jest.spyOn(blogAPI, 'post').mockImplementationOnce(postSpy);
+    const spy = jest.spyOn(blogAPI, 'post').mockResolvedValueOnce(null);
 
     const payload = mockRegisterPayload();
 
     await register(payload);
 
-    expect(postSpy).toHaveBeenCalledTimes(1);
-    expect(postSpy).toHaveBeenCalledWith(getPath('Account/Register'), payload);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(getPath('Account/Register'), payload);
   });
 });

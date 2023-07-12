@@ -3,6 +3,7 @@ import { storeFixture } from '../test-utils';
 import { authorize, unauthorize, useAuthStore } from './auth.store';
 import type { AuthStorage, AuthStoreStateKey } from './defs';
 import { storage } from '@system/utils';
+import { mockSignedInUser } from '@system/blog-api';
 
 describe('Authorization works when: ', () => {
   const authStorage = storage<AuthStorage>();
@@ -13,7 +14,7 @@ describe('Authorization works when: ', () => {
   });
 
   it('marks as authorized if authorization information is stored in local storage', () => {
-    authStorage.set('authorized', true);
+    authStorage.set('user', mockSignedInUser());
     const { result, restore } = storeFixture(useAuthStore);
 
     expect(result.current.key).toBe('idle' as AuthStoreStateKey);
@@ -42,7 +43,7 @@ describe('Authorization works when: ', () => {
   });
 
   it('marks as unauthorized if user lost authorization information from local storage', () => {
-    authStorage.set('authorized', false);
+    authStorage.set('user', null);
     const { result, restore } = storeFixture(useAuthStore);
 
     expect(result.current.key).toBe('idle' as AuthStoreStateKey);
@@ -61,11 +62,13 @@ describe('Authorization works when: ', () => {
 
     expect(result.current.key).toBe('idle' as AuthStoreStateKey);
 
+    const user = mockSignedInUser();
+
     act(() => {
-      authorize();
+      authorize(user);
     });
 
-    expect(authStorage.get('authorized')).toBe(true);
+    expect(authStorage.get('user')).toEqual(user);
     expect(result.current.key).toBe('authorized' as AuthStoreStateKey);
 
     restore();
@@ -80,7 +83,7 @@ describe('Authorization works when: ', () => {
       unauthorize();
     });
 
-    expect(authStorage.get('authorized')).toBe(false);
+    expect(authStorage.get('user')).toBe(null);
     expect(result.current.key).toBe('unauthorized' as AuthStoreStateKey);
 
     restore();

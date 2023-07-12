@@ -46,7 +46,7 @@ const SignInForm = () => {
         </Button>
         {signInStore.key === 'error' && (
           <Alert data-i={get('sign-in-error-alert')} type="error">
-            {signInStore.response.message}
+            {signInStore.error.message}
           </Alert>
         )}
         {signInStore.key === 'ok' && (

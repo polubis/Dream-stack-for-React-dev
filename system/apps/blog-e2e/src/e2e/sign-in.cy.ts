@@ -26,6 +26,11 @@ describe('Sign in works when: ', () => {
           success: true,
           hasErrors: false,
           errors: [],
+          data: {
+            email: 'piotr@wp.pl',
+            roles: ['Admin'],
+            username: 'Piotr',
+          },
         },
         delay: 1000,
       }
@@ -52,6 +57,9 @@ describe('Sign in works when: ', () => {
     get('sign-in-confirm-btn').should('not.be.disabled');
     get('app-nav-user-avatar-btn').click();
     get('app-nav-sign-out-btn').should('not.be.disabled').should('be.visible');
+    get('app-nav-user-email').contains('piotr@wp.pl');
+    get('app-nav-user-username').contains('Piotr');
+    get('app-nav-user-roles').contains('Admin');
     get('app-nav-sign-out-btn').click();
     get('app-nav-sign-out-btn').should('be.disabled');
     get('sign-in-confirm-btn').should('be.disabled');
@@ -72,6 +80,11 @@ describe('Sign in works when: ', () => {
           success: true,
           hasErrors: false,
           errors: [],
+          data: {
+            email: 'piotr@wp.pl',
+            roles: ['Admin'],
+            username: 'Piotr',
+          },
         },
         delay: 1000,
       }

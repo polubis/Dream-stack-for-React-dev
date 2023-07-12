@@ -5,8 +5,17 @@ type Email = string;
 type Name = string;
 type Url = string;
 type Login = string;
+type Username = string;
 type Password = string;
 type DateStamp = string;
+
+interface SignedInUser {
+  username: Username;
+  roles: UserRole[];
+  email: Email;
+}
+
+type UserRole = 'Admin';
 
 type APIPath =
   | 'Account/SignIn'
@@ -50,8 +59,11 @@ export type {
   PaginatedResponse,
   ErrorResponse,
   Login,
+  SignedInUser,
   ResponseError,
+  UserRole,
   Password,
+  Username,
   DateStamp,
   APIPath,
 };

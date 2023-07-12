@@ -1,10 +1,15 @@
+import { type AxiosRequestHeaders, type AxiosResponse } from 'axios';
 import type {
   ErrorResponse,
   GetArticlesResponse,
   GetArticlesSearchParams,
   PaginatedResponse,
   RegisterPayload,
+  Response,
   ResponseError,
+  SignInPayload,
+  SignInResponse,
+  SignedInUser,
 } from '../../models';
 
 const mockResponseError = (
@@ -16,6 +21,13 @@ const mockResponseError = (
     ...error,
   };
 };
+
+const mockSuccessResponse = <D>(data: D): Response<D> => ({
+  success: true,
+  hasErrors: false,
+  errors: [],
+  data,
+});
 
 const mockErrorResponse = (data?: Partial<ErrorResponse>): ErrorResponse => ({
   hasErrors: true,
@@ -44,6 +56,21 @@ const mockGetArticlesSearchParams = (
   CurrentPage: 1,
   ItemsPerPage: 15,
   ...params,
+});
+
+const mockAxiosResponse = <D>(
+  data: D,
+  payload?: Partial<AxiosResponse<D>>
+): AxiosResponse<D> => ({
+  status: 201,
+  statusText: 'ok',
+  headers: {},
+  config: {
+    headers: {} as AxiosRequestHeaders,
+  },
+  request: {},
+  data,
+  ...payload,
 });
 
 const mockOkGetArticlesResponse = (
@@ -75,7 +102,9 @@ const mockOkGetArticlesResponse = (
   };
 };
 
-const mockRegisterPayload = (payload?: Partial<RegisterPayload>) => ({
+const mockRegisterPayload = (
+  payload?: Partial<RegisterPayload>
+): RegisterPayload => ({
   login: 'piotr1994',
   password: 'piotr1994',
   confirmPassword: 'piotr1994',
@@ -83,11 +112,34 @@ const mockRegisterPayload = (payload?: Partial<RegisterPayload>) => ({
   ...payload,
 });
 
+const mockSignInPayload = (
+  payload?: Partial<SignInPayload>
+): SignInPayload => ({
+  login: 'piotr1994',
+  password: 'piotr1994',
+  ...payload,
+});
+
+const mockSignedInUser = (payload?: Partial<SignedInUser>): SignedInUser => ({
+  email: 'piotr@wp.pl',
+  roles: ['Admin'],
+  username: 'Piotr',
+  ...payload,
+});
+
+const mockSignInResponse = (payload?: SignedInUser): SignInResponse =>
+  mockSuccessResponse(mockSignedInUser(payload));
+
 export {
   mockErrorResponse,
   mockOkPaginatedResponse,
+  mockSignInPayload,
   mockGetArticlesSearchParams,
   mockOkGetArticlesResponse,
+  mockSuccessResponse,
   mockResponseError,
+  mockSignInResponse,
+  mockSignedInUser,
+  mockAxiosResponse,
   mockRegisterPayload,
 };

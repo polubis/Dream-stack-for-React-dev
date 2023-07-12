@@ -1,9 +1,11 @@
 import { Avatar, Box, Button, CloseIcon, Font, Popover } from '@system/figa-ui';
 import { useSignOutStore } from '../../store/sign-out';
 import { get } from '@system/blog-selectors';
+import { useAuthStore } from '../../store/auth';
 
 const UserPopover = () => {
-  const { key, signOut } = useSignOutStore();
+  const authStore = useAuthStore();
+  const signOutStore = useSignOutStore();
 
   return (
     <Popover
@@ -23,10 +25,11 @@ const UserPopover = () => {
           padding={[250, 250, 250, 250]}
           variant="outlined"
           minWidth="280px"
+          maxWidth="420px"
         >
           <Box orientation="row" between>
             <Font variant="h5" motive="primary">
-              Hi Piotr!
+              Hi, hello!
             </Font>
             <Button size={1} shape="rounded" onClick={close}>
               <CloseIcon />
@@ -40,28 +43,34 @@ const UserPopover = () => {
               src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/220805-domestic-cat-mjf-1540-382ba2.jpg"
             />
             <Box spacing={[50]}>
-              <Font variant="h6">Piotr Kowalski</Font>
-              <Font variant="b1">piotr@wp.pl</Font>
+              <Font variant="h6" data-i={get('app-nav-user-username')}>
+                {authStore.user.username}
+              </Font>
+              <Font variant="b1" data-i={get('app-nav-user-email')}>
+                {authStore.user.email}
+              </Font>
             </Box>
           </Box>
 
-          <Box orientation="row" right spacing={[200, 200, 200]}>
+          <Box orientation="row" right spacing={[250, 250]}>
             <Box spacing={[50]}>
               <Font variant="b2">12</Font>
               <Font variant="b1" motive="primary">
-                articles
+                Articles
               </Font>
             </Box>
             <Box spacing={[50]}>
-              <Font variant="b2">Admin</Font>
+              <Font variant="b2" data-i={get('app-nav-user-roles')}>
+                {authStore.user.roles.join(', ')}
+              </Font>
               <Font variant="b1" motive="primary">
-                role
+                Roles
               </Font>
             </Box>
             <Box spacing={[50]}>
               <Font variant="b2">12</Font>
               <Font variant="b1" motive="primary">
-                reviews
+                Reviews
               </Font>
             </Box>
           </Box>
@@ -69,9 +78,9 @@ const UserPopover = () => {
           <Box right>
             <Button
               variant="outlined"
-              onClick={signOut}
+              onClick={signOutStore.signOut}
               data-i={get('app-nav-sign-out-btn')}
-              loading={key === 'pending'}
+              loading={signOutStore.key === 'pending'}
             >
               Sign Out
             </Button>
