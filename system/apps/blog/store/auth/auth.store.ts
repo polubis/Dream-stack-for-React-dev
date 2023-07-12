@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import type { AuthStorage, AuthStore } from './defs';
 import { storage } from '@system/utils';
-import type { SignedInUser } from '@system/blog-api-models';
+import type { SignedInUserDto } from '@system/blog-api-models';
 
 const authStorage = storage<AuthStorage>();
 
@@ -19,7 +19,7 @@ const useAuthStore = create<AuthStore>((set) => ({
   },
 }));
 
-const authorize = (user: SignedInUser): void => {
+const authorize = (user: SignedInUserDto): void => {
   authStorage.set('user', user);
   useAuthStore.setState({ key: 'authorized', user });
 };

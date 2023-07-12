@@ -1,4 +1,5 @@
 import { getter } from '@system/blog-selectors';
+import { mockGetArticlesResponse } from '@system/blog-api-mocks';
 
 describe('blog', () => {
   const get = getter(cy);
@@ -6,12 +7,7 @@ describe('blog', () => {
   it('loads articles in footer when scrolled down', () => {
     cy.intercept('GET', Cypress.env('NEXT_PUBLIC_API_URL') + 'Articles*', {
       statusCode: 201,
-      body: {
-        success: true,
-        hasErrors: false,
-        errors: [],
-        data: [],
-      },
+      body: mockGetArticlesResponse(),
       delay: 1000,
     }).as('articles');
 

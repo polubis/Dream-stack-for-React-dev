@@ -9,7 +9,7 @@ type Username = string;
 type Password = string;
 type DateStamp = string;
 
-interface SignedInUser {
+interface SignedInUserDto {
   username: Username;
   roles: UserRole[];
   email: Email;
@@ -59,7 +59,7 @@ export type {
   PaginatedResponse,
   ErrorResponse,
   Login,
-  SignedInUser,
+  SignedInUserDto,
   ResponseError,
   UserRole,
   Password,

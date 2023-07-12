@@ -1,14 +1,10 @@
 import { act, waitFor } from '@testing-library/react';
 import { useRegisterStore } from './register.store';
 import { storeFixture } from '../test-utils';
-import {
-  mockRegisterPayload,
-  register,
-  getError,
-  mockResponseError,
-} from '@system/blog-api';
+import { register, getError } from '@system/blog-api';
 import type { RegisterStateKey } from './defs';
 import type { RegisterPayload } from '@system/blog-api-models';
+import { mockRegisterPayload, mockResponseError } from '@system/blog-api-mocks';
 
 jest.mock('@system/blog-api');
 
@@ -30,14 +26,8 @@ describe('Register feature works when: ', () => {
 
   it('handles error', async () => {
     (register as jest.Mock).mockImplementation(() => Promise.reject());
-    (mockRegisterPayload as jest.Mock).mockImplementation(
-      jest.requireActual('@system/blog-api')['mockRegisterPayload']
-    );
     (getError as jest.Mock).mockImplementation(
       jest.requireActual('@system/blog-api')['getError']
-    );
-    (mockResponseError as jest.Mock).mockImplementation(
-      jest.requireActual('@system/blog-api')['mockResponseError']
     );
 
     const payload = mockRegisterPayload();
@@ -95,9 +85,6 @@ describe('Register feature works when: ', () => {
 
   it('allows to submit and validates', async () => {
     (register as jest.Mock).mockImplementation(() => Promise.resolve());
-    (mockRegisterPayload as jest.Mock).mockImplementation(
-      jest.requireActual('@system/blog-api')['mockRegisterPayload']
-    );
 
     const { result, restore } = storeFixture(useRegisterStore);
     const payload = mockRegisterPayload();

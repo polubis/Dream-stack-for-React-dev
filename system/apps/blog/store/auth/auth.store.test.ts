@@ -3,7 +3,7 @@ import { storeFixture } from '../test-utils';
 import { authorize, unauthorize, useAuthStore } from './auth.store';
 import type { AuthStorage, AuthStoreStateKey } from './defs';
 import { storage } from '@system/utils';
-import { mockSignedInUser } from '@system/blog-api';
+import { mockSignedInUser } from '@system/blog-api-mocks';
 
 describe('Authorization works when: ', () => {
   const authStorage = storage<AuthStorage>();

@@ -1,6 +1,6 @@
 import { getError, getErrors } from './get-errors';
 import type { AxiosError } from 'axios';
-import { mockErrorResponse } from '../test-utils';
+import { mockErrorResponse } from '@system/blog-api-mocks';
 
 describe('Errors detection works when: ', () => {
   it('takes errors from response', () => {

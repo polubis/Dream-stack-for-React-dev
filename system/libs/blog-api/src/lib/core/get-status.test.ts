@@ -1,6 +1,6 @@
 import type { AxiosError } from 'axios';
 import { getStatus } from './get-status';
-import { mockErrorResponse } from '../test-utils';
+import { mockErrorResponse } from '@system/blog-api-mocks';
 
 describe('Detects status when: ', () => {
   it('status is readed when available', () => {

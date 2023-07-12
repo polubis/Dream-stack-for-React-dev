@@ -3,15 +3,13 @@ import { reset, useSignInStore } from './sign-in.store';
 import { storeFixture } from '../test-utils';
 import type { SignInStateKey } from './defs';
 import { authorize } from '../auth';
+import { getError, signIn } from '@system/blog-api';
 import {
-  getError,
-  signIn,
-  mockResponseError,
   mockErrorResponse,
-  mockAxiosResponse,
-  mockSignInResponse,
+  mockResponseError,
   mockSignInPayload,
-} from '@system/blog-api';
+  mockSignInResponse,
+} from '@system/blog-api-mocks';
 
 jest.mock('@system/blog-api');
 jest.mock('../auth');
@@ -25,25 +23,13 @@ describe('Allows to sign in user when: ', () => {
     (getError as jest.Mock).mockImplementation(
       jest.requireActual('@system/blog-api')['getError']
     );
-    (mockResponseError as jest.Mock).mockImplementation(
-      jest.requireActual('@system/blog-api')['mockResponseError']
-    );
-    (mockErrorResponse as jest.Mock).mockImplementation(
-      jest.requireActual('@system/blog-api')['mockErrorResponse']
-    );
-    (mockAxiosResponse as jest.Mock).mockImplementation(
-      jest.requireActual('@system/blog-api')['mockAxiosResponse']
-    );
-    (mockSignInPayload as jest.Mock).mockImplementation(
-      jest.requireActual('@system/blog-api')['mockSignInPayload']
-    );
   });
 
   it('success state transition is handled', async () => {
     const { result, restore } = storeFixture(useSignInStore);
 
     (signIn as jest.Mock).mockImplementation(() =>
-      Promise.resolve(mockAxiosResponse(mockSignInResponse()))
+      Promise.resolve(mockSignInResponse())
     );
     (authorize as jest.Mock).mockImplementation(jest.fn());
 
@@ -69,12 +55,7 @@ describe('Allows to sign in user when: ', () => {
     const { result, restore } = storeFixture(useSignInStore);
 
     (signIn as jest.Mock).mockImplementation(() =>
-      Promise.reject(
-        mockAxiosResponse(mockErrorResponse(), {
-          status: 404,
-          statusText: 'error',
-        })
-      )
+      Promise.reject(mockErrorResponse())
     );
 
     expect(result.current.key).toBe('idle' as SignInStateKey);

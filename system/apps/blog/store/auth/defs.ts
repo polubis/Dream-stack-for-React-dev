@@ -1,6 +1,6 @@
-import type { SignedInUser } from '@system/blog-api-models';
+import type { SignedInUserDto } from '@system/blog-api-models';
 
-type NullableSignedInUser = SignedInUser | null;
+type NullableSignedInUser = SignedInUserDto | null;
 
 interface AuthStorage {
   user: NullableSignedInUser;

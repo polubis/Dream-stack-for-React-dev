@@ -3,15 +3,15 @@ import { getPath } from '../core';
 import { blogAPI } from '../instances';
 import {
   mockGetArticlesSearchParams,
-  mockOkGetArticlesResponse,
-} from '../test-utils';
+  mockGetArticlesResponse,
+} from '@system/blog-api-mocks';
 import { getArticles } from './articles';
 
 jest.mock('../instances');
 
 describe('Articles methods works when: ', () => {
   it('get articles endpoint can be called with params', async () => {
-    const expectedResponse = mockOkGetArticlesResponse();
+    const expectedResponse = mockGetArticlesResponse();
     const getSpy = jest.fn().mockResolvedValue(expectedResponse);
 
     jest.spyOn(blogAPI, 'get').mockImplementationOnce(getSpy);
