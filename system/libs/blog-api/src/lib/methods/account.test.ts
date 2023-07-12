@@ -5,7 +5,7 @@ import {
   mockRegisterPayload,
   mockSignInPayload,
   mockSignInResponse,
-} from '../test-utils';
+} from '@system/blog-api-mocks';
 import { register, signIn, signOut } from './account';
 
 jest.mock('../instances');
@@ -16,7 +16,8 @@ describe('Account methods works when: ', () => {
   });
 
   it('sign in endpoint is called with payload', async () => {
-    const response = mockAxiosResponse(mockSignInResponse());
+    const response = mockAxiosResponse(mockSignInResponse())();
+
     const spy = jest.spyOn(blogAPI, 'post').mockResolvedValueOnce(response);
 
     const payload = mockSignInPayload();

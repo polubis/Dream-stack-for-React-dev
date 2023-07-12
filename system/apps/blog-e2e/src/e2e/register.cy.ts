@@ -1,3 +1,4 @@
+import { mockErrorResponse, mockResponse } from '@system/blog-api-mocks';
 import { getter } from '@system/blog-selectors';
 
 describe('Register works when: ', () => {
@@ -9,16 +10,7 @@ describe('Register works when: ', () => {
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/Register',
       {
         statusCode: 404,
-        body: {
-          hasErrors: true,
-          success: false,
-          errors: [
-            {
-              key: 'unknown',
-              message: 'Something went wrong...',
-            },
-          ],
-        },
+        body: mockErrorResponse(),
         delay: 1000,
       }
     ).as('register');
@@ -45,11 +37,7 @@ describe('Register works when: ', () => {
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/Register',
       {
         statusCode: 204,
-        body: {
-          success: true,
-          hasErrors: false,
-          errors: [],
-        },
+        body: mockResponse(null),
         delay: 1000,
       }
     ).as('register');

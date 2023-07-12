@@ -1,10 +1,11 @@
 import { act, waitFor } from '@testing-library/react';
 import { useSignOutStore } from './sign-out.store';
 import type { ErrorState, SignOutStateKey } from './defs';
-import { signOut, getError, mockResponseError } from '@system/blog-api';
+import { signOut, getError } from '@system/blog-api';
 import { unauthorize } from '../auth';
 import { reset } from '../sign-in';
 import { storeFixture } from '../test-utils';
+import { mockResponseError } from '@system/blog-api-mocks';
 
 jest.mock('@system/blog-api');
 jest.mock('../auth');
@@ -47,9 +48,6 @@ describe('Allows to sign out user when: ', () => {
     (signOut as jest.Mock).mockImplementation(() => Promise.reject());
     (getError as jest.Mock).mockImplementation(
       jest.requireActual('@system/blog-api')['getError']
-    );
-    (mockResponseError as jest.Mock).mockImplementation(
-      jest.requireActual('@system/blog-api')['mockResponseError']
     );
 
     expect(result.current.key).toBe('idle' as SignOutStateKey);

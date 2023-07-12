@@ -1,7 +1,8 @@
 import { getPath } from '../core';
 import { blogAPI } from '../instances';
-import { mockErrorResponse, requestFixture } from '../test-utils';
+import { mockErrorResponse } from '@system/blog-api-mocks';
 import { interceptUnauthorized } from './intercept-unauthorized';
+import { requestFixture } from '../test-utils';
 
 describe('Unauthorized interceptor works when: ', () => {
   const { clean, server, rest } = requestFixture();

@@ -1,6 +1,12 @@
-import type { Email, Login, Password, Response, SignedInUser } from './general';
+import type {
+  Email,
+  Login,
+  Password,
+  Response,
+  SignedInUserDto,
+} from './general';
 
-type SignInResponse = Response<SignedInUser>;
+type SignInResponse = Response<SignedInUserDto>;
 interface SignInPayload {
   login: Login;
   password: Password;

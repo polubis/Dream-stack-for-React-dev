@@ -1,4 +1,9 @@
 import { getter } from '@system/blog-selectors';
+import {
+  mockSignInResponse,
+  mockResponse,
+  mockErrorResponse,
+} from '@system/blog-api-mocks';
 
 describe('Sign in works when: ', () => {
   const get = getter(cy);
@@ -9,11 +14,7 @@ describe('Sign in works when: ', () => {
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignOut',
       {
         statusCode: 201,
-        body: {
-          success: true,
-          hasErrors: false,
-          errors: [],
-        },
+        body: mockResponse(null),
         delay: 1000,
       }
     ).as('signOut');
@@ -22,16 +23,7 @@ describe('Sign in works when: ', () => {
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
       {
         statusCode: 201,
-        body: {
-          success: true,
-          hasErrors: false,
-          errors: [],
-          data: {
-            email: 'piotr@wp.pl',
-            roles: ['Admin'],
-            username: 'Piotr',
-          },
-        },
+        body: mockSignInResponse(),
         delay: 1000,
       }
     ).as('signIn');
@@ -76,16 +68,7 @@ describe('Sign in works when: ', () => {
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
       {
         statusCode: 201,
-        body: {
-          success: true,
-          hasErrors: false,
-          errors: [],
-          data: {
-            email: 'piotr@wp.pl',
-            roles: ['Admin'],
-            username: 'Piotr',
-          },
-        },
+        body: mockSignInResponse(),
         delay: 1000,
       }
     ).as('signIn');
@@ -111,22 +94,12 @@ describe('Sign in works when: ', () => {
   });
 
   it('user cannot sign in the interface display error message', () => {
-    const errorResponse = {
-      hasErrors: true,
-      success: false,
-      errors: [
-        {
-          key: 'unknown',
-          message: 'Something went wrong...',
-        },
-      ],
-    };
     cy.intercept(
       'POST',
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
       {
         statusCode: 400,
-        body: errorResponse,
+        body: mockErrorResponse(),
         delay: 1000,
       }
     ).as('signIn');

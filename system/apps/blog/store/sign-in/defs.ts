@@ -1,4 +1,4 @@
-import type { ResponseError, SignInPayload } from "@system/blog-api-models";
+import type { ResponseError, SignInPayload } from '@system/blog-api-models';
 
 interface SignInActions {
   signIn: (payload: SignInPayload) => Promise<void>;

@@ -1,12 +1,8 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { SignInForm } from './sign-in-form';
-import {
-  BlogEnv,
-  getPath,
-  mockErrorResponse,
-  requestFixture,
-} from '@system/blog-api';
+import { type BlogEnv, getPath, requestFixture } from '@system/blog-api';
 import { storage } from '@system/utils';
+import { mockErrorResponse } from '@system/blog-api-mocks';
 
 describe('User can use form to sign in when: ', () => {
   const authStorage = storage<BlogEnv>();

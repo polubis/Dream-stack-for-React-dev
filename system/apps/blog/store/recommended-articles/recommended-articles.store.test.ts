@@ -1,12 +1,13 @@
 import { act, waitFor } from '@testing-library/react';
 import { storeFixture } from '../test-utils';
 import type { RecommendedArticlesStateKey } from './defs';
-import { getError, mockResponseError, getArticles } from '@system/blog-api';
+import { getError, getArticles } from '@system/blog-api';
 import { useRecommendedArticlesStore } from './recommended-articles.store';
 import {
   GetArticlesResponse,
   GetArticlesSearchParams,
 } from '@system/blog-api-models';
+import { mockResponseError } from '@system/blog-api-mocks';
 
 jest.mock('@system/blog-api');
 
@@ -48,9 +49,6 @@ describe('Allows to sign in user when: ', () => {
     (getArticles as jest.Mock).mockImplementation(() => Promise.reject());
     (getError as jest.Mock).mockImplementation(
       jest.requireActual('@system/blog-api')['getError']
-    );
-    (mockResponseError as jest.Mock).mockImplementation(
-      jest.requireActual('@system/blog-api')['mockResponseError']
     );
 
     expect(result.current.key).toBe('idle' as RecommendedArticlesStateKey);
