@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import type { AuthStorage, AuthStore } from './defs';
 import { storage } from '@system/utils';
-import type { SignedInUser } from '@system/blog-api';
+import type { SignedInUser } from '@system/blog-api-models';
 
 const authStorage = storage<AuthStorage>();
 

@@ -1,14 +1,12 @@
 import { act, waitFor } from '@testing-library/react';
 import { storeFixture } from '../test-utils';
 import type { RecommendedArticlesStateKey } from './defs';
-import {
-  getError,
-  mockResponseError,
-  getArticles,
-  type GetArticlesResponse,
-  type GetArticlesSearchParams,
-} from '@system/blog-api';
+import { getError, mockResponseError, getArticles } from '@system/blog-api';
 import { useRecommendedArticlesStore } from './recommended-articles.store';
+import {
+  GetArticlesResponse,
+  GetArticlesSearchParams,
+} from '@system/blog-api-models';
 
 jest.mock('@system/blog-api');
 

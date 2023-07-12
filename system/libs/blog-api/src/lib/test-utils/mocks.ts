@@ -10,7 +10,7 @@ import type {
   SignInPayload,
   SignInResponse,
   SignedInUser,
-} from '../../models';
+} from '@system/blog-api-models';
 
 const mockResponseError = (
   error: Partial<ResponseError> = {}

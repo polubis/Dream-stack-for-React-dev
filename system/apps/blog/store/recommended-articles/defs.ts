@@ -1,4 +1,4 @@
-import type { ArticleDto, ResponseError } from '@system/blog-api';
+import type { ArticleDto, ResponseError } from '@system/blog-api-models';
 
 interface RecommendedArticlesActions {
   load: () => Promise<void>;

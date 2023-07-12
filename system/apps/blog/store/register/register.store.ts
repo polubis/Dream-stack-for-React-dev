@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import type { RegisterStore } from './defs';
-import { type RegisterPayload, register, getError } from '@system/blog-api';
+import { register, getError } from '@system/blog-api';
 import { form, maxLength, minLength, required } from '@system/utils';
+import type { RegisterPayload } from '@system/blog-api-models';
 
 const registerForm = form<RegisterPayload>()({
   login: [required, minLength(6), maxLength(20)],

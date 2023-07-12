@@ -2,14 +2,13 @@ import { act, waitFor } from '@testing-library/react';
 import { useRegisterStore } from './register.store';
 import { storeFixture } from '../test-utils';
 import {
-  type RegisterPayload,
   mockRegisterPayload,
   register,
   getError,
-  mockErrorResponse,
   mockResponseError,
 } from '@system/blog-api';
 import type { RegisterStateKey } from './defs';
+import type { RegisterPayload } from '@system/blog-api-models';
 
 jest.mock('@system/blog-api');
 

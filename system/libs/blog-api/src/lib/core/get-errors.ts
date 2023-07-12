@@ -1,4 +1,4 @@
-import type { ErrorResponse, ResponseError } from '../../models';
+import type { ErrorResponse, ResponseError } from '@system/blog-api-models';
 import type { AxiosError } from 'axios';
 
 const hasErrors = (

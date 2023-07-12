@@ -1,4 +1,4 @@
-import type { ResponseError } from '@system/blog-api';
+import type { ResponseError } from "@system/blog-api-models";
 
 interface SignOutActions {
   signOut: () => Promise<void>;
