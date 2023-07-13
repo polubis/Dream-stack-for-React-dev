@@ -1,8 +1,17 @@
-const is =
-  <K extends string>(key: K) =>
-  (): Readonly<{ is: K }> => ({
+export type Isable<K extends string> = {
+  is: K;
+  (): Readonly<{ is: K }>;
+};
+
+const is = <K extends string>(key: K) => {
+  const fn = (): Readonly<{ is: K }> => ({
     is: key,
   });
+
+  Object.defineProperty(fn, 'is', { writable: true, value: key });
+
+  return fn as Isable<K>;
+};
 
 const isS =
   <K extends string>(key: K) =>
