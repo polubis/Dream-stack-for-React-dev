@@ -151,6 +151,36 @@ interface Theme {
       color: string;
     };
   };
+  badge: {
+    outlined: {
+      primary: {
+        borderColor: string;
+        color: string;
+      };
+      secondary: {
+        borderColor: string;
+        color: string;
+      };
+      ok: {
+        borderColor: string;
+        color: string;
+      };
+    };
+    filled: {
+      primary: {
+        bg: string;
+        color: string;
+      };
+      secondary: {
+        bg: string;
+        color: string;
+      };
+      ok: {
+        bg: string;
+        color: string;
+      };
+    };
+  };
   thumbnail: {
     bg: string;
     color: string;

@@ -125,6 +125,36 @@ const light: Theme = {
   outline: {
     color: tokens.common.black,
   },
+  badge: {
+    outlined: {
+      primary: {
+        color: tokens.primary[50],
+        borderColor: tokens.primary[50],
+      },
+      secondary: {
+        color: tokens.primary[150],
+        borderColor: tokens.primary[150],
+      },
+      ok: {
+        color: tokens.green[200],
+        borderColor: tokens.green[200],
+      },
+    },
+    filled: {
+      primary: {
+        color: tokens.common.black,
+        bg: tokens.primary[50],
+      },
+      secondary: {
+        color: tokens.common.black,
+        bg: tokens.primary[100],
+      },
+      ok: {
+        color: tokens.common.black,
+        bg: tokens.green[50],
+      },
+    },
+  },
   thumbnail: {
     bg: tokens.backdrop[50],
     color: tokens.common.white,
@@ -326,6 +356,36 @@ const light: Theme = {
 const dark: Theme = {
   outline: {
     color: tokens.common.white,
+  },
+  badge: {
+    outlined: {
+      primary: {
+        color: tokens.primary[50],
+        borderColor: tokens.primary[50],
+      },
+      secondary: {
+        color: tokens.primary[100],
+        borderColor: tokens.primary[100],
+      },
+      ok: {
+        color: tokens.green[100],
+        borderColor: tokens.green[100],
+      },
+    },
+    filled: {
+      primary: {
+        color: tokens.common.black,
+        bg: tokens.primary[50],
+      },
+      secondary: {
+        color: tokens.common.black,
+        bg: tokens.primary[100],
+      },
+      ok: {
+        color: tokens.common.black,
+        bg: tokens.green[100],
+      },
+    },
   },
   thumbnail: {
     bg: tokens.backdrop[50],
