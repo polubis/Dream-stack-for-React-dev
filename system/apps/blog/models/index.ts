@@ -1,3 +1,4 @@
+import type { ArticleDto } from '@system/blog-api-models';
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 interface ArticlePageProps {
@@ -11,6 +12,10 @@ interface ArticlePageParams {
   };
 }
 
+interface ArticlesPageProps {
+  articles: ArticleDto[];
+}
+
 type Lang = 'pl' | 'en';
 
-export type { ArticlePageParams, ArticlePageProps, Lang };
+export type { ArticlePageParams, ArticlePageProps, ArticlesPageProps, Lang };
