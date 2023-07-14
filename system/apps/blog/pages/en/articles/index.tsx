@@ -1,7 +1,20 @@
-import { Font } from '@system/figa-ui';
+import { getArticles } from '@system/blog-api';
+import type { ArticlesPageProps } from '../../../models';
+import { ArticlesView } from '../../../views/articles';
+import type { GetStaticProps } from 'next';
 
-const ArticlesPage = () => {
-  return <Font variant="h1">ArticlesPage</Font>;
+export const getStaticProps: GetStaticProps<ArticlesPageProps> = async () => {
+  const articles = (await getArticles({ ItemsPerPage: 20 })).data;
+
+  return {
+    props: {
+      articles,
+    },
+  };
+};
+
+const ArticlesPage = ({ articles }: ArticlesPageProps) => {
+  return <ArticlesView articles={articles} />;
 };
 
 export default ArticlesPage;

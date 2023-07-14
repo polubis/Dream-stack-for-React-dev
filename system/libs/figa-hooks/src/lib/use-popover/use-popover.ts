@@ -1,7 +1,8 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useRef } from 'react';
 import type { UsePopoverReturn } from './defs';
 import { useClickOutside } from '../use-click-outside';
 import { useToggle } from '../use-toggle';
+import { useIsomorphicLayoutEffect } from '../use-isomorphic-layout-effect';
 
 const usePopover = <
   T extends HTMLElement,
@@ -20,7 +21,7 @@ const usePopover = <
   const triggerRef = useRef<T>(null);
   const contentRef = useRef<C>(null);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const triggerElement = triggerRef.current;
     const contentElement = contentRef.current;
 

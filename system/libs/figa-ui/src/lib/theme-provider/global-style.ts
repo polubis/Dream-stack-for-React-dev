@@ -82,6 +82,14 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+    
+    /* atoms */
+    
+    .r-90 {
+        transform: rotate(90deg);
+    }
+
+    /* atoms */
 
     /* font.tsx */
 
