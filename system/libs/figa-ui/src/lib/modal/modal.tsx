@@ -1,11 +1,12 @@
 import { Box } from '../box';
 import type { ModalProps } from './defs';
 
-import { usePortal } from '@system/figa-hooks';
+import { usePortal, useScrollHide } from '@system/figa-hooks';
 
 import c from 'classnames';
 
 const Modal = ({ className, children, onClose, ...props }: ModalProps) => {
+  useScrollHide();
   const { render } = usePortal();
 
   return render(
