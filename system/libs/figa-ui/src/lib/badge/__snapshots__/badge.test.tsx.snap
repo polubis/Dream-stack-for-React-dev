@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="badge my-class outlined secondary"
+  >
+    My content inside
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Badge can be used when:  [FRAGILE] works with default setup 1`] = `
+<DocumentFragment>
+  <div
+    class="badge filled primary"
+  >
+    My content inside
+  </div>
+</DocumentFragment>
+`;

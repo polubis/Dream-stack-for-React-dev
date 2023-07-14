@@ -10,7 +10,7 @@ import {
   GREEN_ON_SOFTWARE_AUTHOR,
   GREEN_ON_SOFTWARE_DISCORD,
   GREEN_ON_SOFTWARE_LINKEDIN,
-} from 'apps/blog/consts';
+} from '../../consts';
 
 const LeftBar = () => {
   return (

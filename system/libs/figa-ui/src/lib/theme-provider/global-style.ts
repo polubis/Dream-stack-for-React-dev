@@ -1347,6 +1347,54 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* thumbnail.tsx */
+
+    /* badge.tsx */
+
+    .badge {
+        width: max-content;
+        padding: ${tokens.spacing[100]};
+        border-radius: ${tokens.radius[50]};
+        ${font('1.3rem', '0.03rem', 'LexendBold', 700)}
+
+        &.filled {
+            &.primary {
+                background: ${(props) => props.theme.badge.filled.primary.bg};
+                color:${(props) => props.theme.badge.filled.primary.color};
+            }
+
+            &.secondary {
+                background: ${(props) => props.theme.badge.filled.secondary.bg};
+                color:${(props) => props.theme.badge.filled.secondary.color};
+            }
+
+            &.ok {
+                background: ${(props) => props.theme.badge.filled.ok.bg};
+                color:${(props) => props.theme.badge.filled.ok.color};
+            }
+        }
+
+        &.outlined {
+            &.primary {
+                color:${(props) => props.theme.badge.outlined.primary.color};
+                border: 2px solid ${(props) =>
+                  props.theme.badge.outlined.primary.borderColor};
+            }
+
+            &.secondary {
+                color:${(props) => props.theme.badge.outlined.secondary.color};
+                border: 2px solid ${(props) =>
+                  props.theme.badge.outlined.secondary.borderColor};
+            }
+
+            &.ok {
+                color:${(props) => props.theme.badge.outlined.ok.color};
+                border: 2px solid ${(props) =>
+                  props.theme.badge.outlined.ok.borderColor};
+            }
+        }
+    }
+
+    /* badge.tsx */
 `;
 
 export { GlobalStyle };
