@@ -29,6 +29,8 @@ internal class SignInHandler : IRequestHandler<SignIn, Result<UserDataDto>>
         if (!result.Succeeded)
         {
             response.AddErrorWithLogging(ErrorMessages.WrongCredentials);
+
+            return response;
         }
 
         User user = await _userManager.Users

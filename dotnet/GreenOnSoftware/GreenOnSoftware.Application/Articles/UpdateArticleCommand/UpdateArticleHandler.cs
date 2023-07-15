@@ -6,6 +6,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using GreenOnSoftware.Application.Services.Interfaces;
 using GreenOnSoftware.Commons.Context;
+using GreenOnSoftware.Core.Models;
 
 namespace GreenOnSoftware.Application.Articles.UpdateArticleCommand;
 
@@ -16,21 +17,37 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
     private readonly IThumbnailService _thumbnailService;
     private readonly IBlobStorageService _blobStorageService;
     private readonly IContext _context;
+    private readonly IArticleUrlIdentifierService _articleUrlIdentifierService;
 
-    public UpdateArticleHandler(IClock clock, GreenOnSoftwareDbContext dbContext, IBlobStorageService blobStorageService, IThumbnailService thumbnailService, IContext context)
+    public UpdateArticleHandler(IClock clock, GreenOnSoftwareDbContext dbContext, IBlobStorageService blobStorageService, IThumbnailService thumbnailService, IContext context, IArticleUrlIdentifierService articleUrlIdentifierService)
     {
         _clock = clock;
         _blobStorageService = blobStorageService;
         _thumbnailService = thumbnailService;
         _dbContext = dbContext;
         _context = context;
+        _articleUrlIdentifierService = articleUrlIdentifierService;
     }
 
     public async Task<Result> Handle(UpdateArticle command, CancellationToken cancellationToken)
     {
-        var result = new Result();
+        var result = new Result<string>();
 
-        var currentArticle = await _dbContext.Articles.FirstOrDefaultAsync(x => !x.IsDeleted && x.Id == command.Id);
+        string url = _articleUrlIdentifierService.CreateArticleUrlIdentifier(command.Title);
+        bool urlIdentifierExists = await _dbContext.Articles
+            .AnyAsync(x => x.Id != command.Id
+                && (x.Title == command.Title || x.Url == url), cancellationToken);
+
+        if (urlIdentifierExists)
+        {
+            result.AddError(ErrorMessages.ArticleAlreadyExists);
+
+            return result;
+        }
+
+
+        Article? currentArticle = await _dbContext.Articles
+            .FirstOrDefaultAsync(x => !x.IsDeleted && x.Id == command.Id, cancellationToken);
 
         if (currentArticle is null)
         {
@@ -57,7 +74,9 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
                 }
             }
 
-            var uploadPictureResult = await _thumbnailService.UploadPicture(command.Thumbnail);
+            Result<string> uploadPictureResult = 
+                await _thumbnailService.UploadPicture(command.Thumbnail);
+
             if (uploadPictureResult.HasErrors)
             {
                 result.AddErrors(uploadPictureResult);
@@ -67,9 +86,18 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
             thumbnailUrl = uploadPictureResult.Data;
         }
 
-        currentArticle.Update(command.Title, command.Description, command.Content, thumbnailUrl, command.Url, command.Lang, _clock.UtcNow);
+        currentArticle.Update(
+            command.Title,
+            command.Description,
+            command.Content,
+            thumbnailUrl,
+            url,
+            command.Lang,
+            _clock.UtcNow);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
+
+        result.SetData(url);
 
         return result;
     }

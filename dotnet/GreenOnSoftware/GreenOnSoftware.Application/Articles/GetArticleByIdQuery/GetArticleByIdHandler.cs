@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GreenOnSoftware.Application.Articles.GetArticleByIdQuery;
 
-internal class GetArticleByIdHandler : IRequestHandler<GetArticleById, Result<ArticleDto>>
+internal class GetArticleByIdHandler : IRequestHandler<GetArticleByUrl, Result<ArticleDto>>
 {
     private readonly GreenOnSoftwareDbContext _dbContext;
     private readonly IMapper _mapper;
@@ -23,7 +23,7 @@ internal class GetArticleByIdHandler : IRequestHandler<GetArticleById, Result<Ar
         _context = context;
     }
 
-    public async Task<Result<ArticleDto>> Handle(GetArticleById query, CancellationToken cancellationToken)
+    public async Task<Result<ArticleDto>> Handle(GetArticleByUrl query, CancellationToken cancellationToken)
     {
         var result = new Result<ArticleDto>();
 
@@ -36,7 +36,7 @@ internal class GetArticleByIdHandler : IRequestHandler<GetArticleById, Result<Ar
             .Where(() => isAnnonymous, x => x.Status == Status.Accepted)
             .Where(() => isGeneralUser, x => x.Status == Status.Accepted || x.AuthorId == _context.Identity.Id)
             .Where(() => isAdminOrContentEditor, x => x.Status != Status.Draft || x.AuthorId == _context.Identity.Id)
-            .SingleOrDefaultAsync(x => x.Id == query.Id);
+            .SingleOrDefaultAsync(x => x.Url == query.Url);
 
         if (article is null)
         {

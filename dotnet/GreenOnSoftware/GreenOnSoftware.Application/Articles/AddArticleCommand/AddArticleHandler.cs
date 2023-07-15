@@ -3,39 +3,50 @@ using GreenOnSoftware.Commons.Clock;
 using GreenOnSoftware.Core.Models;
 using GreenOnSoftware.DataAccess;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using GreenOnSoftware.Application.Services.Interfaces;
-using GreenOnSoftware.Application.Articles.AddArticleCommand;
-using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
 using GreenOnSoftware.Commons.Context;
+using Microsoft.EntityFrameworkCore;
+using GreenOnSoftware.Commons.Resources;
 
 namespace GreenOnSoftware.Application.Articles.AddArticleCommand;
 
-internal class AddArticleHandler : IRequestHandler<AddArticle, Result<Guid>>
+internal class AddArticleHandler : IRequestHandler<AddArticle, Result>
 {
     private readonly GreenOnSoftwareDbContext _dbContext;
     private readonly IClock _clock;
     private readonly IThumbnailService _thumbnailService;
     private readonly IContext _context;
+    private readonly IArticleUrlIdentifierService _articleUrlIdentifierService;
 
-    public AddArticleHandler(IClock clock, GreenOnSoftwareDbContext dbContext, IThumbnailService thumbnailService, IContext context)
+    public AddArticleHandler(IClock clock, GreenOnSoftwareDbContext dbContext, IThumbnailService thumbnailService,
+        IContext context, IArticleUrlIdentifierService articleUrlIdentifierService)
     {
         _clock = clock;
         _dbContext = dbContext;
         _thumbnailService = thumbnailService;
         _context = context;
+        _articleUrlIdentifierService = articleUrlIdentifierService;
     }
 
-    public async Task<Result<Guid>> Handle(AddArticle request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(AddArticle command, CancellationToken cancellationToken)
     {
-        var result = new Result<Guid>();
+        var result = new Result<string>();
+        string url = _articleUrlIdentifierService.CreateArticleUrlIdentifier(command.Title);
+        bool urlIdentifierExists = await _dbContext.Articles
+            .AnyAsync(x => x.Title == command.Title || x.Url == url, cancellationToken);
+
+        if(urlIdentifierExists)
+        {
+            result.AddError(ErrorMessages.ArticleAlreadyExists);
+
+            return result;
+        }
 
         string? thumbnailUrl = null;
 
-        if (request.Thumbnail != null)
+        if (command.Thumbnail != null)
         {
-            var uploadPictureResult = await _thumbnailService.UploadPicture(request.Thumbnail);
+            var uploadPictureResult = await _thumbnailService.UploadPicture(command.Thumbnail);
             if (uploadPictureResult.HasErrors)
             {
                 result.AddErrors(uploadPictureResult);
@@ -45,12 +56,20 @@ internal class AddArticleHandler : IRequestHandler<AddArticle, Result<Guid>>
             thumbnailUrl = uploadPictureResult.Data;
         }
 
-        var newArticle = new Article(request.Title, request.Description, request.Content, thumbnailUrl, request.Url, request.Lang, _context.Identity.Id!, _clock.UtcNow);
+        var newArticle = new Article(
+            command.Title,
+            command.Description,
+            command.Content,
+            thumbnailUrl,
+            url,
+            command.Lang,
+            _context.Identity.Id!,
+            _clock.UtcNow);
 
         _dbContext.Articles.Add(newArticle);
         await _dbContext.SaveChangesAsync();
 
-        result.SetData(newArticle.Id);
+        result.SetData(newArticle.Url);
 
         return result;
     }

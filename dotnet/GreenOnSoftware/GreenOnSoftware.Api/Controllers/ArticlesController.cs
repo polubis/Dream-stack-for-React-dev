@@ -121,11 +121,11 @@ public class ArticlesController : ControllerBase
     }
 
     [AllowAnonymous]
-    [HttpGet("{id}")]
+    [HttpGet("{urlIdentifier}")]
     [SwaggerResponse(StatusCodes.Status200OK, type: typeof(Result<ArticleDto>))]
-    public async Task<IActionResult> GetArticleById(Guid id)
+    public async Task<IActionResult> GetArticleById(string urlIdentifier)
     {
-        var result = await _mediator.Send(new GetArticleById(id));
+        var result = await _mediator.Send(new GetArticleByUrl(urlIdentifier));
 
         if (result.HasErrors)
         {
