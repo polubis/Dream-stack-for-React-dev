@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GreenOnSoftware.Core.Models;
-using GreenOnSoftware.Application.Articles.GetArticleByIdQuery;
+using GreenOnSoftware.Application.Articles.GetArticleQuery;
 using GreenOnSoftware.Application.Articles.GetArticlesQuery;
 using GreenOnSoftware.Application.Mapper.MappingActions;
 using GreenOnSoftware.Application.Dtos;
