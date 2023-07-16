@@ -51,10 +51,10 @@ public class ArticlesController : ControllerBase
     }
 
     [Authorize]
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(Guid id, [FromForm] UpdateArticle command)
+    [HttpPut("{urlIdentifier}")]
+    public async Task<IActionResult> Update(string urlIdentifier, [FromForm] UpdateArticle command)
     {
-        var result = await _mediator.Send(command.BindId(id));
+        var result = await _mediator.Send(command.BindId(urlIdentifier));
 
         if (result.HasErrors)
         {

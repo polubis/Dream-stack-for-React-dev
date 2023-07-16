@@ -1,6 +1,4 @@
-﻿using GreenOnSoftware.Application.Reviews.AddReviewCommand;
-using GreenOnSoftware.Commons.Dtos;
-using GreenOnSoftware.Core.Models;
+﻿using GreenOnSoftware.Commons.Dtos;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 
@@ -13,11 +11,11 @@ public record UpdateArticle(
     IFormFile? Thumbnail, 
     string Lang) : IRequest<Result>
 {
-    internal Guid Id { get; private set; }
+    internal string UrlIdentifier { get; private set; }
 
-    public UpdateArticle BindId(Guid id)
+    public UpdateArticle BindId(string urlIdentifier)
     {
-        Id = id;
+        UrlIdentifier = urlIdentifier;
 
         return this;
     }

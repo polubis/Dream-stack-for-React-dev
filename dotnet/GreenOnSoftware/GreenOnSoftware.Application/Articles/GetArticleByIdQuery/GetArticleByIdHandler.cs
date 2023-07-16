@@ -32,11 +32,11 @@ internal class GetArticleByIdHandler : IRequestHandler<GetArticleByUrl, Result<A
         var isAdminOrContentEditor = _context.Identity.IsAdmin || _context.Identity.IsContentEditor;
 
         var article = await _dbContext.Articles
-            .Include(x=>x.Author)
+            .Include(x => x.Author)
             .Where(() => isAnnonymous, x => x.Status == Status.Accepted)
             .Where(() => isGeneralUser, x => x.Status == Status.Accepted || x.AuthorId == _context.Identity.Id)
             .Where(() => isAdminOrContentEditor, x => x.Status != Status.Draft || x.AuthorId == _context.Identity.Id)
-            .SingleOrDefaultAsync(x => x.Url == query.Url);
+            .FirstOrDefaultAsync(x => x.Url == query.Url, cancellationToken);
 
         if (article is null)
         {

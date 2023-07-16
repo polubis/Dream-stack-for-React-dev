@@ -33,25 +33,24 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
     {
         var result = new Result<string>();
 
+        Article? currentArticle = await _dbContext.Articles
+            .FirstOrDefaultAsync(x => !x.IsDeleted && x.Url == command.UrlIdentifier, cancellationToken);
+
+        if (currentArticle is null)
+        {
+            result.AddErrorWithLogging(ErrorMessages.ArticleNotFound);
+            return result;
+        }
+
         string url = _articleUrlIdentifierService.CreateArticleUrlIdentifier(command.Title);
         bool urlIdentifierExists = await _dbContext.Articles
-            .AnyAsync(x => x.Id != command.Id
+            .AnyAsync(x => x.Url != command.UrlIdentifier
                 && (x.Title == command.Title || x.Url == url), cancellationToken);
 
         if (urlIdentifierExists)
         {
             result.AddError(ErrorMessages.ArticleAlreadyExists);
 
-            return result;
-        }
-
-
-        Article? currentArticle = await _dbContext.Articles
-            .FirstOrDefaultAsync(x => !x.IsDeleted && x.Id == command.Id, cancellationToken);
-
-        if (currentArticle is null)
-        {
-            result.AddErrorWithLogging(ErrorMessages.ArticleNotFound);
             return result;
         }
 
