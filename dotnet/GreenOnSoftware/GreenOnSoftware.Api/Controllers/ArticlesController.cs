@@ -20,6 +20,7 @@ using GreenOnSoftware.Application.Reviews.UpdateReviewCommand;
 using GreenOnSoftware.Application.Reviews.DeleteReviewCommand;
 using GreenOnSoftware.Application.Reviews.GetReviewsQuery;
 using GreenOnSoftware.Application.Reviews.GetReviewByIdQuery;
+using GreenOnSoftware.Core.Enums;
 
 namespace GreenOnSoftware.Api.Controllers;
 
@@ -51,10 +52,24 @@ public class ArticlesController : ControllerBase
     }
 
     [Authorize]
-    [HttpPut("{urlIdentifier}")]
-    public async Task<IActionResult> Update(string urlIdentifier, [FromForm] UpdateArticle command)
+    [HttpPut("pl/{urlIdentifier}")]
+    public async Task<IActionResult> UpdatePl( string urlIdentifier, [FromForm] UpdateArticle command)
     {
-        var result = await _mediator.Send(command.BindId(urlIdentifier));
+        var result = await _mediator.Send(command.Bind(Language.Pl, urlIdentifier));
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
+
+    [Authorize]
+    [HttpPut("en/{urlIdentifier}")]
+    public async Task<IActionResult> UpdateEn(string urlIdentifier, [FromForm] UpdateArticle command)
+    {
+        var result = await _mediator.Send(command.Bind(Language.En, urlIdentifier));
 
         if (result.HasErrors)
         {
@@ -121,11 +136,26 @@ public class ArticlesController : ControllerBase
     }
 
     [AllowAnonymous]
-    [HttpGet("{urlIdentifier}")]
+    [HttpGet("pl/{urlIdentifier}")]
     [SwaggerResponse(StatusCodes.Status200OK, type: typeof(Result<ArticleDto>))]
-    public async Task<IActionResult> GetArticleById(string urlIdentifier)
+    public async Task<IActionResult> GetPlArticleById( string urlIdentifier)
     {
-        var result = await _mediator.Send(new GetArticleByUrl(urlIdentifier));
+        var result = await _mediator.Send(new GetArticleByUrl(Language.Pl, urlIdentifier));
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
+
+    [AllowAnonymous]
+    [HttpGet("en/{urlIdentifier}")]
+    [SwaggerResponse(StatusCodes.Status200OK, type: typeof(Result<ArticleDto>))]
+    public async Task<IActionResult> GetEnArticleById(string urlIdentifier)
+    {
+        var result = await _mediator.Send(new GetArticleByUrl(Language.En, urlIdentifier));
 
         if (result.HasErrors)
         {

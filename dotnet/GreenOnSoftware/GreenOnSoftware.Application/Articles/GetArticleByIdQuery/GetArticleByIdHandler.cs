@@ -27,6 +27,13 @@ internal class GetArticleByIdHandler : IRequestHandler<GetArticleByUrl, Result<A
     {
         var result = new Result<ArticleDto>();
 
+        if (query.UrlIdentifier.Length > 300)
+        {
+            result.AddError("Too long url identifier");
+
+            return result;
+        }
+
         var isAnnonymous = !_context.Identity.IsAuthenticated;
         var isGeneralUser = _context.Identity.IsGeneralUser;
         var isAdminOrContentEditor = _context.Identity.IsAdmin || _context.Identity.IsContentEditor;
@@ -36,7 +43,7 @@ internal class GetArticleByIdHandler : IRequestHandler<GetArticleByUrl, Result<A
             .Where(() => isAnnonymous, x => x.Status == Status.Accepted)
             .Where(() => isGeneralUser, x => x.Status == Status.Accepted || x.AuthorId == _context.Identity.Id)
             .Where(() => isAdminOrContentEditor, x => x.Status != Status.Draft || x.AuthorId == _context.Identity.Id)
-            .FirstOrDefaultAsync(x => x.Url == query.Url, cancellationToken);
+            .FirstOrDefaultAsync(x => x.Lang == query.Lang && x.Url == query.UrlIdentifier, cancellationToken);
 
         if (article is null)
         {

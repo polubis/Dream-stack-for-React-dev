@@ -7,6 +7,7 @@ using GreenOnSoftware.Application.Services.Interfaces;
 using GreenOnSoftware.Commons.Context;
 using Microsoft.EntityFrameworkCore;
 using GreenOnSoftware.Commons.Resources;
+using GreenOnSoftware.Core.Enums;
 
 namespace GreenOnSoftware.Application.Articles.AddArticleCommand;
 
@@ -32,8 +33,9 @@ internal class AddArticleHandler : IRequestHandler<AddArticle, Result>
     {
         var result = new Result<string>();
         string url = _articleUrlIdentifierService.CreateArticleUrlIdentifier(command.Title);
+        Language lang = Enum.Parse<Language>(command.Lang, ignoreCase: true);
         bool urlIdentifierExists = await _dbContext.Articles
-            .AnyAsync(x => x.Title == command.Title || x.Url == url, cancellationToken);
+            .AnyAsync(x => x.Lang == lang && (x.Title == command.Title || x.Url == url), cancellationToken);
 
         if(urlIdentifierExists)
         {
@@ -62,11 +64,11 @@ internal class AddArticleHandler : IRequestHandler<AddArticle, Result>
             command.Content,
             thumbnailUrl,
             url,
-            command.Lang,
+            lang,
             _context.Identity.Id!,
             _clock.UtcNow);
 
-        _dbContext.Articles.Add(newArticle);
+        await _dbContext.Articles.AddAsync(newArticle);
         await _dbContext.SaveChangesAsync();
 
         result.SetData(newArticle.Url);

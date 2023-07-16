@@ -21,9 +21,6 @@ public class ArticlesMapperProfile : Profile
             .ForMember(dest => dest.AuthorEmail, o => o.MapFrom((src, dest) => src.Author?.Email))
             .ForMember(dest => dest.AuthorName, o => o.MapFrom((src, dest) => src.Author?.UserName));
 
-        CreateMap<Comment, CommentDto>()
-            .ForMember(dest => dest.Username, o => o.MapFrom((src, dest) => src.Author?.UserName));
-
         CreateMap<Review, ReviewLookupDto>()
             .ForMember(dest => dest.ReviewerName, o => o.MapFrom((src, dest) => src.Reviewer?.UserName))
             .AfterMap<CurrentUserReviewerAction>();       

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using GreenOnSoftware.Application.Services.Interfaces;
 using GreenOnSoftware.Commons.Context;
 using GreenOnSoftware.Core.Models;
+using GreenOnSoftware.Core.Enums;
 
 namespace GreenOnSoftware.Application.Articles.UpdateArticleCommand;
 
@@ -33,8 +34,17 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
     {
         var result = new Result<string>();
 
+        if(command.UrlIdentifier.Length > 300)
+        {
+            result.AddError("Too long url identifier");
+
+            return result;
+        }
+
+        Language destLang = Enum.Parse<Language>(command.Lang, ignoreCase: true);
+
         Article? currentArticle = await _dbContext.Articles
-            .FirstOrDefaultAsync(x => !x.IsDeleted && x.Url == command.UrlIdentifier, cancellationToken);
+            .FirstOrDefaultAsync(x => !x.IsDeleted && x.Lang == command.CurrentLang && x.Url == command.UrlIdentifier, cancellationToken);
 
         if (currentArticle is null)
         {
@@ -44,8 +54,8 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
 
         string url = _articleUrlIdentifierService.CreateArticleUrlIdentifier(command.Title);
         bool urlIdentifierExists = await _dbContext.Articles
-            .AnyAsync(x => x.Url != command.UrlIdentifier
-                && (x.Title == command.Title || x.Url == url), cancellationToken);
+            .AnyAsync(x => !(x.Url == command.UrlIdentifier && x.Lang == command.CurrentLang)
+                && ((x.Title == command.Title || x.Url == url) && x.Lang == destLang), cancellationToken);
 
         if (urlIdentifierExists)
         {
@@ -91,7 +101,7 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
             command.Content,
             thumbnailUrl,
             url,
-            command.Lang,
+            destLang,
             _clock.UtcNow);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
