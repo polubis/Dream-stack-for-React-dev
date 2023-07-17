@@ -54,8 +54,8 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
 
         string url = _articleUrlIdentifierService.CreateArticleUrlIdentifier(command.Title);
         bool urlIdentifierExists = await _dbContext.Articles
-            .AnyAsync(x => !(x.Url == command.UrlIdentifier && x.Lang == command.CurrentLang)
-                && ((x.Title == command.Title || x.Url == url) && x.Lang == destLang), cancellationToken);
+            .AnyAsync(x => !x.IsDeleted && !(x.Url == command.UrlIdentifier && x.Lang == command.CurrentLang)
+                && (x.Title == command.Title || x.Url == url) && x.Lang == destLang, cancellationToken);
 
         if (urlIdentifierExists)
         {
