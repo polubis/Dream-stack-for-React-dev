@@ -8,7 +8,7 @@ using GreenOnSoftware.Application.Articles.UpdateArticleCommand;
 using GreenOnSoftware.Application.Articles.AcceptArticleCommand;
 using GreenOnSoftware.Application.Articles.AddArticleCommand;
 using GreenOnSoftware.Application.Articles.DeleteArticleCommand;
-using GreenOnSoftware.Application.Articles.GetArticleByIdQuery;
+using GreenOnSoftware.Application.Articles.GetArticleQuery;
 using GreenOnSoftware.Application.Articles.RejectArticleCommand;
 using GreenOnSoftware.Application.Articles.GetArticlesQuery;
 using GreenOnSoftware.Application.Articles.SendForApprovalCommand;
@@ -20,6 +20,7 @@ using GreenOnSoftware.Application.Reviews.UpdateReviewCommand;
 using GreenOnSoftware.Application.Reviews.DeleteReviewCommand;
 using GreenOnSoftware.Application.Reviews.GetReviewsQuery;
 using GreenOnSoftware.Application.Reviews.GetReviewByIdQuery;
+using GreenOnSoftware.Core.Enums;
 
 namespace GreenOnSoftware.Api.Controllers;
 
@@ -51,10 +52,24 @@ public class ArticlesController : ControllerBase
     }
 
     [Authorize]
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Update(Guid id, [FromForm] UpdateArticle command)
+    [HttpPut("pl/{urlIdentifier}")]
+    public async Task<IActionResult> UpdatePl( string urlIdentifier, [FromForm] UpdateArticle command)
     {
-        var result = await _mediator.Send(command.BindId(id));
+        var result = await _mediator.Send(command.Bind(Language.Pl, urlIdentifier));
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
+
+    [Authorize]
+    [HttpPut("en/{urlIdentifier}")]
+    public async Task<IActionResult> UpdateEn(string urlIdentifier, [FromForm] UpdateArticle command)
+    {
+        var result = await _mediator.Send(command.Bind(Language.En, urlIdentifier));
 
         if (result.HasErrors)
         {
@@ -121,11 +136,41 @@ public class ArticlesController : ControllerBase
     }
 
     [AllowAnonymous]
+    [HttpGet("pl/{urlIdentifier}")]
+    [SwaggerResponse(StatusCodes.Status200OK, type: typeof(Result<ArticleDto>))]
+    public async Task<IActionResult> GetPlArticleByUrl( string urlIdentifier)
+    {
+        var result = await _mediator.Send(new GetArticle(Language.Pl, urlIdentifier));
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
+
+    [AllowAnonymous]
+    [HttpGet("en/{urlIdentifier}")]
+    [SwaggerResponse(StatusCodes.Status200OK, type: typeof(Result<ArticleDto>))]
+    public async Task<IActionResult> GetEnArticleByUrl(string urlIdentifier)
+    {
+        var result = await _mediator.Send(new GetArticle(Language.En, urlIdentifier));
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
+
+    [AllowAnonymous]
     [HttpGet("{id}")]
     [SwaggerResponse(StatusCodes.Status200OK, type: typeof(Result<ArticleDto>))]
     public async Task<IActionResult> GetArticleById(Guid id)
     {
-        var result = await _mediator.Send(new GetArticleById(id));
+        var result = await _mediator.Send(new GetArticle(id));
 
         if (result.HasErrors)
         {

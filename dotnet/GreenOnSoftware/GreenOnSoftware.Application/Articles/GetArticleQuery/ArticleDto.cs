@@ -2,7 +2,7 @@
 using GreenOnSoftware.Core.Enums;
 using System.Text.Json.Serialization;
 
-namespace GreenOnSoftware.Application.Articles.GetArticleByIdQuery;
+namespace GreenOnSoftware.Application.Articles.GetArticleQuery;
 
 public class ArticleDto
 {

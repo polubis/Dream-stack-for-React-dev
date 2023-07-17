@@ -36,8 +36,7 @@ public class ArticleConfiguration : IEntityTypeConfiguration<Article>
         builder.Property(x => x.Lang)
             .IsRequired()
             .HasMaxLength(2)
-            .HasConversion(x => x.ToString().ToLower(), x => x.ToEnum<Language>())
-            .HasDefaultValue(Language.En);
+            .HasConversion(x => x.ToString().ToLower(), x => x.ToEnum<Language>());
 
         builder.HasOne(x => x.Author)
             .WithMany()

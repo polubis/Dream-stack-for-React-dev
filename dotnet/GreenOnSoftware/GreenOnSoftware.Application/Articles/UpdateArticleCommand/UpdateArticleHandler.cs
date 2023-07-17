@@ -6,6 +6,8 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using GreenOnSoftware.Application.Services.Interfaces;
 using GreenOnSoftware.Commons.Context;
+using GreenOnSoftware.Core.Models;
+using GreenOnSoftware.Core.Enums;
 
 namespace GreenOnSoftware.Application.Articles.UpdateArticleCommand;
 
@@ -16,25 +18,49 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
     private readonly IThumbnailService _thumbnailService;
     private readonly IBlobStorageService _blobStorageService;
     private readonly IContext _context;
+    private readonly IArticleUrlIdentifierService _articleUrlIdentifierService;
 
-    public UpdateArticleHandler(IClock clock, GreenOnSoftwareDbContext dbContext, IBlobStorageService blobStorageService, IThumbnailService thumbnailService, IContext context)
+    public UpdateArticleHandler(IClock clock, GreenOnSoftwareDbContext dbContext, IBlobStorageService blobStorageService, IThumbnailService thumbnailService, IContext context, IArticleUrlIdentifierService articleUrlIdentifierService)
     {
         _clock = clock;
         _blobStorageService = blobStorageService;
         _thumbnailService = thumbnailService;
         _dbContext = dbContext;
         _context = context;
+        _articleUrlIdentifierService = articleUrlIdentifierService;
     }
 
     public async Task<Result> Handle(UpdateArticle command, CancellationToken cancellationToken)
     {
-        var result = new Result();
+        var result = new Result<string>();
 
-        var currentArticle = await _dbContext.Articles.FirstOrDefaultAsync(x => !x.IsDeleted && x.Id == command.Id);
+        if(command.UrlIdentifier.Length > 300)
+        {
+            result.AddError("Too long url identifier");
+
+            return result;
+        }
+
+        Language destLang = Enum.Parse<Language>(command.Lang, ignoreCase: true);
+
+        Article? currentArticle = await _dbContext.Articles
+            .FirstOrDefaultAsync(x => !x.IsDeleted && x.Lang == command.CurrentLang && x.Url == command.UrlIdentifier, cancellationToken);
 
         if (currentArticle is null)
         {
             result.AddErrorWithLogging(ErrorMessages.ArticleNotFound);
+            return result;
+        }
+
+        string url = _articleUrlIdentifierService.CreateArticleUrlIdentifier(command.Title);
+        bool urlIdentifierExists = await _dbContext.Articles
+            .AnyAsync(x => !(x.Url == command.UrlIdentifier && x.Lang == command.CurrentLang)
+                && ((x.Title == command.Title || x.Url == url) && x.Lang == destLang), cancellationToken);
+
+        if (urlIdentifierExists)
+        {
+            result.AddError(ErrorMessages.ArticleAlreadyExists);
+
             return result;
         }
 
@@ -57,7 +83,9 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
                 }
             }
 
-            var uploadPictureResult = await _thumbnailService.UploadPicture(command.Thumbnail);
+            Result<string> uploadPictureResult = 
+                await _thumbnailService.UploadPicture(command.Thumbnail);
+
             if (uploadPictureResult.HasErrors)
             {
                 result.AddErrors(uploadPictureResult);
@@ -67,9 +95,18 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
             thumbnailUrl = uploadPictureResult.Data;
         }
 
-        currentArticle.Update(command.Title, command.Description, command.Content, thumbnailUrl, command.Url, command.Lang, _clock.UtcNow);
+        currentArticle.Update(
+            command.Title,
+            command.Description,
+            command.Content,
+            thumbnailUrl,
+            url,
+            destLang,
+            _clock.UtcNow);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
+
+        result.SetData(url);
 
         return result;
     }

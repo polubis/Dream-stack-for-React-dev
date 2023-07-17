@@ -14,8 +14,6 @@ public class UpdateArticleValidator : AbstractValidator<UpdateArticle>
             .MaximumLength(200);
         RuleFor(x => x.Description)
             .MaximumLength(500);
-        RuleFor(x => x.Url)
-            .MaximumLength(300);
         RuleFor(x => x.Lang)
             .NotEmpty()
             .MaximumLength(2)
