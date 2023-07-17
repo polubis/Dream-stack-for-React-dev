@@ -1,4 +1,4 @@
-import type { Lang } from '../../models';
+import type { Lang } from '@system/blog-api-models';
 import { getLang } from '../lang';
 
 describe('Supported language is determined when: ', () => {

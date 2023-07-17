@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react';
 import { useLang } from '../use-lang';
-import type { Lang } from '../../models';
 import { getLang } from '../lang';
 import { useRouter } from 'next/router';
+import type { Lang } from '@system/blog-api-models';
 
 jest.mock('../lang', () => ({
   getLang: jest.fn(),

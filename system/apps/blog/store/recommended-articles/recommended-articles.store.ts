@@ -10,7 +10,7 @@ const useRecommendedArticlesStore = create<RecommendedArticlesStore>((set) => ({
     set({ key: 'pending', articles: [], error: null });
 
     try {
-      const { data } = await getArticles({ ItemsPerPage: 16 });
+      const { data } = await getArticles({ ItemsPerPage: 16, lang: 'en' });
       set({ key: 'ok', articles: data });
     } catch (error: unknown) {
       set({ key: 'error', error: getError(error) });

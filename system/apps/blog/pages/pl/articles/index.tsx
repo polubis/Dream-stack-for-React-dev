@@ -4,7 +4,7 @@ import { ArticlesView } from '../../../views/articles';
 import type { GetStaticProps } from 'next';
 
 export const getStaticProps: GetStaticProps<ArticlesPageProps> = async () => {
-  const articles = (await getArticles({ ItemsPerPage: 20 })).data;
+  const articles = (await getArticles({ ItemsPerPage: 50, lang: 'pl' })).data;
 
   return {
     props: {

@@ -3,7 +3,7 @@ import { HomeView, type HomeViewProps } from '../views/home';
 import { getArticles } from '@system/blog-api';
 
 export const getStaticProps: GetStaticProps<HomeViewProps> = async () => {
-  const response = await getArticles();
+  const response = await getArticles({ lang: 'en' });
 
   return {
     props: {

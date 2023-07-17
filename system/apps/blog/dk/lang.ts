@@ -1,4 +1,4 @@
-import type { Lang } from '../models';
+import type { Lang } from '@system/blog-api-models';
 
 const isLang = (param: string): param is Lang => {
   return param === ('en' as Lang) || param === ('pl' as Lang);

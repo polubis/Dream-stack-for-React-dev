@@ -1,5 +1,4 @@
-import type { Lang } from '../models';
-
+import type { Lang } from '@system/blog-api-models';
 import { readdir } from 'fs';
 import path from 'path';
 
