@@ -181,11 +181,26 @@ public class ArticlesController : ControllerBase
     }
 
     [AllowAnonymous]
-    [HttpGet]
+    [HttpGet("pl")]
     [SwaggerResponse(StatusCodes.Status200OK, type: typeof(PagedResult<ArticleLookupDto>))]
-    public async Task<IActionResult> GetArticles([FromQuery] GetArticles query)
+    public async Task<IActionResult> GetArticlesPl([FromQuery] GetArticles query)
     {
-        var result = await _mediator.Send(query);
+        var result = await _mediator.Send(query.Bind(Language.Pl));
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
+
+    [AllowAnonymous]
+    [HttpGet("en")]
+    [SwaggerResponse(StatusCodes.Status200OK, type: typeof(PagedResult<ArticleLookupDto>))]
+    public async Task<IActionResult> GetArticlesEn([FromQuery] GetArticles query)
+    {
+        var result = await _mediator.Send(query.Bind(Language.En));
 
         if (result.HasErrors)
         {
