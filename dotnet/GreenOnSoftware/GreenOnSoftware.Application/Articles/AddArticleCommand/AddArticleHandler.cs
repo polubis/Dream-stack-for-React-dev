@@ -35,7 +35,7 @@ internal class AddArticleHandler : IRequestHandler<AddArticle, Result>
         string url = _articleUrlIdentifierService.CreateArticleUrlIdentifier(command.Title);
         Language lang = Enum.Parse<Language>(command.Lang, ignoreCase: true);
         bool urlIdentifierExists = await _dbContext.Articles
-            .AnyAsync(x => x.Lang == lang && (x.Title == command.Title || x.Url == url), cancellationToken);
+            .AnyAsync(x => !x.IsDeleted && x.Lang == lang && (x.Title == command.Title || x.Url == url), cancellationToken);
 
         if(urlIdentifierExists)
         {
