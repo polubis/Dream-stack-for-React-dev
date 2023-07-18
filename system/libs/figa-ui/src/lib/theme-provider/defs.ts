@@ -67,6 +67,7 @@ interface Tokens {
   };
   backdrop: {
     50: string;
+    100: string;
   };
   radius: {
     50: string;

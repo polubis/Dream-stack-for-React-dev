@@ -24,7 +24,10 @@ type APIPath =
   | 'Account/SignIn'
   | 'Account/SignOut'
   | 'Articles'
-  | 'Account/Register';
+  | 'Account/Register'
+  | 'Articles/Accept'
+  | 'Articles/Reject'
+  | 'Articles/SendForApproval';
 
 interface ResponseError {
   key: string;
@@ -51,6 +54,10 @@ interface PaginatedResponse<D> extends Response<D> {
   currentPageItemsNumber: number;
 }
 
+interface Parametrized {
+  id: Id;
+}
+
 export type {
   Id,
   Description,
@@ -63,6 +70,7 @@ export type {
   PaginatedResponse,
   ErrorResponse,
   Login,
+  Parametrized,
   SignedInUserDto,
   ResponseError,
   UserRole,

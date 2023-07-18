@@ -25,6 +25,7 @@ export * from './lib/blockquote';
 export * from './lib/image';
 export * from './lib/code';
 export * from './lib/icon';
+export * from './lib/file-picker';
 export * from './lib/avatar';
 export * from './lib/alert';
 export * from './lib/avatars';
