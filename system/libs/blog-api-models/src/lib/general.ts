@@ -4,18 +4,21 @@ type Title = string;
 type Email = string;
 type Name = string;
 type Url = string;
+type Content = string;
 type Login = string;
 type Username = string;
 type Password = string;
 type DateStamp = string;
+
+type UserRole = 'Admin';
+
+type Lang = 'en' | 'pl';
 
 interface SignedInUserDto {
   username: Username;
   roles: UserRole[];
   email: Email;
 }
-
-type UserRole = 'Admin';
 
 type APIPath =
   | 'Account/SignIn'
@@ -56,6 +59,7 @@ export type {
   Email,
   Url,
   Response,
+  Content,
   PaginatedResponse,
   ErrorResponse,
   Login,
@@ -64,6 +68,7 @@ export type {
   UserRole,
   Password,
   Username,
+  Lang,
   DateStamp,
   APIPath,
 };

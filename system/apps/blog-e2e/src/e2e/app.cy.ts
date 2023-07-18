@@ -5,7 +5,7 @@ describe('blog', () => {
   const get = getter(cy);
 
   it('loads articles in footer when scrolled down', () => {
-    cy.intercept('GET', Cypress.env('NEXT_PUBLIC_API_URL') + 'Articles*', {
+    cy.intercept('GET', Cypress.env('NEXT_PUBLIC_API_URL') + 'Articles/en*', {
       statusCode: 201,
       body: mockGetArticlesResponse(),
       delay: 1000,

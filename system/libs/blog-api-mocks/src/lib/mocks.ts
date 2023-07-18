@@ -3,7 +3,7 @@ import {
   ArticleDto,
   ErrorResponse,
   GetArticlesResponse,
-  GetArticlesSearchParams,
+  GetArticlesParams,
   PaginatedResponse,
   RegisterPayload,
   Response,
@@ -11,6 +11,9 @@ import {
   SignInPayload,
   SignInResponse,
   SignedInUserDto,
+  GetArticleParams,
+  GetArticleResponse,
+  FullArticleDto,
 } from '@system/blog-api-models';
 import { mock } from '@system/utils';
 
@@ -42,10 +45,17 @@ const mockPaginatedResponse = <D>(data: D) =>
     ...mockResponse(data)(),
   });
 
-const mockGetArticlesSearchParams = mock<GetArticlesSearchParams>({
+const mockGetArticlesParams = mock<GetArticlesParams>({
   Search: 'react',
   CurrentPage: 1,
   ItemsPerPage: 15,
+  Status: 'Accepted',
+  lang: 'en',
+});
+
+const mockGetArticleParams = mock<GetArticleParams>({
+  lang: 'en',
+  url: 'name-of-article',
 });
 
 const mockAxiosResponse = <D>(data: D) =>
@@ -60,35 +70,40 @@ const mockAxiosResponse = <D>(data: D) =>
     data,
   });
 
+const mockArticle = mock<ArticleDto>({
+  id: 'c54cefcb-ccd0-4b94-f68f-08db5ed3b360',
+  title: 'Porting for React applications',
+  description:
+    "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+  authorEmail: 'Polubis@greenonsoftware.com',
+  authorName: 'Polubis',
+  thumbnailUrl:
+    'https://greenonsoftwaresa.blob.core.windows.net/dev/tmp8959_202305271659137.jpg',
+  status: 'Accepted',
+  url: 'porting-for-react-applications',
+  lang: 'en',
+});
+
 const mockArticles = (): ArticleDto[] => [
-  {
-    id: 'c54cefcb-ccd0-4b94-f68f-08db5ed3b360',
+  mockArticle(),
+  mockArticle({
+    id: 'cf4cefcb-ccd0-4b94-f68f-08db5ed3b362',
     title: 'Porting for React applications',
-    description:
-      "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
-    authorEmail: 'Polubis@greenonsoftware.com',
-    authorName: 'Polubis',
-    thumbnailUrl:
-      'https://greenonsoftwaresa.blob.core.windows.net/dev/tmp8959_202305271659137.jpg',
-    status: 'Accepted',
-    url: 'https://greenonsoftware.com/articles/patterns/porting-for-react-applications/',
-  },
-  {
-    id: 'c54cefcb-ccd0-4b94-f68f-08db5edx360',
-    title: 'Porting for React applications',
-    description:
-      "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
-    authorEmail: 'Polubis@greenonsoftware.com',
-    authorName: 'Polubis',
-    thumbnailUrl:
-      'https://greenonsoftwaresa.blob.core.windows.net/dev/tmp8959_202305271659137.jpg',
-    status: 'Accepted',
-    url: 'https://greenonsoftware.com/articles/patterns/porting-for-react-applications/',
-  },
+    url: 'porting-for-react-applications',
+  }),
 ];
+
+const mockFullArticle = mock<FullArticleDto>({
+  ...mockArticle(),
+  content: '# Markdown content',
+});
 
 const mockGetArticlesResponse = mock<GetArticlesResponse>(
   mockPaginatedResponse(mockArticles())()
+);
+
+const mockGetArticleResponse = mock<GetArticleResponse>(
+  mockResponse(mockFullArticle())()
 );
 
 const mockRegisterPayload = mock<RegisterPayload>({
@@ -116,13 +131,16 @@ const mockSignInResponse = mock<SignInResponse>(
 export {
   mockErrorResponse,
   mockPaginatedResponse,
+  mockFullArticle,
   mockSignInPayload,
-  mockGetArticlesSearchParams,
+  mockGetArticlesParams,
   mockGetArticlesResponse,
   mockResponse,
   mockResponseError,
   mockSignInResponse,
   mockSignedInUser,
   mockAxiosResponse,
+  mockGetArticleParams,
   mockRegisterPayload,
+  mockGetArticleResponse,
 };

@@ -5,7 +5,7 @@ import { getError, getArticles } from '@system/blog-api';
 import { useRecommendedArticlesStore } from './recommended-articles.store';
 import {
   GetArticlesResponse,
-  GetArticlesSearchParams,
+  GetArticlesParams,
 } from '@system/blog-api-models';
 import { mockResponseError } from '@system/blog-api-mocks';
 
@@ -35,7 +35,8 @@ describe('Allows to sign in user when: ', () => {
       expect(getArticles).toHaveBeenCalledTimes(1);
       expect(getArticles).toHaveBeenCalledWith({
         ItemsPerPage: 16,
-      } as GetArticlesSearchParams);
+        lang: 'en',
+      } as GetArticlesParams);
     });
 
     expect(result.current.key).toBe('ok' as RecommendedArticlesStateKey);
