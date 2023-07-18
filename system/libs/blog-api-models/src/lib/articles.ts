@@ -9,6 +9,7 @@ import type {
   Title,
   Content,
   Url,
+  Parametrized,
 } from './general';
 
 type ArticleStatus = 'Draft' | 'WaitingForApproval' | 'NeedWork' | 'Accepted';
@@ -41,12 +42,50 @@ interface GetArticlesParams {
 type GetArticleParams = { url: Url; lang: Lang };
 type GetArticleResponse = Response<FullArticleDto>;
 
+interface CreateArticlePayload {
+  title: Title;
+  description: Description;
+  content: Content;
+  lang: Lang;
+  thumbnail: File;
+}
+type CreateArticleResponse = void;
+
+interface UpdateArticlePayload extends CreateArticlePayload {
+  url: Url;
+}
+type UpdateArticleResponse = void;
+
+type DeleteArticlePayload = Parametrized;
+type DeleteArticleResponse = void;
+
+type AcceptArticlePayload = Parametrized;
+type AcceptArticleResponse = void;
+
+type RejectArticlePayload = Parametrized;
+type RejectArticleResponse = void;
+
+type SendForApprovalArticlePayload = Parametrized;
+type SendForApprovalArticleResponse = void;
+
 export type {
+  AcceptArticlePayload,
+  AcceptArticleResponse,
+  RejectArticlePayload,
+  RejectArticleResponse,
+  SendForApprovalArticlePayload,
+  SendForApprovalArticleResponse,
   ArticleDto,
   ArticleStatus,
   GetArticlesResponse,
   GetArticlesParams,
   GetArticleParams,
+  CreateArticlePayload,
+  CreateArticleResponse,
+  UpdateArticlePayload,
+  UpdateArticleResponse,
   GetArticleResponse,
   FullArticleDto,
+  DeleteArticlePayload,
+  DeleteArticleResponse,
 };

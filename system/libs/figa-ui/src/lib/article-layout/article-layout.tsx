@@ -65,8 +65,12 @@ const Container = styled.div`
     }
   }
 
-  .thumbnail .image {
-    padding: 0;
+  .thumbnail {
+    margin-bottom: ${tokens.spacing[300]};
+
+    .image {
+      padding: 0;
+    }
   }
 
   .image {

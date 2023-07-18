@@ -1,5 +1,5 @@
 import type { AxiosRequestHeaders, AxiosResponse } from 'axios';
-import {
+import type {
   ArticleDto,
   ErrorResponse,
   GetArticlesResponse,
@@ -14,6 +14,9 @@ import {
   GetArticleParams,
   GetArticleResponse,
   FullArticleDto,
+  CreateArticlePayload,
+  Parametrized,
+  UpdateArticlePayload,
 } from '@system/blog-api-models';
 import { mock } from '@system/utils';
 
@@ -56,6 +59,19 @@ const mockGetArticlesParams = mock<GetArticlesParams>({
 const mockGetArticleParams = mock<GetArticleParams>({
   lang: 'en',
   url: 'name-of-article',
+});
+
+const mockCreateArticlePayload = mock<CreateArticlePayload>({
+  lang: 'en',
+  title: 'My title',
+  description: 'My article description',
+  thumbnail: {} as File,
+  content: '### Article content`',
+});
+
+const mockUpdateArticlePayload = mock<UpdateArticlePayload>({
+  ...mockCreateArticlePayload(),
+  url: 'my-title',
 });
 
 const mockAxiosResponse = <D>(data: D) =>
@@ -128,6 +144,10 @@ const mockSignInResponse = mock<SignInResponse>(
   mockResponse(mockSignedInUser())()
 );
 
+const mockParametrized = mock<Parametrized>({
+  id: 'cf4cefcb-ccd0-4b94-f68f-08db5ed3b362',
+});
+
 export {
   mockErrorResponse,
   mockPaginatedResponse,
@@ -137,10 +157,13 @@ export {
   mockGetArticlesResponse,
   mockResponse,
   mockResponseError,
+  mockCreateArticlePayload,
   mockSignInResponse,
   mockSignedInUser,
   mockAxiosResponse,
   mockGetArticleParams,
+  mockParametrized,
   mockRegisterPayload,
   mockGetArticleResponse,
+  mockUpdateArticlePayload,
 };
