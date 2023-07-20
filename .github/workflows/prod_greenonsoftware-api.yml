@@ -53,7 +53,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'GreenOnSoftware-api'
+          app-name: 'green-on-software-api'
           slot-name: 'Production'
           publish-profile: ${{ secrets.GREENONSOFTWARE_API_PROD_PUBLISH_PROFILE }}
           package: .
