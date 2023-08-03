@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scroll data detection works when: [FRAGILE] the initial, no operation state is assigned 1`] = `
+Array [
+  Object {
+    "is": "idle",
+  },
+  Object {
+    "current": null,
+  },
+]
+`;
