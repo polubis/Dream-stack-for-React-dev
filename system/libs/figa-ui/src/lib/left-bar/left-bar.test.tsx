@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react';
-import { useScrollY, type UseScrollYReturn } from '@system/figa-hooks';
+import { useScroll, type ScrollReturn } from '@system/figa-hooks';
 
 import { LeftBar } from './left-bar';
 
 jest.mock('@system/figa-hooks', () => ({
-  useScrollY: jest.fn(),
+  useScroll: jest.fn(),
 }));
 
-describe('Left bar can be used when', () => {
-  const leftBarFixture = (useScrollYReturn: Omit<UseScrollYReturn, 'ref'>) => {
-    (useScrollY as jest.Mock).mockImplementationOnce(() => useScrollYReturn);
+describe('Left bar can be used when: ', () => {
+  const leftBarFixture = (returnsValue: ScrollReturn) => {
+    (useScroll as jest.Mock).mockImplementationOnce(() => returnsValue);
 
     const result = render(
       <LeftBar className="my-class">
@@ -22,21 +22,23 @@ describe('Left bar can be used when', () => {
   };
 
   it('[FRAGILE] assigns classes', () => {
-    const { asFragment } = leftBarFixture({
-      state: {
-        direction: 'idle',
+    const { asFragment } = leftBarFixture([
+      {
+        is: 'idle',
       },
-    });
+      { current: null },
+    ]);
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('[FRAGILE] bar is visible when nothing happened', () => {
-    const { container } = leftBarFixture({
-      state: {
-        direction: 'idle',
+    const { container } = leftBarFixture([
+      {
+        is: 'idle',
       },
-    });
+      { current: null },
+    ]);
 
     screen.getByText('A');
     screen.getByText('B');
@@ -47,13 +49,14 @@ describe('Left bar can be used when', () => {
   });
 
   it('[FRAGILE] bar is hidden when scrolling down', () => {
-    const { container } = leftBarFixture({
-      state: {
-        direction: 'down',
-        previousScroll: 0,
-        currentScroll: 100,
+    const { container } = leftBarFixture([
+      {
+        is: 'progress',
+        prev: 0,
+        curr: 100,
       },
-    });
+      { current: null },
+    ]);
 
     screen.getByText('A');
     screen.getByText('B');
@@ -64,13 +67,14 @@ describe('Left bar can be used when', () => {
   });
 
   it('[FRAGILE] bar is visible when scrolling up', () => {
-    const { container } = leftBarFixture({
-      state: {
-        direction: 'up',
-        previousScroll: 0,
-        currentScroll: 100,
+    const { container } = leftBarFixture([
+      {
+        is: 'regress',
+        prev: 0,
+        curr: 100,
       },
-    });
+      { current: null },
+    ]);
 
     screen.getByText('A');
     screen.getByText('B');

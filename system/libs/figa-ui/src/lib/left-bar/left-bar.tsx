@@ -1,18 +1,16 @@
-import { useScrollY } from '@system/figa-hooks';
+import { useScroll } from '@system/figa-hooks';
 
 import c from 'classnames';
 import type { LeftBarProps } from './defs';
 
 const LeftBar = ({ children }: LeftBarProps) => {
-  const { state } = useScrollY();
+  const [{ is }] = useScroll();
 
   return (
     <div
       className={c(
         'left-bar',
-        state.direction === 'up' || state.direction === 'idle'
-          ? 'visible'
-          : 'hidden'
+        is === 'regress' || is === 'idle' ? 'visible' : 'hidden'
       )}
     >
       {children}
