@@ -15,7 +15,10 @@ import {
 } from '@system/figa-ui';
 import { MainLayout } from '../../components';
 import { ARTICLE_COMPONENTS } from '../../core';
-import { useArticlesCreatorStore, reset } from '../../store/articles-creator';
+import {
+  articles_creator_actions,
+  useArticlesCreatorStore,
+} from '../../store/articles-creator';
 import { ArticleMdRenderer } from '../../features/articles-creator';
 
 const MDX = `#### Quick start
@@ -73,9 +76,9 @@ Currently we have several applications:
 `;
 
 const ArticlesCreatorView = () => {
-  const { key, code, change, load } = useArticlesCreatorStore();
+  const state = useArticlesCreatorStore();
 
-  if (key === 'idle') {
+  if (state.is === 'idle') {
     return (
       <MainLayout>
         <Box
@@ -98,14 +101,19 @@ const ArticlesCreatorView = () => {
             </ListItem>
           </List>
           <Box right>
-            <Button onClick={() => load(MDX)}>Start</Button>
+            <Button onClick={() => {
+              articles_creator_actions.init('en')
+              articles_creator_actions.change('content', MDX)
+            }}>
+              Start
+            </Button>
           </Box>
         </Box>
       </MainLayout>
     );
   }
 
-  if (key === 'loading') {
+  if (state.is === 'loading') {
     return (
       <MainLayout>
         <Box margin="auto">
@@ -117,13 +125,17 @@ const ArticlesCreatorView = () => {
     );
   }
 
-  if (key === 'loaded') {
+  if (state.is === 'creation' || state.is === 'edition') {
     return (
       <CreatorLayout
         navigation={() => (
           <Box orientation="row" between>
             <Font variant="h5">Article creator</Font>
-            <Button size={1} shape="rounded" onClick={reset}>
+            <Button
+              size={1}
+              shape="rounded"
+              onClick={articles_creator_actions.reset}
+            >
               <CloseIcon />
             </Button>
           </Box>
@@ -167,9 +179,15 @@ const ArticlesCreatorView = () => {
           </>
         )}
       >
-        <Code onChange={change}>{code}</Code>
+        <Code
+          onChange={(content) =>
+            articles_creator_actions.change('content', content)
+          }
+        >
+          {state.form.values.content}
+        </Code>
         <ArticleMdRenderer
-          code={code}
+          code={state.form.values.content}
           components={ARTICLE_COMPONENTS}
           thumbnail={null}
         />
@@ -177,7 +195,7 @@ const ArticlesCreatorView = () => {
     );
   }
 
-  throw new Error('Lack of component support for this key ' + key);
+  throw new Error('Lack of component support for this key ' + state.is);
 };
 
 export { ArticlesCreatorView };
