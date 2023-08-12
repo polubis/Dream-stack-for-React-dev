@@ -14,19 +14,22 @@ const hasErrors = (
   );
 };
 
+const createError = (
+  key = 'unknown',
+  message = 'Something went wrong...'
+): ResponseError => ({
+  key,
+  message,
+});
+
 const getErrors = (error: unknown): ResponseError[] => {
-  if (hasErrors(error)) {
-    return error.response.data.errors;
+  if (!hasErrors(error)) {
+    return [createError()];
   }
 
-  return [
-    {
-      key: 'unknown',
-      message: 'Something went wrong...',
-    },
-  ];
+  return error.response.data.errors;
 };
 
 const getError = (error: unknown): ResponseError => getErrors(error)[0];
 
-export { getError, getErrors };
+export { getError, getErrors, createError };

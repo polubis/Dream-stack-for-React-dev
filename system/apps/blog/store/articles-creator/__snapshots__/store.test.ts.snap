@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Articles creation feature works when:  allows to change and validate form fields 1`] = `
+Object {
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": "required",
+    },
+    "invalid": true,
+    "invalidCount": 1,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 80,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": true,
+    },
+    "touch": Object {
+      "content": false,
+      "description": true,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touched": true,
+    "untouched": false,
+    "valid": false,
+    "validCount": 4,
+    "values": Object {
+      "content": "",
+      "description": "some-text",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": null,
+        "preview": "",
+      },
+      "title": "",
+    },
+  },
+  "is": "creation",
+}
+`;
+
+exports[`Articles creation feature works when:  initial state is valid 1`] = `
+Object {
+  "is": "idle",
+}
+`;
+
+exports[`Articles creation feature works when:  initializes the form 1`] = `
+Object {
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 0,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touched": false,
+    "untouched": true,
+    "valid": true,
+    "validCount": 5,
+    "values": Object {
+      "content": "",
+      "description": "",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": null,
+        "preview": "",
+      },
+      "title": "",
+    },
+  },
+  "is": "creation",
+}
+`;
+
+exports[`Articles creation feature works when:  throws an error during confirmation if form is confirmed in not allowed state 1`] = `
+Object {
+  "error": Object {
+    "key": "unknown",
+    "message": "Something went wrong...",
+  },
+  "is": "load-fail",
+}
+`;
+
+exports[`Articles creation feature works when:  throws an error during confirmation if form is confirmed when invalid 1`] = `
+Object {
+  "error": Object {
+    "key": "unknown",
+    "message": "Something went wrong...",
+  },
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": "required",
+    },
+    "invalid": true,
+    "invalidCount": 1,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 80,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": true,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": true,
+    },
+    "touched": true,
+    "untouched": false,
+    "valid": false,
+    "validCount": 4,
+    "values": Object {
+      "content": "",
+      "description": "",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": null,
+        "preview": "",
+      },
+      "title": "",
+    },
+  },
+  "is": "create-fail",
+}
+`;
+
+exports[`Articles creation feature works when:  throws an error during confirmation if thumbnail is missing 1`] = `
+Object {
+  "error": Object {
+    "key": "unknown",
+    "message": "Something went wrong...",
+  },
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 0,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touched": false,
+    "untouched": true,
+    "valid": true,
+    "validCount": 5,
+    "values": Object {
+      "content": "",
+      "description": "",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": null,
+        "preview": "",
+      },
+      "title": "",
+    },
+  },
+  "is": "create-fail",
+}
+`;
+
+exports[`Articles creation feature works when:  throws an exception when someone tries to change form field in not allowed state 1`] = `
+Object {
+  "error": Object {
+    "key": "unknown",
+    "message": "Something went wrong...",
+  },
+  "is": "load-fail",
+}
+`;
