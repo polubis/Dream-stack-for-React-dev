@@ -1,20 +1,19 @@
-interface ArticlesCreatorActions {
-  change: (code: string) => void;
-  load: (code: string) => void;
+/* eslint-disable @typescript-eslint/no-namespace */
+import type { CreateArticlePayload } from '@system/blog-api-models';
+import type { FormState } from '@system/utils';
+
+namespace ArticlesCreator {
+  export type FormData = Omit<CreateArticlePayload, 'thumbnail'> & {
+    thumbnail: {
+      file: File | null;
+      preview: string;
+    };
+  };
+  export type FormDataState = FormState<FormData>;
+
+  export type State = {
+    form: FormDataState;
+  };
 }
 
-interface ArticlesCreatorState extends ArticlesCreatorActions {
-  key: 'idle' | 'loading' | 'loaded';
-  code: string;
-}
-
-type ArticlesCreatorStore = ArticlesCreatorState & ArticlesCreatorActions;
-
-type ArticlesCreatorStoreStateKey = ArticlesCreatorState['key'];
-
-export type {
-  ArticlesCreatorActions,
-  ArticlesCreatorStore,
-  ArticlesCreatorState,
-  ArticlesCreatorStoreStateKey,
-};
+export type { ArticlesCreator };

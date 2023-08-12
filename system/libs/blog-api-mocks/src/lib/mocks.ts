@@ -94,7 +94,7 @@ const mockArticle = mock<ArticleDto>({
   authorEmail: 'Polubis@greenonsoftware.com',
   authorName: 'Polubis',
   thumbnailUrl:
-    'https://greenonsoftwaresa.blob.core.windows.net/dev/tmp8959_202305271659137.jpg',
+    'https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png',
   status: 'Accepted',
   url: 'porting-for-react-applications',
   lang: 'en',
