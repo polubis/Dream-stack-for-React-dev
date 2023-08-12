@@ -1,6 +1,6 @@
 import { getError, getErrors } from './get-errors';
 import type { AxiosError } from 'axios';
-import { mockErrorResponse } from '@system/blog-api-mocks';
+import { mockErrorResponse, mockResponseError } from '@system/blog-api-mocks';
 
 describe('Errors detection works when: ', () => {
   it('takes errors from response', () => {
@@ -20,5 +20,13 @@ describe('Errors detection works when: ', () => {
 
     expect(errors).toMatchSnapshot();
     expect(getError(mockErrorResponse())).toMatchSnapshot();
+  });
+
+  it('handles native error exception', () => {
+    try {
+      throw Error('Something wrong');
+    } catch (error: unknown) {
+      expect(getError(error)).toEqual(mockResponseError());
+    }
   });
 });

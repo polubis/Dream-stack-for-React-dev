@@ -1,2 +1,3 @@
-export * from './articles-creator.store';
+export * from './store';
 export * from './defs';
+export * from './actions';

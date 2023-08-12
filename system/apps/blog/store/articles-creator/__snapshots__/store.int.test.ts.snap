@@ -1,0 +1,605 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Articles creation feature works when:  allows to update loaded article 1`] = `
+Object {
+  "article": Object {
+    "authorEmail": "Polubis@greenonsoftware.com",
+    "authorName": "Polubis",
+    "content": "# Markdown content",
+    "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+    "id": "c54cefcb-ccd0-4b94-f68f-08db5ed3b360",
+    "lang": "en",
+    "status": "Accepted",
+    "thumbnailUrl": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+    "title": "Porting for React applications",
+    "url": "porting-for-react-applications",
+  },
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 0,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touched": false,
+    "untouched": true,
+    "valid": true,
+    "validCount": 5,
+    "values": Object {
+      "content": "# Markdown content",
+      "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": null,
+        "preview": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+      },
+      "title": "Porting for React applications",
+    },
+  },
+  "is": "edition",
+  "url": "some-url",
+}
+`;
+
+exports[`Articles creation feature works when:  allows to update loaded article 2`] = `
+Object {
+  "article": Object {
+    "authorEmail": "Polubis@greenonsoftware.com",
+    "authorName": "Polubis",
+    "content": "# Markdown content",
+    "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+    "id": "c54cefcb-ccd0-4b94-f68f-08db5ed3b360",
+    "lang": "en",
+    "status": "Accepted",
+    "thumbnailUrl": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+    "title": "Porting for React applications",
+    "url": "porting-for-react-applications",
+  },
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 100,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": true,
+      "title": false,
+    },
+    "touched": true,
+    "untouched": false,
+    "valid": true,
+    "validCount": 5,
+    "values": Object {
+      "content": "# Markdown content",
+      "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": Object {},
+        "preview": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+      },
+      "title": "Porting for React applications",
+    },
+  },
+  "is": "edition",
+  "url": "some-url",
+}
+`;
+
+exports[`Articles creation feature works when:  allows to update loaded article 3`] = `
+Object {
+  "article": Object {
+    "authorEmail": "Polubis@greenonsoftware.com",
+    "authorName": "Polubis",
+    "content": "# Markdown content",
+    "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+    "id": "c54cefcb-ccd0-4b94-f68f-08db5ed3b360",
+    "lang": "en",
+    "status": "Accepted",
+    "thumbnailUrl": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+    "title": "Porting for React applications",
+    "url": "porting-for-react-applications",
+  },
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 100,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": true,
+      "title": false,
+    },
+    "touched": true,
+    "untouched": false,
+    "valid": true,
+    "validCount": 5,
+    "values": Object {
+      "content": "# Markdown content",
+      "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": Object {},
+        "preview": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+      },
+      "title": "Porting for React applications",
+    },
+  },
+  "is": "edited",
+  "url": "some-url",
+}
+`;
+
+exports[`Articles creation feature works when:  creates article 1`] = `
+Object {
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 100,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": true,
+      "title": true,
+    },
+    "touched": true,
+    "untouched": false,
+    "valid": true,
+    "validCount": 5,
+    "values": Object {
+      "content": "",
+      "description": "",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": Object {},
+        "preview": "https://",
+      },
+      "title": "my-title",
+    },
+  },
+  "is": "created",
+}
+`;
+
+exports[`Articles creation feature works when:  handles creation error 1`] = `
+Object {
+  "error": Object {
+    "key": "unknown",
+    "message": "Something went wrong...",
+  },
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 100,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": true,
+      "title": true,
+    },
+    "touched": true,
+    "untouched": false,
+    "valid": true,
+    "validCount": 5,
+    "values": Object {
+      "content": "",
+      "description": "",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": Object {},
+        "preview": "https://",
+      },
+      "title": "my-title",
+    },
+  },
+  "is": "create-fail",
+}
+`;
+
+exports[`Articles creation feature works when:  handles error if article update fail 1`] = `
+Object {
+  "article": Object {
+    "authorEmail": "Polubis@greenonsoftware.com",
+    "authorName": "Polubis",
+    "content": "# Markdown content",
+    "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+    "id": "c54cefcb-ccd0-4b94-f68f-08db5ed3b360",
+    "lang": "en",
+    "status": "Accepted",
+    "thumbnailUrl": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+    "title": "Porting for React applications",
+    "url": "porting-for-react-applications",
+  },
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 0,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touched": false,
+    "untouched": true,
+    "valid": true,
+    "validCount": 5,
+    "values": Object {
+      "content": "# Markdown content",
+      "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": null,
+        "preview": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+      },
+      "title": "Porting for React applications",
+    },
+  },
+  "is": "edition",
+  "url": "some-url",
+}
+`;
+
+exports[`Articles creation feature works when:  handles error if article update fail 2`] = `
+Object {
+  "article": Object {
+    "authorEmail": "Polubis@greenonsoftware.com",
+    "authorName": "Polubis",
+    "content": "# Markdown content",
+    "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+    "id": "c54cefcb-ccd0-4b94-f68f-08db5ed3b360",
+    "lang": "en",
+    "status": "Accepted",
+    "thumbnailUrl": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+    "title": "Porting for React applications",
+    "url": "porting-for-react-applications",
+  },
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 100,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": true,
+      "title": false,
+    },
+    "touched": true,
+    "untouched": false,
+    "valid": true,
+    "validCount": 5,
+    "values": Object {
+      "content": "# Markdown content",
+      "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": Object {},
+        "preview": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+      },
+      "title": "Porting for React applications",
+    },
+  },
+  "is": "edition",
+  "url": "some-url",
+}
+`;
+
+exports[`Articles creation feature works when:  handles error if article update fail 3`] = `
+Object {
+  "article": Object {
+    "authorEmail": "Polubis@greenonsoftware.com",
+    "authorName": "Polubis",
+    "content": "# Markdown content",
+    "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+    "id": "c54cefcb-ccd0-4b94-f68f-08db5ed3b360",
+    "lang": "en",
+    "status": "Accepted",
+    "thumbnailUrl": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+    "title": "Porting for React applications",
+    "url": "porting-for-react-applications",
+  },
+  "error": Object {
+    "key": "unknown",
+    "message": "Something went wrong...",
+  },
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 100,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": true,
+      "title": false,
+    },
+    "touched": true,
+    "untouched": false,
+    "valid": true,
+    "validCount": 5,
+    "values": Object {
+      "content": "# Markdown content",
+      "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": Object {},
+        "preview": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+      },
+      "title": "Porting for React applications",
+    },
+  },
+  "is": "edit-fail",
+  "url": "some-url",
+}
+`;
+
+exports[`Articles creation feature works when:  handles load edition data error 1`] = `
+Object {
+  "error": Object {
+    "key": "unknown",
+    "message": "Something went wrong...",
+  },
+  "is": "load-fail",
+}
+`;
+
+exports[`Articles creation feature works when:  loads edition data when url passed 1`] = `
+Object {
+  "article": Object {
+    "authorEmail": "Polubis@greenonsoftware.com",
+    "authorName": "Polubis",
+    "content": "# Markdown content",
+    "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+    "id": "c54cefcb-ccd0-4b94-f68f-08db5ed3b360",
+    "lang": "en",
+    "status": "Accepted",
+    "thumbnailUrl": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+    "title": "Porting for React applications",
+    "url": "porting-for-react-applications",
+  },
+  "form": Object {
+    "dirty": false,
+    "errors": Object {
+      "content": null,
+      "description": null,
+      "lang": null,
+      "thumbnail": null,
+      "title": null,
+    },
+    "invalid": false,
+    "invalidCount": 0,
+    "keys": Array [
+      "title",
+      "description",
+      "thumbnail",
+      "content",
+      "lang",
+    ],
+    "pristine": true,
+    "progress": 0,
+    "result": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touch": Object {
+      "content": false,
+      "description": false,
+      "lang": false,
+      "thumbnail": false,
+      "title": false,
+    },
+    "touched": false,
+    "untouched": true,
+    "valid": true,
+    "validCount": 5,
+    "values": Object {
+      "content": "# Markdown content",
+      "description": "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
+      "lang": "en",
+      "thumbnail": Object {
+        "file": null,
+        "preview": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+      },
+      "title": "Porting for React applications",
+    },
+  },
+  "is": "edition",
+  "url": "some-url",
+}
+`;
