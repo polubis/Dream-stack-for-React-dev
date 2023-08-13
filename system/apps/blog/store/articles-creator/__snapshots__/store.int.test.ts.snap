@@ -126,7 +126,9 @@ Object {
       "lang": "en",
       "thumbnail": Object {
         "file": Object {},
-        "preview": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+        "preview": Array [
+          "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+        ],
       },
       "title": "Porting for React applications",
     },
@@ -194,7 +196,9 @@ Object {
       "lang": "en",
       "thumbnail": Object {
         "file": Object {},
-        "preview": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+        "preview": Array [
+          "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+        ],
       },
       "title": "Porting for React applications",
     },
@@ -250,7 +254,9 @@ Object {
       "lang": "en",
       "thumbnail": Object {
         "file": Object {},
-        "preview": "https://",
+        "preview": Array [
+          "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+        ],
       },
       "title": "my-title",
     },
@@ -309,7 +315,7 @@ Object {
       "lang": "en",
       "thumbnail": Object {
         "file": Object {},
-        "preview": "https://",
+        "preview": Array [],
       },
       "title": "my-title",
     },
@@ -444,7 +450,9 @@ Object {
       "lang": "en",
       "thumbnail": Object {
         "file": Object {},
-        "preview": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+        "preview": Array [
+          "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+        ],
       },
       "title": "Porting for React applications",
     },
@@ -516,7 +524,9 @@ Object {
       "lang": "en",
       "thumbnail": Object {
         "file": Object {},
-        "preview": "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+        "preview": Array [
+          "https://greenonsoftwarestorage.blob.core.windows.net/dev/tmpE09_202307171409592.png",
+        ],
       },
       "title": "Porting for React applications",
     },

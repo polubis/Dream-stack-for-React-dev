@@ -13,7 +13,7 @@ namespace ArticlesCreator {
   export type FormData = Omit<CreateArticlePayload, 'thumbnail'> & {
     thumbnail: {
       file: File | null;
-      preview: string;
+      preview: string[];
     };
   };
   export type FormDataState = FormState<FormData>;
@@ -49,18 +49,20 @@ namespace ArticlesCreator {
       error: ResponseError;
     }
   >;
-  export type State =
-    | Idle
+  export type SafeState =
     | Creation
     | Creating
     | Created
+    | Edition
+    | Editing
+    | Edited;
+  export type State =
+    | Idle
     | CreateFail
     | Loading
     | LoadFail
-    | Edition
-    | Editing
-    | Edited
-    | EditFail;
+    | EditFail
+    | SafeState;
 }
 
 export type { ArticlesCreator };

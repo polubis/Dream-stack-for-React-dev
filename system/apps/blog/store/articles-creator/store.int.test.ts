@@ -55,7 +55,7 @@ describe('Articles creation feature works when: ', () => {
     act(() => {
       articles_creator_actions.change('thumbnail', {
         file: {} as File,
-        preview: article.data.thumbnailUrl,
+        preview: [article.data.thumbnailUrl],
       });
     });
 
@@ -105,7 +105,7 @@ describe('Articles creation feature works when: ', () => {
     act(() => {
       articles_creator_actions.change('thumbnail', {
         file: {} as File,
-        preview: article.data.thumbnailUrl,
+        preview: [article.data.thumbnailUrl],
       });
     });
 
@@ -190,7 +190,7 @@ describe('Articles creation feature works when: ', () => {
       articles_creator_actions.change('title', 'my-title');
       articles_creator_actions.change('thumbnail', {
         file: {} as File,
-        preview: 'https://',
+        preview: [],
       });
       articles_creator_actions.confirm();
     });
@@ -219,7 +219,7 @@ describe('Articles creation feature works when: ', () => {
       articles_creator_actions.change('title', 'my-title');
       articles_creator_actions.change('thumbnail', {
         file: {} as File,
-        preview: 'https://',
+        preview: [mockGetArticleResponse().data.thumbnailUrl],
       });
       articles_creator_actions.confirm();
     });

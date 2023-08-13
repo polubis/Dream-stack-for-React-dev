@@ -1,13 +1,9 @@
 import { Box, Button, CloseIcon, Code, CodeIcon, CreatorLayout, Font, FullScreenCloseIcon, FullScreenIcon, PageIcon } from "@system/figa-ui";
 import { ARTICLE_COMPONENTS } from "../../core";
 import { ArticleMdRenderer } from "../../features/articles-creator";
-import { articles_creator_actions, useArticlesCreatorStore } from "../../store/articles-creator";
+import { ArticlesCreator, articles_creator_actions } from "../../store/articles-creator";
 
-const EditorScreen = () => {
-    const state = useArticlesCreatorStore()
-
-    if (state.is !== 'creation' && state.is !== 'edition') return null
-
+const EditorScreen = (state: ArticlesCreator.SafeState) => {
     return <CreatorLayout
         navigation={() => (
             <Box orientation="row" between>

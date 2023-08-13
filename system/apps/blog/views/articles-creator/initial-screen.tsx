@@ -1,4 +1,4 @@
-import { articles_creator_actions, useArticlesCreatorStore } from '../../store/articles-creator';
+import { articles_creator_actions } from '../../store/articles-creator';
 import { MainLayout } from '../../components';
 import { Box, Button, Font, List, ListItem } from '@system/figa-ui';
 
@@ -57,10 +57,6 @@ Currently we have several applications:
 `;
 
 const InitialScreen = () => {
-    const state = useArticlesCreatorStore()
-
-    if (state.is !== 'idle') return null
-
     return (
         <MainLayout>
             <Box
