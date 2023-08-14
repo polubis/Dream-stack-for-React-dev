@@ -3,18 +3,22 @@ import { useSignInStore } from '../../store/sign-in';
 import { useSignOutStore } from '../../store/sign-out';
 import { useState } from 'react';
 import { get } from '@system/blog-selectors';
+import { useMoveToRedirect } from '../../dk';
 
 const SignInForm = () => {
   const signInStore = useSignInStore();
   const signOutStore = useSignOutStore();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const { redirect } = useMoveToRedirect();
 
-  const handleSignIn = () => {
-    signInStore.signIn({
+  const handleSignIn = async () => {
+    await signInStore.signIn({
       login,
       password,
     });
+
+    redirect();
   };
 
   return (
