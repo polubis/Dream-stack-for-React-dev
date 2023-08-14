@@ -1,18 +1,15 @@
-import { useArticleStore } from '../../store/article';
-import { LoaderScreen } from './loader-screen';
 import { InitialScreen } from './initial-screen';
 import { EditorScreen } from './editor-screen';
+import { useArticlesCreatorStore } from 'apps/blog/store/articles-creator';
+import { ConfirmScreen } from './confirm-screen';
 
 const ArticlesCreatorView = () => {
-  const state = useArticleStore()
+  const articleCreatorState = useArticlesCreatorStore()
 
-  if (state.is === 'idle') return <InitialScreen />
-  if (state.is === 'loading') return <LoaderScreen />
-  if (state.is === 'loaded') return <EditorScreen />
+  if (articleCreatorState.view === 'initial') return <InitialScreen />
+  if (articleCreatorState.view === 'confirm') return <ConfirmScreen />
 
-  return (
-    <div>error</div>
-  )
+  return <EditorScreen />
 };
 
 export { ArticlesCreatorView };

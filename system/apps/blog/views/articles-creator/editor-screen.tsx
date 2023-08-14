@@ -1,11 +1,19 @@
-import { Box, Button, CloseIcon, Code, CodeIcon, CreatorLayout, Font, FullScreenCloseIcon, FullScreenIcon, PageIcon } from "@system/figa-ui";
-import { article_actions } from "../../store/article";
+import { Box, Button, CloseIcon, Code, CodeIcon, CreatorLayout, Font, FormIcon, FullScreenCloseIcon, FullScreenIcon, PageIcon, Thumbnail } from "@system/figa-ui";
 import { articles_creator_actions, useArticlesCreatorStore } from "../../store/articles-creator";
 import { ArticleMdRenderer } from "../../features/articles-creator";
 import { ARTICLE_COMPONENTS } from "../../core";
+import { useToggle } from "@system/figa-hooks";
+import { CreatorForm } from "./creator-form";
 
 const EditorScreen = () => {
-    const { form } = useArticlesCreatorStore()
+    const articlesCreatorStore = useArticlesCreatorStore()
+    const formToggler = useToggle()
+
+    const handleClose = (): void => {
+        articles_creator_actions.setView('initial')
+    }
+
+    const { form: { values: { thumbnail, title } } } = articlesCreatorStore;
 
     return <CreatorLayout
         navigation={() => (
@@ -14,7 +22,7 @@ const EditorScreen = () => {
                 <Button
                     size={1}
                     shape="rounded"
-                    onClick={article_actions.reset}
+                    onClick={handleClose}
                 >
                     <CloseIcon />
                 </Button>
@@ -37,6 +45,14 @@ const EditorScreen = () => {
                         <FullScreenIcon />
                     </Button>
                 )}
+                <Button
+                    size={1}
+                    shape="rounded"
+                    variant={formToggler.isOpen ? 'filled' : 'outlined'}
+                    onClick={formToggler.toggle}
+                >
+                    <FormIcon />
+                </Button>
             </>
         )}
         previewToolbox={({ view, expandBoth, expandPreview, expandCode }) => (
@@ -59,17 +75,26 @@ const EditorScreen = () => {
             </>
         )}
     >
-        <Code
+        {formToggler.isOpen ? <CreatorForm /> : <Code
             onChange={(content) =>
                 articles_creator_actions.change('content', content)
             }
         >
-            {form.values.content}
-        </Code>
+            {articlesCreatorStore.form.values.content}
+        </Code>}
+
         <ArticleMdRenderer
-            code={form.values.content}
+            code={articlesCreatorStore.form.values.content}
             components={ARTICLE_COMPONENTS}
-            thumbnail={null}
+            thumbnail={
+                thumbnail.preview.length > 0 && (
+                    <Thumbnail
+                        src={thumbnail.preview[0]}
+                        alt="Article thumbnail"
+                        title={title}
+                    />
+                )
+            }
         />
     </CreatorLayout>
 };

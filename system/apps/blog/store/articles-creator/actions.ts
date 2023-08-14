@@ -1,15 +1,20 @@
 import { useArticlesCreatorStore } from './store';
-
-import { ArticlesCreator } from './defs';
+import type { ArticlesCreator } from './defs';
 import { creatorForm } from './form';
-
-const setState = (state: ArticlesCreator.State) =>
-  useArticlesCreatorStore.setState(state);
-const getState = () => useArticlesCreatorStore.getState();
+import { createArticle, getError, updateArticle } from '@system/blog-api';
+import { Url } from '@system/blog-api-models';
 
 const articles_creator_actions = {
-  setForm: async (form: ArticlesCreator.FormDataState) => {
-    setState({ form });
+  setView: (view: ArticlesCreator.View): void => {
+    useArticlesCreatorStore.setState({ view });
+  },
+  setForm: (values: Partial<ArticlesCreator.FormData> = {}): void => {
+    useArticlesCreatorStore.setState({
+      form: creatorForm.init({
+        ...useArticlesCreatorStore.getState().form.values,
+        ...values,
+      }),
+    });
   },
   change: <
     K extends keyof ArticlesCreator.FormData,
@@ -17,12 +22,41 @@ const articles_creator_actions = {
   >(
     key: K,
     value: V
-  ) => {
-    const { form } = getState();
-    setState({ form: creatorForm.set(form)({ [key]: value }) });
+  ): void => {
+    const { form } = useArticlesCreatorStore.getState();
+    useArticlesCreatorStore.setState({
+      form: creatorForm.set(form)({ [key]: value }),
+    });
   },
-  confirm: () => {
-    setState({ form: creatorForm.confirm(getState().form) });
+  confirm: async (url?: Url): Promise<void> => {
+    useArticlesCreatorStore.setState({
+      is: 'busy',
+      form: creatorForm.confirm(useArticlesCreatorStore.getState().form),
+    });
+
+    try {
+      const {
+        form: {
+          values: { title, thumbnail, description, content, lang },
+        },
+      } = useArticlesCreatorStore.getState();
+
+      const payload = {
+        title,
+        thumbnail: thumbnail.file,
+        description,
+        content,
+        lang,
+      };
+
+      url
+        ? await createArticle(payload)
+        : await updateArticle({ url, ...payload });
+
+      useArticlesCreatorStore.setState({ is: 'ok' });
+    } catch (error: unknown) {
+      useArticlesCreatorStore.setState({ is: 'fail', error: getError(error) });
+    }
   },
 };
 
