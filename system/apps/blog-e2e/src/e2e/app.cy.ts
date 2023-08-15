@@ -1,7 +1,7 @@
 import { getter } from '@system/blog-selectors';
 import { mockGetArticlesResponse } from '@system/blog-api-mocks';
 
-describe('blog', () => {
+describe('Blog works when: ', () => {
   const get = getter(cy);
 
   it('loads articles in footer when scrolled down', () => {

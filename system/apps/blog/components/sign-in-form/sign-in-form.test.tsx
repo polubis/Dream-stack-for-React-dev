@@ -4,6 +4,13 @@ import { type BlogEnv, getPath, requestFixture } from '@system/blog-api';
 import { storage } from '@system/utils';
 import { mockErrorResponse } from '@system/blog-api-mocks';
 
+jest.mock('next/router', () => ({
+  useRouter: jest.fn().mockImplementation(() => ({
+    pathname: '/unknown',
+    push: jest.fn(),
+  })),
+}));
+
 describe('User can use form to sign in when: ', () => {
   const authStorage = storage<BlogEnv>();
   const { clean, server, rest } = requestFixture();
