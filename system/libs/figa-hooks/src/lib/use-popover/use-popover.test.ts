@@ -8,12 +8,12 @@ describe('Popover works when: ', () => {
       usePopover<HTMLDivElement, HTMLDivElement, HTMLDivElement>(10, true)
     );
 
-    expect(result.current.popover.isOpen).toBe(true);
+    expect(result.current.popover.opened).toBe(true);
 
     act(() => {
       result.current.popover.toggle();
     });
 
-    expect(result.current.popover.isOpen).toBe(false);
+    expect(result.current.popover.opened).toBe(false);
   });
 });

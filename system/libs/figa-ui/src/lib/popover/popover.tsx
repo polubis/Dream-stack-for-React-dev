@@ -27,7 +27,7 @@ const Popover = ({
         {trigger(popover)}
       </div>
 
-      {popover.isOpen && (
+      {popover.opened && (
         <div className="popover-content" ref={contentRef}>
           {children(popover)}
         </div>

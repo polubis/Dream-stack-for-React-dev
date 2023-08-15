@@ -13,7 +13,7 @@ const Select = <K extends SelectOptionKey = SelectOptionKey>({
   initialOpen,
   onChange,
 }: SelectProps<K>) => {
-  const { isOpen, toggle, close } = useToggle(initialOpen);
+  const { opened, toggle, close } = useToggle({ opened: initialOpen });
   const { ref } = useClickOutside<HTMLDivElement>({
     onOutside: close,
   });
@@ -42,14 +42,14 @@ const Select = <K extends SelectOptionKey = SelectOptionKey>({
       <button
         className={c('select-expander', {
           'select-expander-empty': value === '' || value === undefined,
-          'select-expander-opened': isOpen,
+          'select-expander-opened': opened,
         })}
         onClick={() => toggle()}
       >
         {valueToDisplay}
       </button>
 
-      {isOpen && (
+      {opened && (
         <ul className="select-list">
           {options.map(({ key, child }) => (
             <li
