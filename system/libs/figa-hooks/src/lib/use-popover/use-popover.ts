@@ -12,7 +12,7 @@ const usePopover = <
   offsetY: number,
   initialOpen?: boolean
 ): UsePopoverReturn<T, C, P> => {
-  const popover = useToggle(initialOpen);
+  const popover = useToggle({ opened: initialOpen });
 
   const { ref: popoverRef } = useClickOutside<P>({
     onOutside: popover.close,
@@ -25,7 +25,7 @@ const usePopover = <
     const triggerElement = triggerRef.current;
     const contentElement = contentRef.current;
 
-    if (!popover.isOpen || !triggerElement || !contentElement) {
+    if (popover.closed || !triggerElement || !contentElement) {
       return;
     }
 
@@ -44,7 +44,7 @@ const usePopover = <
     contentElement.style[isRight ? 'left' : 'right'] = x;
     contentElement.style[isBottom ? 'bottom' : 'top'] = y;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [popover.isOpen]);
+  }, [popover.opened]);
 
   return {
     popoverRef,

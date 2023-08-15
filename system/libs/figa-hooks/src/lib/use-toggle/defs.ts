@@ -1,14 +1,19 @@
-type ToggleData<T = null> = T | null;
-
-interface ToggleReturn<T = null> {
-  isOpen: boolean;
-  data: ToggleData<T>;
-  open: (data?: ToggleData<T>) => void;
-  close: () => void;
-  toggle: (data?: ToggleData<T>) => void;
-  override: (data?: ToggleData<T>) => void;
+interface ToggleConfig<T = null> {
+  data?: T | null;
+  opened?: boolean;
 }
 
-type TogglePayload<T = null> = [boolean?, ToggleData<T>?];
+interface ToggleState<T = null> {
+  data: T | null;
+  opened: boolean;
+  closed: boolean;
+}
 
-export type { TogglePayload, ToggleReturn, ToggleData };
+interface ToggleReturn<T = null> extends ToggleState<T> {
+  open: (data?: T | null) => void;
+  close: () => void;
+  toggle: (data?: T | null) => void;
+  setData: (data: T | null) => void;
+}
+
+export type { ToggleConfig, ToggleState, ToggleReturn };

@@ -85,8 +85,8 @@ const EditorScreen = () => {
           <Button
             size={1}
             shape="rounded"
-            title={formToggler.isOpen ? 'Close form' : 'Show form'}
-            variant={formToggler.isOpen ? 'filled' : 'outlined'}
+            title={formToggler.opened ? 'Close form' : 'Show form'}
+            variant={formToggler.opened ? 'filled' : 'outlined'}
             onClick={formToggler.toggle}
           >
             <FormIcon />
@@ -128,7 +128,7 @@ const EditorScreen = () => {
         </>
       )}
     >
-      {formToggler.isOpen ? (
+      {formToggler.opened ? (
         <CreatorForm />
       ) : (
         <Code

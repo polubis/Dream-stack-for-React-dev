@@ -1,35 +1,42 @@
-import type { TogglePayload, ToggleReturn, ToggleData } from './defs';
-
 import { useState } from 'react';
+import type { ToggleConfig, ToggleReturn, ToggleState } from './defs';
 
-const useToggle = <T = null>(...payload: TogglePayload<T>): ToggleReturn<T> => {
-  const [initialOpen = false, initialData = null] = payload;
-  const [data, setData] = useState<ToggleData<T>>(initialData);
-  const [isOpen, setIsOpen] = useState(initialOpen);
+const useToggle = <T = null>(
+  config: ToggleConfig<T> = { data: null, opened: false }
+): ToggleReturn<T> => {
+  const [state, setState] = useState<ToggleState<T>>(() => ({
+    opened: !!config.opened,
+    closed: !config.opened,
+    data: config.data ?? null,
+  }));
 
-  const override = (data?: ToggleData<T>): void => {
-    setData(data ?? null);
+  const open: ToggleReturn<T>['open'] = (data) => {
+    setState({ opened: true, closed: false, data: data ?? null });
   };
 
-  const open = (data?: ToggleData<T>): void => {
-    override(data);
-    setIsOpen(true);
+  const close: ToggleReturn<T>['close'] = () => {
+    setState({ opened: false, closed: true, data: null });
   };
 
-  const close = (): void => {
-    setData(null);
-    setIsOpen(false);
-  };
-
-  const toggle = (data?: ToggleData<T>): void => {
-    if (isOpen) {
+  const toggle: ToggleReturn<T>['toggle'] = (data) => {
+    if (state.opened) {
       close();
     } else {
       open(data);
     }
   };
 
-  return { isOpen, open, close, toggle, data, override };
+  const setData: ToggleReturn<T>['setData'] = (data) => {
+    setState((state) => ({ ...state, data }));
+  };
+
+  return {
+    ...state,
+    open,
+    close,
+    toggle,
+    setData,
+  };
 };
 
 export { useToggle };

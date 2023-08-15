@@ -71,7 +71,7 @@ const FilePicker = ({
 
   return (
     <>
-      {confirm.isOpen && (
+      {confirm.opened && (
         <Modal spacing={[200, 400]}>
           <Font variant="h5">You are about to delete input file?</Font>
           <Font variant="b1">Are you sure about that?</Font>
