@@ -2,9 +2,12 @@ import { Avatar, Box, Button, CloseIcon, Font, Popover } from '@system/figa-ui';
 import { useSignOutStore } from '../../store/sign-out';
 import { get } from '@system/blog-selectors';
 import { useAuthStore } from '../../store/auth';
+import { useRouter } from 'next/navigation';
+import { AdminsOnly } from '../../core';
 
 const UserPopover = () => {
   const authStore = useAuthStore();
+  const router = useRouter();
   const signOutStore = useSignOutStore();
 
   return (
@@ -75,7 +78,16 @@ const UserPopover = () => {
             </Box>
           </Box>
 
-          <Box right>
+          <Box right spacing={[200]} orientation="row">
+            <AdminsOnly>
+              <Button
+                variant="outlined"
+                onClick={() => router.push('/en/admin')}
+                loading={signOutStore.key === 'pending'}
+              >
+                Admin panel
+              </Button>
+            </AdminsOnly>
             <Button
               variant="outlined"
               onClick={signOutStore.signOut}

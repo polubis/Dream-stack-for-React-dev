@@ -2,7 +2,7 @@ import { MainLayout, SignInForm } from '../../components';
 
 const SignInView = () => {
   return (
-    <MainLayout className="sign-in-view">
+    <MainLayout>
       <SignInForm />
     </MainLayout>
   );
