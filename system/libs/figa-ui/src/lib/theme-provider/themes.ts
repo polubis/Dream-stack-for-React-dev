@@ -4,7 +4,9 @@ const spacing: Spacing = {
   0: '0',
   25: '2px',
   50: '4px',
+  75: '6px',
   100: '8px',
+  125: '10px',
   150: '12px',
   200: '16px',
   250: '20px',
@@ -125,6 +127,14 @@ const tokens: Tokens = {
 const light: Theme = {
   outline: {
     color: tokens.common.black,
+  },
+  checkbox: {
+    borderColor: tokens.common.white,
+    checked: {
+      bg: tokens.primary[50],
+      borderColor: tokens.primary[50],
+      color: tokens.common.white,
+    },
   },
   badge: {
     outlined: {
@@ -357,6 +367,14 @@ const light: Theme = {
 const dark: Theme = {
   outline: {
     color: tokens.common.white,
+  },
+  checkbox: {
+    borderColor: tokens.common.white,
+    checked: {
+      bg: tokens.primary[50],
+      borderColor: tokens.primary[50],
+      color: tokens.common.white,
+    },
   },
   badge: {
     outlined: {

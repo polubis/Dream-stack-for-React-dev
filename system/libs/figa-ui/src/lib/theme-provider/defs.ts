@@ -18,7 +18,9 @@ type Spacing = Readonly<{
   0: string;
   25: string;
   50: string;
+  75: string;
   100: string;
+  125: string;
   150: string;
   200: string;
   250: string;
@@ -143,6 +145,14 @@ interface Tokens {
 interface Theme {
   outline: {
     color: string;
+  };
+  checkbox: {
+    borderColor: string;
+    checked: {
+      borderColor: string;
+      color: string;
+      bg: string;
+    };
   };
   font: {
     default: {
