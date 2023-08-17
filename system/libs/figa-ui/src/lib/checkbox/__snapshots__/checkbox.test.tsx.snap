@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox can be used when:  [FRAGILE] allows to pass custom id 1`] = `
+<DocumentFragment>
+  <div
+    class="checkbox"
+  >
+    <input
+      id="my-id"
+      type="checkbox"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Checkbox can be used when:  [FRAGILE] allows to reverse the checkbox label and input 1`] = `
+<DocumentFragment>
+  <div
+    class="checkbox reversed"
+  >
+    <input
+      id=":r1:"
+      type="checkbox"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Checkbox can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="checkbox my-class"
+  >
+    <input
+      id=":r0:"
+      type="checkbox"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Checkbox can be used when:  [FRAGILE] skips label rendering if not passed 1`] = `
+<DocumentFragment>
+  <div
+    class="checkbox"
+  >
+    <input
+      id=":r3:"
+      type="checkbox"
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -1395,6 +1395,87 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* badge.tsx */
+
+    /* checkbox.tsx */
+
+    .checkbox {
+        ${row()}
+        max-width: max-content;
+
+        &, input, label {
+            flex-shrink: 0;
+        }
+
+        label {
+            cursor: pointer;
+        }
+
+        input {
+            ${size(tokens.spacing[350])}
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            border: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.checkbox.borderColor};
+            position: relative;
+            cursor: pointer;
+            background: transparent;
+            margin: 0;
+            border-radius: ${tokens.radius[50]};
+
+            &:after {
+                content: '';
+                display: block;
+                left: 0;
+                top: 0;
+                position: absolute;
+            }
+
+            &:checked {
+                background: ${(props) => props.theme.checkbox.checked.bg};
+                border-color: ${(props) =>
+                  props.theme.checkbox.checked.borderColor};
+
+                &:after {
+                    border: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.checkbox.checked.color};
+                    height: ${tokens.spacing[100]};
+                    width: ${tokens.spacing[125]};
+                    border-top: 0;
+                    border-left: 0;
+                    left: ${tokens.spacing[75]};
+                    top: ${tokens.spacing[50]};
+                    transform: rotate(35deg);
+                }
+            }
+
+            &:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+
+                & + label {
+                    opacity: 0.4;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        &.reversed {
+            flex-flow: row-reverse;
+
+            label {
+                margin-right: ${tokens.spacing[150]};
+            }
+        }
+
+        &:not(.reversed) {
+            label {
+                margin-left: ${tokens.spacing[150]};
+            }
+        }
+    }
+
+    /* checkbox.tsx */
 `;
 
 export { GlobalStyle };
