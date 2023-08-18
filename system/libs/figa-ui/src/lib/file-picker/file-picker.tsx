@@ -60,7 +60,7 @@ const FilePicker = ({
 
     if (blocked) return;
 
-    confirm.open(src);
+    confirm.openWithData(src);
   };
 
   const handleConfirmRemoval = (): void => {

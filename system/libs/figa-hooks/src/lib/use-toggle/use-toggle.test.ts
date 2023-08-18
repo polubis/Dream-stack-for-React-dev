@@ -32,12 +32,12 @@ describe('Toggle feature can be used when: ', () => {
     expect(result.current.data).toBe(null);
 
     act(() => {
-      result.current.open(data);
+      result.current.open();
     });
 
     expect(result.current.opened).toBe(true);
     expect(result.current.closed).toBe(false);
-    expect(result.current.data).toEqual(data);
+    expect(result.current.data).toBe(null);
 
     act(() => {
       result.current.toggle();
@@ -48,7 +48,7 @@ describe('Toggle feature can be used when: ', () => {
     expect(result.current.data).toBe(null);
 
     act(() => {
-      result.current.toggle(data);
+      result.current.toggleWithData(data);
     });
 
     expect(result.current.opened).toBe(true);
@@ -56,9 +56,19 @@ describe('Toggle feature can be used when: ', () => {
     expect(result.current.data).toEqual(data);
 
     act(() => {
-      result.current.setData({ id: 2 });
+      result.current.set({ opened: false, data: { id: 2 } });
     });
 
     expect(result.current.data).toEqual({ id: 2 });
+    expect(result.current.closed).toBe(true);
+    expect(result.current.opened).toBe(false);
+
+    act(() => {
+      result.current.openWithData({ id: 3 });
+    });
+
+    expect(result.current.data).toEqual({ id: 3 });
+    expect(result.current.closed).toBe(false);
+    expect(result.current.opened).toBe(true);
   });
 });
