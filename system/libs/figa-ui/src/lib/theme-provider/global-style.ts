@@ -133,10 +133,12 @@ const GlobalStyle = createGlobalStyle`
 
         &.b2 {
             ${font('1.4rem', '0.1px', 'LexendMedium', 500)}
+            line-height: 2.2rem;
         }
 
         &.b3 {
             ${font('1.2rem', '0.1px', 'LexendRegular', 400)}
+            line-height: 2rem;
         }
 
         &.italic, &.italic > * {

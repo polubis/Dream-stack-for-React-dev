@@ -33,7 +33,6 @@ export const setup = ({
         ? [
             EditorView.updateListener.of((v) => {
               if (v.docChanged) {
-                console.log('siema');
                 onChange(view.state.doc.toString());
               }
             }),

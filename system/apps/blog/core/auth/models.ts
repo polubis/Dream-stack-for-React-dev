@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 interface GuardProps {
   children: ReactNode;
-  Fallback?: ReactNode;
+  fallback?: ReactNode;
 }
 
 export type { GuardProps };
