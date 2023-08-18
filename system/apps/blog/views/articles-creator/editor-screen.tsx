@@ -23,7 +23,7 @@ import { CreatorForm } from './creator-form';
 
 const EditorScreen = () => {
   const articlesCreatorStore = useArticlesCreatorStore();
-  const formToggler = useToggle();
+  const form = useToggle();
 
   const handleClose = (): void => {
     articles_creator_actions.setView('initial');
@@ -85,9 +85,9 @@ const EditorScreen = () => {
           <Button
             size={1}
             shape="rounded"
-            title={formToggler.opened ? 'Close form' : 'Show form'}
-            variant={formToggler.opened ? 'filled' : 'outlined'}
-            onClick={formToggler.toggle}
+            title={form.opened ? 'Close form' : 'Show form'}
+            variant={form.opened ? 'filled' : 'outlined'}
+            onClick={form.toggle}
           >
             <FormIcon />
           </Button>
@@ -128,7 +128,7 @@ const EditorScreen = () => {
         </>
       )}
     >
-      {formToggler.opened ? (
+      {form.opened ? (
         <CreatorForm />
       ) : (
         <Code
