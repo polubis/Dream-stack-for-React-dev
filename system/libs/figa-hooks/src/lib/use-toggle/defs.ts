@@ -6,14 +6,16 @@ interface ToggleConfig<T = null> {
 interface ToggleState<T = null> {
   data: T | null;
   opened: boolean;
-  closed: boolean;
 }
 
 interface ToggleReturn<T = null> extends ToggleState<T> {
-  open: (data?: T | null) => void;
+  closed: boolean;
+  open: () => void;
   close: () => void;
-  toggle: (data?: T | null) => void;
-  setData: (data: T | null) => void;
+  toggle: () => void;
+  set: (state: ToggleState<T>) => void;
+  openWithData: (data?: T | null) => void;
+  toggleWithData: (data?: T | null) => void;
 }
 
 export type { ToggleConfig, ToggleState, ToggleReturn };

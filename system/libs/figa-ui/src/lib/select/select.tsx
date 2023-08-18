@@ -44,7 +44,7 @@ const Select = <K extends SelectOptionKey = SelectOptionKey>({
           'select-expander-empty': value === '' || value === undefined,
           'select-expander-opened': opened,
         })}
-        onClick={() => toggle()}
+        onClick={toggle}
       >
         {valueToDisplay}
       </button>
