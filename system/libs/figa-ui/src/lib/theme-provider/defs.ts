@@ -40,6 +40,7 @@ type Spacing = Readonly<{
   950: string;
   1000: string;
   1500: string;
+  1750: string;
   2000: string;
 }>;
 

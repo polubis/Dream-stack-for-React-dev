@@ -34,6 +34,45 @@ const getScrollValue = <T extends HTMLElement>(
   ref: T | Window
 ): number => (axis === 'x' ? getScrollXValue(ref) : getScrollYValue(ref));
 
+const calculateProgress = (
+  scrollOffset: number,
+  scrollSize: number,
+  containerSize: number
+): number =>
+  Number.parseFloat(
+    ((scrollOffset * 100) / (scrollSize - containerSize)).toFixed(2)
+  );
+
+const getXProgress = <T extends HTMLElement>(ref: T | Window): number => {
+  if (isHTMLElement(ref)) {
+    const { width } = ref.getBoundingClientRect();
+
+    return calculateProgress(ref.scrollLeft, ref.scrollWidth, width);
+  }
+  const { innerWidth, scrollX } = ref;
+  const { scrollWidth } = document.documentElement;
+
+  return calculateProgress(scrollX, scrollWidth, innerWidth);
+};
+
+const getYProgress = <T extends HTMLElement>(ref: T | Window): number => {
+  if (isHTMLElement(ref)) {
+    const { height } = ref.getBoundingClientRect();
+
+    return calculateProgress(ref.scrollTop, ref.scrollHeight, height);
+  }
+
+  const { innerHeight, scrollY } = ref;
+  const { scrollHeight } = document.documentElement;
+
+  return calculateProgress(scrollY, scrollHeight, innerHeight);
+};
+
+const getProgress = <T extends HTMLElement>(
+  axis: ScrollAxis,
+  ref: T | Window
+): number => (axis === 'x' ? getXProgress(ref) : getYProgress(ref));
+
 const getScrollResult = (prev: number, curr: number): ScrollResult => {
   if (prev === curr) return 'unchanged';
   return prev < curr ? 'progress' : 'regress';
@@ -42,6 +81,7 @@ const getScrollResult = (prev: number, curr: number): ScrollResult => {
 const useScroll = <T extends HTMLElement = HTMLElement>({
   axis = 'y',
   delay = 150,
+  onScroll,
 }: ScrollConfig = {}): ScrollReturn<T> => {
   const ref = useRef<T>(null);
   const [state, setState] = useState<ScrollState>(() => ({ is: 'idle' }));
@@ -60,12 +100,15 @@ const useScroll = <T extends HTMLElement = HTMLElement>({
       .pipe(debounceTime(delay))
       .subscribe(() => {
         const curr = getScrollValue(axis, target);
-
-        setState({
+        const newState = {
           prev,
           curr,
           is: getScrollResult(prev, curr),
-        });
+          value: getProgress(axis, target),
+        };
+
+        setState(newState);
+        onScroll && onScroll(newState);
 
         prev = curr;
       });
@@ -73,7 +116,7 @@ const useScroll = <T extends HTMLElement = HTMLElement>({
     return () => {
       obs$.unsubscribe();
     };
-  }, [delay, axis]);
+  }, [delay, axis, onScroll]);
 
   return [state, ref];
 };

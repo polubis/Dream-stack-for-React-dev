@@ -3,6 +3,7 @@ import type { MutableRefObject } from 'react';
 interface BaseScrollState {
   prev: number;
   curr: number;
+  value: number;
 }
 
 interface IdleScrollState {
@@ -34,6 +35,7 @@ type ScrollResult = ScrollState['is'];
 interface ScrollConfig {
   axis?: ScrollAxis;
   delay?: number;
+  onScroll?(state: ScrollState): void;
 }
 
 type ScrollReturn<T extends HTMLElement = HTMLElement> = Readonly<
