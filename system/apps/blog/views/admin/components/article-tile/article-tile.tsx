@@ -136,6 +136,7 @@ const Container = styled.div`
 `;
 
 const ArticleTile = ({
+  id,
   title,
   thumbnail,
   description,
@@ -143,14 +144,9 @@ const ArticleTile = ({
   stack,
   tags,
   width,
+  onGoToClick,
 }: ArticleTileProps) => {
   const toggler = useToggle();
-
-  const GoToButton = (
-    <Button variant="outlined" shape="rounded" size={1} title="Read article">
-      <ArrowTopIcon className="r-90" />
-    </Button>
-  );
 
   const { stackAsString, tagsAsString } = useMemo(
     () => ({
@@ -203,7 +199,16 @@ const ArticleTile = ({
             >
               <SwapIcon className="r-90" />
             </Button>
-            {GoToButton}
+            <Button
+              variant="outlined"
+              shape="rounded"
+              data-article-id={id}
+              size={1}
+              title="Read article"
+              onClick={onGoToClick}
+            >
+              <ArrowTopIcon className="r-90" />
+            </Button>
           </div>
         </div>
       ) : (
@@ -254,7 +259,16 @@ const ArticleTile = ({
               >
                 <SwapIcon />
               </Button>
-              {GoToButton}
+              <Button
+                variant="outlined"
+                shape="rounded"
+                data-article-id={id}
+                size={1}
+                title="Read article"
+                onClick={onGoToClick}
+              >
+                <ArrowTopIcon className="r-90" />
+              </Button>
             </div>
           </div>
         </div>
