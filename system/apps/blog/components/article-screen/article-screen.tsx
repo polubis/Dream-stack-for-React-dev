@@ -1,11 +1,48 @@
-import c from 'classnames';
 import styled from 'styled-components';
-import type { ArticleLayoutProps } from './defs';
-import { tokens } from '../theme-provider';
+import { column, row, tokens } from '@system/figa-ui';
+import type { ArticleScreenProps } from './defs';
 
-const Container = styled.div`
+const Container = styled.article`
   max-width: 1080px;
   margin: 0 auto;
+`;
+
+const Details = styled.section`
+  ${column()}
+  padding: ${tokens.spacing[200]} ${tokens.spacing[200]} ${tokens
+    .spacing[300]} ${tokens.spacing[200]};
+
+  .top {
+    ${row()}
+    justify-content: space-between;
+  }
+
+  .bottom {
+    ${column()}
+    align-items: center;
+
+    & > * {
+      text-align: center;
+    }
+
+    & > *:nth-child(1) {
+      margin: ${tokens.spacing[300]} 0 ${tokens.spacing[200]} 0;
+    }
+
+    & > *:nth-child(3) {
+      margin: ${tokens.spacing[350]} 0 ${tokens.spacing[200]} 0;
+      max-width: 700px;
+    }
+
+    & > *:nth-child(4) {
+      margin: 0 0 ${tokens.spacing[600]} 0;
+      max-width: 700px;
+    }
+  }
+`;
+
+const Content = styled.section`
+  padding: ${tokens.spacing[500]};
 
   .code-block,
   .image,
@@ -87,17 +124,31 @@ const Container = styled.div`
   }
 `;
 
-const ArticleLayout = ({
-  className,
-  children,
+const ArticleScreen = ({
+  meta,
+  details,
+  badge,
   thumbnail,
-}: ArticleLayoutProps) => {
+  body,
+  info,
+}: ArticleScreenProps) => {
   return (
-    <Container className={c('article-layout', className)}>
+    <Container className="article-screen">
+      <Details>
+        <div className="top">
+          {badge}
+          {info}
+        </div>
+
+        <div className="bottom">
+          {details}
+          {meta}
+        </div>
+      </Details>
       {thumbnail}
-      {children}
+      <Content>{body}</Content>
     </Container>
   );
 };
 
-export { ArticleLayout };
+export { ArticleScreen };

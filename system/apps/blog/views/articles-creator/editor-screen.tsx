@@ -10,16 +10,34 @@ import {
   FullScreenCloseIcon,
   FullScreenIcon,
   PageIcon,
-  Thumbnail,
 } from '@system/figa-ui';
 import {
   articles_creator_actions,
   useArticlesCreatorStore,
 } from '../../store/articles-creator';
-import { ArticleMdRenderer } from '../../features/articles-creator';
 import { ARTICLE_COMPONENTS } from '../../core';
 import { useToggle } from '@system/figa-hooks';
 import { CreatorForm } from './creator-form';
+import Markdown, { type MarkdownToJSX } from 'markdown-to-jsx';
+import { ArticleScreen } from '../../components';
+import { ArticleStatusBadge } from '../../components/article-status-badge';
+import { ArticleThumbnail } from '../../components/article-thumbnail';
+import { ArticleMeta } from '../../components/article-meta';
+import { ArticleDetails } from '../../components/article-details';
+
+const createOverrides = (): MarkdownToJSX.Overrides => {
+  const overrides: MarkdownToJSX.Overrides = {};
+
+  for (const key in ARTICLE_COMPONENTS) {
+    overrides[key] = {
+      component: ARTICLE_COMPONENTS[key as keyof JSX.IntrinsicElements],
+    };
+  }
+
+  return overrides;
+};
+
+const options = { overrides: createOverrides() };
 
 const EditorScreen = () => {
   const articlesCreatorStore = useArticlesCreatorStore();
@@ -31,7 +49,7 @@ const EditorScreen = () => {
 
   const {
     form: {
-      values: { thumbnail, title },
+      values: { thumbnail, title, description, content },
     },
   } = articlesCreatorStore;
 
@@ -136,21 +154,44 @@ const EditorScreen = () => {
             articles_creator_actions.change('content', content)
           }
         >
-          {articlesCreatorStore.form.values.content}
+          {content}
         </Code>
       )}
 
-      <ArticleMdRenderer
-        code={articlesCreatorStore.form.values.content}
-        components={ARTICLE_COMPONENTS}
+      <ArticleScreen
+        details={
+          <ArticleDetails
+            title={title}
+            description={description}
+            authorName="You"
+          />
+        }
+        info={
+          <ArticleMeta>
+            <Font variant="b2">4.5</Font>
+            <Font variant="b2">15 min</Font>
+            <Font variant="b2">Created: 18 Jan 2022</Font>
+            <Font variant="b2">Updated: 18 Jan 2022</Font>
+          </ArticleMeta>
+        }
+        meta={
+          <ArticleMeta>
+            <Font variant="b2">React, Angular, JavaScript, TypeScript</Font>
+            <Font variant="b2">Architecture, Design patterns</Font>
+          </ArticleMeta>
+        }
         thumbnail={
-          thumbnail.preview.length > 0 && (
-            <Thumbnail
-              src={thumbnail.preview[0]}
-              alt="Article thumbnail"
-              title={title}
-            />
-          )
+          <ArticleThumbnail
+            src={thumbnail.preview[0]}
+            title={title}
+            status="Draft"
+          />
+        }
+        badge={<ArticleStatusBadge status="Draft" />}
+        body={
+          <Markdown key={content} options={options}>
+            {content}
+          </Markdown>
         }
       />
     </CreatorLayout>

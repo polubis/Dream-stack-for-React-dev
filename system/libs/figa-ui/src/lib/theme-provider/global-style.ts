@@ -124,6 +124,7 @@ const GlobalStyle = createGlobalStyle`
 
         &.h6 {
             ${font('2rem', '0.15px', 'LexendMedium', 500)}
+            line-height: 2.8rem;
         }
 
         &.b1 {
