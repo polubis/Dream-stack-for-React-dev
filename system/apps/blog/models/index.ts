@@ -1,9 +1,10 @@
-import type { ArticleDto, Url } from '@system/blog-api-models';
+import type { ArticleDto, FullArticleDto, Url } from '@system/blog-api-models';
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 interface ArticlePageProps {
   url: Url;
-  source: MDXRemoteSerializeResult;
+  mdx: MDXRemoteSerializeResult;
+  article: FullArticleDto;
 }
 
 interface ArticlePageParams {

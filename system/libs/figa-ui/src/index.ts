@@ -14,7 +14,6 @@ export * from './lib/footer';
 export * from './lib/creator-layout';
 export * from './lib/box';
 export * from './lib/layout';
-export * from './lib/article-layout';
 export * from './lib/left-bar';
 export * from './lib/popover';
 export * from './lib/badge';
