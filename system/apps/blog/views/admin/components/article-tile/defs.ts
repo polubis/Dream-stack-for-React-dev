@@ -1,4 +1,10 @@
+import type { MouseEvent as ReactMouseEvent } from 'react';
+
+type OnGoToClickEvent = ReactMouseEvent<HTMLButtonElement, MouseEvent>;
+type OnGoToClick = (e: OnGoToClickEvent) => void;
+
 interface ArticleTileProps {
+  id: string;
   title: string;
   thumbnail: string;
   description: string;
@@ -6,6 +12,7 @@ interface ArticleTileProps {
   stack: string[];
   width: number;
   tags: string[];
+  onGoToClick: OnGoToClick;
 }
 
-export type { ArticleTileProps };
+export type { ArticleTileProps, OnGoToClickEvent, OnGoToClick };
