@@ -10,6 +10,7 @@ import type {
   Content,
   Url,
   Parametrized,
+  DateStamp,
 } from './general';
 
 type ArticleStatus = 'Draft' | 'WaitingForApproval' | 'NeedWork' | 'Accepted';
@@ -24,6 +25,15 @@ interface ArticleDto {
   status: ArticleStatus;
   url: Url;
   lang: Lang;
+}
+
+interface ArticleReviewDto {
+  id: Id;
+  articleId: Id;
+  createdDate: DateStamp;
+  modifiedDate: DateStamp;
+  reviewerName: Name;
+  isCurrentUserReviewer: boolean;
 }
 
 interface FullArticleDto extends ArticleDto {
@@ -68,10 +78,17 @@ type RejectArticleResponse = void;
 type SendForApprovalArticlePayload = Parametrized;
 type SendForApprovalArticleResponse = void;
 
+type GetArticleReviewsPayload = Parametrized;
+type GetArticleReviewsResponse = Response<ArticleReviewDto[]>;
+
+type CreateArticleReviewPayload = Parametrized & { content: Content };
+type CreateArticleReviewResponse = Response<undefined>;
+
 export type {
   AcceptArticlePayload,
   AcceptArticleResponse,
   RejectArticlePayload,
+  ArticleReviewDto,
   RejectArticleResponse,
   SendForApprovalArticlePayload,
   SendForApprovalArticleResponse,
@@ -88,4 +105,8 @@ export type {
   FullArticleDto,
   DeleteArticlePayload,
   DeleteArticleResponse,
+  GetArticleReviewsResponse,
+  GetArticleReviewsPayload,
+  CreateArticleReviewPayload,
+  CreateArticleReviewResponse,
 };

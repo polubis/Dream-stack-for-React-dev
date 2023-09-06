@@ -15,29 +15,15 @@ import {
   articles_creator_actions,
   useArticlesCreatorStore,
 } from '../../store/articles-creator';
-import { ARTICLE_COMPONENTS } from '../../core';
 import { useToggle } from '@system/figa-hooks';
 import { CreatorForm } from './creator-form';
-import Markdown, { type MarkdownToJSX } from 'markdown-to-jsx';
+import Markdown from 'markdown-to-jsx';
 import { ArticleScreen } from '../../components';
 import { ArticleStatusBadge } from '../../components/article-status-badge';
 import { ArticleThumbnail } from '../../components/article-thumbnail';
 import { ArticleMeta } from '../../components/article-meta';
 import { ArticleDetails } from '../../components/article-details';
-
-const createOverrides = (): MarkdownToJSX.Overrides => {
-  const overrides: MarkdownToJSX.Overrides = {};
-
-  for (const key in ARTICLE_COMPONENTS) {
-    overrides[key] = {
-      component: ARTICLE_COMPONENTS[key as keyof JSX.IntrinsicElements],
-    };
-  }
-
-  return overrides;
-};
-
-const options = { overrides: createOverrides() };
+import { article_mdx_options } from '../../core';
 
 const EditorScreen = () => {
   const articlesCreatorStore = useArticlesCreatorStore();
@@ -189,7 +175,7 @@ const EditorScreen = () => {
         }
         badge={<ArticleStatusBadge status="Draft" />}
         body={
-          <Markdown key={content} options={options}>
+          <Markdown key={content} options={article_mdx_options}>
             {content}
           </Markdown>
         }

@@ -47,12 +47,12 @@ interface ErrorResponse {
   errors: ResponseError[];
 }
 
-interface PaginatedResponse<D> extends Response<D> {
+type PaginatedResponse<D> = Response<D> & {
   itemsPerPage: number;
   totalPages: number;
   currentPage: number;
   currentPageItemsNumber: number;
-}
+};
 
 interface Parametrized {
   id: Id;

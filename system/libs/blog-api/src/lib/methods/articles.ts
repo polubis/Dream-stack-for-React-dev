@@ -16,6 +16,10 @@ import {
   RejectArticleResponse,
   SendForApprovalArticlePayload,
   SendForApprovalArticleResponse,
+  GetArticleReviewsResponse,
+  GetArticleReviewsPayload,
+  CreateArticleReviewPayload,
+  CreateArticleReviewResponse,
 } from '@system/blog-api-models';
 import { blogAPI } from '../instances';
 import { formData } from '../core/form-data';
@@ -117,6 +121,33 @@ const sendForApprovalArticle = async ({
   return data;
 };
 
+const getArticleReviews = async ({
+  id,
+}: GetArticleReviewsPayload): Promise<GetArticleReviewsResponse> => {
+  const { data } = await blogAPI.get<GetArticleReviewsResponse>(
+    [getPath('Articles'), id, 'reviews'].join('/')
+  );
+
+  return data;
+};
+
+const createArticleReview = async ({
+  id,
+  ...payload
+}: CreateArticleReviewPayload): Promise<CreateArticleReviewResponse> => {
+  const { data } = await blogAPI.post<CreateArticleReviewResponse>(
+    [getPath('Articles'), id, 'reviews'].join('/'),
+    formData(payload),
+    {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }
+  );
+
+  return data;
+};
+
 export {
   getArticle,
   getArticles,
@@ -126,4 +157,6 @@ export {
   acceptArticle,
   rejectArticle,
   sendForApprovalArticle,
+  getArticleReviews,
+  createArticleReview,
 };
