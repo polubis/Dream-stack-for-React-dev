@@ -1,24 +1,36 @@
-import type { FullArticleDto, GetArticleParams } from '@system/blog-api-models';
 import { useArticleStore } from './store';
 import { getArticle, getError } from '@system/blog-api';
+import type { Article } from './defs';
 
-const article_actions = {
-  reset: (): void => {
-    useArticleStore.setState({ is: 'idle' });
+const { getState: get, setState: set } = useArticleStore;
+
+const article_actions: Article.Actions = {
+  reset: () => {
+    set({ is: 'idle' });
   },
-  load: async (payload: GetArticleParams): Promise<FullArticleDto> => {
+  load: async (payload) => {
     try {
-      useArticleStore.setState({ is: 'busy' });
+      set({ is: 'busy' });
 
       const { data: article } = await getArticle(payload);
 
-      useArticleStore.setState({ is: 'ok', article });
+      set({ is: 'ok', article });
 
       return article;
     } catch (error: unknown) {
-      useArticleStore.setState({ is: 'fail', error: getError(error) });
+      set({ is: 'fail', error: getError(error) });
       throw error;
     }
+  },
+  update: (article) => {
+    const state = get();
+
+    if (state.is === 'ok') {
+      set({ article: { ...state.article, ...article } });
+      return;
+    }
+
+    throw Error('An update attempt when there is no article yet');
   },
 };
 

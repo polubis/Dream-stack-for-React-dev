@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-namespace */
-import type { FullArticleDto, ResponseError } from '@system/blog-api-models';
+import type {
+  FullArticleDto,
+  GetArticleParams,
+  ResponseError,
+} from '@system/blog-api-models';
 
 namespace Article {
   export type Idle = { is: 'idle' };
@@ -8,6 +12,12 @@ namespace Article {
   export type Fail = { is: 'fail'; error: ResponseError };
 
   export type State = Idle | Busy | Ok | Fail;
+
+  export interface Actions {
+    update(article: Partial<FullArticleDto>): void;
+    reset(): void;
+    load(payload: GetArticleParams): Promise<FullArticleDto>;
+  }
 }
 
 export type { Article };

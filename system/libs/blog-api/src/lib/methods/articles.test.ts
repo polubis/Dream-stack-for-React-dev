@@ -124,7 +124,9 @@ describe('Articles methods works when: ', () => {
 
   it('article can be accepted', async () => {
     const expectedResponse = mockAxiosResponse(mockResponse(null)())();
-    const spy = jest.spyOn(blogAPI, 'post').mockResolvedValue(expectedResponse);
+    const spy = jest
+      .spyOn(blogAPI, 'patch')
+      .mockResolvedValue(expectedResponse);
 
     const payload = mockParametrized();
     const response = await acceptArticle(payload);
@@ -138,7 +140,9 @@ describe('Articles methods works when: ', () => {
 
   it('article can be rejected', async () => {
     const expectedResponse = mockAxiosResponse(mockResponse(null)())();
-    const spy = jest.spyOn(blogAPI, 'post').mockResolvedValue(expectedResponse);
+    const spy = jest
+      .spyOn(blogAPI, 'patch')
+      .mockResolvedValue(expectedResponse);
 
     const payload = mockParametrized();
     const response = await rejectArticle(payload);
