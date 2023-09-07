@@ -17,6 +17,7 @@ import type {
   CreateArticlePayload,
   Parametrized,
   UpdateArticlePayload,
+  ArticleReviewDto,
 } from '@system/blog-api-models';
 import { mock } from '@system/utils';
 
@@ -100,6 +101,15 @@ const mockArticle = mock<ArticleDto>({
   lang: 'en',
 });
 
+const mockArticleReview = mock<ArticleReviewDto>({
+  id: '793b28bc-23d6-427c-a9b8-12313dasdad',
+  articleId: '9b82b630-9ff8-4a05-06ad-08dbac44af52',
+  createdDate: '2023-09-07T07:24:50.3554487',
+  modifiedDate: '2023-09-07T07:24:50.3554487',
+  reviewerName: 'Polubis',
+  isCurrentUserReviewer: true,
+});
+
 const mockArticles = (): ArticleDto[] => [
   mockArticle(),
   mockArticle({
@@ -165,5 +175,6 @@ export {
   mockParametrized,
   mockRegisterPayload,
   mockGetArticleResponse,
+  mockArticleReview,
   mockUpdateArticlePayload,
 };

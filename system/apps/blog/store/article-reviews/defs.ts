@@ -14,6 +14,7 @@ type State = Idle | Busy | Ok | Fail;
 
 interface Actions {
   load(id: Id): Promise<void>;
+  addReview(review: ArticleReviewDto): void;
 }
 
 export type { State, Idle, Busy, Fail, Actions };
