@@ -94,7 +94,7 @@ const deleteArticle = async ({
 const acceptArticle = async ({
   id,
 }: AcceptArticlePayload): Promise<AcceptArticleResponse> => {
-  const { data } = await blogAPI.post<AcceptArticleResponse>(
+  const { data } = await blogAPI.patch<AcceptArticleResponse>(
     [getPath('Articles/Accept'), id].join('/')
   );
 
@@ -104,7 +104,7 @@ const acceptArticle = async ({
 const rejectArticle = async ({
   id,
 }: RejectArticlePayload): Promise<RejectArticleResponse> => {
-  const { data } = await blogAPI.post<RejectArticleResponse>(
+  const { data } = await blogAPI.patch<RejectArticleResponse>(
     [getPath('Articles/Reject'), id].join('/')
   );
 

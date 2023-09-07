@@ -11,6 +11,7 @@ import {
   Font,
   Loader,
   Textarea,
+  column,
   row,
   tokens,
 } from '@system/figa-ui';
@@ -28,15 +29,19 @@ import {
   article_management_actions,
   article_management_selectors,
 } from '../../store/article-management';
+import { useChangeArticleStatusStore } from '../../store/change-article-status';
+import { ArticleStatus } from '@system/blog-api-models';
 
 const ReviewsSection = styled.section`
   position: relative;
 
   .content {
+    ${column()}
     position: sticky;
     top: 0;
     right: 0;
     width: 100%;
+    height: 100%;
 
     .top {
       ${row()}
@@ -44,8 +49,20 @@ const ReviewsSection = styled.section`
     }
 
     form {
+      margin-bottom: ${tokens.spacing[500]};
+
       .field {
         margin-bottom: ${tokens.spacing[200]};
+      }
+    }
+
+    footer {
+      ${row()}
+      margin-top: auto;
+      justify-content: flex-end;
+
+      & > *:not(:first-child) {
+        margin-left: ${tokens.spacing[200]};
       }
     }
   }
@@ -59,18 +76,19 @@ const Container = styled.div`
 `;
 
 const DetailsSection = () => {
-  const store = useArticleStore();
+  const articleStore = useArticleStore();
 
-  const { is } = store;
+  const { is } = articleStore;
 
   if (is === 'idle' || is === 'busy') {
     return <Loader />;
   }
 
-  if (is === 'fail') return <Alert type="error">{store.error.message}</Alert>;
+  if (is === 'fail')
+    return <Alert type="error">{articleStore.error.message}</Alert>;
 
   const { title, description, authorName, thumbnailUrl, status, content } =
-    store.article;
+    articleStore.article;
 
   return (
     <ArticleScreen
@@ -105,12 +123,21 @@ const DetailsSection = () => {
 };
 
 const ArticlePreview = () => {
+  const articleStore = useArticleStore();
   const addArticleReviewStore = useAddArticleReviewStore();
+  const changeArticleStatusStore = useChangeArticleStatusStore();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     article_management_actions.confirm(
       article_management_selectors.active().id
+    );
+  };
+
+  const handleStatusChangeClick = (status: ArticleStatus) => (): void => {
+    article_management_actions.changeStatus(
+      article_management_selectors.active().id,
+      status
     );
   };
 
@@ -144,6 +171,28 @@ const ArticlePreview = () => {
               Confirm
             </Button>
           </form>
+          <footer>
+            {articleStore.is === 'ok' && (
+              <>
+                {articleStore.article.status !== 'NeedWork' && (
+                  <Button
+                    onClick={handleStatusChangeClick('NeedWork')}
+                    loading={changeArticleStatusStore.is === 'busy'}
+                  >
+                    Request improvements
+                  </Button>
+                )}
+                {articleStore.article.status !== 'Accepted' && (
+                  <Button
+                    onClick={handleStatusChangeClick('Accepted')}
+                    loading={changeArticleStatusStore.is === 'busy'}
+                  >
+                    Publish article
+                  </Button>
+                )}
+              </>
+            )}
+          </footer>
         </div>
       </ReviewsSection>
     </Container>
