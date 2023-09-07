@@ -26,8 +26,9 @@ internal class UpdateArticleRateHandler : IRequestHandler<UpdateArticleRate, Res
         var result = new Result();
 
         var currentArticle = await _dbContext.Articles
-            .Include(x=>x.Author)
-            .Include(x=>x.Rates)
+            .Include(x => x.Author)
+            .Include(x => x.Rates)
+            .Include(x => x.AnnonymousRates)
             .SingleOrDefaultAsync(x => !x.IsDeleted && x.Id == command.ArticleId);
 
         if (currentArticle is null)

@@ -21,6 +21,7 @@ using GreenOnSoftware.Application.Reviews.DeleteReviewCommand;
 using GreenOnSoftware.Application.Reviews.GetReviewsQuery;
 using GreenOnSoftware.Application.Reviews.GetReviewByIdQuery;
 using GreenOnSoftware.Core.Enums;
+using GreenOnSoftware.Application.Ratings.UpdateArticleRate;
 
 namespace GreenOnSoftware.Api.Controllers;
 
@@ -218,6 +219,21 @@ public class ArticlesController : ControllerBase
     [HttpPost("{articleId}/ratings")]
     [SwaggerResponse(StatusCodes.Status200OK, type: typeof(Result))]
     public async Task<IActionResult> AddRate(Guid articleId, [FromBody] AddArticleRate command)
+    {
+        var result = await _mediator.Send(command.BindArticleId(articleId));
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
+
+    [AllowAnonymous]
+    [HttpPut("{articleId}/ratings")]
+    [SwaggerResponse(StatusCodes.Status200OK, type: typeof(Result))]
+    public async Task<IActionResult> UpdateRate(Guid articleId, [FromBody] UpdateArticleRate command)
     {
         var result = await _mediator.Send(command.BindArticleId(articleId));
 
