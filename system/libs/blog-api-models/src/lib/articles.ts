@@ -33,6 +33,7 @@ interface ArticleReviewDto {
   createdDate: DateStamp;
   modifiedDate: DateStamp;
   reviewerName: Name;
+  // @TODO: Missing content property here - ask backend for that.
   isCurrentUserReviewer: boolean;
 }
 
@@ -82,7 +83,8 @@ type GetArticleReviewsPayload = Parametrized;
 type GetArticleReviewsResponse = Response<ArticleReviewDto[]>;
 
 type CreateArticleReviewPayload = Parametrized & { content: Content };
-type CreateArticleReviewResponse = Response<undefined>;
+// @TODO: Ask backend to return full created review.
+type CreateArticleReviewResponse = Response<ArticleReviewDto>;
 
 export type {
   AcceptArticlePayload,

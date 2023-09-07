@@ -7,14 +7,16 @@ import {
   tokens,
 } from '@system/figa-ui';
 import styled from 'styled-components';
-import { type ScrollState, useScroll, useToggle } from '@system/figa-hooks';
+import { type ScrollState, useScroll } from '@system/figa-hooks';
 import { useCallback } from 'react';
 import type { ArticleDto } from '@system/blog-api-models';
 import { articles_actions } from '../../store/articles';
 import { ArticleTile, type OnGoToClick } from './components';
-import { article_reviews_actions } from '../../store/article-reviews';
 import { ArticlePreview } from './article-preview';
-import { article_actions } from '../../store/article';
+import {
+  article_management_actions,
+  useArticleManagementStore,
+} from '../../store/article-management';
 
 const tile_width = 300;
 
@@ -49,7 +51,7 @@ interface ArticlesGridProps {
 }
 
 const ArticlesGrid = ({ articles }: ArticlesGridProps) => {
-  const articleModal = useToggle<ArticleDto>();
+  const articleManagementStore = useArticleManagementStore();
 
   const handleLoadMore = useCallback((scroll: ScrollState): void => {
     if (scroll.is === 'progress' && scroll.value >= 80) {
@@ -67,10 +69,7 @@ const ArticlesGrid = ({ articles }: ArticlesGridProps) => {
 
       if (!article) throw Error('Cannot find article');
 
-      article_reviews_actions.load(article.id);
-      article_actions.load(article);
-      articleModal.openWithData(article);
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+      article_management_actions.start(article.id, article.url, article.lang);
     },
     [articles]
   );
@@ -95,9 +94,9 @@ const ArticlesGrid = ({ articles }: ArticlesGridProps) => {
           onGoToClick={handleGoToClick}
         />
       ))}
-      {articleModal.opened && (
-        <Modal onClose={articleModal.close} minWidth="96vw">
-          <ArticlePreview onClose={articleModal.close} />
+      {articleManagementStore.is === 'active' && (
+        <Modal onClose={article_management_actions.reset} minWidth="96vw">
+          <ArticlePreview />
         </Modal>
       )}
     </Container>
