@@ -257,7 +257,7 @@ const light: Theme = {
         color: tokens.common.black,
         bg: tokens.primary[100],
         outlineColor: tokens.common.black,
-      }
+      },
     },
     outlined: {
       primary: {
@@ -516,7 +516,7 @@ const dark: Theme = {
         color: tokens.common.black,
         bg: tokens.primary[100],
         outlineColor: tokens.common.white,
-      }
+      },
     },
     outlined: {
       primary: {

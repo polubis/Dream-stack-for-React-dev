@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Font can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <h5
+    class="font h5 default my-class italic bold trim"
+  >
+    My content inside
+  </h5>
+</DocumentFragment>
+`;
