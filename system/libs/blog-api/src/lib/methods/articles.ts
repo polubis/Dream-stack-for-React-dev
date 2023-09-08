@@ -14,8 +14,8 @@ import {
   AcceptArticleResponse,
   RejectArticlePayload,
   RejectArticleResponse,
-  SendForApprovalArticlePayload,
-  SendForApprovalArticleResponse,
+  SendArticleForApprovalPayload,
+  SendArticleForApprovalResponse,
   GetArticleReviewsResponse,
   GetArticleReviewsPayload,
   CreateArticleReviewPayload,
@@ -111,10 +111,10 @@ const rejectArticle = async ({
   return data;
 };
 
-const sendForApprovalArticle = async ({
+const sendArticleForApproval = async ({
   id,
-}: SendForApprovalArticlePayload): Promise<SendForApprovalArticleResponse> => {
-  const { data } = await blogAPI.post<SendForApprovalArticleResponse>(
+}: SendArticleForApprovalPayload): Promise<SendArticleForApprovalResponse> => {
+  const { data } = await blogAPI.post<SendArticleForApprovalResponse>(
     [getPath('Articles/SendForApproval'), id].join('/')
   );
 
@@ -156,7 +156,7 @@ export {
   deleteArticle,
   acceptArticle,
   rejectArticle,
-  sendForApprovalArticle,
+  sendArticleForApproval,
   getArticleReviews,
   createArticleReview,
 };

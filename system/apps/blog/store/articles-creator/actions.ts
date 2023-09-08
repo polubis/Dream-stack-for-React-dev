@@ -1,17 +1,24 @@
 import { useArticlesCreatorStore } from './store';
 import type { ArticlesCreator } from './defs';
 import { creatorForm } from './form';
-import { createArticle, getError, updateArticle } from '@system/blog-api';
+import {
+  createArticle,
+  getError,
+  sendArticleForApproval,
+  updateArticle,
+} from '@system/blog-api';
 import { Url } from '@system/blog-api-models';
+
+const { getState: get, setState: set } = useArticlesCreatorStore;
 
 const articles_creator_actions = {
   setView: (view: ArticlesCreator.View): void => {
-    useArticlesCreatorStore.setState({ view });
+    set({ view });
   },
   setForm: (values: Partial<ArticlesCreator.FormData> = {}): void => {
-    useArticlesCreatorStore.setState({
+    set({
       form: creatorForm.init({
-        ...useArticlesCreatorStore.getState().form.values,
+        ...get().form.values,
         ...values,
       }),
     });
@@ -23,15 +30,16 @@ const articles_creator_actions = {
     key: K,
     value: V
   ): void => {
-    const { form } = useArticlesCreatorStore.getState();
-    useArticlesCreatorStore.setState({
-      form: creatorForm.set(form)({ [key]: value }),
+    set({
+      form: creatorForm.set(get().form)({ [key]: value }),
     });
   },
   confirm: async (url?: Url): Promise<void> => {
-    useArticlesCreatorStore.setState({
+    const state = get();
+
+    set({
       is: 'busy',
-      form: creatorForm.confirm(useArticlesCreatorStore.getState().form),
+      form: creatorForm.confirm(state.form),
     });
 
     try {
@@ -39,7 +47,7 @@ const articles_creator_actions = {
         form: {
           values: { title, thumbnail, description, content, lang },
         },
-      } = useArticlesCreatorStore.getState();
+      } = state;
 
       const payload = {
         title,
@@ -49,13 +57,16 @@ const articles_creator_actions = {
         lang,
       };
 
-      url
-        ? await updateArticle({ url, ...payload })
-        : await createArticle(payload);
+      // @TODO: Ask backend to return created article id or updated article id.
+      await (url ? updateArticle({ url, ...payload }) : createArticle(payload));
 
-      useArticlesCreatorStore.setState({ is: 'ok' });
+      if (state.form.values.sendToReview) {
+        await sendArticleForApproval({ id: 'nothing here yet' });
+      }
+
+      set({ is: 'ok' });
     } catch (error: unknown) {
-      useArticlesCreatorStore.setState({ is: 'fail', error: getError(error) });
+      set({ is: 'fail', error: getError(error) });
     }
   },
 };

@@ -19,7 +19,7 @@ import {
   getArticle,
   getArticles,
   rejectArticle,
-  sendForApprovalArticle,
+  sendArticleForApproval,
   updateArticle,
 } from './articles';
 import { formData } from '../core/form-data';
@@ -159,7 +159,7 @@ describe('Articles methods works when: ', () => {
     const spy = jest.spyOn(blogAPI, 'post').mockResolvedValue(expectedResponse);
 
     const payload = mockParametrized();
-    const response = await sendForApprovalArticle(payload);
+    const response = await sendArticleForApproval(payload);
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(
