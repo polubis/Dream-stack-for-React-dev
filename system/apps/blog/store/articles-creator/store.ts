@@ -14,6 +14,7 @@ const useArticlesCreatorStore = create<ArticlesCreator.State>(() => ({
     },
     content: '',
     lang: 'en',
+    sendToReview: false,
   }),
 }));
 

@@ -76,8 +76,8 @@ type AcceptArticleResponse = void;
 type RejectArticlePayload = Parametrized;
 type RejectArticleResponse = void;
 
-type SendForApprovalArticlePayload = Parametrized;
-type SendForApprovalArticleResponse = void;
+type SendArticleForApprovalPayload = Parametrized;
+type SendArticleForApprovalResponse = void;
 
 type GetArticleReviewsPayload = Parametrized;
 type GetArticleReviewsResponse = Response<ArticleReviewDto[]>;
@@ -92,8 +92,8 @@ export type {
   RejectArticlePayload,
   ArticleReviewDto,
   RejectArticleResponse,
-  SendForApprovalArticlePayload,
-  SendForApprovalArticleResponse,
+  SendArticleForApprovalPayload,
+  SendArticleForApprovalResponse,
   ArticleDto,
   ArticleStatus,
   GetArticlesResponse,

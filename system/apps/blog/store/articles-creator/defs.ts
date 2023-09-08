@@ -11,6 +11,7 @@ namespace ArticlesCreator {
       file: File | null;
       preview: string[];
     };
+    sendToReview: boolean;
   };
   export type FormDataState = FormState<FormData>;
   export type View = 'initial' | 'creator' | 'confirm';

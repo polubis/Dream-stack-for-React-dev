@@ -1,4 +1,12 @@
-import { Alert, Box, Button, Font, List, ListItem } from '@system/figa-ui';
+import {
+  Alert,
+  Box,
+  Button,
+  Checkbox,
+  Font,
+  List,
+  ListItem,
+} from '@system/figa-ui';
 import {
   articles_creator_actions,
   useArticlesCreatorStore,
@@ -44,6 +52,7 @@ const ConfirmScreen = () => {
             200,
             150,
             400,
+            250,
             articleCreatorState.is === 'fail' || articleCreatorState.is === 'ok'
               ? 250
               : 0,
@@ -65,6 +74,25 @@ const ConfirmScreen = () => {
               your articles.
             </ListItem>
           </List>
+          <Box spacing={[150]}>
+            <Checkbox
+              label="Send to review"
+              checked={articleCreatorState.form.values.sendToReview}
+              onClick={() =>
+                articles_creator_actions.change(
+                  'sendToReview',
+                  !articleCreatorState.form.values.sendToReview
+                )
+              }
+            />
+            {articleCreatorState.form.values.sendToReview && (
+              <Font variant="b3">
+                Your article will be saved and sent to review, our moderator or
+                admin will pick it up. Later, an article will be published or
+                changes will be requested.{' '}
+              </Font>
+            )}
+          </Box>
           <Box orientation="row" spacing={[150]} right>
             <Button variant="outlined" onClick={handleClose}>
               Go back

@@ -6,7 +6,6 @@ const creatorForm = form<ArticlesCreator.FormData>()({
   description: [required],
   content: [required],
   lang: [required],
-  thumbnail: [],
 });
 
 export { creatorForm };
