@@ -207,6 +207,13 @@ const GlobalStyle = createGlobalStyle`
             .icon path {
                 fill: ${(props) => props.theme.button.filled.primary.color};
             }
+
+            .loader-animation {
+                border-top-color: ${(props) =>
+                  props.theme.button.filled.primary.color};
+                border-bottom-color: ${(props) =>
+                  props.theme.button.filled.primary.color};
+            }
         }
 
         &.outlined.primary {
@@ -219,6 +226,55 @@ const GlobalStyle = createGlobalStyle`
 
             .icon path {
                 fill: ${(props) => props.theme.button.outlined.primary.color};
+            }
+
+            .loader-animation {
+                border-top-color: ${(props) =>
+                  props.theme.button.filled.primary.outlineColor};
+                border-bottom-color: ${(props) =>
+                  props.theme.button.outlined.primary.borderColor};
+            }
+        }
+
+        &.filled.secondary {
+            ${(props) =>
+              buttonBaseEffects(
+                props.theme.button.filled.secondary.outlineColor
+              )}
+            color: ${(props) => props.theme.button.filled.secondary.color};
+            background: ${(props) => props.theme.button.filled.secondary.bg};
+
+            .icon path {
+                fill: ${(props) => props.theme.button.filled.secondary.color};
+            }
+
+            .loader-animation {
+                border-top-color: ${(props) =>
+                  props.theme.button.filled.secondary.color};
+                border-bottom-color: ${(props) =>
+                  props.theme.button.filled.secondary.color};
+            }
+        }
+
+        &.outlined.secondary {
+            ${(props) =>
+              buttonBaseEffects(
+                props.theme.button.filled.secondary.outlineColor
+              )}
+            color: ${(props) => props.theme.button.outlined.secondary.color};
+            background: ${(props) => props.theme.button.outlined.secondary.bg};
+            border: 2px solid ${(props) =>
+              props.theme.button.outlined.secondary.borderColor};
+
+            .icon path {
+                fill: ${(props) => props.theme.button.outlined.secondary.color};
+            }
+            
+            .loader-animation {
+                border-top-color: ${(props) =>
+                  props.theme.button.filled.secondary.outlineColor};
+                border-bottom-color: ${(props) =>
+                  props.theme.button.outlined.secondary.borderColor};
             }
         }
 
