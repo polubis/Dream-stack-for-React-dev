@@ -250,9 +250,11 @@ interface Theme {
   button: {
     outlined: {
       primary: ButtonSetup;
+      secondary: ButtonSetup;
     };
     filled: {
       primary: ButtonSetup;
+      secondary: ButtonSetup;
     };
   };
   select: {
