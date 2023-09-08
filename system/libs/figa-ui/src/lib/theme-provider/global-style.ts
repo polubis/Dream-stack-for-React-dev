@@ -1357,6 +1357,7 @@ const GlobalStyle = createGlobalStyle`
         width: max-content;
         padding: ${tokens.spacing[100]};
         border-radius: ${tokens.radius[50]};
+        text-align: center;
         ${font('1.3rem', '0.03rem', 'LexendBold', 700)}
 
         &.filled {
@@ -1373,6 +1374,11 @@ const GlobalStyle = createGlobalStyle`
             &.ok {
                 background: ${(props) => props.theme.badge.filled.ok.bg};
                 color:${(props) => props.theme.badge.filled.ok.color};
+            }
+
+            &.casual {
+                background: ${(props) => props.theme.badge.filled.casual.bg};
+                color:${(props) => props.theme.badge.filled.casual.color};
             }
         }
 
@@ -1393,6 +1399,12 @@ const GlobalStyle = createGlobalStyle`
                 color:${(props) => props.theme.badge.outlined.ok.color};
                 border: 2px solid ${(props) =>
                   props.theme.badge.outlined.ok.borderColor};
+            }
+
+            &.casual {
+                color:${(props) => props.theme.badge.outlined.casual.color};
+                border: 2px solid ${(props) =>
+                  props.theme.badge.outlined.casual.borderColor};
             }
         }
     }

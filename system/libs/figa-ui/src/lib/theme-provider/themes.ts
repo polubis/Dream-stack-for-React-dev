@@ -151,6 +151,10 @@ const light: Theme = {
         color: tokens.green[200],
         borderColor: tokens.green[200],
       },
+      casual: {
+        color: tokens.common.black,
+        borderColor: tokens.common.black,
+      },
     },
     filled: {
       primary: {
@@ -164,6 +168,10 @@ const light: Theme = {
       ok: {
         color: tokens.common.black,
         bg: tokens.green[50],
+      },
+      casual: {
+        color: tokens.common.black,
+        bg: tokens.gray[150],
       },
     },
   },
@@ -391,6 +399,10 @@ const dark: Theme = {
         color: tokens.green[100],
         borderColor: tokens.green[100],
       },
+      casual: {
+        color: tokens.gray[150],
+        borderColor: tokens.gray[150],
+      },
     },
     filled: {
       primary: {
@@ -404,6 +416,10 @@ const dark: Theme = {
       ok: {
         color: tokens.common.black,
         bg: tokens.green[100],
+      },
+      casual: {
+        color: tokens.common.black,
+        bg: tokens.gray[150],
       },
     },
   },

@@ -177,6 +177,10 @@ interface Theme {
         borderColor: string;
         color: string;
       };
+      casual: {
+        borderColor: string;
+        color: string;
+      };
     };
     filled: {
       primary: {
@@ -188,6 +192,10 @@ interface Theme {
         color: string;
       };
       ok: {
+        bg: string;
+        color: string;
+      };
+      casual: {
         bg: string;
         color: string;
       };
