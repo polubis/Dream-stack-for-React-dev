@@ -521,6 +521,10 @@ const GlobalStyle = createGlobalStyle`
     .input, .textarea {
         position: relative;
 
+        &.input {
+            height: ${tokens.spacing[500]};
+        }
+
         input, textarea {
             ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
             padding: ${tokens.spacing[150]};
@@ -528,6 +532,7 @@ const GlobalStyle = createGlobalStyle`
             width: 100%;
             background: none;
             color: inherit;
+            height: 100%;
 
             &::placeholder {
                 ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
