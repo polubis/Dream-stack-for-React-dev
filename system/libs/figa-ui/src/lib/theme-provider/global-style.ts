@@ -150,6 +150,10 @@ const GlobalStyle = createGlobalStyle`
             font-weight: bold;
             letter-spacing: 0.40px;
         }
+
+        &.trim, &.trim > * {
+            ${trim()}
+        }
     }
 
     /* font.tsx */

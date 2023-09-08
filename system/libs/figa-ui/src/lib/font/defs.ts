@@ -30,6 +30,7 @@ interface FontProps extends FontHTMLElementProps {
   variant: FontVariant;
   children: ReactNode;
   italic?: boolean;
+  trim?: boolean;
   motive?: FontMotive;
   bold?: boolean;
 }

@@ -166,12 +166,11 @@ PrimaryOutlined.args = {
 export const SecondaryFilled = Template.bind({});
 SecondaryFilled.args = {
   variant: 'filled',
-  motive: 'secondary'
+  motive: 'secondary',
 };
 
 export const SecondaryOutlined = Template.bind({});
 SecondaryOutlined.args = {
   variant: 'outlined',
-  motive: 'secondary'
+  motive: 'secondary',
 };
-
