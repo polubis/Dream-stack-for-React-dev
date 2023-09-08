@@ -4,7 +4,6 @@ using GreenOnSoftware.DataAccess;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using GreenOnSoftware.Commons.Context;
-using GreenOnSoftware.Application.Ratings.RemoveArticleRateCommand;
 
 namespace GreenOnSoftware.Application.Ratings.RemoveArticleRateCommand;
 

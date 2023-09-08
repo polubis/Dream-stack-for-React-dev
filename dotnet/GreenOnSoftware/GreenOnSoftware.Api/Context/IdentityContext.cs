@@ -9,7 +9,7 @@ public class IdentityContext : IIdentityContext
     public Guid Id {
         get 
         {
-            if(_IdentityUserId == null || _annonymousUserId == null)
+            if(_IdentityUserId == null && _annonymousUserId == null)
             {
                 throw new Exception("User id cannot be null!");
             }

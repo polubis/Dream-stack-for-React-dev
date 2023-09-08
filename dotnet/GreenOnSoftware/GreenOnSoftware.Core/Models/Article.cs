@@ -194,8 +194,13 @@ public class Article : Entity
             .Select(x => new KeyValuePair<string, double>(x.Key, Math.Round(x.Average(v => v.Value), 1)));
     }
 
-    public double GetAverageRating()
+    public double? GetAverageRating()
     {
+        if(!Rates.Any() && !AnnonymousRates.Any())
+        {
+            return null;
+        }
+
         return Math.Round(Rates.Select(x => x.Value).Concat(AnnonymousRates.Select(x => x.Value)).Average(), 1);
     }
 
