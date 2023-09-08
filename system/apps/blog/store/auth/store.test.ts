@@ -1,6 +1,6 @@
 import { act } from '@testing-library/react';
 import { storeFixture } from '../test-utils';
-import { authorize, unauthorize, useAuthStore } from './auth.store';
+import { authorize, unauthorize, useAuthStore } from './store';
 import type { AuthStorage, AuthStoreStateKey } from './defs';
 import { storage } from '@system/utils';
 import { mockSignedInUser } from '@system/blog-api-mocks';

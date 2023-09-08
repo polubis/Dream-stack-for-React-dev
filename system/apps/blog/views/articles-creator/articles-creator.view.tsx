@@ -3,6 +3,8 @@ import { EditorScreen } from './editor-screen';
 import { useArticlesCreatorStore } from '../../store/articles-creator';
 import { ConfirmScreen } from './confirm-screen';
 
+// @TODO: Backend allows to set thumbnail to null.
+
 const ArticlesCreatorView = () => {
   const articleCreatorState = useArticlesCreatorStore();
 

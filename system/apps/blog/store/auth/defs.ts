@@ -1,4 +1,4 @@
-import type { SignedInUserDto } from '@system/blog-api-models';
+import type { SignedInUserDto, Username } from '@system/blog-api-models';
 
 type NullableSignedInUser = SignedInUserDto | null;
 
@@ -19,6 +19,10 @@ type AuthStore = AuthState & AuthActions;
 
 type AuthStoreStateKey = AuthState['key'];
 
+interface AuthSelectors {
+  useIsAuthor: (username: Username) => boolean;
+}
+
 export type {
   AuthStore,
   AuthActions,
@@ -26,4 +30,5 @@ export type {
   AuthStorage,
   AuthStoreStateKey,
   NullableSignedInUser,
+  AuthSelectors,
 };

@@ -14,10 +14,10 @@ import {
 } from '../../store/articles-creator';
 
 const CreatorForm = () => {
-  const articleCreatorState = useArticlesCreatorStore();
+  const articlesCreatorStore = useArticlesCreatorStore();
 
   const { thumbnail, title, description, lang } =
-    articleCreatorState.form.values;
+    articlesCreatorStore.form.values;
 
   const handleConfirm = (): void => {
     articles_creator_actions.setView('confirm');

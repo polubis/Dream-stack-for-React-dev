@@ -62,7 +62,7 @@ Currently we have several applications:
 
 const InitialScreen = () => {
   const router = useRouter();
-  const articleState = useArticleStore();
+  const articleStore = useArticleStore();
 
   const handleStart = async (): Promise<void> => {
     const url = new URLSearchParams(window.location.search).get('url');
@@ -91,16 +91,18 @@ const InitialScreen = () => {
     articles_creator_actions.setForm({ content: mdx });
   };
 
+  const { is } = articleStore;
+
   return (
     <MainLayout>
-      {articleState.is === 'busy' ? (
+      {is === 'busy' ? (
         <LoaderScreen />
       ) : (
         <Box
           margin="auto"
           maxWidth="400px"
           variant="outlined"
-          spacing={[150, 250, 500, articleState.is === 'fail' ? 250 : 0]}
+          spacing={[150, 250, 500, is === 'fail' ? 250 : 0]}
           padding={[250, 250, 250, 250]}
         >
           <Font variant="h6">Try to use our editor</Font>
@@ -118,8 +120,8 @@ const InitialScreen = () => {
           <Box right>
             <Button onClick={handleStart}>Start</Button>
           </Box>
-          {articleState.is === 'fail' && (
-            <Alert type="error">{articleState.error.message}</Alert>
+          {is === 'fail' && (
+            <Alert type="error">{articleStore.error.message}</Alert>
           )}
         </Box>
       )}
