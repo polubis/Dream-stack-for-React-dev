@@ -4,8 +4,13 @@ import type { ArticlesViewProps } from './defs';
 import { LeftBar, MainLayout } from '../../components';
 import { ArticlesGrid, type OnGoToClick } from '../../components/articles-grid';
 import { type ScrollState, useScroll } from '@system/figa-hooks';
+import { useRouter } from 'next/navigation';
+import { useLang } from '../../dk';
 
 const ArticlesView = ({ articles }: ArticlesViewProps) => {
+  const lang = useLang();
+  const router = useRouter();
+
   const handleLoadMore = useCallback((scroll: ScrollState): void => {
     if (scroll.is === 'progress' && scroll.value >= 80) {
       // articles_actions.loadMore();
@@ -21,7 +26,10 @@ const ArticlesView = ({ articles }: ArticlesViewProps) => {
       const article = articles.find(({ id }) => id === articleId);
 
       if (!article) throw Error('Cannot find article');
+
+      router.push(`/${lang}/articles/${article.url}`);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [articles]
   );
 
