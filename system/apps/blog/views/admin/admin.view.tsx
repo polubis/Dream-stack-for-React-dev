@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { AdminLayout } from '../../components';
-import { ArticlesGrid } from './articles-grid';
 import { Font, Loader, column, tokens } from '@system/figa-ui';
 import { ArticlesFiltersHeader } from './articles-filters-header';
 import { AdminsOnly } from '../../core';
 import { useEffect } from 'react';
 import { articles_actions, useArticlesStore } from '../../store/articles';
+import { ArticlesSection } from './articles-section';
 
 const Container = styled.div`
   ${column()}
@@ -50,7 +50,7 @@ const AdminView = () => {
               </Font>
             ) : (
               <>
-                <ArticlesGrid articles={articlesStore.articles} />
+                <ArticlesSection articles={articlesStore.articles} />
 
                 {is === 'all_loaded' && (
                   <Font className="all-loaded-message" variant="h5">
