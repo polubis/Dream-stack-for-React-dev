@@ -33,7 +33,7 @@ const Container = styled.div`
   .article-tile-flipped-container {
     ${column()}
     ${slideIn('-' + tokens.spacing[150], '0px')}
-      padding: ${tokens.spacing[200]};
+        padding: ${tokens.spacing[200]};
     height: 100%;
 
     .detail {
