@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Detail can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe kEOMNP detail my-class"
+  >
+    <p
+      class="font b2 default"
+    >
+      My custom label
+    </p>
+    <p
+      class="font b1 primary"
+    >
+      My custom value
+    </p>
+  </div>
+</DocumentFragment>
+`;
