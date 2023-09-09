@@ -17,4 +17,8 @@ interface ArticlesPageProps {
   articles: ArticleDto[];
 }
 
-export type { ArticlePageParams, ArticlePageProps, ArticlesPageProps };
+interface YourArticesPageProps {
+  articles: ArticleDto[];
+}
+
+export type { ArticlePageParams, ArticlePageProps, ArticlesPageProps, YourArticesPageProps };

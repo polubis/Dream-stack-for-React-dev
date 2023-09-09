@@ -1,13 +1,16 @@
-import { Avatar, Box, Button, CloseIcon, Font, Popover } from '@system/figa-ui';
+import { Avatar, Box, Button, CloseIcon, Font, Popover, Link as FigaUILink } from '@system/figa-ui';
 import { useSignOutStore } from '../../store/sign-out';
 import { get } from '@system/blog-selectors';
 import { useAuthStore } from '../../store/auth';
 import { useRouter } from 'next/navigation';
 import { AdminsOnly } from '../../core';
+import { Link } from '../link';
+import { useLang } from '../../dk';
 
 const UserPopover = () => {
   const authStore = useAuthStore();
   const router = useRouter();
+  const lang = useLang()
   const signOutStore = useSignOutStore();
 
   return (
@@ -24,7 +27,7 @@ const UserPopover = () => {
     >
       {({ close }) => (
         <Box
-          spacing={[200, 400, 400]}
+          spacing={[200, 400, 400, 100, 400]}
           padding={[250, 250, 250, 250]}
           variant="outlined"
           minWidth="280px"
@@ -32,7 +35,7 @@ const UserPopover = () => {
         >
           <Box orientation="row" between>
             <Font variant="h5" motive="primary">
-              Hi, hello!
+              Hi, {authStore.user.username}!
             </Font>
             <Button size={1} shape="rounded" onClick={close}>
               <CloseIcon />
@@ -55,7 +58,23 @@ const UserPopover = () => {
             </Box>
           </Box>
 
-          <Box orientation="row" right spacing={[250, 250]}>
+          <Box spacing={[100, 100]}>
+            <Font variant="b3">
+              Navigation
+            </Font>
+            <FigaUILink variant="b1">
+              <Link href={`/${lang}/your-articles`}>Profile</Link>
+            </FigaUILink>
+            <FigaUILink variant="b1">
+              <Link href={`/${lang}/your-articles`}>Your articles</Link>
+            </FigaUILink>
+          </Box>
+
+          <Font variant="b3">
+            Information / statistics
+          </Font>
+
+          <Box orientation="row" spacing={[250, 250]}>
             <Box spacing={[50]}>
               <Font variant="b2">12</Font>
               <Font variant="b1" motive="primary">
@@ -81,6 +100,7 @@ const UserPopover = () => {
           <Box right spacing={[200]} orientation="row">
             <AdminsOnly>
               <Button
+                size={2}
                 variant="outlined"
                 onClick={() => router.push('/en/admin')}
                 loading={signOutStore.key === 'pending'}
@@ -90,6 +110,7 @@ const UserPopover = () => {
             </AdminsOnly>
             <Button
               variant="outlined"
+              size={2}
               onClick={signOutStore.signOut}
               data-i={get('app-nav-sign-out-btn')}
               loading={signOutStore.key === 'pending'}
