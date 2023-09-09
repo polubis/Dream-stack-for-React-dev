@@ -4,7 +4,7 @@ import { Badge } from '@system/figa-ui';
 const map: ArticleStatusBadgeMap = {
   Accepted: <Badge motive="ok">Live</Badge>,
   WaitingForApproval: <Badge motive="secondary">Review required</Badge>,
-  Draft: <Badge motive="primary">Draft</Badge>,
+  Draft: <Badge motive='casual'>Draft</Badge>,
   NeedWork: <Badge motive="primary">Require improvements</Badge>,
 };
 
