@@ -18,7 +18,7 @@ const Container = styled.div`
 const map: ArticleStatusColorsMap = {
   Accepted: tokens.secondary[50],
   WaitingForApproval: tokens.secondary[50],
-  Draft: tokens.secondary[50],
+  Draft: tokens.gray[150],
   NeedWork: tokens.secondary[50],
 };
 
