@@ -89,6 +89,7 @@ const tokens: Tokens = {
     100: '#d7f2e6',
     150: '#84e798',
     200: '#54a17f',
+    250: '#348863',
   },
   blue: {
     200: '#69B6CE',
@@ -135,6 +136,14 @@ const light: Theme = {
       bg: tokens.primary[50],
       borderColor: tokens.primary[50],
       color: tokens.common.white,
+    },
+  },
+  chips: {
+    color: tokens.common.black,
+    borderColor: tokens.common.black,
+    active: {
+      color: tokens.green[250],
+      borderColor: tokens.green[250],
     },
   },
   badge: {
@@ -394,6 +403,14 @@ const dark: Theme = {
       bg: tokens.primary[50],
       borderColor: tokens.primary[50],
       color: tokens.common.white,
+    },
+  },
+  chips: {
+    color: tokens.common.white,
+    borderColor: tokens.common.white,
+    active: {
+      color: tokens.green[50],
+      borderColor: tokens.green[50],
     },
   },
   badge: {
