@@ -1,5 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gives option to maintain it 1`] = `
+<DocumentFragment>
+  <div
+    class="layout asided"
+  >
+    <header
+      class="layout-header"
+    >
+      <div>
+        Header
+      </div>
+    </header>
+    <main
+      class="layout-content"
+    >
+      <aside
+        class="layout-content-sidebar"
+      >
+        <div>
+          Sidebar: closed
+        </div>
+      </aside>
+      <div>
+        Content
+      </div>
+    </main>
+    <footer
+      class="layout-footer"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gives option to maintain it 2`] = `
+<DocumentFragment>
+  <div
+    class="layout asided opened"
+  >
+    <header
+      class="layout-header"
+    >
+      <div>
+        Header
+      </div>
+    </header>
+    <main
+      class="layout-content"
+    >
+      <aside
+        class="layout-content-sidebar"
+      >
+        <div>
+          Sidebar: opened
+        </div>
+      </aside>
+      <div>
+        Content
+      </div>
+    </main>
+    <footer
+      class="layout-footer"
+    />
+  </div>
+</DocumentFragment>
+`;
+
 exports[`User is able to use layout when [FRAGILE] allows to skip footer 1`] = `
 <DocumentFragment>
   <div

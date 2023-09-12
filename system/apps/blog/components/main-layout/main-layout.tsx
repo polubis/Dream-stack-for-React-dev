@@ -56,7 +56,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 
   return (
     <Layout
-      full
       header={
         <Navigation logo={<Logo />} links={links} action={<UserSection />} />
       }

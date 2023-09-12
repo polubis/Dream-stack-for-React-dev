@@ -728,8 +728,9 @@ const GlobalStyle = createGlobalStyle`
     .layout {
         ${column()}
 
-        &.full {
+        &.asided {
             .layout-content {
+                padding: 0;
                 display: flex;
                 min-height: calc(100vh - 100px);
                 max-width: 100vw;
@@ -737,11 +738,43 @@ const GlobalStyle = createGlobalStyle`
                 & > * {
                     width: 100%;
                 }
+
+                & > *:first-child {
+                    border-right: 1px solid ${(props) =>
+                      props.theme.navigation.borderColor};
+                    background: ${(props) => props.theme.navigation.bg};
+                    width: ${tokens.spacing[1000]};
+                    padding: ${tokens.spacing[350]} 0;
+                }
+
+                & > *:last-child {
+                    padding: ${tokens.spacing[350]} ${tokens.spacing[250]};
+                }
+            }
+
+            &.opened {
+                .layout-content {
+                    & > *:first-child {
+                        width: 300px;
+                        padding: ${tokens.spacing[350]} ${tokens.spacing[250]};
+                    }
+
+                    & > *:last-child {
+                        padding: ${tokens.spacing[350]} ${tokens.spacing[250]};
+                    }
+                }
             }
         }
 
         .layout-content {
             padding: ${tokens.spacing[350]} ${tokens.spacing[250]};
+            display: flex;
+            min-height: calc(100vh - 100px);
+            max-width: 100vw;
+
+            & > * {
+                width: 100%;
+            }
         }
     }
 

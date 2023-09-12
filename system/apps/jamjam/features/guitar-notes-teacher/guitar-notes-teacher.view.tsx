@@ -40,7 +40,6 @@ const GuitarNotesTeacherView = ({
 }: GuitarNotesTeacherViewProps) => {
   return (
     <Layout
-      full
       header={
         <Navigation
           logo={<Logo />}

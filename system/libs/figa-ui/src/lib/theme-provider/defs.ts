@@ -117,7 +117,7 @@ interface Tokens {
     100: string;
     150: string;
     200: string;
-    250: string
+    250: string;
   };
   gray: {
     0: string;
