@@ -19,7 +19,6 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 
   return (
     <Layout
-      full
       header={
         <Navigation logo={<Logo />} links={links} action={<UserSection />} />
       }

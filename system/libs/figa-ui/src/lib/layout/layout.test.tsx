@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Layout } from './layout';
 
@@ -45,13 +45,26 @@ describe('User is able to use layout when', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('[FRAGILE] allows to pass full property', () => {
-    const { container } = render(
-      <Layout header={<div>Header</div>} full>
+  it('[FRAGILE] allows to pass sidebar and gives option to maintain it', () => {
+    const { asFragment } = render(
+      <Layout
+        header={<div>Header</div>}
+        sidebar={(toggler) => (
+          <div onClick={toggler.toggle}>
+            Sidebar: {toggler.opened ? 'opened' : 'closed'}
+          </div>
+        )}
+      >
         <div>Content</div>
       </Layout>
     );
 
-    expect(container.querySelector('.layout.full')).toBeTruthy();
+    fireEvent.click(screen.getByText(/opened/));
+
+    expect(asFragment()).toMatchSnapshot();
+
+    fireEvent.click(screen.getByText(/closed/));
+
+    expect(asFragment()).toMatchSnapshot();
   });
 });

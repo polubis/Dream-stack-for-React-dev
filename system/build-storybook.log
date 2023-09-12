@@ -1,6 +1,6 @@
 npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
 
-> nx run figa-ui:build-storybook -s public --output-dir C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--22132-6Vrtc994dQuU
+> nx run figa-ui:build-storybook -s public --output-dir C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21204-vObMdpCaZUpa
 
 
 >  NX  ui framework: @storybook/react
@@ -8,11 +8,11 @@ npm WARN config global `--global`, `--local` are deprecated. Use `--location=glo
 
 >  NX  Storybook builder starting ...
 
-info => Cleaning outputDir: C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--22132-6Vrtc994dQuU
+info => Cleaning outputDir: C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21204-vObMdpCaZUpa
 info => Loading presets
-info => Copying static files: C:\Users\polub\Dream-stack-for-React-dev\system\assets at C:\Users\polub\AppData\Local\Temp\chromatic--22132-6Vrtc994dQuU\
+info => Copying static files: C:\Users\polub\Dream-stack-for-React-dev\system\assets at C:\Users\polub\AppData\Local\Temp\chromatic--21204-vObMdpCaZUpa\
 info => Compiling manager..
-info => Manager built (16 s)
+info => Manager built (12 s)
 [36mvite v4.1.4 [32mbuilding for production...[36m[39m
 transforming...
 Use of eval in "node_modules/telejson/dist/esm/index.js" is strongly discouraged as it poses security risks and may cause issues with minification.
@@ -21,30 +21,30 @@ Use of eval in "node_modules/@storybook/components/dist/esm/index-681e4b07.js" i
 [32m✓[39m 1866 modules transformed.
 rendering chunks...
 computing gzip size...
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[32miframe.html                                         [39m[1m[2m   13.65 kB[22m[1m[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36mes.string.from-code-point-3cbefb72.js        [39m[1m[2m    0.59 kB[22m[1m[22m[2m │ gzip:   0.44 kB[22m[2m │ map:     2.23 kB[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36mes.regexp.flags-77be6385.js                  [39m[1m[2m    0.67 kB[22m[1m[22m[2m │ gzip:   0.47 kB[22m[2m │ map:     2.79 kB[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36mclient-e18fbd8f.js                           [39m[1m[2m    0.72 kB[22m[1m[22m[2m │ gzip:   0.46 kB[22m[2m │ map:     0.95 kB[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36mrenderDocs-5a446c19.js                       [39m[1m[2m    2.67 kB[22m[1m[22m[2m │ gzip:   1.32 kB[22m[2m │ map:     9.87 kB[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36mGlobalScrollAreaStyles-8793ce4a-15ade941.js  [39m[1m[2m   10.50 kB[22m[1m[22m[2m │ gzip:   2.39 kB[22m[2m │ map:    20.93 kB[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36mColor-f953d088-cc79d9e7.js                   [39m[1m[2m   34.27 kB[22m[1m[22m[2m │ gzip:  13.00 kB[22m[2m │ map:   134.15 kB[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36mWithTooltip-167e9982-61141621.js             [39m[1m[2m   40.96 kB[22m[1m[22m[2m │ gzip:  13.78 kB[22m[2m │ map:   181.35 kB[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36mOverlayScrollbars-1355f44c-b250c733.js       [39m[1m[2m   64.54 kB[22m[1m[22m[2m │ gzip:  27.41 kB[22m[2m │ map:   443.99 kB[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36msyntaxhighlighter-b07b042a-6040404e.js       [39m[1m[2m  117.17 kB[22m[1m[22m[2m │ gzip:  48.78 kB[22m[2m │ map:   468.62 kB[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36mindex-312fd62b.js                            [39m[1m[2m  495.77 kB[22m[1m[22m[2m │ gzip: 146.09 kB[22m[2m │ map: 1,180.20 kB[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36mformatter-0d5cb0eb-948a8575.js               [39m[1m[33m  742.26 kB[39m[22m[2m │ gzip: 239.76 kB[22m[2m │ map: 1,798.35 kB[22m
-[2m../../../../AppData/Local/Temp/chromatic--22132-6Vrtc994dQuU/[22m[2massets/[22m[36miframe-ac5e84b9.js                           [39m[1m[33m2,091.79 kB[39m[22m[2m │ gzip: 582.23 kB[22m[2m │ map: 5,655.93 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[32miframe.html                                         [39m[1m[2m   13.65 kB[22m[1m[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36mes.string.from-code-point-46d31810.js        [39m[1m[2m    0.59 kB[22m[1m[22m[2m │ gzip:   0.44 kB[22m[2m │ map:     2.23 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36mes.regexp.flags-e293a4f2.js                  [39m[1m[2m    0.67 kB[22m[1m[22m[2m │ gzip:   0.47 kB[22m[2m │ map:     2.79 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36mclient-e5cc5012.js                           [39m[1m[2m    0.72 kB[22m[1m[22m[2m │ gzip:   0.46 kB[22m[2m │ map:     0.95 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36mrenderDocs-23f1abd9.js                       [39m[1m[2m    2.67 kB[22m[1m[22m[2m │ gzip:   1.33 kB[22m[2m │ map:     9.87 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36mGlobalScrollAreaStyles-8793ce4a-41723221.js  [39m[1m[2m   10.50 kB[22m[1m[22m[2m │ gzip:   2.39 kB[22m[2m │ map:    20.93 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36mColor-f953d088-84b044bc.js                   [39m[1m[2m   34.27 kB[22m[1m[22m[2m │ gzip:  13.00 kB[22m[2m │ map:   134.15 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36mWithTooltip-167e9982-cb4a1b22.js             [39m[1m[2m   40.96 kB[22m[1m[22m[2m │ gzip:  13.77 kB[22m[2m │ map:   181.35 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36mOverlayScrollbars-1355f44c-1517d92c.js       [39m[1m[2m   64.54 kB[22m[1m[22m[2m │ gzip:  27.41 kB[22m[2m │ map:   443.99 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36msyntaxhighlighter-b07b042a-c3f8fe14.js       [39m[1m[2m  117.17 kB[22m[1m[22m[2m │ gzip:  48.79 kB[22m[2m │ map:   468.62 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36mindex-200db745.js                            [39m[1m[2m  495.77 kB[22m[1m[22m[2m │ gzip: 146.09 kB[22m[2m │ map: 1,180.20 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36mformatter-0d5cb0eb-b3e4f192.js               [39m[1m[33m  742.26 kB[39m[22m[2m │ gzip: 239.76 kB[22m[2m │ map: 1,798.35 kB[22m
+[2m../../../../AppData/Local/Temp/chromatic--21204-vObMdpCaZUpa/[22m[2massets/[22m[36miframe-35fc0832.js                           [39m[1m[33m2,093.65 kB[39m[22m[2m │ gzip: 582.50 kB[22m[2m │ map: 5,657.90 kB[22m
 [33m
 (!) Some chunks are larger than 500 kBs after minification. Consider:
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
-info => Output directory: C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--22132-6Vrtc994dQuU
+info => Output directory: C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21204-vObMdpCaZUpa
 
 >  NX  Storybook builder finished ...
 
 
->  NX  Storybook files available in C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--22132-6Vrtc994dQuU
+>  NX  Storybook files available in C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21204-vObMdpCaZUpa
 
 
  
@@ -52,5 +52,5 @@ info => Output directory: C:\\\\Users\\\\polub\\\\AppData\\\\Local\\\\Temp\\\\ch
  >  NX   Successfully ran target build-storybook for project figa-ui
 
 
-   View logs and investigate cache misses at https://nx.app/runs/QnFBxPnB7i
+   View logs and investigate cache misses at https://nx.app/runs/V5evD9VQIp
 

@@ -1,4 +1,12 @@
-import { Avatar, Box, Button, CloseIcon, Font, Popover, Link as FigaUILink } from '@system/figa-ui';
+import {
+  Avatar,
+  Box,
+  Button,
+  CloseIcon,
+  Font,
+  Popover,
+  Link as FigaUILink,
+} from '@system/figa-ui';
 import { useSignOutStore } from '../../store/sign-out';
 import { get } from '@system/blog-selectors';
 import { useAuthStore } from '../../store/auth';
@@ -10,7 +18,7 @@ import { useLang } from '../../dk';
 const UserPopover = () => {
   const authStore = useAuthStore();
   const router = useRouter();
-  const lang = useLang()
+  const lang = useLang();
   const signOutStore = useSignOutStore();
 
   return (
@@ -59,9 +67,7 @@ const UserPopover = () => {
           </Box>
 
           <Box spacing={[100, 100]}>
-            <Font variant="b3">
-              Navigation
-            </Font>
+            <Font variant="b3">Navigation</Font>
             <FigaUILink variant="b1">
               <Link href={`/${lang}/your-articles`}>Profile</Link>
             </FigaUILink>
@@ -70,9 +76,7 @@ const UserPopover = () => {
             </FigaUILink>
           </Box>
 
-          <Font variant="b3">
-            Information / statistics
-          </Font>
+          <Font variant="b3">Information / statistics</Font>
 
           <Box orientation="row" spacing={[250, 250]}>
             <Box spacing={[50]}>

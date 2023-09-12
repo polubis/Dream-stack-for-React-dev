@@ -3,7 +3,7 @@
 exports[`Guitar notes teacher works when [FRAGILE] displays counting panel 1`] = `
 <DocumentFragment>
   <div
-    class="layout full"
+    class="layout"
   >
     <header
       class="layout-header"
@@ -159,7 +159,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays counting panel 1`] =
 exports[`Guitar notes teacher works when [FRAGILE] displays first screen after loading page 1`] = `
 <DocumentFragment>
   <div
-    class="layout full"
+    class="layout"
   >
     <header
       class="layout-header"
@@ -350,7 +350,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays first screen after l
 exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer fretboard when user is playing 1`] = `
 <DocumentFragment>
   <div
-    class="layout full"
+    class="layout"
   >
     <header
       class="layout-header"
@@ -501,7 +501,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
         style="padding: 28px 20px 28px 20px;"
       >
         <div
-          class="sc-pyfCe ekeMbW guitar-fretboard"
+          class="sc-kDvujY jYvrok guitar-fretboard"
         >
           <div
             class="guitar-fretboard-frets"
@@ -1905,7 +1905,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
 exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer fretboard when user just started 1`] = `
 <DocumentFragment>
   <div
-    class="layout full"
+    class="layout"
   >
     <header
       class="layout-header"
@@ -2056,7 +2056,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
         style="padding: 28px 20px 28px 20px;"
       >
         <div
-          class="sc-pyfCe ekeMbW guitar-fretboard"
+          class="sc-kDvujY jYvrok guitar-fretboard"
         >
           <div
             class="guitar-fretboard-frets"
@@ -3460,7 +3460,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
 exports[`Guitar notes teacher works when [FRAGILE] displays next screen after first interaction 1`] = `
 <DocumentFragment>
   <div
-    class="layout full"
+    class="layout"
   >
     <header
       class="layout-header"
@@ -3616,7 +3616,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays next screen after fi
 exports[`Guitar notes teacher works when [FRAGILE] displays settings panel 1`] = `
 <DocumentFragment>
   <div
-    class="layout full"
+    class="layout"
   >
     <header
       class="layout-header"
@@ -3772,7 +3772,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays settings panel 1`] =
 exports[`Guitar notes teacher works when [FRAGILE] displays summary 1`] = `
 <DocumentFragment>
   <div
-    class="layout full"
+    class="layout"
   >
     <header
       class="layout-header"
