@@ -18,6 +18,7 @@ export * from './lib/left-bar';
 export * from './lib/popover';
 export * from './lib/badge';
 export * from './lib/code-block';
+export * from './lib/tabs';
 export * from './lib/logo-graphic';
 export * from './lib/list';
 export * from './lib/chips';

@@ -130,6 +130,7 @@ interface Tokens {
     350: string;
     400: string;
     450: string;
+    500: string;
   };
   yellow: {
     50: string;
@@ -154,6 +155,14 @@ interface Theme {
       borderColor: string;
       color: string;
       bg: string;
+    };
+  };
+  tabs: {
+    filled: {
+      bg: string;
+      active: {
+        borderColor: string;
+      };
     };
   };
   chips: {
