@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <nav
+    class="sc-bcXHqe fiIiFd tabs my-tabs-class"
+  >
+    <button
+      class="sc-gswNZR kJoWMQ tab active my-tab-class"
+    >
+      <p
+        class="font b1 default"
+      >
+        1
+      </p>
+    </button>
+    <button
+      class="sc-gswNZR kJoWMQ tab active"
+      disabled=""
+    >
+      <p
+        class="font b1 default"
+      >
+        2
+      </p>
+    </button>
+    <button
+      class="sc-gswNZR kJoWMQ tab"
+      disabled=""
+    >
+      <p
+        class="font b1 default"
+      >
+        3
+      </p>
+    </button>
+    <button
+      class="sc-gswNZR kJoWMQ tab"
+    >
+      <p
+        class="font b1 default"
+      >
+        4
+      </p>
+    </button>
+  </nav>
+</DocumentFragment>
+`;

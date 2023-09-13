@@ -83,6 +83,7 @@ const tokens: Tokens = {
     350: '#565656',
     400: '#dfdfdf',
     450: '#272727',
+    500: '#212121',
   },
   green: {
     50: '#b2d9ba',
@@ -136,6 +137,14 @@ const light: Theme = {
       bg: tokens.primary[50],
       borderColor: tokens.primary[50],
       color: tokens.common.white,
+    },
+  },
+  tabs: {
+    filled: {
+      bg: tokens.gray[150],
+      active: {
+        borderColor: tokens.green[200],
+      },
     },
   },
   chips: {
@@ -403,6 +412,14 @@ const dark: Theme = {
       bg: tokens.primary[50],
       borderColor: tokens.primary[50],
       color: tokens.common.white,
+    },
+  },
+  tabs: {
+    filled: {
+      bg: tokens.gray[500],
+      active: {
+        borderColor: tokens.green[50],
+      },
     },
   },
   chips: {

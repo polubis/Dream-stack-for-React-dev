@@ -1,4 +1,10 @@
-import { act, fireEvent, render, renderHook, screen } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  renderHook,
+  screen,
+} from '@testing-library/react';
 import { useScrollHide } from './use-scroll-hide';
 
 describe('Scroll can be hidden when: ', () => {
@@ -28,11 +34,11 @@ describe('Scroll can be hidden when: ', () => {
 
     expect(element.style.overflow).toBe('hidden');
 
-    fireEvent.click(screen.getByText(/Show/))
+    fireEvent.click(screen.getByText(/Show/));
 
     expect(element.style.overflow).toBe('scroll');
 
-    fireEvent.click(screen.getByText(/Hide/))
+    fireEvent.click(screen.getByText(/Hide/));
 
     expect(element.style.overflow).toBe('hidden');
   });
