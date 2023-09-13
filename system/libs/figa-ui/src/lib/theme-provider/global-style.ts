@@ -1552,13 +1552,13 @@ const GlobalStyle = createGlobalStyle`
                 &:after {
                     border: ${tokens.spacing[25]} solid ${(props) =>
   props.theme.checkbox.checked.color};
-                    height: ${tokens.spacing[100]};
-                    width: ${tokens.spacing[125]};
+                    height: 11px;
+                    width: ${tokens.spacing[100]};
                     border-top: 0;
                     border-left: 0;
-                    left: ${tokens.spacing[75]};
-                    top: ${tokens.spacing[50]};
-                    transform: rotate(35deg);
+                    top: 2.5px;
+                    left: ${tokens.spacing[100]};
+                    transform: rotate(40deg);
                 }
             }
 
