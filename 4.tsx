@@ -1,0 +1,1 @@
+const mock = serverFixture({ beforeAll, afterEach, afterAll });

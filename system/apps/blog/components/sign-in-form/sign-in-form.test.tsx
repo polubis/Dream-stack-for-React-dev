@@ -1,7 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { SignInForm } from './sign-in-form';
-import { type BlogEnv, getPath, requestFixture } from '@system/blog-api';
-import { storage } from '@system/utils';
+import { getPath, serverFixture } from '@system/blog-api';
 import { mockErrorResponse } from '@system/blog-api-mocks';
 
 jest.mock('next/router', () => ({
@@ -12,21 +11,7 @@ jest.mock('next/router', () => ({
 }));
 
 describe('User can use form to sign in when: ', () => {
-  const authStorage = storage<BlogEnv>();
-  const { clean, server, rest } = requestFixture();
-
-  beforeAll(() => {
-    server.listen();
-  });
-
-  afterEach(() => {
-    clean();
-    authStorage.clear();
-  });
-
-  afterAll(() => {
-    server.close();
-  });
+  const mock = serverFixture({ beforeAll, afterEach, afterAll });
 
   const LOGIN = 'tom19944';
   const PASSWORD = 'my-password-1994';
@@ -62,10 +47,8 @@ describe('User can use form to sign in when: ', () => {
   });
 
   it('goes through failure flow', async () => {
-    server.use(
-      rest.post(getPath('Account/SignIn'), (_, res, ctx) => {
-        return res(ctx.status(404), ctx.json(mockErrorResponse()));
-      })
+    mock('post', getPath('Account/SignIn'), (_, res, ctx) =>
+      res(ctx.status(404), ctx.json(mockErrorResponse()))
     );
 
     const { asFragment } = signInFormTest();
