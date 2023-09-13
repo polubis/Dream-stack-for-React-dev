@@ -1,51 +1,44 @@
-import { useEffect, useRef } from 'react';
-import type { ScrollHideReturn, ScrollHideStyle } from './defs';
+import { useRef } from 'react';
+import type {
+  HideScroll,
+  ScrollHideReturn,
+  ScrollHideStyle,
+  ShowScroll,
+} from './defs';
+import { useIsomorphicLayoutEffect } from '../use-isomorphic-layout-effect';
 
-/**
- * Hook responsible for hide scroll when modal or other
- * similar UI component appears. It's for better UX.
- *
- * @returns {ScrollHideReturn} - API that any component will use.
- */
+const initial_style: ScrollHideStyle = {
+  overflow: 'auto',
+};
+
 const useScrollHide = <T extends HTMLElement>(): ScrollHideReturn<T> => {
   const ref = useRef<T>(null);
-  const initialStyle = useRef<ScrollHideStyle>({
-    overflow: 'auto',
-  });
+  const initialStyle = useRef(initial_style);
 
-  const getElement = (): HTMLElement => {
-    const element = ref.current;
-    const body = document.body;
+  const getElement = (): HTMLElement => ref.current ?? document.body;
 
-    return element ?? body;
-  };
-
-  const show = (): void => {
+  const show: ShowScroll = () => {
     const element = getElement();
     const style = initialStyle.current;
 
     element.style.overflow = style.overflow;
   };
 
-  const hide = (): void => {
+  const hide: HideScroll = () => {
     const element = getElement();
-    initialStyle.current = {
-      overflow: element.style.overflow || 'auto',
-    };
+    initialStyle.current.overflow = element.style.overflow;
 
     element.style.overflow = 'hidden';
   };
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     hide();
 
-    return () => {
-      show();
-    };
+    return show;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { ref };
+  return [ref, hide, show];
 };
 
 export { useScrollHide };
