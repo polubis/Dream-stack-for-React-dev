@@ -1,0 +1,5 @@
+useLayoutEffect(() => {
+  hide();
+
+  return show;
+}, []);
