@@ -27,10 +27,10 @@ const Container = styled.button`
 
 const Chip = ({ className, active, ...props }: ChipProps) => {
   // @TODO Find solution for wrong type assignment here later.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (
     <Container
       className={c('chip', { active }, className)}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       {...(props as any)}
     />
   );

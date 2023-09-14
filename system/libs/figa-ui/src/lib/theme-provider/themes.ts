@@ -139,6 +139,13 @@ const light: Theme = {
       color: tokens.common.white,
     },
   },
+  switch: {
+    bg: tokens.gray[200],
+    color: tokens.common.white,
+    active: {
+      bg: tokens.green[200],
+    },
+  },
   tabs: {
     filled: {
       bg: tokens.gray[150],
@@ -405,6 +412,13 @@ const light: Theme = {
 const dark: Theme = {
   outline: {
     color: tokens.common.white,
+  },
+  switch: {
+    bg: tokens.gray[50],
+    color: tokens.common.white,
+    active: {
+      bg: tokens.green[200],
+    },
   },
   checkbox: {
     borderColor: tokens.common.white,

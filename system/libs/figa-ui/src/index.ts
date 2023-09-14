@@ -34,5 +34,6 @@ export * from './lib/field';
 export * from './lib/thumbnail';
 export * from './lib/detail';
 export * from './lib/loader';
+export * from './lib/switch';
 export * from './lib/checkbox';
 export * from './lib/shared';

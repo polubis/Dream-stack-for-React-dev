@@ -149,6 +149,13 @@ interface Theme {
   outline: {
     color: string;
   };
+  switch: {
+    bg: string;
+    color: string;
+    active: {
+      bg: string;
+    };
+  };
   checkbox: {
     borderColor: string;
     checked: {
