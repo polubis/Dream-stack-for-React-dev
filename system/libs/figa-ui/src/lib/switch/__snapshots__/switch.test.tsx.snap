@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe bOBXtI switch reversed disabled my-class"
+  >
+    <div
+      class="switch-container"
+    >
+      <input
+        checked=""
+        class="switch-checkbox"
+        disabled=""
+        id=":r0:"
+        type="checkbox"
+      />
+      <label
+        class="switch-overlay"
+        for=":r0:"
+      >
+        <button
+          class="switch-button"
+        />
+      </label>
+    </div>
+    <p
+      class="font b2 default"
+    >
+      Label
+    </p>
+  </div>
+</DocumentFragment>
+`;
