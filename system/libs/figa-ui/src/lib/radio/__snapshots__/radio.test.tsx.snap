@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe fNkuYE radio my-class"
+  >
+    <div
+      class="sc-gswNZR XHNZI radio-case reversed disabled custom-child"
+    >
+      <div
+        class="radio-case-container"
+      >
+        <input
+          checked=""
+          class="radio-case-input"
+          disabled=""
+          id=":r0:"
+          name="radios"
+          type="radio"
+          value="First"
+        />
+        <label
+          class="radio-case-overlay"
+          for=":r0:"
+        >
+          <button
+            class="radio-case-button"
+          />
+        </label>
+      </div>
+      <p
+        class="font b1 default radio-case-label"
+      >
+        First
+      </p>
+    </div>
+    <div
+      class="sc-gswNZR XHNZI radio-case"
+    >
+      <div
+        class="radio-case-container"
+      >
+        <input
+          class="radio-case-input"
+          id=":r1:"
+          name="radios"
+          type="radio"
+          value="Second"
+        />
+        <label
+          class="radio-case-overlay"
+          for=":r1:"
+        >
+          <button
+            class="radio-case-button"
+          />
+        </label>
+      </div>
+      <p
+        class="font b1 default radio-case-label"
+      >
+        Second
+      </p>
+    </div>
+    <div
+      class="sc-gswNZR XHNZI radio-case"
+    >
+      <div
+        class="radio-case-container"
+      >
+        <input
+          class="radio-case-input"
+          id=":r2:"
+          name="radios"
+          type="radio"
+          value="Last"
+        />
+        <label
+          class="radio-case-overlay"
+          for=":r2:"
+        >
+          <button
+            class="radio-case-button"
+          />
+        </label>
+      </div>
+      <p
+        class="font b1 default radio-case-label"
+      >
+        Last
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

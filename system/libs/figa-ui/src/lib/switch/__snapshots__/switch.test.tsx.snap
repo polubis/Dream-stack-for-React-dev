@@ -3,7 +3,7 @@
 exports[`Switch can be used when:  [FRAGILE] assigns classes 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe bOBXtI switch reversed disabled my-class"
+    class="sc-bcXHqe cTbyJi switch reversed disabled my-class"
   >
     <div
       class="switch-container"

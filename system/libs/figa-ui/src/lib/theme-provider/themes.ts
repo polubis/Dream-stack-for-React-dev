@@ -139,6 +139,13 @@ const light: Theme = {
       color: tokens.common.white,
     },
   },
+  radio: {
+    borderColor: tokens.common.black,
+    active: {
+      bg: tokens.green[200],
+      borderColor: tokens.green[200],
+    },
+  },
   switch: {
     bg: tokens.gray[200],
     color: tokens.common.white,
@@ -418,6 +425,13 @@ const dark: Theme = {
     color: tokens.common.white,
     active: {
       bg: tokens.green[200],
+    },
+  },
+  radio: {
+    borderColor: tokens.common.white,
+    active: {
+      bg: tokens.green[200],
+      borderColor: tokens.green[200],
     },
   },
   checkbox: {

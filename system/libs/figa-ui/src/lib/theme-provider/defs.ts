@@ -156,6 +156,13 @@ interface Theme {
       bg: string;
     };
   };
+  radio: {
+    borderColor: string;
+    active: {
+      bg: string;
+      borderColor: string;
+    };
+  };
   checkbox: {
     borderColor: string;
     checked: {
