@@ -18,6 +18,10 @@ namespace Article {
     reset(): void;
     load(payload: GetArticleParams): Promise<FullArticleDto>;
   }
+
+  export interface Selectors {
+    useArticle: () => FullArticleDto;
+  }
 }
 
 export type { Article };

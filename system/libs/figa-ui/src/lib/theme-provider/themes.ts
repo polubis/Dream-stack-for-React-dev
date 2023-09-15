@@ -28,6 +28,7 @@ const spacing: Spacing = {
   1500: '140px',
   1750: '160px',
   2000: '180px',
+  4000: '360px',
 };
 
 // Check for reference: https://mui.com/joy-ui/customization/theme-colors/

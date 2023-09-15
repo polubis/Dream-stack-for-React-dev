@@ -42,6 +42,7 @@ type Spacing = Readonly<{
   1500: string;
   1750: string;
   2000: string;
+  4000: string;
 }>;
 
 type SpacingKey = keyof Spacing;

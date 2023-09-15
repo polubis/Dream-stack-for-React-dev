@@ -12,9 +12,13 @@ type Fail = { is: 'fail'; error: ResponseError };
 
 type State = Idle | Busy | Ok | Fail;
 
+interface Selectors {
+  useReviews: () => ArticleReviewDto[];
+}
+
 interface Actions {
   load(id: Id): Promise<void>;
   addReview(review: ArticleReviewDto): void;
 }
 
-export type { State, Idle, Busy, Fail, Actions };
+export type { State, Idle, Busy, Fail, Actions, Selectors };
