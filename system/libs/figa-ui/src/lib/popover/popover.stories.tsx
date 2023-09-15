@@ -38,9 +38,9 @@ const Template: Story = () => {
             <Popover
               key={label}
               initialOpen
-              trigger={({ isOpen, toggle }) => (
+              trigger={({ opened, toggle }) => (
                 <Button onClick={toggle}>
-                  {isOpen ? 'Hide me' : 'Show me'}
+                  {opened ? 'Hide me' : 'Show me'}
                 </Button>
               )}
             >
@@ -68,9 +68,9 @@ const Template: Story = () => {
             <Popover
               key={label}
               initialOpen
-              trigger={({ isOpen, toggle }) => (
+              trigger={({ opened, toggle }) => (
                 <Button onClick={toggle}>
-                  {isOpen ? 'Hide me' : 'Show me'}
+                  {opened ? 'Hide me' : 'Show me'}
                 </Button>
               )}
             >

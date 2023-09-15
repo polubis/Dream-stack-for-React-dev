@@ -41,7 +41,7 @@ const URLS = [
   '/courses/',
 ] as const;
 
-const MainLayout = ({ children }: MainLayoutProps) => {
+const MainLayout = ({ children, sidebar }: MainLayoutProps) => {
   const lang = useLang();
 
   const links = LABELS.map((label, idx) => (
@@ -59,6 +59,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       header={
         <Navigation logo={<Logo />} links={links} action={<UserSection />} />
       }
+      sidebar={sidebar}
       footer={
         <div
           ref={footerRef}

@@ -30,7 +30,10 @@ const ArticleThumbnail = ({ src, title, status }: ArticleThumbnailProps) => {
   );
 
   return (
-    <Container style={{ borderColor: map[status] }}>
+    <Container
+      className="article-thumbnail"
+      style={{ borderColor: map[status] }}
+    >
       <Image
         fill
         priority

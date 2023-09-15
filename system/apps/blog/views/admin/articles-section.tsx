@@ -1,21 +1,16 @@
-import { Modal } from '@system/figa-ui';
 import { type ScrollState, useScroll } from '@system/figa-hooks';
 import { useCallback } from 'react';
 import type { ArticleDto } from '@system/blog-api-models';
 import { articles_actions } from '../../store/articles';
-import { ArticlePreview } from './article-preview';
-import {
-  article_management_actions,
-  useArticleManagementStore,
-} from '../../store/article-management';
 import { ArticlesGrid, type OnGoToClick } from '../../components/articles-grid';
+import { useRouter } from 'next/router';
 
 interface ArticlesSectionProps {
   articles: ArticleDto[];
 }
 
 const ArticlesSection = ({ articles }: ArticlesSectionProps) => {
-  const articleManagementStore = useArticleManagementStore();
+  const router = useRouter();
 
   const handleLoadMore = useCallback((scroll: ScrollState): void => {
     if (scroll.is === 'progress' && scroll.value >= 80) {
@@ -25,33 +20,27 @@ const ArticlesSection = ({ articles }: ArticlesSectionProps) => {
 
   const handleGoToClick: OnGoToClick = useCallback(
     (e) => {
-      const articleId = e.currentTarget.getAttribute('data-article-id');
+      const id = e.currentTarget.getAttribute('data-article-id');
 
-      if (!articleId) throw Error('Cannot find article id');
+      if (!id) throw Error('Cannot find article id');
 
-      const article = articles.find(({ id }) => id === articleId);
+      const article = articles.find((article) => article.id === id);
 
       if (!article) throw Error('Cannot find article');
 
-      article_management_actions.start(article.id, article.url, article.lang);
+      router.push(
+        `${router.asPath}/article-review?url=${article.url}&id=${id}`
+      );
     },
-    [articles]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   useScroll({
     onScroll: handleLoadMore,
   });
 
-  return (
-    <>
-      <ArticlesGrid articles={articles} onGoToClick={handleGoToClick} />
-      {articleManagementStore.is === 'active' && (
-        <Modal onClose={article_management_actions.reset} minWidth="96vw">
-          <ArticlePreview />
-        </Modal>
-      )}
-    </>
-  );
+  return <ArticlesGrid articles={articles} onGoToClick={handleGoToClick} />;
 };
 
 export { ArticlesSection };
