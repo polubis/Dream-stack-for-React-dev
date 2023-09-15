@@ -290,6 +290,11 @@ const light: Theme = {
         bg: tokens.primary[100],
         outlineColor: tokens.common.black,
       },
+      tertiary: {
+        color: tokens.common.white,
+        bg: tokens.common.black,
+        outlineColor: tokens.common.white,
+      },
     },
     outlined: {
       primary: {
@@ -303,6 +308,12 @@ const light: Theme = {
         bg: 'transparent',
         borderColor: tokens.primary[150],
         outlineColor: tokens.common.black,
+      },
+      tertiary: {
+        color: tokens.common.black,
+        bg: 'transparent',
+        borderColor: tokens.common.black,
+        outlineColor: tokens.common.white,
       },
     },
   },
@@ -579,6 +590,11 @@ const dark: Theme = {
         bg: tokens.primary[100],
         outlineColor: tokens.common.white,
       },
+      tertiary: {
+        color: tokens.common.black,
+        bg: tokens.common.white,
+        outlineColor: tokens.common.white,
+      },
     },
     outlined: {
       primary: {
@@ -591,6 +607,12 @@ const dark: Theme = {
         color: tokens.primary[100],
         bg: 'transparent',
         borderColor: tokens.primary[100],
+        outlineColor: tokens.common.white,
+      },
+      tertiary: {
+        color: tokens.common.white,
+        bg: 'transparent',
+        borderColor: tokens.common.white,
         outlineColor: tokens.common.white,
       },
     },
