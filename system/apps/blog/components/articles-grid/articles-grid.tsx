@@ -35,20 +35,23 @@ const tags = ['Programming', 'Development', 'Patterns'];
 const ArticlesGrid = ({ articles, onGoToClick }: ArticlesGridProps) => {
   return (
     <Container>
-      {articles.map(({ id, title, description, thumbnailUrl, authorName }) => (
-        <ArticleTile
-          key={id}
-          id={id}
-          title={title}
-          description={description}
-          thumbnail={thumbnailUrl}
-          author={authorName}
-          stack={stack}
-          tags={tags}
-          width={tile_width}
-          onGoToClick={onGoToClick}
-        />
-      ))}
+      {articles.map(
+        ({ id, title, description, thumbnailUrl, authorName, status }) => (
+          <ArticleTile
+            key={id}
+            id={id}
+            status={status}
+            title={title}
+            description={description}
+            thumbnail={thumbnailUrl}
+            author={authorName}
+            stack={stack}
+            tags={tags}
+            width={tile_width}
+            onGoToClick={onGoToClick}
+          />
+        )
+      )}
     </Container>
   );
 };

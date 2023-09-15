@@ -18,6 +18,7 @@ import Image from 'next/image';
 import { useToggle } from '@system/figa-hooks';
 import { useMemo } from 'react';
 import type { ArticleTileProps } from './defs';
+import { ArticleStatusBadge } from '../article-status-badge';
 
 const avatar_size = {
   height: spacing.parse(400),
@@ -143,6 +144,7 @@ const ArticleTile = ({
   author,
   stack,
   tags,
+  status,
   width,
   onGoToClick,
 }: ArticleTileProps) => {
@@ -222,8 +224,7 @@ const ArticleTile = ({
               alt={`${title} thumbnail`}
             />
             <div className="article-tile-badges">
-              <Badge motive="secondary">7.8</Badge>
-              <Badge motive="ok">Live</Badge>
+              <ArticleStatusBadge status={status} />
             </div>
           </div>
 
