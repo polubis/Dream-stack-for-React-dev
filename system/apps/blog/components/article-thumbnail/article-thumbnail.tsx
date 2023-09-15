@@ -1,7 +1,8 @@
 import Image from 'next/image';
+import { useMemo } from 'react';
 import type { ArticleStatusColorsMap, ArticleThumbnailProps } from './defs';
 import styled from 'styled-components';
-import { SM_DOWN, T_DOWN, tokens } from '@system/figa-ui';
+import { SM_DOWN, T_DOWN, tokens, useThemeProvider } from '@system/figa-ui';
 
 const Container = styled.div`
   position: relative;
@@ -15,14 +16,19 @@ const Container = styled.div`
   }
 `;
 
-const map: ArticleStatusColorsMap = {
-  Accepted: tokens.secondary[50],
-  WaitingForApproval: tokens.secondary[50],
-  Draft: tokens.gray[150],
-  NeedWork: tokens.secondary[50],
-};
-
 const ArticleThumbnail = ({ src, title, status }: ArticleThumbnailProps) => {
+  const { theme } = useThemeProvider();
+
+  const map: ArticleStatusColorsMap = useMemo(
+    () => ({
+      Accepted: theme.badge.filled.ok.bg,
+      WaitingForApproval: theme.badge.filled.secondary.bg,
+      Draft: theme.badge.filled.casual.bg,
+      NeedWork: theme.badge.filled.primary.bg,
+    }),
+    [theme]
+  );
+
   return (
     <Container style={{ borderColor: map[status] }}>
       <Image

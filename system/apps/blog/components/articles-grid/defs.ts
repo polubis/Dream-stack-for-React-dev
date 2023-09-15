@@ -1,4 +1,4 @@
-import type { ArticleDto } from '@system/blog-api-models';
+import type { ArticleDto, ArticleStatus } from '@system/blog-api-models';
 import type { MouseEvent as ReactMouseEvent } from 'react';
 
 type OnGoToClickEvent = ReactMouseEvent<HTMLButtonElement, MouseEvent>;
@@ -12,6 +12,7 @@ interface ArticleTileProps {
   author: string;
   stack: string[];
   width: number;
+  status: ArticleStatus
   tags: string[];
   onGoToClick: OnGoToClick;
 }
