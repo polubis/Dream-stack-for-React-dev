@@ -1,0 +1,389 @@
+---
+lang: en
+title: Types vs interfaces in TypeScript fully explained
+description: Let's understand the all differences between type and interface keywords in TypeScript. We'll explore their use cases and impact on the compile time and build time.
+---
+
+<Prelude label="Why types vs interfaces?">
+  <M>
+    As a <B>TypeScript developer</B>, it's good to use all the possibilities and
+    features that this technology gives us. However, there are areas, weird
+    parts, the same as in the <B>JavaScript</B> that make our learning process
+    chaotic. The best example of such a subject is a good and well-known:{' '}
+    <B>"Types vs interfaces"</B>.
+  </M>
+  <M>
+    To be able to use <B>TypeScript</B> features fully and with pride, today
+    we'll explore these concepts:{' '}
+  </M>
+  <L ordered>
+    <Li>differences in syntax, use cases and mindset,</Li>
+    <Li>mapped types don't work with interfaces,</Li>
+    <Li>unions don't work with interfaces,</Li>
+    <Li>differences in declarations merging,</Li>
+    <Li>types can be merged with interfaces and vice-versa,</Li>
+    <Li>types and interfaces with classes,</Li>
+    <Li>cosmetic differences,</Li>
+    <Li>impact on build/compile time.</Li>
+  </L>
+  <M>
+    At the end, we'll know the answer to the question:{' '}
+    <B>"Should I use types or interfaces?"</B>
+  </M>
+</Prelude>
+
+<Section>
+  <XL>Differences in syntax, use cases and mindset</XL>
+  <M>
+    In <B>TypeScript</B> we can create <B>type definitions</B> (contracts for
+    our code) in following ways:
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Object definition via type"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/01-defs-via-types.ts"
+    linesCount={3}
+  />
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Object definition via interface"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/02-defs-via-interfaces.ts"
+    linesCount={3}
+  />
+  <M>
+    However, the <B>interface</B> keyword is reserved only for <B>objects</B>{' '}
+    creation, but with <B>type</B> we can create definitions for everything.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Interface may be used only for describe objects"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/03-interfaces-only-for-objects.ts"
+    linesCount={17}
+  />
+  <M>
+    In the example above, we created definitions for <B>array</B> and{' '}
+    <B>function</B> - there are objects too. This is how <B>JavaScript</B> works
+    and it's obvious that <B>TypeScript</B> follows the same rules. Now let's
+    check the <B>types</B>.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Types may be used for describe everything"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/04-types-for-everything.ts"
+    linesCount={22}
+  />
+</Section>
+
+<Section>
+  <XL>Mapped types don't work with interfaces</XL>
+  <M>
+    <B>Mapped types</B> allows you to create new types by transforming the
+    properties of an existing type based on a mapping function. They are often
+    used to perform operations on the keys and/or values of an object type to
+    create a new type.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Mapped types doesn't work with interfaces"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/05-mapped-types.ts"
+    linesCount={22}
+  />
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="For generics it doesn't work also"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/06-in-context-of-generics.ts"
+    linesCount={20}
+  />
+</Section>
+
+<Section>
+  <XL>Unions don't work with interfaces</XL>
+  <M>
+    If you want to create a declaration of an object that is <B>A</B> or{' '}
+    <B>B</B> with interfaces, it's not possible.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/14-unions-dont-work-with-interfaces.ts"
+    linesCount={18}
+  />
+</Section>
+
+<Section>
+  <XL>Differences in declarations merging</XL>
+  <M>
+    <B>Interfaces</B> implements something that is called{' '}
+    <B>automatic declaration merging</B>. How it works? You need to define more
+    than one interface with the same name and their definitions will be merged.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Implicit merge of interfaces declarations"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/07-interfaces-auto-merge.ts"
+    linesCount={14}
+  />
+  <M>
+    The same attempt done in <B>type</B> context doesn't work - they must have
+    unique names per <B>scope</B>.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Implict declarations mechanism doesn't work with type keyword"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/08-types-not.ts"
+    linesCount={8}
+  />
+  <M>
+    So, we know that <B>interfaces</B> have additional feature -{' '}
+    <B>implict declarations merging</B>. In another way, declarations with{' '}
+    <B>type</B> keyword must have unique names per scope.{' '}
+  </M>
+  <M>
+    However, we can merge declarations in <B>explicit</B> way and the syntax in
+    both is different.{' '}
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="That's how you merge by your own with interfaces"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/09-explicit-merge-interfaces.ts"
+    linesCount={13}
+  />
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="That's how you merge by your own with types"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/10-explicit-merge-in-types.ts"
+    linesCount={14}
+  />
+  <M>
+    The result will be the same object. The only difference between them in this
+    context is the <B>auto-merge</B> feature in interfaces and syntax. For
+    interfaces we need to use <B>extends</B> keyword but for <B>type</B> we need
+    to use merge operator - <B>"&"</B>.{' '}
+  </M>
+  <M>
+    But why did someone added auto-merge for interfaces? Imagine a library with
+    badly written type definitions and you want to consume this library API.
+    There is an additional function added, but someone forgot to add a type
+    definition for this function or it's done in the wrong way. Thanks to this
+    feature you are able to override it easily.{' '}
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="I want to have my own, better type defs!"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/11-lib-override.ts"
+    linesCount={7}
+  />
+  <M>
+    The other use case will be just removing the need to write the{' '}
+    <B>extends</B> keyword all the time. It's the next, fancy feature. We have a
+    lot of them in <B>JS</B>. Instead of typing we just need to know how
+    something works.
+  </M>
+  <M>
+    The real-world example will be a situation in which <B>library</B> doesn't
+    have any type definitions. In the example below, we're adding full typing
+    for <B>gatsby-plugin-dark-mode</B> library.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/12-override-of-lib-types.ts"
+    linesCount={16}
+  />
+</Section>
+
+<Section>
+  <XL>Types can be merged with interfaces and vice-versa</XL>
+  <M>Type and interface declarations are compatible in the merging aspect. </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Both ways works"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/15-vice-versa-merge.ts"
+    linesCount={21}
+  />
+</Section>
+
+<Section>
+  <XL>Types and interfaces with classes</XL>
+  <M>
+    Both may be used in the <B>context of classes</B> in the same way - to
+    implement contracts.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/16-classes.ts"
+    linesCount={8}
+  />
+</Section>
+
+<Section>
+  <XL>Cosmetic differences</XL>
+  <M>
+    Look at the following code sample to understand the amount of code that we
+    need to write for both.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Type is just shorter..."
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/13-cosmetic-diffs.ts"
+    linesCount={6}
+  />
+  <M>
+    Type-based declarations are just easier to write :P, that's why a lot of
+    current <B>eslint</B> rules detect such cases as above and warn you to
+    rewrite it to <B>type</B> syntax.
+  </M>
+</Section>
+
+<Section>
+  <XL>Impact on build/compile time</XL>
+  <M>
+    Under this{' '}
+    <A outside href="https://github.com/microsoft/TypeScript/wiki/Performance">
+      repo
+    </A>{' '}
+    you have official recommendations on when to use types and when to use
+    interfaces. The authors of this document provide arguments connected with
+    performance.
+  </M>
+  <M>
+    By saying <B>performance</B> I mean:{' '}
+  </M>
+  <L>
+    <Li>how long build process take,</Li>
+    <Li>how fast your real-time plugins work in IDE,</Li>
+    <Li>how long the compilation process take.</Li>
+  </L>
+  <M>
+    The <B>TypeScript</B> is not providing any additional code when complied
+    with <B>JavaScript</B>.
+  </M>
+  <Hint hasBg>
+    In old versions of <B>TS</B> there was a small impact with <B>enum</B>, but
+    in modern TS you can avoid this impact.
+  </Hint>
+  <M>
+    I will verify this impact by changing interfaces to types in my big
+    repository in which I have almost 500 interfaces. Later, I'll measure the
+    build/compilation and developer experience in real time (I'm working with VS
+    code).{' '}
+  </M>
+  <M>
+    So I'll execute under the following{' '}
+    <A
+      outside
+      href="https://github.com/polubis/Dream-stack-for-React-dev/tree/develop"
+    >
+      repository
+    </A>{' '}
+    following commands to build and compile:{' '}
+  </M>
+  <M>
+    <B>tsc --project tsconfig.base.json --diagnostics</B> - compilation.
+  </M>
+  <M>
+    <B>npx nx run-many --target=build --all</B> - build.
+  </M>
+  <Hint hasBg>
+    Under{' '}
+    <A
+      outside
+      href="https://github.com/polubis/Dream-stack-for-React-dev/tree/articles/Benchmarking-interfaces-vs-types-before"
+    >
+      this repository
+    </A>{' '}
+    you have code before changes.
+  </Hint>
+  <Hint hasBg>
+    Under{' '}
+    <A
+      outside
+      href="https://github.com/polubis/Dream-stack-for-React-dev/tree/articles/Benchmarking-interfaces-vs-types-after"
+    >
+      this repository
+    </A>{' '}
+    you have code after changes.
+  </Hint>
+  <M>This is how I made a changes: </M>
+  <Image
+    rolled
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/showcase-refactor.gif"
+    description="The change from interfaces to type process"
+  />
+  <M>
+    The results are really interesting... Looks like it's really improving the{' '}
+    <B>build time</B> and <B>compile time</B>.{' '}
+  </M>
+  <Image
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/a-refactor.jpg"
+    description="Build time before"
+  />
+  <Image
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/b-refactor.jpg"
+    description="Build time after"
+  />
+  <Image
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/before.png"
+    description="Compile time before"
+  />
+  <Image
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/en/after.png"
+    description="Compile time after"
+  />
+  <M>
+    I repeated these tests many times. In every attempt I cleaned the build
+    folders and cache. In the context of numbers, there was always a difference,
+    higher or lower, but the conclusion is - the version with <B>interfaces</B>{' '}
+    instead of <B>types</B> had always faster <B>builds</B> and{' '}
+    <B>compilation</B> times.
+  </M>
+  <M>
+    I tried also real-time development in these branches. There were some
+    situations in which when I accessed a file the first time I got a small lag
+    or a longer response from the local <B>TypeScript</B> check server. So,
+    looks like there is an impact too.{' '}
+  </M>
+  <Hint hasBg>
+    If you are curious how it looks on your computer just open above mentioned
+    branches and run tests 🔝.
+  </Hint>
+</Section>
+
+<Summary label="Should you use types or interfaces?">
+  <M>
+    We spotted a lot of differences between declaring definitions with{' '}
+    <B>types</B> and <B>interfaces</B>. Some additional features are available
+    in both of them, but the most important aspect is still the question from
+    the beginning: <B>"Should I use type or interfaces?"</B>{' '}
+  </M>
+  <M>
+    I think the answer is really simple to this question. If <B>TypeScript</B>{' '}
+    creators recommend using <B>interfaces</B> for defining <B>objects</B>, we
+    should trust them. In addition, we performed some checks so we know how big
+    the impact is on large projects. It may be several seconds on each build!
+  </M>
+  <M>
+    So, the real answer is:{' '}
+    <B>
+      "Use interfaces first for defining objects until you need a feature from
+      type-based definitions"
+    </B>{' '}
+    - of course if you care about development experience and compile/build
+    performance.{' '}
+  </M>
+  <M></M>
+</Summary>

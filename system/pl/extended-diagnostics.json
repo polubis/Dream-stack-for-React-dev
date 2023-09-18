@@ -1,0 +1,12 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "importHelpers": true,
+        "extendedDiagnostics": true,
+        "baseUrl": "."
+    },
+    "exclude": [
+        "node_modules",
+        "tmp"
+    ]
+}

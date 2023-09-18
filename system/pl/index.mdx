@@ -1,0 +1,272 @@
+---
+lang: pl
+title: Różnica pomiędzy typami a interfejsami w TypeScript
+description: Zrozumiemy główne różnie pomiędzy typami a interfejsami oraz sprawdzimy jaki impakt mogą mieć na czas kompilacji.
+---
+
+<Prelude label="Skąd te zamieszanie">
+  <M>
+    Różnego rodzaju skróty myślowe spodowały, że w <B>TypeScript</B>, typ oraz
+    interfejs są używane nagminnie, i w złym kontekście. Czasami słyszy się od
+    deweloperów:{' '}
+  </M>
+  <L>
+    <Li>"Tworzę modele w innym pliku",</Li>
+    <Li>"Zawsze dodaję interfejsy do odpowiedzi API",</Li>
+    <Li>"Zwracam typy dla każdej funkcji",</Li>
+    <Li>"Moje deklaracje oraz definicje są zawsze w oddzielnym pliku".</Li>
+  </L>
+  <M>
+    No właśnie... Każda z wypowiedzi dotyczy tego samego. W kontekście{' '}
+    <B>TypeScript</B> jeżeli masz na myśli tworzenie struktur, kształtów,
+    kontraktów, które mają opisać/określić twój kod, powinieneś używać zawsze
+    stwierdzenia - <B>definicje/deklaracje typów</B>.
+  </M>
+  <Hint hasBg>
+    Interfejs to też typ, tylko taki, który określa kształt/kontrakt dla
+    obiektów.
+  </Hint>
+  <M>
+    Właśnie z takich powodów ciężko jest zrozumieć różnice. Może się ona również
+    łatwo zacierać, bo jeżeli w kontekście aplikacji używamy głównie{' '}
+    <B>interfejsów</B>, a w <B>React</B> to już praktycznie zawsze (opisywanie
+    odpowiedzi <B>API</B>, opisywanie <B>propsów</B> oraz opisywanie{' '}
+    <B>stanu</B>), to można wyciągnąć błędny wniosek.{' '}
+  </M>
+  <M>
+    Zaczeły pojawiać się pytania: "Powinienem używać interfejsów czy typów?".
+    Jest to pytanie zrozumiałe, ale brakuje tu szerszego kontekstu. Powinno
+    brzmieć: "Do czego wykorzystuje się typy, a do czego interfejsy, i jakie są
+    różnice pomiędzy nimi?". No i teraz możemy zacząć artykuł ☜(ﾟヮﾟ☜).
+  </M>
+</Prelude>
+
+<Prelude label="Interfejsy to obiekty, a typy to?">
+  <M>
+    Spójrz na poniższy kod, w którym próbujemy wykorzystać <B>interface</B> oraz{' '}
+    <B>type</B> do stworzenia różnych deklaracji.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Interfejsy mogą być wykorzystane tylko do definicji obiektów"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/mozliwosci-interfejsow.ts"
+    linesCount={19}
+  />
+  <M>
+    W takim razie dlaczego można opisać interfejsem również <B>funkcję</B> oraz{' '}
+    <B>tablicę</B>? A dzieje się tak dlatego, że to również obiekty. Tak po
+    prostu jest w <B>JavaScript</B> i było by dziwne gdyby <B>TypeScript</B>{' '}
+    pominął ten istotny szczegół.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Za pomocą typów można opisać wszystko"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/mozliwosci-typow.ts"
+    linesCount={28}
+  />
+  <M>
+    Interfejsy służą do opisywania tylko i wyłącznie obiektów, a typami możemy
+    opisać dosłownie wszystko, każdą strukturę danych (string, boolean, object,
+    ...etc). Również prawdziwe jest stwierdzenie, że słowo kluczowe{' '}
+    <B>interface</B> służy do opisywania zmiennych <B>referencyjnych</B> - czyli
+    obiektów.
+  </M>
+</Prelude>
+
+<Section>
+  <XL>Dlaczego interfejsy opisują akurat obiekty?</XL>
+  <M>
+    Koncept <B>interfejsów</B> wywodzi się z programowania obiektowego. Jest to
+    kształt jaki obiekt powinien przyjąć. Idealnym przykładem do
+    wytłumaczenia tego konceptu będzie pilot do telewizora. <B>Interfejsem</B> w
+    tym kontekście będą przyciski i plastikowa obudowa. Wiele firm może zrobić
+    wiele pilotów. Ważne jest tylko i wyłącznie to, aby funkcje przycisków
+    działały tak samo - przełączały kanały, zwiększały głośność, ...etc. Różnica pomiędzy nimi to <B>implementacja</B> - każda firma może zrobić pilot
+    inaczej, ale działać musi tak samo. Zobaczmy ten przykład w kodzie:{' '}
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Interefejsy możemy wykorzystać również w kontekście klas"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/przyklad-z-pilotem.ts"
+    linesCount={20}
+  />
+  <M>Powyżej za pomocą interfejsów zdefiniowaliśmy kształ dla dwóch klas. Teraz dopóki jako deweloperzy nie wywiążemy się z kontraktu (interfejs), <B>TypeScript</B> będzie nam jęczał. </M>
+</Section>
+
+<Section>
+  <XL>Niejawne scalanie deklaracji w interfejsach</XL>
+    <M>
+    Definiując więcej niż jeden interfejs, <B>TypeScript</B> scali deklaracje do
+    jednej (deklaracje muszą mieć taka samą nazwę i znajdować się w tym samym pliku). 
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/scalanie-deklaracji.ts"
+    linesCount={14}
+  />
+    <M>
+    Bardzo istotne jest to, że <B>interfejsy</B> zdefiniowane w oddzielnych
+    plikach nie zostaną <B>scalone</B> w przypadku takiej samej nazwy (nawet
+    jeżeli wszystkie są exportowane).
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/export-interfejsow-nie-wplywa-na-scalanie.ts"
+    linesCount={13}
+  />
+    <M>
+    No dobra, ale dlaczego twórcy wprowadzili taki mechanizm? Jest to po prostu
+    dla naszej "wygody". W różnych technologiach występują mechanizmy niejawne,
+    które redukują potrzebe pisania przez nas kodu - musimy tylko wiedzieć jak
+    coś działa - analogicznym przykładem może być{' '}
+    <B>niejawna konwersja typów</B> w <B>JavaScript</B>. W tym jednak przypadku,
+    mechanizm ten czasami jest bardziej problematyczny niż pomocny 💢. 
+  </M>
+  <M>Dodatkowo warto zaznaczyć, że mechanizm ten może być bardzo użyteczny jeżeli korzystamy z biblioteki, która ma źle zdefiniowane typy. Dzięki temu mechanizmowi, możemy dodać własne pola do interfejsów bądź nadpisać błędne deklaracje. </M>
+<Code
+mode="dynamic"
+lang="tsx"
+description="Nadpisaliśmy definicje typów dla biblioteki 'styled-components' dla całego projektu"
+src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/niejawne-scalanie-w-deklaracjach.ts"
+linesCount={7}
+/>
+</Section>
+
+<Section>
+  <XL>Jawne scalanie deklaracji w interfejsach</XL>
+
+  <M>
+    Aby zrobić to <B>jawnie</B>, wystarczy użyć słowa <B>extends</B> (jeżeli
+    interfejs ma inną nazwę bądź jest importowany z innego pliku).{' '}
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/scalanie-deklaracji-jawne.ts"
+    linesCount={15}
+  />
+</Section>
+
+<Section>
+  <XL>Scalanie deklaracji dla typów</XL>
+  <M>
+    Niejawne scalanie deklaracji dla typów nie istnieje.
+    Jest tak dlatego, że <B>typy</B> muszą mieć unikalną nazwę dla danego{' '}
+    <B>scope</B>. Czyli kod, który widzicie poniżej nie zadziała z oczywistych
+    powodów, bo nazwy są takie same:{' '}
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Typy muszą mieć unikalną nazwę"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/typy-sa-unikalne.ts"
+    linesCount={12}
+  />
+  <M>
+    Jednak definicje typów możemy scalać <B>jawnie</B> korzystając z operatora{' '}
+    <B>&</B> - <B>operator logicznego AND</B> czy nazywany również <B>operatorem scalania typów</B>.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    description="Musimy jedynie pamiętać, że nazwy nie mogą się duplikować"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/jawne-scalanie-typow.ts"
+    linesCount={12}
+  />
+</Section>
+
+<Section>
+  <XL>Scalanie wielu deklaracji dla interfejsów oraz typów</XL>
+  <M>
+    Jeżeli chcemy scalić wiele deklaracji, to możemy zrobić to w następujący
+    sposób dla <B>interfejsów</B> i <B>typów</B>.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/scalanie-wielu-deklaracji.ts"
+    linesCount={11}
+  />
+</Section>
+
+<Section>
+  <XL>Scalanie interfejsów z typami i odwrotnie</XL>
+  <M>
+    Jeżeli mamy interfejs o nazwie <B>A</B> i typ o takiej same nazwie, to ich
+    scalanie nie bedzie możliwe.
+  </M>
+  <Code
+    mode="dynamic"
+    lang="tsx"
+    src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/interfejs-i-typ-w-jednym-pliku.ts"
+    linesCount={25}
+  />
+  <M>Rownież w odwrotną stronę jest to możliwe: </M>
+  <Code
+mode="dynamic"
+lang="tsx"
+src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/interfejsy-dziedzicza-typy.ts"
+linesCount={3}
+/>
+</Section>
+
+<Section>
+  <XL>Interfejsy mają lepszy performance?</XL>
+  <M>Jak już wiemy, obiekty możemy opisywać za pomocą <B>interfejsów</B> oraz <B>typów</B>. Dlaczego w takim razie nie być spójnym i nie wykorzystywać zawsze słowa <B>type</B> do wszystkiego? Raz, że definicja za pomocą <B>type</B> wygląda zwięźlej no i jest bardziej "fancy". Jest kilka powodów...</M>
+  <M>Definiowanie obiektów za pomocą interfejsów pozytywnie wpływa na czas kompilacji oraz <B>type checking</B> podczas pracy w <B>IDE</B>. Zwłaszcza gdy jest ich bardzo dużo i chcemy je ze sobą scalać. Wyobraź sobie ogromny projekt, w którym po wcisnięciu przycisku <B>save</B>, czekasz kilka sekund na ponowną kompilacje lub twój czas budowania aplikacji znacznie się wydłuża. </M>
+<Code
+mode="dynamic"
+lang="tsx"
+src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/types-only.ts"
+linesCount={13}
+/>
+<Code
+mode="dynamic"
+lang="tsx"
+src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/interfaces-only.ts"
+linesCount={13}
+/>
+<M>Zapis za pomocą interfejsów ma być lżejszy dla kompilatora. Niby dlatego, że obiekty zadeklarowane za pomocą <B>type</B> są scalane rekurencyjnie, natomiast dla interfejsów tworzony jest pojedyńczy typ, w którym łatwo wykryć konflikty właściwości i je rozwiązać.  </M>
+<Hint hasBg>Więcej na ten temat pod <A outside href="https://github.com/microsoft/TypeScript/wiki/Performance">tym repozytorium</A>.</Hint>
+<M>No dobra lepszy, ale czy na pewno i jeżeli tak to o ile? Zróbmy mały eksperyment :P. Pod repozytorium <A outside href="https://github.com/polubis/Dream-stack-for-React-dev/tree/develop">Dream stack for React developer</A> w momencie pisania tego artykułu znajduje się prawie 500 interfejsów. Wszystkie je zamienimy na <B>type</B> i sprawdzimy czy coś się zmieniło w czasie kompilacji, budowania oraz ogólnym działaniem wtyczek 
+w <B>IDE</B>. </M>
+<M>Najpierw pomiar dla <B>interfejsów</B>. Z racji tego, iż korzystamy w wyżej wymienionym repozytorium z <B>NX</B> do zarządzania <B>monorepo</B>, nasze polecenie do budowania będzie wyglądało w ten sposób: </M>
+<M><B>npx nx run-many --target=build --skip-nx-cache --all</B></M>
+<M>Oczywiście pozbywamy się <B>cache</B> flagą <B>--skip-nx-cache</B> i za każdym następnym testem będziemy czyścić katalog z <B>buildem</B>. Czekamy chwilkę i wyniki są następujące: </M>
+<Image
+rolled
+  src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/b-refactor.jpg"
+  description="Przed zmianą"
+/>
+<M>Teraz dodajemy następujący <B>commit</B> z podmianą <B>interface</B> na <B>type</B>. </M>
+<Image
+rolled
+  src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/showcase-refactor.gif"
+/>
+<M>Czekamy chwilkę i mamy wynik.</M>
+<Image
+rolled
+  src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/a-refactor.jpg"
+  description="Po zmianie"
+/>
+<M>No dobra, ale czy nasz pomiar jest prawidłowy? Przecież czas <B>buildu</B> zależy od wielu czynników, chociażby od tego jak bardzo obciażony jest aktualnie mój komputer. Wyłączyłem wszystko co się tylko dało i zacząłem kilka ponownych pomiarów, a wyniki były bardzo zbliżone - różniły się kilkoma sekundami i to czasami na korzyść <B>typów</B>. </M>
+<M>Stwierdziłem, że muszę sprawdzić jeszcze jedną rzecz, ile trwa tylko i wyłącznie kompilacja. Zatem, dodałem do pliku <B>tsconfig</B> następującą właściwość: <B>extendedDiagnostics: true</B>, która powoduje logowanie czasu jaki kompilator poświęcił na kompilacje. </M>
+<Code
+mode="dynamic"
+lang="json"
+added={[[5,5]]}
+src="https://raw.githubusercontent.com/polubis/Dream-stack-for-React-dev/article/Types-vs-interfaces-in-TypeScript-fully-explained/system/pl/extended-diagnostics.json"
+linesCount={12}
+/>
+
+<M>Zacząłem kompilować poszczególne projekty oddzielnie za pomocą polecenia <B>tsc -p tsconfig.app.json --noEmit</B>, aby uruchomić <B>type-checking</B> i nie tworzyć plików z deklaracjami (flaga <B>--noEmit</B>). Nie było żadnej większej różnicy... No dobra, to zostało nam tylko <B>IDE</B> i <B>type-checking</B> w czasie rzeczywistym. Ja używam <B>VS code</B> - popracowałem nad tym samym <B>feature</B> 30 minut na dwóch branchach i nie zauważyłem żadnej różnicy - może na wolniejszym komputerze mogłaby wystąpić, ale szczerze w to wątpie. </M>
+<M>Wnioski nasuwają się same - nie ma to większego znaczenia pod kątem <B>budowania</B> oraz <B>kompilacji</B>. Jeżeli masz problem z wyżej wymienionymi, to najprawdopodobniej problem jest gdzie indziej. Może jest to coś z zagadnień w <A outside href="https://github.com/microsoft/TypeScript/wiki/Performance#preferring-interfaces-over-intersections">tym artykule</A>.</M>
+<M>Jeżeli chcesz sam sprawdzić jak to wygląda u Ciebie, to poniżej masz branche <B>przed/po</B>.</M>
+<Hint hasBg><A outside href="https://github.com/polubis/Dream-stack-for-React-dev/tree/articles/Benchmarking-interfaces-vs-types-before">Branch przed zmianami</A>.</Hint>
+<Hint hasBg><A outside href="https://github.com/polubis/Dream-stack-for-React-dev/tree/articles/Benchmarking-interfaces-vs-types-after">Branch po zmianach</A>.</Hint>
+</Section>
