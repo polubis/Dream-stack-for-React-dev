@@ -8,8 +8,6 @@ import { Link } from '../link';
 
 import { NewsletterProps } from './defs';
 import { useState } from 'react';
-import { doc } from 'prettier';
-import cursor = doc.builders.cursor;
 
 const Newsletter = ({
   title,

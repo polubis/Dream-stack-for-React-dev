@@ -19,6 +19,7 @@ import {
   wrap,
 } from '../shared';
 import { T_DOWN } from './viewport';
+import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -1630,6 +1631,28 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* checkbox.tsx */
+
+    /* breadcrumb.tsx */
+    .breadcrumbs {
+      ${row()}
+      gap: ${tokens.spacing[200]};
+      ${font('1.6rem', '0.15px', 'LexendBold', 500)}
+      overflow-x: auto;
+
+      a {
+        ${row()};
+        color: white;
+        gap: ${tokens.spacing[200]};
+          &::after {
+            display: flex;
+            content: '';
+            ${shape(tokens.spacing[100], tokens.radius[1000])};
+            background: ${(props) => props.theme.list.marker.bg};
+            flex-shrink: 0;
+        }
+      }
+    }
+    /* breadcrumb.tsx */
 `;
 
 export { GlobalStyle };
