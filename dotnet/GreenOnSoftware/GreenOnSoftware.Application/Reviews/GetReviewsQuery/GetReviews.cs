@@ -4,5 +4,5 @@ using MediatR;
 
 namespace GreenOnSoftware.Application.Reviews.GetReviewsQuery;
 
-public record GetReviews(Guid ArticleId) : IRequest<Result<IEnumerable<ReviewLookupDto>>>;
+public record GetReviews(Guid ArticleId) : IRequest<Result<IEnumerable<ReviewDto>>>;
 

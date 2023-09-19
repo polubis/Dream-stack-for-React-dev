@@ -23,7 +23,7 @@ internal class AddReviewHandler : IRequestHandler<AddReview, Result>
 
     public async Task<Result> Handle(AddReview command, CancellationToken cancellationToken)
     {
-        var result = new Result();
+        var result = new Result<Guid>();
 
         var currentArticle = await _dbContext.Articles
             .Include(x=>x.Reviews)
@@ -37,6 +37,7 @@ internal class AddReviewHandler : IRequestHandler<AddReview, Result>
 
         currentArticle.AddReview(command.Content, _context.Identity.Id!, _clock.UtcNow);
         await _dbContext.SaveChangesAsync(cancellationToken);
+
 
         return result;
     }

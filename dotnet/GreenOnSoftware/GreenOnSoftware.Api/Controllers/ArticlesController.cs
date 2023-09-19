@@ -19,7 +19,6 @@ using GreenOnSoftware.Application.Ratings.RemoveArticleRateCommand;
 using GreenOnSoftware.Application.Reviews.UpdateReviewCommand;
 using GreenOnSoftware.Application.Reviews.DeleteReviewCommand;
 using GreenOnSoftware.Application.Reviews.GetReviewsQuery;
-using GreenOnSoftware.Application.Reviews.GetReviewByIdQuery;
 using GreenOnSoftware.Core.Enums;
 using GreenOnSoftware.Application.Ratings.UpdateArticleRate;
 
@@ -312,20 +311,6 @@ public class ArticlesController : ControllerBase
     public async Task<IActionResult> DeleteReview(Guid articleId, Guid reviewId)
     {
         var result = await _mediator.Send(new DeleteReview(articleId, reviewId));
-
-        if (result.HasErrors)
-        {
-            return BadRequest(result);
-        }
-
-        return Ok(result);
-    }
-
-    [Authorize]
-    [HttpGet("{articleId}/reviews/{reviewId}")]
-    public async Task<IActionResult> GetReviewById(Guid articleId, Guid reviewId)
-    {
-        var result = await _mediator.Send(new GetReviewById(articleId, reviewId));
 
         if (result.HasErrors)
         {

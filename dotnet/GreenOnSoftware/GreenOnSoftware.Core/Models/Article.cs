@@ -220,14 +220,18 @@ public class Article : Entity
 
     }
 
-    public void AddReview(string reviewContent, Guid reviewerId, DateTime operationDate)
+    public Review AddReview(string reviewContent, Guid reviewerId, DateTime operationDate)
     {
         if (Status == Status.Draft)
         {
             throw new InvalidOperationException("Draft article cannot be reviewed!");
         }
 
-        Reviews.Add(new Review(reviewerId, operationDate, reviewContent));
+        var newReview = new Review(reviewerId, operationDate, reviewContent);
+
+        Reviews.Add(newReview);
+
+        return newReview;
     }
 
     public void UpdateReview(Guid reviewId, string reviewContent, Guid reviewerId, DateTime operationDate)
