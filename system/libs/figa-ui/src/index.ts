@@ -38,3 +38,5 @@ export * from './lib/loader';
 export * from './lib/switch';
 export * from './lib/checkbox';
 export * from './lib/shared';
+export * from './lib/newsletter';
+export * from './lib/breadcrumbs';

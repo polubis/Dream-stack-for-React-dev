@@ -174,3 +174,13 @@ SecondaryOutlined.args = {
   variant: 'outlined',
   motive: 'secondary',
 };
+export const TertiaryFilled = Template.bind({});
+TertiaryFilled.args = {
+  variant: 'filled',
+  motive: 'tertiary',
+};
+export const TertiaryOutlined = Template.bind({});
+TertiaryOutlined.args = {
+  variant: 'outlined',
+  motive: 'tertiary',
+};
