@@ -8,5 +8,5 @@ public record AddArticle(
     string Title,
     string? Description,
     string Content,
-    IFormFile? Thumbnail,
+    IFormFile Thumbnail,
     string Lang) : IRequest<Result>;

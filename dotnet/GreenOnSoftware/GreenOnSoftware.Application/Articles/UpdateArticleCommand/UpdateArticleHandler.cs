@@ -32,7 +32,7 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
 
     public async Task<Result> Handle(UpdateArticle command, CancellationToken cancellationToken)
     {
-        var result = new Result<string>();
+        var result = new Result<UpdateArticleResult>();
 
         if(command.UrlIdentifier.Length > 300)
         {
@@ -70,8 +70,6 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
             return result;
         }
 
-        string? thumbnailUrl = null;
-
         if (command.Thumbnail is not null)
         {
             if (currentArticle.ThumbnailUrl is not null)
@@ -92,21 +90,23 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
                 return result;
             }
 
-            thumbnailUrl = uploadPictureResult.Data;
+            currentArticle.UpdateThumbnail(uploadPictureResult.Data);
         }
 
         currentArticle.Update(
             command.Title,
             command.Description,
             command.Content,
-            thumbnailUrl,
             url,
             destLang,
             _clock.UtcNow);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
 
-        result.SetData(url);
+        result.SetData(new UpdateArticleResult {
+            Id = currentArticle.Id,
+            Url = currentArticle.Url
+        });
 
         return result;
     }

@@ -49,15 +49,19 @@ public class Article : Entity
 
     public List<Review> Reviews { get; private set; } = new();
 
-    public void Update(string title, string? description, string content, string? thumbnailUrl, string url, Language lang, DateTime operationDate)
+    public void Update(string title, string? description, string content, string url, Language lang, DateTime operationDate)
     {
         Title = title;
         Description = description;
         Content = content;
-        ThumbnailUrl = thumbnailUrl;
         Url = url;
         ModifiedDate = operationDate;
         Lang = lang;
+    }
+
+    public void UpdateThumbnail(string thumbnailUrl)
+    {
+        ThumbnailUrl = thumbnailUrl;
     }
 
     public void SendForApproval()

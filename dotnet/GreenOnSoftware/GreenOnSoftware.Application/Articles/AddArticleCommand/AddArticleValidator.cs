@@ -19,5 +19,8 @@ public class AddArticleValidator : AbstractValidator<AddArticle>
             .MaximumLength(2)
             .Must(x=> Enum.TryParse<Language>(x, ignoreCase: true, out _))
             .WithMessage("Lang must have valid values");
+
+        RuleFor(x => x.Thumbnail)
+            .NotEmpty();
     }
 }

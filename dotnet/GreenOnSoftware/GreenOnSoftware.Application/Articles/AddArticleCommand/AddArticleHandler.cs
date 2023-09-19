@@ -31,32 +31,27 @@ internal class AddArticleHandler : IRequestHandler<AddArticle, Result>
 
     public async Task<Result> Handle(AddArticle command, CancellationToken cancellationToken)
     {
-        var result = new Result<string>();
+        var result = new Result<AddArticleResult>();
         string url = _articleUrlIdentifierService.CreateArticleUrlIdentifier(command.Title);
         Language lang = Enum.Parse<Language>(command.Lang, ignoreCase: true);
         bool urlIdentifierExists = await _dbContext.Articles
             .AnyAsync(x => !x.IsDeleted && x.Lang == lang && (x.Title == command.Title || x.Url == url), cancellationToken);
 
-        if(urlIdentifierExists)
+        if (urlIdentifierExists)
         {
             result.AddError(ErrorMessages.ArticleAlreadyExists);
 
             return result;
         }
 
-        string? thumbnailUrl = null;
-
-        if (command.Thumbnail != null)
+        var uploadPictureResult = await _thumbnailService.UploadPicture(command.Thumbnail);
+        if (uploadPictureResult.HasErrors)
         {
-            var uploadPictureResult = await _thumbnailService.UploadPicture(command.Thumbnail);
-            if (uploadPictureResult.HasErrors)
-            {
-                result.AddErrors(uploadPictureResult);
-                return result;
-            }
-
-            thumbnailUrl = uploadPictureResult.Data;
+            result.AddErrors(uploadPictureResult);
+            return result;
         }
+
+        string? thumbnailUrl = uploadPictureResult.Data;
 
         var newArticle = new Article(
             command.Title,
@@ -71,7 +66,10 @@ internal class AddArticleHandler : IRequestHandler<AddArticle, Result>
         await _dbContext.Articles.AddAsync(newArticle);
         await _dbContext.SaveChangesAsync();
 
-        result.SetData(newArticle.Url);
+        result.SetData(new AddArticleResult {
+            Id = newArticle.Id,
+            Url = newArticle.Url
+        });
 
         return result;
     }
