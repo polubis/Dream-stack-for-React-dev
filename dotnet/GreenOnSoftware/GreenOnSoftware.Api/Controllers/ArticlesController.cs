@@ -210,6 +210,36 @@ public class ArticlesController : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
+    [HttpGet("my/pl")]
+    [SwaggerResponse(StatusCodes.Status200OK, type: typeof(PagedResult<ArticleLookupDto>))]
+    public async Task<IActionResult> GetMyArticlesMyPl([FromQuery] GetArticles query)
+    {
+        var result = await _mediator.Send(query.Bind(Language.Pl, onlyMyArticles: true));
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
+
+    [Authorize]
+    [HttpGet("my/en")]
+    [SwaggerResponse(StatusCodes.Status200OK, type: typeof(PagedResult<ArticleLookupDto>))]
+    public async Task<IActionResult> GetMyArticlesEn([FromQuery] GetArticles query)
+    {
+        var result = await _mediator.Send(query.Bind(Language.En, onlyMyArticles: true));
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
+
     #endregion Articles
 
     #region Ratings
