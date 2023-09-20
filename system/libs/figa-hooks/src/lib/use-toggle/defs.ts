@@ -1,14 +1,14 @@
-interface ToggleConfig<T = null> {
+type ToggleConfig<T = null>  = {
   data?: T | null;
   opened?: boolean;
 }
 
-interface ToggleState<T = null> {
+type ToggleState<T = null>  = {
   data: T | null;
   opened: boolean;
 }
 
-interface ToggleReturn<T = null> extends ToggleState<T> {
+type ToggleReturn<T = null>  = ToggleState<T>  & {
   closed: boolean;
   open: () => void;
   close: () => void;

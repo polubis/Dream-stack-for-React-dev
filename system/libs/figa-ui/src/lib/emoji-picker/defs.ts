@@ -1,13 +1,13 @@
 type Emoji = string;
 
-interface EmojiPickerDataItem {
+type EmojiPickerDataItem = {
   emoji: Emoji;
   name: string;
 }
 
 type EmojiPickerData = EmojiPickerDataItem[];
 
-interface EmojiPickerProps {
+type EmojiPickerProps = {
   className?: string;
   data?: EmojiPickerData;
   title: string;

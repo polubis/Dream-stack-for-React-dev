@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-interface LogoProps {
+type LogoProps  ={
   className?: string;
   graphic?: ReactNode;
   parts?: [string, string, string];

@@ -1,15 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type QueryParamsBase = Record<string, any>;
 
-interface QueryParamsBusy {
+type QueryParamsBusy  ={
   is: 'busy';
 }
 
-interface QueryParamsFail {
+type QueryParamsFail  ={
   is: 'fail';
 }
 
-interface QueryParamsOk<T extends QueryParamsBase> {
+type QueryParamsOk<T extends QueryParamsBase>  ={
   is: 'ok';
   query: T;
 }

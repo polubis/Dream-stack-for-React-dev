@@ -5,7 +5,7 @@ type CheckboxHTMLElementProps = Omit<
   'type' | 'value' | 'children'
 >;
 
-interface CheckboxProps extends CheckboxHTMLElementProps {
+type CheckboxProps  = CheckboxHTMLElementProps & {
   reversed?: boolean;
   label?: ReactNode;
 }

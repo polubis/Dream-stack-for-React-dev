@@ -1,4 +1,4 @@
-interface FailScreenProps {
+type FailScreenProps  ={
   onRetry(): void;
 }
 

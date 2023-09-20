@@ -9,7 +9,7 @@ type AlertHTMLElementProps = Omit<
   'children'
 >;
 
-interface AlertProps extends AlertHTMLElementProps {
+type AlertProps  = AlertHTMLElementProps & {
   variant?: AlertVariant;
   type?: AlertType;
   trimmed?: boolean;

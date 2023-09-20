@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-interface ArticleScreenProps {
+type ArticleScreenProps = {
   badge: ReactNode;
   info: ReactNode;
   details: ReactNode;

@@ -2,7 +2,7 @@ import type { ToggleReturn } from '@system/figa-hooks';
 import type { ReactNode } from 'react';
 import type { SpacingKey } from '../theme-provider';
 
-interface PopoverProps {
+type PopoverProps = {
   className?: string;
   initialOpen?: boolean;
   offsetY?: SpacingKey;

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-interface DetailProps {
+type DetailProps  ={
   className?: string;
   label: ReactNode;
   value: ReactNode;

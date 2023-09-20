@@ -5,7 +5,7 @@ type ImageHTMLElementProps = Omit<
   'children' | 'src'
 >;
 
-interface ImageProps extends ImageHTMLElementProps {
+type ImageProps  = ImageHTMLElementProps & {
   alt: string;
   lazy?: boolean;
   src: string;

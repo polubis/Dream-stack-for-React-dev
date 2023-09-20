@@ -1,22 +1,22 @@
 import type { ResponseError } from '@system/blog-api-models';
 
-interface SignOutActions {
+type SignOutActions  = {
   signOut: () => Promise<void>;
 }
 
-interface IdleState extends SignOutActions {
+type IdleState  = SignOutActions & {
   key: 'idle';
 }
 
-interface PendingState extends SignOutActions {
+type PendingState  = SignOutActions &{
   key: 'pending';
 }
 
-interface OkState extends SignOutActions {
+type OkState  = SignOutActions & {
   key: 'ok';
 }
 
-interface ErrorState extends SignOutActions {
+type ErrorState  = SignOutActions & {
   key: 'error';
   response: ResponseError;
 }

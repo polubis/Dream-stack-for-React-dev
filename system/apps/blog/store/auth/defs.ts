@@ -2,26 +2,26 @@ import type { SignedInUserDto, Username } from '@system/blog-api-models';
 
 type NullableSignedInUser = SignedInUserDto | null;
 
-interface AuthStorage {
+type AuthStorage = {
   user: NullableSignedInUser;
-}
+};
 
-interface AuthActions {
+type AuthActions = {
   check: () => void;
-}
+};
 
-interface AuthState {
+type AuthState = {
   key: 'idle' | 'authorized' | 'unauthorized';
   user: NullableSignedInUser;
-}
+};
 
 type AuthStore = AuthState & AuthActions;
 
 type AuthStoreStateKey = AuthState['key'];
 
-interface AuthSelectors {
+type AuthSelectors = {
   useIsAuthor: (username: Username) => boolean;
-}
+};
 
 export type {
   AuthStore,

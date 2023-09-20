@@ -7,7 +7,7 @@ type Fail = { is: 'fail'; error: ResponseError };
 
 type State = Idle | Busy | Ok | Fail;
 
-interface Actions {
+type Actions =  {
   accept(id: Id): Promise<void>;
   reject(id: Id): Promise<void>;
 }

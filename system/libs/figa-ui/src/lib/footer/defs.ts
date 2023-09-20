@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-interface FooterProps {
+type FooterProps  ={
   className?: string;
   socials: ReactNode;
   blocks: ReactNode;

@@ -1,19 +1,19 @@
 import type { RegisterPayload, ResponseError } from '@system/blog-api-models';
 import type { FormState } from '@system/utils';
 
-interface RegisterActions {
+type RegisterActions = {
   setField: <K extends keyof RegisterPayload, V extends RegisterPayload[K]>(
     key: K,
     value: V
   ) => void;
   submit: () => Promise<void>;
-}
+};
 
-interface RegisterState extends RegisterActions {
+type RegisterState = RegisterActions & {
   key: 'idle' | 'pending' | 'ok' | 'error';
   form: FormState<RegisterPayload>;
   error: ResponseError | null;
-}
+};
 
 type RegisterStore = RegisterState & RegisterActions;
 

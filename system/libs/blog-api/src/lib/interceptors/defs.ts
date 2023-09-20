@@ -1,4 +1,4 @@
-interface Interceptable {
+type Interceptable  ={
   clean: () => void;
   listen: () => void;
 }

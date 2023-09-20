@@ -1,10 +1,10 @@
 import type { ArticleDto, ResponseError } from '@system/blog-api-models';
 
-interface RecommendedArticlesActions {
+type RecommendedArticlesActions =  {
   load: () => Promise<void>;
 }
 
-interface RecommendedArticlesState {
+type RecommendedArticlesState =  {
   key: 'idle' | 'pending' | 'ok' | 'error';
   articles: ArticleDto[];
   error: ResponseError | null;

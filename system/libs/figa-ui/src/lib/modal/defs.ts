@@ -1,6 +1,6 @@
 import type { BoxProps } from '../box';
 
-interface ModalProps extends BoxProps {
+type ModalProps  = BoxProps & {
   onClose?: () => void;
 }
 

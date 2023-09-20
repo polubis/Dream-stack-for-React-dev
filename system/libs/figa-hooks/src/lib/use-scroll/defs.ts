@@ -1,24 +1,24 @@
 import type { MutableRefObject } from 'react';
 
-interface BaseScrollState {
+type BaseScrollState  = {
   prev: number;
   curr: number;
   value: number;
 }
 
-interface IdleScrollState {
+type IdleScrollState  = {
   is: 'idle';
 }
 
-interface ProgressScrollState extends BaseScrollState {
+type ProgressScrollState  = BaseScrollState & {
   is: 'progress';
 }
 
-interface RegressScrollState extends BaseScrollState {
+type RegressScrollState  = BaseScrollState & {
   is: 'regress';
 }
 
-interface UnchangedScrollState extends BaseScrollState {
+type UnchangedScrollState  = BaseScrollState & {
   is: 'unchanged';
 }
 
@@ -32,7 +32,7 @@ type ScrollState =
 
 type ScrollResult = ScrollState['is'];
 
-interface ScrollConfig {
+type ScrollConfig  = {
   axis?: ScrollAxis;
   delay?: number;
   onScroll?(state: ScrollState): void;

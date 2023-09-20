@@ -1,4 +1,4 @@
-interface LogoGraphicProps {
+type LogoGraphicProps = {
   className?: string;
   size: number;
 }

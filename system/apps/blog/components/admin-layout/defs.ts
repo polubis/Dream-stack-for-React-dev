@@ -1,6 +1,6 @@
 import type { ReactNode } from '@mdx-js/react/lib';
 
-interface AdminLayoutProps {
+type AdminLayoutProps = {
   children: ReactNode;
 }
 

@@ -15,11 +15,11 @@ type TabHTMLElementProps = Omit<
   'children'
 >;
 
-interface TabsProps extends TabsHTMLElementProps {
+type TabsProps  = TabsHTMLElementProps & {
   children: ReactNode;
 }
 
-interface TabProps extends TabHTMLElementProps {
+type TabProps  = TabHTMLElementProps & {
   active?: boolean;
   children: ReactNode;
 }

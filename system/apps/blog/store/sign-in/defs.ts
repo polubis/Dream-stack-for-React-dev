@@ -1,13 +1,13 @@
 import type { ResponseError, SignInPayload } from '@system/blog-api-models';
 
-interface SignInActions {
+type SignInActions = {
   signIn: (payload: SignInPayload) => Promise<void>;
-}
+};
 
-interface SignInState {
+type SignInState = {
   key: 'idle' | 'pending' | 'ok' | 'error';
   error: ResponseError | null;
-}
+};
 
 type SignInStore = SignInState & SignInActions;
 

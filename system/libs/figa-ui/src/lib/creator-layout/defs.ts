@@ -14,7 +14,7 @@ type CreatorLayoutView =
   | 'code-full'
   | 'preview-full';
 
-interface CreatorLayoutPayload {
+type CreatorLayoutPayload  = {
   expandCode: () => void;
   expandPreview: () => void;
   expandBoth: () => void;
@@ -22,7 +22,7 @@ interface CreatorLayoutPayload {
   size: ElementSizeState;
 }
 
-interface CreatorLayoutProps extends CreatorLayoutHTMLElementProps {
+type CreatorLayoutProps  = CreatorLayoutHTMLElementProps & {
   children: [ReactNode, ReactNode];
   codeToolbox: (payload: CreatorLayoutPayload) => ReactNode;
   previewToolbox: (payload: CreatorLayoutPayload) => ReactNode;

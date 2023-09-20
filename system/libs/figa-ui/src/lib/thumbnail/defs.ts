@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { ImageProps } from '../image';
 
-interface ThumbnailProps extends ImageProps {
+type ThumbnailProps = ImageProps & {
   img?: (props: Omit<ThumbnailProps, 'img'>) => ReactNode;
 }
 

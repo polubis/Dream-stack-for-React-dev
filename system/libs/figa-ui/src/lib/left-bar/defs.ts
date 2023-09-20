@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-interface LeftBarProps {
+type LeftBarProps  ={
   className?: string;
   children: ReactNode;
 }

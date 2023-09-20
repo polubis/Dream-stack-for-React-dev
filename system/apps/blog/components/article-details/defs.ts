@@ -1,4 +1,4 @@
-interface ArticleDetailsProps {
+type ArticleDetailsProps = {
   authorName: string;
   title: string;
   description: string;

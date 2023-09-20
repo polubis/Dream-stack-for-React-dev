@@ -7,7 +7,7 @@ type AvatarsHTMLElementProps = Omit<
   'children'
 >;
 
-interface AvatarsProps extends AvatarsHTMLElementProps {
+type AvatarsProps  = AvatarsHTMLElementProps & {
   children: ReactElement<AvatarsProps> | ReactElement<AvatarsProps>[];
   to: number;
   size?: AvatarSize;

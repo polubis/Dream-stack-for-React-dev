@@ -1,12 +1,12 @@
 import type { ReactNode } from 'react';
 
-interface ListProps {
+type ListProps  ={
   className?: string;
   children: ReactNode;
   ordered?: boolean;
 }
 
-interface ListItemProps {
+type ListItemProps  ={
   className?: string;
   children: ReactNode;
 }

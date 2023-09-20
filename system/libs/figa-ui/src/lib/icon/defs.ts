@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-interface IconBaseProps {
+type IconBaseProps = {
   size?: number;
   className?: string;
   children: ReactNode;

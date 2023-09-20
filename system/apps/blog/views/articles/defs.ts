@@ -1,6 +1,6 @@
 import type { ArticleDto } from '@system/blog-api-models';
 
-interface ArticlesViewProps {
+type ArticlesViewProps = {
   articles: ArticleDto[];
 }
 

@@ -1,12 +1,12 @@
 import type { ReactNode } from 'react';
 
-interface ThemeProviderProps {
+type ThemeProviderProps  ={
   children: ReactNode;
 }
 
 type ViewportValue = number;
 
-interface Viewport {
+type Viewport  ={
   smallMobile: ViewportValue;
   mobile: ViewportValue;
   tablet: ViewportValue;
@@ -47,7 +47,7 @@ type Spacing = Readonly<{
 
 type SpacingKey = keyof Spacing;
 
-interface Palette {
+type Palette  ={
   50: string;
   100: string;
   150: string;
@@ -55,14 +55,14 @@ interface Palette {
   250: string;
 }
 
-interface ButtonSetup {
+type ButtonSetup  ={
   color: string;
   bg: string;
   borderColor?: string;
   outlineColor: string;
 }
 
-interface Tokens {
+type Tokens = {
   shadow: {
     50: string;
   };
@@ -146,7 +146,7 @@ interface Tokens {
   secondary: Palette;
 }
 
-interface Theme {
+type Theme  ={
   outline: {
     color: string;
   };
@@ -421,7 +421,7 @@ type ThemeKey = 'dark' | 'light';
 type Themes = Record<ThemeKey, Theme>;
 type ThemesList = [ThemeKey, Theme][];
 
-interface ThemeProviderValue {
+type ThemeProviderValue  ={
   key: ThemeKey;
   theme: Theme;
   themes: Themes;
@@ -436,7 +436,7 @@ type GetDefaultValue = (
 ) => ThemeProviderValue;
 
 declare module 'styled-components' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  // eslint-disable-next-line @typescript-eslint/no-empty-type
   export interface DefaultTheme extends Theme {}
 }
 

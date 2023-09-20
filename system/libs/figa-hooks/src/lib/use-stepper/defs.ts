@@ -1,14 +1,14 @@
 import type { ReactNode } from 'react';
 
 /** Interface that describes a single step. */
-interface Step {
+type Step  = {
   /** Unique step key. */
   key: string;
   /** Render function - takes any number of arguments. */
   Component: (...args: any[]) => ReactNode;
 }
 
-interface UseStepperActions<S extends Step> {
+type UseStepperActions<S extends Step>  = {
   /**
    * A function that checks whether the step key is equal
    * to the specified key - if so, it assigns the appropriate

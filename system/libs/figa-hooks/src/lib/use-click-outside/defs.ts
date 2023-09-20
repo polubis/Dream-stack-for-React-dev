@@ -1,10 +1,10 @@
 import type { MutableRefObject } from 'react';
 
-interface UseClickOutsideConfig {
+type UseClickOutsideConfig  ={
   onOutside: () => void;
 }
 
-interface UseClickOutsideReturn<T extends HTMLElement> {
+type UseClickOutsideReturn<T extends HTMLElement>  = {
   ref: MutableRefObject<T | null>;
 }
 

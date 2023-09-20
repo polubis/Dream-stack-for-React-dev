@@ -16,7 +16,7 @@ type BoxMargin =
   | [BoxMarginValue, BoxMarginValue]
   | [BoxMarginValue, BoxMarginValue, BoxMarginValue, BoxMarginValue];
 
-interface BoxProps extends BoxHTMLElementProps {
+type BoxProps  = BoxHTMLElementProps & {
   orientation?: BoxOrientation;
   variant?: BoxVariant;
   padding?: BoxPadding;

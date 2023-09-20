@@ -9,7 +9,7 @@ type BadgeHTMLElementProps = Omit<
 type BadgeMotive = (typeof BADGE_MOTIVES)[number];
 type BadgeVariant = (typeof BADGE_VARIANTS)[number];
 
-interface BadgeProps extends BadgeHTMLElementProps {
+type BadgeProps  = BadgeHTMLElementProps & {
   children: ReactNode;
   motive?: BadgeMotive;
   variant?: BadgeVariant;

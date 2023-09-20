@@ -4,7 +4,7 @@ import type { MouseEvent as ReactMouseEvent } from 'react';
 type OnGoToClickEvent = ReactMouseEvent<HTMLButtonElement, MouseEvent>;
 type OnGoToClick = (e: OnGoToClickEvent) => void;
 
-interface ArticleTileProps {
+type ArticleTileProps = {
   id: string;
   title: string;
   thumbnail: string;
@@ -17,7 +17,7 @@ interface ArticleTileProps {
   onGoToClick: OnGoToClick;
 }
 
-interface ArticlesGridProps {
+type ArticlesGridProps = {
   onGoToClick: OnGoToClick;
   articles: ArticleDto[];
 }

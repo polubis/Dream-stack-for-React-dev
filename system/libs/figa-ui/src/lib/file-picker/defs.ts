@@ -12,7 +12,7 @@ type FilePickerOnChange = (
   preview: FilePickerPreviewList
 ) => void;
 
-interface FilePickerProps extends FilePickerHTMLElementProps {
+type FilePickerProps  = FilePickerHTMLElementProps & {
   disabled?: boolean;
   multiple?: boolean;
   accept?: string;

@@ -5,12 +5,12 @@ type ChipHTMLElementProps = DetailedHTMLProps<
   HTMLButtonElement
 >;
 
-interface ChipsProps {
+type ChipsProps  = {
   className?: string;
   children: ReactNode;
 }
 
-interface ChipProps extends ChipHTMLElementProps {
+type ChipProps  = ChipHTMLElementProps & {
   active?: boolean;
 }
 

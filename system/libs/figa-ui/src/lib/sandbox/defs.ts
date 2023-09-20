@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-interface SandboxProps {
+type SandboxProps = {
   children: ReactNode;
 }
 

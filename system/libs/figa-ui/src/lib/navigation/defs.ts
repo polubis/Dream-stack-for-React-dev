@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-interface NavigationProps {
+type NavigationProps = {
   className?: string;
   logo: ReactNode;
   action: ReactNode;

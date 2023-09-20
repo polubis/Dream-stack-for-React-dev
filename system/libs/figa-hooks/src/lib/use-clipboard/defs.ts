@@ -1,36 +1,36 @@
 type ClipboardValue = string;
 
-interface BaseState {
+type BaseState  ={
   value: ClipboardValue;
 }
 
-interface Idle {
+type Idle  ={
   is: 'idle';
 }
 
-interface Unsupported {
+type Unsupported  ={
   is: 'unsupported';
 }
 
-interface Ready {
+type Ready  ={
   is: 'ready';
 }
 
-interface Copying extends BaseState {
+type Copying  = BaseState &{
   is: 'copying';
 }
 
-interface Copied extends BaseState {
+type Copied  = BaseState & {
   is: 'copied';
 }
 
-interface Error {
+type Error   = {
   is: 'error';
 }
 
 type ClipboardState = Idle | Unsupported | Ready | Copying | Copied | Error;
 
-interface ClipboardConfig {
+type ClipboardConfig  = {
   cleansAfter?: number | null;
 }
 

@@ -10,14 +10,14 @@ import type {
   NoteOctave,
 } from '../../domain';
 
-interface NoteButtonProps {
+type NoteButtonProps  = {
   noteOctave: NoteOctave;
   noteId: NoteId;
   notation: NoteNotation;
   onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
-interface GuitarFretboardProps {
+type GuitarFretboardProps  = {
   className?: string;
   guitar: Guitar;
   fretsMarkers?: GuitarFret[];
@@ -26,7 +26,7 @@ interface GuitarFretboardProps {
   onNoteClick?: (note: Note) => void;
 }
 
-interface GuitarFretboardStringsProps {
+type GuitarFretboardStringsProps  = {
   strings: GuitarString[];
 }
 

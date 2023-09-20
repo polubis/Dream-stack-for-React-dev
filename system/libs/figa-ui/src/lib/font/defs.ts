@@ -25,7 +25,7 @@ type FontHTMLElementProps = Omit<
   'children'
 >;
 
-interface FontProps extends FontHTMLElementProps {
+type FontProps  = FontHTMLElementProps & {
   element?: SupportedFontElement;
   variant: FontVariant;
   children: ReactNode;

@@ -1,6 +1,6 @@
 import type { Id, Url } from '@system/blog-api-models';
 
-interface ArticleReviewParams {
+type ArticleReviewParams  = {
   url: Url;
   id: Id;
 }

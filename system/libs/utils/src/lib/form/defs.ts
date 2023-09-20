@@ -11,7 +11,7 @@ type FormTouch<Values extends FormValues> = {
   [K in keyof Values]: boolean;
 };
 
-interface FormMetadata<Values extends FormValues> {
+type FormMetadata<Values extends FormValues> = {
   touched: boolean;
   untouched: boolean;
   dirty: boolean;
@@ -49,7 +49,7 @@ type FormValidatorsSetup<Values extends FormValues> = {
   ) => NullableValidatorType)[];
 };
 
-interface FormConfig {
+type FormConfig = {
   validateOnInit?: boolean;
 }
 

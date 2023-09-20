@@ -1,6 +1,6 @@
 import { ArticleStatus } from '@system/blog-api-models';
 
-interface ArticleThumbnailProps {
+type ArticleThumbnailProps = {
   title: string;
   src: string;
   status: ArticleStatus;

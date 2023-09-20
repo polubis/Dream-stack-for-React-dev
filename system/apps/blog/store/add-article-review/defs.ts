@@ -15,11 +15,11 @@ type Fail = { is: 'fail'; error: ResponseError; form: Form };
 
 type State = Idle | Busy | Ok | Fail;
 
-interface Actions {
+type Actions = {
   setField<K extends keyof FormData>(key: K, value: FormData[K]): void;
   confirm(
     id: CreateArticleReviewPayload['id']
   ): Promise<CreateArticleReviewResponse>;
-}
+};
 
 export type { Actions, State, FormData, Form };

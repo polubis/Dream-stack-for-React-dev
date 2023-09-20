@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-interface CodeBlockProps {
+type CodeBlockProps  ={
   className?: string;
   header?: (dots: ReactNode) => ReactNode;
   children: ReactNode;

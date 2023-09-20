@@ -1,17 +1,17 @@
-interface ElementSize {
+type ElementSize  = {
   width: number;
   height: number;
 }
 
-interface UndetectedState {
+type UndetectedState  = {
   status: 'undetected';
 }
 
-interface DetectedState extends ElementSize {
+type DetectedState  = ElementSize & {
   status: 'detected';
 }
 
-interface UnsupportedState {
+type UnsupportedState  = {
   status: 'unsupported';
 }
 
@@ -20,7 +20,7 @@ type ElementSizeState = UndetectedState | DetectedState | UnsupportedState;
 type ElementSizeStateStatus = ElementSizeState['status'];
 
 /** Configuration object. */
-interface UseElementSizeConfig {
+type UseElementSizeConfig  = {
   /** It quantifies how much time is needed to broadcast the next event in milliseconds. */
   delay?: number;
 }

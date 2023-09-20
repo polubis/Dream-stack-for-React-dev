@@ -52,7 +52,7 @@ type NoteOctave = (typeof NOTE_OCTAVES)[number];
 /**
  * Each note consists of a pair - an octave and a note identifier.
  */
-interface Note {
+type Note  = {
   id: NoteId;
   octave: NoteOctave;
 }
@@ -90,15 +90,15 @@ type GuitarStrings = GuitarString[];
  * The standard tuning for a six-string guitar,
  * starting from the thickest string to the thinnest, is usually E2-A2-D3-G3-B3-E4.
  */
-interface GuitarTuning {
+type GuitarTuning  ={
   name: GuitarTuningName;
   notes: GuitarTuningNotes;
 }
 
 /**
- * An interface that defines the parameters needed to create a guitar object.
+ * An type that defines the parameters needed to create a guitar object.
  */
-interface GuitarConfig {
+type GuitarConfig  ={
   hand: GuitarHand;
   fretsCount: GuitarFret;
   tuningName: GuitarTuningName;
@@ -110,7 +110,7 @@ interface GuitarConfig {
  * neck - the sound comes out. The guitar usually has up to 24 frets.
  * So we can produce 25 or more sounds in total (including the sound of an empty string).
  */
-interface GuitarString {
+type GuitarString  ={
   number: GuitarStringNumber;
   notes: Note[];
 }
@@ -118,7 +118,7 @@ interface GuitarString {
 /**
  * An abstraction to a real instrument - the guitar.
  */
-interface Guitar {
+type Guitar  ={
   fretsCount: GuitarFret;
   strings: GuitarStrings;
   tuning: GuitarTuning;

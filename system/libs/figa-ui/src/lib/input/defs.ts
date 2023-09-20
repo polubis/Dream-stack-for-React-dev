@@ -18,7 +18,7 @@ type TextareaHTMLElementProps = DetailedHTMLProps<
 
 type InputVariant = (typeof INPUT_VARIANTS)[number];
 
-interface ControlProps {
+type ControlProps  = {
   className?: string;
   variant?: InputVariant;
   maxWidth?: string;

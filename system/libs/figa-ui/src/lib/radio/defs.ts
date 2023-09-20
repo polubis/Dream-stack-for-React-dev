@@ -10,11 +10,11 @@ type RadioCaseHTMLElementProps = Omit<
   'children'
 >;
 
-interface RadioProps extends RadioHTMLElementProps {
+type RadioProps  = RadioHTMLElementProps &{
   children: ReactNode;
 }
 
-interface RadioCaseProps extends RadioCaseHTMLElementProps {
+type RadioCaseProps  = RadioCaseHTMLElementProps & {
   label: ReactNode;
   name: string;
   value: string;

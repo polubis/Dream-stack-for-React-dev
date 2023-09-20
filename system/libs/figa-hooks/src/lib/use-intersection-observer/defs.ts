@@ -8,7 +8,7 @@ type IntersectionObserverConfig = IntersectionObserverInit;
 /**
  * We'll return this object from hook.
  */
-interface IntersectionObserverReturn<T extends HTMLElement> {
+type IntersectionObserverReturn<T extends HTMLElement>  = {
   /**
    * Reference to any HTML element.
    * The @T parameter is the type of the element we'll

@@ -5,7 +5,7 @@ type SwitchHTMLElementProps = Omit<
   'children' | 'onClick'
 >;
 
-interface SwitchProps extends SwitchHTMLElementProps {
+type SwitchProps  = SwitchHTMLElementProps & {
   label?: ReactNode;
   reversed?: boolean;
   active?: boolean;

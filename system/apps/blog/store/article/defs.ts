@@ -13,15 +13,15 @@ namespace Article {
 
   export type State = Idle | Busy | Ok | Fail;
 
-  export interface Actions {
+  export type Actions = {
     update(article: Partial<FullArticleDto>): void;
     reset(): void;
     load(payload: GetArticleParams): Promise<FullArticleDto>;
-  }
+  };
 
-  export interface Selectors {
+  export type Selectors = {
     useArticle: () => FullArticleDto;
-  }
+  };
 }
 
 export type { Article };

@@ -8,7 +8,7 @@ import type {
 
 type SetupFunction = (callback: () => void) => void;
 
-interface Setup {
+type Setup  ={
   beforeAll: SetupFunction;
   afterEach: SetupFunction;
   afterAll: SetupFunction;

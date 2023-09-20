@@ -16,42 +16,42 @@ type Filters = {
 
 type LoadPayload = Partial<Filters>;
 
-interface Idle {
+type Idle = {
   is: 'idle';
   filters: Filters;
-}
-interface Busy {
+};
+type Busy = {
   is: 'busy';
   filters: Filters;
-}
-interface Loading {
+};
+type Loading = {
   is: 'loading';
   filters: Filters;
   articles: ArticleDto[];
-}
-interface Ok {
+};
+type Ok = {
   is: 'ok';
   articles: ArticleDto[];
   filters: Filters;
-}
-interface AllLoaded {
+};
+type AllLoaded = {
   is: 'all_loaded';
   articles: ArticleDto[];
   filters: Filters;
-}
-interface Fail {
+};
+type Fail = {
   is: 'fail';
   error: ResponseError;
   filters: Filters;
-}
+};
 
 type State = Idle | Busy | Ok | Loading | AllLoaded | Fail;
 
-interface Actions {
+type Actions = {
   init(): void;
   changeQuery(query: Filters['query']): void;
   loadMore(): void;
-}
+};
 
 export type {
   Filters,

@@ -4,7 +4,7 @@ type ProgressCircleMS = number;
 
 type ProgressCircleChildren = (ms: ProgressCircleMS) => ReactNode;
 
-interface ProgressCircleProps {
+type ProgressCircleProps = {
   className?: string;
   ms?: ProgressCircleMS;
   interval?: number;

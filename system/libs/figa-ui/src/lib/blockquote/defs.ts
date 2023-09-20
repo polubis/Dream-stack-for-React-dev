@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { FontVariant } from '../font';
 
-interface BlockquoteProps {
+type BlockquoteProps  ={
   className?: string;
   variant: FontVariant;
   children: ReactNode;

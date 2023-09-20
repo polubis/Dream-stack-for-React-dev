@@ -9,7 +9,7 @@ type AvatarHTMLElementProps = Omit<
 type AvatarSize = (typeof AVATAR_SIZES)[number];
 type AvatarShape = (typeof AVATAR_SHAPES)[number];
 
-interface AvatarProps extends AvatarHTMLElementProps {
+type AvatarProps  = AvatarHTMLElementProps & {
   loading?: HTMLImageElement['loading'];
   size?: AvatarSize;
   shape?: AvatarShape;
@@ -18,7 +18,7 @@ interface AvatarProps extends AvatarHTMLElementProps {
   renderImage?: RenderImage;
 }
 
-interface AvatarImageProps {
+type AvatarImageProps  = {
   loading?: AvatarProps['loading'];
   alt: AvatarProps['alt'];
   src: AvatarProps['src'];

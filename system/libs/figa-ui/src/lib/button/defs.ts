@@ -11,11 +11,11 @@ type ButtonShape = (typeof BUTTON_SHAPES)[number];
 type ButtonVariant = (typeof BUTTON_VARIANTS)[number];
 type ButtonMotive = (typeof BUTTON_MOTIVES)[number];
 
-interface ButtonProps
-  extends DetailedHTMLProps<
+type ButtonProps
+= DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
-  > {
+  > & {
   size?: ButtonSize;
   shape?: ButtonShape;
   variant?: ButtonVariant;

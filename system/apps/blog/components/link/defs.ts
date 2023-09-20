@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-interface LinkProps {
+type LinkProps = {
   href: string;
   children: ReactNode;
 }
