@@ -39,6 +39,7 @@ type Spacing = Readonly<{
   900: string;
   950: string;
   1000: string;
+  1250: string;
   1500: string;
   1750: string;
   2000: string;
@@ -133,6 +134,9 @@ interface Tokens {
     400: string;
     450: string;
     500: string;
+    550: string;
+    600: string;
+    650: string;
   };
   yellow: {
     50: string;
@@ -150,6 +154,11 @@ interface Tokens {
 interface Theme {
   outline: {
     color: string;
+  };
+  scroll: {
+    thumb: string;
+    track: string;
+    thumbHover: string;
   };
   switch: {
     bg: string;

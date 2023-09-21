@@ -26,20 +26,8 @@ import { RecommendedArticles } from './recommended-articles';
 import { useIntersectionObserver } from '@system/figa-hooks';
 import { get } from '@system/blog-selectors';
 
-const LABELS = [
-  'Home',
-  'Articles',
-  'Authors',
-  'Articles creator',
-  'Courses',
-] as const;
-const URLS = [
-  '/',
-  '/articles/',
-  '/authors/',
-  '/articles-creator/',
-  '/courses/',
-] as const;
+const LABELS = ['Articles', 'Creator'] as const;
+const URLS = ['/articles/', '/articles-creator/'] as const;
 
 const MainLayout = ({ children, sidebar }: MainLayoutProps) => {
   const lang = useLang();

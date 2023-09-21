@@ -144,6 +144,87 @@ exports[`Guitar notes teacher works when [FRAGILE] displays counting panel 1`] =
             </a>
           </span>
         </div>
+        <button
+          class="button size-3 rounded filled primary navigation-mobile-trigger"
+          shape="rounded"
+          size="3"
+          title="Open"
+        >
+          <svg
+            class="icon hamburger-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 7H7M20 7H11M20 17H17M4 17H13M4 12H20"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-width="1.5"
+            />
+          </svg>
+        </button>
+        <div
+          class="navigation-mobile"
+        >
+          <header
+            class="navigation-mobile-header"
+          >
+            <button
+              class="button size-3 rounded filled primary navigation-mobile-close"
+              shape="rounded"
+              size="3"
+              title="Close"
+            >
+              <svg
+                class="icon close-icon"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
+                />
+              </svg>
+            </button>
+          </header>
+          <ul
+            class="navigation-mobile-links"
+          >
+            <li
+              class="navigation-mobile-link"
+            >
+              <span
+                class="font h6 default link"
+              >
+                <a
+                  href="/"
+                >
+                  Learn guitar notes
+                </a>
+              </span>
+            </li>
+          </ul>
+          <footer
+            class="navigation-mobile-footer"
+          >
+            <span
+              class="font h6 default link"
+            >
+              <a
+                href="https://greenonsoftware.com/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Check our platform
+              </a>
+            </span>
+          </footer>
+        </div>
       </nav>
     </header>
     <main
@@ -299,6 +380,87 @@ exports[`Guitar notes teacher works when [FRAGILE] displays first screen after l
               Check our platform
             </a>
           </span>
+        </div>
+        <button
+          class="button size-3 rounded filled primary navigation-mobile-trigger"
+          shape="rounded"
+          size="3"
+          title="Open"
+        >
+          <svg
+            class="icon hamburger-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 7H7M20 7H11M20 17H17M4 17H13M4 12H20"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-width="1.5"
+            />
+          </svg>
+        </button>
+        <div
+          class="navigation-mobile"
+        >
+          <header
+            class="navigation-mobile-header"
+          >
+            <button
+              class="button size-3 rounded filled primary navigation-mobile-close"
+              shape="rounded"
+              size="3"
+              title="Close"
+            >
+              <svg
+                class="icon close-icon"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
+                />
+              </svg>
+            </button>
+          </header>
+          <ul
+            class="navigation-mobile-links"
+          >
+            <li
+              class="navigation-mobile-link"
+            >
+              <span
+                class="font h6 default link"
+              >
+                <a
+                  href="/"
+                >
+                  Learn guitar notes
+                </a>
+              </span>
+            </li>
+          </ul>
+          <footer
+            class="navigation-mobile-footer"
+          >
+            <span
+              class="font h6 default link"
+            >
+              <a
+                href="https://greenonsoftware.com/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Check our platform
+              </a>
+            </span>
+          </footer>
         </div>
       </nav>
     </header>
@@ -490,6 +652,87 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
               Check our platform
             </a>
           </span>
+        </div>
+        <button
+          class="button size-3 rounded filled primary navigation-mobile-trigger"
+          shape="rounded"
+          size="3"
+          title="Open"
+        >
+          <svg
+            class="icon hamburger-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 7H7M20 7H11M20 17H17M4 17H13M4 12H20"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-width="1.5"
+            />
+          </svg>
+        </button>
+        <div
+          class="navigation-mobile"
+        >
+          <header
+            class="navigation-mobile-header"
+          >
+            <button
+              class="button size-3 rounded filled primary navigation-mobile-close"
+              shape="rounded"
+              size="3"
+              title="Close"
+            >
+              <svg
+                class="icon close-icon"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
+                />
+              </svg>
+            </button>
+          </header>
+          <ul
+            class="navigation-mobile-links"
+          >
+            <li
+              class="navigation-mobile-link"
+            >
+              <span
+                class="font h6 default link"
+              >
+                <a
+                  href="/"
+                >
+                  Learn guitar notes
+                </a>
+              </span>
+            </li>
+          </ul>
+          <footer
+            class="navigation-mobile-footer"
+          >
+            <span
+              class="font h6 default link"
+            >
+              <a
+                href="https://greenonsoftware.com/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Check our platform
+              </a>
+            </span>
+          </footer>
         </div>
       </nav>
     </header>
@@ -2046,6 +2289,87 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
             </a>
           </span>
         </div>
+        <button
+          class="button size-3 rounded filled primary navigation-mobile-trigger"
+          shape="rounded"
+          size="3"
+          title="Open"
+        >
+          <svg
+            class="icon hamburger-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 7H7M20 7H11M20 17H17M4 17H13M4 12H20"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-width="1.5"
+            />
+          </svg>
+        </button>
+        <div
+          class="navigation-mobile"
+        >
+          <header
+            class="navigation-mobile-header"
+          >
+            <button
+              class="button size-3 rounded filled primary navigation-mobile-close"
+              shape="rounded"
+              size="3"
+              title="Close"
+            >
+              <svg
+                class="icon close-icon"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
+                />
+              </svg>
+            </button>
+          </header>
+          <ul
+            class="navigation-mobile-links"
+          >
+            <li
+              class="navigation-mobile-link"
+            >
+              <span
+                class="font h6 default link"
+              >
+                <a
+                  href="/"
+                >
+                  Learn guitar notes
+                </a>
+              </span>
+            </li>
+          </ul>
+          <footer
+            class="navigation-mobile-footer"
+          >
+            <span
+              class="font h6 default link"
+            >
+              <a
+                href="https://greenonsoftware.com/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Check our platform
+              </a>
+            </span>
+          </footer>
+        </div>
       </nav>
     </header>
     <main
@@ -3601,6 +3925,87 @@ exports[`Guitar notes teacher works when [FRAGILE] displays next screen after fi
             </a>
           </span>
         </div>
+        <button
+          class="button size-3 rounded filled primary navigation-mobile-trigger"
+          shape="rounded"
+          size="3"
+          title="Open"
+        >
+          <svg
+            class="icon hamburger-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 7H7M20 7H11M20 17H17M4 17H13M4 12H20"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-width="1.5"
+            />
+          </svg>
+        </button>
+        <div
+          class="navigation-mobile"
+        >
+          <header
+            class="navigation-mobile-header"
+          >
+            <button
+              class="button size-3 rounded filled primary navigation-mobile-close"
+              shape="rounded"
+              size="3"
+              title="Close"
+            >
+              <svg
+                class="icon close-icon"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
+                />
+              </svg>
+            </button>
+          </header>
+          <ul
+            class="navigation-mobile-links"
+          >
+            <li
+              class="navigation-mobile-link"
+            >
+              <span
+                class="font h6 default link"
+              >
+                <a
+                  href="/"
+                >
+                  Learn guitar notes
+                </a>
+              </span>
+            </li>
+          </ul>
+          <footer
+            class="navigation-mobile-footer"
+          >
+            <span
+              class="font h6 default link"
+            >
+              <a
+                href="https://greenonsoftware.com/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Check our platform
+              </a>
+            </span>
+          </footer>
+        </div>
       </nav>
     </header>
     <main
@@ -3757,6 +4162,87 @@ exports[`Guitar notes teacher works when [FRAGILE] displays settings panel 1`] =
             </a>
           </span>
         </div>
+        <button
+          class="button size-3 rounded filled primary navigation-mobile-trigger"
+          shape="rounded"
+          size="3"
+          title="Open"
+        >
+          <svg
+            class="icon hamburger-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 7H7M20 7H11M20 17H17M4 17H13M4 12H20"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-width="1.5"
+            />
+          </svg>
+        </button>
+        <div
+          class="navigation-mobile"
+        >
+          <header
+            class="navigation-mobile-header"
+          >
+            <button
+              class="button size-3 rounded filled primary navigation-mobile-close"
+              shape="rounded"
+              size="3"
+              title="Close"
+            >
+              <svg
+                class="icon close-icon"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
+                />
+              </svg>
+            </button>
+          </header>
+          <ul
+            class="navigation-mobile-links"
+          >
+            <li
+              class="navigation-mobile-link"
+            >
+              <span
+                class="font h6 default link"
+              >
+                <a
+                  href="/"
+                >
+                  Learn guitar notes
+                </a>
+              </span>
+            </li>
+          </ul>
+          <footer
+            class="navigation-mobile-footer"
+          >
+            <span
+              class="font h6 default link"
+            >
+              <a
+                href="https://greenonsoftware.com/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Check our platform
+              </a>
+            </span>
+          </footer>
+        </div>
       </nav>
     </header>
     <main
@@ -3912,6 +4398,87 @@ exports[`Guitar notes teacher works when [FRAGILE] displays summary 1`] = `
               Check our platform
             </a>
           </span>
+        </div>
+        <button
+          class="button size-3 rounded filled primary navigation-mobile-trigger"
+          shape="rounded"
+          size="3"
+          title="Open"
+        >
+          <svg
+            class="icon hamburger-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 7H7M20 7H11M20 17H17M4 17H13M4 12H20"
+              stroke="black"
+              stroke-linecap="round"
+              stroke-width="1.5"
+            />
+          </svg>
+        </button>
+        <div
+          class="navigation-mobile"
+        >
+          <header
+            class="navigation-mobile-header"
+          >
+            <button
+              class="button size-3 rounded filled primary navigation-mobile-close"
+              shape="rounded"
+              size="3"
+              title="Close"
+            >
+              <svg
+                class="icon close-icon"
+                fill="none"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
+                />
+              </svg>
+            </button>
+          </header>
+          <ul
+            class="navigation-mobile-links"
+          >
+            <li
+              class="navigation-mobile-link"
+            >
+              <span
+                class="font h6 default link"
+              >
+                <a
+                  href="/"
+                >
+                  Learn guitar notes
+                </a>
+              </span>
+            </li>
+          </ul>
+          <footer
+            class="navigation-mobile-footer"
+          >
+            <span
+              class="font h6 default link"
+            >
+              <a
+                href="https://greenonsoftware.com/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Check our platform
+              </a>
+            </span>
+          </footer>
         </div>
       </nav>
     </header>

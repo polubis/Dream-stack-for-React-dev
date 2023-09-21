@@ -4,6 +4,8 @@ import { Navigation } from './navigation';
 import { Button } from '../button';
 import { Link } from '../link';
 import { Logo } from '../logo';
+import { Box } from '../box';
+import { Font } from '../font';
 
 export default {
   component: Navigation,
@@ -11,7 +13,7 @@ export default {
 } as Meta;
 
 const LINKS = [
-  'Home page',
+  'Home page really wide really',
   'Content',
   'SEO',
   'About',
@@ -20,22 +22,23 @@ const LINKS = [
   'Blog',
   'Posts',
   'FAQ',
+  'Others',
+  'More',
+  'Etc',
+  'Any',
+  'Custom',
+  'Different',
 ];
 
 const Template: Story = () => {
   const baseProps = {
     logo: <Logo />,
-    action: <Button>Click me</Button>,
+    action: <Button size={2}>Click me</Button>,
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexFlow: 'column',
-        gap: '12px',
-      }}
-    >
+    <Box spacing={[200, 0, 0]} padding={[300, 300, 300, 300]}>
+      <Font variant="h5">For desktop</Font>
       <Navigation
         {...baseProps}
         links={LINKS.map((link) => (
@@ -52,7 +55,7 @@ const Template: Story = () => {
           </Link>
         ))}
       />
-    </div>
+    </Box>
   );
 };
 
