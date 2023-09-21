@@ -14,9 +14,9 @@ import { article_reviews_selectors } from '../../store/article-reviews';
 import {
   add_article_review_actions,
   useAddArticleReviewStore,
-} from 'apps/blog/store/add-article-review';
-import { article_selectors } from 'apps/blog/store/article';
-import { article_management_actions } from 'apps/blog/store/article-management';
+} from '../../store/add-article-review';
+import { article_selectors } from '../../store/article';
+import { article_management_actions } from '../../store/article-management';
 
 const Container = styled.section`
   ${column()}
@@ -29,7 +29,7 @@ const Container = styled.section`
     ${column()}
     list-style: none;
     overflow-y: auto;
-    max-height: ${tokens.spacing[4000]};
+    max-height: ${tokens.spacing[3000]};
 
     & > *:not(:last-child) {
       margin-bottom: ${tokens.spacing[100]};
@@ -93,7 +93,7 @@ const Reviews = () => {
           />
         </Field>
         <Button onClick={handleConfirm} loading={is === 'busy'} size={2}>
-          Confirm
+          Comment
         </Button>
       </Box>
     </Container>
