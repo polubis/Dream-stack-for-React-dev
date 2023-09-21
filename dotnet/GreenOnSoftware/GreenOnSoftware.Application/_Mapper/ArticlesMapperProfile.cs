@@ -4,7 +4,6 @@ using GreenOnSoftware.Application.Articles.GetArticleQuery;
 using GreenOnSoftware.Application.Articles.GetArticlesQuery;
 using GreenOnSoftware.Application.Mapper.MappingActions;
 using GreenOnSoftware.Application.Dtos;
-using Microsoft.AspNetCore.Identity;
 using GreenOnSoftware.Core.Models.Reviews;
 
 namespace GreenOnSoftware.Application.Mapper;
@@ -19,16 +18,10 @@ public class ArticlesMapperProfile : Profile
 
         CreateMap<Article, ArticleDto>()
             .ForMember(dest => dest.AuthorEmail, o => o.MapFrom((src, dest) => src.Author?.Email))
-            .ForMember(dest => dest.AuthorName, o => o.MapFrom((src, dest) => src.Author?.UserName));
-
-        CreateMap<Review, ReviewLookupDto>()
-            .ForMember(dest => dest.ReviewerName, o => o.MapFrom((src, dest) => src.Reviewer?.UserName))
-            .AfterMap<CurrentUserReviewerAction>();       
+            .ForMember(dest => dest.AuthorName, o => o.MapFrom((src, dest) => src.Author?.UserName));   
         
         CreateMap<Review, ReviewDto>()
             .ForMember(dest => dest.ReviewerName, o => o.MapFrom((src, dest) => src.Reviewer?.UserName))
-            .ForMember(dest => dest.ArticleAuthorName, o => o.MapFrom(src => src.Article.Author != null ? src.Article.Author.UserName : string.Empty))
-            .ForMember(dest => dest.ArticleTitle, o => o.MapFrom(src => src.Article.Title))
             .AfterMap<CurrentUserReviewerAction>();
 
         CreateProjection<Review, UserReviewLookupDto>()

@@ -5,6 +5,7 @@ using GreenOnSoftware.DataAccess;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using GreenOnSoftware.Commons.Context;
+using GreenOnSoftware.Core.Models.Reviews;
 
 namespace GreenOnSoftware.Application.Reviews.AddReviewCommand;
 
@@ -23,7 +24,7 @@ internal class AddReviewHandler : IRequestHandler<AddReview, Result>
 
     public async Task<Result> Handle(AddReview command, CancellationToken cancellationToken)
     {
-        var result = new Result();
+        var result = new Result<AddReviewResult>();
 
         var currentArticle = await _dbContext.Articles
             .Include(x=>x.Reviews)
@@ -35,8 +36,12 @@ internal class AddReviewHandler : IRequestHandler<AddReview, Result>
             return result;
         }
 
-        currentArticle.AddReview(command.Content, _context.Identity.Id!, _clock.UtcNow);
+        Review review = currentArticle.AddReview(command.Content, _context.Identity.Id!, _clock.UtcNow);
         await _dbContext.SaveChangesAsync(cancellationToken);
+
+        result.SetData(new AddReviewResult {
+            Id = review.Id
+        });
 
         return result;
     }

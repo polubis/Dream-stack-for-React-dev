@@ -49,15 +49,19 @@ public class Article : Entity
 
     public List<Review> Reviews { get; private set; } = new();
 
-    public void Update(string title, string? description, string content, string? thumbnailUrl, string url, Language lang, DateTime operationDate)
+    public void Update(string title, string? description, string content, string url, Language lang, DateTime operationDate)
     {
         Title = title;
         Description = description;
         Content = content;
-        ThumbnailUrl = thumbnailUrl;
         Url = url;
         ModifiedDate = operationDate;
         Lang = lang;
+    }
+
+    public void UpdateThumbnail(string thumbnailUrl)
+    {
+        ThumbnailUrl = thumbnailUrl;
     }
 
     public void SendForApproval()
@@ -220,14 +224,18 @@ public class Article : Entity
 
     }
 
-    public void AddReview(string reviewContent, Guid reviewerId, DateTime operationDate)
+    public Review AddReview(string reviewContent, Guid reviewerId, DateTime operationDate)
     {
         if (Status == Status.Draft)
         {
             throw new InvalidOperationException("Draft article cannot be reviewed!");
         }
 
-        Reviews.Add(new Review(reviewerId, operationDate, reviewContent));
+        var newReview = new Review(reviewerId, operationDate, reviewContent);
+
+        Reviews.Add(newReview);
+
+        return newReview;
     }
 
     public void UpdateReview(Guid reviewId, string reviewContent, Guid reviewerId, DateTime operationDate)

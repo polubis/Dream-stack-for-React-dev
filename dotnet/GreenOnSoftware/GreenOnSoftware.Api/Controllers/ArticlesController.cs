@@ -19,7 +19,6 @@ using GreenOnSoftware.Application.Ratings.RemoveArticleRateCommand;
 using GreenOnSoftware.Application.Reviews.UpdateReviewCommand;
 using GreenOnSoftware.Application.Reviews.DeleteReviewCommand;
 using GreenOnSoftware.Application.Reviews.GetReviewsQuery;
-using GreenOnSoftware.Application.Reviews.GetReviewByIdQuery;
 using GreenOnSoftware.Core.Enums;
 using GreenOnSoftware.Application.Ratings.UpdateArticleRate;
 
@@ -211,6 +210,36 @@ public class ArticlesController : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
+    [HttpGet("my/pl")]
+    [SwaggerResponse(StatusCodes.Status200OK, type: typeof(PagedResult<ArticleLookupDto>))]
+    public async Task<IActionResult> GetMyArticlesMyPl([FromQuery] GetArticles query)
+    {
+        var result = await _mediator.Send(query.Bind(Language.Pl, onlyMyArticles: true));
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
+
+    [Authorize]
+    [HttpGet("my/en")]
+    [SwaggerResponse(StatusCodes.Status200OK, type: typeof(PagedResult<ArticleLookupDto>))]
+    public async Task<IActionResult> GetMyArticlesEn([FromQuery] GetArticles query)
+    {
+        var result = await _mediator.Send(query.Bind(Language.En, onlyMyArticles: true));
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
+
     #endregion Articles
 
     #region Ratings
@@ -312,20 +341,6 @@ public class ArticlesController : ControllerBase
     public async Task<IActionResult> DeleteReview(Guid articleId, Guid reviewId)
     {
         var result = await _mediator.Send(new DeleteReview(articleId, reviewId));
-
-        if (result.HasErrors)
-        {
-            return BadRequest(result);
-        }
-
-        return Ok(result);
-    }
-
-    [Authorize]
-    [HttpGet("{articleId}/reviews/{reviewId}")]
-    public async Task<IActionResult> GetReviewById(Guid articleId, Guid reviewId)
-    {
-        var result = await _mediator.Send(new GetReviewById(articleId, reviewId));
 
         if (result.HasErrors)
         {

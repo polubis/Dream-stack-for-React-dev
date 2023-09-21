@@ -8,6 +8,4 @@ public class ReviewDto : ICurrentUserReviewer
     public string? ReviewerName { get; set; }
     public string Content { get; set; }
     public bool IsCurrentUserReviewer { get; set; }
-    public string? ArticleAuthorName { get; set; }
-    public string ArticleTitle { get; set; }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GreenOnSoftware.Application.Reviews.GetReviewsQuery;
 
-internal class GetReviewsHandler : IRequestHandler<GetReviews, Result<IEnumerable<ReviewLookupDto>>>
+internal class GetReviewsHandler : IRequestHandler<GetReviews, Result<IEnumerable<ReviewDto>>>
 {
     private readonly GreenOnSoftwareDbContext _dbContext;
     private readonly IContext _context;
@@ -22,9 +22,9 @@ internal class GetReviewsHandler : IRequestHandler<GetReviews, Result<IEnumerabl
         _mapper = mapper;
     }
 
-    public async Task<Result<IEnumerable<ReviewLookupDto>>> Handle(GetReviews query, CancellationToken cancellationToken)
+    public async Task<Result<IEnumerable<ReviewDto>>> Handle(GetReviews query, CancellationToken cancellationToken)
     {
-        var result = new Result<IEnumerable<ReviewLookupDto>>();
+        var result = new Result<IEnumerable<ReviewDto>>();
 
         var article = await _dbContext.Articles
             .AsNoTracking()
@@ -44,7 +44,7 @@ internal class GetReviewsHandler : IRequestHandler<GetReviews, Result<IEnumerabl
             return result;
         }
 
-        var reviews = _mapper.Map<IEnumerable<ReviewLookupDto>>(article.GetReviews());
+        var reviews = _mapper.Map<IEnumerable<ReviewDto>>(article.GetReviews());
 
         result.SetData(reviews);
 
