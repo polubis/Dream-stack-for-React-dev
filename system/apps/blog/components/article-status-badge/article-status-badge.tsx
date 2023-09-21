@@ -5,7 +5,7 @@ const map: ArticleStatusBadgeMap = {
   Accepted: <Badge motive="ok">Live</Badge>,
   WaitingForApproval: <Badge motive="secondary">Review required</Badge>,
   Draft: <Badge motive="casual">Draft</Badge>,
-  NeedWork: <Badge motive="primary">Require improvements</Badge>,
+  NeedWork: <Badge motive="primary">Improvements required</Badge>,
 };
 
 const ArticleStatusBadge = ({ status }: ArticleStatusBadgeProps) => {

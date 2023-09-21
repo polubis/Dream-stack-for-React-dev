@@ -38,7 +38,7 @@ const Content = ({ url, id }: ArticleReviewParams) => {
   if (idle || busy) return <LoaderScreen />;
   if (failed) return <FailScreen onRetry={retry} />;
 
-  return <ReviewScreen />
+  return <ReviewScreen />;
 };
 
 const ArticleReviewView = () => {

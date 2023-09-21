@@ -12,7 +12,7 @@ interface ArticleTileProps {
   author: string;
   stack: string[];
   width: number;
-  status: ArticleStatus
+  status: ArticleStatus;
   tags: string[];
   onGoToClick: OnGoToClick;
 }

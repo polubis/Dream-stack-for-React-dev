@@ -6,14 +6,16 @@ import { add_article_review_actions } from '../add-article-review';
 import { mockArticleReview } from '@system/blog-api-mocks';
 import { change_article_status_actions } from '../change-article-status';
 
+const { setState: set } = useArticleManagementStore;
+
 const article_management_actions: ArticleManagement.Actions = {
   start: (id, url, lang) => {
-    useArticleManagementStore.setState({ is: 'active', id });
+    set({ is: 'active', id });
     article_reviews_actions.load(id);
     article_actions.load({ url, lang });
   },
   reset: () => {
-    useArticleManagementStore.setState({ is: 'idle' });
+    set({ is: 'idle' });
   },
   confirm: async (id) => {
     await add_article_review_actions.confirm(id);

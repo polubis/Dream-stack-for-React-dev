@@ -12,4 +12,8 @@ interface Actions {
   reject(id: Id): Promise<void>;
 }
 
-export type { Actions, State };
+interface Selectors {
+  useIs(): State['is'];
+}
+
+export type { Actions, State, Selectors, Idle, Busy, Ok, Fail };

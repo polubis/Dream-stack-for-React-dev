@@ -2,7 +2,15 @@ import styled from 'styled-components';
 import { ArticleScreen } from '../../../components';
 import { ArticleDetails } from '../../../components/article-details';
 import { ArticleThumbnail } from '../../../components/article-thumbnail';
-import { Box, Button, EditIcon, Font, column, tokens } from '@system/figa-ui';
+import {
+  Alert,
+  Box,
+  Button,
+  EditIcon,
+  Font,
+  column,
+  tokens,
+} from '@system/figa-ui';
 import { ArticleMeta } from '../../../components/article-meta';
 import { ArticleStatusBadge } from '../../../components/article-status-badge';
 import Markdown from 'markdown-to-jsx';
@@ -13,13 +21,22 @@ import { useToggle } from '@system/figa-hooks';
 import { Reviews } from '../../../components/reviews';
 import { article_reviews_selectors } from '../../../store/article-reviews';
 import { EmptyReviews } from './empty-reviews';
+import { ArticleActionsPopover } from '../../../components/article-actions-popover';
 
 const Container = styled.div`
   ${column()}
   margin: ${tokens.spacing[750]};
 
+  .review-screen-alert {
+    margin-bottom: ${tokens.spacing[200]};
+  }
+
   .review-screen-toolbox {
     margin-bottom: ${tokens.spacing[250]};
+
+    & > *:not(:first-child) {
+      margin-left: ${tokens.spacing[200]};
+    }
   }
 
   .review-screen-reviews {
@@ -48,19 +65,25 @@ const ReviewScreen = () => {
   const reviewSection = useToggle();
   const reviews = article_reviews_selectors.useReviews();
 
+  if (status === 'Accepted') {
+    return (
+      <Container>
+        <Alert className="review-screen-alert" type="ok">
+          The article is live. You may leave this page 👌.
+        </Alert>
+      </Container>
+    );
+  }
+
   return (
     <Container>
-      <Box
-        orientation="row"
-        right
-        className="review-screen-toolbox"
-        spacing={[200]}
-      >
+      <Box orientation="row" right className="review-screen-toolbox">
         {isAuthor && (
           <Button size={2} shape="rounded">
             <EditIcon />
           </Button>
         )}
+
         <Button size={2} onClick={reviewSection.toggle}>
           {reviewSection.opened
             ? 'Close'
@@ -68,6 +91,8 @@ const ReviewScreen = () => {
             ? `Reviews (${reviews.length})`
             : 'Reviews'}
         </Button>
+
+        {status === 'WaitingForApproval' && <ArticleActionsPopover />}
       </Box>
       {reviewSection.opened && (
         <Box
