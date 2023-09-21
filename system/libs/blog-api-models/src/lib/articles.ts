@@ -60,12 +60,20 @@ interface CreateArticlePayload {
   lang: Lang;
   thumbnail: File;
 }
-type CreateArticleResponse = void;
+
+type CreateArticleResponse = Response<{
+  id: Id;
+  url: Url;
+}>;
 
 interface UpdateArticlePayload extends CreateArticlePayload {
   url: Url;
 }
-type UpdateArticleResponse = void;
+
+type UpdateArticleResponse = Response<{
+  id: Id;
+  url: Url;
+}>;
 
 type DeleteArticlePayload = Parametrized;
 type DeleteArticleResponse = void;

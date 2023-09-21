@@ -1,12 +1,10 @@
 import {
   Box,
   Button,
-  CloseIcon,
   Code,
   CodeIcon,
   CreatorLayout,
   Font,
-  FormIcon,
   FullScreenCloseIcon,
   FullScreenIcon,
   PageIcon,
@@ -15,7 +13,6 @@ import {
   articles_creator_actions,
   useArticlesCreatorStore,
 } from '../../store/articles-creator';
-import { useToggle } from '@system/figa-hooks';
 import { CreatorForm } from './creator-form';
 import Markdown from 'markdown-to-jsx';
 import { ArticleScreen } from '../../components';
@@ -24,13 +21,17 @@ import { ArticleThumbnail } from '../../components/article-thumbnail';
 import { ArticleMeta } from '../../components/article-meta';
 import { ArticleDetails } from '../../components/article-details';
 import { article_mdx_options } from '../../core';
+import { EditorTabs } from './editor-tabs';
 
 const EditorScreen = () => {
   const articlesCreatorStore = useArticlesCreatorStore();
-  const form = useToggle();
 
   const handleClose = (): void => {
     articles_creator_actions.setView('initial');
+  };
+
+  const handleConfirm = (): void => {
+    articles_creator_actions.setView('confirm');
   };
 
   const {
@@ -44,14 +45,19 @@ const EditorScreen = () => {
       navigation={() => (
         <Box orientation="row" between>
           <Font variant="h5">Article creator</Font>
-          <Button
-            size={1}
-            shape="rounded"
-            title="Close editor"
-            onClick={handleClose}
-          >
-            <CloseIcon />
-          </Button>
+          <Box orientation="row" spacing={[200]}>
+            <Button
+              variant="outlined"
+              motive="tertiary"
+              size={2}
+              onClick={handleClose}
+            >
+              Back
+            </Button>
+            <Button size={2} onClick={handleConfirm}>
+              Submit
+            </Button>
+          </Box>
         </Box>
       )}
       codeToolbox={({ view, expandBoth, expandCode, expandPreview }) => (
@@ -86,15 +92,6 @@ const EditorScreen = () => {
               <FullScreenIcon />
             </Button>
           )}
-          <Button
-            size={1}
-            shape="rounded"
-            title={form.opened ? 'Close form' : 'Show form'}
-            variant={form.opened ? 'filled' : 'outlined'}
-            onClick={form.toggle}
-          >
-            <FormIcon />
-          </Button>
         </>
       )}
       previewToolbox={({ view, expandBoth, expandPreview, expandCode }) => (
@@ -132,18 +129,22 @@ const EditorScreen = () => {
         </>
       )}
     >
-      {form.opened ? (
-        <CreatorForm />
-      ) : (
-        <Code
-          onChange={(content) =>
-            articles_creator_actions.change('content', content)
-          }
-        >
-          {content}
-        </Code>
-      )}
-
+      <EditorTabs>
+        {(activeTab) => (
+          <>
+            {activeTab === 'Content' && (
+              <Code
+                onChange={(content) =>
+                  articles_creator_actions.change('content', content)
+                }
+              >
+                {content}
+              </Code>
+            )}
+            {activeTab === 'Metadata' && <CreatorForm />}
+          </>
+        )}
+      </EditorTabs>
       <ArticleScreen
         details={
           <ArticleDetails
@@ -167,11 +168,17 @@ const EditorScreen = () => {
           </ArticleMeta>
         }
         thumbnail={
-          <ArticleThumbnail
-            src={thumbnail.preview[0]}
-            title={title}
-            status="Draft"
-          />
+          thumbnail.preview[0] ? (
+            <ArticleThumbnail
+              src={thumbnail.preview[0]}
+              title={title}
+              status="Draft"
+            />
+          ) : (
+            <Box padding={[400, 400, 400, 400]} variant="filled">
+              <Font variant="h4">No thumbnail added yet...</Font>
+            </Box>
+          )
         }
         badge={<ArticleStatusBadge status="Draft" />}
         body={

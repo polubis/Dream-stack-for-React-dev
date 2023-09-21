@@ -57,11 +57,12 @@ const articles_creator_actions = {
         lang,
       };
 
-      // @TODO: Ask backend to return created article id or updated article id.
-      await (url ? updateArticle({ url, ...payload }) : createArticle(payload));
+      const { data } = await (url
+        ? updateArticle({ url, ...payload })
+        : createArticle(payload));
 
       if (state.form.values.sendToReview) {
-        await sendArticleForApproval({ id: 'nothing here yet' });
+        await sendArticleForApproval({ id: data.id });
       }
 
       set({ is: 'ok' });
