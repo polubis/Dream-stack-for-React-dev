@@ -32,7 +32,7 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 500;
         src: url('/fonts/LexendMedium.ttf') format('truetype');
     }
-    
+
     @font-face {
         font-family: 'LexendRegular';
         font-weight: 400;
@@ -82,9 +82,9 @@ const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
-    
+
     /* atoms */
-    
+
     .r-90 {
         transform: rotate(90deg);
     }
@@ -273,12 +273,53 @@ const GlobalStyle = createGlobalStyle`
             .icon path {
                 fill: ${(props) => props.theme.button.outlined.secondary.color};
             }
-            
+
             .loader-animation {
                 border-top-color: ${(props) =>
                   props.theme.button.filled.secondary.outlineColor};
                 border-bottom-color: ${(props) =>
                   props.theme.button.outlined.secondary.borderColor};
+            }
+        }
+
+       &.filled.tertiary {
+            ${(props) =>
+              buttonBaseEffects(
+                props.theme.button.filled.tertiary.outlineColor
+              )}
+            color: ${(props) => props.theme.button.filled.tertiary.color};
+            background: ${(props) => props.theme.button.filled.tertiary.bg};
+
+            .icon path {
+                fill: ${(props) => props.theme.button.filled.tertiary.color};
+            }
+
+            .loader-animation {
+                border-top-color: ${(props) =>
+                  props.theme.button.filled.tertiary.color};
+                border-bottom-color: ${(props) =>
+                  props.theme.button.filled.tertiary.color};
+            }
+        }
+       &.outlined.tertiary {
+            ${(props) =>
+              buttonBaseEffects(
+                props.theme.button.filled.tertiary.outlineColor
+              )}
+            color: ${(props) => props.theme.button.outlined.tertiary.color};
+            background: ${(props) => props.theme.button.outlined.tertiary.bg};
+            border: 2px solid ${(props) =>
+              props.theme.button.outlined.tertiary.borderColor};
+
+            .icon path {
+                fill: ${(props) => props.theme.button.outlined.tertiary.color};
+            }
+
+            .loader-animation {
+                border-top-color: ${(props) =>
+                  props.theme.button.filled.tertiary.outlineColor};
+                border-bottom-color: ${(props) =>
+                  props.theme.button.outlined.tertiary.borderColor};
             }
         }
 
@@ -353,7 +394,7 @@ const GlobalStyle = createGlobalStyle`
         background: ${(props) => props.theme.modal.backdrop};
         z-index: ${tokens.z[450]};
     }
-    
+
     /* modal.tsx */
 
     /* select.tsx */
@@ -615,7 +656,7 @@ const GlobalStyle = createGlobalStyle`
                 padding-right: ${tokens.spacing[550]};
             }
         }
-        
+
         &.textarea {
             textarea {
                 resize: vertical;
@@ -630,7 +671,7 @@ const GlobalStyle = createGlobalStyle`
             }
         }
 
-        .input-loader { 
+        .input-loader {
             ${row()}
             right: ${tokens.spacing[150]};
         }
@@ -681,7 +722,7 @@ const GlobalStyle = createGlobalStyle`
                     border-color: transparent;
                 }
             }
-            
+
             &.invalid:not(.disabled) {
                 input, textarea {
                     color: ${(props) => props.theme.input.invalid};
@@ -851,7 +892,7 @@ const GlobalStyle = createGlobalStyle`
                 border-bottom: 1px solid ${(props) =>
                   props.theme.footer.borderColor};
                 padding-bottom: ${tokens.spacing[200]};
-                
+
                 @media ${T_DOWN} {
                     grid-template-columns: auto;
                     grid-template-rows: auto auto auto;
@@ -985,7 +1026,7 @@ const GlobalStyle = createGlobalStyle`
             }
         }
     }
-    
+
     .ordered {
         counter-reset: numbers;
 
@@ -999,7 +1040,7 @@ const GlobalStyle = createGlobalStyle`
             }
         }
     }
-    
+
     .unordered {
         li {
             &::before {
@@ -1201,10 +1242,10 @@ const GlobalStyle = createGlobalStyle`
                 will-change: transform;
             }
         }
-    }    
+    }
 
     /* loader.tsx */
-    
+
     /* avatars.tsx */
 
     .avatars {
@@ -1214,7 +1255,7 @@ const GlobalStyle = createGlobalStyle`
         &.rounded .avatars-rest-count {
             border-radius: ${tokens.radius[1000]};
         }
-        
+
         &.rectangle .avatars-rest-count {
             border-radius: ${tokens.radius[50]};
         }
@@ -1223,7 +1264,7 @@ const GlobalStyle = createGlobalStyle`
             ${center()}
             background: ${(props) => props.theme.avatars.restCounter.bg};
             box-shadow: ${tokens.shadow[50]};
-  
+
             .font {
                 color: ${(props) => props.theme.avatars.restCounter.color};
             }
@@ -1318,7 +1359,7 @@ const GlobalStyle = createGlobalStyle`
             }
         }
     }
-    
+
     /* alert.tsx */
 
     /* field.tsx */
@@ -1340,7 +1381,7 @@ const GlobalStyle = createGlobalStyle`
             ${trim()}
             margin-bottom: ${tokens.spacing[100]};
         }
-  
+
         &-hint {
             margin-top: ${tokens.spacing[100]};
         }
@@ -1382,7 +1423,7 @@ const GlobalStyle = createGlobalStyle`
         &.invalid {
             outline: 2px solid ${(props) =>
               props.theme.filePicker.invalid.outline};
-              
+
             .font {
                 color: ${(props) => props.theme.filePicker.invalid.color};
             }
@@ -1392,7 +1433,7 @@ const GlobalStyle = createGlobalStyle`
             visibility: hidden;
             position: absolute;
         }
-        
+
         .file-picker-loader {
             ${center()}
             ${streched('absolute')}
@@ -1432,7 +1473,7 @@ const GlobalStyle = createGlobalStyle`
             ${size('100%')}
             object-fit: cover;
         }
-        
+
         &-content {
             ${center()}
             ${streched('absolute')}

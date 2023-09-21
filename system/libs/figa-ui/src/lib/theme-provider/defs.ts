@@ -284,10 +284,12 @@ interface Theme {
     outlined: {
       primary: ButtonSetup;
       secondary: ButtonSetup;
+      tertiary: ButtonSetup;
     };
     filled: {
       primary: ButtonSetup;
       secondary: ButtonSetup;
+      tertiary: ButtonSetup;
     };
   };
   select: {
