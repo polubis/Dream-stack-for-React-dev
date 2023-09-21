@@ -10,8 +10,8 @@ import { useEffect, useState } from 'react';
 import c from 'classnames';
 import { useElementSize } from '@system/figa-hooks';
 
-const HEADER_HEIGHT = tokens.spacing[1000];
-const TOOLBOX_WIDTH = tokens.spacing[700];
+const header_height = tokens.spacing[1000];
+const toolbox_width = tokens.spacing[700];
 
 const toolbox = (area: string) => css`
   ${column()}
@@ -26,17 +26,19 @@ const toolbox = (area: string) => css`
 
 const content = (area: string) => css`
   grid-area: ${area};
-  max-height: calc(100vh - ${HEADER_HEIGHT});
+  max-height: calc(100vh - ${header_height});
   overflow-y: auto;
 `;
 
 const CodeWrapper = styled.div`
   ${content('code')}
+  position: relative;
 `;
 
 const PreviewWrapper = styled.div`
   ${content('preview')}
   padding: ${tokens.spacing[250]};
+  position: relative;
 `;
 
 const CodeToolboxWrapper = styled.div`
@@ -63,8 +65,8 @@ const NavigationWrapper = styled.div`
 const Container = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: 1fr ${TOOLBOX_WIDTH} 1fr ${TOOLBOX_WIDTH};
-  grid-template-rows: ${HEADER_HEIGHT} 1fr;
+  grid-template-columns: 1fr ${toolbox_width} 1fr ${toolbox_width};
+  grid-template-rows: ${header_height} 1fr;
   grid-template-areas:
     'nav nav nav nav'
     'code codeToolbox preview previewToolbox';
@@ -85,8 +87,8 @@ const Container = styled.div`
   }
 
   @media ${T_DOWN} {
-    grid-template-columns: 1fr ${TOOLBOX_WIDTH};
-    grid-template-rows: ${HEADER_HEIGHT} 1fr;
+    grid-template-columns: 1fr ${toolbox_width};
+    grid-template-rows: ${header_height} 1fr;
     grid-template-areas:
       'nav nav'
       'content toolbox';

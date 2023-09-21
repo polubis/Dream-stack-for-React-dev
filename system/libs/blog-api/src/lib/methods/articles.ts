@@ -114,7 +114,7 @@ const rejectArticle = async ({
 const sendArticleForApproval = async ({
   id,
 }: SendArticleForApprovalPayload): Promise<SendArticleForApprovalResponse> => {
-  const { data } = await blogAPI.post<SendArticleForApprovalResponse>(
+  const { data } = await blogAPI.patch<SendArticleForApprovalResponse>(
     [getPath('Articles/SendForApproval'), id].join('/')
   );
 

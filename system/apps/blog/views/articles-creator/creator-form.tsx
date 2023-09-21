@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Field,
   FilePicker,
   Font,
@@ -12,41 +11,21 @@ import {
   articles_creator_actions,
   useArticlesCreatorStore,
 } from '../../store/articles-creator';
-
+// @TODO: Backend returns invalid format for articles creation.
+// @TODO: Backend returns random errors on article creation???
 const CreatorForm = () => {
   const articlesCreatorStore = useArticlesCreatorStore();
 
   const { thumbnail, title, description, lang } =
     articlesCreatorStore.form.values;
 
-  const handleConfirm = (): void => {
-    articles_creator_actions.setView('confirm');
-  };
-
   return (
     <Box
-      padding={[200, 150, 200, 200]}
+      padding={[400, 400, 400, 400]}
       spacing={[200, 200, 200, 400]}
       maxWidth="600px"
       margin="auto"
     >
-      <FilePicker
-        preview={thumbnail.preview}
-        onChange={(files, preview) =>
-          articles_creator_actions.change('thumbnail', {
-            file: files[0],
-            preview,
-          })
-        }
-        onConfirm={() => {
-          articles_creator_actions.change('thumbnail', {
-            file: null,
-            preview: [],
-          });
-        }}
-      >
-        <Font variant="h5">Pick the thumbnail from your disc</Font>
-      </FilePicker>
       <Field label="Title*">
         <Input
           autoFocus
@@ -66,6 +45,25 @@ const CreatorForm = () => {
           }
         />
       </Field>
+      <Field label="Thumbnail*">
+        <FilePicker
+          preview={thumbnail.preview}
+          onChange={(files, preview) =>
+            articles_creator_actions.change('thumbnail', {
+              file: files[0],
+              preview,
+            })
+          }
+          onConfirm={() => {
+            articles_creator_actions.change('thumbnail', {
+              file: null,
+              preview: [],
+            });
+          }}
+        >
+          <Font variant="h5">Pick the thumbnail from your disc</Font>
+        </FilePicker>
+      </Field>
       <Field label="Language*">
         <Select
           placeholder="You can write in English or Polish language"
@@ -80,9 +78,6 @@ const CreatorForm = () => {
           ]}
         />
       </Field>
-      <Box orientation="row" right>
-        <Button onClick={handleConfirm}>Confirm</Button>
-      </Box>
     </Box>
   );
 };

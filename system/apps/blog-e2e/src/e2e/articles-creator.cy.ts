@@ -44,7 +44,7 @@ describe('Articles maintenance works when: ', () => {
 
     cy.wait(['@getArticle']);
 
-    cy.get('.button[title="Show form"]').click();
+    cy.get('.tab:contains("Metadata")').click();
     cy.get(`input[value="${article.data.title}"]`);
     cy.get('textarea').should('have.value', article.data.description);
     cy.get(
@@ -55,7 +55,8 @@ describe('Articles maintenance works when: ', () => {
     ).type('Some description added to an article');
     cy.get('.select-expander').click();
     cy.get('.select-list-option[data-key="en"]').click();
-    cy.get('.button:contains("Confirm")').click();
+    cy.get('.button:contains("Submit")').click();
+    cy.get('.font:contains("Send to review")');
     cy.get('.button:contains("Submit")').click();
 
     cy.url().should('include', '/en/sign-in');
@@ -97,11 +98,11 @@ describe('Articles maintenance works when: ', () => {
     cy.visit('/en/articles-creator');
 
     cy.get('.button:contains("Start")').click();
-    cy.get('.button[title="Close editor"]').click();
+    cy.get('.button:contains("Back")').click();
     cy.get('.button:contains("Start")').click();
-    cy.get('.button[title="Show form"]').click();
-    cy.get('.button[title="Close form"]').click();
-    cy.get('.button[title="Show form"]').click();
+    cy.get('.tab:contains("Metadata")').click();
+    cy.get('.tab:contains("Content")').click();
+    cy.get('.tab:contains("Metadata")').click();
     cy.get(
       'input[placeholder="The best title is between 80 and 130 characters"]'
     ).type('My favourite article');
@@ -110,10 +111,12 @@ describe('Articles maintenance works when: ', () => {
     ).type('Some description added to an article');
     cy.get('.select-expander').click();
     cy.get('.select-list-option[data-key="en"]').click();
-    cy.get('.button:contains("Confirm")').click();
+    cy.get('.button:contains("Submit")').click();
+    cy.get('.font:contains("Send to review")');
     cy.get('.button:contains("Go back")').click();
-    cy.get('.button[title="Show form"]').click();
-    cy.get('.button:contains("Confirm")').click();
+    cy.get('.tab:contains("Metadata")').click();
+    cy.get('.button:contains("Submit")').click();
+    cy.get('.font:contains("Send to review")');
     cy.get('.button:contains("Submit")').click();
 
     cy.url().should('include', '/en/sign-in');
