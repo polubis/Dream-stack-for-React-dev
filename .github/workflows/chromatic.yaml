@@ -17,10 +17,10 @@ jobs:
           cd system
           npm install --legacy-peer-deps
       - name: Build storybook
-          run: |
+        run: |
             cd system
             npm run build-storybook
       - name: Build storybook
-          run: |
+        run: |
             cd system/dist/storybook/figa-ui
             npm run chromatic --project-token=${{ secrets.FIGA_UI_CHROMATIC_TOKEN }}
