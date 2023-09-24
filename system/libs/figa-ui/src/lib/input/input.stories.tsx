@@ -57,6 +57,14 @@ const InputTemplate: Story = () => {
             minWidth="200px"
             maxWidth="200px"
           />
+          <Font variant="h5">Input with prefix</Font>
+          <Input
+            variant={variant}
+            prefix={prefix}
+            value="custom value asda dd sadsasadsadsadsadsadsad sasad "
+            minWidth="200px"
+            maxWidth="200px"
+          />
         </Box>
       ))}
     </Box>

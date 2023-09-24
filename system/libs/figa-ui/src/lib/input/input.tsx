@@ -9,6 +9,7 @@ const Control = ({
   invalid,
   disabled,
   loading,
+  prefix,
   className,
   minWidth,
   maxWidth,
@@ -16,12 +17,20 @@ const Control = ({
 }: ControlProps) => {
   return (
     <div
-      className={c(variant, { invalid }, { disabled }, { loading }, className)}
+      className={c(
+        variant,
+        { invalid },
+        { disabled },
+        { loading },
+        { prefix },
+        className
+      )}
       style={{
         minWidth,
         maxWidth,
       }}
     >
+      {prefix && <>`+`</>}
       {invalid && !disabled && !loading && <ErrorIcon className="input-icon" />}
       {loading && <Loader className="input-loader" size="tiny" />}
       {children}
@@ -36,6 +45,7 @@ const Textarea = ({
   minWidth,
   invalid,
   disabled,
+  prefix,
   loading,
   minHeight,
   maxHeight,
@@ -51,6 +61,7 @@ const Textarea = ({
       invalid={invalid}
       disabled={disabled}
       loading={loading}
+      prefix={prefix}
     >
       <textarea
         {...textareaProps}
@@ -73,6 +84,7 @@ const Input = ({
   invalid,
   disabled,
   loading,
+  prefix,
   ...inputProps
 }: InputProps) => {
   return (
@@ -84,6 +96,7 @@ const Input = ({
       invalid={invalid}
       disabled={disabled}
       loading={loading}
+      prefix={prefix}
     >
       <input {...inputProps} disabled={disabled} />
     </Control>
