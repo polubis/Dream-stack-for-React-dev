@@ -21,7 +21,7 @@ const Layout = ({
         { opened: toggler.opened }
       )}
     >
-      <header className="layout-header">{header}</header>
+      {header}
       <main className="layout-content">
         {sidebar && (
           <aside className="layout-content-sidebar">{sidebar(toggler)}</aside>

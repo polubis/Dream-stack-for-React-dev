@@ -69,11 +69,13 @@ const tokens: Tokens = {
     50: '#2D2D2D',
     100: '#0a0a0a',
     150: '#292929',
+    200: 'rgba(0,0,0,.90)',
   },
   light: {
     50: '#f9f9f9',
     100: '#e5e5e5',
     150: '#f3f3f3',
+    200: 'rgba(255,255,255,.90)',
   },
   gray: {
     0: '#fbfbfb',
@@ -339,6 +341,7 @@ const light: Theme = {
   navigation: {
     bg: tokens.gray[0],
     borderColor: tokens.gray[50],
+    bgWithOpacity: tokens.light[200],
   },
   logo: {
     text: {
@@ -644,6 +647,7 @@ const dark: Theme = {
   navigation: {
     bg: tokens.dark[100],
     borderColor: tokens.gray[300],
+    bgWithOpacity: tokens.dark[200],
   },
   logo: {
     text: {

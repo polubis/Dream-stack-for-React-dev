@@ -7,6 +7,7 @@ import { Logo } from '../logo';
 import { Button } from '../button';
 import { Link } from '../link';
 import { Font } from '../font';
+import { NavBar } from '../nav-bar';
 
 export default {
   component: Layout,
@@ -26,15 +27,17 @@ const LINKS = [
 ];
 
 const Header = (
-  <Navigation
-    logo={<Logo />}
-    links={LINKS.map((link) => (
-      <Link variant="h6">
-        <a href="/">{link}</a>
-      </Link>
-    ))}
-    action={<Button>Click me</Button>}
-  />
+  <NavBar>
+    <Navigation
+      logo={<Logo />}
+      links={LINKS.map((link) => (
+        <Link variant="h6">
+          <a href="/">{link}</a>
+        </Link>
+      ))}
+      action={<Button>Click me</Button>}
+    />
+  </NavBar>
 );
 
 const BigText = (

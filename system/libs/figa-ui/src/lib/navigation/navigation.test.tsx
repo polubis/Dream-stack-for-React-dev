@@ -1,4 +1,10 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
 
 import { Navigation } from './navigation';
 
@@ -50,13 +56,17 @@ describe('Navigation can be used when', () => {
 
     expect(container.querySelector('.navigation-mobile.opened')).toBeFalsy();
 
-    Navigation.toggle(true);
+    act(() => {
+      Navigation.toggle(true);
+    });
 
     await waitFor(() => {
       expect(container.querySelector('.navigation-mobile.opened')).toBeTruthy();
     });
 
-    Navigation.toggle(false);
+    act(() => {
+      Navigation.toggle(false);
+    });
 
     await waitFor(() => {
       expect(container.querySelector('.navigation-mobile.opened')).toBeFalsy();

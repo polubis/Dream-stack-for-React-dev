@@ -64,13 +64,15 @@ const Navigation = ({ className, logo, links, action }: NavigationProps) => {
               <CloseIcon />
             </Button>
           </header>
-          <ul className="navigation-mobile-links">
-            {links.map((link, idx) => (
-              <li className="navigation-mobile-link" key={idx}>
-                {link}
-              </li>
-            ))}
-          </ul>
+          <div className="navigation-mobile-links-wrapper">
+            <ul className="navigation-mobile-links">
+              {links.map((link, idx) => (
+                <li className="navigation-mobile-link" key={idx}>
+                  {link}
+                </li>
+              ))}
+            </ul>
+          </div>
           <footer className="navigation-mobile-footer">{action}</footer>
         </div>
       </nav>

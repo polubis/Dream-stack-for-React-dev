@@ -89,28 +89,32 @@ exports[`Navigation can be used when [FRAGILE] allows to render logo, links and 
           </svg>
         </button>
       </header>
-      <ul
-        class="navigation-mobile-links"
+      <div
+        class="navigation-mobile-links-wrapper"
       >
-        <li
-          class="navigation-mobile-link"
+        <ul
+          class="navigation-mobile-links"
         >
-          <a
-            href="https://google.com"
+          <li
+            class="navigation-mobile-link"
           >
-            Link 1
-          </a>
-        </li>
-        <li
-          class="navigation-mobile-link"
-        >
-          <a
-            href="https://google.com"
+            <a
+              href="https://google.com"
+            >
+              Link 1
+            </a>
+          </li>
+          <li
+            class="navigation-mobile-link"
           >
-            Link 2
-          </a>
-        </li>
-      </ul>
+            <a
+              href="https://google.com"
+            >
+              Link 2
+            </a>
+          </li>
+        </ul>
+      </div>
       <footer
         class="navigation-mobile-footer"
       >
@@ -212,28 +216,32 @@ exports[`Navigation can be used when [FRAGILE] allows to toggle mobile menu 1`] 
           </svg>
         </button>
       </header>
-      <ul
-        class="navigation-mobile-links"
+      <div
+        class="navigation-mobile-links-wrapper"
       >
-        <li
-          class="navigation-mobile-link"
+        <ul
+          class="navigation-mobile-links"
         >
-          <a
-            href="https://google.com"
+          <li
+            class="navigation-mobile-link"
           >
-            Link 1
-          </a>
-        </li>
-        <li
-          class="navigation-mobile-link"
-        >
-          <a
-            href="https://google.com"
+            <a
+              href="https://google.com"
+            >
+              Link 1
+            </a>
+          </li>
+          <li
+            class="navigation-mobile-link"
           >
-            Link 2
-          </a>
-        </li>
-      </ul>
+            <a
+              href="https://google.com"
+            >
+              Link 2
+            </a>
+          </li>
+        </ul>
+      </div>
       <footer
         class="navigation-mobile-footer"
       >
@@ -335,28 +343,32 @@ exports[`Navigation can be used when [FRAGILE] allows to toggle mobile menu 2`] 
           </svg>
         </button>
       </header>
-      <ul
-        class="navigation-mobile-links"
+      <div
+        class="navigation-mobile-links-wrapper"
       >
-        <li
-          class="navigation-mobile-link"
+        <ul
+          class="navigation-mobile-links"
         >
-          <a
-            href="https://google.com"
+          <li
+            class="navigation-mobile-link"
           >
-            Link 1
-          </a>
-        </li>
-        <li
-          class="navigation-mobile-link"
-        >
-          <a
-            href="https://google.com"
+            <a
+              href="https://google.com"
+            >
+              Link 1
+            </a>
+          </li>
+          <li
+            class="navigation-mobile-link"
           >
-            Link 2
-          </a>
-        </li>
-      </ul>
+            <a
+              href="https://google.com"
+            >
+              Link 2
+            </a>
+          </li>
+        </ul>
+      </div>
       <footer
         class="navigation-mobile-footer"
       >
@@ -458,28 +470,32 @@ exports[`Navigation can be used when [FRAGILE] allows to toggle mobile menu 3`] 
           </svg>
         </button>
       </header>
-      <ul
-        class="navigation-mobile-links"
+      <div
+        class="navigation-mobile-links-wrapper"
       >
-        <li
-          class="navigation-mobile-link"
+        <ul
+          class="navigation-mobile-links"
         >
-          <a
-            href="https://google.com"
+          <li
+            class="navigation-mobile-link"
           >
-            Link 1
-          </a>
-        </li>
-        <li
-          class="navigation-mobile-link"
-        >
-          <a
-            href="https://google.com"
+            <a
+              href="https://google.com"
+            >
+              Link 1
+            </a>
+          </li>
+          <li
+            class="navigation-mobile-link"
           >
-            Link 2
-          </a>
-        </li>
-      </ul>
+            <a
+              href="https://google.com"
+            >
+              Link 2
+            </a>
+          </li>
+        </ul>
+      </div>
       <footer
         class="navigation-mobile-footer"
       >

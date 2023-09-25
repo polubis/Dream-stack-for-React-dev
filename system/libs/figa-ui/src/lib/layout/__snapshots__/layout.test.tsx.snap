@@ -5,13 +5,9 @@ exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gi
   <div
     class="layout asided"
   >
-    <header
-      class="layout-header"
-    >
-      <div>
-        Header
-      </div>
-    </header>
+    <div>
+      Header
+    </div>
     <main
       class="layout-content"
     >
@@ -38,13 +34,9 @@ exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gi
   <div
     class="layout asided opened"
   >
-    <header
-      class="layout-header"
-    >
-      <div>
-        Header
-      </div>
-    </header>
+    <div>
+      Header
+    </div>
     <main
       class="layout-content"
     >
@@ -71,13 +63,9 @@ exports[`User is able to use layout when [FRAGILE] allows to skip footer 1`] = `
   <div
     class="layout"
   >
-    <header
-      class="layout-header"
-    >
-      <div>
-        Header
-      </div>
-    </header>
+    <div>
+      Header
+    </div>
     <main
       class="layout-content"
     >
@@ -97,13 +85,9 @@ exports[`User is able to use layout when [FRAGILE] renders big contents 1`] = `
   <div
     class="layout"
   >
-    <header
-      class="layout-header"
-    >
-      <div>
-        Header
-      </div>
-    </header>
+    <div>
+      Header
+    </div>
     <main
       class="layout-content"
     >
@@ -129,13 +113,9 @@ exports[`User is able to use layout when [FRAGILE] renders with default setup 1`
   <div
     class="layout"
   >
-    <header
-      class="layout-header"
-    >
-      <div>
-        Header
-      </div>
-    </header>
+    <div>
+      Header
+    </div>
     <main
       class="layout-content"
     >

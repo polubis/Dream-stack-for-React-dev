@@ -15,6 +15,7 @@ export * from './lib/creator-layout';
 export * from './lib/box';
 export * from './lib/layout';
 export * from './lib/left-bar';
+export * from './lib/nav-bar';
 export * from './lib/popover';
 export * from './lib/badge';
 export * from './lib/code-block';

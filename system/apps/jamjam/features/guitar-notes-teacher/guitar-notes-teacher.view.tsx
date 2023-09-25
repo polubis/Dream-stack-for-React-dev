@@ -11,6 +11,7 @@ import {
   Button,
   type BoxProps,
   Select,
+  NavBar,
 } from '@system/figa-ui';
 
 import { GuitarFretboard, UnobviousNoteButton } from '../../components';
@@ -41,15 +42,19 @@ const GuitarNotesTeacherView = ({
   return (
     <Layout
       header={
-        <Navigation
-          logo={<Logo />}
-          links={[
-            <Link variant="h6" key={0}>
-              <NextLink href="/">Learn guitar notes</NextLink>
-            </Link>,
-          ]}
-          action={<PlatformLink variant="h6">Check our platform</PlatformLink>}
-        />
+        <NavBar>
+          <Navigation
+            logo={<Logo />}
+            links={[
+              <Link variant="h6" key={0}>
+                <NextLink href="/">Learn guitar notes</NextLink>
+              </Link>,
+            ]}
+            action={
+              <PlatformLink variant="h6">Check our platform</PlatformLink>
+            }
+          />
+        </NavBar>
       }
     >
       {state.key === 'idle' && (
