@@ -6,14 +6,9 @@ describe('Environment util can be used when: ', () => {
   const API_URL = 'https://localhost:3000/api';
   const ACCESS_TOKEN = 'https://localhost:3000/api';
 
-  const fixture = envFixture({ API_URL, ACCESS_TOKEN });
-
-  beforeAll(() => {
-    fixture.setup();
-  });
-
-  afterEach(() => {
-    fixture.restoreAll();
+  const fixture = envFixture({ beforeAll, afterEach })({
+    API_URL,
+    ACCESS_TOKEN,
   });
 
   it('allows to get environment variable', () => {
