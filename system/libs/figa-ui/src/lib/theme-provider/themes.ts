@@ -25,6 +25,7 @@ const spacing: Spacing = {
   900: '72px',
   950: '76px',
   1000: '80px',
+  1250: '100px',
   1500: '140px',
   1750: '160px',
   2000: '180px',
@@ -86,6 +87,9 @@ const tokens: Tokens = {
     400: '#dfdfdf',
     450: '#272727',
     500: '#212121',
+    550: '#f1f1f1',
+    600: '#888',
+    650: '#555',
   },
   green: {
     50: '#b2d9ba',
@@ -132,6 +136,11 @@ const tokens: Tokens = {
 const light: Theme = {
   outline: {
     color: tokens.common.black,
+  },
+  scroll: {
+    thumb: tokens.gray[600],
+    track: tokens.gray[550],
+    thumbHover: tokens.gray[650],
   },
   checkbox: {
     borderColor: tokens.common.white,
@@ -439,6 +448,11 @@ const dark: Theme = {
     active: {
       bg: tokens.green[200],
     },
+  },
+  scroll: {
+    thumb: tokens.gray[600],
+    track: tokens.gray[550],
+    thumbHover: tokens.gray[650],
   },
   radio: {
     borderColor: tokens.common.white,
