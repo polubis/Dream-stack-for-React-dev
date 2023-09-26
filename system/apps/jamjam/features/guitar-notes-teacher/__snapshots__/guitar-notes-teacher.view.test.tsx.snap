@@ -6,7 +6,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays counting panel 1`] =
     class="layout"
   >
     <header
-      class="layout-header"
+      class="nav-bar"
     >
       <nav
         class="navigation"
@@ -192,23 +192,27 @@ exports[`Guitar notes teacher works when [FRAGILE] displays counting panel 1`] =
               </svg>
             </button>
           </header>
-          <ul
-            class="navigation-mobile-links"
+          <div
+            class="navigation-mobile-links-wrapper"
           >
-            <li
-              class="navigation-mobile-link"
+            <ul
+              class="navigation-mobile-links"
             >
-              <span
-                class="font h6 default link"
+              <li
+                class="navigation-mobile-link"
               >
-                <a
-                  href="/"
+                <span
+                  class="font h6 default link"
                 >
-                  Learn guitar notes
-                </a>
-              </span>
-            </li>
-          </ul>
+                  <a
+                    href="/"
+                  >
+                    Learn guitar notes
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
           <footer
             class="navigation-mobile-footer"
           >
@@ -243,7 +247,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays first screen after l
     class="layout"
   >
     <header
-      class="layout-header"
+      class="nav-bar"
     >
       <nav
         class="navigation"
@@ -429,23 +433,27 @@ exports[`Guitar notes teacher works when [FRAGILE] displays first screen after l
               </svg>
             </button>
           </header>
-          <ul
-            class="navigation-mobile-links"
+          <div
+            class="navigation-mobile-links-wrapper"
           >
-            <li
-              class="navigation-mobile-link"
+            <ul
+              class="navigation-mobile-links"
             >
-              <span
-                class="font h6 default link"
+              <li
+                class="navigation-mobile-link"
               >
-                <a
-                  href="/"
+                <span
+                  class="font h6 default link"
                 >
-                  Learn guitar notes
-                </a>
-              </span>
-            </li>
-          </ul>
+                  <a
+                    href="/"
+                  >
+                    Learn guitar notes
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
           <footer
             class="navigation-mobile-footer"
           >
@@ -515,7 +523,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
     class="layout"
   >
     <header
-      class="layout-header"
+      class="nav-bar"
     >
       <nav
         class="navigation"
@@ -701,23 +709,27 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
               </svg>
             </button>
           </header>
-          <ul
-            class="navigation-mobile-links"
+          <div
+            class="navigation-mobile-links-wrapper"
           >
-            <li
-              class="navigation-mobile-link"
+            <ul
+              class="navigation-mobile-links"
             >
-              <span
-                class="font h6 default link"
+              <li
+                class="navigation-mobile-link"
               >
-                <a
-                  href="/"
+                <span
+                  class="font h6 default link"
                 >
-                  Learn guitar notes
-                </a>
-              </span>
-            </li>
-          </ul>
+                  <a
+                    href="/"
+                  >
+                    Learn guitar notes
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
           <footer
             class="navigation-mobile-footer"
           >
@@ -2151,7 +2163,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
     class="layout"
   >
     <header
-      class="layout-header"
+      class="nav-bar"
     >
       <nav
         class="navigation"
@@ -2337,23 +2349,27 @@ exports[`Guitar notes teacher works when [FRAGILE] displays guitar notes trainer
               </svg>
             </button>
           </header>
-          <ul
-            class="navigation-mobile-links"
+          <div
+            class="navigation-mobile-links-wrapper"
           >
-            <li
-              class="navigation-mobile-link"
+            <ul
+              class="navigation-mobile-links"
             >
-              <span
-                class="font h6 default link"
+              <li
+                class="navigation-mobile-link"
               >
-                <a
-                  href="/"
+                <span
+                  class="font h6 default link"
                 >
-                  Learn guitar notes
-                </a>
-              </span>
-            </li>
-          </ul>
+                  <a
+                    href="/"
+                  >
+                    Learn guitar notes
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
           <footer
             class="navigation-mobile-footer"
           >
@@ -3787,7 +3803,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays next screen after fi
     class="layout"
   >
     <header
-      class="layout-header"
+      class="nav-bar"
     >
       <nav
         class="navigation"
@@ -3973,23 +3989,27 @@ exports[`Guitar notes teacher works when [FRAGILE] displays next screen after fi
               </svg>
             </button>
           </header>
-          <ul
-            class="navigation-mobile-links"
+          <div
+            class="navigation-mobile-links-wrapper"
           >
-            <li
-              class="navigation-mobile-link"
+            <ul
+              class="navigation-mobile-links"
             >
-              <span
-                class="font h6 default link"
+              <li
+                class="navigation-mobile-link"
               >
-                <a
-                  href="/"
+                <span
+                  class="font h6 default link"
                 >
-                  Learn guitar notes
-                </a>
-              </span>
-            </li>
-          </ul>
+                  <a
+                    href="/"
+                  >
+                    Learn guitar notes
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
           <footer
             class="navigation-mobile-footer"
           >
@@ -4024,7 +4044,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays settings panel 1`] =
     class="layout"
   >
     <header
-      class="layout-header"
+      class="nav-bar"
     >
       <nav
         class="navigation"
@@ -4210,23 +4230,27 @@ exports[`Guitar notes teacher works when [FRAGILE] displays settings panel 1`] =
               </svg>
             </button>
           </header>
-          <ul
-            class="navigation-mobile-links"
+          <div
+            class="navigation-mobile-links-wrapper"
           >
-            <li
-              class="navigation-mobile-link"
+            <ul
+              class="navigation-mobile-links"
             >
-              <span
-                class="font h6 default link"
+              <li
+                class="navigation-mobile-link"
               >
-                <a
-                  href="/"
+                <span
+                  class="font h6 default link"
                 >
-                  Learn guitar notes
-                </a>
-              </span>
-            </li>
-          </ul>
+                  <a
+                    href="/"
+                  >
+                    Learn guitar notes
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
           <footer
             class="navigation-mobile-footer"
           >
@@ -4261,7 +4285,7 @@ exports[`Guitar notes teacher works when [FRAGILE] displays summary 1`] = `
     class="layout"
   >
     <header
-      class="layout-header"
+      class="nav-bar"
     >
       <nav
         class="navigation"
@@ -4447,23 +4471,27 @@ exports[`Guitar notes teacher works when [FRAGILE] displays summary 1`] = `
               </svg>
             </button>
           </header>
-          <ul
-            class="navigation-mobile-links"
+          <div
+            class="navigation-mobile-links-wrapper"
           >
-            <li
-              class="navigation-mobile-link"
+            <ul
+              class="navigation-mobile-links"
             >
-              <span
-                class="font h6 default link"
+              <li
+                class="navigation-mobile-link"
               >
-                <a
-                  href="/"
+                <span
+                  class="font h6 default link"
                 >
-                  Learn guitar notes
-                </a>
-              </span>
-            </li>
-          </ul>
+                  <a
+                    href="/"
+                  >
+                    Learn guitar notes
+                  </a>
+                </span>
+              </li>
+            </ul>
+          </div>
           <footer
             class="navigation-mobile-footer"
           >

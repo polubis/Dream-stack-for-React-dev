@@ -11,6 +11,7 @@ import {
   LinkedinIcon,
   UserIcon,
   LogoGraphic,
+  NavBar,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -45,7 +46,9 @@ const MainLayout = ({ children, sidebar }: MainLayoutProps) => {
   return (
     <Layout
       header={
-        <Navigation logo={<Logo />} links={links} action={<UserSection />} />
+        <NavBar>
+          <Navigation logo={<Logo />} links={links} action={<UserSection />} />
+        </NavBar>
       }
       sidebar={sidebar}
       footer={

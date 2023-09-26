@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <header
+    class="nav-bar my-class"
+  >
+    <div>
+      Content
+    </div>
+  </header>
+</DocumentFragment>
+`;

@@ -1,4 +1,4 @@
-import { Layout, Logo, Navigation } from '@system/figa-ui';
+import { Layout, Logo, NavBar, Navigation } from '@system/figa-ui';
 import { UserSection } from '../main-layout/user-section';
 import type { AdminLayoutProps } from './defs';
 import { useLang } from '../../dk';
@@ -20,7 +20,9 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   return (
     <Layout
       header={
-        <Navigation logo={<Logo />} links={links} action={<UserSection />} />
+        <NavBar>
+          <Navigation logo={<Logo />} links={links} action={<UserSection />} />
+        </NavBar>
       }
     >
       {children}

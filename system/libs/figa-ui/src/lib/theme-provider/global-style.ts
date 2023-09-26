@@ -499,16 +499,34 @@ const GlobalStyle = createGlobalStyle`
 
     /* link.tsx */
 
+    /* nav-bar.tsx */
+
+    .nav-bar {
+        ${row()}
+        ${streched('fixed')}
+        bottom: unset;
+        border-bottom: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.navigation.borderColor};
+        background: ${(props) => props.theme.navigation.bgWithOpacity};
+        padding: 0 ${tokens.spacing[250]};
+        z-index: ${tokens.z[200]};
+        height: ${tokens.spacing[1250]};
+        transform: translateY(0px);
+        transition: 0.93s transform cubic-bezier(0.19, 1, 0.22, 1);
+
+        &.out {
+            transform: translateY(-${tokens.spacing[1250]});
+        }   
+    }
+
+    /* nav-bar.tsx */
+
     /* navigation.tsx */
 
     .navigation {
+        ${size('100%')}
         ${row()}
         justify-content: space-between;
-        height: ${tokens.spacing[1250]};
-        border-bottom: ${tokens.spacing[25]} solid ${(props) =>
-  props.theme.navigation.borderColor};
-        background: ${(props) => props.theme.navigation.bg};
-        padding: 0 ${tokens.spacing[250]};
 
         .navigation-links {
             ${row()}
@@ -536,7 +554,7 @@ const GlobalStyle = createGlobalStyle`
             ${column()}
             background: ${(props) => props.theme.navigation.bg};
             z-index: ${tokens.z[400]};
-            max-height: 100vh;
+            height: 100vh;
             transform: translateX(-100%);
 
             &.opened {
@@ -560,20 +578,31 @@ const GlobalStyle = createGlobalStyle`
                 flex-shrink: 0;
                 border-top: ${tokens.spacing[25]} solid ${(props) =>
   props.theme.navigation.borderColor};
-                height: ${tokens.spacing[1250]};
+                height: ${tokens.spacing[1000]};
                 padding: 0 ${tokens.spacing[250]};
             }
 
-            &-links {
-                ${center('column')}
-                list-style: none;
+            &-links-wrapper {
+                ${center()}
                 height: 100%;
                 overflow-y: auto;
+            }
+
+            &-links {
+                list-style: none;
             }
 
             &-link {
                 margin-bottom: ${tokens.spacing[200]};
                 text-align: center;
+
+                &:first-of-type {
+                    margin-top: ${tokens.spacing[500]};
+                }
+
+                &:last-of-type {
+                    margin-bottom: ${tokens.spacing[500]};
+                }
             }
         }
 
@@ -852,12 +881,13 @@ const GlobalStyle = createGlobalStyle`
 
     .layout {
         ${column()}
+        padding-top: ${tokens.spacing[1250]};
 
         &.asided {
             .layout-content {
                 padding: 0;
                 display: flex;
-                min-height: calc(100vh - 100px);
+                min-height: calc(100vh - ${tokens.spacing[1250]});
                 max-width: 100vw;
 
                 & > * {

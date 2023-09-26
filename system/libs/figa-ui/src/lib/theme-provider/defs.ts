@@ -99,11 +99,13 @@ interface Tokens {
     50: string;
     100: string;
     150: string;
+    200: string;
   };
   light: {
     50: string;
     100: string;
     150: string;
+    200: string;
   };
   red: {
     50: string;
@@ -313,6 +315,7 @@ interface Theme {
   navigation: {
     bg: string;
     borderColor: string;
+    bgWithOpacity: string;
   };
   logo: {
     text: {
