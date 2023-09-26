@@ -139,4 +139,14 @@ describe('Articles maintenance works when: ', () => {
     cy.get('.button:contains("Go back")');
     cy.get('.alert:contains("Article has been created ❤!")');
   });
+
+  it("not signed in user can't create an article", () => {
+    cy.visit('/');
+    cy.get('.navigation').contains('Articles creator').click();
+    cy.get('.button:contains("Start")').should('be.visible').click();
+    cy.get('.button:contains("Submit")').click();
+    cy.get('.font:contains("Send to review")');
+    cy.get('.button:contains("Submit")').click();
+    cy.get('.font:contains("Sign in into your account")').should('be.visible');
+  });
 });
