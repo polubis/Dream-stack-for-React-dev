@@ -1,4 +1,4 @@
-import { checkIsAdmin, useAuthStore } from '../../store/auth';
+import { auth_selectors, checkIsAdmin, useAuthStore } from '../../store/auth';
 import type { GuardProps } from './models';
 
 const AdminsOnly = ({ children, fallback }: GuardProps) => {
@@ -6,4 +6,10 @@ const AdminsOnly = ({ children, fallback }: GuardProps) => {
   return <>{isAdmin ? children : fallback ?? null}</>;
 };
 
-export { AdminsOnly };
+const SignedInOnly = ({ children, fallback }: GuardProps) => {
+  const authorized = auth_selectors.useIsAuthorized();
+
+  return <>{authorized ? children : fallback ?? null}</>;
+};
+
+export { AdminsOnly, SignedInOnly };
