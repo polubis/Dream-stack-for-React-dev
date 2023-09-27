@@ -7,6 +7,11 @@ const auth_selectors: AuthSelectors = {
       return state.key === 'authorized' && state.user.username === username;
     });
   },
+  useIsAuthorized: () => {
+    return useAuthStore((state) => {
+      return state.key === 'authorized';
+    });
+  },
 };
 
 export { auth_selectors };

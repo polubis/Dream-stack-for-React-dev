@@ -20,7 +20,8 @@ type AuthStore = AuthState & AuthActions;
 type AuthStoreStateKey = AuthState['key'];
 
 interface AuthSelectors {
-  useIsAuthor: (username: Username) => boolean;
+  useIsAuthor(username: Username): boolean;
+  useIsAuthorized(): boolean;
 }
 
 export type {

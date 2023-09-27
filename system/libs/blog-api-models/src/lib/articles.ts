@@ -41,14 +41,19 @@ interface FullArticleDto extends ArticleDto {
   content: Content;
 }
 
-type GetArticlesResponse = PaginatedResponse<ArticleDto[]>;
-interface GetArticlesParams {
+interface ArticlesFiltersParams {
   Search?: string;
   ItemsPerPage?: number;
   CurrentPage?: number;
   Status?: ArticleStatus;
   lang: Lang;
 }
+
+type GetArticlesResponse = PaginatedResponse<ArticleDto[]>;
+type GetArticlesParams = ArticlesFiltersParams;
+
+type GetYourArticlesResponse = PaginatedResponse<ArticleDto[]>;
+type GetYourArticlesParams = ArticlesFiltersParams;
 
 type GetArticleParams = { url: Url; lang: Lang };
 type GetArticleResponse = Response<FullArticleDto>;
@@ -119,4 +124,7 @@ export type {
   GetArticleReviewsPayload,
   CreateArticleReviewPayload,
   CreateArticleReviewResponse,
+  GetYourArticlesParams,
+  GetYourArticlesResponse,
+  ArticlesFiltersParams,
 };

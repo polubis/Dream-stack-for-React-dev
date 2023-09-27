@@ -20,6 +20,8 @@ import {
   GetArticleReviewsPayload,
   CreateArticleReviewPayload,
   CreateArticleReviewResponse,
+  GetYourArticlesResponse,
+  GetYourArticlesParams,
 } from '@system/blog-api-models';
 import { blogAPI } from '../instances';
 import { formData } from '../core/form-data';
@@ -30,6 +32,20 @@ const getArticles = async ({
 }: GetArticlesParams): Promise<GetArticlesResponse> => {
   const { data } = await blogAPI.get<GetArticlesResponse>(
     getPath('Articles') + '/' + lang,
+    {
+      params,
+    }
+  );
+
+  return data;
+};
+
+const getYourArticles = async ({
+  lang,
+  ...params
+}: GetYourArticlesParams): Promise<GetYourArticlesResponse> => {
+  const { data } = await blogAPI.get<GetYourArticlesResponse>(
+    getPath('Articles/my') + '/' + lang,
     {
       params,
     }
@@ -159,4 +175,5 @@ export {
   sendArticleForApproval,
   getArticleReviews,
   createArticleReview,
+  getYourArticles,
 };
