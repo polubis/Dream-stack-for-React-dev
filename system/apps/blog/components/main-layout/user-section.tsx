@@ -10,8 +10,6 @@ const SignInButton = () => {
   const lang = useLang();
   const { key } = useSignInStore();
 
-  console.log(key);
-
   if (key === 'pending') {
     return (
       <Button data-i={get('app-nav-sign-in-btn')} loading>

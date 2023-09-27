@@ -4,7 +4,7 @@ import { getter } from '@system/blog-selectors';
 describe('Register works when: ', () => {
   const get = getter(cy);
 
-  it('register button navigate to register page', () => {
+  it('register button moves to register page', () => {
     cy.visit('/');
     cy.get('header nav a button:contains("Register")').first().click();
     cy.url().should('include', '/register');

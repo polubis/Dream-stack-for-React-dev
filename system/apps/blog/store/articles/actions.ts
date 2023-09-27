@@ -13,10 +13,11 @@ import {
   tap,
   throttleTime,
 } from 'rxjs';
-import * as Articles from './defs';
-import { createArticlesInitialState, useArticlesStore } from './store';
-import { getArticles, getError } from '@system/blog-api';
+import type * as Articles from './defs';
+import { useArticlesStore } from './store';
+import { getArticles, getError, getYourArticles } from '@system/blog-api';
 import type { GetArticlesParams } from '@system/blog-api-models';
+import { articles_states } from './states';
 
 const { getState: get, setState: set } = useArticlesStore;
 
@@ -57,7 +58,11 @@ subs.add(
         set({ is: 'busy' });
       }),
       switchMap((filters) =>
-        from(getArticles(toArticlesParams(filters))).pipe(
+        from(
+          filters.yours
+            ? getYourArticles(toArticlesParams(filters))
+            : getArticles(toArticlesParams(filters))
+        ).pipe(
           tap(({ data }) => {
             if (checkIsAllLoaded(data, filters.limit)) {
               set({ is: 'all_loaded', articles: data });
@@ -87,7 +92,11 @@ subs.add(
         set({ is: 'loading', filters });
       }),
       concatMap(({ filters, state }) =>
-        from(getArticles(toArticlesParams(filters))).pipe(
+        from(
+          filters.yours
+            ? getYourArticles(toArticlesParams(filters))
+            : getArticles(toArticlesParams(filters))
+        ).pipe(
           tap(({ data }) => {
             if (checkIsAllLoaded(data, filters.limit)) {
               set({ is: 'all_loaded', articles: [...state.articles, ...data] });
@@ -108,8 +117,14 @@ subs.add(
 );
 
 const articles_actions: Articles.Actions = {
-  init: () => {
-    changed.next(createArticlesInitialState().filters);
+  reset: () => {
+    set(articles_states.idle());
+  },
+  init: (filters = {}) => {
+    changed.next({
+      ...articles_states.idle().filters,
+      ...filters,
+    });
   },
   changeQuery: (query) => {
     const { filters } = get();
