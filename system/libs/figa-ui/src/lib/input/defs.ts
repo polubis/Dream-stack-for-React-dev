@@ -26,7 +26,7 @@ interface ControlProps {
   minWidth?: string;
   invalid?: boolean;
   loading?: boolean;
-  prefix?: string;
+  prefix?: boolean;
   children: ReactNode;
 }
 

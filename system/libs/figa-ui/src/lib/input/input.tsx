@@ -1,5 +1,8 @@
 import { ErrorIcon } from '../icon';
 import { Loader } from '../loader';
+import { Select } from '../select';
+import { PREFIX_VARIANTS } from './consts';
+import { useState } from 'react';
 import type { ControlProps, InputProps, TextareaProps } from './defs';
 
 import c from 'classnames';
@@ -15,6 +18,12 @@ const Control = ({
   maxWidth,
   children,
 }: ControlProps) => {
+  const [selectedPrefix, setSelectedPrefix] = useState(''); // Stan do przechowywania wybranej opcji
+
+  const handlePrefixChange = (newPrefix: string) => {
+    setSelectedPrefix(newPrefix);
+  };
+
   return (
     <div
       className={c(
@@ -30,7 +39,17 @@ const Control = ({
         maxWidth,
       }}
     >
-      {prefix && <>`+`</>}
+      {prefix && (
+        <Select
+          options={PREFIX_VARIANTS.map((item) => ({
+            key: item.key.toString(),
+            child: item.prefix,
+          }))}
+          placeholder="Select your prefix"
+          value={selectedPrefix}
+          onChange={handlePrefixChange}
+        />
+      )}
       {invalid && !disabled && !loading && <ErrorIcon className="input-icon" />}
       {loading && <Loader className="input-loader" size="tiny" />}
       {children}
@@ -45,7 +64,6 @@ const Textarea = ({
   minWidth,
   invalid,
   disabled,
-  prefix,
   loading,
   minHeight,
   maxHeight,
@@ -61,7 +79,6 @@ const Textarea = ({
       invalid={invalid}
       disabled={disabled}
       loading={loading}
-      prefix={prefix}
     >
       <textarea
         {...textareaProps}

@@ -464,6 +464,14 @@ const GlobalStyle = createGlobalStyle`
                 }
             }
         }
+        &.prefix {
+            .select {
+                display: inline-block;
+            } 
+            .select-expander {
+                min-width: 100 px;
+            }
+        }
     }
 
     /* select.tsx */
@@ -759,6 +767,12 @@ const GlobalStyle = createGlobalStyle`
 
         &.disabled {
             ${disabled()}
+        }
+        &.prefix {
+            display: inline-block;
+            .input {
+                display: inline-block;
+            }
         }
     }
 
