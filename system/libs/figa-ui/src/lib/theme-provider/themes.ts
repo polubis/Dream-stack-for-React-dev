@@ -455,6 +455,11 @@ const light: Theme = {
     bg: tokens.common.white,
     borderColor: tokens.light[100],
   },
+  tooltip: {
+    color: tokens.common.white,
+    bg: tokens.common.black,
+    borderColor: tokens.common.black
+  }
 };
 
 const dark: Theme = {
@@ -775,6 +780,11 @@ const dark: Theme = {
     borderColor: tokens.gray[300],
     bg: tokens.common.black,
   },
+  tooltip: {
+    color: tokens.common.black,
+    bg: tokens.common.white,
+    borderColor: tokens.common.white
+  }
 };
 
 const themes: Themes = {

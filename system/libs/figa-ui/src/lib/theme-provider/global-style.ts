@@ -1673,6 +1673,83 @@ const GlobalStyle = createGlobalStyle`
 
     /* thumbnail.tsx */
 
+    /* tooltiop.tsx */
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip-tip {
+        position: absolute;
+        border-radius: ${tokens.radius[50]};
+        left: 50%;
+        transform: translateX(-50%);
+        padding: ${tokens.spacing[75]};
+        color: ${(props) => props.theme.tooltip.color};
+        background: ${(props) => props.theme.tooltip.bg};
+        font: ${font('2rem', '0.15px', 'LexendBold', 500)};
+        z-index: ${tokens.z[500]};
+        white-space: nowrap;
+
+        &::before {
+            content: '';
+            left: 50%;
+            border: solid transparent;
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-width: ${tokens.spacing[75]};
+            margin-left: calc(${tokens.spacing[75]} * -1);
+        }
+
+        &.top {
+            top: calc(${tokens.spacing[400]} * -1)
+        }   
+            &::before {
+                top: 100%;
+                border-top-color: ${(props) => props.theme.tooltip.bg};
+            }
+
+        &.right {
+            left: calc(100% + ${tokens.spacing[400]});
+            top: 50%;
+            transform: translateX(0) translateY(50);
+        }
+            &::before {
+                left: calc(${tokens.spacing[75]} * -1);
+                top: 50%;
+                transform: translateX(0) translateY(-50%);
+                border-right-color: ${(props) => props.theme.tooltip.bg};
+            }
+        
+        &.bottom {
+            bottom: calc(${tokens.spacing[400]} * -1)
+        }
+            &::before {
+                bottom: 100%;
+                border-bottom-color: ${(props) => props.theme.tooltip.bg};
+            }
+        
+        &.left {
+            left: auto;
+            right: calc(100% + ${tokens.spacing[400]});
+            top: 50%;
+            transform: translateX(0) translateY(-50%);
+        }
+            &::before {
+                left: auto;
+                right: calc(${tokens.spacing[75]} * -2);
+                top: 50%;
+                transform: translateX(0) translateY(-50%);
+                border-left-color: ${(props) => props.theme.tooltip.bg};
+            }
+    }   
+
+
+
+    /* tooltiop.tsx */
+
     /* badge.tsx */
 
     .badge {

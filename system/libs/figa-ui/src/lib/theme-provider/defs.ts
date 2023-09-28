@@ -1,3 +1,4 @@
+import { StringNullableChain } from 'lodash';
 import type { ReactNode } from 'react';
 
 interface ThemeProviderProps {
@@ -446,6 +447,11 @@ interface Theme {
       outline: string;
     };
   };
+  tooltip: {
+    color: string;
+    bg: string;
+    borderColor: string;
+  }
 }
 
 type ThemeKey = 'dark' | 'light';
