@@ -1,7 +1,7 @@
 import type { ArticlesViewProps } from './defs';
 
 import { LeftBar, MainLayout } from '../../components';
-import { useServerStore } from '../../store/use-server-store';
+import { useStoreSync } from '../../store/use-store-sync';
 import { useArticlesStore } from '../../store/articles';
 import {
   FilterableArticlesScreen,
@@ -16,7 +16,7 @@ const pathCreator: FilterableArticlesScreenProps['pathCreator'] = (
 };
 
 const ArticlesView = ({ state }: ArticlesViewProps) => {
-  useServerStore(useArticlesStore, state)();
+  useStoreSync(useArticlesStore, state)();
 
   return (
     <>
