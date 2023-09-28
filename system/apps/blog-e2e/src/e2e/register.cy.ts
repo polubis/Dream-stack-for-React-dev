@@ -4,6 +4,13 @@ import { getter } from '@system/blog-selectors';
 describe('Register works when: ', () => {
   const get = getter(cy);
 
+  it('register button navigate to register page', () => {
+    cy.visit('/');
+    cy.get('header nav a button:contains("Register")').first().click();
+    cy.url().should('include', '/register');
+    cy.get('.button:contains("Confirm")');
+  });
+
   it('error occurs user can see error alert', () => {
     cy.intercept(
       'POST',
