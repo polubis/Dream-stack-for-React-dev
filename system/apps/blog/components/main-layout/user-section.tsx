@@ -1,4 +1,4 @@
-import { Button } from '@system/figa-ui';
+import { Box, Button } from '@system/figa-ui';
 import { Link } from '../link';
 import { useLang } from '../../dk';
 import { useAuthStore } from '../../store/auth';
@@ -9,6 +9,8 @@ import { UserPopover } from './user-popover';
 const SignInButton = () => {
   const lang = useLang();
   const { key } = useSignInStore();
+
+  console.log(key);
 
   if (key === 'pending') {
     return (
@@ -21,6 +23,15 @@ const SignInButton = () => {
   return (
     <Link href={`/${lang}/sign-in/`}>
       <Button data-i={get('app-nav-sign-in-btn')}>Sign In</Button>
+    </Link>
+  );
+};
+
+const RegisterButton = () => {
+  const lang = useLang();
+  return (
+    <Link href={`/${lang}/register/`}>
+      <Button data-i={get('app-nav-register-btn')}>Register</Button>
     </Link>
   );
 };
@@ -40,7 +51,12 @@ const UserSection = () => {
     return <UserPopover />;
   }
 
-  return <SignInButton />;
+  return (
+    <Box orientation="row" spacing={[250]}>
+      {key === 'unauthorized' && <RegisterButton />}
+      <SignInButton />
+    </Box>
+  );
 };
 
 export { UserSection };

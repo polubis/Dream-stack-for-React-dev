@@ -1,5 +1,6 @@
 type AppSelectors =
   | 'app-nav-sign-in-btn'
+  | 'app-nav-register-btn'
   | 'app-nav-sign-out-btn'
   | 'app-nav-user-avatar-btn'
   | 'app-nav-user-email'

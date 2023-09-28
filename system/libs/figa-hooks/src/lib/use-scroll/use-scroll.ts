@@ -106,7 +106,7 @@ const useScroll = <T extends HTMLElement = HTMLElement>({
           is: getScrollResult(prev, curr),
           value: getProgress(axis, target),
         };
-     
+
         setState(newState);
         onScroll && onScroll(newState);
 
