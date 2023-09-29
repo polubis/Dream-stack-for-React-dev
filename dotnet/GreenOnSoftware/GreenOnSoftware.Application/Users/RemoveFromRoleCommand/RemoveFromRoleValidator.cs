@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using GreenOnSoftware.Application.Users.AddToRoleCommand;
 using GreenOnSoftware.Commons.Consts;
+using GreenOnSoftware.Commons.Helpers;
 
 namespace GreenOnSoftware.Application.Users.RemoveFromRoleCommand;
 
@@ -12,8 +13,11 @@ public class RemoveFromRoleValidator : AbstractValidator<RemoveFromRole>
             .Must(x => Role.All.Contains(x))
             .WithMessage("Role must have valid value");
 
-        RuleFor(x => x.Role)
-            .Must(x => x.ToLower() != Role.Admin.ToLower())
-            .WithMessage("Administrators cannot be change");
+        if (!EnvironmentHelper.IsDevOrLocal())
+        {
+            RuleFor(x => x.Role)
+                .Must(x => x.ToLower() != Role.Admin.ToLower())
+                .WithMessage("Administrators cannot be change");
+        }
     }
 }
