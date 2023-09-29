@@ -64,6 +64,8 @@ interface States {
 
 interface Selectors {
   articles(): ArticleDto[];
+  useArticles(): ArticleDto[];
+  useState(): State;
 }
 
 export type {
