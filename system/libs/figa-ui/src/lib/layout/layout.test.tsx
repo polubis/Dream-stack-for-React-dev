@@ -35,6 +35,16 @@ describe('User is able to use layout when', () => {
     screen.getByText(/Footer/);
   });
 
+  it('[FRAGILE] allows to disable content padding', () => {
+    const { asFragment } = render(
+      <Layout header={<div>Header</div>} offPadding>
+        <div>Content</div>
+      </Layout>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
   it('[FRAGILE] allows to skip footer', () => {
     const { asFragment } = render(
       <Layout header={<div>Header</div>}>
