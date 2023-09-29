@@ -10,17 +10,11 @@ const Control = ({
   disabled,
   loading,
   className,
-  minWidth,
-  maxWidth,
   children,
 }: ControlProps) => {
   return (
     <div
       className={c(variant, { invalid }, { disabled }, { loading }, className)}
-      style={{
-        minWidth,
-        maxWidth,
-      }}
     >
       {invalid && !disabled && !loading && <ErrorIcon className="input-icon" />}
       {loading && <Loader className="input-loader" size="tiny" />}
@@ -32,13 +26,9 @@ const Control = ({
 const Textarea = ({
   className,
   variant,
-  maxWidth,
-  minWidth,
   invalid,
   disabled,
   loading,
-  minHeight,
-  maxHeight,
   style,
   ...textareaProps
 }: TextareaProps) => {
@@ -46,21 +36,11 @@ const Textarea = ({
     <Control
       className={c('textarea', className)}
       variant={variant}
-      maxWidth={maxWidth}
-      minWidth={minWidth}
       invalid={invalid}
       disabled={disabled}
       loading={loading}
     >
-      <textarea
-        {...textareaProps}
-        style={{
-          ...style,
-          minHeight,
-          maxHeight,
-        }}
-        disabled={disabled}
-      />
+      <textarea {...textareaProps} style={style} disabled={disabled} />
     </Control>
   );
 };
@@ -68,24 +48,26 @@ const Textarea = ({
 const Input = ({
   className,
   variant,
-  maxWidth,
-  minWidth,
   invalid,
   disabled,
   loading,
+  suffx,
+  prefx,
   ...inputProps
 }: InputProps) => {
   return (
     <Control
-      className={c('input', className)}
+      className={c('input', className, { prefx }, { suffx })}
       variant={variant}
-      maxWidth={maxWidth}
-      minWidth={minWidth}
       invalid={invalid}
       disabled={disabled}
       loading={loading}
     >
+      {prefx && <div className="prefx-wrapper">{prefx}</div>}
       <input {...inputProps} disabled={disabled} />
+      {suffx && !loading && !invalid && (
+        <div className="suffx-wrapper">{suffx}</div>
+      )}
     </Control>
   );
 };

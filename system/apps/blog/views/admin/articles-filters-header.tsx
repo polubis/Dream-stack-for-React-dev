@@ -9,7 +9,6 @@ const ArticlesFiltersHeader = () => {
       <Box orientation="row" spacing={[150]}>
         <Input
           placeholder="Search by title or description..."
-          minWidth="400px"
           value={filters.query}
           onChange={(e) => articles_actions.changeQuery(e.target.value)}
         />

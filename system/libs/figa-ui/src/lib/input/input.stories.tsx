@@ -3,121 +3,150 @@ import type { Story, Meta } from '@storybook/react';
 import { Input, Textarea } from './input';
 import { Box } from '../box';
 import { Font } from '../font';
-import { INPUT_VARIANTS } from './consts';
+import type { InputProps, TextareaProps } from './defs';
+import { CloseIcon, EditIcon } from '../icon';
 
 export default {
   component: Input,
   title: 'Input',
 } as Meta;
 
-const InputTemplate: Story = () => {
+const InputTemplate: Story<InputProps> = (props) => {
+  const elements = [
+    <Input key={0} prefx={<Font variant="b3">+48</Font>} {...props} />,
+    <Input key={1} suffx={<Font variant="b3">PL</Font>} {...props} />,
+    <Input
+      key={2}
+      suffx={<Font variant="b3">PL</Font>}
+      prefx={<Font variant="b3">+48</Font>}
+      {...props}
+    />,
+    <Input
+      key={3}
+      loading
+      suffx={<Font variant="b3">PL</Font>}
+      prefx={<Font variant="b3">+48</Font>}
+      {...props}
+    />,
+    <Input
+      key={4}
+      invalid
+      suffx={<Font variant="b3">PL</Font>}
+      prefx={<Font variant="b3">+48</Font>}
+      {...props}
+    />,
+    <Input
+      key={5}
+      loading
+      invalid
+      suffx={<Font variant="b3">PL</Font>}
+      prefx={<Font variant="b3">+48</Font>}
+      {...props}
+    />,
+    <Input
+      key={6}
+      disabled
+      loading
+      invalid
+      suffx={<Font variant="b3">PL</Font>}
+      prefx={<Font variant="b3">+48</Font>}
+      {...props}
+    />,
+    <Input key={7} disabled {...props} />,
+    <Input
+      key={8}
+      disabled
+      suffx={<Font variant="b3">PL</Font>}
+      prefx={<Font variant="b3">+48</Font>}
+      {...props}
+    />,
+    <Input key={9} loading {...props} />,
+    <Input key={10} invalid {...props} />,
+    <Input key={11} loading invalid {...props} />,
+    <Input key={12} suffx={<CloseIcon />} prefx={<EditIcon />} {...props} />,
+  ];
+
   return (
-    <Box spacing={INPUT_VARIANTS.map(() => 300)} padding={[300, 300, 300, 300]}>
-      {INPUT_VARIANTS.map((variant) => (
-        <Box
-          spacing={[300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300]}
-        >
-          <Font variant="h3">Variant "{variant}"</Font>
-          <Font variant="h5">Without placeholder</Font>
-          <Input variant={variant} />
-          <Font variant="h5">With placeholder</Font>
-          <Input variant={variant} placeholder="Please write something..." />
-          <Font variant="h5">
-            With value and min width 200px max width 300px
-          </Font>
-          <Input
-            variant={variant}
-            value="custom value"
-            minWidth="200px"
-            maxWidth="300px"
-          />
-          <Font variant="h5">Invalid input</Font>
-          <Input
-            variant={variant}
-            invalid
-            value="custom value asda dd sadsasadsadsadsadsadsad sasad "
-            minWidth="200px"
-            maxWidth="200px"
-          />
-          <Font variant="h5">Disabled input</Font>
-          <Input
-            variant={variant}
-            invalid
-            disabled
-            value="custom value asda dd sadsasadsadsadsadsadsad sasad "
-            minWidth="200px"
-            maxWidth="200px"
-          />
-          <Font variant="h5">Loading input</Font>
-          <Input
-            variant={variant}
-            invalid
-            loading
-            value="custom value asda dd sadsasadsadsadsadsadsad sasad "
-            minWidth="200px"
-            maxWidth="200px"
-          />
-        </Box>
-      ))}
+    <Box
+      spacing={elements.map(() => 300)}
+      maxWidth="280px"
+      padding={[300, 300, 300, 300]}
+    >
+      {elements}
     </Box>
   );
 };
 
-const TextareaTemplate: Story = () => {
+const TextareaTemplate: Story<TextareaProps> = (props) => {
+  const elements = [
+    <Textarea key={0} {...props} placeholder="" />,
+    <Textarea key={1} {...props} />,
+    <Textarea key={2} value="custom value" {...props} />,
+    <Textarea
+      key={3}
+      invalid
+      value="custom value asda dd sadsasadsadsadsadsadsad sasad "
+      {...props}
+    />,
+    <Textarea
+      key={4}
+      invalid
+      disabled
+      value="custom value asda dd sadsasadsadsadsadsadsad sasad "
+      {...props}
+    />,
+    <Textarea
+      key={5}
+      invalid
+      loading
+      value="custom value asda dd sadsasadsadsadsadsadsad sasad "
+      {...props}
+    />,
+  ];
+
   return (
-    <Box spacing={INPUT_VARIANTS.map(() => 300)} padding={[300, 300, 300, 300]}>
-      {INPUT_VARIANTS.map((variant) => (
-        <Box
-          spacing={[300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300]}
-        >
-          <Font variant="h3">Variant "{variant}"</Font>
-          <Font variant="h5">Without placeholder</Font>
-          <Textarea variant={variant} />
-          <Font variant="h5">With placeholder</Font>
-          <Textarea variant={variant} placeholder="Please write something..." />
-          <Font variant="h5">
-            With value and min width 200px max width 300px
-          </Font>
-          <Textarea
-            variant={variant}
-            value="custom value"
-            minWidth="200px"
-            maxWidth="300px"
-          />
-          <Font variant="h5">Invalid input</Font>
-          <Textarea
-            variant={variant}
-            invalid
-            value="custom value asda dd sadsasadsadsadsadsadsad sasad "
-            minWidth="200px"
-            maxWidth="200px"
-          />
-          <Font variant="h5">Disabled input</Font>
-          <Textarea
-            variant={variant}
-            invalid
-            disabled
-            value="custom value asda dd sadsasadsadsadsadsadsad sasad "
-            minWidth="200px"
-            maxWidth="200px"
-          />
-          <Font variant="h5">Loading input</Font>
-          <Textarea
-            variant={variant}
-            invalid
-            loading
-            value="custom value asda dd sadsasadsadsadsadsadsad sasad "
-            minWidth="200px"
-            maxWidth="200px"
-          />
-        </Box>
-      ))}
+    <Box
+      maxWidth="280px"
+      spacing={elements.map(() => 300)}
+      padding={[300, 300, 300, 300]}
+    >
+      {elements}
     </Box>
   );
 };
 
-export const InputControl = InputTemplate.bind({});
-InputControl.args = {};
+export const EmptyInput = InputTemplate.bind({});
+EmptyInput.args = {
+  variant: 'empty',
+  placeholder: 'Type something...',
+};
 
-export const TextareaControl = TextareaTemplate.bind({});
-TextareaControl.args = {};
+export const FilledInput = InputTemplate.bind({});
+FilledInput.args = {
+  variant: 'filled',
+  placeholder: 'Type something...',
+};
+
+export const OutlinedInput = InputTemplate.bind({});
+OutlinedInput.args = {
+  variant: 'outlined',
+  placeholder: 'Type something...',
+};
+
+export const TextareaEmpty = TextareaTemplate.bind({});
+TextareaEmpty.args = {
+  variant: 'empty',
+  placeholder: 'Type something...',
+};
+
+export const TextareaFilled = TextareaTemplate.bind({});
+TextareaFilled.args = {
+  variant: 'filled',
+  placeholder: 'Type something...',
+};
+
+export const TextareaOutlined = TextareaTemplate.bind({});
+TextareaOutlined.args = {
+  variant: 'outlined',
+  placeholder: 'Type something...',
+};
