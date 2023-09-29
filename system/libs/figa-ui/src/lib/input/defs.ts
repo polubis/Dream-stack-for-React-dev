@@ -21,9 +21,7 @@ type InputVariant = (typeof INPUT_VARIANTS)[number];
 interface ControlProps {
   className?: string;
   variant?: InputVariant;
-  maxWidth?: string;
   disabled?: boolean;
-  minWidth?: string;
   invalid?: boolean;
   loading?: boolean;
   children: ReactNode;
@@ -31,7 +29,8 @@ interface ControlProps {
 
 type BaseProps = Omit<ControlProps, 'children' | 'disabled' | 'className'>;
 
-type InputProps = InputHTMLElementProps & BaseProps;
+type InputProps = InputHTMLElementProps &
+  BaseProps & { prefx?: ReactNode; suffx?: ReactNode };
 
 type TextareaProps = TextareaHTMLElementProps &
   BaseProps & { minHeight?: string; maxHeight?: string };

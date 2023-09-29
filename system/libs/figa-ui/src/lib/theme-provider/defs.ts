@@ -346,15 +346,18 @@ interface Theme {
       bg: string;
       color: string;
       placeholderColor: string;
+      fxColor: string;
     };
     outlined: {
       borderColor: string;
       color: string;
       placeholderColor: string;
+      fxColor: string;
     };
     empty: {
       color: string;
       placeholderColor: string;
+      fxColor: string;
     };
     invalid: string;
   };

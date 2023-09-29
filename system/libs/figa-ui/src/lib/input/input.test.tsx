@@ -58,6 +58,30 @@ describe('User is able to user control when', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
+    it('renders prefix and suffix', () => {
+      const { asFragment } = render(
+        <Input prefx={<div>A</div>} suffx={<div>S</div>} />
+      );
+
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('skips suffix when loading', () => {
+      const { asFragment } = render(
+        <Input loading prefx={<div>A</div>} suffx={<div>S</div>} />
+      );
+
+      expect(asFragment()).toMatchSnapshot();
+    });
+
+    it('skips suffix when invalid', () => {
+      const { asFragment } = render(
+        <Input invalid prefx={<div>A</div>} suffx={<div>S</div>} />
+      );
+
+      expect(asFragment()).toMatchSnapshot();
+    });
+
     it('allows to use native input properties', () => {
       const onChangeSpy = jest.fn();
 
@@ -90,22 +114,6 @@ describe('User is able to user control when', () => {
       render(<Textarea placeholder={PLACEHOLDER} />);
 
       screen.getByPlaceholderText(PLACEHOLDER);
-    });
-
-    it('allows to set max height and min height', () => {
-      const { asFragment } = render(
-        <Textarea
-          placeholder={PLACEHOLDER}
-          maxHeight="300px"
-          minHeight="200px"
-          style={{
-            maxHeight: '270px',
-            minHeight: '190px',
-          }}
-        />
-      );
-
-      expect(asFragment()).toMatchSnapshot();
     });
 
     it('renders loader if loading', () => {

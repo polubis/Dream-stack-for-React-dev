@@ -747,14 +747,44 @@ const GlobalStyle = createGlobalStyle`
             height: ${tokens.spacing[500]};
         }
 
+        &.prefx {
+            input {
+                padding-left: ${tokens.spacing[600]};
+            }
+        }
+
+        &.suffx {
+            input {
+                padding-right: ${tokens.spacing[600]};
+            }
+        }   
+
+        .prefx-wrapper, .suffx-wrapper {
+            ${center()}
+            ${size(tokens.spacing[500])}
+            position: absolute;
+            top: 0;
+        }
+
+        .prefx-wrapper {
+            left: 0;
+            border-top-left-radius: ${tokens.radius[50]};
+            border-bottom-left-radius: ${tokens.radius[50]};
+        }
+
+        .suffx-wrapper {
+            right: 0;
+            border-top-right-radius: ${tokens.radius[50]};
+            border-bottom-right-radius: ${tokens.radius[50]};
+        }
+
         input, textarea {
             ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
+            ${size('100%')}
             padding: ${tokens.spacing[150]};
-            border: 2px solid transparent;
-            width: 100%;
+            border: ${tokens.spacing[25]} solid transparent;
             background: none;
             color: inherit;
-            height: 100%;
 
             &::placeholder {
                 ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
@@ -763,6 +793,7 @@ const GlobalStyle = createGlobalStyle`
             &:focus {
                 outline-offset: ${tokens.spacing[25]};
                 outline-width: ${tokens.spacing[25]};
+                -moz-outline-radius: ${tokens.radius[50]};
             }
         }
 
@@ -781,20 +812,27 @@ const GlobalStyle = createGlobalStyle`
         &.textarea {
             textarea {
                 resize: vertical;
+                min-height: ${tokens.spacing[1000]};
             }
 
             .input-loader, .input-icon {
-                right: ${tokens.spacing[300]};
+                right: ${tokens.spacing[200]};
                 bottom: ${tokens.spacing[150]};
                 top: unset;
                 left: unset;
                 margin: unset;
+            }
+
+            .input-loader {
+                right: ${tokens.spacing[250]};
             }
         }
 
         .input-loader {
             ${row()}
             right: ${tokens.spacing[150]};
+            transform: translateX(${tokens.spacing[25]});
+
         }
 
         .input-icon {
@@ -804,6 +842,17 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.filled {
+            .suffx-wrapper {
+                border-left: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.input.filled.fxColor};
+            }
+
+            .prefx-wrapper {
+                border-right: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.input.filled.fxColor};
+            }
+
+
             input, textarea {
                 border-radius: ${tokens.radius[50]};
                 background: ${(props) => props.theme.input.filled.bg};
@@ -828,6 +877,18 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.outlined {
+            .suffx-wrapper {
+                padding-right: ${tokens.spacing[25]};
+                border-left: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.input.outlined.fxColor};
+            }
+
+            .prefx-wrapper {
+                padding-left: ${tokens.spacing[25]};
+                border-right: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.input.outlined.fxColor};
+            }
+
             input, textarea {
                 color: ${(props) => props.theme.input.outlined.color};
                 border-color: ${(props) =>
@@ -858,6 +919,16 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.empty {
+            .suffx-wrapper {
+                border-left: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.input.empty.fxColor};
+            }
+
+            .prefx-wrapper {
+                border-right: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.input.empty.fxColor};
+            }
+
             input, textarea {
                 color: ${(props) => props.theme.input.empty.color};
 
@@ -880,6 +951,12 @@ const GlobalStyle = createGlobalStyle`
 
         &.disabled {
             ${disabled()}
+        }
+
+        &.invalid:not(.disabled) {
+            .suffx-wrapper, .prefx-wrapper {
+                border-color: ${(props) => props.theme.input.invalid};
+            }
         }
     }
 
