@@ -1,40 +1,42 @@
-import { useCallback } from 'react';
-import type { YourArticlesViewProps } from './defs';
-
 import { LeftBar, MainLayout } from '../../components';
-import { ArticlesGrid, type OnGoToClick } from '../../components/articles-grid';
-import { useRouter } from 'next/navigation';
-import { useLang } from '../../dk';
+import { SignedInOnly } from '../../core';
+import {
+  FilterableArticlesScreen,
+  FilterableArticlesScreenProps,
+} from '../../components/filterable-articles-screen';
+import { useEffect } from 'react';
+import { articles_actions } from '../../store/articles';
 
-const YourArticlesView = ({ articles }: YourArticlesViewProps) => {
-  const lang = useLang();
-  const router = useRouter();
-  // @TODO: Prepare an endpoint and use it here for loading only your articles.
+const pathCreator: FilterableArticlesScreenProps['pathCreator'] = (
+  _,
+  { url }
+) => {
+  return `articles/${url}`;
+};
 
-  const handleGoToClick: OnGoToClick = useCallback(
-    (e) => {
-      const articleId = e.currentTarget.getAttribute('data-article-id');
+const YourArticlesView = () => {
+  useEffect(() => {
+    articles_actions.init({ yours: true });
 
-      if (!articleId) throw Error('Cannot find article id');
-
-      const article = articles.find(({ id }) => id === articleId);
-
-      if (!article) throw Error('Cannot find article');
-
-      router.push(`/${lang}/articles/${article.url}`);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [articles]
-  );
+    return () => {
+      articles_actions.reset();
+    };
+  }, []);
 
   return (
     <>
       <MainLayout>
-        <ArticlesGrid articles={articles} onGoToClick={handleGoToClick} />
+        <FilterableArticlesScreen pathCreator={pathCreator} />
       </MainLayout>
       <LeftBar />
     </>
   );
 };
 
-export { YourArticlesView };
+const ProtectedYourArticlesView = () => (
+  <SignedInOnly>
+    <YourArticlesView />
+  </SignedInOnly>
+);
+
+export { ProtectedYourArticlesView as YourArticlesView };

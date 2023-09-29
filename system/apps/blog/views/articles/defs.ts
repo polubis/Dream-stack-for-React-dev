@@ -1,7 +1,7 @@
-import type { ArticleDto } from '@system/blog-api-models';
+import type * as Articles from '../../store/articles/defs';
 
 interface ArticlesViewProps {
-  articles: ArticleDto[];
+  state: Articles.State;
 }
 
 export type { ArticlesViewProps };

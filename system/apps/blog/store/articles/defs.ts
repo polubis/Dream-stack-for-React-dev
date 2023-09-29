@@ -12,6 +12,7 @@ type Filters = {
   page: GetArticlesParams['CurrentPage'];
   status: GetArticlesParams['Status'];
   lang: Lang;
+  yours: boolean;
 };
 
 type LoadPayload = Partial<Filters>;
@@ -48,9 +49,21 @@ interface Fail {
 type State = Idle | Busy | Ok | Loading | AllLoaded | Fail;
 
 interface Actions {
-  init(): void;
+  reset(): void;
+  init(filters?: Partial<Filters>): void;
   changeQuery(query: Filters['query']): void;
   loadMore(): void;
+}
+
+interface States {
+  idle(): Idle;
+  busy(): Busy;
+  ok(articles: ArticleDto[], filters?: Partial<Filters>): Ok;
+  filters(filters?: Partial<Filters>): Filters;
+}
+
+interface Selectors {
+  articles(): ArticleDto[];
 }
 
 export type {
@@ -60,8 +73,10 @@ export type {
   Ok,
   Busy,
   Fail,
+  States,
   Loading,
   State,
   AllLoaded,
   Actions,
+  Selectors,
 };

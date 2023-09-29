@@ -27,6 +27,7 @@ type APIPath =
   | 'Account/Register'
   | 'Articles/Accept'
   | 'Articles/Reject'
+  | 'Articles/my'
   | 'Articles/SendForApproval';
 
 interface ResponseError {
