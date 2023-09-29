@@ -89,24 +89,13 @@ app.UseHttpsRedirection();
 
 app.UseSession();
 
-
-if (app.Environment.IsEnvironment("dev"))
-{
-    app.UseCors(builder =>
-        builder
-            .AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod());
-}
-else
-{
-    app.UseCors(bulider =>
-        bulider
-            .WithOrigins(builder.Configuration.GetSection("CorsOriginsUrls").Get<string[]>())
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials());
-}
+app.UseCors(bulider =>
+    bulider
+        .SetIsOriginAllowedToAllowWildcardSubdomains()
+        .WithOrigins(builder.Configuration.GetSection("CorsOriginsUrls").Get<string[]>())
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
 
 app.UseAuthentication();
 app.UseAuthorization();
