@@ -8,6 +8,7 @@ const Layout = ({
   children,
   header,
   footer,
+  offPadding,
   sidebar,
 }: LayoutProps) => {
   const toggler = useToggle({ opened: !!sidebar });
@@ -18,7 +19,8 @@ const Layout = ({
         'layout',
         className,
         { asided: !!sidebar },
-        { opened: toggler.opened }
+        { opened: toggler.opened },
+        { 'off-padding': offPadding }
       )}
     >
       {header}

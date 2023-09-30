@@ -23,6 +23,7 @@ const Font = ({
   motive = 'default',
   trim,
   bold,
+  align,
   ...props
 }: FontProps) => {
   return createElement(element ?? FONT_VARIANT_ELEMENT_MAP[variant], {
@@ -33,7 +34,8 @@ const Font = ({
       className,
       { italic },
       { bold },
-      { trim }
+      { trim },
+      align
     ),
     ...props,
   });

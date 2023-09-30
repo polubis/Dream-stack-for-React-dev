@@ -146,6 +146,14 @@ const GlobalStyle = createGlobalStyle`
         &.trim, &.trim > * {
             ${trim()}
         }
+
+        &.center, &.center > * {
+            text-align: center;
+        }
+
+        &.justify, &.justify > * {
+            text-align: justify;
+        }
     }
 
     /* font.tsx */
@@ -982,6 +990,20 @@ const GlobalStyle = createGlobalStyle`
 
             & > * {
                 width: 100%;
+            }
+        }
+
+        &.off-padding {
+            .layout-content {
+                padding: 0;
+            }
+
+            &.asided {
+                .layout-content {
+                    & > *:last-child {
+                        padding: 0;
+                    }
+                }
             }
         }
     }

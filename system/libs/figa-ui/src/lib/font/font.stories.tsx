@@ -11,7 +11,10 @@ export default {
 
 const Template: Story = () => {
   return (
-    <Box padding={[300, 300, 300, 300]} spacing={[200, 200, 200, 200]}>
+    <Box
+      padding={[300, 300, 300, 300]}
+      spacing={[200, 200, 200, 200, 200, 200]}
+    >
       <Box>
         {FONT_VARIANTS.map((variant) => (
           <div key={variant}>
@@ -50,6 +53,20 @@ const Template: Story = () => {
             <Font variant="h3" trim motive={motive} children={motive} />
           </div>
         ))}
+      </Box>
+
+      <Box maxWidth="200px" padding={[50, 50, 50, 50]}>
+        <Font variant="b2" align="center">
+          I'm centered
+        </Font>
+      </Box>
+
+      <Box maxWidth="200px">
+        <Font variant="b2" align="justify">
+          I'm justified. I'm justified. I'm justified. I'm justified. I'm
+          justified. I'm justified. I'm justified. I'm justified. I'm justified.
+          I'm justified. I'm justified.
+        </Font>
       </Box>
     </Box>
   );
