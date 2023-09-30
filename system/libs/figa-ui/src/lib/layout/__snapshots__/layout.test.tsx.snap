@@ -1,5 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`User is able to use layout when [FRAGILE] allows to disable content padding 1`] = `
+<DocumentFragment>
+  <div
+    class="layout off-padding"
+  >
+    <div>
+      Header
+    </div>
+    <main
+      class="layout-content"
+    >
+      <div>
+        Content
+      </div>
+    </main>
+    <footer
+      class="layout-footer"
+    />
+  </div>
+</DocumentFragment>
+`;
+
 exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gives option to maintain it 1`] = `
 <DocumentFragment>
   <div

@@ -189,6 +189,31 @@ WhenPageIsFullWithFooter.args = {
   footer: <div>Footer</div>,
 };
 
+export const WithoutPadding = Template.bind({});
+WithoutPadding.args = {
+  header: Header,
+  children: <div style={{ background: 'red' }}>Text</div>,
+  footer: <div>Footer</div>,
+  offPadding: true,
+};
+
+export const AsidedWithoutPadding = Template.bind({});
+AsidedWithoutPadding.args = {
+  header: Header,
+  children: (
+    <div>
+      <Font variant="h2">The content</Font>
+    </div>
+  ),
+  footer: <div>Footer</div>,
+  sidebar: (toggler) => (
+    <aside onClick={toggler.toggle}>
+      <Font variant="h5">The sidebar</Font>
+    </aside>
+  ),
+  offPadding: true,
+};
+
 export const Asided = Template.bind({});
 Asided.args = {
   header: Header,

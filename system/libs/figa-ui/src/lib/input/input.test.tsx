@@ -110,6 +110,20 @@ describe('User is able to user control when', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
+    it('[FRAGILE] allows to set style', () => {
+      const { asFragment } = render(
+        <Textarea
+          placeholder={PLACEHOLDER}
+          style={{
+            maxHeight: '270px',
+            minHeight: '190px',
+          }}
+        />
+      );
+
+      expect(asFragment()).toMatchSnapshot();
+    });
+
     it('allows to use placeholder', () => {
       render(<Textarea placeholder={PLACEHOLDER} />);
 

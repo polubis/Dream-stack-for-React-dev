@@ -6,6 +6,7 @@ interface LayoutProps {
   children: ReactNode;
   header: ReactNode;
   footer?: ReactNode;
+  offPadding?: boolean;
   sidebar?: (toggler: ToggleReturn) => ReactNode;
 }
 

@@ -29,6 +29,7 @@ interface FontProps extends FontHTMLElementProps {
   element?: SupportedFontElement;
   variant: FontVariant;
   children: ReactNode;
+  align?: 'center' | 'justify';
   italic?: boolean;
   trim?: boolean;
   motive?: FontMotive;

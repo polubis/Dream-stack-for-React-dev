@@ -199,6 +199,19 @@ exports[`User is able to user control when input skips suffix when loading 1`] =
 </DocumentFragment>
 `;
 
+exports[`User is able to user control when textarea [FRAGILE] allows to set style 1`] = `
+<DocumentFragment>
+  <div
+    class="filled textarea"
+  >
+    <textarea
+      placeholder="type..."
+      style="max-height: 270px; min-height: 190px;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
 exports[`User is able to user control when textarea [FRAGILE] renders with default setup 1`] = `
 <DocumentFragment>
   <div
