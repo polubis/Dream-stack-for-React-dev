@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { TooltipProps, TooltipDirection } from './defs';
+import { TooltipProps } from './defs';
 import c from 'classnames';
-import { Font } from '../font';
 
 const Tooltip = ({
   className,
@@ -9,7 +8,6 @@ const Tooltip = ({
   delay,
   direction,
   children,
-  ...props
 }: TooltipProps) => {
   let timeout: NodeJS.Timeout;
   const [active, setActive] = useState(false);
@@ -26,13 +24,11 @@ const Tooltip = ({
   };
 
   return (
-    <div
-      className={c('tooltip', className)}
-      onMouseEnter={showTip}
-      onMouseLeave={hideTip}
-    >
-        {children}
-        {active && <div className={c('tooltip-tip', className)}></div>}
+    <div className="tooltip" onMouseEnter={showTip} onMouseLeave={hideTip}>
+      {children}
+      {active && (
+        <div className={c('tooltip-tip', className, direction)}>{content}</div>
+      )}
     </div>
   );
 };

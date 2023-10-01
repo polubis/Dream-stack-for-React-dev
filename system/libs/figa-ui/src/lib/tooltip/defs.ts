@@ -11,4 +11,4 @@ interface TooltipProps {
   children: ReactNode;
 }
 
-export type { TooltipProps, TooltipDirection };
+export type { TooltipProps };

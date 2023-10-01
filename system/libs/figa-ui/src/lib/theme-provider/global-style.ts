@@ -1673,10 +1673,10 @@ const GlobalStyle = createGlobalStyle`
 
     /* thumbnail.tsx */
 
-    /* tooltiop.tsx */
+    /* tooltip.tsx */
     .tooltip {
-        position: relative;
         display: inline-block;
+        position: relative;
     }
 
     .tooltip-tip {
@@ -1704,39 +1704,39 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.top {
-            top: calc(${tokens.spacing[400]} * -1)
-        }   
+            top: calc(${tokens.spacing[400]} * -1.5);
+           
             &::before {
                 top: 100%;
                 border-top-color: ${(props) => props.theme.tooltip.bg};
             }
-
+        }
         &.right {
-            left: calc(100% + ${tokens.spacing[400]});
+            left: calc(100% + ${tokens.spacing[800]});
             top: 50%;
             transform: translateX(0) translateY(50);
-        }
+        
             &::before {
-                left: calc(${tokens.spacing[75]} * -1);
+                left: calc(${tokens.spacing[75]} * -0.9);
                 top: 50%;
                 transform: translateX(0) translateY(-50%);
                 border-right-color: ${(props) => props.theme.tooltip.bg};
             }
-        
-        &.bottom {
-            bottom: calc(${tokens.spacing[400]} * -1)
         }
+        &.bottom {
+            bottom: calc(${tokens.spacing[400]} * -1.5);
+        
             &::before {
                 bottom: 100%;
                 border-bottom-color: ${(props) => props.theme.tooltip.bg};
             }
-        
+        }
         &.left {
             left: auto;
             right: calc(100% + ${tokens.spacing[400]});
             top: 50%;
             transform: translateX(0) translateY(-50%);
-        }
+        
             &::before {
                 left: auto;
                 right: calc(${tokens.spacing[75]} * -2);
@@ -1744,11 +1744,12 @@ const GlobalStyle = createGlobalStyle`
                 transform: translateX(0) translateY(-50%);
                 border-left-color: ${(props) => props.theme.tooltip.bg};
             }
+        }
     }   
 
 
 
-    /* tooltiop.tsx */
+    /* tooltip.tsx */
 
     /* badge.tsx */
 
