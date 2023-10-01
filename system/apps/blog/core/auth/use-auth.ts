@@ -1,8 +1,8 @@
-import { unauthorize, useAuthStore } from '../../store/auth';
-import { interceptUnauthorized } from '@system/blog-api';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useLang } from '../../dk';
+import {unauthorize, useAuthStore} from '../../store/auth';
+import {interceptUnauthorized} from '@system/blog-api';
+import {useEffect} from 'react';
+import {useRouter} from 'next/navigation';
+import {useLang} from '../../dk';
 
 const useAuth = () => {
   const authStore = useAuthStore();
@@ -10,16 +10,15 @@ const useAuth = () => {
   const lang = useLang();
 
   useEffect(() => {
-    const { listen, clean } = interceptUnauthorized(unauthorize);
-
+    const {listen, clean} = interceptUnauthorized(() => {
+      unauthorize();
+      router.push(`/${lang}/articles`);
+    });
     listen();
-
     authStore.check();
 
-    if (authStore.key === 'unauthorized') {
-      router.push(`/${lang}/articles`);
-    }
-
+    router.push(`/${lang}/articles`);
+    
     return () => {
       clean();
     };
@@ -27,4 +26,4 @@ const useAuth = () => {
   }, [authStore.key]);
 };
 
-export { useAuth };
+export {useAuth};
