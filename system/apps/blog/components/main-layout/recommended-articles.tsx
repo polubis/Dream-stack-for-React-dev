@@ -39,7 +39,7 @@ const RecommendedArticles = () => {
   if (key === 'ok') {
     return (
       <Container data-i={get('app-footer-recommended-articles-list')}>
-        {articles.map((article) => (
+        {articles.slice(0, 8).map((article) => (
           <Link key={article.id} href={`/${lang}/articles/${article.title}`}>
             <Image
               alt={article.title}
