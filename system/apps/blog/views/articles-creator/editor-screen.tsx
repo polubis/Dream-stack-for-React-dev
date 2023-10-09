@@ -37,6 +37,7 @@ const EditorScreen = () => {
   const {
     form: {
       values: { thumbnail, title, description, content },
+      invalid,
     },
   } = articlesCreatorStore;
 
@@ -54,7 +55,7 @@ const EditorScreen = () => {
             >
               Back
             </Button>
-            <Button size={2} onClick={handleConfirm}>
+            <Button size={2} onClick={handleConfirm} disabled={invalid}>
               Submit
             </Button>
           </Box>

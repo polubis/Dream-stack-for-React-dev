@@ -8,42 +8,42 @@ import {
   FiltersIcon,
   Font,
   Input,
+  M_DOWN,
   Popover,
   SM_DOWN,
   T_DOWN,
   center,
+  column,
+  row,
+  size,
   streched,
   tokens,
+  wrap,
 } from '@system/figa-ui';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLang } from '../../dk';
-import { articles_selectors } from 'apps/blog/store/articles';
+import {
+  articles_actions,
+  articles_selectors,
+  useArticlesStore,
+} from '../../store/articles';
 
 const Container = styled.section`
+  ${center()}
   position: relative;
-  height: 68vh;
   border-bottom: ${tokens.spacing[25]} solid
     ${(props) => props.theme.navigation.borderColor};
 
   .articles-jumbo-content {
-    ${center('column')}
-    ${streched('absolute')}
-    margin: 0 auto;
+    ${column()}
+    align-items: center;
+    z-index: ${tokens.z[50]};
     max-width: 480px;
+    padding: ${tokens.spacing[500]} ${tokens.spacing[250]};
 
-    & > .font {
-      text-align: center;
-    }
-
-    & > * {
-      &:nth-child(2) {
-        margin: ${tokens.spacing[150]} 0 ${tokens.spacing[300]} 0;
-      }
-
-      &:nth-child(4) {
-        margin: ${tokens.spacing[500]} 0 0 0;
-      }
+    & > .b1 {
+      margin: ${tokens.spacing[150]} 0 ${tokens.spacing[300]} 0;
     }
 
     .articles-jumbo-filters {
@@ -65,14 +65,49 @@ const Container = styled.section`
         }
       }
     }
-  }
 
-  .badge {
-    position: absolute;
-    bottom: -${tokens.spacing[200]};
-    left: 0;
-    right: 0;
-    margin: 0 auto;
+    .articles-jumbo-badges {
+      ${wrap()}
+      min-height: ${tokens.spacing[400]};
+      width: 100%;
+      padding: ${tokens.spacing[200]} 0 ${tokens.spacing[100]} 0;
+
+      & > * {
+        margin: 0 ${tokens.spacing[100]} ${tokens.spacing[100]} 0;
+        flex-shrink: 0;
+      }
+
+      @media ${M_DOWN} {
+        flex-flow: row;
+        overflow-x: auto;
+
+        & > * {
+          margin: 0 ${tokens.spacing[100]} 0 0;
+
+          &:last-child {
+            margin: 0 0 0 0;
+          }
+        }
+      }
+    }
+
+    .articles-jumbo-divider {
+      ${row()}
+      margin: ${tokens.spacing[150]} 0 ${tokens.spacing[300]} 0;
+
+      @media ${M_DOWN} {
+        margin: ${tokens.spacing[250]} 0 ${tokens.spacing[300]} 0;
+      }
+
+      .font {
+        margin: 0 ${tokens.spacing[150]};
+      }
+
+      .divider {
+        ${size(tokens.spacing[25], tokens.spacing[250])}
+        background: ${(props) => props.theme.font.primary.color};
+      }
+    }
   }
 `;
 
@@ -80,19 +115,22 @@ const FoundBadge = () => {
   const state = articles_selectors.useState();
   const { is } = state;
 
-  if (is === 'ok' || is === 'all_loaded') {
-    return (
-      <Badge variant="filled" motive="casual">
-        ({state.articles.length}) articles
-      </Badge>
-    );
-  }
-
-  return null;
+  return (
+    <Badge variant="filled" motive="casual">
+      {is === 'ok' || is === 'all_loaded'
+        ? `(${state.articles.length}) articles`
+        : 'Wait...'}
+    </Badge>
+  );
 };
 
 const ArticlesJumbo = ({ title, description }: ArticlesJumboProps) => {
   const lang = useLang();
+  const {
+    filters: { query },
+  } = useArticlesStore();
+
+  const hasQuery = query !== '';
 
   return (
     <Container>
@@ -105,10 +143,18 @@ const ArticlesJumbo = ({ title, description }: ArticlesJumboProps) => {
         sizes={`${SM_DOWN} 100%, ${T_DOWN}800px, 1080px`}
       />
       <div className="articles-jumbo-content">
-        <Font variant="h4">{title}</Font>
-        <Font variant="b1">{description}</Font>
+        <Font align="center" variant="h4">
+          {title}
+        </Font>
+        <Font align="center" variant="b1">
+          {description}
+        </Font>
         <div className="articles-jumbo-filters">
-          <Input placeholder="🏸 Type to find article..." />
+          <Input
+            value={query}
+            placeholder="🏸 Type to find article..."
+            onChange={(e) => articles_actions.changeQuery(e.target.value)}
+          />
           <Popover
             trigger={({ toggle, opened }) => (
               <Button size={2} onClick={toggle}>
@@ -129,11 +175,24 @@ const ArticlesJumbo = ({ title, description }: ArticlesJumboProps) => {
             )}
           </Popover>
         </div>
-        <Link href={`/${lang}/articles-creator`}>
+        <div className="articles-jumbo-badges">
+          <FoundBadge />
+          {hasQuery && <Badge motive="ok">Query</Badge>}
+        </div>
+        <div className="articles-jumbo-divider">
+          <div className="divider" />
+          <Font motive="primary" variant="b1">
+            OR
+          </Font>
+          <div className="divider" />
+        </div>
+        <Link
+          className="articles-jumbo-create-link"
+          href={`/${lang}/articles-creator`}
+        >
           <Button variant="outlined">Create article</Button>
         </Link>
       </div>
-      <FoundBadge />
     </Container>
   );
 };

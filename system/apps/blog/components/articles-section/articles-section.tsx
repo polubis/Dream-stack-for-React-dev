@@ -6,7 +6,11 @@ import { useRouter } from 'next/router';
 import type { ArticlesSectionProps } from './defs';
 import { useLang } from '../../dk';
 
-const ArticlesSection = ({ articles, pathCreator }: ArticlesSectionProps) => {
+const ArticlesSection = ({
+  articles,
+  placeholders,
+  pathCreator,
+}: ArticlesSectionProps) => {
   const router = useRouter();
   const lang = useLang();
 
@@ -38,7 +42,13 @@ const ArticlesSection = ({ articles, pathCreator }: ArticlesSectionProps) => {
     onScroll: handleLoadMore,
   });
 
-  return <ArticlesGrid articles={articles} onGoToClick={handleGoToClick} />;
+  return (
+    <ArticlesGrid
+      placeholders={placeholders}
+      articles={articles}
+      onGoToClick={handleGoToClick}
+    />
+  );
 };
 
 export { ArticlesSection };

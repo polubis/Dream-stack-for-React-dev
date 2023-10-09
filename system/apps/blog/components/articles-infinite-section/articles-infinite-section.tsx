@@ -1,25 +1,24 @@
 import styled from 'styled-components';
-import { Alert, Font, Loader, column, tokens } from '@system/figa-ui';
+import { Font, Loader, SM_DOWN, center, tokens } from '@system/figa-ui';
 import { ArticlesSection } from '../articles-section';
 import { useArticlesStore } from '../../store/articles';
 import type { ArticlesInfiniteSectionProps } from './defs';
 
 const Container = styled.div`
-  ${column()}
+  height: 100%;
+  padding: ${tokens.spacing[500]} ${tokens.spacing[250]};
 
-  .loader {
-    margin: ${tokens.spacing[500]} auto 0 auto;
+  @media ${SM_DOWN} {
+    padding: ${tokens.spacing[250]} 0;
+
+    .article-tile .article-tile-image img {
+      border-radius: 0;
+    }
   }
 
-  & > *:first-child {
-    margin-bottom: ${tokens.spacing[500]};
-  }
-
-  .all-loaded-message,
-  .no-data-message {
-    text-align: center;
-    padding: ${tokens.spacing[400]} ${tokens.spacing[250]} 0
-      ${tokens.spacing[250]};
+  .articles-infinite-section-wrapper {
+    ${center()}
+    height: 100%;
   }
 `;
 
@@ -30,38 +29,31 @@ const ArticlesInfiniteSection = ({
   const { is } = articlesStore;
 
   return (
-    <>
-      <Container>
-        {(is === 'idle' || is === 'busy') && <Loader size="big" />}
+    <Container>
+      {(is === 'idle' || is === 'busy') && (
+        <div className="articles-infinite-section-wrapper">
+          <Loader size="big" />
+        </div>
+      )}
 
-        {(is === 'ok' || is === 'loading' || is === 'all_loaded') && (
-          <>
-            {articlesStore.articles.length === 0 ? (
-              <Font className="no-data-message" variant="h5">
+      {(is === 'ok' || is === 'loading' || is === 'all_loaded') && (
+        <>
+          {articlesStore.articles.length === 0 ? (
+            <div className="articles-infinite-section-wrapper">
+              <Font align="center" variant="h5">
                 No data found
               </Font>
-            ) : (
-              <>
-                <ArticlesSection
-                  articles={articlesStore.articles}
-                  pathCreator={pathCreator}
-                />
-
-                {is === 'all_loaded' && (
-                  <Font className="all-loaded-message" variant="h5">
-                    All data loaded
-                  </Font>
-                )}
-              </>
-            )}
-          </>
-        )}
-      </Container>
-
-      {is === 'fail' && (
-        <Alert type="error">{articlesStore.error.message}</Alert>
+            </div>
+          ) : (
+            <ArticlesSection
+              articles={articlesStore.articles}
+              placeholders={is === 'loading' ? articlesStore.filters.limit : 0}
+              pathCreator={pathCreator}
+            />
+          )}
+        </>
       )}
-    </>
+    </Container>
   );
 };
 

@@ -11,6 +11,7 @@ import type {
   Url,
   Parametrized,
   DateStamp,
+  Tags,
 } from './general';
 
 type ArticleStatus = 'Draft' | 'WaitingForApproval' | 'NeedWork' | 'Accepted';
@@ -46,6 +47,7 @@ interface ArticlesFiltersParams {
   ItemsPerPage?: number;
   CurrentPage?: number;
   Status?: ArticleStatus;
+  Tags: Tags;
   lang: Lang;
 }
 
@@ -63,6 +65,7 @@ interface CreateArticlePayload {
   description: Description;
   content: Content;
   lang: Lang;
+  tags: Tags;
   thumbnail: File;
 }
 

@@ -23,6 +23,11 @@ const articles_creator_actions = {
       }),
     });
   },
+  confirmTag: () => {
+    const { tagValue, tags } = get().form.values;
+    articles_creator_actions.change('tags', [tagValue, ...tags]);
+    articles_creator_actions.change('tagValue', '');
+  },
   change: <
     K extends keyof ArticlesCreator.FormData,
     V extends ArticlesCreator.FormData[K]

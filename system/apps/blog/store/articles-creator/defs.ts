@@ -12,6 +12,7 @@ namespace ArticlesCreator {
       preview: string[];
     };
     sendToReview: boolean;
+    tagValue: string;
   };
   export type FormDataState = FormState<FormData>;
   export type View = 'initial' | 'creator' | 'confirm';

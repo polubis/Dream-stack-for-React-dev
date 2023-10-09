@@ -14,6 +14,8 @@ const useArticlesCreatorStore = create<ArticlesCreator.State>(() => ({
     },
     content: '',
     lang: 'en',
+    tags: [],
+    tagValue: '',
     sendToReview: false,
   }),
 }));

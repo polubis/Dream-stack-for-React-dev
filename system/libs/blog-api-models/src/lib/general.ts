@@ -59,6 +59,8 @@ interface Parametrized {
   id: Id;
 }
 
+type Tags = string[];
+
 export type {
   Id,
   Description,
@@ -80,4 +82,5 @@ export type {
   Lang,
   DateStamp,
   APIPath,
+  Tags,
 };

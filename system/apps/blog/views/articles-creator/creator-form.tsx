@@ -1,9 +1,12 @@
 import {
+  Badge,
   Box,
+  Button,
   Field,
   FilePicker,
   Font,
   Input,
+  PlusIcon,
   Select,
   Textarea,
 } from '@system/figa-ui';
@@ -11,13 +14,27 @@ import {
   articles_creator_actions,
   useArticlesCreatorStore,
 } from '../../store/articles-creator';
+import type { FormEventHandler } from 'react';
 // @TODO: Backend returns invalid format for articles creation.
 // @TODO: Backend returns random errors on article creation???
+
+const errors_t = {
+  required: 'This field is required',
+  minLength: 'This field must have minLength of',
+  maxLength: 'This field must have max value of',
+};
+
 const CreatorForm = () => {
   const articlesCreatorStore = useArticlesCreatorStore();
 
-  const { thumbnail, title, description, lang } =
+  const { thumbnail, title, description, lang, tagValue, tags } =
     articlesCreatorStore.form.values;
+  const errors = articlesCreatorStore.form.errors;
+
+  const handleTagConfirm: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    articles_creator_actions.confirmTag();
+  };
 
   return (
     <Box
@@ -64,6 +81,28 @@ const CreatorForm = () => {
           <Font variant="h5">Pick the thumbnail from your disc</Font>
         </FilePicker>
       </Field>
+      <form onSubmit={handleTagConfirm}>
+        <Field
+          label="Tags*"
+          error={errors_t[errors.tags] || errors_t[errors.tagValue]}
+        >
+          <Input
+            placeholder="Type to add tags and confirm with enter..."
+            value={tagValue}
+            onChange={(e) =>
+              articles_creator_actions.change('tagValue', e.target.value)
+            }
+            suffx={
+              <Button type="submit" size={1}>
+                <PlusIcon />
+              </Button>
+            }
+          />
+        </Field>
+        {tags.map((tag) => (
+          <Badge key={tag}>{tag}</Badge>
+        ))}
+      </form>
       <Field label="Language*">
         <Select
           placeholder="You can write in English or Polish language"

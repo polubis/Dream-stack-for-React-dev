@@ -211,6 +211,14 @@ const FiltersIcon = ({ className, ...props }: IconProps) => {
   );
 };
 
+const PlusIcon = ({ className, ...props }: IconProps) => {
+  return (
+    <Icon className={c('plus-icon', className)} {...props}>
+      <path d="M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z" />
+    </Icon>
+  );
+};
+
 export {
   Icon,
   DiscordIcon,
@@ -235,4 +243,5 @@ export {
   EditIcon,
   HamburgerIcon,
   SearchIcon,
+  PlusIcon,
 };

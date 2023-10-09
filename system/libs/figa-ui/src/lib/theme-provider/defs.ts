@@ -76,6 +76,7 @@ interface Tokens {
     100: string;
   };
   radius: {
+    25: string;
     50: string;
     1000: string;
   };

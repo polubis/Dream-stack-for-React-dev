@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import type {
   ArticleDto,
+  ArticleStatus,
   GetArticlesParams,
   Lang,
   ResponseError,
+  Tags,
 } from '@system/blog-api-models';
 
 type Filters = {
@@ -13,6 +15,7 @@ type Filters = {
   status: GetArticlesParams['Status'];
   lang: Lang;
   yours: boolean;
+  tags: Tags;
 };
 
 type LoadPayload = Partial<Filters>;
@@ -51,6 +54,7 @@ type State = Idle | Busy | Ok | Loading | AllLoaded | Fail;
 interface Actions {
   reset(): void;
   init(filters?: Partial<Filters>): void;
+  changeStatus(status: ArticleStatus): void;
   changeQuery(query: Filters['query']): void;
   loadMore(): void;
 }

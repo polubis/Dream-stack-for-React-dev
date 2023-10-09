@@ -46,6 +46,13 @@ const streched = (position: StrechablePosition) => css`
   bottom: 0;
 `;
 
+const clamp = (lines: number) => css`
+  display: -webkit-box;
+  -webkit-line-clamp: ${lines};
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
+
 const font = (
   size: string,
   spacing: string,
@@ -188,5 +195,6 @@ export {
   appearInAnimation,
   setupFilledIcon,
   setupOutlinedIcon,
+  clamp,
   appearIn,
 };

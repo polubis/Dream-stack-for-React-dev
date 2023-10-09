@@ -27,12 +27,14 @@ const toArticlesParams = ({
   limit,
   page,
   status,
+  tags
 }: Articles.Filters): GetArticlesParams => ({
   lang,
   Search: query,
   ItemsPerPage: limit,
   CurrentPage: page,
   Status: status,
+  Tags: tags
 });
 
 const changed = new Subject<Articles.Filters>();
@@ -125,6 +127,11 @@ const articles_actions: Articles.Actions = {
       ...articles_states.idle().filters,
       ...filters,
     });
+  },
+  changeStatus: (status) => {
+    const { filters } = get();
+
+    changed.next({ ...filters, status });
   },
   changeQuery: (query) => {
     const { filters } = get();

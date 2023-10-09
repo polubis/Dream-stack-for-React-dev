@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { MDXRemote } from 'next-mdx-remote';
 import { ArticleScreen, Link, MainLayout, PageWrapper } from '../../components';
 import type { ArticleViewProps } from './defs';
@@ -7,7 +6,6 @@ import { ArticleThumbnail } from '../../components/article-thumbnail';
 import { ArticleMeta } from '../../components/article-meta';
 import { Box, Button, EditIcon, Font } from '@system/figa-ui';
 import { ArticleDetails } from '../../components/article-details';
-import { article_actions } from '../../store/article';
 import { auth_selectors } from '../../store/auth';
 import { useLang } from '../../dk';
 
@@ -22,10 +20,6 @@ const ArticleView = ({
 }: ArticleViewProps) => {
   const lang = useLang();
   const isAuthor = auth_selectors.useIsAuthor(authorName);
-
-  useEffect(() => {
-    return () => article_actions.reset();
-  }, []);
 
   return (
     <MainLayout>
