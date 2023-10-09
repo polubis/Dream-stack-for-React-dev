@@ -12,6 +12,7 @@ public static class DependencyInjection
         services.AddTransient<IThumbnailService, ThumbnailService>();
         services.AddTransient<IRatingsSessionService, RatingsSessionService>();
         services.AddTransient<IArticleUrlIdentifierService, ArticleUrlIdentifierService>();
+        services.AddTransient<ITagsService, TagsService>();
 
         return services;
     }

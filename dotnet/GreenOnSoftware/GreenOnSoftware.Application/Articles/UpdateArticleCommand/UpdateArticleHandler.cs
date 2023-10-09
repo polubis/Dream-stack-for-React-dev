@@ -19,8 +19,9 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
     private readonly IBlobStorageService _blobStorageService;
     private readonly IContext _context;
     private readonly IArticleUrlIdentifierService _articleUrlIdentifierService;
+    private readonly ITagsService _tagsService;
 
-    public UpdateArticleHandler(IClock clock, GreenOnSoftwareDbContext dbContext, IBlobStorageService blobStorageService, IThumbnailService thumbnailService, IContext context, IArticleUrlIdentifierService articleUrlIdentifierService)
+    public UpdateArticleHandler(IClock clock, GreenOnSoftwareDbContext dbContext, IBlobStorageService blobStorageService, IThumbnailService thumbnailService, IContext context, IArticleUrlIdentifierService articleUrlIdentifierService, ITagsService tagsService)
     {
         _clock = clock;
         _blobStorageService = blobStorageService;
@@ -28,6 +29,7 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
         _dbContext = dbContext;
         _context = context;
         _articleUrlIdentifierService = articleUrlIdentifierService;
+        _tagsService = tagsService;
     }
 
     public async Task<Result> Handle(UpdateArticle command, CancellationToken cancellationToken)
@@ -93,13 +95,16 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
             currentArticle.UpdateThumbnail(uploadPictureResult.Data);
         }
 
+        List<Tag> tags = await _tagsService.ConvertToValidTagsAsync(command.Tags);
+
         currentArticle.Update(
             command.Title,
             command.Description,
             command.Content,
             url,
             destLang,
-            _clock.UtcNow);
+            _clock.UtcNow,
+            tags);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
 

@@ -2,10 +2,9 @@
 using GreenOnSoftware.Core.Identity;
 using GreenOnSoftware.Core.Models.Ratings;
 using GreenOnSoftware.Core.Models.Reviews;
-using Microsoft.AspNetCore.Identity;
-using System.Linq;
 
 namespace GreenOnSoftware.Core.Models;
+
 public class Article : Entity
 {
     private Article()
@@ -13,7 +12,7 @@ public class Article : Entity
 
     }
 
-    public Article(string title, string? description, string content, string? thumbnailUrl, string url, Language lang, Guid authorId, DateTime operationDate)
+    public Article(string title, string? description, string content, string? thumbnailUrl, string url, Language lang, Guid authorId, DateTime operationDate, List<Tag> tags)
     {
         CreatedDate = ModifiedDate = operationDate;
         Title = title;
@@ -24,6 +23,7 @@ public class Article : Entity
         AuthorId = authorId;
         Status = Status.Draft;
         Lang = lang;
+        Tags = tags.Select(x => new ArticleTag(x)).ToList();
     }
 
     public DateTime CreatedDate { get; private set; }
@@ -49,7 +49,9 @@ public class Article : Entity
 
     public List<Review> Reviews { get; private set; } = new();
 
-    public void Update(string title, string? description, string content, string url, Language lang, DateTime operationDate)
+    public List<ArticleTag> Tags { get; private set; } = new();
+
+    public void Update(string title, string? description, string content, string url, Language lang, DateTime operationDate, List<Tag> tags)
     {
         Title = title;
         Description = description;
@@ -57,6 +59,8 @@ public class Article : Entity
         Url = url;
         ModifiedDate = operationDate;
         Lang = lang;
+
+        UpdateTags(tags);
     }
 
     public void UpdateThumbnail(string thumbnailUrl)
@@ -266,5 +270,22 @@ public class Article : Entity
     {
         return Reviews
             .OrderByDescending(x => x.CreatedDate);
+    }
+
+    private void UpdateTags(List<Tag> tags)
+    {
+        IEnumerable<ArticleTag> newTags = tags
+            .Where(x => Tags.Any(y => y.TagId == x.Id))
+            .Select(x => new ArticleTag(x));
+
+        IEnumerable<ArticleTag> tagsToRemove = Tags
+            .Where(x => !tags.Any(y => y.Id == x.TagId));
+
+        foreach (var articleTag in tagsToRemove)
+        {
+            Tags.Remove(articleTag);
+        }
+
+        Tags.AddRange(newTags);
     }
 }

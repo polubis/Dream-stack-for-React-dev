@@ -19,5 +19,18 @@ public class UpdateArticleValidator : AbstractValidator<UpdateArticle>
             .MaximumLength(2)
             .Must(x => Enum.TryParse<Language>(x, ignoreCase: true, out _))
             .WithMessage("Lang must have valid values");
+
+        RuleFor(x => x.Tags)
+           .NotEmpty()
+           .Must(x => x.Length >= 1 && x.Length <= 10)
+           .WithMessage(x => "Number of tags must be between 1 and 10");
+
+        RuleForEach(x => x.Tags)
+            .ChildRules(tag =>
+                tag.RuleFor(x => x)
+                    .MinimumLength(1)
+                    .MaximumLength(20)
+                    .Matches(@"^([A-Z][a-z0-9\+\&\#\!\=\.\@\*]*)+$")
+                    .WithMessage("Tag must be in PascalCase. Allowed special characters: ., #, $, =, +, !, @, *"));
     }
 }

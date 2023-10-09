@@ -9,4 +9,5 @@ public record AddArticle(
     string? Description,
     string Content,
     IFormFile Thumbnail,
-    string Lang) : IRequest<Result>;
+    string Lang,
+    string[] Tags) : IRequest<Result>;

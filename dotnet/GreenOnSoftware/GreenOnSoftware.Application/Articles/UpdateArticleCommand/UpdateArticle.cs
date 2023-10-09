@@ -10,7 +10,8 @@ public record UpdateArticle(
     string? Description,
     string Content,
     IFormFile? Thumbnail, 
-    string Lang) : IRequest<Result>
+    string Lang,
+    string[] Tags) : IRequest<Result>
 {
     internal string UrlIdentifier { get; private set; }
     internal Language CurrentLang { get; private set; }
