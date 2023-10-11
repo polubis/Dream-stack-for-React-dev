@@ -10,3 +10,4 @@ export * from './lib/use-isomorphic-layout-effect';
 export * from './lib/use-scroll';
 export * from './lib/use-query-params';
 export * from './lib/use-scroll-hide';
+export * from './lib/use-scroll-to';
