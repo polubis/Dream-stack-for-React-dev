@@ -6,6 +6,8 @@ public class ArticleTag
 
     public Guid TagId { get; private set; }
 
+    public  Article Article { get; set; }
+
     public Guid ArticleId { get; private set; }
 
     private ArticleTag()

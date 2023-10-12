@@ -4,6 +4,8 @@ public class Tag : Entity
 {
     public string Name { get; private set; }
 
+    public ICollection<Article> Articles { get; set; }
+
     private Tag()
     {
 

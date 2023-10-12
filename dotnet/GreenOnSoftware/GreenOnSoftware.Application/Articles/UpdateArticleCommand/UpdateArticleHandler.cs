@@ -45,8 +45,13 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
 
         Language destLang = Enum.Parse<Language>(command.Lang, ignoreCase: true);
 
-        Article? currentArticle = await _dbContext.Articles
-            .FirstOrDefaultAsync(x => !x.IsDeleted && x.Lang == command.CurrentLang && x.Url == command.UrlIdentifier, cancellationToken);
+        var queryResult = await _dbContext.Articles
+            .Include(x => x.Tags)
+            .Where(x => !x.IsDeleted && x.Lang == command.CurrentLang && x.Url == command.UrlIdentifier)
+            .Select(article => new { article, tags = article.Tags.Select(t => new { t.Id, t.Articles.Count }) })
+            .FirstOrDefaultAsync();
+
+        Article? currentArticle = queryResult?.article;
 
         if (currentArticle is null)
         {
@@ -95,17 +100,19 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
             currentArticle.UpdateThumbnail(uploadPictureResult.Data);
         }
 
-        List<Tag> tags = await _tagsService.ConvertToValidTagsAsync(command.Tags);
-
         currentArticle.Update(
             command.Title,
             command.Description,
             command.Content,
             url,
             destLang,
-            _clock.UtcNow,
-            tags);
+            _clock.UtcNow);
 
+        List<Tag> tags = await _tagsService.ConvertToValidTagsAsync(command.Tags);
+        IEnumerable<Tag> tagsToRemove = currentArticle.UpdateTags(tags);
+        tagsToRemove = tagsToRemove.Where(x => queryResult!.tags.Any(y => y.Id == x.Id && y.Count == 1)).ToList();
+
+        _dbContext.Tags.RemoveRange(tagsToRemove);
         await _dbContext.SaveChangesAsync(cancellationToken);
 
         result.SetData(new UpdateArticleResult {

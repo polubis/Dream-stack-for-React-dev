@@ -44,9 +44,6 @@ public class ArticleConfiguration : IEntityTypeConfiguration<Article>
             .OnDelete(DeleteBehavior.SetNull);
 
         builder.HasMany(x => x.Tags)
-            .WithOne()
-            .IsRequired()
-            .HasForeignKey(x => x.ArticleId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .WithMany(x => x.Articles);
     }
 }

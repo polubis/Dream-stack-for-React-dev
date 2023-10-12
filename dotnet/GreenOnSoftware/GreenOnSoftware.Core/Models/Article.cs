@@ -23,7 +23,7 @@ public class Article : Entity
         AuthorId = authorId;
         Status = Status.Draft;
         Lang = lang;
-        Tags = tags.Select(x => new ArticleTag(x)).ToList();
+        Tags = tags;
     }
 
     public DateTime CreatedDate { get; private set; }
@@ -49,9 +49,9 @@ public class Article : Entity
 
     public List<Review> Reviews { get; private set; } = new();
 
-    public List<ArticleTag> Tags { get; private set; } = new();
+    public List<Tag> Tags { get; private set; } = new();
 
-    public void Update(string title, string? description, string content, string url, Language lang, DateTime operationDate, List<Tag> tags)
+    public void Update(string title, string? description, string content, string url, Language lang, DateTime operationDate)
     {
         Title = title;
         Description = description;
@@ -59,8 +59,6 @@ public class Article : Entity
         Url = url;
         ModifiedDate = operationDate;
         Lang = lang;
-
-        UpdateTags(tags);
     }
 
     public void UpdateThumbnail(string thumbnailUrl)
@@ -272,14 +270,14 @@ public class Article : Entity
             .OrderByDescending(x => x.CreatedDate);
     }
 
-    private void UpdateTags(List<Tag> tags)
+    public IEnumerable<Tag> UpdateTags(List<Tag> tags)
     {
-        IEnumerable<ArticleTag> newTags = tags
-            .Where(x => Tags.Any(y => y.TagId == x.Id))
-            .Select(x => new ArticleTag(x));
+        IEnumerable<Tag> newTags = tags
+            .Where(x => !Tags.Any(y => y.Id == x.Id));
 
-        IEnumerable<ArticleTag> tagsToRemove = Tags
-            .Where(x => !tags.Any(y => y.Id == x.TagId));
+        IEnumerable<Tag> tagsToRemove = Tags
+            .Where(x => !tags.Any(y => y.Id == x.Id))
+            .ToList();
 
         foreach (var articleTag in tagsToRemove)
         {
@@ -287,5 +285,7 @@ public class Article : Entity
         }
 
         Tags.AddRange(newTags);
+
+        return tagsToRemove;
     }
 }

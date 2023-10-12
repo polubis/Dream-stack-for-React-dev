@@ -21,6 +21,8 @@ using GreenOnSoftware.Application.Reviews.DeleteReviewCommand;
 using GreenOnSoftware.Application.Reviews.GetReviewsQuery;
 using GreenOnSoftware.Core.Enums;
 using GreenOnSoftware.Application.Ratings.UpdateArticleRate;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using GreenOnSoftware.Application.Articles.GetTagsQuery;
 
 namespace GreenOnSoftware.Api.Controllers;
 
@@ -240,6 +242,20 @@ public class ArticlesController : ControllerBase
         return Ok(result);
     }
 
+    [AllowAnonymous]
+    [HttpGet("Tags")]
+    [SwaggerResponse(StatusCodes.Status200OK, type: typeof(IEnumerable<string>))]
+    public async Task<IActionResult> GetTags()
+    {
+        var result = await _mediator.Send(new GetTags());
+
+        if (result.HasErrors)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
     #endregion Articles
 
     #region Ratings

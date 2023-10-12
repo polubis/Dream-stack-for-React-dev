@@ -22,6 +22,21 @@ namespace GreenOnSoftware.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("ArticleTag", b =>
+                {
+                    b.Property<Guid>("ArticlesId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TagsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ArticlesId", "TagsId");
+
+                    b.HasIndex("TagsId");
+
+                    b.ToTable("ArticleTag");
+                });
+
             modelBuilder.Entity("GreenOnSoftware.Core.Identity.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -157,21 +172,6 @@ namespace GreenOnSoftware.DataAccess.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Articles");
-                });
-
-            modelBuilder.Entity("GreenOnSoftware.Core.Models.ArticleTag", b =>
-                {
-                    b.Property<Guid>("TagId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ArticleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("TagId", "ArticleId");
-
-                    b.HasIndex("ArticleId");
-
-                    b.ToTable("ArticleTag");
                 });
 
             modelBuilder.Entity("GreenOnSoftware.Core.Models.Comment", b =>
@@ -347,7 +347,7 @@ namespace GreenOnSoftware.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tag");
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -466,6 +466,21 @@ namespace GreenOnSoftware.DataAccess.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ArticleTag", b =>
+                {
+                    b.HasOne("GreenOnSoftware.Core.Models.Article", null)
+                        .WithMany()
+                        .HasForeignKey("ArticlesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GreenOnSoftware.Core.Models.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("GreenOnSoftware.Core.Identity.UserRole", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", "Role")
@@ -491,23 +506,6 @@ namespace GreenOnSoftware.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Author");
-                });
-
-            modelBuilder.Entity("GreenOnSoftware.Core.Models.ArticleTag", b =>
-                {
-                    b.HasOne("GreenOnSoftware.Core.Models.Article", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("ArticleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GreenOnSoftware.Core.Models.Tag", "Tag")
-                        .WithMany()
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tag");
                 });
 
             modelBuilder.Entity("GreenOnSoftware.Core.Models.Comment", b =>
@@ -626,8 +624,6 @@ namespace GreenOnSoftware.DataAccess.Migrations
                     b.Navigation("Rates");
 
                     b.Navigation("Reviews");
-
-                    b.Navigation("Tags");
                 });
 #pragma warning restore 612, 618
         }

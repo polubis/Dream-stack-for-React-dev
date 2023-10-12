@@ -10,7 +10,7 @@ namespace GreenOnSoftware.DataAccess.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Tag",
+                name: "Tags",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -18,37 +18,37 @@ namespace GreenOnSoftware.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tag", x => x.Id);
+                    table.PrimaryKey("PK_Tags", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "ArticleTag",
                 columns: table => new
                 {
-                    TagId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ArticleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ArticlesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TagsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ArticleTag", x => new { x.TagId, x.ArticleId });
+                    table.PrimaryKey("PK_ArticleTag", x => new { x.ArticlesId, x.TagsId });
                     table.ForeignKey(
-                        name: "FK_ArticleTag_Articles_ArticleId",
-                        column: x => x.ArticleId,
+                        name: "FK_ArticleTag_Articles_ArticlesId",
+                        column: x => x.ArticlesId,
                         principalTable: "Articles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ArticleTag_Tag_TagId",
-                        column: x => x.TagId,
-                        principalTable: "Tag",
+                        name: "FK_ArticleTag_Tags_TagsId",
+                        column: x => x.TagsId,
+                        principalTable: "Tags",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ArticleTag_ArticleId",
+                name: "IX_ArticleTag_TagsId",
                 table: "ArticleTag",
-                column: "ArticleId");
+                column: "TagsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -57,7 +57,7 @@ namespace GreenOnSoftware.DataAccess.Migrations
                 name: "ArticleTag");
 
             migrationBuilder.DropTable(
-                name: "Tag");
+                name: "Tags");
         }
     }
 }

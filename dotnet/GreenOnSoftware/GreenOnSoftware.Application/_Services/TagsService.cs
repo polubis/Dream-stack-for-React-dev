@@ -18,11 +18,8 @@ public class TagsService : ITagsService
     public async Task<List<Tag>> GetAllUniqueTagsAsync()
     {
         return await _dbContext
-            .Articles
-            .Where(x => !x.IsDeleted && x.Status == Status.Accepted)
-            .SelectMany(x => x.Tags)
-            .Select(x => x.Tag)
-            .DistinctBy(x => x.Name)
+            .Tags
+            .Where(x=>x.Articles.Any(a=>!a.IsDeleted && a.Status == Status.Accepted))
             .ToListAsync();
     }
 
@@ -40,5 +37,16 @@ public class TagsService : ITagsService
         return existingTags
             .Concat(newTags)
             .ToList();
+    }
+
+    public async Task DeleteUnusedTagsAsync()
+    {
+        var tags = await _dbContext.Tags
+            .Where(x => !x.Articles.Any())
+            .ToListAsync();
+
+        _dbContext.Tags.RemoveRange(tags);
+
+        await _dbContext.SaveChangesAsync();
     }
 }
