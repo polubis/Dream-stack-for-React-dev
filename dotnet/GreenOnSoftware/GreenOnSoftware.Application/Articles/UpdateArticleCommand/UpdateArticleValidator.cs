@@ -22,7 +22,7 @@ public class UpdateArticleValidator : AbstractValidator<UpdateArticle>
 
         RuleFor(x => x.Tags)
            .NotEmpty()
-           .Must(x => x.Length >= 1 && x.Length <= 10)
+           .Must(x => x?.Length >= 1 && x?.Length <= 10)
            .WithMessage(x => "Number of tags must be between 1 and 10");
 
         RuleForEach(x => x.Tags)

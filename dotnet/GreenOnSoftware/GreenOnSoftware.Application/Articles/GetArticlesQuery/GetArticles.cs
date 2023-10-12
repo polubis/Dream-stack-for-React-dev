@@ -3,7 +3,7 @@ using GreenOnSoftware.Core.Enums;
 
 namespace GreenOnSoftware.Application.Articles.GetArticlesQuery;
 
-public record GetArticles(string[]? Status, string? Search, int? ItemsPerPage, int? CurrentPage)
+public record GetArticles(string[]? Status, string? Search, int? ItemsPerPage, int? CurrentPage, string[]? Tags)
     : ISearchQuery<ArticleLookupDto>
 {
     internal Language Lang { get; private set; }
