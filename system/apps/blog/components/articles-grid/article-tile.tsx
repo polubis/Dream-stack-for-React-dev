@@ -7,7 +7,6 @@ import {
   SwapIcon,
   column,
   row,
-  slideIn,
   spacing,
   tokens,
   trim,
@@ -33,8 +32,7 @@ const Container = styled.div`
 
   .article-tile-flipped-container {
     ${column()}
-    ${slideIn('-' + tokens.spacing[150], '0px')}
-        padding: ${tokens.spacing[200]};
+    padding: ${tokens.spacing[200]};
     height: 100%;
 
     .detail {
@@ -68,7 +66,6 @@ const Container = styled.div`
   .article-tile-container {
     ${column()}
     height: 100%;
-    ${slideIn('-' + tokens.spacing[200], '0px')}
 
     .article-tile-image {
       position: relative;
