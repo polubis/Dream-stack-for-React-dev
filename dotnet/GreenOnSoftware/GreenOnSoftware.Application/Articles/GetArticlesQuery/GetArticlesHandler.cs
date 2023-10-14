@@ -49,7 +49,6 @@ internal class GetArticlesHandler : IRequestHandler<GetArticles, PagedResult<Art
             .Where(() => isAnnonymous, x => x.Status == Status.Accepted)
             .Where(() => isGeneralUser, x => x.Status == Status.Accepted || x.AuthorId == _context.Identity.Id)
             .Where(() => isAdminOrContentEditor, x => x.Status != Status.Draft || x.AuthorId == _context.Identity.Id);
-            //.Where(() => query.Tags != null, x => query.Tags.Any(t => query.Tags.Contains(t)));
         
         if(query.Tags?.Length > 0)
         {
