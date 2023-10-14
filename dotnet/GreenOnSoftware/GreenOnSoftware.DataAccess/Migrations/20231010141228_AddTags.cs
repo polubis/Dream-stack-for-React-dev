@@ -49,6 +49,17 @@ namespace GreenOnSoftware.DataAccess.Migrations
                 name: "IX_ArticleTag_TagsId",
                 table: "ArticleTag",
                 column: "TagsId");
+
+            migrationBuilder.Sql(@"
+                DECLARE @unknownId uniqueidentifier  
+                SET @unknownId = NEWID()  
+
+                INSERT INTO Tags(Id, Name)
+                VALUES (@unknownId, 'Unknown');
+
+                INSERT INTO ArticleTag(ArticlesId, TagsId)
+                SELECT Id, @unknownId FROM Articles
+                WHERE Id NOT in (SELECT DISTINCT ArticlesId FROM ArticleTag);");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

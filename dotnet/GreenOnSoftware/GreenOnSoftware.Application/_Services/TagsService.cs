@@ -1,5 +1,4 @@
 ﻿using GreenOnSoftware.Application.Services.Interfaces;
-using GreenOnSoftware.Core.Enums;
 using GreenOnSoftware.Core.Models;
 using GreenOnSoftware.DataAccess;
 using Microsoft.EntityFrameworkCore;
@@ -15,17 +14,9 @@ public class TagsService : ITagsService
         _dbContext = dbContext;
     }
 
-    public async Task<List<Tag>> GetAllUniqueTagsAsync()
-    {
-        return await _dbContext
-            .Tags
-            .Where(x=>x.Articles.Any(a=>!a.IsDeleted && a.Status == Status.Accepted))
-            .ToListAsync();
-    }
-
     public async Task<List<Tag>> ConvertToValidTagsAsync(string[] tags)
     {
-        IEnumerable<Tag> existingTags = await GetAllUniqueTagsAsync();
+        IEnumerable<Tag> existingTags = await GetAllTagsAsync();
 
         existingTags = existingTags
             .Where(x => tags.Any(y => y.Equals(x.Name, StringComparison.OrdinalIgnoreCase)));
@@ -48,5 +39,12 @@ public class TagsService : ITagsService
         _dbContext.Tags.RemoveRange(tags);
 
         await _dbContext.SaveChangesAsync();
+    }
+
+    private async Task<List<Tag>> GetAllTagsAsync()
+    {
+        return await _dbContext
+            .Tags
+            .ToListAsync();
     }
 }
