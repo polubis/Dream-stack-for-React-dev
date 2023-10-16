@@ -4,12 +4,13 @@ import { ArticleTile } from './article-tile';
 import type { ArticlesGridProps } from './defs';
 
 const tile_width = 300;
+const tile_height = 400;
 
 const Container = styled.div`
   display: grid;
   justify-content: center;
   gap: ${tokens.spacing[250]};
-  grid-template-rows: min-content;
+  grid-auto-rows: ${tile_height}px;
   grid-template-columns: repeat(4, minmax(auto, ${tile_width}px));
 
   @media ${L_DOWN} {
@@ -34,7 +35,7 @@ const tags = ['Programming', 'Development', 'Patterns'];
 
 const ArticlesGrid = ({ articles, onGoToClick }: ArticlesGridProps) => {
   return (
-    <Container>
+    <Container className="articles-grid">
       {articles.map(
         ({ id, title, description, thumbnailUrl, authorName, status }) => (
           <ArticleTile

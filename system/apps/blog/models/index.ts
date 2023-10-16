@@ -1,6 +1,6 @@
 import type { FullArticleDto, Url } from '@system/blog-api-models';
 import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
-import type * as Articles from '../store/articles/defs';
+import type { LiveArticlesViewProps } from '../views/live-articles/defs';
 
 interface ArticlePageProps {
   url: Url;
@@ -14,8 +14,6 @@ interface ArticlePageParams {
   };
 }
 
-interface ArticlesPageProps {
-  state: Articles.Ok;
-}
+type ArticlesPageProps = LiveArticlesViewProps;
 
 export type { ArticlePageParams, ArticlePageProps, ArticlesPageProps };

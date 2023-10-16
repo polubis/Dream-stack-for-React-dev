@@ -5,6 +5,7 @@ import {
   Font,
   SM_DOWN,
   SwapIcon,
+  clamp,
   column,
   row,
   slideIn,
@@ -26,9 +27,7 @@ const avatar_size = {
 };
 
 const Container = styled.div`
-  border: 1px solid ${(props) => props.theme.box.outlined.borderColor};
   background: 1px solid ${(props) => props.theme.box.outlined.bg};
-  border-radius: ${tokens.radius[50]};
   overflow: hidden;
 
   .article-tile-flipped-container {
@@ -76,8 +75,7 @@ const Container = styled.div`
       flex-shrink: 0;
 
       img {
-        border-top-right-radius: ${tokens.radius[50]};
-        border-top-left-radius: ${tokens.radius[50]};
+        border-radius: ${tokens.radius[25]};
       }
 
       .article-tile-badges {
@@ -99,6 +97,7 @@ const Container = styled.div`
 
       & > .h6 {
         margin: ${tokens.spacing[100]} 0 ${tokens.spacing[150]} 0;
+        ${clamp(2)}
       }
 
       & > .b3 {
@@ -106,6 +105,7 @@ const Container = styled.div`
       }
 
       & > .b2 {
+        ${clamp(3)}
         margin-bottom: ${tokens.spacing[200]};
       }
 
@@ -142,7 +142,6 @@ const ArticleTile = ({
   thumbnail,
   description,
   author,
-  stack,
   tags,
   status,
   width,
@@ -150,22 +149,17 @@ const ArticleTile = ({
 }: ArticleTileProps) => {
   const toggler = useToggle();
 
-  const { stackAsString, tagsAsString } = useMemo(
+  const { tagsAsString } = useMemo(
     () => ({
-      stackAsString: stack.join(', '),
       tagsAsString: tags.join(', '),
     }),
-    [stack, tags]
+    [tags]
   );
 
   return (
     <Container className="article-tile">
       {toggler.opened ? (
         <div className="article-tile-flipped-container">
-          <div className="detail">
-            <Font variant="b1">Stack ({stack.length})</Font>
-            <Font variant="b3">{stackAsString}</Font>
-          </div>
           <div className="detail">
             <Font variant="b1">Tags ({tags.length})</Font>
             <Font variant="b3">{tagsAsString}</Font>
@@ -229,9 +223,6 @@ const ArticleTile = ({
           </div>
 
           <div className="article-tile-content">
-            <Font variant="b3" title={stackAsString}>
-              {stackAsString}
-            </Font>
             <Font variant="h6" title={title}>
               {title}
             </Font>
