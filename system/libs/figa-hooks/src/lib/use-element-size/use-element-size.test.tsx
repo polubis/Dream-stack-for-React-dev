@@ -52,12 +52,12 @@ describe('Element size can be detected when: ', () => {
 
       expect(observeSpy).toHaveBeenCalledTimes(1);
       expect(observeSpy).toHaveBeenCalledWith(document.body);
-      expect(result.current.state).toEqual({
+      expect(result.current[0]).toEqual({
         status: 'undetected',
       } as ElementSizeState);
 
       await waitFor(() => {
-        expect(result.current.state).toEqual({
+        expect(result.current[0]).toEqual({
           status: 'detected',
           height: HEIGHT,
           width: WIDTH,
@@ -67,7 +67,7 @@ describe('Element size can be detected when: ', () => {
 
     it('updates state if listening native HTML element', async () => {
       const ComponentFixture = () => {
-        const { ref, state } = useElementSize<HTMLDivElement>();
+        const [state, ref] = useElementSize<HTMLDivElement>();
         return (
           <div ref={ref}>
             {state.status === 'detected'

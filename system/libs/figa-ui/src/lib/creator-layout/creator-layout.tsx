@@ -124,7 +124,7 @@ const CreatorLayout = ({
   ...props
 }: CreatorLayoutProps) => {
   const [view, setView] = useState<CreatorLayoutView>('undetected');
-  const { state: size } = useElementSize({ delay: 20 });
+  const [size] = useElementSize({ delay: 20 });
 
   const [Code, Preview] = children;
 
