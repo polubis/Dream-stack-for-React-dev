@@ -17,4 +17,6 @@ public class ArticleLookupDto
 
     [JsonConverter(typeof(LanguageToTextConverter))]
     public Language Lang { get; set; }
+
+    public string[] Tags { get; set; }
 }

@@ -2,10 +2,9 @@
 using GreenOnSoftware.Core.Identity;
 using GreenOnSoftware.Core.Models.Ratings;
 using GreenOnSoftware.Core.Models.Reviews;
-using Microsoft.AspNetCore.Identity;
-using System.Linq;
 
 namespace GreenOnSoftware.Core.Models;
+
 public class Article : Entity
 {
     private Article()
@@ -13,7 +12,7 @@ public class Article : Entity
 
     }
 
-    public Article(string title, string? description, string content, string? thumbnailUrl, string url, Language lang, Guid authorId, DateTime operationDate)
+    public Article(string title, string? description, string content, string? thumbnailUrl, string url, Language lang, Guid authorId, DateTime operationDate, List<Tag> tags)
     {
         CreatedDate = ModifiedDate = operationDate;
         Title = title;
@@ -24,6 +23,7 @@ public class Article : Entity
         AuthorId = authorId;
         Status = Status.Draft;
         Lang = lang;
+        Tags = tags;
     }
 
     public DateTime CreatedDate { get; private set; }
@@ -48,6 +48,8 @@ public class Article : Entity
     public List<AnnonymousArticleRate> AnnonymousRates { get; private set; } = new();
 
     public List<Review> Reviews { get; private set; } = new();
+
+    public List<Tag> Tags { get; private set; } = new();
 
     public void Update(string title, string? description, string content, string url, Language lang, DateTime operationDate)
     {
@@ -266,5 +268,24 @@ public class Article : Entity
     {
         return Reviews
             .OrderByDescending(x => x.CreatedDate);
+    }
+
+    public IEnumerable<Tag> UpdateTags(List<Tag> tags)
+    {
+        IEnumerable<Tag> newTags = tags
+            .Where(x => !Tags.Any(y => y.Id == x.Id));
+
+        IEnumerable<Tag> tagsToRemove = Tags
+            .Where(x => !tags.Any(y => y.Id == x.Id))
+            .ToList();
+
+        foreach (var articleTag in tagsToRemove)
+        {
+            Tags.Remove(articleTag);
+        }
+
+        Tags.AddRange(newTags);
+
+        return tagsToRemove;
     }
 }
