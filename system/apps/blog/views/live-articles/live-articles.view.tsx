@@ -8,7 +8,7 @@ import {
 } from '../../store/live-articles';
 import { ArticlesGrid, OnGoToClick } from '../../components/articles-grid';
 import { InfoSection } from '../../components/info-section';
-import { Box, Button, Loader, column, tokens } from '@system/figa-ui';
+import { Button, column, tokens } from '@system/figa-ui';
 import { useRouter } from 'next/router';
 import { useLang } from '../../dk';
 import { useCallback } from 'react';
@@ -54,6 +54,10 @@ const LiveArticlesView = () => {
 
   useScroll({ onScroll: handleLoadMore });
 
+  if (liveArticlesState.is === 'idle') {
+    throw Error('You tried render with ' + liveArticlesState.is);
+  }
+
   return (
     <>
       <MainLayout offPadding>
@@ -73,11 +77,7 @@ const LiveArticlesView = () => {
               description="Change filters and try again 🔃."
             />
           )}
-          {liveArticlesState.is === 'idle' && (
-            <Box margin="auto">
-              <Loader size="big" />
-            </Box>
-          )}
+
           {liveArticlesState.is === 'fail' && (
             <InfoSection
               title="❌ Ups... Something went wrong!"
@@ -95,7 +95,12 @@ const LiveArticlesView = () => {
 };
 
 const ConnectedLiveArticlesView = (props: LiveArticlesViewProps) => {
-  useStoreSync(useLiveArticlesStore, { is: 'ok', ...props })();
+  const state = useLiveArticlesStore();
+  useStoreSync(
+    useLiveArticlesStore,
+    { is: 'ok', ...props },
+    state.is === 'idle'
+  )();
 
   return <LiveArticlesView />;
 };
