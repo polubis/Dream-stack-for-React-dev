@@ -1,35 +1,36 @@
-import { useSwiper } from 'swiper/react';
 import styled from 'styled-components';
 import { BsChevronCompactRight } from 'react-icons/bs';
 
+import type { ButtonProps } from '../button';
+
 const StyledButton = styled.button`
   position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 8%;
+  right: 2%;
+  top: 50%;
+  transform: translateY(-100%);
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
   margin: 0;
   border: none;
   outline: none;
   padding: 0;
   margin: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: #ffffff66;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   z-index: 1;
   & > svg {
-    color: #aaa;
-    transition: 0.1s;
-  }
-  &:hover > svg {
     color: white;
+    transition: 0.1s;
   }
 `;
 
-const SlideNextButton = () => {
-  const swiper = useSwiper();
-
+const SlideNextButton = ({ onClick }: ButtonProps) => {
   return (
-    <StyledButton onClick={() => swiper.slideNext()}>
+    <StyledButton onClick={onClick}>
       <BsChevronCompactRight size={30} />
     </StyledButton>
   );

@@ -6,4 +6,9 @@ interface SliderProps {
   loop?: boolean;
 }
 
-export type { SliderProps };
+interface ButtonProps {
+  onClick: () => void;
+  icon: () => JSX.Element;
+}
+
+export type { SliderProps, ButtonProps };

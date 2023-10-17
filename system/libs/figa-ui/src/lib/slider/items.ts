@@ -5,7 +5,7 @@ export const items = [
   },
   {
     label: 'item2',
-    img: 'https://source.unsplash.com/random/?mountains',
+    img: 'https://source.unsplash.com/random/?mountains,ocean',
   },
   {
     label: 'item3',
@@ -22,5 +22,9 @@ export const items = [
   {
     label: 'item6',
     img: 'https://source.unsplash.com/random/?animals,forest',
+  },
+  {
+    label: 'item7',
+    img: 'https://source.unsplash.com/random/?computers,programming',
   },
 ];
