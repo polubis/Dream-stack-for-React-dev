@@ -2,10 +2,10 @@ import type { ArticlesPageProps } from '../../../models';
 import type { GetStaticProps } from 'next';
 import { LiveArticlesView } from '../../../views/live-articles/live-articles.view';
 import { getArticles } from '@system/blog-api';
-import { GetArticlesParams } from '@system/blog-api-models';
+import { LiveArticlesStore } from '../../../store/live-articles';
 
 export const getStaticProps: GetStaticProps<ArticlesPageProps> = async () => {
-  const params: GetArticlesParams = {
+  const params: LiveArticlesStore.Params = {
     CurrentPage: 1,
     ItemsPerPage: 20,
     Status: 'Accepted',

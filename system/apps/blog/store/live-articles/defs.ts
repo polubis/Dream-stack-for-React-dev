@@ -1,8 +1,9 @@
-import {
+import type {
   GetArticlesParams,
   GetArticlesResponse,
   ResponseError,
 } from '@system/blog-api-models';
+import type { Subscription } from 'rxjs';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace LiveArticlesStore {
@@ -10,27 +11,27 @@ export namespace LiveArticlesStore {
     is: 'idle';
   }
 
+  export type Params = Required<GetArticlesParams>;
+
   export interface SafeState {
-    is: 'loading_more' | 'changing_params' | 'ok';
+    is: 'safe';
+    isLoading: boolean;
+    initialParams: Params;
     response: GetArticlesResponse;
-    params: GetArticlesParams;
+    params: Params;
+    allLoaded: boolean;
+    error: ResponseError | null;
   }
 
-  export interface FailState {
-    is: 'fail';
-    error: ResponseError;
-  }
-
-  export type State = IdleState | SafeState | FailState;
-
-  export interface Actions {
-    loadMore(): Promise<void>;
-    load(params?: Partial<GetArticlesParams>): Promise<void>;
-  }
+  export type State = IdleState | SafeState;
 
   export interface Selectors {
     safeState(): SafeState;
-    allLoaded(): boolean;
-    getSearch(): string;
+    useSafeState(): SafeState;
+  }
+
+  export interface Actions {
+    load(params: Params): void;
+    init(): Subscription;
   }
 }

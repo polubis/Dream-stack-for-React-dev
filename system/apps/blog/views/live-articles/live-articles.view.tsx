@@ -11,10 +11,12 @@ import { InfoSection } from '../../components/info-section';
 import { Button, column, tokens } from '@system/figa-ui';
 import { useRouter } from 'next/router';
 import { useLang } from '../../dk';
-import { useCallback } from 'react';
-import { ScrollState, useScroll } from '@system/figa-hooks';
+import { useCallback, useEffect } from 'react';
 import { live_articles_actions } from '../../store/live-articles/live-articles.actions';
 import { ArticlesJumbo } from './articles-jumbo';
+import { useSearchParams } from 'next/navigation';
+import { useLiveArticlesRouter } from './use-live-articles-router';
+import { type ScrollState, useScroll } from '@system/figa-hooks';
 
 const Container = styled.div`
   ${column()}
@@ -24,69 +26,74 @@ const Container = styled.div`
   }
 `;
 
-const LiveArticlesView = () => {
+const Content = () => {
+  const { go } = useLiveArticlesRouter();
   const router = useRouter();
+  const { response, error } = live_articles_selectors.useSafeState();
   const lang = useLang();
-  const liveArticlesState = useLiveArticlesStore();
 
   const handleGoToClick: OnGoToClick = useCallback(
     (e) => {
-      const liveArticlesState = live_articles_selectors.safeState();
       const id = e.currentTarget.getAttribute('data-article-id');
-      const article = liveArticlesState.response.data.find((a) => a.id === id);
+      const article = response.data.find((a) => a.id === id);
 
       if (!article) throw Error('Cannot find article');
 
       router.push(`/${lang}/articles/${article.url}`);
     },
-    [router, lang]
+    [router, lang, response]
   );
 
-  const handleLoadMore = useCallback((scroll: ScrollState): void => {
-    if (
-      scroll.is === 'progress' &&
-      scroll.value > 20 &&
-      !live_articles_selectors.allLoaded()
-    ) {
-      live_articles_actions.loadMore();
-    }
-  }, []);
+  if (error) {
+    return (
+      <InfoSection
+        title="❌ Ups... Something went wrong!"
+        description="Try again with button below or refresh page if problem occurs 🔃."
+        footer={<Button onClick={() => go(() => ({}))}>Retry</Button>}
+      />
+    );
+  }
+
+  return response.data.length > 0 ? (
+    <ArticlesGrid articles={response.data} onGoToClick={handleGoToClick} />
+  ) : (
+    <InfoSection
+      title="No data for provided filters 💨"
+      description="Change filters and try again 🔃."
+    />
+  );
+};
+
+const LiveArticlesView = () => {
+  const { go, getParams } = useLiveArticlesRouter();
+  const searchParams = useSearchParams();
+
+  const handleLoadMore = useCallback(
+    (scroll: ScrollState): void => {
+      const { allLoaded } = live_articles_selectors.safeState();
+      const shouldLoad =
+        scroll.is === 'progress' && scroll.value > 20 && !allLoaded;
+
+      if (!shouldLoad) return;
+
+      go(({ CurrentPage }) => ({ CurrentPage: CurrentPage + 1 }));
+    },
+    [go]
+  );
 
   useScroll({ onScroll: handleLoadMore });
 
-  if (liveArticlesState.is === 'idle') {
-    throw Error('You tried render with ' + liveArticlesState.is);
-  }
+  useEffect(
+    () => live_articles_actions.load(getParams()),
+    [searchParams, getParams]
+  );
 
   return (
     <>
       <MainLayout offPadding>
         <Container>
           <ArticlesJumbo />
-          {(liveArticlesState.is === 'ok' ||
-            liveArticlesState.is === 'loading_more' ||
-            liveArticlesState.is === 'changing_params') &&
-          liveArticlesState.response.data.length > 0 ? (
-            <ArticlesGrid
-              articles={liveArticlesState.response.data}
-              onGoToClick={handleGoToClick}
-            />
-          ) : (
-            <InfoSection
-              title="No data for provided filters 💨"
-              description="Change filters and try again 🔃."
-            />
-          )}
-
-          {liveArticlesState.is === 'fail' && (
-            <InfoSection
-              title="❌ Ups... Something went wrong!"
-              description="Try again with button below or refresh page if problem occurs 🔃."
-              footer={
-                <Button onClick={() => window.location.reload()}>Retry</Button>
-              }
-            />
-          )}
+          <Content />
         </Container>
       </MainLayout>
       <LeftBar />
@@ -94,12 +101,32 @@ const LiveArticlesView = () => {
   );
 };
 
-const ConnectedLiveArticlesView = (props: LiveArticlesViewProps) => {
-  const state = useLiveArticlesStore();
+const ConnectedLiveArticlesView = ({
+  params,
+  response,
+}: LiveArticlesViewProps) => {
+  const liveArticlesState = useLiveArticlesStore();
+
+  useEffect(() => {
+    const sub = live_articles_actions.init();
+
+    return () => {
+      sub.unsubscribe();
+    };
+  }, []);
+
   useStoreSync(
     useLiveArticlesStore,
-    { is: 'ok', ...props },
-    state.is === 'idle'
+    {
+      is: 'safe',
+      error: null,
+      allLoaded: response.data.length < params.ItemsPerPage,
+      initialParams: params,
+      params,
+      response,
+      isLoading: false,
+    },
+    liveArticlesState.is === 'idle'
   )();
 
   return <LiveArticlesView />;

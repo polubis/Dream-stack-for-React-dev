@@ -1,11 +1,9 @@
-import type {
-  GetArticlesParams,
-  GetArticlesResponse,
-} from '@system/blog-api-models';
+import type { GetArticlesResponse } from '@system/blog-api-models';
+import type { LiveArticlesStore } from '../../store/live-articles';
 
 interface LiveArticlesViewProps {
   response: GetArticlesResponse;
-  params: GetArticlesParams;
+  params: LiveArticlesStore.Params;
 }
 
 export type { LiveArticlesViewProps };

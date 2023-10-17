@@ -14,15 +14,12 @@ import {
   tokens,
 } from '@system/figa-ui';
 import Image from 'next/image';
-import { useSubject } from '@system/figa-hooks';
-import {
-  live_articles_actions,
-  live_articles_selectors,
-  useLiveArticlesStore,
-} from '../../store/live-articles';
 import Link from 'next/link';
 import { useLang } from '../../dk';
-import { useState } from 'react';
+import { type ChangeEventHandler, useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { live_articles_selectors } from '../../store/live-articles';
+import { useLiveArticlesRouter } from './use-live-articles-router';
 
 const Container = styled.div`
   position: relative;
@@ -91,14 +88,24 @@ const Container = styled.div`
 `;
 
 const ArticlesJumbo = () => {
-  const liveArticlesState = useLiveArticlesStore();
-  const [search, setSearch] = useState(live_articles_selectors.getSearch);
+  const searchParams = useSearchParams();
+  const { getParams, go } = useLiveArticlesRouter();
+  const liveArticlesState = live_articles_selectors.safeState();
+  const [search, setSearch] = useState('');
   const lang = useLang();
 
-  const changed = useSubject({
-    cb: live_articles_actions.load,
-    delay: 500,
-  });
+  useEffect(() => setSearch(getParams().Search), [searchParams, getParams]);
+
+  const handleSearchChange = (value: string): void => {
+    go(() => ({
+      Search: value,
+      CurrentPage: 1,
+    }));
+  };
+
+  const handleType: ChangeEventHandler<HTMLInputElement> = (e) => {
+    handleSearchChange(e.target.value);
+  };
 
   return (
     <Container>
@@ -121,23 +128,13 @@ const ArticlesJumbo = () => {
         </Font>
         <div className="articles-jumbo-filters">
           <Input
-            loading={liveArticlesState.is === 'changing_params'}
+            loading={liveArticlesState.isLoading}
             value={search}
             placeholder="🏸 Type to find article..."
-            onChange={(e) => {
-              setSearch(e.target.value);
-              changed.emit({
-                Search: e.target.value,
-              });
-            }}
+            onChange={handleType}
             suffx={
               search.length > 0 && (
-                <Button
-                  onClick={() => {
-                    setSearch('');
-                    live_articles_actions.load({ Search: '' });
-                  }}
-                >
+                <Button onClick={() => handleSearchChange('')}>
                   <CloseIcon />
                 </Button>
               )
