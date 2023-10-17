@@ -1,103 +1,128 @@
 import { renderHook, waitFor, render, screen } from '@testing-library/react';
 import { useElementSize } from './use-element-size';
-import type { ElementSizeStateStatus, ElementSizeState } from './defs';
 
 describe('Element size can be detected when: ', () => {
-  describe('tracks and', () => {
-    const originalObserver = global.ResizeObserver;
-    let disconnectSpy: jest.Mock;
-    let observeSpy: jest.Mock;
+  const height = 600;
+  const width = 800;
 
-    const HEIGHT = 600;
-    const WIDTH = 800;
+  beforeEach(() => {
+    global.ResizeObserver = class MockedResizeObserver {
+      observe = jest.fn();
+      unobserve = jest.fn();
+      disconnect = jest.fn();
+    };
+  });
 
-    beforeEach(() => {
-      disconnectSpy = jest.fn();
-      observeSpy = jest.fn();
+  const ComponentFixture = () => {
+    const [state, ref] = useElementSize<HTMLDivElement>();
+    return (
+      <div ref={ref}>
+        {state.status === 'detected'
+          ? `detected: width: ${state.width}, height: ${state.height}`
+          : state.status}
+      </div>
+    );
+  };
 
-      global.ResizeObserver = class MockedResizeObserver {
-        constructor(cb: ResizeObserverCallback) {
-          setTimeout(() => {
-            cb(
-              [
-                {
-                  contentRect: {
-                    height: HEIGHT,
-                    width: WIDTH,
-                  },
+  it('calculates size for typical HTML node', () => {
+    render(<ComponentFixture />);
+    screen.getByText(`detected: width: 0, height: 0`);
+  });
+
+  it('listens for resize of element', async () => {
+    const observeSpy = jest.fn();
+
+    global.ResizeObserver = class MockedResizeObserver {
+      constructor(cb: ResizeObserverCallback) {
+        setTimeout(() => {
+          cb(
+            [
+              {
+                contentRect: {
+                  height,
+                  width,
                 },
-              ] as ResizeObserverEntry[],
-              this
-            );
-          }, 150);
-        }
+              },
+            ] as ResizeObserverEntry[],
+            this
+          );
+        }, 150);
+      }
 
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        observe = observeSpy;
+      observe = observeSpy;
+      unobserve = jest.fn();
+      disconnect = jest.fn();
+    };
 
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        unobserve = () => {};
+    render(<ComponentFixture />);
 
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        disconnect = disconnectSpy;
-      };
+    await waitFor(() => {
+      screen.getByText(`detected: width: ${width}, height: ${height}`);
     });
+  });
 
-    afterEach(() => {
-      global.ResizeObserver = originalObserver;
-    });
+  it('listens for resize for body', async () => {
+    const observeSpy = jest.fn();
 
-    it('updates state if listening body', async () => {
-      const { result } = renderHook(() => useElementSize());
+    global.ResizeObserver = class MockedResizeObserver {
+      constructor(cb: ResizeObserverCallback) {
+        setTimeout(() => {
+          cb(
+            [
+              {
+                contentRect: {
+                  height,
+                  width,
+                },
+              },
+            ] as ResizeObserverEntry[],
+            this
+          );
+        }, 150);
+      }
 
-      expect(observeSpy).toHaveBeenCalledTimes(1);
-      expect(observeSpy).toHaveBeenCalledWith(document.body);
-      expect(result.current.state).toEqual({
-        status: 'undetected',
-      } as ElementSizeState);
+      observe = observeSpy;
+      unobserve = jest.fn();
+      disconnect = jest.fn();
+    };
 
-      await waitFor(() => {
-        expect(result.current.state).toEqual({
-          status: 'detected',
-          height: HEIGHT,
-          width: WIDTH,
-        } as ElementSizeState);
+    const { result } = renderHook(() => useElementSize());
+
+    await waitFor(() => {
+      expect(result.current[0]).toEqual({
+        status: 'detected',
+        height,
+        width,
       });
     });
+  });
 
-    it('updates state if listening native HTML element', async () => {
-      const ComponentFixture = () => {
-        const { ref, state } = useElementSize<HTMLDivElement>();
-        return (
-          <div ref={ref}>
-            {state.status === 'detected'
-              ? `detected: width: ${state.width}, height: ${state.height}`
-              : state.status}
-          </div>
-        );
-      };
+  it('disconnects after unmount', () => {
+    const disconnectSpy = jest.fn();
+    global.ResizeObserver = class MockedResizeObserver {
+      observe = jest.fn();
+      unobserve = jest.fn();
+      disconnect = disconnectSpy;
+    };
 
-      render(<ComponentFixture />);
+    const { unmount } = renderHook(() => useElementSize());
 
-      const element = document.createElement('div');
-      element.innerHTML = 'undetected' as ElementSizeStateStatus;
+    unmount();
 
-      expect(observeSpy).toHaveBeenCalledTimes(1);
-      expect(observeSpy).toHaveBeenCalledWith(element);
+    expect(disconnectSpy).toHaveBeenCalledTimes(1);
+  });
 
-      screen.getByText('undetected' as ElementSizeStateStatus);
+  it('calculates size for body when mounted', () => {
+    jest
+      .spyOn(document.body, 'getBoundingClientRect')
+      .mockReturnValue({ height, width } as DOMRect);
 
-      await waitFor(() => {
-        screen.getByText(`detected: width: ${WIDTH}, height: ${HEIGHT}`);
-      });
-    });
+    const { result } = renderHook(() => useElementSize());
 
-    it('disconnects after unmount', () => {
-      const { unmount } = renderHook(() => useElementSize());
-
-      unmount();
-
-      expect(disconnectSpy).toHaveBeenCalledTimes(1);
+    expect(result.current[0]).toEqual({
+      status: 'detected',
+      height,
+      width,
     });
   });
 });

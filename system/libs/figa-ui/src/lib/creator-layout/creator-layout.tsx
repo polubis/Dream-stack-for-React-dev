@@ -124,7 +124,7 @@ const CreatorLayout = ({
   ...props
 }: CreatorLayoutProps) => {
   const [view, setView] = useState<CreatorLayoutView>('undetected');
-  const { state: size } = useElementSize({ delay: 20 });
+  const [size] = useElementSize({ delay: 20 });
 
   const [Code, Preview] = children;
 
@@ -174,10 +174,7 @@ const CreatorLayout = ({
       return;
     }
 
-    if (isTUp(width)) {
-      setView('both');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setView('both');
   }, [size]);
 
   const payload: CreatorLayoutPayload = {
