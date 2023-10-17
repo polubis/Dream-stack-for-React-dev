@@ -17,11 +17,12 @@ import Image from 'next/image';
 import { useSubject } from '@system/figa-hooks';
 import {
   live_articles_actions,
+  live_articles_selectors,
   useLiveArticlesStore,
 } from '../../store/live-articles';
 import Link from 'next/link';
 import { useLang } from '../../dk';
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 
 const Container = styled.div`
   position: relative;
@@ -47,6 +48,20 @@ const Container = styled.div`
     ${row()}
 
     .input {
+      .suffx-wrapper .button {
+        ${size(tokens.spacing[500])}
+        background: transparent;
+        padding: 0;
+
+        &:active {
+          outline: none;
+        }
+
+        path {
+          fill: ${(props) => props.theme.font.default.color};
+        }
+      }
+
       @media ${M_UP} {
         width: 300px;
       }
@@ -76,16 +91,14 @@ const Container = styled.div`
 `;
 
 const ArticlesJumbo = () => {
-  const [search, setSearch] = useState('');
   const liveArticlesState = useLiveArticlesStore();
+  const [search, setSearch] = useState(live_articles_selectors.getSearch);
   const lang = useLang();
 
   const changed = useSubject({
     cb: live_articles_actions.load,
     delay: 500,
   });
-
-  const isSearchValid = useMemo(() => search.trim().length > 0, [search]);
 
   return (
     <Container>
@@ -117,7 +130,18 @@ const ArticlesJumbo = () => {
                 Search: e.target.value,
               });
             }}
-            suffx={isSearchValid && <CloseIcon />}
+            suffx={
+              search.length > 0 && (
+                <Button
+                  onClick={() => {
+                    setSearch('');
+                    live_articles_actions.load({ Search: '' });
+                  }}
+                >
+                  <CloseIcon />
+                </Button>
+              )
+            }
           />
           <Button className="articles-jumbo-filters-trigger">
             <FiltersIcon />

@@ -31,5 +31,6 @@ export namespace LiveArticlesStore {
   export interface Selectors {
     safeState(): SafeState;
     allLoaded(): boolean;
+    getSearch(): string;
   }
 }

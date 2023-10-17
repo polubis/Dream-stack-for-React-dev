@@ -4,9 +4,10 @@ import { create, type StoreApi, type UseBoundStore } from 'zustand';
 
 const useStoreSync = <T>(
   useStore: UseBoundStore<StoreApi<T>>,
-  state: T
+  state: T,
+  sync = true
 ): UseBoundStore<StoreApi<T>> => {
-  const unsynced = useRef(true);
+  const unsynced = useRef(sync);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const useServerStore = useMemo(() => create<T>(() => state), []);
 
