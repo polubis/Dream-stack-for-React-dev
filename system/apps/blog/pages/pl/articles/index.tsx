@@ -1,14 +1,28 @@
-import { server_props_getters } from '../../../server';
 import type { ArticlesPageProps } from '../../../models';
-import { ArticlesView } from '../../../views/articles';
 import type { GetStaticProps } from 'next';
+import { LiveArticlesView } from '../../../views/live-articles/live-articles.view';
+import { getArticles } from '@system/blog-api';
+import { GetArticlesParams } from '@system/blog-api-models';
 
 export const getStaticProps: GetStaticProps<ArticlesPageProps> = async () => {
-  return await server_props_getters.getArticles('pl', 'Accepted');
+  const params: GetArticlesParams = {
+    CurrentPage: 1,
+    ItemsPerPage: 20,
+    Status: 'Accepted',
+    lang: 'pl',
+    Search: '',
+  };
+
+  return {
+    props: {
+      response: await getArticles(params),
+      params,
+    },
+  };
 };
 
-const ArticlesPage = ({ state }: ArticlesPageProps) => {
-  return <ArticlesView state={state} />;
+const ArticlesPage = ({ response, params }: ArticlesPageProps) => {
+  return <LiveArticlesView response={response} params={params} />;
 };
 
 export default ArticlesPage;

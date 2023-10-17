@@ -30,7 +30,7 @@ import { get } from '@system/blog-selectors';
 const LABELS = ['Articles', 'Creator'] as const;
 const URLS = ['/articles/', '/articles-creator/'] as const;
 
-const MainLayout = ({ children, sidebar }: MainLayoutProps) => {
+const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
   const lang = useLang();
 
   const links = LABELS.map((label, idx) => (
@@ -45,6 +45,7 @@ const MainLayout = ({ children, sidebar }: MainLayoutProps) => {
 
   return (
     <Layout
+      offPadding={offPadding}
       header={
         <NavBar>
           <Navigation logo={<Logo />} links={links} action={<UserSection />} />
