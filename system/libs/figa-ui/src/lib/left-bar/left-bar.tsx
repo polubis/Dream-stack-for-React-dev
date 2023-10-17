@@ -4,7 +4,7 @@ import c from 'classnames';
 import type { LeftBarProps } from './defs';
 
 const LeftBar = ({ children }: LeftBarProps) => {
-  const [{ is }] = useScroll();
+  const [{ is }] = useScroll({ delay: 0 });
 
   return (
     <div

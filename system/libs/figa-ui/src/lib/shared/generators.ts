@@ -58,6 +58,13 @@ const font = (
   font-weight: ${weight};
 `;
 
+const clamp = (lines: number) => css`
+  display: -webkit-box;
+  -webkit-line-clamp: ${lines};
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;
+
 const appearInAnimation = () => keyframes`
   from {
     opacity: 0;
@@ -189,4 +196,5 @@ export {
   setupFilledIcon,
   setupOutlinedIcon,
   appearIn,
+  clamp,
 };
