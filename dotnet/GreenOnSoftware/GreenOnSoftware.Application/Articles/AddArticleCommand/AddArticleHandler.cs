@@ -18,15 +18,17 @@ internal class AddArticleHandler : IRequestHandler<AddArticle, Result>
     private readonly IThumbnailService _thumbnailService;
     private readonly IContext _context;
     private readonly IArticleUrlIdentifierService _articleUrlIdentifierService;
+    private readonly ITagsService _tagsService;
 
     public AddArticleHandler(IClock clock, GreenOnSoftwareDbContext dbContext, IThumbnailService thumbnailService,
-        IContext context, IArticleUrlIdentifierService articleUrlIdentifierService)
+        IContext context, IArticleUrlIdentifierService articleUrlIdentifierService, ITagsService tagsService)
     {
         _clock = clock;
         _dbContext = dbContext;
         _thumbnailService = thumbnailService;
         _context = context;
         _articleUrlIdentifierService = articleUrlIdentifierService;
+        _tagsService = tagsService;
     }
 
     public async Task<Result> Handle(AddArticle command, CancellationToken cancellationToken)
@@ -53,6 +55,8 @@ internal class AddArticleHandler : IRequestHandler<AddArticle, Result>
 
         string? thumbnailUrl = uploadPictureResult.Data;
 
+        List<Tag> tags = await _tagsService.ConvertToValidTagsAsync(command.Tags);
+
         var newArticle = new Article(
             command.Title,
             command.Description,
@@ -61,7 +65,8 @@ internal class AddArticleHandler : IRequestHandler<AddArticle, Result>
             url,
             lang,
             _context.Identity.Id!,
-            _clock.UtcNow);
+            _clock.UtcNow,
+            tags);
 
         await _dbContext.Articles.AddAsync(newArticle);
         await _dbContext.SaveChangesAsync();

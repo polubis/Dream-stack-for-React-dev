@@ -25,5 +25,17 @@ public class GetArticlesValidator : AbstractValidator<GetArticles>
 
         RuleFor(x => x.CurrentPage)
             .LessThanOrEqualTo(1000);
+
+        RuleFor(x => x.Tags)
+            .Must(x => x is null || x.Length <= 10)
+            .WithMessage(x => "Maximum number of tags: 10");
+
+        RuleForEach(x => x.Tags)
+            .ChildRules(tag =>
+                tag.RuleFor(x => x)
+                    .MinimumLength(1)
+                    .MaximumLength(20)
+                    .Matches(@"^([A-Z][a-z0-9\+\&\#\!\=\.\@\*]*)+$")
+                    .WithMessage("Tag must be in PascalCase. Allowed special characters: ., #, $, =, +, !, @, *"));
     }
 }

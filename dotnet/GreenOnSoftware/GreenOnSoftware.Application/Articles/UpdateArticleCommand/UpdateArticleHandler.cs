@@ -19,8 +19,9 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
     private readonly IBlobStorageService _blobStorageService;
     private readonly IContext _context;
     private readonly IArticleUrlIdentifierService _articleUrlIdentifierService;
+    private readonly ITagsService _tagsService;
 
-    public UpdateArticleHandler(IClock clock, GreenOnSoftwareDbContext dbContext, IBlobStorageService blobStorageService, IThumbnailService thumbnailService, IContext context, IArticleUrlIdentifierService articleUrlIdentifierService)
+    public UpdateArticleHandler(IClock clock, GreenOnSoftwareDbContext dbContext, IBlobStorageService blobStorageService, IThumbnailService thumbnailService, IContext context, IArticleUrlIdentifierService articleUrlIdentifierService, ITagsService tagsService)
     {
         _clock = clock;
         _blobStorageService = blobStorageService;
@@ -28,6 +29,7 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
         _dbContext = dbContext;
         _context = context;
         _articleUrlIdentifierService = articleUrlIdentifierService;
+        _tagsService = tagsService;
     }
 
     public async Task<Result> Handle(UpdateArticle command, CancellationToken cancellationToken)
@@ -43,8 +45,13 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
 
         Language destLang = Enum.Parse<Language>(command.Lang, ignoreCase: true);
 
-        Article? currentArticle = await _dbContext.Articles
-            .FirstOrDefaultAsync(x => !x.IsDeleted && x.Lang == command.CurrentLang && x.Url == command.UrlIdentifier, cancellationToken);
+        var queryResult = await _dbContext.Articles
+            .Include(x => x.Tags)
+            .Where(x => !x.IsDeleted && x.Lang == command.CurrentLang && x.Url == command.UrlIdentifier)
+            .Select(article => new { article, tags = article.Tags.Select(t => new { t.Id, t.Articles.Count }) })
+            .FirstOrDefaultAsync();
+
+        Article? currentArticle = queryResult?.article;
 
         if (currentArticle is null)
         {
@@ -101,6 +108,11 @@ internal sealed class UpdateArticleHandler : IRequestHandler<UpdateArticle, Resu
             destLang,
             _clock.UtcNow);
 
+        List<Tag> tags = await _tagsService.ConvertToValidTagsAsync(command.Tags);
+        IEnumerable<Tag> tagsToRemove = currentArticle.UpdateTags(tags);
+        tagsToRemove = tagsToRemove.Where(x => queryResult!.tags.Any(y => y.Id == x.Id && y.Count == 1)).ToList();
+
+        _dbContext.Tags.RemoveRange(tagsToRemove);
         await _dbContext.SaveChangesAsync(cancellationToken);
 
         result.SetData(new UpdateArticleResult {

@@ -21,4 +21,5 @@ public class ArticleDto
 
     public DateTime CreatedDate { get; set; }
     public DateTime ModifiedDate { get; set; }
+    public string[] Tags { get; set; }
 }

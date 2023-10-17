@@ -42,5 +42,8 @@ public class ArticleConfiguration : IEntityTypeConfiguration<Article>
             .WithMany()
             .HasForeignKey(x=>x.AuthorId)
             .OnDelete(DeleteBehavior.SetNull);
+
+        builder.HasMany(x => x.Tags)
+            .WithMany(x => x.Articles);
     }
 }
