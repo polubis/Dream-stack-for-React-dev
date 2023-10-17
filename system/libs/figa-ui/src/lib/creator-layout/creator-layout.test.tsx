@@ -74,15 +74,10 @@ describe('Creator layout can be used when: ', () => {
 
     mock();
 
-    const { container, asFragment } = creatorLayoutFixture({
+    const { asFragment } = creatorLayoutFixture({
       className: 'my-class',
     });
 
-    const component = container.querySelector('.creator-layout');
-
-    expect(component?.className).toContain(
-      'creator-layout undetected my-class'
-    );
     expect(asFragment()).toMatchSnapshot();
 
     restore();

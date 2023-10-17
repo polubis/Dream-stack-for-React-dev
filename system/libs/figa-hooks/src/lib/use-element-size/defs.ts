@@ -1,3 +1,5 @@
+import type { MutableRefObject } from 'react';
+
 interface ElementSize {
   width: number;
   height: number;
@@ -11,26 +13,24 @@ interface DetectedState extends ElementSize {
   status: 'detected';
 }
 
-interface UnsupportedState {
-  status: 'unsupported';
-}
-
-type ElementSizeState = UndetectedState | DetectedState | UnsupportedState;
+type ElementSizeState = UndetectedState | DetectedState;
 
 type ElementSizeStateStatus = ElementSizeState['status'];
 
-/** Configuration object. */
-interface UseElementSizeConfig {
-  /** It quantifies how much time is needed to broadcast the next event in milliseconds. */
+interface ElementSizeConfig {
   delay?: number;
 }
+
+type ElementSizeReturn<T extends HTMLElement> = Readonly<
+  [ElementSizeState, MutableRefObject<T | null>]
+>;
 
 export type {
   UndetectedState,
   ElementSize,
   DetectedState,
-  UnsupportedState,
   ElementSizeStateStatus,
   ElementSizeState,
-  UseElementSizeConfig,
+  ElementSizeReturn,
+  ElementSizeConfig,
 };

@@ -3,13 +3,27 @@
 exports[`Creator layout can be used when:  [FRAGILE] assigns classes 1`] = `
 <DocumentFragment>
   <div
-    class="sc-jSUZER DFtOs creator-layout undetected my-class"
+    class="sc-jSUZER DFtOs creator-layout code my-class"
   >
     <div
       class="sc-eDvSVe kyLWFC"
     >
       <button>
         Navigation
+      </button>
+    </div>
+    <div
+      class="sc-bcXHqe CwXFH"
+    >
+      <div>
+        Code content
+      </div>
+    </div>
+    <div
+      class="sc-dkrFOg fPnWkf"
+    >
+      <button>
+        Code Toolbox Button
       </button>
     </div>
   </div>
