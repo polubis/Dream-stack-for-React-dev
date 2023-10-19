@@ -28,7 +28,8 @@ type APIPath =
   | 'Articles/Accept'
   | 'Articles/Reject'
   | 'Articles/my'
-  | 'Articles/SendForApproval';
+  | 'Articles/SendForApproval'
+  | 'Articles/Tags';
 
 interface ResponseError {
   key: string;

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import {
   Button,
   CloseIcon,
-  FiltersIcon,
   Font,
   Input,
   M_UP,
@@ -12,14 +11,15 @@ import {
   row,
   size,
   tokens,
+  wrap,
 } from '@system/figa-ui';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLang } from '../../dk';
 import { type ChangeEventHandler, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { live_articles_selectors } from '../../store/live-articles';
 import { useLiveArticlesRouter } from './use-live-articles-router';
+import { FiltersPopover } from './filters-popover';
 
 const Container = styled.div`
   position: relative;
@@ -43,6 +43,7 @@ const Container = styled.div`
 
   .articles-jumbo-filters {
     ${row()}
+    z-index: ${tokens.z[100]};
 
     .input {
       .suffx-wrapper .button {
@@ -70,6 +71,19 @@ const Container = styled.div`
       margin-left: ${tokens.spacing[150]};
       flex-shrink: 0;
     }
+
+    .articles-jumbo-tags {
+      ${wrap()}
+
+      .articles-jumbo-tag {
+        margin: 0 ${tokens.spacing[100]} ${tokens.spacing[100]} 0;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
   }
 
   .articles-jumbo-divider {
@@ -90,7 +104,6 @@ const Container = styled.div`
 const ArticlesJumbo = () => {
   const searchParams = useSearchParams();
   const { getParams, go } = useLiveArticlesRouter();
-  const liveArticlesState = live_articles_selectors.safeState();
   const [search, setSearch] = useState('');
   const lang = useLang();
 
@@ -128,7 +141,6 @@ const ArticlesJumbo = () => {
         </Font>
         <div className="articles-jumbo-filters">
           <Input
-            loading={liveArticlesState.isLoading}
             value={search}
             placeholder="🏸 Type to find article..."
             onChange={handleType}
@@ -140,9 +152,7 @@ const ArticlesJumbo = () => {
               )
             }
           />
-          <Button className="articles-jumbo-filters-trigger">
-            <FiltersIcon />
-          </Button>
+          <FiltersPopover />
         </div>
         <div className="articles-jumbo-divider">
           <div className="divider" />

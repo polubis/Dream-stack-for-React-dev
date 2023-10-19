@@ -33,6 +33,7 @@ const toArticlesParams = ({
   ItemsPerPage: limit,
   CurrentPage: page,
   Status: status,
+  Tags: [],
 });
 
 const changed = new Subject<Articles.Filters>();

@@ -6,7 +6,14 @@ import { getArticle, getArticles } from '@system/blog-api';
 import { ArticleView } from '../../../views/article';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await getArticles({ ItemsPerPage: 50, lang: 'pl' });
+  const { data } = await getArticles({
+    ItemsPerPage: 50,
+    lang: 'pl',
+    CurrentPage: 1,
+    Search: '',
+    Tags: [],
+    Status: 'Accepted',
+  });
 
   return {
     paths: data.map(({ url }) => ({

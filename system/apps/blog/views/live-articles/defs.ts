@@ -6,4 +6,6 @@ interface LiveArticlesViewProps {
   params: LiveArticlesStore.Params;
 }
 
-export type { LiveArticlesViewProps };
+type TagsObject = Record<string, boolean>;
+
+export type { LiveArticlesViewProps, TagsObject };

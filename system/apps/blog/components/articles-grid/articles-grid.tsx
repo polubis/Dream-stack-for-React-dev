@@ -31,13 +31,20 @@ const Container = styled.div`
 `;
 
 const stack = ['React', 'Angular', 'NX', 'TypeScript', 'JavaScript', 'NodeJS'];
-const tags = ['Programming', 'Development', 'Patterns'];
 
 const ArticlesGrid = ({ articles, onGoToClick }: ArticlesGridProps) => {
   return (
     <Container className="articles-grid">
       {articles.map(
-        ({ id, title, description, thumbnailUrl, authorName, status }) => (
+        ({
+          id,
+          title,
+          description,
+          thumbnailUrl,
+          authorName,
+          status,
+          tags,
+        }) => (
           <ArticleTile
             key={id}
             id={id}

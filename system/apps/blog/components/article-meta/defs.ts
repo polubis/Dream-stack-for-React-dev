@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 interface ArticleMetaProps {
-  children: ReactNode[];
+  children: ReactNode;
 }
 
 export type { ArticleMetaProps };

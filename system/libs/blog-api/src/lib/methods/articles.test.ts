@@ -38,16 +38,18 @@ describe('Articles methods works when: ', () => {
 
     jest.spyOn(blogAPI, 'get').mockImplementation(spy);
     const params = mockGetArticlesParams();
-    const { lang, ...expectedParams } = params;
 
     const response = await getArticles(params);
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(response).toEqual(expectedResponse.data);
 
-    expect(spy).toHaveBeenCalledWith(getPath('Articles') + '/' + lang, {
-      params: expectedParams,
-    } as Partial<AxiosRequestConfig>);
+    expect(spy).toHaveBeenCalledWith(
+      getPath('Articles') +
+        '/' +
+        params.lang +
+        '?CurrentPage=1&ItemsPerPage=15&Search=react&Status=Accepted'
+    );
   });
 
   it('get article endpoint can be called with params', async () => {

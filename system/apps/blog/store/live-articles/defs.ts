@@ -11,11 +11,11 @@ export namespace LiveArticlesStore {
     is: 'idle';
   }
 
-  export type Params = Required<GetArticlesParams>;
+  export type Params = GetArticlesParams;
 
   export interface SafeState {
     is: 'safe';
-    isLoading: boolean;
+    loading: boolean;
     initialParams: Params;
     response: GetArticlesResponse;
     params: Params;

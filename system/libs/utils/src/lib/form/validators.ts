@@ -28,4 +28,8 @@ const maxLength =
     return value.length > limit ? 'maxLength' : null;
   };
 
-export { required, minLength, maxLength, min, max };
+const pascalCase = (value: string): NullableValidatorType => {
+  return !/^[A-Z][a-zA-Z0-9]*$/.test(value) ? 'pascalCase' : null;
+};
+
+export { required, minLength, maxLength, pascalCase, min, max };

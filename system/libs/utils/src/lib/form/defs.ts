@@ -4,7 +4,10 @@ type ValidatorType =
   | 'maxLength'
   | 'min'
   | 'max'
-  | 'email';
+  | 'email'
+  | 'pascalCase'
+  | 'duplicated';
+
 type NullableValidatorType = ValidatorType | null;
 
 type FormTouch<Values extends FormValues> = {

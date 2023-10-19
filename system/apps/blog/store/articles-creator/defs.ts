@@ -1,11 +1,17 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 import type {
+  ArticleTag,
+  ArticleTags,
   CreateArticlePayload,
   ResponseError,
 } from '@system/blog-api-models';
 import type { FormState } from '@system/utils';
 
 namespace ArticlesCreator {
+  export interface TagFormData {
+    tag: ArticleTag;
+    tags: ArticleTags;
+  }
   export type FormData = Omit<CreateArticlePayload, 'thumbnail'> & {
     thumbnail: {
       file: File | null;
