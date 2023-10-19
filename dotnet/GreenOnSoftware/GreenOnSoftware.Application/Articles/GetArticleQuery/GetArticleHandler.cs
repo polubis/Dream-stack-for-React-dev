@@ -40,6 +40,7 @@ internal class GetArticleHandler : IRequestHandler<GetArticle, Result<ArticleDto
 
         var article = await _dbContext.Articles
             .Include(x => x.Author)
+            .Include(x => x.Tags)
             .Where(x => !x.IsDeleted)
             .Where(() => isAnnonymous, x => x.Status == Status.Accepted)
             .Where(() => isGeneralUser, x => x.Status == Status.Accepted || x.AuthorId == _context.Identity.Id)
