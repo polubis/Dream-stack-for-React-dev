@@ -17,14 +17,15 @@ const getArticlesParams = (lang: Lang): LiveArticlesStore.Params => {
   const { initialParams } = live_articles_selectors.safeState();
 
   const params = new URLSearchParams(window.location.search);
-
   const status = params.get('Status');
+  const tags = params.get('Tags');
 
   return {
     Search: params.get('Search') ?? initialParams.Search,
     CurrentPage: +(params.get('CurrentPage') ?? initialParams.CurrentPage),
     ItemsPerPage: +(params.get('ItemsPerPage') ?? initialParams.ItemsPerPage),
     Status: isArticleStatus(status) ? status : initialParams.Status,
+    Tags: tags ? decodeURIComponent(tags).split(',') : initialParams.Tags,
     lang,
   };
 };
@@ -40,12 +41,17 @@ const useLiveArticlesRouter = () => {
       ) => Partial<LiveArticlesStore.Params>
     ): void => {
       const params = getArticlesParams(lang);
+      const query = {
+        ...params,
+        ...setter(params),
+      };
+
       router.replace(
         router.asPath,
         {
           query: {
-            ...params,
-            ...setter(params),
+            ...query,
+            Tags: encodeURIComponent(query.Tags.toString()),
           },
         },
         { shallow: true, scroll: false }

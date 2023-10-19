@@ -55,6 +55,7 @@ const mockGetArticlesParams = mock<GetArticlesParams>({
   ItemsPerPage: 15,
   Status: 'Accepted',
   lang: 'en',
+  Tags: [],
 });
 
 const mockGetArticleParams = mock<GetArticleParams>({
@@ -67,7 +68,8 @@ const mockCreateArticlePayload = mock<CreateArticlePayload>({
   title: 'My title',
   description: 'My article description',
   thumbnail: {} as File,
-  content: '### Article content`',
+  tags: ['Angular'],
+  content: '### Article content',
 });
 
 const mockUpdateArticlePayload = mock<UpdateArticlePayload>({
@@ -90,6 +92,7 @@ const mockAxiosResponse = <D>(data: D) =>
 const mockArticle = mock<ArticleDto>({
   id: 'c54cefcb-ccd0-4b94-f68f-08db5ed3b360',
   title: 'Porting for React applications',
+  tags: ['Angular'],
   description:
     "Let's see how you can save time by using the porting technique when migrating from one technology to another.",
   authorEmail: 'Polubis@greenonsoftware.com',

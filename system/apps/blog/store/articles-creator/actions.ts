@@ -45,7 +45,7 @@ const articles_creator_actions = {
     try {
       const {
         form: {
-          values: { title, thumbnail, description, content, lang },
+          values: { title, thumbnail, description, content, lang, tags },
         },
       } = state;
 
@@ -55,6 +55,7 @@ const articles_creator_actions = {
         description,
         content,
         lang,
+        tags,
       };
 
       const { data } = await (url

@@ -17,6 +17,8 @@ import { ArticlesJumbo } from './articles-jumbo';
 import { useSearchParams } from 'next/navigation';
 import { useLiveArticlesRouter } from './use-live-articles-router';
 import { type ScrollState, useScroll } from '@system/figa-hooks';
+import { Subscription } from 'rxjs';
+import { articles_tags_actions } from '../../store/articles-tags/articles-tags.actions';
 
 const Container = styled.div`
   ${column()}
@@ -108,10 +110,12 @@ const ConnectedLiveArticlesView = ({
   const liveArticlesState = useLiveArticlesStore();
 
   useEffect(() => {
-    const sub = live_articles_actions.init();
+    const subs = new Subscription();
+    subs.add(live_articles_actions.init());
+    subs.add(articles_tags_actions.init());
 
     return () => {
-      sub.unsubscribe();
+      subs.unsubscribe();
     };
   }, []);
 
@@ -124,7 +128,7 @@ const ConnectedLiveArticlesView = ({
       initialParams: params,
       params,
       response,
-      isLoading: false,
+      loading: false,
     },
     liveArticlesState.is === 'idle'
   )();

@@ -20,7 +20,7 @@ const { setState } = useLiveArticlesStore;
 const loadAction = new Subject<LiveArticlesStore.Params>();
 const loadAction$ = loadAction.asObservable();
 
-export const live_articles_actions: LiveArticlesStore.Actions = {
+const live_articles_actions: LiveArticlesStore.Actions = {
   load: (params) => {
     loadAction.next(params);
   },
@@ -33,7 +33,7 @@ export const live_articles_actions: LiveArticlesStore.Actions = {
         })),
         filter((payload) => !isEqual(payload.params, payload.state.params)),
         tap(() => {
-          setState({ isLoading: true });
+          setState({ loading: true });
         }),
         debounceTime(350),
         switchMap(({ state, params }) => {
@@ -51,7 +51,7 @@ export const live_articles_actions: LiveArticlesStore.Actions = {
               }
 
               setState({
-                isLoading: false,
+                loading: false,
                 response,
                 allLoaded,
                 error: null,
@@ -59,7 +59,7 @@ export const live_articles_actions: LiveArticlesStore.Actions = {
               });
             }),
             catchError((error: unknown) => {
-              setState({ isLoading: false, error: getError(error) });
+              setState({ loading: false, error: getError(error) });
               return EMPTY;
             })
           );
@@ -68,3 +68,5 @@ export const live_articles_actions: LiveArticlesStore.Actions = {
       .subscribe();
   },
 };
+
+export { live_articles_actions };

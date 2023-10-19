@@ -94,7 +94,7 @@ const ConfirmScreen = () => {
             )}
           </Box>
           <Box orientation="row" spacing={[150]} right>
-            <Button variant="outlined" onClick={handleClose}>
+            <Button variant="outlined" motive="tertiary" onClick={handleClose}>
               Go back
             </Button>
             <Button onClick={handleSubmit}>Submit</Button>

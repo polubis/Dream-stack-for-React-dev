@@ -14,6 +14,8 @@ import type {
 } from './general';
 
 type ArticleStatus = 'Draft' | 'WaitingForApproval' | 'NeedWork' | 'Accepted';
+type ArticleTag = string;
+type ArticleTags = ArticleTag[];
 
 interface ArticleDto {
   id: Id;
@@ -25,6 +27,7 @@ interface ArticleDto {
   status: ArticleStatus;
   url: Url;
   lang: Lang;
+  tags: ArticleTags;
 }
 
 interface ArticleReviewDto {
@@ -41,19 +44,25 @@ interface FullArticleDto extends ArticleDto {
   content: Content;
 }
 
-interface ArticlesFiltersParams {
-  Search?: string;
-  ItemsPerPage?: number;
-  CurrentPage?: number;
-  Status?: ArticleStatus;
+type GetArticlesResponse = PaginatedResponse<ArticleDto[]>;
+interface GetArticlesParams {
+  Search: string;
+  ItemsPerPage: number;
+  CurrentPage: number;
+  Status: ArticleStatus;
+  Tags: ArticleTags;
   lang: Lang;
 }
 
-type GetArticlesResponse = PaginatedResponse<ArticleDto[]>;
-type GetArticlesParams = ArticlesFiltersParams;
-
 type GetYourArticlesResponse = PaginatedResponse<ArticleDto[]>;
-type GetYourArticlesParams = ArticlesFiltersParams;
+interface GetYourArticlesParams {
+  Search: string;
+  ItemsPerPage: number;
+  CurrentPage: number;
+  Status: ArticleStatus;
+  Tags: ArticleTags;
+  lang: Lang;
+}
 
 type GetArticleParams = { url: Url; lang: Lang };
 type GetArticleResponse = Response<FullArticleDto>;
@@ -63,6 +72,7 @@ interface CreateArticlePayload {
   description: Description;
   content: Content;
   lang: Lang;
+  tags: ArticleTags;
   thumbnail: File;
 }
 
@@ -99,6 +109,8 @@ type CreateArticleReviewPayload = Parametrized & { content: Content };
 // @TODO: Ask backend to return full created review.
 type CreateArticleReviewResponse = Response<ArticleReviewDto>;
 
+type GetArticlesTagsResponse = Response<ArticleTags>;
+
 export type {
   AcceptArticlePayload,
   AcceptArticleResponse,
@@ -126,5 +138,7 @@ export type {
   CreateArticleReviewResponse,
   GetYourArticlesParams,
   GetYourArticlesResponse,
-  ArticlesFiltersParams,
+  ArticleTag,
+  ArticleTags,
+  GetArticlesTagsResponse,
 };

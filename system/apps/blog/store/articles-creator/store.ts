@@ -8,6 +8,7 @@ const useArticlesCreatorStore = create<ArticlesCreator.State>(() => ({
   form: creatorForm.init({
     title: '',
     description: '',
+    tags: [],
     thumbnail: {
       file: null,
       preview: [],

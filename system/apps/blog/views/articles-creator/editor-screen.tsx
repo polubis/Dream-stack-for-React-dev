@@ -36,7 +36,8 @@ const EditorScreen = () => {
 
   const {
     form: {
-      values: { thumbnail, title, description, content },
+      values: { thumbnail, title, description, content, tags },
+      invalid,
     },
   } = articlesCreatorStore;
 
@@ -54,7 +55,7 @@ const EditorScreen = () => {
             >
               Back
             </Button>
-            <Button size={2} onClick={handleConfirm}>
+            <Button disabled={invalid} size={2} onClick={handleConfirm}>
               Submit
             </Button>
           </Box>
@@ -163,8 +164,7 @@ const EditorScreen = () => {
         }
         meta={
           <ArticleMeta>
-            <Font variant="b2">React, Angular, JavaScript, TypeScript</Font>
-            <Font variant="b2">Architecture, Design patterns</Font>
+            <Font variant="b2">{tags.join(', ')}</Font>
           </ArticleMeta>
         }
         thumbnail={

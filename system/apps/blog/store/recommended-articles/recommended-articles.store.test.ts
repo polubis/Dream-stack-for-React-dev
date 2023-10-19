@@ -34,8 +34,12 @@ describe('Allows to sign in user when: ', () => {
     await waitFor(() => {
       expect(getArticles).toHaveBeenCalledTimes(1);
       expect(getArticles).toHaveBeenCalledWith({
+        CurrentPage: 1,
         ItemsPerPage: 16,
         lang: 'en',
+        Search: '',
+        Status: 'Accepted',
+        Tags: [],
       } as GetArticlesParams);
     });
 

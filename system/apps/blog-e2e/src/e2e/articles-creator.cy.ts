@@ -84,7 +84,7 @@ describe('Articles maintenance works when: ', () => {
       statusCode: 201,
       body: mockResponse(null),
       delay: 1000,
-    }).as('putArticle');
+    }).as('postArticle');
     cy.intercept(
       'POST',
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
@@ -106,6 +106,9 @@ describe('Articles maintenance works when: ', () => {
     cy.get(
       'input[placeholder="The best title is between 80 and 130 characters"]'
     ).type('My favourite article');
+    cy.get('input[placeholder="React, Angular, RxJs, etc..."]')
+      .type('RxJs')
+      .type('{enter}');
     cy.get(
       'textarea[placeholder="The best description is between 80 and 130 characters"]'
     ).type('Some description added to an article');
@@ -133,7 +136,7 @@ describe('Articles maintenance works when: ', () => {
 
     cy.get('.loader');
 
-    cy.wait(['@putArticle']);
+    cy.wait(['@postArticle']);
 
     cy.get('.button:contains("Submit")');
     cy.get('.button:contains("Go back")');
