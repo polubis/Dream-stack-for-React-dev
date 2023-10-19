@@ -12,7 +12,7 @@ const SignInButton = () => {
 
   if (key === 'pending') {
     return (
-      <Button data-i={get('app-nav-sign-in-btn')} loading>
+      <Button size={2} data-i={get('app-nav-sign-in-btn')} loading>
         Sign In
       </Button>
     );
@@ -20,7 +20,9 @@ const SignInButton = () => {
 
   return (
     <Link href={`/${lang}/sign-in/`}>
-      <Button data-i={get('app-nav-sign-in-btn')}>Sign In</Button>
+      <Button size={2} data-i={get('app-nav-sign-in-btn')}>
+        Sign In
+      </Button>
     </Link>
   );
 };
@@ -29,7 +31,9 @@ const RegisterButton = () => {
   const lang = useLang();
   return (
     <Link href={`/${lang}/register/`}>
-      <Button data-i={get('app-nav-register-btn')}>Register</Button>
+      <Button size={2} data-i={get('app-nav-register-btn')}>
+        Register
+      </Button>
     </Link>
   );
 };
@@ -39,7 +43,7 @@ const UserSection = () => {
 
   if (key === 'idle') {
     return (
-      <Button data-i={get('app-nav-sign-in-btn')} disabled>
+      <Button size={2} data-i={get('app-nav-sign-in-btn')} disabled>
         Sign In
       </Button>
     );
@@ -50,7 +54,7 @@ const UserSection = () => {
   }
 
   return (
-    <Box orientation="row" spacing={[250]}>
+    <Box orientation="row" spacing={[150]}>
       {key === 'unauthorized' && <RegisterButton />}
       <SignInButton />
     </Box>
