@@ -10,7 +10,10 @@ const useMoveToRedirect = () => {
       'moveTo'
     );
 
-    if (!moveToPath) return;
+    if (!moveToPath) {
+      router.push(`/${lang}/your-articles`);
+      return;
+    }
 
     const params = new URLSearchParams(window.location.search).toString();
 

@@ -6,6 +6,7 @@ import {
 } from '../../components/filterable-articles-screen';
 import { useEffect } from 'react';
 import { articles_actions } from '../../store/articles';
+import { your_articles_actions } from 'apps/blog/store/your-articles';
 
 const pathCreator: FilterableArticlesScreenProps['pathCreator'] = (
   _,
@@ -15,18 +16,17 @@ const pathCreator: FilterableArticlesScreenProps['pathCreator'] = (
 };
 
 const YourArticlesView = () => {
-  useEffect(() => {
-    articles_actions.init({ yours: true });
+  // useEffect(() => {
+  //   const sub = your_articles_actions.init();
 
-    return () => {
-      articles_actions.reset();
-    };
-  }, []);
+  //   return () => {
+  //     sub.unsubscribe();
+  //   };
+  // }, []);
 
   return (
     <>
       <MainLayout>
-        <FilterableArticlesScreen pathCreator={pathCreator} />
       </MainLayout>
       <LeftBar />
     </>
