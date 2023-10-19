@@ -509,14 +509,19 @@ const GlobalStyle = createGlobalStyle`
 
     .navigation {
         ${size('100%')}
-        ${row()}
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+
+        @media ${T_DOWN} {
+            grid-template-columns: auto auto;
+        }
 
         .navigation-links {
             ${row()}
             list-style: none;
-            margin: 0 ${tokens.spacing[600]};
             overflow-x: auto;
+            justify-self: center;
             max-width: 74%;
             height: 100%;
 
@@ -593,6 +598,7 @@ const GlobalStyle = createGlobalStyle`
         .navigation-action {
             display: block;
             flex-shrink: 0;
+            justify-self: flex-end;
 
             @media ${T_DOWN} {
                 display: none;
@@ -602,6 +608,7 @@ const GlobalStyle = createGlobalStyle`
         .navigation-mobile-trigger {
             display: none;
             flex-shrink: 0;
+            justify-self: flex-end;
 
             @media ${T_DOWN} {
                 display: block;
