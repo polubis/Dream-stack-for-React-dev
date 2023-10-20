@@ -10,9 +10,6 @@ const Container = styled.div`
   ${column()}
 
   .your-articles-filters {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: ${tokens.spacing[200]};
   }
 `;
 
@@ -24,10 +21,13 @@ const YourArticlesView = () => {
       <MainLayout>
         <Container>
           <div className="your-articles-filters">
-            <ArticlesSearchInput
-              search={params.Search}
-              onChange={(Search) => change({ Search, CurrentPage: 1 })}
-            />
+            <div className="your-articles-filters-wrapper">
+              <ArticlesSearchInput
+                search={params.Search}
+                onChange={(Search) => change({ Search, CurrentPage: 1 })}
+              />
+            </div>
+
             <ArticlesStatusSelect
               status={params.Status}
               onChange={(Status) => change({ Status, CurrentPage: 1 })}
