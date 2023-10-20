@@ -1,4 +1,4 @@
-import { BoxProps } from '../box';
+import type { BoxProps } from '../box';
 import type { DIVIDER_AXIS, DIVIDER_MOTIVES } from './consts';
 
 type DividerAxis = (typeof DIVIDER_AXIS)[number];
