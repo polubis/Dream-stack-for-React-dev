@@ -31,7 +31,6 @@ const pickActiveTags = (tagsObject: TagsObject): ArticleTags =>
     .map(([key]) => key);
 
 const Container = styled.div`
-  margin-left: ${tokens.spacing[150]};
   flex-shrink: 0;
 
   .button.rectangle.size-3 {

@@ -42,6 +42,10 @@ const Container = styled.div`
   .articles-jumbo-filters {
     ${row()}
     z-index: ${tokens.z[100]};
+
+    & > *:first-child {
+      margin-right: ${tokens.spacing[150]};
+    }
   }
 
   .articles-jumbo-divider {
