@@ -46,4 +46,6 @@ const articles_tags_actions: ArticlesTagsStore.Actions = {
   },
 };
 
+articles_tags_actions.init();
+
 export { articles_tags_actions };

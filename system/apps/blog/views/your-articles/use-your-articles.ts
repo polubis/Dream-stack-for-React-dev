@@ -1,4 +1,3 @@
-import { useSubject } from '@system/figa-hooks';
 import {
   YourArticlesStore,
   your_articles_actions,
@@ -9,32 +8,35 @@ import { useEffect, useCallback, useMemo } from 'react';
 import { Lang } from '@system/blog-api-models';
 import { useLang } from '../../dk';
 import { isArticleStatus } from '@system/blog-api';
-import { isEqual } from 'lodash';
 import { isServer } from '@system/utils';
 import { useRouter } from 'next/router';
+import { isEqual } from 'lodash';
 
-const getArticlesParams = (lang: Lang): YourArticlesStore.Params => {
-  const defaults: YourArticlesStore.Params = {
-    lang,
-    Search: '',
-    CurrentPage: 1,
-    ItemsPerPage: 20,
-    Status: 'Draft',
-    Tags: [],
-  };
+const getDefaultArticlesParams = (lang: Lang): YourArticlesStore.Params => ({
+  lang,
+  Search: '',
+  CurrentPage: 1,
+  ItemsPerPage: 20,
+  Status: 'Draft',
+  Tags: [],
+});
 
-  if (isServer()) return defaults;
+const getArticlesParams = (
+  lang: Lang,
+  defaultParams: YourArticlesStore.Params
+): YourArticlesStore.Params => {
+  if (isServer()) return defaultParams;
 
   const params = new URLSearchParams(window.location.search);
   const status = params.get('Status');
   const tags = params.get('Tags');
 
   return {
-    Search: params.get('Search') ?? defaults.Search,
-    CurrentPage: +(params.get('CurrentPage') ?? defaults.CurrentPage),
-    ItemsPerPage: +(params.get('ItemsPerPage') ?? defaults.ItemsPerPage),
-    Status: isArticleStatus(status) ? status : defaults.Status,
-    Tags: tags ? decodeURIComponent(tags).split(',') : defaults.Tags,
+    Search: params.get('Search') ?? defaultParams.Search,
+    CurrentPage: +(params.get('CurrentPage') ?? defaultParams.CurrentPage),
+    ItemsPerPage: +(params.get('ItemsPerPage') ?? defaultParams.ItemsPerPage),
+    Status: isArticleStatus(status) ? status : defaultParams.Status,
+    Tags: tags ? decodeURIComponent(tags).split(',') : defaultParams.Tags,
     lang,
   };
 };
@@ -44,25 +46,30 @@ const useYourArticles = () => {
   const searchParams = useSearchParams();
   const lang = useLang();
   const state = your_articles_selectors.useState();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const params = useMemo(() => getArticlesParams(lang), [lang, searchParams]);
-  const equal = useMemo(() => isEqual(state.params, params), [state, params]);
-
-  const handleLoad = useCallback(
-    (params: YourArticlesStore.Params) => {
-      if (equal) return;
-
-      your_articles_actions.load(params);
-    },
-    [equal]
+  const defaultParams = useMemo(() => getDefaultArticlesParams(lang), [lang]);
+  const params = useMemo(
+    () => getArticlesParams(lang, defaultParams),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [lang, searchParams, defaultParams]
+  );
+  const hasNotDefaultParams = useMemo(
+    () => !isEqual(defaultParams, params),
+    [defaultParams, params]
   );
 
-  const { emit } = useSubject<YourArticlesStore.Params>({
-    delay: 500,
-    cb: handleLoad,
-  });
+  const handleLoad = useCallback((params: YourArticlesStore.Params) => {
+    your_articles_actions.load(params);
+  }, []);
 
-  useEffect(() => emit(params), [params, emit]);
+  useEffect(() => {
+    const sub = your_articles_actions.init();
+
+    return () => {
+      sub.unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => handleLoad(params), [handleLoad, params]);
 
   const change = useCallback(
     (newParams: Partial<YourArticlesStore.Params>): void => {
@@ -85,7 +92,49 @@ const useYourArticles = () => {
     [router, params]
   );
 
-  return { state, params, equal, change };
+  const changeSearch = useCallback(
+    (Search: YourArticlesStore.Params['Search']) => {
+      change({ Search, CurrentPage: 1 });
+    },
+    [change]
+  );
+
+  const changeTags = useCallback(
+    (Tags: YourArticlesStore.Params['Tags']) => {
+      change({ Tags, CurrentPage: 1 });
+    },
+    [change]
+  );
+
+  const changeStatus = useCallback(
+    (Status: YourArticlesStore.Params['Status']) => {
+      change({ Status, CurrentPage: 1 });
+    },
+    [change]
+  );
+
+  const changeToNextPage = useCallback(() => {
+    const state = your_articles_selectors.state();
+
+    if (state.allLoaded) return;
+
+    change({ CurrentPage: params.CurrentPage + 1 });
+  }, [change, params]);
+
+  const reset = useCallback(() => {
+    change(getDefaultArticlesParams(lang));
+  }, [change, lang]);
+
+  return {
+    state,
+    params,
+    hasNotDefaultParams,
+    changeSearch,
+    changeTags,
+    changeStatus,
+    changeToNextPage,
+    reset,
+  };
 };
 
 export { useYourArticles };

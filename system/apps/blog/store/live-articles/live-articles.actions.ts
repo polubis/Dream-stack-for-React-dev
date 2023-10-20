@@ -69,4 +69,6 @@ const live_articles_actions: LiveArticlesStore.Actions = {
   },
 };
 
+live_articles_actions.init();
+
 export { live_articles_actions };

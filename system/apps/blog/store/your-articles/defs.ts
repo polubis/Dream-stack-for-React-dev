@@ -3,6 +3,7 @@ import type {
   GetYourArticlesParams,
   ResponseError,
 } from '@system/blog-api-models';
+import type { Subscription } from 'rxjs';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace YourArticlesStore {
@@ -15,11 +16,12 @@ export namespace YourArticlesStore {
     error: ResponseError | null;
     params: Params | null;
     articles: Articles | null;
+    allLoaded: boolean;
   }
 
   export interface Actions {
-    load(params: Params): Promise<void>;
-    loadMore(params: Params): Promise<void>;
+    init(): Subscription;
+    load(params: Params): void;
   }
 
   export interface Selectors {

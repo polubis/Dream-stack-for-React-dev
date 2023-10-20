@@ -6,6 +6,7 @@ const useYourArticlesStore = create<YourArticlesStore.State>(() => ({
   error: null,
   articles: null,
   params: null,
+  allLoaded: false,
 }));
 
 export { useYourArticlesStore };

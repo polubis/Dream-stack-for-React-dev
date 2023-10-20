@@ -3,15 +3,15 @@ import {
   Box,
   Button,
   CloseIcon,
-  FiltersIcon,
   Font,
   Loader,
   Popover,
+  TagsIcon,
   size,
   tokens,
   wrap,
 } from '@system/figa-ui';
-import { useEffect, useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import { useArticlesTagsStore } from '../../store/articles-tags/articles-tags.store';
 import { articles_tags_actions } from '../../store/articles-tags/articles-tags.actions';
 import type { ArticleTag, ArticleTags } from '@system/blog-api-models';
@@ -25,7 +25,7 @@ const createTagsObject = (tags: ArticleTags): TagsObject => {
   }, {});
 };
 
-const pickActiveTags = (tagsObject: TagsObject): ArticleTags =>
+const toArticleTags = (tagsObject: TagsObject): ArticleTags =>
   Object.entries(tagsObject)
     .filter(([, value]) => value)
     .map(([key]) => key);
@@ -65,6 +65,8 @@ const ArticlesTagsSelect = ({ tags, onConfirm }: ArticlesTagsSelectProps) => {
     }));
   }, []);
 
+  const articleTags = useMemo(() => toArticleTags(activeTags), [activeTags]);
+
   return (
     <Popover
       trigger={({ toggle }) => (
@@ -76,7 +78,7 @@ const ArticlesTagsSelect = ({ tags, onConfirm }: ArticlesTagsSelectProps) => {
               articlesTagsState.is !== 'ok' && articles_tags_actions.load();
             }}
           >
-            <FiltersIcon />
+            {tags.length > 0 ? tags.length : <TagsIcon />}
           </Button>
         </Container>
       )}
@@ -123,21 +125,24 @@ const ArticlesTagsSelect = ({ tags, onConfirm }: ArticlesTagsSelectProps) => {
                 ))}
               </Tags>
               <Box orientation="row" right spacing={[150]}>
-                <Button
-                  size={2}
-                  variant="outlined"
-                  motive="tertiary"
-                  onClick={() => {
-                    setActiveTags({});
-                  }}
-                >
-                  Clean
-                </Button>
+                {articleTags.length > 0 && (
+                  <Button
+                    size={2}
+                    variant="outlined"
+                    motive="tertiary"
+                    onClick={() => {
+                      setActiveTags({});
+                    }}
+                  >
+                    Clean
+                  </Button>
+                )}
+
                 <Button
                   size={2}
                   onClick={() => {
                     close();
-                    onConfirm(pickActiveTags(activeTags));
+                    onConfirm(articleTags);
                   }}
                 >
                   Accept

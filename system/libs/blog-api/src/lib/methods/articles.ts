@@ -63,15 +63,26 @@ const getArticlesTags = async (): Promise<GetArticlesTagsResponse> => {
 
 const getYourArticles = async ({
   lang,
+  Tags,
+  CurrentPage,
+  ItemsPerPage,
   ...params
 }: GetYourArticlesParams): Promise<GetYourArticlesResponse> => {
+  const search = new URLSearchParams({
+    CurrentPage: CurrentPage.toString(),
+    ItemsPerPage: ItemsPerPage.toString(),
+    ...params,
+  });
+  const tags = Tags.map((tag) => `tags=${tag}`).join('&');
   const { data } = await blogAPI.get<GetYourArticlesResponse>(
-    getPath('Articles/my') + '/' + lang,
-    {
-      params,
-    }
+    getPath('Articles/my') +
+      '/' +
+      lang +
+      '?' +
+      search.toString() +
+      `${Tags.length > 0 ? '&' : ''}` +
+      tags
   );
-
   return data;
 };
 
