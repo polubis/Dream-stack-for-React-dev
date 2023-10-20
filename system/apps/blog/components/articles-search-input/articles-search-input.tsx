@@ -4,10 +4,11 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   .input {
-    .suffx-wrapper .button {
+    .suffx-wrapper button.button {
       ${size(tokens.spacing[500])}
       background: transparent;
       padding: 0;
+      font-size: unset;
 
       &:active {
         outline: none;
