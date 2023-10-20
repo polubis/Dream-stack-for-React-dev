@@ -1,10 +1,11 @@
 import { Button, CloseIcon, Input } from '@system/figa-ui';
 import type { ArticlesSearchProps } from './defs';
 
-const ArticlesSearchInput = ({ search, onChange }: ArticlesSearchProps) => {
+const ArticlesSearchInput = ({ loading, search, onChange }: ArticlesSearchProps) => {
   return (
     <Input
       className="articles-search"
+      loading={loading}
       value={search}
       placeholder="🏸 Type to find article..."
       onChange={(e) => onChange(e.target.value)}
