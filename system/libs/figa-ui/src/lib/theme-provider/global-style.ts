@@ -1711,57 +1711,59 @@ const GlobalStyle = createGlobalStyle`
     /* badge.tsx */
 
     .badge {
-        width: max-content;
-        padding: ${tokens.spacing[100]};
+        ${center()}
+        ${font('1.3rem', '0.03rem', 'LexendBold', 700)}
+        ${size(tokens.spacing[400], 'max-content')}
+        padding: 0 ${tokens.spacing[100]};
         border-radius: ${tokens.radius[50]};
         text-align: center;
-        ${font('1.3rem', '0.03rem', 'LexendBold', 700)}
+        border: ${tokens.spacing[25]} solid transparent;
 
         &.filled {
             &.primary {
                 background: ${(props) => props.theme.badge.filled.primary.bg};
                 color:${(props) => props.theme.badge.filled.primary.color};
+                border-color: ${(props) => props.theme.badge.filled.primary.bg};
             }
 
             &.secondary {
                 background: ${(props) => props.theme.badge.filled.secondary.bg};
                 color:${(props) => props.theme.badge.filled.secondary.color};
+                border-color: ${(props) => props.theme.badge.filled.secondary.bg};
             }
 
             &.ok {
                 background: ${(props) => props.theme.badge.filled.ok.bg};
                 color:${(props) => props.theme.badge.filled.ok.color};
+                border-color: ${(props) => props.theme.badge.filled.ok.bg};
             }
 
             &.casual {
                 background: ${(props) => props.theme.badge.filled.casual.bg};
                 color:${(props) => props.theme.badge.filled.casual.color};
+                border-color: ${(props) => props.theme.badge.filled.casual.bg};
             }
         }
 
         &.outlined {
             &.primary {
                 color:${(props) => props.theme.badge.outlined.primary.color};
-                border: 2px solid ${(props) =>
-                  props.theme.badge.outlined.primary.borderColor};
+                border-color: ${(props) => props.theme.badge.outlined.primary.borderColor};
             }
 
             &.secondary {
                 color:${(props) => props.theme.badge.outlined.secondary.color};
-                border: 2px solid ${(props) =>
-                  props.theme.badge.outlined.secondary.borderColor};
+                border-color: ${(props) => props.theme.badge.outlined.secondary.borderColor};
             }
 
             &.ok {
                 color:${(props) => props.theme.badge.outlined.ok.color};
-                border: 2px solid ${(props) =>
-                  props.theme.badge.outlined.ok.borderColor};
+                border-color: ${(props) => props.theme.badge.outlined.ok.borderColor};
             }
 
             &.casual {
                 color:${(props) => props.theme.badge.outlined.casual.color};
-                border: 2px solid ${(props) =>
-                  props.theme.badge.outlined.casual.borderColor};
+                border-color: ${(props) => props.theme.badge.outlined.casual.borderColor};
             }
         }
     }

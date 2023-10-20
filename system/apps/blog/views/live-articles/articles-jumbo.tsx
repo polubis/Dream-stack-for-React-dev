@@ -66,7 +66,7 @@ const Container = styled.div`
       }
     }
 
-    .articles-jumbo-filters-trigger {
+    button.articles-jumbo-filters-trigger {
       ${size(tokens.spacing[500])}
       padding: 0;
       margin-left: ${tokens.spacing[150]};
