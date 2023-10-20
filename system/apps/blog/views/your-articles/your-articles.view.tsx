@@ -4,7 +4,7 @@ import {
   FilterableArticlesScreen,
   FilterableArticlesScreenProps,
 } from '../../components/filterable-articles-screen';
-import { useYourArticlesParams } from './use-your-articles-params';
+import { useYourArticles } from './use-your-articles';
 
 const pathCreator: FilterableArticlesScreenProps['pathCreator'] = (
   _,
@@ -14,8 +14,8 @@ const pathCreator: FilterableArticlesScreenProps['pathCreator'] = (
 };
 
 const YourArticlesView = () => {
-  useYourArticlesParams();
-
+  const [state] = useYourArticles();
+  console.log(state)
   return (
     <>
       <MainLayout>

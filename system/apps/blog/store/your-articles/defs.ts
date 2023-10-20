@@ -10,19 +10,12 @@ export namespace YourArticlesStore {
   export type Articles = Article[];
   export type Params = GetYourArticlesParams;
 
-  export interface IdleState {
-    is: 'idle';
-  }
-
-  export interface SafeState {
-    is: 'safe';
+  export interface State {
     loading: boolean;
     error: ResponseError | null;
-    params: Params;
-    articles: Articles;
+    params: Params | null;
+    articles: Articles | null;
   }
-
-  export type State = IdleState | SafeState;
 
   export interface Actions {
     load(params: Params): Promise<void>;
@@ -30,7 +23,7 @@ export namespace YourArticlesStore {
   }
 
   export interface Selectors {
-    safeState(): SafeState;
-    useSafeState(): SafeState;
+    state(): State;
+    useState(): State;
   }
 }

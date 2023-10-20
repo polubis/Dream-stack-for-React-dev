@@ -1,13 +1,12 @@
 import { getError, getYourArticles } from '@system/blog-api';
 import { YourArticlesStore } from './defs';
 import { useYourArticlesStore } from './your-articles.store';
-import { your_articles_selectors } from './your-articles.selectors';
 
-const { setState } = useYourArticlesStore;
+const { setState, getState } = useYourArticlesStore;
 
 const your_articles_actions: YourArticlesStore.Actions = {
   load: async (params) => {
-    setState({ is: 'safe', loading: true, params });
+    setState({ loading: true, params });
 
     try {
       const { data } = await getYourArticles(params);
@@ -17,14 +16,14 @@ const your_articles_actions: YourArticlesStore.Actions = {
     }
   },
   loadMore: async (params) => {
-    setState({ is: 'safe', loading: true, params });
+    setState({ loading: true, params });
 
     try {
       const { data } = await getYourArticles(params);
 
       setState({
         loading: false,
-        articles: [...your_articles_selectors.safeState().articles, ...data],
+        articles: [...getState().articles, ...data],
         error: null,
       });
     } catch (error: unknown) {
