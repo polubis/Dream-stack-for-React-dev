@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <div
+    class="box divider my-class default x column empty"
+  >
+    <div />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Divider can be used when:  [FRAGILE] can be used in y axis and allows to pass box properties 1`] = `
+<DocumentFragment>
+  <div
+    class="box divider primary y column empty"
+    style="padding: 16px 16px 16px 16px; margin: 16px 16px 16px 16px;"
+  >
+    <div />
+  </div>
+</DocumentFragment>
+`;
