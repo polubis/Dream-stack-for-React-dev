@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const YourArticlesView = () => {
-  const { state, params, change } = useYourArticles();
+  const { state, params, change, equal } = useYourArticles();
 
   return (
     <>
@@ -22,7 +22,7 @@ const YourArticlesView = () => {
         <Container>
           <div className="your-articles-filters">
             <ArticlesSearchInput
-              loading={state.loading}
+              loading={!equal || state.loading}
               search={params.Search}
               onChange={(search) =>
                 change({ Search: search, CurrentPage: 1 })
