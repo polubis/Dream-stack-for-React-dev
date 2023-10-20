@@ -46,14 +46,16 @@ const useYourArticles = () => {
   const state = your_articles_selectors.useState();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const params = useMemo(() => getArticlesParams(lang), [lang, searchParams]);
+  const equal = useMemo(() => isEqual(state.params, params), [state, params]);
 
-  const handleLoad = useCallback((params: YourArticlesStore.Params) => {
-    const previousParams = your_articles_selectors.state().params;
+  const handleLoad = useCallback(
+    (params: YourArticlesStore.Params) => {
+      if (equal) return;
 
-    if (isEqual(previousParams, params)) return;
-
-    your_articles_actions.load(params);
-  }, []);
+      your_articles_actions.load(params);
+    },
+    [equal]
+  );
 
   const { emit } = useSubject<YourArticlesStore.Params>({
     delay: 500,
@@ -83,7 +85,7 @@ const useYourArticles = () => {
     [router, params]
   );
 
-  return [state, params, { change }] as const;
+  return { state, params, equal, change };
 };
 
 export { useYourArticles };
