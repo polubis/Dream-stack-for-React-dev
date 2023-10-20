@@ -46,7 +46,7 @@ const useYourArticles = () => {
   const state = your_articles_selectors.useState();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const params = useMemo(() => getArticlesParams(lang), [lang, searchParams]);
-  console.log(params);
+
   const handleLoad = useCallback((params: YourArticlesStore.Params) => {
     const previousParams = your_articles_selectors.state().params;
 
