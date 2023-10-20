@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import {
   Button,
-  CloseIcon,
   Divider,
   Font,
-  Input,
   M_UP,
   SM_DOWN,
   T_DOWN,
@@ -17,10 +15,11 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLang } from '../../dk';
-import { type ChangeEventHandler, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLiveArticlesRouter } from './use-live-articles-router';
 import { FiltersPopover } from './filters-popover';
+import { ArticlesSearchInput } from 'apps/blog/components/articles-search-input';
 
 const Container = styled.div`
   position: relative;
@@ -112,10 +111,6 @@ const ArticlesJumbo = () => {
     }));
   };
 
-  const handleType: ChangeEventHandler<HTMLInputElement> = (e) => {
-    handleSearchChange(e.target.value);
-  };
-
   return (
     <Container>
       <Image
@@ -136,18 +131,7 @@ const ArticlesJumbo = () => {
           to find meaningful materials and understand complex topics.
         </Font>
         <div className="articles-jumbo-filters">
-          <Input
-            value={search}
-            placeholder="🏸 Type to find article..."
-            onChange={handleType}
-            suffx={
-              search.length > 0 && (
-                <Button onClick={() => handleSearchChange('')}>
-                  <CloseIcon />
-                </Button>
-              )
-            }
-          />
+          <ArticlesSearchInput search={search} onChange={handleSearchChange} />
           <FiltersPopover />
         </div>
         <div className="articles-jumbo-divider">
