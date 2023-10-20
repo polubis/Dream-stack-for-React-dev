@@ -14,14 +14,20 @@ const Container = styled.div`
 `;
 
 const YourArticlesView = () => {
-  const [state] = useYourArticles();
-  console.log(state);
+  const [state, params, actions] = useYourArticles();
+
   return (
     <>
       <MainLayout>
         <Container>
           <div className="your-articles-filters">
-            <ArticlesSearchInput search="" onChange={(search) => {}} />
+            <ArticlesSearchInput
+              loading={state.loading}
+              search={params.Search}
+              onChange={(search) =>
+                actions.change({ Search: search, CurrentPage: 1 })
+              }
+            />
           </div>
         </Container>
       </MainLayout>

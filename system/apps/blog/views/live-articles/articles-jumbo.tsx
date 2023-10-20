@@ -45,26 +45,6 @@ const Container = styled.div`
     ${row()}
     z-index: ${tokens.z[100]};
 
-    .input {
-      .suffx-wrapper .button {
-        ${size(tokens.spacing[500])}
-        background: transparent;
-        padding: 0;
-
-        &:active {
-          outline: none;
-        }
-
-        path {
-          fill: ${(props) => props.theme.font.default.color};
-        }
-      }
-
-      @media ${M_UP} {
-        width: 300px;
-      }
-    }
-
     button.articles-jumbo-filters-trigger {
       ${size(tokens.spacing[500])}
       padding: 0;
