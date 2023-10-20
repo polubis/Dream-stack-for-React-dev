@@ -184,6 +184,14 @@ interface Theme {
       bg: string;
     };
   };
+  divider: {
+    default: {
+      bg: string;
+    };
+    primary: {
+      bg: string;
+    };
+  };
   tabs: {
     filled: {
       bg: string;

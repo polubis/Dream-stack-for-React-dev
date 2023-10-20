@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {
   Button,
   CloseIcon,
+  Divider,
   Font,
   Input,
   M_UP,
@@ -93,11 +94,6 @@ const Container = styled.div`
     .font {
       margin: 0 ${tokens.spacing[150]};
     }
-
-    .divider {
-      ${size(tokens.spacing[25], tokens.spacing[250])}
-      background: ${(props) => props.theme.font.primary.color};
-    }
   }
 `;
 
@@ -155,11 +151,11 @@ const ArticlesJumbo = () => {
           <FiltersPopover />
         </div>
         <div className="articles-jumbo-divider">
-          <div className="divider" />
+          <Divider motive="primary" />
           <Font motive="primary" variant="b1">
             OR
           </Font>
-          <div className="divider" />
+          <Divider motive="primary" />
         </div>
         <Link
           className="articles-jumbo-create-link"

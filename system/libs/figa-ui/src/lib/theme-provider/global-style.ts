@@ -510,11 +510,11 @@ const GlobalStyle = createGlobalStyle`
     .navigation {
         ${size('100%')}
         display: grid;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
 
         @media ${T_DOWN} {
-            grid-template-columns: auto auto;
+            grid-template-columns: 1fr 1fr;
         }
 
         .navigation-links {
@@ -522,7 +522,7 @@ const GlobalStyle = createGlobalStyle`
             list-style: none;
             overflow-x: auto;
             justify-self: center;
-            max-width: 74%;
+            max-width: 100%;
             height: 100%;
 
             @media ${T_DOWN} {
@@ -1559,6 +1559,28 @@ const GlobalStyle = createGlobalStyle`
     /* alert.tsx */
 
     /* field.tsx */
+
+    /* divider.tsx */
+
+    .divider {
+        &.default > * {
+            background: ${(props) => props.theme.divider.default.bg};
+        }
+
+        &.primary > * {
+            background: ${(props) => props.theme.divider.primary.bg};
+        }
+
+        &.x > * {
+            ${size(tokens.spacing[25], tokens.spacing[250])}
+        }
+
+        &.y > * {
+            ${size(tokens.spacing[250], tokens.spacing[25])}
+        }
+    }
+
+    /* divider.tsx */
 
     .field {
         ${column()}

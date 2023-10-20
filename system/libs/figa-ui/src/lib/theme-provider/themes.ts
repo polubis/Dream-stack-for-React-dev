@@ -144,6 +144,14 @@ const light: Theme = {
     track: tokens.gray[550],
     thumbHover: tokens.gray[650],
   },
+  divider: {
+    default: {
+      bg: tokens.common.black,
+    },
+    primary: {
+      bg: tokens.primary[50],
+    },
+  },
   checkbox: {
     borderColor: tokens.common.white,
     checked: {
@@ -459,6 +467,14 @@ const dark: Theme = {
     thumb: tokens.gray[600],
     track: tokens.gray[550],
     thumbHover: tokens.gray[650],
+  },
+  divider: {
+    default: {
+      bg: tokens.common.white,
+    },
+    primary: {
+      bg: tokens.primary[100],
+    },
   },
   radio: {
     borderColor: tokens.common.white,
