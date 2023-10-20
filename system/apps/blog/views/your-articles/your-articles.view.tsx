@@ -4,8 +4,7 @@ import {
   FilterableArticlesScreen,
   FilterableArticlesScreenProps,
 } from '../../components/filterable-articles-screen';
-import { useEffect } from 'react';
-import { articles_actions } from '../../store/articles';
+import { useYourArticlesParams } from './use-your-articles-params';
 
 const pathCreator: FilterableArticlesScreenProps['pathCreator'] = (
   _,
@@ -15,13 +14,7 @@ const pathCreator: FilterableArticlesScreenProps['pathCreator'] = (
 };
 
 const YourArticlesView = () => {
-  useEffect(() => {
-    articles_actions.init({ yours: true });
-
-    return () => {
-      articles_actions.reset();
-    };
-  }, []);
+  useYourArticlesParams();
 
   return (
     <>
