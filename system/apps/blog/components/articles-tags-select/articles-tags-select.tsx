@@ -7,12 +7,16 @@ import {
   Font,
   Loader,
   Popover,
+  size,
+  tokens,
+  wrap,
 } from '@system/figa-ui';
 import { useEffect, useState, useCallback } from 'react';
 import { useArticlesTagsStore } from '../../store/articles-tags/articles-tags.store';
 import { articles_tags_actions } from '../../store/articles-tags/articles-tags.actions';
 import type { ArticleTag, ArticleTags } from '@system/blog-api-models';
-import type { TagsObject } from './defs';
+import type { ArticlesTagsSelectProps, TagsObject } from './defs';
+import styled from 'styled-components';
 
 const createTagsObject = (tags: ArticleTags): TagsObject => {
   return tags.reduce((acc, tag) => {
@@ -26,7 +30,30 @@ const pickActiveTags = (tagsObject: TagsObject): ArticleTags =>
     .filter(([, value]) => value)
     .map(([key]) => key);
 
-const ArticlesTagsSelect = ({ tags, onConfirm }) => {
+const Container = styled.div`
+  margin-left: ${tokens.spacing[150]};
+  flex-shrink: 0;
+
+  .button.rectangle.size-3 {
+    ${size(tokens.spacing[500])}
+    padding: 0;
+  }
+`;
+
+const Tags = styled.div`
+  ${wrap()}
+
+  .articles-jumbo-tag {
+    margin: 0 ${tokens.spacing[100]} ${tokens.spacing[100]} 0;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+`;
+
+const ArticlesTagsSelect = ({ tags, onConfirm }: ArticlesTagsSelectProps) => {
   const articlesTagsState = useArticlesTagsStore();
   const [activeTags, setActiveTags] = useState<TagsObject>({});
 
@@ -42,16 +69,17 @@ const ArticlesTagsSelect = ({ tags, onConfirm }) => {
   return (
     <Popover
       trigger={({ toggle }) => (
-        <Button
-          loading={articlesTagsState.is === 'busy'}
-          className="articles-jumbo-filters-trigger"
-          onClick={() => {
-            toggle();
-            articlesTagsState.is !== 'ok' && articles_tags_actions.load();
-          }}
-        >
-          <FiltersIcon />
-        </Button>
+        <Container className="articles-tags-select-trigger">
+          <Button
+            loading={articlesTagsState.is === 'busy'}
+            onClick={() => {
+              toggle();
+              articlesTagsState.is !== 'ok' && articles_tags_actions.load();
+            }}
+          >
+            <FiltersIcon />
+          </Button>
+        </Container>
       )}
     >
       {({ close }) => (
@@ -82,7 +110,7 @@ const ArticlesTagsSelect = ({ tags, onConfirm }) => {
                   <CloseIcon />
                 </Button>
               </Box>
-              <div className="articles-jumbo-tags">
+              <Tags className="articles-jumbo-tags">
                 {articlesTagsState.tags.map((tag) => (
                   <Badge
                     className="articles-jumbo-tag"
@@ -94,7 +122,7 @@ const ArticlesTagsSelect = ({ tags, onConfirm }) => {
                     {tag}
                   </Badge>
                 ))}
-              </div>
+              </Tags>
               <Box orientation="row" right spacing={[150]}>
                 <Button
                   size={2}

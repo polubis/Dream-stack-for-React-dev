@@ -27,12 +27,14 @@ const Container = styled.div`
 
 const ArticlesSearchInput = ({
   search,
+  loading,
   onChange,
 }: ArticlesSearchProps) => {
   return (
     <Container>
       <Input
         value={search}
+        loading={loading}
         placeholder="🏸 Type to find article..."
         onChange={(e) => onChange(e.target.value)}
         suffx={

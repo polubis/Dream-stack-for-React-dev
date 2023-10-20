@@ -7,9 +7,12 @@ import {
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { isArticleStatus } from '@system/blog-api';
+import { isServer } from '@system/utils';
 
 const getArticlesParams = (lang: Lang): LiveArticlesStore.Params => {
   const { initialParams } = live_articles_selectors.safeState();
+
+  if (isServer()) return initialParams;
 
   const params = new URLSearchParams(window.location.search);
   const status = params.get('Status');

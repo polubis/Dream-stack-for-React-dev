@@ -3,14 +3,11 @@ import {
   Button,
   Divider,
   Font,
-  M_UP,
   SM_DOWN,
   T_DOWN,
   center,
   row,
-  size,
   tokens,
-  wrap,
 } from '@system/figa-ui';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,8 +15,9 @@ import { useLang } from '../../dk';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useLiveArticlesRouter } from './use-live-articles-router';
-import { FiltersPopover } from './filters-popover';
-import { ArticlesSearchInput } from 'apps/blog/components/articles-search-input';
+import { TagsPopover } from './tags-popover';
+import { ArticlesSearchInput } from '../../components/articles-search-input';
+import { live_articles_selectors } from '../../store/live-articles';
 
 const Container = styled.div`
   position: relative;
@@ -44,26 +42,6 @@ const Container = styled.div`
   .articles-jumbo-filters {
     ${row()}
     z-index: ${tokens.z[100]};
-
-    button.articles-jumbo-filters-trigger {
-      ${size(tokens.spacing[500])}
-      padding: 0;
-      margin-left: ${tokens.spacing[150]};
-      flex-shrink: 0;
-    }
-
-    .articles-jumbo-tags {
-      ${wrap()}
-
-      .articles-jumbo-tag {
-        margin: 0 ${tokens.spacing[100]} ${tokens.spacing[100]} 0;
-        cursor: pointer;
-
-        &:hover {
-          opacity: 0.8;
-        }
-      }
-    }
   }
 
   .articles-jumbo-divider {
@@ -81,6 +59,7 @@ const ArticlesJumbo = () => {
   const { getParams, go } = useLiveArticlesRouter();
   const [search, setSearch] = useState('');
   const lang = useLang();
+  const liveArticlesState = live_articles_selectors.useSafeState();
 
   useEffect(() => setSearch(getParams().Search), [searchParams, getParams]);
 
@@ -111,8 +90,12 @@ const ArticlesJumbo = () => {
           to find meaningful materials and understand complex topics.
         </Font>
         <div className="articles-jumbo-filters">
-          <ArticlesSearchInput search={search} onChange={handleSearchChange} />
-          <FiltersPopover />
+          <ArticlesSearchInput
+            loading={liveArticlesState.loading}
+            search={search}
+            onChange={handleSearchChange}
+          />
+          <TagsPopover />
         </div>
         <div className="articles-jumbo-divider">
           <Divider motive="primary" />
