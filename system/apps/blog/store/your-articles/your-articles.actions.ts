@@ -7,7 +7,7 @@ const { setState } = useYourArticlesStore;
 
 const your_articles_actions: YourArticlesStore.Actions = {
   load: async (params) => {
-    setState({ is: 'safe', loading: true });
+    setState({ is: 'safe', loading: true, params });
 
     try {
       const { data } = await getYourArticles(params);
@@ -17,7 +17,7 @@ const your_articles_actions: YourArticlesStore.Actions = {
     }
   },
   loadMore: async (params) => {
-    setState({ is: 'safe', loading: true });
+    setState({ is: 'safe', loading: true, params });
 
     try {
       const { data } = await getYourArticles(params);

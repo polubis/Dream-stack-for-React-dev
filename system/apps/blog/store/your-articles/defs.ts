@@ -18,6 +18,7 @@ export namespace YourArticlesStore {
     is: 'safe';
     loading: boolean;
     error: ResponseError | null;
+    params: Params;
     articles: Articles;
   }
 
