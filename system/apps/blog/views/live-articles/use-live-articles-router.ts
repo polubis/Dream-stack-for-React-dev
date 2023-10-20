@@ -1,4 +1,4 @@
-import type { ArticleStatus, Lang } from '@system/blog-api-models';
+import type { Lang } from '@system/blog-api-models';
 import { useLang } from '../../dk';
 import {
   LiveArticlesStore,
@@ -6,12 +6,7 @@ import {
 } from '../../store/live-articles';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
-
-const isArticleStatus = (status: string): status is ArticleStatus => {
-  return (
-    ['Accepted', 'WaitingForApproval', 'Draft', 'NeedWork'] as ArticleStatus[]
-  ).includes(status as ArticleStatus);
-};
+import { isArticleStatus } from '@system/blog-api';
 
 const getArticlesParams = (lang: Lang): LiveArticlesStore.Params => {
   const { initialParams } = live_articles_selectors.safeState();
