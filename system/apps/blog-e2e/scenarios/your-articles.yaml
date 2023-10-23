@@ -1,12 +1,32 @@
 Dictionary: 
   LANAGUAGE: Can be english or polish
   YOUR_ARTICLES: /[LANGUAGE]/your-articles url
+  DRAFT: Article status with "DRAFT" value
+  DEFAULT_FILTERS: It means empty search field, the [DRAFT] article status and no selected tags
 
-Scenario: Filter by search field
+Scenario: I visit page with [DEFAULT_FILTERS]
   Given: I sign in
-  And: I'm on [YOUR_ARTICLES] page
-  When: I type phrase in search field
-  Then: I see articles that contains typed phrase in article title
-  And: Case of letters is ignored
-  And: Numbers are allowed
-  And: Special characters are allowed
+  When: I visit [YOUR_ARTICLES] page
+  Then: I see loading animation
+  And: I see articles selected by [DEFAULT_FILTERS]
+
+Scenario: I visit page but error occurs
+  Given: I sign in
+  When: I visit [YOUR_ARTICLES] page
+  Then: I see loading animation
+  And: I see error message
+
+# Scenario: Filter by search field
+#   When: I type phrase in search field
+#   Then: I see articles that contains typed phrase in article title
+#   And: Case of letters is ignored
+#   And: Numbers are allowed
+#   And: Special characters are allowed
+
+# Scenario: Filter by status field
+#   When: I choose article status from field
+#   Then: I see articles that have chosen status
+
+# Scenario: Filter by tag
+#   When: I choose one or more article tags
+#   Then: I see articles that have chosen status
