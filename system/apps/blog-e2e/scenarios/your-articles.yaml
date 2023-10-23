@@ -1,0 +1,12 @@
+Dictionary: 
+  LANAGUAGE: Can be english or polish
+  YOUR_ARTICLES: /[LANGUAGE]/your-articles url
+
+Scenario: Filter by search field
+  Given: I sign in
+  And: I'm on [YOUR_ARTICLES] page
+  When: I type phrase in search field
+  Then: I see articles that contains typed phrase in article title
+  And: Case of letters is ignored
+  And: Numbers are allowed
+  And: Special characters are allowed
