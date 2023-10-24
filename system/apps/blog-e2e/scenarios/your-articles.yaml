@@ -2,6 +2,7 @@ Dictionary:
   LANAGUAGE: Can be english or polish
   YOUR_ARTICLES: /[LANGUAGE]/your-articles url
   DRAFT: Article status with "DRAFT" value
+  LIVE: Article status with "LIVE" value
   DEFAULT_FILTERS: It means empty search field, the [DRAFT] article status and no selected tags
 
 Scenario: I visit page with [DEFAULT_FILTERS]
@@ -15,6 +16,25 @@ Scenario: I visit page but error occurs
   When: I visit [YOUR_ARTICLES] page
   Then: I see loading animation
   And: I see error message
+
+Scenario: I change filters
+  Given: I sign in
+  And: I visit [YOUR_ARTICLES] page
+  When: I type "react" in search field
+  And: I change status to [LIVE] in status field
+  And: I select first tag in tags field
+  Then: I see only articles that contain "react" in title
+  And: I see only articles with [LIVE] status 
+  And: I see only articles with first tag selected
+
+Scenario: I change filters but error occurs
+  Given: I sign in
+  And: I visit [YOUR_ARTICLES] page
+  And: I see loading animation
+  When: I type "react" in search field
+  Then: I see loading animation
+  And: I see error message
+
 
 # Scenario: Filter by search field
 #   When: I type phrase in search field
