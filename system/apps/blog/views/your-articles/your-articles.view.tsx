@@ -1,4 +1,3 @@
-import { LeftBar, MainLayout } from '../../components';
 import { SignedInOnly } from '../../core';
 import { useYourArticles } from './use-your-articles';
 import { Box, Button, CloseIcon, Field, Loader } from '@system/figa-ui';
@@ -86,46 +85,41 @@ const YourArticlesView = () => {
   useScroll({ onScroll: changeToNextPage });
 
   return (
-    <>
-      <MainLayout offPadding>
-        <ArticlesLayout>
-          <ArticlesLayout.Filters>
-            <Field label="Search phrase">
-              <ArticlesSearchInput
-                loading={Array.isArray(articles) && loading}
-                search={params.Search}
-                onChange={changeSearch}
-              />
-            </Field>
+    <ArticlesLayout>
+      <ArticlesLayout.Filters>
+        <Field label="Search phrase">
+          <ArticlesSearchInput
+            loading={Array.isArray(articles) && loading}
+            search={params.Search}
+            onChange={changeSearch}
+          />
+        </Field>
 
-            <Field label="Status">
-              <ArticlesStatusSelect
-                status={params.Status}
-                onChange={changeStatus}
-              />
-            </Field>
+        <Field label="Status">
+          <ArticlesStatusSelect
+            status={params.Status}
+            onChange={changeStatus}
+          />
+        </Field>
 
-            <Field label="Tags">
-              <ArticlesTagsSelect tags={params.Tags} onConfirm={changeTags} />
-            </Field>
+        <Field label="Tags">
+          <ArticlesTagsSelect tags={params.Tags} onConfirm={changeTags} />
+        </Field>
 
-            <Field label="Reset">
-              <Button
-                disabled={!hasNotDefaultParams}
-                variant="outlined"
-                size={2}
-                equal
-                onClick={reset}
-              >
-                <CloseIcon />
-              </Button>
-            </Field>
-          </ArticlesLayout.Filters>
-          <Content />
-        </ArticlesLayout>
-      </MainLayout>
-      <LeftBar />
-    </>
+        <Field label="Reset">
+          <Button
+            disabled={!hasNotDefaultParams}
+            variant="outlined"
+            size={2}
+            equal
+            onClick={reset}
+          >
+            <CloseIcon />
+          </Button>
+        </Field>
+      </ArticlesLayout.Filters>
+      <Content />
+    </ArticlesLayout>
   );
 };
 
