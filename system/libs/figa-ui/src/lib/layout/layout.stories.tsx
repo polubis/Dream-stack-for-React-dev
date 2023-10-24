@@ -7,7 +7,7 @@ import { Logo } from '../logo';
 import { Button } from '../button';
 import { Link } from '../link';
 import { Font } from '../font';
-import { NavBar } from '../nav-bar';
+import { NavBar, type NavBarProps } from '../nav-bar';
 
 export default {
   component: Layout,
@@ -26,8 +26,8 @@ const LINKS = [
   'FAQ',
 ];
 
-const Header = (
-  <NavBar>
+const Header = (props: Pick<NavBarProps, 'sticky'>) => (
+  <NavBar {...props}>
     <Navigation
       logo={<Logo />}
       links={LINKS.map((link) => (
@@ -154,7 +154,7 @@ const Template: Story<LayoutProps> = (props) => <Layout {...props} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  header: Header,
+  header: <Header />,
   children: (
     <div>
       <Font variant="h6">Custom header</Font>
@@ -165,33 +165,33 @@ Default.args = {
 
 export const ALotOfContent = Template.bind({});
 ALotOfContent.args = {
-  header: Header,
+  header: <Header />,
   children: <div>{BigText}</div>,
   footer: <div>Footer</div>,
 };
 
 export const WithoutFooter = Template.bind({});
 WithoutFooter.args = {
-  header: Header,
+  header: <Header />,
   children: <div>{BigText}</div>,
 };
 
 export const WhenPageIsFull = Template.bind({});
 WhenPageIsFull.args = {
-  header: Header,
+  header: <Header />,
   children: <div style={{ background: 'red' }}>Text</div>,
 };
 
 export const WhenPageIsFullWithFooter = Template.bind({});
 WhenPageIsFullWithFooter.args = {
-  header: Header,
+  header: <Header />,
   children: <div style={{ background: 'red' }}>Text</div>,
   footer: <div>Footer</div>,
 };
 
 export const WithoutPadding = Template.bind({});
 WithoutPadding.args = {
-  header: Header,
+  header: <Header />,
   children: <div style={{ background: 'red' }}>Text</div>,
   footer: <div>Footer</div>,
   offPadding: true,
@@ -199,7 +199,7 @@ WithoutPadding.args = {
 
 export const AsidedWithoutPadding = Template.bind({});
 AsidedWithoutPadding.args = {
-  header: Header,
+  header: <Header />,
   children: (
     <div>
       <Font variant="h2">The content</Font>
@@ -216,7 +216,23 @@ AsidedWithoutPadding.args = {
 
 export const Asided = Template.bind({});
 Asided.args = {
-  header: Header,
+  header: <Header />,
+  children: (
+    <div>
+      <Font variant="h2">The content</Font>
+    </div>
+  ),
+  footer: <div>Footer</div>,
+  sidebar: (toggler) => (
+    <aside onClick={toggler.toggle}>
+      <Font variant="h5">The sidebar</Font>
+    </aside>
+  ),
+};
+
+export const WithStickyNavBar = Template.bind({});
+WithStickyNavBar.args = {
+  header: <Header sticky />,
   children: (
     <div>
       <Font variant="h2">The content</Font>

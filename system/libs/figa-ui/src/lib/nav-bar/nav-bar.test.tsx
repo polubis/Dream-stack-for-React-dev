@@ -7,6 +7,10 @@ jest.mock('@system/figa-hooks', () => ({
 }));
 
 describe('Navbar can be used when: ', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('[FRAGILE] assigns classes', () => {
     (useScroll as jest.Mock).mockImplementation(
       (): ScrollReturn => [{ is: 'idle' }, { current: null }]
@@ -32,5 +36,13 @@ describe('Navbar can be used when: ', () => {
     const { container } = render(<NavBar>Content</NavBar>);
 
     expect(container.querySelector('.out')).toBeTruthy();
+  });
+
+  it('[FRAGILE] can be sticky', async () => {
+    const { asFragment, container } = render(<NavBar sticky>Content</NavBar>);
+
+    expect(container.querySelector('.out')).toBeFalsy();
+    expect(asFragment()).toMatchSnapshot();
+    expect(useScroll).not.toHaveBeenCalled();
   });
 });
