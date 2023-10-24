@@ -494,12 +494,12 @@ const GlobalStyle = createGlobalStyle`
         background: ${(props) => props.theme.navigation.bgWithOpacity};
         padding: 0 ${tokens.spacing[250]};
         z-index: ${tokens.z[200]};
-        height: ${tokens.spacing[1250]};
+        height: ${tokens.spacing[1000]};
         transform: translateY(0px);
         transition: 0.93s transform cubic-bezier(0.19, 1, 0.22, 1);
 
         &.out {
-            transform: translateY(-${tokens.spacing[1250]});
+            transform: translateY(-${tokens.spacing[1000]});
         }   
     }
 
@@ -553,7 +553,7 @@ const GlobalStyle = createGlobalStyle`
             &-header {
                 ${row()}
                 flex-shrink: 0;
-                height: ${tokens.spacing[1250]};
+                height: ${tokens.spacing[1000]};
                 border-bottom: ${tokens.spacing[25]} solid ${(props) =>
   props.theme.navigation.borderColor};
 
@@ -949,13 +949,13 @@ const GlobalStyle = createGlobalStyle`
 
     .layout {
         ${column()}
-        padding-top: ${tokens.spacing[1250]};
+        padding-top: ${tokens.spacing[1000]};
 
         &.asided {
             .layout-content {
                 padding: 0;
                 display: flex;
-                min-height: calc(100vh - ${tokens.spacing[1250]});
+                min-height: calc(100vh - ${tokens.spacing[1000]});
                 max-width: 100vw;
 
                 & > * {
@@ -1729,7 +1729,8 @@ const GlobalStyle = createGlobalStyle`
             &.secondary {
                 background: ${(props) => props.theme.badge.filled.secondary.bg};
                 color:${(props) => props.theme.badge.filled.secondary.color};
-                border-color: ${(props) => props.theme.badge.filled.secondary.bg};
+                border-color: ${(props) =>
+                  props.theme.badge.filled.secondary.bg};
             }
 
             &.ok {
@@ -1748,22 +1749,26 @@ const GlobalStyle = createGlobalStyle`
         &.outlined {
             &.primary {
                 color:${(props) => props.theme.badge.outlined.primary.color};
-                border-color: ${(props) => props.theme.badge.outlined.primary.borderColor};
+                border-color: ${(props) =>
+                  props.theme.badge.outlined.primary.borderColor};
             }
 
             &.secondary {
                 color:${(props) => props.theme.badge.outlined.secondary.color};
-                border-color: ${(props) => props.theme.badge.outlined.secondary.borderColor};
+                border-color: ${(props) =>
+                  props.theme.badge.outlined.secondary.borderColor};
             }
 
             &.ok {
                 color:${(props) => props.theme.badge.outlined.ok.color};
-                border-color: ${(props) => props.theme.badge.outlined.ok.borderColor};
+                border-color: ${(props) =>
+                  props.theme.badge.outlined.ok.borderColor};
             }
 
             &.casual {
                 color:${(props) => props.theme.badge.outlined.casual.color};
-                border-color: ${(props) => props.theme.badge.outlined.casual.borderColor};
+                border-color: ${(props) =>
+                  props.theme.badge.outlined.casual.borderColor};
             }
         }
     }

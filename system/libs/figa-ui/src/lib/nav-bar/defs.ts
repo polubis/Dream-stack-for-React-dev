@@ -3,6 +3,9 @@ import type { ReactNode } from 'react';
 interface NavBarProps {
   className?: string;
   children: ReactNode;
+  sticky?: boolean;
 }
 
-export type { NavBarProps };
+type NavBarHeaderProps = Omit<NavBarProps, 'sticky'>;
+
+export type { NavBarProps, NavBarHeaderProps };
