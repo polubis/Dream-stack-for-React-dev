@@ -19,6 +19,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 
   return (
     <Layout
+      offPadding
       header={
         <NavBar>
           <Navigation logo={<Logo />} links={links} action={<UserSection />} />

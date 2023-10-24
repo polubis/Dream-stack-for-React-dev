@@ -44,8 +44,7 @@ interface FullArticleDto extends ArticleDto {
   content: Content;
 }
 
-type GetArticlesResponse = PaginatedResponse<ArticleDto[]>;
-interface GetArticlesParams {
+interface ArticlesParams {
   Search: string;
   ItemsPerPage: number;
   CurrentPage: number;
@@ -53,16 +52,13 @@ interface GetArticlesParams {
   Tags: ArticleTags;
   lang: Lang;
 }
+type PaginatedArticlesResponse = PaginatedResponse<ArticleDto[]>;
 
-type GetYourArticlesResponse = PaginatedResponse<ArticleDto[]>;
-interface GetYourArticlesParams {
-  Search: string;
-  ItemsPerPage: number;
-  CurrentPage: number;
-  Status: ArticleStatus;
-  Tags: ArticleTags;
-  lang: Lang;
-}
+type GetArticlesResponse = PaginatedArticlesResponse;
+type GetArticlesParams = ArticlesParams;
+
+type GetYourArticlesResponse = PaginatedArticlesResponse;
+type GetYourArticlesParams = ArticlesParams;
 
 type GetArticleParams = { url: Url; lang: Lang };
 type GetArticleResponse = Response<FullArticleDto>;
@@ -141,4 +137,6 @@ export type {
   ArticleTag,
   ArticleTags,
   GetArticlesTagsResponse,
+  ArticlesParams,
+  PaginatedArticlesResponse,
 };

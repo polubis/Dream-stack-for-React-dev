@@ -1,15 +1,16 @@
 import type {
   ArticleDto,
-  GetYourArticlesParams,
+  ArticlesParams,
+  PaginatedArticlesResponse,
   ResponseError,
 } from '@system/blog-api-models';
 import type { Subscription } from 'rxjs';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
-export namespace YourArticlesStore {
+export namespace ArticlesStore {
   export type Article = ArticleDto;
   export type Articles = Article[];
-  export type Params = GetYourArticlesParams;
+  export type Params = ArticlesParams;
 
   export interface State {
     loading: boolean;
@@ -27,5 +28,9 @@ export namespace YourArticlesStore {
   export interface Selectors {
     state(): State;
     useState(): State;
+  }
+
+  export interface CreatorConfig {
+    service: (params: Params) => Promise<PaginatedArticlesResponse>;
   }
 }

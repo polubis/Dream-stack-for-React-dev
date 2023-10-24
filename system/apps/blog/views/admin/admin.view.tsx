@@ -1,31 +1,122 @@
 import { AdminLayout } from '../../components';
 import { AdminsOnly } from '../../core';
-import { useEffect } from 'react';
-import { articles_actions } from '../../store/articles';
-import {
-  FilterableArticlesScreen,
-  type FilterableArticlesScreenProps,
-} from '../../components/filterable-articles-screen';
+import { ArticlesLayout } from '../../components/articles-layout';
+import { Box, Button, CloseIcon, Field, Loader } from '@system/figa-ui';
+import { ArticlesSearchInput } from '../../components/articles-search-input';
+import { ArticlesStatusSelect } from '../../components/articles-status-select';
+import { ArticlesTagsSelect } from '../../components/articles-tags-select';
+import { useAdminArticles } from './use-admin-articles';
+import { useScroll } from '@system/figa-hooks';
+import { InfoSection } from 'apps/blog/components/info-section';
+import { ArticlesGrid, OnGoToClick } from 'apps/blog/components/articles-grid';
+import { useLang } from 'apps/blog/dk';
+import { useRouter } from 'next/router';
+import { useCallback } from 'react';
 
-const pathCreator: FilterableArticlesScreenProps['pathCreator'] = (
-  _,
-  { url, id }
-) => {
-  return `admin/article-review?url=${url}&id=${id}`;
+const Content = () => {
+  const router = useRouter();
+  const lang = useLang();
+  const {
+    state: { articles, error },
+  } = useAdminArticles();
+
+  const handleGoToClick: OnGoToClick = useCallback(
+    (e) => {
+      const id = e.currentTarget.getAttribute('data-article-id');
+      const article = (articles ?? []).find((a) => a.id === id);
+
+      if (!article) throw Error('Cannot find article');
+
+      router.push(`/${lang}/admin/article-review?url=${article.url}&id=${id}`);
+    },
+    [articles, router, lang]
+  );
+
+  if (error) {
+    return (
+      <InfoSection
+        title="❌ Ups... Something went wrong!"
+        description="Try again with button below or refresh page if problem occurs 🔃."
+        footer={<Button onClick={() => window.location.reload()}>Retry</Button>}
+      />
+    );
+  }
+
+  if (Array.isArray(articles) && articles.length === 0) {
+    return (
+      <InfoSection
+        title="No data for provided filters 💨"
+        description="Change filters and try again 🔃."
+      />
+    );
+  }
+
+  if (Array.isArray(articles) && articles.length > 0) {
+    return (
+      <ArticlesLayout.Content>
+        <ArticlesGrid articles={articles} onGoToClick={handleGoToClick} />
+      </ArticlesLayout.Content>
+    );
+  }
+
+  return (
+    <Box margin="auto">
+      <Loader size="big" />
+    </Box>
+  );
 };
 
 const AdminView = () => {
-  useEffect(() => {
-    articles_actions.init();
+  const {
+    state: { loading, articles },
+    params,
+    hasNotDefaultParams,
+    changeSearch,
+    changeStatus,
+    changeTags,
+    changeToNextPage,
+    reset,
+  } = useAdminArticles();
 
-    return () => {
-      articles_actions.reset();
-    };
-  }, []);
+  useScroll({ onScroll: changeToNextPage });
 
   return (
     <AdminLayout>
-      <FilterableArticlesScreen pathCreator={pathCreator} />
+      <ArticlesLayout>
+        <ArticlesLayout.Filters>
+          <Field label="Search phrase">
+            <ArticlesSearchInput
+              loading={Array.isArray(articles) && loading}
+              search={params.Search}
+              onChange={changeSearch}
+            />
+          </Field>
+
+          <Field label="Status">
+            <ArticlesStatusSelect
+              status={params.Status}
+              onChange={changeStatus}
+            />
+          </Field>
+
+          <Field label="Tags">
+            <ArticlesTagsSelect tags={params.Tags} onConfirm={changeTags} />
+          </Field>
+
+          <Field label="Reset">
+            <Button
+              disabled={!hasNotDefaultParams}
+              variant="outlined"
+              size={2}
+              equal
+              onClick={reset}
+            >
+              <CloseIcon />
+            </Button>
+          </Field>
+        </ArticlesLayout.Filters>
+        <Content />
+      </ArticlesLayout>
     </AdminLayout>
   );
 };

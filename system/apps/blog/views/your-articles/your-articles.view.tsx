@@ -1,17 +1,7 @@
 import { LeftBar, MainLayout } from '../../components';
 import { SignedInOnly } from '../../core';
 import { useYourArticles } from './use-your-articles';
-import styled from 'styled-components';
-import {
-  Box,
-  Button,
-  CloseIcon,
-  Field,
-  Loader,
-  T_DOWN,
-  column,
-  tokens,
-} from '@system/figa-ui';
+import { Box, Button, CloseIcon, Field, Loader } from '@system/figa-ui';
 import { ArticlesSearchInput } from '../../components/articles-search-input';
 import { ArticlesStatusSelect } from '../../components/articles-status-select';
 import { ArticlesTagsSelect } from '../../components/articles-tags-select';
@@ -21,28 +11,7 @@ import { useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { useLang } from '../../dk';
 import { useScroll } from '@system/figa-hooks';
-
-const Container = styled.div`
-  ${column()}
-
-  .your-articles-filters {
-    display: grid;
-    gap: ${tokens.spacing[200]};
-    justify-content: center;
-    grid-template-columns: 300px 280px auto auto;
-    padding: ${tokens.spacing[300]};
-
-    @media ${T_DOWN} {
-      width: 100%;
-      overflow-x: auto;
-      justify-content: flex-start;
-    }
-  }
-
-  .articles-grid {
-    margin: ${tokens.spacing[200]} 0 ${tokens.spacing[300]} 0;
-  }
-`;
+import { ArticlesLayout } from 'apps/blog/components/articles-layout';
 
 const Content = () => {
   const router = useRouter();
@@ -88,7 +57,11 @@ const Content = () => {
   }
 
   if (Array.isArray(articles) && articles.length > 0) {
-    return <ArticlesGrid articles={articles} onGoToClick={handleGoToClick} />;
+    return (
+      <ArticlesLayout.Content>
+        <ArticlesGrid articles={articles} onGoToClick={handleGoToClick} />
+      </ArticlesLayout.Content>
+    );
   }
 
   return (
@@ -115,8 +88,8 @@ const YourArticlesView = () => {
   return (
     <>
       <MainLayout offPadding>
-        <Container>
-          <div className="your-articles-filters">
+        <ArticlesLayout>
+          <ArticlesLayout.Filters>
             <Field label="Search phrase">
               <ArticlesSearchInput
                 loading={Array.isArray(articles) && loading}
@@ -136,21 +109,20 @@ const YourArticlesView = () => {
               <ArticlesTagsSelect tags={params.Tags} onConfirm={changeTags} />
             </Field>
 
-            {hasNotDefaultParams && (
-              <Field label="Reset">
-                <Button
-                  variant="outlined"
-                  size={2}
-                  equal
-                  onClick={reset}
-                >
-                  <CloseIcon />
-                </Button>
-              </Field>
-            )}
-          </div>
+            <Field label="Reset">
+              <Button
+                disabled={!hasNotDefaultParams}
+                variant="outlined"
+                size={2}
+                equal
+                onClick={reset}
+              >
+                <CloseIcon />
+              </Button>
+            </Field>
+          </ArticlesLayout.Filters>
           <Content />
-        </Container>
+        </ArticlesLayout>
       </MainLayout>
       <LeftBar />
     </>
