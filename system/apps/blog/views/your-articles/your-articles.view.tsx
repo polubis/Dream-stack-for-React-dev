@@ -10,7 +10,6 @@ import {
   Loader,
   T_DOWN,
   column,
-  size,
   tokens,
 } from '@system/figa-ui';
 import { ArticlesSearchInput } from '../../components/articles-search-input';
@@ -37,12 +36,6 @@ const Container = styled.div`
       width: 100%;
       overflow-x: auto;
       justify-content: flex-start;
-    }
-
-    .your-articles-filters-button {
-      ${size(tokens.spacing[500])}
-      flex-shrink: 0;
-      padding: 0;
     }
   }
 
@@ -147,7 +140,8 @@ const YourArticlesView = () => {
               <Field label="Reset">
                 <Button
                   variant="outlined"
-                  className="your-articles-filters-button"
+                  size={2}
+                  equal
                   onClick={reset}
                 >
                   <CloseIcon />

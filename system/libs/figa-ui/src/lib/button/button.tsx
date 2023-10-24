@@ -3,7 +3,7 @@ import type { ButtonProps } from './defs';
 
 import c from 'classnames';
 
-const Button = ({ className, loading, ...props }: ButtonProps) => {
+const Button = ({ className, loading, equal, ...props }: ButtonProps) => {
   const {
     shape = 'rectangle',
     size = 3,
@@ -18,6 +18,7 @@ const Button = ({ className, loading, ...props }: ButtonProps) => {
     variant,
     motive,
     { loading },
+    { equal },
     className
   );
 

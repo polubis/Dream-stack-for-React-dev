@@ -70,12 +70,14 @@ const tokens: Tokens = {
     100: '#0a0a0a',
     150: '#292929',
     200: 'rgba(0,0,0,.90)',
+    250: '#282828',
   },
   light: {
     50: '#f9f9f9',
     100: '#e5e5e5',
     150: '#f3f3f3',
     200: 'rgba(255,255,255,.90)',
+    250: '#efefef',
   },
   gray: {
     0: '#fbfbfb',
@@ -336,6 +338,9 @@ const light: Theme = {
         borderColor: tokens.common.black,
         outlineColor: tokens.common.white,
       },
+    },
+    ghost: {
+      hoverBg: tokens.light[250],
     },
   },
   select: {
@@ -653,6 +658,9 @@ const dark: Theme = {
         borderColor: tokens.common.white,
         outlineColor: tokens.common.white,
       },
+    },
+    ghost: {
+      hoverBg: tokens.dark[250],
     },
   },
   select: {

@@ -161,6 +161,7 @@ const GlobalStyle = createGlobalStyle`
     /* button.tsx */
 
     .button {
+        ${center()}
         cursor: pointer;
         position: relative;
         border: none;
@@ -190,7 +191,6 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.rounded {
-            ${center()}
             border-radius: ${tokens.radius[1000]};
 
             .avatar {
@@ -225,8 +225,32 @@ const GlobalStyle = createGlobalStyle`
               buttonBaseEffects(props.theme.button.filled.primary.outlineColor)}
             color: ${(props) => props.theme.button.outlined.primary.color};
             background: ${(props) => props.theme.button.outlined.primary.bg};
-            border: 2px solid ${(props) =>
-              props.theme.button.outlined.primary.borderColor};
+            border: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.button.outlined.primary.borderColor};
+
+            .icon path {
+                fill: ${(props) => props.theme.button.outlined.primary.color};
+            }
+
+            .loader-animation {
+                border-top-color: ${(props) =>
+                  props.theme.button.filled.primary.outlineColor};
+                border-bottom-color: ${(props) =>
+                  props.theme.button.outlined.primary.borderColor};
+            }
+        }
+
+        &.ghost.primary {
+            ${(props) =>
+              buttonBaseEffects(props.theme.button.filled.primary.outlineColor)}
+            color: ${(props) => props.theme.button.outlined.primary.color};
+            background: transparent;
+            border: ${tokens.spacing[25]} solid transparent;
+
+            &:hover:not(:disabled) {
+                background: ${(props) => props.theme.button.ghost.hoverBg};
+                opacity: 1;
+            }
 
             .icon path {
                 fill: ${(props) => props.theme.button.outlined.primary.color};
@@ -267,8 +291,34 @@ const GlobalStyle = createGlobalStyle`
               )}
             color: ${(props) => props.theme.button.outlined.secondary.color};
             background: ${(props) => props.theme.button.outlined.secondary.bg};
-            border: 2px solid ${(props) =>
-              props.theme.button.outlined.secondary.borderColor};
+            border: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.button.outlined.secondary.borderColor};
+
+            .icon path {
+                fill: ${(props) => props.theme.button.outlined.secondary.color};
+            }
+
+            .loader-animation {
+                border-top-color: ${(props) =>
+                  props.theme.button.filled.secondary.outlineColor};
+                border-bottom-color: ${(props) =>
+                  props.theme.button.outlined.secondary.borderColor};
+            }
+        }
+
+        &.ghost.secondary {
+            ${(props) =>
+              buttonBaseEffects(
+                props.theme.button.filled.secondary.outlineColor
+              )}
+            color: ${(props) => props.theme.button.outlined.secondary.color};
+            background: transparent;
+            border: ${tokens.spacing[25]} solid transparent;
+
+            &:hover:not(:disabled) {
+                background: ${(props) => props.theme.button.ghost.hoverBg};
+                opacity: 1;
+            }
 
             .icon path {
                 fill: ${(props) => props.theme.button.outlined.secondary.color};
@@ -301,6 +351,7 @@ const GlobalStyle = createGlobalStyle`
                   props.theme.button.filled.tertiary.color};
             }
         }
+
        &.outlined.tertiary {
             ${(props) =>
               buttonBaseEffects(
@@ -308,8 +359,34 @@ const GlobalStyle = createGlobalStyle`
               )}
             color: ${(props) => props.theme.button.outlined.tertiary.color};
             background: ${(props) => props.theme.button.outlined.tertiary.bg};
-            border: 2px solid ${(props) =>
-              props.theme.button.outlined.tertiary.borderColor};
+            border: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.button.outlined.tertiary.borderColor};
+
+            .icon path {
+                fill: ${(props) => props.theme.button.outlined.tertiary.color};
+            }
+
+            .loader-animation {
+                border-top-color: ${(props) =>
+                  props.theme.button.filled.tertiary.outlineColor};
+                border-bottom-color: ${(props) =>
+                  props.theme.button.outlined.tertiary.borderColor};
+            }
+        }
+
+        &.ghost.tertiary {
+            ${(props) =>
+              buttonBaseEffects(
+                props.theme.button.filled.tertiary.outlineColor
+              )}
+            color: ${(props) => props.theme.button.outlined.tertiary.color};
+            background: transparent;
+            border: ${tokens.spacing[25]} solid transparent;
+
+            &:hover:not(:disabled) {
+                background: ${(props) => props.theme.button.ghost.hoverBg};
+                opacity: 1;
+            }
 
             .icon path {
                 fill: ${(props) => props.theme.button.outlined.tertiary.color};
@@ -344,28 +421,58 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.rectangle.size-1 {
-            ${size(tokens.spacing[400], 'max-content')}
-            padding: 0 ${tokens.spacing[100]};
+            &:not(.equal) {
+                ${size(tokens.spacing[400], 'max-content')}
+                padding: 0 ${tokens.spacing[100]};
+            }
+
+            &.equal {
+                ${size(tokens.spacing[400])}
+            }
         }
 
         &.rectangle.size-2 {
-            ${size(tokens.spacing[500], 'max-content')}
-            padding: 0 ${tokens.spacing[150]};
+            &:not(.equal) {
+                ${size(tokens.spacing[500], 'max-content')}
+                padding: 0 ${tokens.spacing[150]};
+            }
+
+            &.equal {
+                ${size(tokens.spacing[500])}
+            }
         }
 
         &.rectangle.size-3 {
-            ${size(tokens.spacing[600], 'max-content')}
-            padding: 0 ${tokens.spacing[200]};
+            &:not(.equal) {
+                ${size(tokens.spacing[600], 'max-content')}
+                padding: 0 ${tokens.spacing[200]};
+            }
+
+            &.equal {
+                ${size(tokens.spacing[600])}
+            }
         }
 
         &.rectangle.size-4 {
-            ${size(tokens.spacing[700], 'max-content')}
-            padding: 0 ${tokens.spacing[250]};
+            &:not(.equal) {
+                ${size(tokens.spacing[700], 'max-content')}
+                padding: 0 ${tokens.spacing[250]};
+            }
+
+            &.equal {
+                ${size(tokens.spacing[700])}
+            }
         }
 
         &.rectangle.size-5 {
-            ${size(tokens.spacing[800], 'max-content')}
-            padding: 0 ${tokens.spacing[300]};
+            &:not(.equal) {
+                ${size(tokens.spacing[800], 'max-content')}
+                padding: 0 ${tokens.spacing[300]};
+            }
+
+            &.equal {
+                ${size(tokens.spacing[800])}
+            }
         }
     }
 
@@ -1476,7 +1583,7 @@ const GlobalStyle = createGlobalStyle`
         justify-content: space-between;
         padding: ${tokens.spacing[100]} ${tokens.spacing[150]};
         border-radius: ${tokens.radius[50]};
-        border: 2px solid transparent;
+        border: ${tokens.spacing[25]} solid transparent;
 
         .icon {
             flex-shrink: 0;
@@ -1624,8 +1731,8 @@ const GlobalStyle = createGlobalStyle`
         &.previewing:not(.disabled, .loading) {
             .file-picker-preview-image img {
                 &:hover {
-                    outline: 2px solid ${(props) =>
-                      props.theme.filePicker.outline.color};
+                    outline: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.filePicker.outline.color};
                 }
             }
         }
@@ -1639,8 +1746,8 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &.invalid {
-            outline: 2px solid ${(props) =>
-              props.theme.filePicker.invalid.outline};
+            outline: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.filePicker.invalid.outline};
 
             .font {
                 color: ${(props) => props.theme.filePicker.invalid.color};

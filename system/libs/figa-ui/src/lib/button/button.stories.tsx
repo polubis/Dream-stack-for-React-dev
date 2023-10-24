@@ -18,7 +18,10 @@ const Template: Story<Pick<ButtonProps, 'variant' | 'motive'>> = ({
   motive,
 }) => {
   return (
-    <Box padding={[300, 300, 300, 300]} spacing={[200, 200, 200, 200, 200]}>
+    <Box
+      padding={[300, 300, 300, 300]}
+      spacing={[200, 200, 200, 200, 200, 200]}
+    >
       <Box spacing={[200, 200]}>
         <Font variant="h5">Rounded</Font>
         <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
@@ -149,6 +152,41 @@ const Template: Story<Pick<ButtonProps, 'variant' | 'motive'>> = ({
           ))}
         </Box>
       </Box>
+
+      <Box spacing={[200, 200]}>
+        <Font variant="h5">Rectangle but equal</Font>
+        <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
+          {BUTTON_SIZES.map((size) => (
+            <Button
+              key={size}
+              motive={motive}
+              variant={variant}
+              size={size}
+              equal
+            >
+              <DiscordIcon />
+            </Button>
+          ))}
+        </Box>
+      </Box>
+
+      <Box spacing={[200, 200]}>
+        <Font variant="h5">Rectangle but equal and loading</Font>
+        <Box orientation="row" spacing={BUTTON_SIZES.map(() => 150)}>
+          {BUTTON_SIZES.map((size) => (
+            <Button
+              key={size}
+              motive={motive}
+              variant={variant}
+              loading
+              size={size}
+              equal
+            >
+              <DiscordIcon />
+            </Button>
+          ))}
+        </Box>
+      </Box>
     </Box>
   );
 };
@@ -163,6 +201,11 @@ PrimaryOutlined.args = {
   variant: 'outlined',
 };
 
+export const PrimaryGhost = Template.bind({});
+PrimaryGhost.args = {
+  variant: 'ghost',
+};
+
 export const SecondaryFilled = Template.bind({});
 SecondaryFilled.args = {
   variant: 'filled',
@@ -175,13 +218,26 @@ SecondaryOutlined.args = {
   motive: 'secondary',
 };
 
+export const SecondaryGhost = Template.bind({});
+SecondaryGhost.args = {
+  variant: 'ghost',
+  motive: 'secondary',
+};
+
 export const TertiaryFilled = Template.bind({});
 TertiaryFilled.args = {
   variant: 'filled',
   motive: 'tertiary',
 };
+
 export const TertiaryOutlined = Template.bind({});
 TertiaryOutlined.args = {
   variant: 'outlined',
+  motive: 'tertiary',
+};
+
+export const TertiaryGhost = Template.bind({});
+TertiaryGhost.args = {
+  variant: 'ghost',
   motive: 'tertiary',
 };

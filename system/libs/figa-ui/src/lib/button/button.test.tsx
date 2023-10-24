@@ -24,6 +24,7 @@ describe('Button can be used when', () => {
       <Button
         className="my-button"
         shape="rounded"
+        equal
         size={2}
         variant="outlined"
         motive="secondary"
@@ -33,7 +34,7 @@ describe('Button can be used when', () => {
     const button = container.querySelector('.button');
 
     expect(button?.className).toBe(
-      'button size-2 rounded outlined secondary my-button'
+      'button size-2 rounded outlined secondary equal my-button'
     );
   });
 
