@@ -136,18 +136,17 @@ const YourArticlesView = () => {
               <ArticlesTagsSelect tags={params.Tags} onConfirm={changeTags} />
             </Field>
 
-            {hasNotDefaultParams && (
-              <Field label="Reset">
-                <Button
-                  variant="outlined"
-                  size={2}
-                  equal
-                  onClick={reset}
-                >
-                  <CloseIcon />
-                </Button>
-              </Field>
-            )}
+            <Field label="Reset">
+              <Button
+                disabled={!hasNotDefaultParams}
+                variant="outlined"
+                size={2}
+                equal
+                onClick={reset}
+              >
+                <CloseIcon />
+              </Button>
+            </Field>
           </div>
           <Content />
         </Container>
