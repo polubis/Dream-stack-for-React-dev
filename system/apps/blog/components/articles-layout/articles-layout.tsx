@@ -1,8 +1,6 @@
 import { T_DOWN, column, tokens } from '@system/figa-ui';
 import styled from 'styled-components';
 import { ArticlesLayoutProps } from './defs';
-import { MainLayout } from '../main-layout';
-import { LeftBar } from '../left-bar';
 
 const Container = styled.div`
   ${column()}
@@ -29,14 +27,7 @@ const Content = styled.div`
 `;
 
 const ArticlesLayout = ({ children }: ArticlesLayoutProps) => {
-  return (
-    <>
-      <MainLayout offPadding>
-        <Container>{children}</Container>
-      </MainLayout>
-      <LeftBar />
-    </>
-  );
+  return <Container>{children}</Container>;
 };
 
 ArticlesLayout.Filters = Filters;
