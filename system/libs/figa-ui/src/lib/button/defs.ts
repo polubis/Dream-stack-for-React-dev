@@ -21,6 +21,7 @@ interface ButtonProps
   variant?: ButtonVariant;
   motive?: ButtonMotive;
   loading?: boolean;
+  equal?: boolean;
 }
 
 export type {

@@ -100,12 +100,14 @@ interface Tokens {
     100: string;
     150: string;
     200: string;
+    250: string;
   };
   light: {
     50: string;
     100: string;
     150: string;
     200: string;
+    250: string;
   };
   red: {
     50: string;
@@ -310,6 +312,9 @@ interface Theme {
       primary: ButtonSetup;
       secondary: ButtonSetup;
       tertiary: ButtonSetup;
+    };
+    ghost: {
+      hoverBg: string;
     };
   };
   select: {

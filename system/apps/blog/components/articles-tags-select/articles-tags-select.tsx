@@ -7,7 +7,6 @@ import {
   Loader,
   Popover,
   TagsIcon,
-  size,
   tokens,
   wrap,
 } from '@system/figa-ui';
@@ -29,15 +28,6 @@ const toArticleTags = (tagsObject: TagsObject): ArticleTags =>
   Object.entries(tagsObject)
     .filter(([, value]) => value)
     .map(([key]) => key);
-
-const Container = styled.div`
-  flex-shrink: 0;
-
-  .button.rectangle.size-3 {
-    ${size(tokens.spacing[500])}
-    padding: 0;
-  }
-`;
 
 const Tags = styled.div`
   ${wrap()}
@@ -70,17 +60,18 @@ const ArticlesTagsSelect = ({ tags, onConfirm }: ArticlesTagsSelectProps) => {
   return (
     <Popover
       trigger={({ toggle }) => (
-        <Container className="articles-tags-select-trigger">
-          <Button
-            loading={articlesTagsState.is === 'busy'}
-            onClick={() => {
-              toggle();
-              articlesTagsState.is !== 'ok' && articles_tags_actions.load();
-            }}
-          >
-            {tags.length > 0 ? tags.length : <TagsIcon />}
-          </Button>
-        </Container>
+        <Button
+          size={2}
+          equal
+          className="articles-tags-select-trigger"
+          loading={articlesTagsState.is === 'busy'}
+          onClick={() => {
+            toggle();
+            articlesTagsState.is !== 'ok' && articles_tags_actions.load();
+          }}
+        >
+          {tags.length > 0 ? tags.length : <TagsIcon />}
+        </Button>
       )}
     >
       {({ close }) => (
