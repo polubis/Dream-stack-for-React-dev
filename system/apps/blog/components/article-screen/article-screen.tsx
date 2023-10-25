@@ -42,7 +42,7 @@ const Details = styled.section`
 `;
 
 const Content = styled.section`
-  padding: ${tokens.spacing[500]};
+  padding: ${tokens.spacing[250]};
 
   .code-block,
   .image,

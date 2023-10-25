@@ -1181,7 +1181,8 @@ const GlobalStyle = createGlobalStyle`
 
     .footer {
         background: ${(props) => props.theme.footer.bg};
-        border-top: 1px solid ${(props) => props.theme.footer.borderColor};
+        border-top: ${tokens.spacing[25]} solid ${(props) =>
+  props.theme.footer.borderColor};
 
         .footer-container {
             ${column()}

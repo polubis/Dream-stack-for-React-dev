@@ -18,10 +18,10 @@ import Markdown from 'markdown-to-jsx';
 import { ArticleScreen } from '../../components';
 import { ArticleStatusBadge } from '../../components/article-status-badge';
 import { ArticleThumbnail } from '../../components/article-thumbnail';
-import { ArticleMeta } from '../../components/article-meta';
 import { ArticleDetails } from '../../components/article-details';
 import { article_mdx_options } from '../../core';
 import { EditorTabs } from './editor-tabs';
+import { ArticleTags } from '../../components/article-tags';
 
 const EditorScreen = () => {
   const articlesCreatorStore = useArticlesCreatorStore();
@@ -154,19 +154,8 @@ const EditorScreen = () => {
             authorName="You"
           />
         }
-        info={
-          <ArticleMeta>
-            <Font variant="b2">4.5</Font>
-            <Font variant="b2">15 min</Font>
-            <Font variant="b2">Created: 18 Jan 2022</Font>
-            <Font variant="b2">Updated: 18 Jan 2022</Font>
-          </ArticleMeta>
-        }
-        meta={
-          <ArticleMeta>
-            <Font variant="b2">{tags.join(', ')}</Font>
-          </ArticleMeta>
-        }
+        info={<Font variant="b2">4.5 | 15m | 18/Jan/22</Font>}
+        meta={<ArticleTags tags={tags} />}
         thumbnail={
           thumbnail.preview[0] ? (
             <ArticleThumbnail

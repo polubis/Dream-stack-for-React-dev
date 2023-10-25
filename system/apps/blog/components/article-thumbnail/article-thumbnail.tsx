@@ -2,14 +2,24 @@ import Image from 'next/image';
 import { useMemo } from 'react';
 import type { ArticleStatusColorsMap, ArticleThumbnailProps } from './defs';
 import styled from 'styled-components';
-import { SM_DOWN, T_DOWN, tokens, useThemeProvider } from '@system/figa-ui';
+import {
+  SM_DOWN,
+  T_DOWN,
+  T_UP,
+  tokens,
+  useThemeProvider,
+} from '@system/figa-ui';
 
 const Container = styled.div`
   position: relative;
-  aspect-ratio: 62/20;
+  aspect-ratio: 4/3;
   border-top: ${tokens.spacing[100]} solid transparent;
   border-bottom: ${tokens.spacing[100]} solid transparent;
-  border-radius: ${tokens.spacing[50]};
+
+  @media ${T_UP} {
+    aspect-ratio: 62/20;
+    border-radius: ${tokens.spacing[50]};
+  }
 
   img {
     object-fit: cover;

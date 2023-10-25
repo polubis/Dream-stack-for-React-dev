@@ -37,7 +37,6 @@ const CodeWrapper = styled.div`
 
 const PreviewWrapper = styled.div`
   ${content('preview')}
-  padding: ${tokens.spacing[250]};
   position: relative;
 `;
 
