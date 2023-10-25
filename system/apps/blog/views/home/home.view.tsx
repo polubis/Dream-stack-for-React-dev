@@ -1,6 +1,7 @@
 import { Box, CodeBlock, Font } from '@system/figa-ui';
 import type { HomeViewProps } from './defs';
-import { LeftBar, MainLayout } from '../../components';
+import { MainLayout } from '../../components';
+import { Bar } from '../../components/bar';
 
 const HomeView = ({ articles }: HomeViewProps) => {
   return (
@@ -12,7 +13,7 @@ const HomeView = ({ articles }: HomeViewProps) => {
           </CodeBlock>
         </Box>
       </MainLayout>
-      <LeftBar />
+      <Bar />
     </>
   );
 };

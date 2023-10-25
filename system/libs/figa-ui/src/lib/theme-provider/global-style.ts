@@ -1277,30 +1277,6 @@ const GlobalStyle = createGlobalStyle`
 
     /* code-block.tsx */
 
-    /* left-bar.tsx */
-
-    .left-bar {
-        ${column()}
-        position: fixed;
-        bottom: ${tokens.spacing[250]};
-        left:${tokens.spacing[250]};
-        transition: 0.3s transform ease-in-out;
-
-        & > *:not(:last-child) {
-            margin-bottom: ${tokens.spacing[150]};
-        }
-
-        &.visible {
-            transform: scale(1);
-        }
-
-        &.hidden {
-            transform: scale(0);
-        }
-    }
-
-    /* left-bar.tsx */
-
     /* icon.tsx */
 
     .icon {

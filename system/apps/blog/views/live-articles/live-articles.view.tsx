@@ -1,4 +1,4 @@
-import { LeftBar, MainLayout } from '../../components';
+import { MainLayout } from '../../components';
 import type { LiveArticlesViewProps } from './defs';
 import styled from 'styled-components';
 import { useStoreSync } from '../../store/use-store-sync';
@@ -17,6 +17,7 @@ import { ArticlesJumbo } from './articles-jumbo';
 import { useSearchParams } from 'next/navigation';
 import { useLiveArticlesRouter } from './use-live-articles-router';
 import { type ScrollState, useScroll } from '@system/figa-hooks';
+import { Bar } from '../../components/bar';
 
 const Container = styled.div`
   ${column()}
@@ -96,7 +97,7 @@ const LiveArticlesView = () => {
           <Content />
         </Container>
       </MainLayout>
-      <LeftBar />
+      <Bar />
     </>
   );
 };

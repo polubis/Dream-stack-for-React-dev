@@ -5,4 +5,4 @@ interface ArticlesFilteringConfig {
   actions: ArticlesStore.Actions;
 }
 
-export type { ArticlesFilteringConfig }
+export type { ArticlesFilteringConfig };

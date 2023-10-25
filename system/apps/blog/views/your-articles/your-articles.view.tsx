@@ -1,4 +1,4 @@
-import { LeftBar, MainLayout } from '../../components';
+import { MainLayout } from '../../components';
 import { SignedInOnly } from '../../core';
 import { useYourArticles } from './use-your-articles';
 import { Box, Button, CloseIcon, Field, Loader } from '@system/figa-ui';
@@ -11,7 +11,8 @@ import { useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { useLang } from '../../dk';
 import { useScroll } from '@system/figa-hooks';
-import { ArticlesLayout } from 'apps/blog/components/articles-layout';
+import { ArticlesLayout } from '../../components/articles-layout';
+import { Bar } from '../../components/bar';
 
 const Content = () => {
   const router = useRouter();
@@ -124,7 +125,7 @@ const YourArticlesView = () => {
           <Content />
         </ArticlesLayout>
       </MainLayout>
-      <LeftBar />
+      <Bar />
     </>
   );
 };
