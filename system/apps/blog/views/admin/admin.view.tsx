@@ -7,9 +7,9 @@ import { ArticlesStatusSelect } from '../../components/articles-status-select';
 import { ArticlesTagsSelect } from '../../components/articles-tags-select';
 import { useAdminArticles } from './use-admin-articles';
 import { useScroll } from '@system/figa-hooks';
-import { InfoSection } from 'apps/blog/components/info-section';
-import { ArticlesGrid, OnGoToClick } from 'apps/blog/components/articles-grid';
-import { useLang } from 'apps/blog/dk';
+import { InfoSection } from '../../components/info-section';
+import { ArticlesGrid, OnGoToClick } from '../../components/articles-grid';
+import { useLang } from '../../dk';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 

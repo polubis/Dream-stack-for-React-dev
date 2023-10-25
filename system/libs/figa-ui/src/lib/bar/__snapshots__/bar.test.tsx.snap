@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bar can be used when:  [FRAGILE] assigns default classes 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe AVuto bar my-class"
+  >
+    <button>
+      A
+    </button>
+    <button>
+      B
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Bar can be used when:  [FRAGILE] assigns given positions 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe AVuto bar top right"
+  >
+    <button>
+      A
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Bar can be used when:  [FRAGILE] can be hidden 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe AVuto bar hidden"
+  >
+    <button>
+      A
+    </button>
+  </div>
+</DocumentFragment>
+`;
