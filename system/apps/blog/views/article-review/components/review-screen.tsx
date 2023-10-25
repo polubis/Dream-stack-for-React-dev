@@ -11,7 +11,6 @@ import {
   column,
   tokens,
 } from '@system/figa-ui';
-import { ArticleMeta } from '../../../components/article-meta';
 import { ArticleStatusBadge } from '../../../components/article-status-badge';
 import Markdown from 'markdown-to-jsx';
 import { article_mdx_options } from '../../../core';
@@ -22,10 +21,10 @@ import { Reviews } from '../../../components/reviews';
 import { article_reviews_selectors } from '../../../store/article-reviews';
 import { EmptyReviews } from './empty-reviews';
 import { ArticleActionsPopover } from '../../../components/article-actions-popover';
+import { ArticleTags } from '../../../components/article-tags';
 
 const Container = styled.div`
   ${column()}
-  margin: ${tokens.spacing[750]};
 
   .review-screen-alert {
     margin-bottom: ${tokens.spacing[200]};
@@ -45,7 +44,7 @@ const Container = styled.div`
 
   .review-screen-article {
     background: #0a0a0a;
-    border: 1px solid ${tokens.gray[300]};
+    border: ${tokens.spacing[25]} solid ${tokens.gray[300]};
     border-radius: ${tokens.radius[50]};
 
     .article-screen {
@@ -59,8 +58,15 @@ const Container = styled.div`
 `;
 
 const ReviewScreen = () => {
-  const { title, description, authorName, thumbnailUrl, status, content } =
-    article_selectors.useArticle();
+  const {
+    title,
+    description,
+    authorName,
+    thumbnailUrl,
+    status,
+    content,
+    tags,
+  } = article_selectors.useArticle();
   const isAuthor = auth_selectors.useIsAuthor(authorName);
   const reviewSection = useToggle();
   const reviews = article_reviews_selectors.useReviews();
@@ -119,20 +125,8 @@ const ReviewScreen = () => {
               status={status}
             />
           }
-          info={
-            <ArticleMeta>
-              <Font variant="b2">4.5</Font>
-              <Font variant="b2">15 min</Font>
-              <Font variant="b2">Created: 18 Jan 2022</Font>
-              <Font variant="b2">Updated: 18 Jan 2022</Font>
-            </ArticleMeta>
-          }
-          meta={
-            <ArticleMeta>
-              <Font variant="b2">React, Angular, JavaScript, TypeScript</Font>
-              <Font variant="b2">Architecture, Design patterns</Font>
-            </ArticleMeta>
-          }
+          info={<Font variant="b2">4.5 | 15m | 18/Jan/22</Font>}
+          meta={<ArticleTags tags={tags} />}
           badge={<ArticleStatusBadge status={status} />}
           body={<Markdown options={article_mdx_options}>{content}</Markdown>}
         />

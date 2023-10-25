@@ -5,9 +5,9 @@ import { ArticleStatus } from '@system/blog-api-models';
 
 const labels: Record<ArticleStatus, string> = {
   Draft: 'Draft',
-  WaitingForApproval: 'Review required',
-  Accepted: 'Live',
-  NeedWork: 'Improvements required',
+  WaitingForApproval: 'Review',
+  Accepted: 'Published',
+  NeedWork: 'Refine',
 };
 
 const ArticlesStatusSelect = ({

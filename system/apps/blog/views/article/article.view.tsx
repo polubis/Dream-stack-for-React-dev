@@ -4,12 +4,13 @@ import { ArticleScreen, Link, MainLayout, PageWrapper } from '../../components';
 import type { ArticleViewProps } from './defs';
 import { ArticleStatusBadge } from '../../components/article-status-badge';
 import { ArticleThumbnail } from '../../components/article-thumbnail';
-import { ArticleMeta } from '../../components/article-meta';
-import { Box, Button, EditIcon, Font } from '@system/figa-ui';
+import { Button, EditIcon, Font } from '@system/figa-ui';
 import { ArticleDetails } from '../../components/article-details';
 import { article_actions } from '../../store/article';
 import { auth_selectors } from '../../store/auth';
 import { useLang } from '../../dk';
+import { Bar } from '../../components/bar';
+import { ArticleTags } from '../../components/article-tags';
 
 const ArticleView = ({
   mdx,
@@ -19,6 +20,7 @@ const ArticleView = ({
   description,
   authorName,
   status,
+  tags,
 }: ArticleViewProps) => {
   const lang = useLang();
   const isAuthor = auth_selectors.useIsAuthor(authorName);
@@ -28,17 +30,8 @@ const ArticleView = ({
   }, []);
 
   return (
-    <MainLayout>
-      <Box spacing={[150]}>
-        <Box variant="filled" right padding={[200, 250, 200, 250]}>
-          {isAuthor && (
-            <Link href={`/${lang}/articles-creator?url=${url}`}>
-              <Button shape="rounded">
-                <EditIcon />
-              </Button>
-            </Link>
-          )}
-        </Box>
+    <>
+      <MainLayout offPadding>
         <ArticleScreen
           details={
             <ArticleDetails
@@ -54,20 +47,8 @@ const ArticleView = ({
               status={status}
             />
           }
-          info={
-            <ArticleMeta>
-              <Font variant="b2">4.5</Font>
-              <Font variant="b2">15 min</Font>
-              <Font variant="b2">Created: 18 Jan 2022</Font>
-              <Font variant="b2">Updated: 18 Jan 2022</Font>
-            </ArticleMeta>
-          }
-          meta={
-            <ArticleMeta>
-              <Font variant="b2">React, Angular, JavaScript, TypeScript</Font>
-              <Font variant="b2">Architecture, Design patterns</Font>
-            </ArticleMeta>
-          }
+          info={<Font variant="b2">4.5 | 15m | 18/Jan/22</Font>}
+          meta={<ArticleTags tags={tags} />}
           badge={<ArticleStatusBadge status={status} />}
           body={
             <PageWrapper>
@@ -75,8 +56,17 @@ const ArticleView = ({
             </PageWrapper>
           }
         />
-      </Box>
-    </MainLayout>
+      </MainLayout>
+      <Bar>
+        {isAuthor && (
+          <Link href={`/${lang}/articles-creator?url=${url}`}>
+            <Button size={2} shape="rounded">
+              <EditIcon />
+            </Button>
+          </Link>
+        )}
+      </Bar>
+    </>
   );
 };
 
