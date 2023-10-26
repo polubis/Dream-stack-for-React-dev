@@ -27,7 +27,6 @@ const Container = styled.section`
 
   .reviews-list {
     ${column()}
-    list-style: none;
     overflow-y: auto;
     max-height: ${tokens.spacing[3000]};
 

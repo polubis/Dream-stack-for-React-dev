@@ -33,6 +33,9 @@ const ArticleActionsPopover = () => {
           </Font>
 
           <Box orientation="row" right spacing={[200]}>
+            <Button size={2} loading={loading} onClick={handleConfirm}>
+              Accept
+            </Button>
             <Button
               variant="outlined"
               motive="tertiary"
@@ -41,9 +44,6 @@ const ArticleActionsPopover = () => {
               onClick={modal.close}
             >
               Cancel
-            </Button>
-            <Button size={2} loading={loading} onClick={handleConfirm}>
-              Accept
             </Button>
           </Box>
         </Modal>

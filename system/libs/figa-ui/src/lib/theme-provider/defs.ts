@@ -325,7 +325,7 @@ interface Theme {
     optionSeparator: string;
     optionActiveColor: string;
   };
-  navigation: {
+  nav: {
     bg: string;
     borderColor: string;
     bgWithOpacity: string;

@@ -351,7 +351,7 @@ const light: Theme = {
     optionSeparator: tokens.gray[200],
     optionActiveColor: tokens.secondary[150],
   },
-  navigation: {
+  nav: {
     bg: tokens.gray[0],
     borderColor: tokens.gray[50],
     bgWithOpacity: tokens.light[200],
@@ -671,7 +671,7 @@ const dark: Theme = {
     optionSeparator: tokens.gray[100],
     optionActiveColor: tokens.secondary[50],
   },
-  navigation: {
+  nav: {
     bg: tokens.dark[100],
     borderColor: tokens.gray[300],
     bgWithOpacity: tokens.dark[200],

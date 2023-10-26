@@ -37,6 +37,10 @@ const GlobalStyle = createGlobalStyle`
         margin: 0 !important;
     }
 
+    ul, ol {
+        list-style: none;
+    }
+
     h1,
     h2,
     h3,
@@ -541,7 +545,6 @@ const GlobalStyle = createGlobalStyle`
         .select-list {
             ${slideIn(tokens.spacing[200], tokens.spacing[100])}
             position: absolute;
-            list-style: none;
             margin: 0;
             padding: 0;
             left: 0;
@@ -597,8 +600,8 @@ const GlobalStyle = createGlobalStyle`
         ${streched('fixed')}
         bottom: unset;
         border-bottom: ${tokens.spacing[25]} solid ${(props) =>
-  props.theme.navigation.borderColor};
-        background: ${(props) => props.theme.navigation.bgWithOpacity};
+  props.theme.nav.borderColor};
+        background: ${(props) => props.theme.nav.bgWithOpacity};
         padding: 0 ${tokens.spacing[250]};
         z-index: ${tokens.z[200]};
         height: ${tokens.spacing[1000]};
@@ -611,119 +614,6 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* nav-bar.tsx */
-
-    /* navigation.tsx */
-
-    .navigation {
-        ${size('100%')}
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        align-items: center;
-
-        @media ${T_DOWN} {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .navigation-links {
-            ${row()}
-            list-style: none;
-            overflow-x: auto;
-            justify-self: center;
-            max-width: 100%;
-            height: 100%;
-
-            @media ${T_DOWN} {
-                display: none;
-            }
-
-            .navigation-link {
-                flex-shrink: 0;
-
-                &:not(:last-of-type) {
-                    margin-right: ${tokens.spacing[300]};
-                }
-            }
-        }
-
-        .navigation-mobile {
-            ${streched('fixed')}
-            ${column()}
-            background: ${(props) => props.theme.navigation.bg};
-            z-index: ${tokens.z[400]};
-            height: 100vh;
-            transform: translateX(-100%);
-
-            &.opened {
-                transform: translateX(0);
-            }
-
-            &-header {
-                ${row()}
-                flex-shrink: 0;
-                height: ${tokens.spacing[1000]};
-                border-bottom: ${tokens.spacing[25]} solid ${(props) =>
-  props.theme.navigation.borderColor};
-
-                .navigation-mobile-close {
-                    margin: 0 ${tokens.spacing[250]} 0 auto;
-                }
-            }
-
-            &-footer {
-                ${center()}
-                flex-shrink: 0;
-                border-top: ${tokens.spacing[25]} solid ${(props) =>
-  props.theme.navigation.borderColor};
-                height: ${tokens.spacing[1000]};
-                padding: 0 ${tokens.spacing[250]};
-            }
-
-            &-links-wrapper {
-                ${center()}
-                height: 100%;
-                overflow-y: auto;
-            }
-
-            &-links {
-                list-style: none;
-            }
-
-            &-link {
-                margin-bottom: ${tokens.spacing[200]};
-                text-align: center;
-
-                &:first-of-type {
-                    margin-top: ${tokens.spacing[500]};
-                }
-
-                &:last-of-type {
-                    margin-bottom: ${tokens.spacing[500]};
-                }
-            }
-        }
-
-        .navigation-action {
-            display: block;
-            flex-shrink: 0;
-            justify-self: flex-end;
-
-            @media ${T_DOWN} {
-                display: none;
-            }
-        }
-
-        .navigation-mobile-trigger {
-            display: none;
-            flex-shrink: 0;
-            justify-self: flex-end;
-
-            @media ${T_DOWN} {
-                display: block;
-            }
-        }
-    }
-
-    /* navigation.tsx */
 
     /* logo.tsx */
 
@@ -1071,8 +961,8 @@ const GlobalStyle = createGlobalStyle`
 
                 & > *:first-child {
                     border-right: ${tokens.spacing[25]} solid ${(props) =>
-  props.theme.navigation.borderColor};
-                    background: ${(props) => props.theme.navigation.bg};
+  props.theme.nav.borderColor};
+                    background: ${(props) => props.theme.nav.bg};
                     width: ${tokens.spacing[1000]};
                     padding: ${tokens.spacing[350]} 0;
                 }
@@ -1291,8 +1181,6 @@ const GlobalStyle = createGlobalStyle`
     /* list.tsx */
 
     .list {
-        list-style: none;
-
         & > *:not(:last-of-type) {
             margin-bottom: ${tokens.spacing[150]};
         }

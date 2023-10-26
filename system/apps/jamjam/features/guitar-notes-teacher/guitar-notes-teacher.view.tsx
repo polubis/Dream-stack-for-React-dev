@@ -1,6 +1,5 @@
 import NextLink from 'next/link';
 import {
-  Navigation,
   Link,
   Modal,
   ProgressCircle,
@@ -12,6 +11,7 @@ import {
   type BoxProps,
   Select,
   NavBar,
+  Nav,
 } from '@system/figa-ui';
 
 import { GuitarFretboard, UnobviousNoteButton } from '../../components';
@@ -43,17 +43,16 @@ const GuitarNotesTeacherView = ({
     <Layout
       header={
         <NavBar>
-          <Navigation
+          <Nav
             logo={<Logo />}
-            links={[
-              <Link variant="h6" key={0}>
-                <NextLink href="/">Learn guitar notes</NextLink>
-              </Link>,
-            ]}
-            action={
+            actions={
               <PlatformLink variant="h6">Check our platform</PlatformLink>
             }
-          />
+          >
+            <Link variant="h6" key={0}>
+              <NextLink href="/">Learn guitar notes</NextLink>
+            </Link>
+          </Nav>
         </NavBar>
       }
     >

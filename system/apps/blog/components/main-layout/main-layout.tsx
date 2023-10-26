@@ -2,7 +2,6 @@ import {
   Footer,
   Layout,
   Logo,
-  Navigation,
   Link as FigaUILink,
   Button,
   Font,
@@ -12,6 +11,8 @@ import {
   UserIcon,
   LogoGraphic,
   NavBar,
+  Nav,
+  tokens,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -26,17 +27,24 @@ import { useLang } from '../../dk/use-lang';
 import { RecommendedArticles } from './recommended-articles';
 import { useIntersectionObserver } from '@system/figa-hooks';
 import { get } from '@system/blog-selectors';
+import styled from 'styled-components';
 
 const LABELS = ['Articles', 'Creator'] as const;
 const URLS = ['/articles/', '/articles-creator/'] as const;
+
+const Links = styled.ul`
+  & > *:not(:last-child) {
+    margin-bottom: ${tokens.spacing[100]};
+  }
+`;
 
 const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
   const lang = useLang();
 
   const links = LABELS.map((label, idx) => (
-    <FigaUILink variant="h6" key={label}>
+    <Nav.Link variant="h6" key={label}>
       <Link href={'/' + lang + URLS[idx]}>{label}</Link>
-    </FigaUILink>
+    </Nav.Link>
   ));
 
   const { ref: footerRef, visible } = useIntersectionObserver<HTMLDivElement>({
@@ -48,7 +56,9 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
       offPadding={offPadding}
       header={
         <NavBar>
-          <Navigation logo={<Logo />} links={links} action={<UserSection />} />
+          <Nav logo={<Logo />} actions={<UserSection />}>
+            {links}
+          </Nav>
         </NavBar>
       }
       sidebar={sidebar}
@@ -125,12 +135,9 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                   <Font variant="h5">Recommended articles</Font>
                   {visible && <RecommendedArticles />}
                 </Box>
-                <Box
-                  padding={[350, 250, 350, 250]}
-                  spacing={[150, 150, 150, 150, 150, 150]}
-                >
+                <Box padding={[350, 250, 350, 250]} spacing={[150]}>
                   <Font variant="h5">Navigation</Font>
-                  {links}
+                  <Links>{links}</Links>
                 </Box>
               </>
             }

@@ -45,7 +45,7 @@ const ArticleReviewView = () => {
   const params = useArticleReviewParams();
 
   return (
-    <MainLayout sidebar={() => <div>siema</div>}>
+    <MainLayout>
       {params.is === 'fail' && (
         <FailScreen onRetry={() => window.location.reload()} />
       )}
