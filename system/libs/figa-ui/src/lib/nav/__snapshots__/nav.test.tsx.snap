@@ -1,0 +1,306 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav can be used when:  [FRAGILE] assigns classes 1`] = `
+<DocumentFragment>
+  <nav
+    class="sc-gswNZR ikrNAv nav my-nav"
+  >
+    <div
+      class="nav-logo"
+    >
+      <span>
+        Logo
+      </span>
+    </div>
+    <div
+      class="nav-links-wrapper"
+    >
+      <ul
+        class="nav-links"
+      >
+        <a
+          href="/test"
+        >
+          Articles
+        </a>
+        <a
+          href="/"
+        >
+          Authors
+        </a>
+        <div
+          class="box divider default y column empty"
+        >
+          <div />
+        </div>
+        <a
+          href="/"
+        >
+          Admin
+        </a>
+      </ul>
+    </div>
+    <div
+      class="nav-actions"
+    >
+      <button>
+        Register
+      </button>
+      <button>
+        Sign In
+      </button>
+    </div>
+    <div
+      class="nav-mobile"
+    >
+      <button
+        class="button size-2 rounded filled primary nav-mobile-trigger"
+        shape="rounded"
+        size="2"
+        title="Open"
+      >
+        <svg
+          class="icon hamburger-icon"
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 7H7M20 7H11M20 17H17M4 17H13M4 12H20"
+            stroke="black"
+            stroke-linecap="round"
+            stroke-width="1.5"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
+</DocumentFragment>
+`;
+
+exports[`Nav can be used when:  [FRAGILE] open/close mobile navigation 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe dXhBab nav-mobile"
+  >
+    <header
+      class="nav-mobile-header"
+    >
+      <button
+        class="button size-2 rounded filled primary nav-mobile-close"
+        shape="rounded"
+        size="2"
+        title="Close"
+      >
+        <svg
+          class="icon close-icon"
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
+          />
+        </svg>
+      </button>
+    </header>
+    <div
+      class="nav-mobile-links-wrapper"
+    >
+      <ul
+        class="nav-mobile-links"
+      >
+        <a
+          href="/test"
+        >
+          Articles
+        </a>
+        <a
+          href="/"
+        >
+          Authors
+        </a>
+        <div
+          class="box divider default y column empty"
+        >
+          <div />
+        </div>
+        <a
+          href="/"
+        >
+          Admin
+        </a>
+      </ul>
+    </div>
+    <footer
+      class="nav-mobile-actions"
+    >
+      <button>
+        Register
+      </button>
+      <button>
+        Sign In
+      </button>
+    </footer>
+  </div>
+  <nav
+    class="sc-gswNZR ikrNAv nav my-nav"
+  >
+    <div
+      class="nav-logo"
+    >
+      <span>
+        Logo
+      </span>
+    </div>
+    <div
+      class="nav-links-wrapper"
+    >
+      <ul
+        class="nav-links"
+      >
+        <a
+          href="/test"
+        >
+          Articles
+        </a>
+        <a
+          href="/"
+        >
+          Authors
+        </a>
+        <div
+          class="box divider default y column empty"
+        >
+          <div />
+        </div>
+        <a
+          href="/"
+        >
+          Admin
+        </a>
+      </ul>
+    </div>
+    <div
+      class="nav-actions"
+    >
+      <button>
+        Register
+      </button>
+      <button>
+        Sign In
+      </button>
+    </div>
+    <div
+      class="nav-mobile"
+    >
+      <button
+        class="button size-2 rounded filled primary nav-mobile-trigger"
+        shape="rounded"
+        size="2"
+        title="Open"
+      >
+        <svg
+          class="icon hamburger-icon"
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 7H7M20 7H11M20 17H17M4 17H13M4 12H20"
+            stroke="black"
+            stroke-linecap="round"
+            stroke-width="1.5"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
+</DocumentFragment>
+`;
+
+exports[`Nav can be used when:  [FRAGILE] open/close mobile navigation 2`] = `
+<DocumentFragment>
+  <nav
+    class="sc-gswNZR ikrNAv nav my-nav"
+  >
+    <div
+      class="nav-logo"
+    >
+      <span>
+        Logo
+      </span>
+    </div>
+    <div
+      class="nav-links-wrapper"
+    >
+      <ul
+        class="nav-links"
+      >
+        <a
+          href="/test"
+        >
+          Articles
+        </a>
+        <a
+          href="/"
+        >
+          Authors
+        </a>
+        <div
+          class="box divider default y column empty"
+        >
+          <div />
+        </div>
+        <a
+          href="/"
+        >
+          Admin
+        </a>
+      </ul>
+    </div>
+    <div
+      class="nav-actions"
+    >
+      <button>
+        Register
+      </button>
+      <button>
+        Sign In
+      </button>
+    </div>
+    <div
+      class="nav-mobile"
+    >
+      <button
+        class="button size-2 rounded filled primary nav-mobile-trigger"
+        shape="rounded"
+        size="2"
+        title="Open"
+      >
+        <svg
+          class="icon hamburger-icon"
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 7H7M20 7H11M20 17H17M4 17H13M4 12H20"
+            stroke="black"
+            stroke-linecap="round"
+            stroke-width="1.5"
+          />
+        </svg>
+      </button>
+    </div>
+  </nav>
+</DocumentFragment>
+`;

@@ -2,41 +2,49 @@ import type { Story, Meta } from '@storybook/react';
 import type { LayoutProps } from './defs';
 
 import { Layout } from './layout';
-import { Navigation } from '../navigation';
 import { Logo } from '../logo';
 import { Button } from '../button';
 import { Link } from '../link';
 import { Font } from '../font';
 import { NavBar, type NavBarProps } from '../nav-bar';
+import { Nav } from '../nav';
 
 export default {
   component: Layout,
   title: 'Layout',
 } as Meta;
 
-const LINKS = [
-  'Home page',
-  'Content',
-  'SEO',
-  'About',
-  'More',
-  'Authors',
-  'Blog',
-  'Posts',
-  'FAQ',
-];
-
 const Header = (props: Pick<NavBarProps, 'sticky'>) => (
   <NavBar {...props}>
-    <Navigation
+    <Nav
       logo={<Logo />}
-      links={LINKS.map((link) => (
-        <Link variant="h6">
-          <a href="/">{link}</a>
-        </Link>
-      ))}
-      action={<Button>Click me</Button>}
-    />
+      actions={
+        <>
+          <Button size={2}>Register</Button>
+          <Button size={2}>Sign In</Button>
+        </>
+      }
+    >
+      <Link variant="h6">
+        <a href="/test">Articles</a>
+      </Link>
+      <Link variant="h6">
+        <a href="/">Authors</a>
+      </Link>
+      <Link variant="h6">
+        <a href="/">Creator</a>
+      </Link>
+      <Link variant="h6">
+        <a href="/">Support</a>
+      </Link>
+      <Nav.Divider />
+      <Link variant="h6">
+        <a href="/">Admin</a>
+      </Link>
+      <Link variant="h6">
+        <a href="/">Yours</a>
+      </Link>
+    </Nav>
   </NavBar>
 );
 

@@ -1,4 +1,4 @@
-import { AdminLayout } from '../../components';
+import { MainLayout } from '../../components';
 import { AdminsOnly } from '../../core';
 import { ArticlesLayout } from '../../components/articles-layout';
 import { Box, Button, CloseIcon, Field, Loader } from '@system/figa-ui';
@@ -81,7 +81,7 @@ const AdminView = () => {
   useScroll({ onScroll: changeToNextPage });
 
   return (
-    <AdminLayout>
+    <MainLayout offPadding>
       <ArticlesLayout>
         <ArticlesLayout.Filters>
           <Field label="Search phrase">
@@ -117,7 +117,7 @@ const AdminView = () => {
         </ArticlesLayout.Filters>
         <Content />
       </ArticlesLayout>
-    </AdminLayout>
+    </MainLayout>
   );
 };
 
