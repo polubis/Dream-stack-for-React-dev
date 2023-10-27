@@ -1,11 +1,10 @@
-import { Tab, Tabs, column, tokens } from '@system/figa-ui';
+import { Tab, Tabs, tokens } from '@system/figa-ui';
 import { editor_tabs } from './consts';
 import type { EditorTab, EditorTabProps } from './defs';
 import { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  ${column()}
   position: sticky;
   top: 0;
   left: 0;

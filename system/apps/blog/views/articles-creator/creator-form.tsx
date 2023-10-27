@@ -6,7 +6,6 @@ import {
   Font,
   Input,
   PlusIcon,
-  Select,
   Textarea,
   row,
   size,
@@ -20,6 +19,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { tagForm } from '../../store/articles-creator/form';
 import { ArticleTag } from '@system/blog-api-models';
+import { useLang } from '../../dk';
 // @TODO: Backend returns invalid format for articles creation.
 // @TODO: Backend returns random errors on article creation???
 
@@ -116,15 +116,19 @@ const TagsForm = () => {
 };
 
 const CreatorForm = () => {
+  const lang = useLang();
   const articlesCreatorStore = useArticlesCreatorStore();
 
-  const { thumbnail, title, description, lang } =
-    articlesCreatorStore.form.values;
+  const { thumbnail, title, description } = articlesCreatorStore.form.values;
+
+  useEffect(() => {
+    articles_creator_actions.change('lang', lang);
+  }, [lang]);
 
   return (
     <Box
       padding={[400, 400, 400, 400]}
-      spacing={[200, 200, 200, 200]}
+      spacing={[200, 200, 200]}
       maxWidth="600px"
       margin="auto"
     >
@@ -168,20 +172,6 @@ const CreatorForm = () => {
         >
           <Font variant="h5">Pick the thumbnail from your disc</Font>
         </FilePicker>
-      </Field>
-      <Field label="Language*">
-        <Select
-          placeholder="You can write in English or Polish language"
-          value={lang}
-          onChange={(lang) => articles_creator_actions.change('lang', lang)}
-          options={[
-            {
-              key: 'pl',
-              child: <>Polish</>,
-            },
-            { key: 'en', child: <>English</> },
-          ]}
-        />
       </Field>
     </Box>
   );

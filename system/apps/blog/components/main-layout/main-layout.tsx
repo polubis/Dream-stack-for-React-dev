@@ -38,7 +38,12 @@ const Links = styled.ul`
   }
 `;
 
-const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
+const MainLayout = ({
+  children,
+  sidebar,
+  offPadding,
+  sticky,
+}: MainLayoutProps) => {
   const lang = useLang();
 
   const links = LABELS.map((label, idx) => (
@@ -55,7 +60,7 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
     <Layout
       offPadding={offPadding}
       header={
-        <NavBar>
+        <NavBar sticky={sticky}>
           <Nav logo={<Logo />} actions={<UserSection />}>
             {links}
           </Nav>

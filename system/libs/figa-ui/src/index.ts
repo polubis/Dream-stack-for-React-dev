@@ -11,7 +11,6 @@ export * from './lib/emoji-picker';
 export * from './lib/progress-circle';
 export * from './lib/input';
 export * from './lib/footer';
-export * from './lib/creator-layout';
 export * from './lib/box';
 export * from './lib/layout';
 export * from './lib/nav-bar';
