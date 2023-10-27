@@ -121,6 +121,7 @@ const EditorScreen = () => {
             shape="rounded"
             variant="outlined"
             motive="tertiary"
+            title='Close creator'
             onClick={handleClose}
           >
             <CloseIcon />

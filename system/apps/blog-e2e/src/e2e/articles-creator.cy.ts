@@ -53,8 +53,6 @@ describe('Articles maintenance works when: ', () => {
     cy.get(
       'textarea[placeholder="The best description is between 80 and 130 characters"]'
     ).type('Some description added to an article');
-    cy.get('.select-expander').click();
-    cy.get('.select-list-option[data-key="en"]').click();
     cy.get('.button:contains("Submit")').click();
     cy.get('.font:contains("Send to review")');
     cy.get('.button:contains("Submit")').click();
@@ -98,7 +96,7 @@ describe('Articles maintenance works when: ', () => {
     cy.visit('/en/articles-creator');
 
     cy.get('.button:contains("Start")').click();
-    cy.get('.button:contains("Back")').click();
+    cy.get('.button[title="Close creator"]').click();
     cy.get('.button:contains("Start")').click();
     cy.get('.tab:contains("Metadata")').click();
     cy.get('.tab:contains("Content")').click();
@@ -112,8 +110,6 @@ describe('Articles maintenance works when: ', () => {
     cy.get(
       'textarea[placeholder="The best description is between 80 and 130 characters"]'
     ).type('Some description added to an article');
-    cy.get('.select-expander').click();
-    cy.get('.select-list-option[data-key="en"]').click();
     cy.get('.button:contains("Submit")').click();
     cy.get('.font:contains("Send to review")');
     cy.get('.button:contains("Go back")').click();
