@@ -1,14 +1,4 @@
-import {
-  Box,
-  Button,
-  Code,
-  CodeIcon,
-  CreatorLayout,
-  Font,
-  FullScreenCloseIcon,
-  FullScreenIcon,
-  PageIcon,
-} from '@system/figa-ui';
+import { Box, Button, CloseIcon, Code, Font } from '@system/figa-ui';
 import {
   articles_creator_actions,
   useArticlesCreatorStore,
@@ -22,6 +12,7 @@ import { ArticleDetails } from '../../components/article-details';
 import { article_mdx_options } from '../../core';
 import { EditorTabs } from './editor-tabs';
 import { ArticleTags } from '../../components/article-tags';
+import { CreatorLayout } from '../../components/creator-layout';
 
 const EditorScreen = () => {
   const articlesCreatorStore = useArticlesCreatorStore();
@@ -42,94 +33,19 @@ const EditorScreen = () => {
   } = articlesCreatorStore;
 
   return (
-    <CreatorLayout
-      navigation={() => (
-        <Box orientation="row" between>
-          <Font variant="h5">Article creator</Font>
-          <Box orientation="row" spacing={[200]}>
-            <Button
-              variant="outlined"
-              motive="tertiary"
-              size={2}
-              onClick={handleClose}
-            >
-              Back
-            </Button>
-            <Button disabled={invalid} size={2} onClick={handleConfirm}>
-              Submit
-            </Button>
-          </Box>
-        </Box>
-      )}
-      codeToolbox={({ view, expandBoth, expandCode, expandPreview }) => (
-        <>
-          {view === 'code' && (
-            <Button
-              size={1}
-              shape="rounded"
-              title="Open preview fullscreen"
-              onClick={expandPreview}
-            >
-              <PageIcon />
-            </Button>
-          )}
-          {view === 'code-full' && (
-            <Button
-              size={1}
-              shape="rounded"
-              title="Exit code fullscreen"
-              onClick={expandBoth}
-            >
-              <FullScreenCloseIcon />
-            </Button>
-          )}
-          {view === 'both' && (
-            <Button
-              size={1}
-              shape="rounded"
-              title="Code fullscreen"
-              onClick={expandCode}
-            >
-              <FullScreenIcon />
-            </Button>
-          )}
-        </>
-      )}
-      previewToolbox={({ view, expandBoth, expandPreview, expandCode }) => (
-        <>
-          {view === 'preview' && (
-            <Button
-              size={1}
-              shape="rounded"
-              title="Code fullscreen"
-              onClick={expandCode}
-            >
-              <CodeIcon />
-            </Button>
-          )}
-          {view === 'preview-full' && (
-            <Button
-              size={1}
-              shape="rounded"
-              title="Exit preview fullscreen"
-              onClick={expandBoth}
-            >
-              <FullScreenCloseIcon />
-            </Button>
-          )}
-          {view === 'both' && (
-            <Button
-              size={1}
-              shape="rounded"
-              title="Preview fullscreen"
-              onClick={expandPreview}
-            >
-              <FullScreenIcon />
-            </Button>
-          )}
-        </>
-      )}
-    >
+    <CreatorLayout>
+      <Box minWidth="100%" orientation="row" between>
+        <Font variant="h5">Article creator</Font>
+        <Button
+          size={2}
+          shape="rounded"
+          variant="outlined"
+          motive="tertiary"
+          onClick={handleClose}
+        >
+          <CloseIcon />
+        </Button>
+      </Box>
       <EditorTabs>
         {(activeTab) => (
           <>
@@ -176,6 +92,11 @@ const EditorScreen = () => {
           </Markdown>
         }
       />
+      <Box minWidth="100%" orientation="row" right>
+        <Button disabled={invalid} size={2} onClick={handleConfirm}>
+          Submit
+        </Button>
+      </Box>
     </CreatorLayout>
   );
 };
