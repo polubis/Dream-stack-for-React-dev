@@ -120,9 +120,7 @@ const Toolbox = () => {
                   <CloseIcon />
                 </Button>
               </Box>
-              <Box>
-                <ArticleReviewsList />
-              </Box>
+              <ArticleReviewsList />
             </Box>
           </Box>
         )}
