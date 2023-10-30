@@ -6,13 +6,13 @@ const { setState: set, getState: get } = useArticleReviewsStore;
 
 const article_reviews_actions: ArticleReviews.Actions = {
   load: async (id) => {
-    set({ is: 'busy' });
+    set({ is: 'busy' }, true);
 
     try {
       const { data } = await getArticleReviews({ id });
-      set({ is: 'ok', reviews: data });
+      set({ is: 'ok', reviews: data }, true);
     } catch (error: unknown) {
-      set({ is: 'fail', error: getError(error) });
+      set({ is: 'fail', error: getError(error) }, true);
     }
   },
   addReview: (review) => {
@@ -24,6 +24,9 @@ const article_reviews_actions: ArticleReviews.Actions = {
     }
 
     throw Error('You are trying to add review when there is no data yet');
+  },
+  reset: () => {
+    set({ is: 'idle' }, true);
   },
 };
 

@@ -5,6 +5,7 @@ export const InfoSection = ({
   title,
   description,
   footer,
+  padding = [400, 400, 400, 400],
 }: InfoSectionProps) => {
   return (
     <Box
@@ -12,7 +13,7 @@ export const InfoSection = ({
       orientation="column"
       margin="auto"
       maxWidth="400px"
-      padding={[400, 400, 400, 400]}
+      padding={padding}
       spacing={[150, footer ? 400 : 0]}
     >
       <Font variant="h6">{title}</Font>

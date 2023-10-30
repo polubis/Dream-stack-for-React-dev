@@ -10,7 +10,6 @@ import { useEffect } from 'react';
 import {
   Box,
   Button,
-  CloseIcon,
   EditIcon,
   Font,
   Loader,
@@ -71,6 +70,8 @@ const Toolbox = () => {
   const isAuthor = auth_selectors.useIsAuthor(authorName);
   const params = useArticleParams();
 
+  useEffect(() => article_reviews_actions.reset, []);
+
   if (params.is !== 'ok') return null;
 
   return (
@@ -103,27 +104,7 @@ const Toolbox = () => {
             minWidth="280px"
             maxWidth="500px"
           >
-            <Box spacing={[250, 500]}>
-              <Box orientation="row" between>
-                <Font variant="h6">
-                  Reviews{' '}
-                  {articleReviewsStore.is === 'ok' &&
-                    `(${articleReviewsStore.reviews.length})`}
-                </Font>
-                <Button
-                  size={1}
-                  shape="rounded"
-                  variant="outlined"
-                  motive="tertiary"
-                  onClick={close}
-                >
-                  <CloseIcon />
-                </Button>
-              </Box>
-              <Box>
-                <ArticleReviewsList />
-              </Box>
-            </Box>
+            <ArticleReviewsList onClose={close} />
           </Box>
         )}
       </Popover>

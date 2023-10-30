@@ -103,25 +103,7 @@ const Toolbox = () => {
             minWidth="280px"
             maxWidth="500px"
           >
-            <Box spacing={[250, 500]}>
-              <Box orientation="row" between>
-                <Font variant="h6">
-                  Reviews{' '}
-                  {articleReviewsStore.is === 'ok' &&
-                    `(${articleReviewsStore.reviews.length})`}
-                </Font>
-                <Button
-                  size={1}
-                  shape="rounded"
-                  variant="outlined"
-                  motive="tertiary"
-                  onClick={close}
-                >
-                  <CloseIcon />
-                </Button>
-              </Box>
-              <ArticleReviewsList />
-            </Box>
+            <ArticleReviewsList onClose={close} />
           </Box>
         )}
       </Popover>

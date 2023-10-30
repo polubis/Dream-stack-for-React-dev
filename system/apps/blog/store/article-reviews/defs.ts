@@ -19,6 +19,7 @@ interface Selectors {
 interface Actions {
   load(id: Id): Promise<void>;
   addReview(review: ArticleReviewDto): void;
+  reset(): void;
 }
 
 export type { State, Idle, Busy, Fail, Actions, Selectors };
