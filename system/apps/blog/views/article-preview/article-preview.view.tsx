@@ -18,19 +18,19 @@ import {
   Popover,
   ReviewsIcon,
 } from '@system/figa-ui';
-import { ArticleDetails } from 'apps/blog/components/article-details';
-import { ArticleThumbnail } from 'apps/blog/components/article-thumbnail';
-import { ArticleTags } from 'apps/blog/components/article-tags';
-import { ArticleStatusBadge } from 'apps/blog/components/article-status-badge';
+import { ArticleDetails } from '../../components/article-details';
+import { ArticleThumbnail } from '../../components/article-thumbnail';
+import { ArticleTags } from '../../components/article-tags';
+import { ArticleStatusBadge } from '../../components/article-status-badge';
 import Markdown from 'markdown-to-jsx';
-import { article_mdx_options } from 'apps/blog/core';
-import { auth_selectors } from 'apps/blog/store/auth';
-import { Bar } from 'apps/blog/components/bar';
+import { article_mdx_options } from '../../core';
+import { auth_selectors } from '../../store/auth';
+import { Bar } from '../../components/bar';
 import Link from 'next/link';
 import {
   article_reviews_actions,
   useArticleReviewsStore,
-} from 'apps/blog/store/article-reviews';
+} from '../../store/article-reviews';
 
 const Content = () => {
   const {
@@ -78,6 +78,7 @@ const Toolbox = () => {
         trigger={({ toggle }) => (
           <Button
             size={2}
+            title="Reviews"
             loading={articleReviewsStore.is === 'busy'}
             shape="rounded"
             onClick={() => {
@@ -110,6 +111,7 @@ const Toolbox = () => {
                   <CloseIcon />
                 </Button>
               </Box>
+              <Box>{isAuthor && <Button size={2}>Add answer</Button>}</Box>
             </Box>
           </Box>
         )}
