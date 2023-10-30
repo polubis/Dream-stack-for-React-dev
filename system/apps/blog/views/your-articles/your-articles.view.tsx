@@ -29,7 +29,9 @@ const Content = () => {
       if (!article) throw Error('Cannot find article');
 
       if (article.status !== 'Accepted') {
-        alert('This article is not published yet - TODO');
+        router.push(
+          `/${lang}/articles/preview?id=${article.id}&url=${article.url}`
+        );
         return;
       }
 

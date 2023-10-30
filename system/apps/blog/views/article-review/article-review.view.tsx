@@ -9,8 +9,8 @@ import {
 import { FailScreen } from './components/fail-screen';
 import { LoaderScreen } from './components/loader-screen';
 import type { ArticleReviewParams } from './defs';
-import { useArticleReviewParams } from './use-article-review-params';
 import { ReviewScreen } from './components/review-screen';
+import { useArticleParams } from '../../core/articles';
 
 const Content = ({ url, id }: ArticleReviewParams) => {
   const lang = useLang();
@@ -42,7 +42,7 @@ const Content = ({ url, id }: ArticleReviewParams) => {
 };
 
 const ArticleReviewView = () => {
-  const params = useArticleReviewParams();
+  const params = useArticleParams();
 
   return (
     <MainLayout>
