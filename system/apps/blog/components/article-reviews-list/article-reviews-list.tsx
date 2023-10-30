@@ -65,9 +65,9 @@ const ArticleReviewsList = ({ onClose }: ArticleReviewsListProps) => {
       />
     );
 
-  const AddReviewSection = (
+  const AddReviewSection = article.status === 'WaitingForApproval' && (
     <AdminsOnly>
-      <Box spacing={[250]} padding={[0, 50, 0, 50]}>
+      <Box spacing={[250]}>
         <Field
           label="Review*"
           hint="Remember to make review understable for readers"
