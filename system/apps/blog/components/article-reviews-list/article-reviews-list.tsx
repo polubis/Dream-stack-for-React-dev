@@ -13,6 +13,7 @@ import { useArticleReviewsStore } from '../../store/article-reviews';
 import styled from 'styled-components';
 import { InfoSection } from '../info-section';
 import type { ArticleReviewsListProps } from './defs';
+import { AdminsOnly } from '../../core';
 
 const Container = styled.ul`
   ${column()}
@@ -57,6 +58,12 @@ const ArticleReviewsList = ({ onClose }: ArticleReviewsListProps) => {
 
   const { reviews } = articleReviewsStore;
 
+  const AddReviewButton = (
+    <AdminsOnly>
+      <Button size={2}>Add review</Button>
+    </AdminsOnly>
+  );
+
   return (
     <Box spacing={[200]}>
       <Box orientation="row" between>
@@ -89,9 +96,13 @@ const ArticleReviewsList = ({ onClose }: ArticleReviewsListProps) => {
               </div>
             </li>
           ))}
+          {AddReviewButton}
         </Container>
       ) : (
-        <Font variant="b2">No reviews added yet</Font>
+        <Box spacing={[200]}>
+          <Font variant="b2">No reviews added yet</Font>
+          {AddReviewButton}
+        </Box>
       )}
     </Box>
   );
