@@ -8,7 +8,16 @@ import {
   useArticleStore,
 } from '../../store/article';
 import { useEffect } from 'react';
-import { Box, Button, EditIcon, Font, Loader } from '@system/figa-ui';
+import {
+  Box,
+  Button,
+  CloseIcon,
+  EditIcon,
+  Font,
+  Loader,
+  Popover,
+  ReviewsIcon,
+} from '@system/figa-ui';
 import { ArticleDetails } from 'apps/blog/components/article-details';
 import { ArticleThumbnail } from 'apps/blog/components/article-thumbnail';
 import { ArticleTags } from 'apps/blog/components/article-tags';
@@ -18,6 +27,10 @@ import { article_mdx_options } from 'apps/blog/core';
 import { auth_selectors } from 'apps/blog/store/auth';
 import { Bar } from 'apps/blog/components/bar';
 import Link from 'next/link';
+import {
+  article_reviews_actions,
+  useArticleReviewsStore,
+} from 'apps/blog/store/article-reviews';
 
 const Content = () => {
   const {
@@ -53,6 +66,7 @@ const Content = () => {
 const Toolbox = () => {
   const lang = useLang();
   const { authorName } = article_selectors.useArticle();
+  const articleReviewsStore = useArticleReviewsStore();
   const isAuthor = auth_selectors.useIsAuthor(authorName);
   const params = useArticleParams();
 
@@ -60,6 +74,47 @@ const Toolbox = () => {
 
   return (
     <Bar>
+      <Popover
+        trigger={({ toggle }) => (
+          <Button
+            size={2}
+            loading={articleReviewsStore.is === 'busy'}
+            shape="rounded"
+            onClick={() => {
+              toggle();
+              articleReviewsStore.is !== 'ok' &&
+                article_reviews_actions.load(params.query.id);
+            }}
+          >
+            <ReviewsIcon />
+          </Button>
+        )}
+      >
+        {({ close }) => (
+          <Box
+            padding={[250, 250, 250, 250]}
+            variant="outlined"
+            minWidth="280px"
+            maxWidth="500px"
+          >
+            <Box spacing={[250, 500]}>
+              <Box orientation="row" between>
+                <Font variant="h6">Reviews</Font>
+                <Button
+                  size={1}
+                  shape="rounded"
+                  variant="outlined"
+                  motive="tertiary"
+                  onClick={close}
+                >
+                  <CloseIcon />
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+        )}
+      </Popover>
+
       {isAuthor && (
         <Link href={`/${lang}/articles-creator?url=${params.query.url}`}>
           <Button size={2} shape="rounded">
