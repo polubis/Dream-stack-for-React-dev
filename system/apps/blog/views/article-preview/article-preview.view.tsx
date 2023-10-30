@@ -31,6 +31,7 @@ import {
   article_reviews_actions,
   useArticleReviewsStore,
 } from '../../store/article-reviews';
+import { ArticleReviewsList } from '../../components/article-reviews-list';
 
 const Content = () => {
   const {
@@ -81,10 +82,14 @@ const Toolbox = () => {
             title="Reviews"
             loading={articleReviewsStore.is === 'busy'}
             shape="rounded"
-            onClick={() => {
+            onClick={async () => {
+              if (articleReviewsStore.is === 'ok') {
+                toggle();
+                return;
+              }
+
+              await article_reviews_actions.load(params.query.id);
               toggle();
-              articleReviewsStore.is !== 'ok' &&
-                article_reviews_actions.load(params.query.id);
             }}
           >
             <ReviewsIcon />
@@ -111,7 +116,9 @@ const Toolbox = () => {
                   <CloseIcon />
                 </Button>
               </Box>
-              <Box>{isAuthor && <Button size={2}>Add answer</Button>}</Box>
+              <Box>
+                <ArticleReviewsList />
+              </Box>
             </Box>
           </Box>
         )}
