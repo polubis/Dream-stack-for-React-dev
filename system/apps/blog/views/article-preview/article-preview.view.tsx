@@ -1,6 +1,5 @@
 import { useArticleParams } from '../../core/articles';
 import { ArticleScreen, MainLayout } from '../../components';
-import { FailScreen } from '../article-review/components/fail-screen';
 import { useLang } from '../../dk';
 import {
   article_actions,
@@ -32,6 +31,7 @@ import {
   useArticleReviewsStore,
 } from '../../store/article-reviews';
 import { ArticleReviewsList } from '../../components/article-reviews-list';
+import { InfoSection } from '../../components/info-section';
 
 const Content = () => {
   const {
@@ -161,7 +161,13 @@ const ArticlePreviewView = () => {
           </Box>
         )}
         {(params.is === 'fail' || articleStore.is === 'fail') && (
-          <FailScreen onRetry={() => window.location.reload()} />
+          <InfoSection
+            title="❌ Ups... Something went wrong!"
+            description="Try again with button below or refresh page if problem occurs 🔃."
+            footer={
+              <Button onClick={() => window.location.reload()}>Retry</Button>
+            }
+          />
         )}
         {params.is === 'ok' && articleStore.is === 'ok' && <Content />}
       </MainLayout>

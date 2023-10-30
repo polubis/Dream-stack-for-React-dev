@@ -6,21 +6,17 @@ import {
   article_reviews_actions,
   useArticleReviewsStore,
 } from '../../store/article-reviews';
-import { FailScreen } from './components/fail-screen';
 import { LoaderScreen } from './components/loader-screen';
 import { ReviewScreen } from './components/review-screen';
 import { useArticleParams } from '../../core/articles';
 import type { ArticleParams } from '../../core/articles/defs';
+import { InfoSection } from '../../components/info-section';
+import { Button } from '@system/figa-ui';
 
 const Content = ({ url, id }: ArticleParams) => {
   const lang = useLang();
   const articleStore = useArticleStore();
   const articleReviewsStore = useArticleReviewsStore();
-
-  const retry = (): void => {
-    articleStore.is === 'fail' && article_actions.load({ url, lang });
-    articleReviewsStore.is === 'fail' && article_reviews_actions.load(id);
-  };
 
   useEffect(() => {
     article_actions.load({ url, lang });
@@ -36,7 +32,14 @@ const Content = ({ url, id }: ArticleParams) => {
     articleStore.is === 'fail' || articleReviewsStore.is === 'fail';
 
   if (idle || busy) return <LoaderScreen />;
-  if (failed) return <FailScreen onRetry={retry} />;
+  if (failed)
+    return (
+      <InfoSection
+        title="❌ Ups... Something went wrong!"
+        description="Try again with button below or refresh page if problem occurs 🔃."
+        footer={<Button onClick={() => window.location.reload()}>Retry</Button>}
+      />
+    );
 
   return <ReviewScreen />;
 };
@@ -45,9 +48,15 @@ const ArticleReviewView = () => {
   const params = useArticleParams();
 
   return (
-    <MainLayout>
+    <MainLayout offPadding>
       {params.is === 'fail' && (
-        <FailScreen onRetry={() => window.location.reload()} />
+        <InfoSection
+          title="❌ Ups... Something went wrong!"
+          description="Try again with button below or refresh page if problem occurs 🔃."
+          footer={
+            <Button onClick={() => window.location.reload()}>Retry</Button>
+          }
+        />
       )}
       {params.is === 'ok' && <Content {...params.query} />}
     </MainLayout>
