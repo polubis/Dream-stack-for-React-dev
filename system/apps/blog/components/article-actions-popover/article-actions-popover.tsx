@@ -1,6 +1,14 @@
 import { ArticleStatus } from '@system/blog-api-models';
 import { useToggle } from '@system/figa-hooks';
-import { Box, Button, CloseIcon, Font, Modal, Popover } from '@system/figa-ui';
+import {
+  ActionsIcon,
+  Box,
+  Button,
+  CloseIcon,
+  Font,
+  Modal,
+  Popover,
+} from '@system/figa-ui';
 import { article_selectors } from '../../store/article';
 import { article_management_actions } from '../../store/article-management';
 import { change_article_status_selectors } from '../../store/change-article-status';
@@ -50,8 +58,14 @@ const ArticleActionsPopover = () => {
       )}
       <Popover
         trigger={({ toggle }) => (
-          <Button size={2} loading={loading} onClick={toggle}>
-            Actions
+          <Button
+            size={2}
+            shape="rounded"
+            loading={loading}
+            title="Actions"
+            onClick={toggle}
+          >
+            <ActionsIcon />
           </Button>
         )}
       >

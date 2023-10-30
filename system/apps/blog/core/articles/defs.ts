@@ -1,8 +1,13 @@
 import type { ArticlesStore } from '../../store-factories/articles';
+import type { Id, Url } from '@system/blog-api-models';
 
 interface ArticlesFilteringConfig {
   selectors: ArticlesStore.Selectors;
   actions: ArticlesStore.Actions;
 }
 
-export type { ArticlesFilteringConfig };
+interface ArticleParams {
+  url: Url;
+  id: Id;
+}
+export type { ArticlesFilteringConfig, ArticleParams };

@@ -33,15 +33,14 @@ export const getStaticProps: GetStaticProps<ArticlePageProps> = async ({
 
   return {
     props: {
-      url: params.url,
       mdx,
       article: article.data,
     },
   };
 };
 
-const ArticlePage = ({ article, ...props }: ArticlePageProps) => {
-  return <ArticleView {...props} {...article} />;
+const ArticlePage = (props: ArticlePageProps) => {
+  return <ArticleView {...props} />;
 };
 
 export default ArticlePage;

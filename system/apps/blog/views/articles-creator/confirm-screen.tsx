@@ -6,13 +6,13 @@ import {
   Font,
   List,
   ListItem,
+  Loader,
 } from '@system/figa-ui';
 import {
   articles_creator_actions,
   useArticlesCreatorStore,
 } from '../../store/articles-creator';
 import { MainLayout } from '../../components';
-import { LoaderScreen } from './loader-screen';
 import { useAuthStore } from '../../store/auth';
 import { useMoveToRedirect } from '../../dk';
 import { useArticleStore } from '../../store/article';
@@ -41,7 +41,11 @@ const ConfirmScreen = () => {
   return (
     <MainLayout>
       {articleCreatorState.is === 'busy' ? (
-        <LoaderScreen />
+        <Box margin="auto">
+          <Box margin="auto">
+            <Loader size="big" />
+          </Box>
+        </Box>
       ) : (
         <Box
           padding={[250, 250, 250, 250]}

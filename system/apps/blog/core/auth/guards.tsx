@@ -1,8 +1,8 @@
-import { auth_selectors, checkIsAdmin, useAuthStore } from '../../store/auth';
+import { auth_selectors } from '../../store/auth';
 import type { GuardProps } from './models';
 
 const AdminsOnly = ({ children, fallback }: GuardProps) => {
-  const isAdmin = useAuthStore(checkIsAdmin);
+  const isAdmin = auth_selectors.useIsAdmin();
   return <>{isAdmin ? children : fallback ?? null}</>;
 };
 

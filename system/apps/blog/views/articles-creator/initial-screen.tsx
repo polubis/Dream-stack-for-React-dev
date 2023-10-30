@@ -1,9 +1,16 @@
-import { Alert, Box, Button, Font, List, ListItem } from '@system/figa-ui';
+import {
+  Alert,
+  Box,
+  Button,
+  Font,
+  List,
+  ListItem,
+  Loader,
+} from '@system/figa-ui';
 import { MainLayout } from '../../components';
 import { article_actions, useArticleStore } from '../../store/article';
 import { useRouter } from 'next/router';
 import { getLang } from '../../dk';
-import { LoaderScreen } from './loader-screen';
 import { articles_creator_actions } from '../../store/articles-creator';
 
 const mdx = `#### Quick start
@@ -96,7 +103,11 @@ const InitialScreen = () => {
   return (
     <MainLayout>
       {is === 'busy' ? (
-        <LoaderScreen />
+        <Box margin="auto">
+          <Box margin="auto">
+            <Loader size="big" />
+          </Box>
+        </Box>
       ) : (
         <Box
           margin="auto"

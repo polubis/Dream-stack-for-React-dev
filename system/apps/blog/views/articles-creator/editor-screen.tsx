@@ -15,7 +15,7 @@ import {
 } from '../../store/articles-creator';
 import { CreatorForm } from './creator-form';
 import Markdown from 'markdown-to-jsx';
-import { ArticleScreen } from '../../components';
+import { ArticleBody } from '../../components/article-body';
 import { ArticleStatusBadge } from '../../components/article-status-badge';
 import { ArticleThumbnail } from '../../components/article-thumbnail';
 import { ArticleDetails } from '../../components/article-details';
@@ -121,7 +121,7 @@ const EditorScreen = () => {
             shape="rounded"
             variant="outlined"
             motive="tertiary"
-            title='Close creator'
+            title="Close creator"
             onClick={handleClose}
           >
             <CloseIcon />
@@ -149,7 +149,7 @@ const EditorScreen = () => {
             </EditorTabs>
           </section>
           <section className="creator-layout-preview">
-            <ArticleScreen
+            <ArticleBody
               details={
                 <ArticleDetails
                   title={title}

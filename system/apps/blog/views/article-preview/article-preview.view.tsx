@@ -3,7 +3,7 @@ import { ArticleScreen } from '../../components/article-screen';
 import Markdown from 'markdown-to-jsx';
 import { useArticleStore } from '../../store/article';
 
-const ArticleReviewView = () => {
+const ArticlePreviewView = () => {
   useStoreSync(useArticleStore, { is: 'idle' })();
 
   return (
@@ -16,4 +16,4 @@ const ArticleReviewView = () => {
   );
 };
 
-export { ArticleReviewView };
+export { ArticlePreviewView };

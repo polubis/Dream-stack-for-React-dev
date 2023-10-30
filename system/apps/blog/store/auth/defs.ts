@@ -21,6 +21,7 @@ type AuthStoreStateKey = AuthState['key'];
 
 interface AuthSelectors {
   useIsAuthor(username: Username): boolean;
+  useIsAdmin(): boolean;
   useIsAuthorized(): boolean;
 }
 

@@ -3,7 +3,6 @@ import type { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import type { LiveArticlesViewProps } from '../views/live-articles/defs';
 
 interface ArticlePageProps {
-  url: Url;
   mdx: MDXRemoteSerializeResult;
   article: FullArticleDto;
 }
