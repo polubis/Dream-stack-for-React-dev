@@ -5,7 +5,7 @@ interface InfoSectionProps {
   title: ReactNode;
   description: ReactNode;
   footer?: ReactNode;
-  padding?: BoxProps['padding']
+  padding?: BoxProps['padding'];
 }
 
 export type { InfoSectionProps };

@@ -29,7 +29,4 @@ const unauthorize = (): void => {
   useAuthStore.setState({ key: 'unauthorized', user: null });
 };
 
-const checkIsAdmin = (state: AuthStore): boolean =>
-  state.key === 'authorized' ? state.user.roles.includes('Admin') : false;
-
-export { useAuthStore, authorize, unauthorize, checkIsAdmin };
+export { useAuthStore, authorize, unauthorize };

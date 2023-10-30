@@ -1,6 +1,6 @@
 import { useQueryParams, QueryParamsState } from '@system/figa-hooks';
 import { useMemo } from 'react';
-import { ArticleParams } from './defs';
+import type { ArticleParams } from './defs';
 
 const isValidParam = (param: unknown): boolean =>
   !!param && !Array.isArray(param);

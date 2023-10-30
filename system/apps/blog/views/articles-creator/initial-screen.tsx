@@ -1,4 +1,12 @@
-import { Alert, Box, Button, Font, List, ListItem, Loader } from '@system/figa-ui';
+import {
+  Alert,
+  Box,
+  Button,
+  Font,
+  List,
+  ListItem,
+  Loader,
+} from '@system/figa-ui';
 import { MainLayout } from '../../components';
 import { article_actions, useArticleStore } from '../../store/article';
 import { useRouter } from 'next/router';

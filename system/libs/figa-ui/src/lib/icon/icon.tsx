@@ -235,6 +235,14 @@ const ReviewsIcon = ({ className, ...props }: IconProps) => {
   );
 };
 
+const ActionsIcon = ({ className, ...props }: IconProps) => {
+  return (
+    <Icon className={c('actions-icon', className)} {...props}>
+      <path d="M10.55 18.2L15.725 12H11.725L12.45 6.325L7.825 13H11.3L10.55 18.2ZM8 22L9 15H4L13 2H15L14 10H20L10 22H8Z" />
+    </Icon>
+  );
+};
+
 export {
   Icon,
   DiscordIcon,
@@ -262,4 +270,5 @@ export {
   FiltersIcon,
   PlusIcon,
   ReviewsIcon,
+  ActionsIcon,
 };
