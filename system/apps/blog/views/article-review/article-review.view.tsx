@@ -8,11 +8,11 @@ import {
 } from '../../store/article-reviews';
 import { FailScreen } from './components/fail-screen';
 import { LoaderScreen } from './components/loader-screen';
-import type { ArticleReviewParams } from './defs';
 import { ReviewScreen } from './components/review-screen';
 import { useArticleParams } from '../../core/articles';
+import type { ArticleParams } from '../../core/articles/defs';
 
-const Content = ({ url, id }: ArticleReviewParams) => {
+const Content = ({ url, id }: ArticleParams) => {
   const lang = useLang();
   const articleStore = useArticleStore();
   const articleReviewsStore = useArticleReviewsStore();
