@@ -105,7 +105,11 @@ const Toolbox = () => {
           >
             <Box spacing={[250, 500]}>
               <Box orientation="row" between>
-                <Font variant="h6">Reviews</Font>
+                <Font variant="h6">
+                  Reviews{' '}
+                  {articleReviewsStore.is === 'ok' &&
+                    `(${articleReviewsStore.reviews.length})`}
+                </Font>
                 <Button
                   size={1}
                   shape="rounded"
