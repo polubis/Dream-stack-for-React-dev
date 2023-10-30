@@ -12,7 +12,6 @@ import {
   Button,
   EditIcon,
   Font,
-  Loader,
   Popover,
   ReviewsIcon,
 } from '@system/figa-ui';
@@ -134,13 +133,6 @@ const ArticlePreviewScreen = () => {
   return (
     <>
       <MainLayout sticky offPadding>
-        {(articleStore.is === 'idle' ||
-          params.is === 'busy' ||
-          articleStore.is === 'busy') && (
-          <Box center orientation="row">
-            <Loader size="big" />
-          </Box>
-        )}
         {(params.is === 'fail' || articleStore.is === 'fail') && (
           <InfoSection
             title="❌ Ups... Something went wrong!"
