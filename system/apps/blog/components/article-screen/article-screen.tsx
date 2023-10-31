@@ -56,7 +56,7 @@ const Content = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
 
 const Toolbox = () => {
   const lang = useLang();
-  const { authorName, url } = article_selectors.useArticle();
+  const { authorName, url, status } = article_selectors.useArticle();
   const isAuthor = auth_selectors.useIsAuthor(authorName);
   const isAdmin = auth_selectors.useIsAdmin();
 
@@ -64,7 +64,7 @@ const Toolbox = () => {
 
   return (
     <Bar>
-      {isAdmin && <ArticleActionsPopover />}
+      {isAdmin && status === 'WaitingForApproval' && <ArticleActionsPopover />}
       <ArticleReviewsPopover />
       {isAuthor && (
         <Link href={`/${lang}/articles-creator?url=${url}`}>
