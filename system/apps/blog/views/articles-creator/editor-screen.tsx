@@ -25,6 +25,9 @@ import { ArticleTags } from '../../components/article-tags';
 import styled from 'styled-components';
 import { useElementSize } from '@system/figa-hooks';
 import { useEffect, useState } from 'react';
+import { useArticleStore } from '../../store/article';
+import type { ArticleStatus } from '@system/blog-api-models';
+import type { EditorScreenView } from './defs';
 
 const topbarHeight = tokens.spacing[850];
 const footerHeight = tokens.spacing[850];
@@ -78,9 +81,8 @@ const Container = styled.main`
   }
 `;
 
-type EditorScreenView = 'preview' | 'code' | 'both';
-
 const EditorScreen = () => {
+  const articleStore = useArticleStore();
   const articlesCreatorStore = useArticlesCreatorStore();
   const [size] = useElementSize({ delay: 20 });
   const [view, setView] = useState<EditorScreenView>('both');
@@ -110,6 +112,9 @@ const EditorScreen = () => {
       invalid,
     },
   } = articlesCreatorStore;
+
+  const status: ArticleStatus =
+    articleStore.is === 'ok' ? articleStore.article.status : 'Draft';
 
   return (
     <Container className={view}>
@@ -164,11 +169,11 @@ const EditorScreen = () => {
                   <ArticleThumbnail
                     src={thumbnail.preview[0]}
                     title={title}
-                    status="Draft"
+                    status={status}
                   />
                 )
               }
-              badge={<ArticleStatusBadge status="Draft" />}
+              badge={<ArticleStatusBadge status={status} />}
               body={
                 <Markdown key={content} options={article_mdx_options}>
                   {content}

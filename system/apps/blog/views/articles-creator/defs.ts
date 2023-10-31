@@ -7,4 +7,6 @@ interface EditorTabProps {
   children: (tab: EditorTab) => ReactNode;
 }
 
-export type { EditorTab, EditorTabProps };
+type EditorScreenView = 'preview' | 'code' | 'both';
+
+export type { EditorTab, EditorTabProps, EditorScreenView };

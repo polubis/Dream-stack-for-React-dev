@@ -14,6 +14,11 @@ const article_management_actions: ArticleManagement.Actions = {
     article_reviews_actions.load(id);
     article_actions.load({ url, lang });
   },
+  sendForApproval: async (id) => {
+    await change_article_status_actions.sendForApproval(id);
+    article_actions.update({ status: 'WaitingForApproval' });
+    return;
+  },
   reset: () => {
     set({ is: 'idle' });
   },

@@ -22,6 +22,7 @@ import { article_mdx_options } from '../../core';
 import { useArticleParams } from '../../core/articles';
 import { InfoSection } from '../info-section';
 import { ArticleActionsPopover } from '../article-actions-popover';
+import { ArticleStatusPopover } from '../article-status-popover';
 
 const Content = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
   const {
@@ -56,7 +57,7 @@ const Content = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
 
 const Toolbox = () => {
   const lang = useLang();
-  const { authorName, url } = article_selectors.useArticle();
+  const { authorName, url, status } = article_selectors.useArticle();
   const isAuthor = auth_selectors.useIsAuthor(authorName);
   const isAdmin = auth_selectors.useIsAdmin();
 
@@ -64,7 +65,10 @@ const Toolbox = () => {
 
   return (
     <Bar>
-      {isAdmin && <ArticleActionsPopover />}
+      {isAuthor && (status === 'Draft' || status === 'NeedWork') && (
+        <ArticleStatusPopover />
+      )}
+      {isAdmin && status === 'WaitingForApproval' && <ArticleActionsPopover />}
       <ArticleReviewsPopover />
       {isAuthor && (
         <Link href={`/${lang}/articles-creator?url=${url}`}>

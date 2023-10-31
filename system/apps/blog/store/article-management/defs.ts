@@ -15,6 +15,7 @@ interface Actions {
   reset(): void;
   confirm(id: Id): Promise<void>;
   changeStatus(id: Id, status: ArticleStatus): Promise<void>;
+  sendForApproval(id: Id): Promise<void>;
 }
 
 interface Selectors {
