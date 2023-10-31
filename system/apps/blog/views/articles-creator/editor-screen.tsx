@@ -27,6 +27,7 @@ import { useElementSize } from '@system/figa-hooks';
 import { useEffect, useState } from 'react';
 import { useArticleStore } from 'apps/blog/store/article';
 import type { ArticleStatus } from '@system/blog-api-models';
+import type { EditorScreenView } from './defs';
 
 const topbarHeight = tokens.spacing[850];
 const footerHeight = tokens.spacing[850];
@@ -79,8 +80,6 @@ const Container = styled.main`
     }
   }
 `;
-
-type EditorScreenView = 'preview' | 'code' | 'both';
 
 const EditorScreen = () => {
   const articleStore = useArticleStore();
