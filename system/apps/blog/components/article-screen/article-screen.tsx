@@ -22,6 +22,7 @@ import { article_mdx_options } from '../../core';
 import { useArticleParams } from '../../core/articles';
 import { InfoSection } from '../info-section';
 import { ArticleActionsPopover } from '../article-actions-popover';
+import { ArticleStatusPopover } from '../article-status-popover';
 
 const Content = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
   const {
@@ -64,6 +65,9 @@ const Toolbox = () => {
 
   return (
     <Bar>
+      {isAuthor && (status === 'Draft' || status === 'NeedWork') && (
+        <ArticleStatusPopover />
+      )}
       {isAdmin && status === 'WaitingForApproval' && <ArticleActionsPopover />}
       <ArticleReviewsPopover />
       {isAuthor && (

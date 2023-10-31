@@ -56,6 +56,7 @@ describe('Articles maintenance works when: ', () => {
     cy.get('.button:contains("Submit")').click();
     cy.get('.font:contains("Send to review")');
     cy.get('.button:contains("Submit")').click();
+    cy.get('.button:contains("Sure?")').click();
 
     cy.url().should('include', '/en/sign-in');
     get('sign-in-login-input').type('tom199423');
@@ -68,12 +69,12 @@ describe('Articles maintenance works when: ', () => {
     cy.wait(['@signIn']);
 
     cy.get('.button:contains("Submit")').click();
+    cy.get('.button:contains("Sure?")').click();
     cy.get('.loader');
 
     cy.wait(['@putArticle']);
 
     cy.get('.button:contains("Submit")');
-
     cy.get('.alert:contains("Article has been edited ❤!")');
   });
 
@@ -117,6 +118,7 @@ describe('Articles maintenance works when: ', () => {
     cy.get('.button:contains("Submit")').click();
     cy.get('.font:contains("Send to review")');
     cy.get('.button:contains("Submit")').click();
+    cy.get('.button:contains("Sure?")').click();
 
     cy.url().should('include', '/en/sign-in');
     get('sign-in-login-input').type('tom199423');
@@ -129,6 +131,7 @@ describe('Articles maintenance works when: ', () => {
     cy.wait(['@signIn']);
 
     cy.get('.button:contains("Submit")').click();
+    cy.get('.button:contains("Sure?")').click();
 
     cy.get('.loader');
 

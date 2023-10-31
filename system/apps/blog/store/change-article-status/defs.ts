@@ -10,6 +10,7 @@ type State = Idle | Busy | Ok | Fail;
 interface Actions {
   accept(id: Id): Promise<void>;
   reject(id: Id): Promise<void>;
+  sendForApproval(id: Id): Promise<void>;
 }
 
 interface Selectors {

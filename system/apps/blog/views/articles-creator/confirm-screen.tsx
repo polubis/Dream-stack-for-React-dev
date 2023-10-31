@@ -39,6 +39,7 @@ const ConfirmScreen = () => {
       articles_creator_actions.confirm(
         new URLSearchParams(window.location.search).get('url')
       );
+      confirmation.close();
       return;
     }
 

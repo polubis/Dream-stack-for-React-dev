@@ -25,7 +25,7 @@ import { ArticleTags } from '../../components/article-tags';
 import styled from 'styled-components';
 import { useElementSize } from '@system/figa-hooks';
 import { useEffect, useState } from 'react';
-import { useArticleStore } from 'apps/blog/store/article';
+import { useArticleStore } from '../../store/article';
 import type { ArticleStatus } from '@system/blog-api-models';
 import type { EditorScreenView } from './defs';
 
