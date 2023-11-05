@@ -5,19 +5,20 @@ Dictionary:
   LIVE: Article status with "LIVE" value
   DEFAULT_FILTERS: It means empty search field, the [DRAFT] article status and no selected tags
 
-Scenario: I visit page with [DEFAULT_FILTERS]
+Scenario: I visit page with [DEFAULT_FILTERS] ✅
   Given: I sign in
   When: I visit [YOUR_ARTICLES] page
   Then: I see loading animation
   And: I see articles selected by [DEFAULT_FILTERS]
+# ⚠️ Additional problem with tags menu on tablets.
 
-Scenario: I visit page but error occurs
+Scenario: I visit page but error occurs ✅
   Given: I sign in
   When: I visit [YOUR_ARTICLES] page
   Then: I see loading animation
   And: I see error message
 
-Scenario: I change filters
+Scenario: I change filters ✅
   Given: I sign in
   And: I visit [YOUR_ARTICLES] page
   When: I type "react" in search field
@@ -27,26 +28,10 @@ Scenario: I change filters
   And: I see only articles with [LIVE] status 
   And: I see only articles with first tag selected
 
-Scenario: I change filters but error occurs
+Scenario: I change filters but error occurs ✅
   Given: I sign in
   And: I visit [YOUR_ARTICLES] page
   And: I see loading animation
   When: I type "react" in search field
   Then: I see loading animation
   And: I see error message
-
-
-# Scenario: Filter by search field
-#   When: I type phrase in search field
-#   Then: I see articles that contains typed phrase in article title
-#   And: Case of letters is ignored
-#   And: Numbers are allowed
-#   And: Special characters are allowed
-
-# Scenario: Filter by status field
-#   When: I choose article status from field
-#   Then: I see articles that have chosen status
-
-# Scenario: Filter by tag
-#   When: I choose one or more article tags
-#   Then: I see articles that have chosen status
