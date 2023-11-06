@@ -111,7 +111,6 @@ const ConnectedLiveArticlesView = ({
   const articlesStore = useArticlesStore();
 
   if (articlesStore.is === 'idle') {
-    console.log('siema')
     articles_actions.sync(params, response.data);
   }
 

@@ -68,6 +68,7 @@ namespace ArticlesStore {
 
   export interface Selectors {
     useSafeState(): SafeState;
+    safeState(): SafeState;
   }
 }
 

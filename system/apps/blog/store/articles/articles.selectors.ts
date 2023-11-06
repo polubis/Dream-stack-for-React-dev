@@ -10,6 +10,14 @@ const articles_selectors: ArticlesStore.Selectors = {
 
       return state;
     }),
+  safeState: () => {
+    const state = useArticlesStore.getState();
+
+    if (state.is === 'idle')
+      throw Error('Fail fast - useSafeState used in wrong state ' + state.is);
+
+    return state;
+  },
 };
 
 export { articles_selectors };
