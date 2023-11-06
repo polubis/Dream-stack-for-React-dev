@@ -1,5 +1,7 @@
 import { Button, CloseIcon, Input, M_UP, size, tokens } from '@system/figa-ui';
-import type { ArticlesSearchProps } from './defs';
+import { useArticlesStore } from 'apps/blog/store/articles';
+import { articles_selectors } from 'apps/blog/store/articles/articles.selectors';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -25,25 +27,27 @@ const Container = styled.div`
   }
 `;
 
-const ArticlesSearchInput = ({
-  search,
-  loading,
-  onChange,
-}: ArticlesSearchProps) => {
+const ArticlesSearchInput = () => {
+  const {
+    filters: { Search },
+    is,
+  } = articles_selectors.useSafeState();
+  const [search, setSearch] = useState(Search);
+
   return (
     <Container>
       <Input
-        value={search}
-        loading={loading}
+        value={Search}
+        loading={is === 'loading'}
         placeholder="🏸 Type to find article..."
-        onChange={(e) => onChange(e.target.value)}
-        suffx={
-          search.length > 0 && (
-            <Button onClick={() => onChange('')}>
-              <CloseIcon />
-            </Button>
-          )
-        }
+        // onChange={(e) => onChange(e.target.value)}
+        // suffx={
+        //   search.length > 0 && (
+        //     <Button onClick={() => onChange('')}>
+        //       <CloseIcon />
+        //     </Button>
+        //   )
+        // }
       />
     </Container>
   );

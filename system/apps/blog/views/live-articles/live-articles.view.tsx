@@ -18,6 +18,8 @@ import { useSearchParams } from 'next/navigation';
 import { useLiveArticlesRouter } from './use-live-articles-router';
 import { type ScrollState, useScroll } from '@system/figa-hooks';
 import { Bar } from '../../components/bar';
+import { articles_actions, useArticlesStore } from '../../store/articles';
+import { articles_selectors } from 'apps/blog/store/articles/articles.selectors';
 
 const Container = styled.div`
   ${column()}
@@ -66,35 +68,35 @@ const Content = () => {
 };
 
 const LiveArticlesView = () => {
-  const { go, getParams } = useLiveArticlesRouter();
-  const searchParams = useSearchParams();
+  // const { go, getParams } = useLiveArticlesRouter();
+  // const searchParams = useSearchParams();
 
-  const handleLoadMore = useCallback(
-    (scroll: ScrollState): void => {
-      const { allLoaded } = live_articles_selectors.safeState();
-      const shouldLoad =
-        scroll.is === 'progress' && scroll.value > 20 && !allLoaded;
+  // const handleLoadMore = useCallback(
+  //   (scroll: ScrollState): void => {
+  //     const { allLoaded } = live_articles_selectors.safeState();
+  //     const shouldLoad =
+  //       scroll.is === 'progress' && scroll.value > 20 && !allLoaded;
 
-      if (!shouldLoad) return;
+  //     if (!shouldLoad) return;
 
-      go(({ CurrentPage }) => ({ CurrentPage: CurrentPage + 1 }));
-    },
-    [go]
-  );
+  //     go(({ CurrentPage }) => ({ CurrentPage: CurrentPage + 1 }));
+  //   },
+  //   [go]
+  // );
 
-  useScroll({ onScroll: handleLoadMore });
+  // useScroll({ onScroll: handleLoadMore });
 
-  useEffect(
-    () => live_articles_actions.load(getParams()),
-    [searchParams, getParams]
-  );
+  // useEffect(
+  //   () => live_articles_actions.load(getParams()),
+  //   [searchParams, getParams]
+  // );
 
   return (
     <>
       <MainLayout offPadding>
         <Container>
           <ArticlesJumbo />
-          <Content />
+          {/* <Content /> */}
         </Container>
       </MainLayout>
       <Bar />
@@ -106,21 +108,12 @@ const ConnectedLiveArticlesView = ({
   params,
   response,
 }: LiveArticlesViewProps) => {
-  const liveArticlesState = useLiveArticlesStore();
+  const articlesStore = useArticlesStore();
 
-  useStoreSync(
-    useLiveArticlesStore,
-    {
-      is: 'safe',
-      error: null,
-      allLoaded: response.data.length < params.ItemsPerPage,
-      initialParams: params,
-      params,
-      response,
-      loading: false,
-    },
-    liveArticlesState.is === 'idle'
-  )();
+  if (articlesStore.is === 'idle') {
+    console.log('siema')
+    articles_actions.sync(params, response.data);
+  }
 
   return <LiveArticlesView />;
 };

@@ -11,13 +11,8 @@ import {
 } from '@system/figa-ui';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLang } from '../../dk';
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { useLiveArticlesRouter } from './use-live-articles-router';
 import { TagsPopover } from './tags-popover';
 import { ArticlesSearchInput } from '../../components/articles-search-input';
-import { live_articles_selectors } from '../../store/live-articles';
 
 const Container = styled.div`
   position: relative;
@@ -59,20 +54,20 @@ const Container = styled.div`
 `;
 
 const ArticlesJumbo = () => {
-  const searchParams = useSearchParams();
-  const { getParams, go } = useLiveArticlesRouter();
-  const [search, setSearch] = useState('');
-  const lang = useLang();
-  const liveArticlesState = live_articles_selectors.useSafeState();
+  // const searchParams = useSearchParams();
+  // const { getParams, go } = useLiveArticlesRouter();
+  // const [search, setSearch] = useState('');
+  // const lang = useLang();
+  // const liveArticlesState = live_articles_selectors.useSafeState();
 
-  useEffect(() => setSearch(getParams().Search), [searchParams, getParams]);
+  // useEffect(() => setSearch(getParams().Search), [searchParams, getParams]);
 
-  const handleSearchChange = (value: string): void => {
-    go(() => ({
-      Search: value,
-      CurrentPage: 1,
-    }));
-  };
+  // const handleSearchChange = (value: string): void => {
+  //   go(() => ({
+  //     Search: value,
+  //     CurrentPage: 1,
+  //   }));
+  // };
 
   return (
     <Container>
@@ -94,12 +89,8 @@ const ArticlesJumbo = () => {
           to find meaningful materials and understand complex topics.
         </Font>
         <div className="articles-jumbo-filters">
-          <ArticlesSearchInput
-            loading={liveArticlesState.loading}
-            search={search}
-            onChange={handleSearchChange}
-          />
-          <TagsPopover />
+          <ArticlesSearchInput />
+          {/* <TagsPopover /> */}
         </div>
         <div className="articles-jumbo-divider">
           <Divider motive="primary" />
@@ -108,14 +99,14 @@ const ArticlesJumbo = () => {
           </Font>
           <Divider motive="primary" />
         </div>
-        <Link
+        {/* <Link
           className="articles-jumbo-create-link"
-          href={`/${lang}/articles-creator`}
+          // href={`/${lang}/articles-creator`}
         >
           <Button size={2} variant="outlined">
             Create article
           </Button>
-        </Link>
+        </Link> */}
       </div>
     </Container>
   );
