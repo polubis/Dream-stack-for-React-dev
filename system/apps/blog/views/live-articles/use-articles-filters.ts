@@ -1,14 +1,13 @@
 import { isArticleStatus } from '@system/blog-api';
 import { Lang } from '@system/blog-api-models';
-import { isServer } from '@system/utils';
 import { useLang } from 'apps/blog/dk';
 import { ArticlesStore } from 'apps/blog/store/articles';
 import { articles_selectors } from 'apps/blog/store/articles/articles.selectors';
 import { useRouter } from 'next/router';
 import { useCallback, useMemo } from 'react';
 
-const getFilters = (lang: Lang): ArticlesStore.Filters => {
-  if (isServer()) {
+const getFilters = (lang: Lang, isReady: boolean): ArticlesStore.Filters => {
+  if (!isReady) {
     return articles_selectors.safeState().filters;
   }
 
@@ -31,7 +30,10 @@ const useArticlesFilters = () => {
   const router = useRouter();
   const lang = useLang();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const filters = useMemo(() => getFilters(lang), [lang, router.query]);
+  const filters = useMemo(
+    () => getFilters(lang, router.isReady),
+    [lang, router]
+  );
 
   const change = useCallback(
     (newFilters: Partial<ArticlesStore.Filters>): void => {
