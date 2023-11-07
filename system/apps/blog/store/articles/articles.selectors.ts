@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useArticlesStore } from './articles.store';
-import { ArticlesStore } from './defs';
+import type { ArticlesStore } from './defs';
 
 const articles_selectors: ArticlesStore.Selectors = {
   state: useArticlesStore.getState,
