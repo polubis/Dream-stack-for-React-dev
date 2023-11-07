@@ -14,6 +14,7 @@ import {
   tap,
 } from 'rxjs';
 import { isEqual } from 'lodash';
+import { articles_factories } from './articles.factories';
 
 const { setState } = useArticlesStore;
 
@@ -32,7 +33,7 @@ const changed = new Subject<Partial<ArticlesStore.Filters>>();
 const changed$ = changed.asObservable();
 
 const articles_actions: ArticlesStore.Actions = {
-  sync: (filters, articles) => {
+  syncFromServer: (filters, articles) => {
     set({
       is: checkHasAllLoaded(filters, articles) ? 'all-loaded' : 'loaded',
       filters,
@@ -42,6 +43,15 @@ const articles_actions: ArticlesStore.Actions = {
   },
   load: async (newFilters) => {
     changed.next(newFilters);
+  },
+  syncFromClient: (lang) => {
+    const filters = articles_factories.defaultFilters(lang)
+
+    set({
+      is: 'loading',
+      defaultFilters: filters,
+      filters: filters,
+    });
   },
 };
 

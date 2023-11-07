@@ -2,17 +2,10 @@ import type { ArticlesPageProps } from '../../../models';
 import type { GetStaticProps } from 'next';
 import { LiveArticlesView } from '../../../views/live-articles/live-articles.view';
 import { getArticles } from '@system/blog-api';
-import { LiveArticlesStore } from '../../../store/live-articles';
+import { articles_factories } from '../../../store/articles';
 
 export const getStaticProps: GetStaticProps<ArticlesPageProps> = async () => {
-  const params: LiveArticlesStore.Params = {
-    CurrentPage: 1,
-    ItemsPerPage: 20,
-    Status: 'Accepted',
-    lang: 'en',
-    Search: '',
-    Tags: [],
-  };
+  const params = articles_factories.defaultFilters('en');
 
   return {
     props: {

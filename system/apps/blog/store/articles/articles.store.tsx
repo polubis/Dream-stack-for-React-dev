@@ -1,16 +1,10 @@
 import { create } from 'zustand';
 import type { ArticlesStore } from './defs';
+import { articles_factories } from './articles.factories';
 
 const useArticlesStore = create<ArticlesStore.State>(() => ({
   is: 'idle',
-  defaultFilters: {
-    CurrentPage: 1,
-    ItemsPerPage: 20,
-    Status: 'Accepted',
-    lang: 'en',
-    Search: '',
-    Tags: [],
-  },
+  defaultFilters: articles_factories.defaultFilters('en'),
 }));
 
 export { useArticlesStore };

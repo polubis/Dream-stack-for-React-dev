@@ -3,6 +3,7 @@
 import type {
   ArticleDto,
   ArticlesParams,
+  Lang,
   ResponseError,
 } from '@system/blog-api-models';
 
@@ -70,7 +71,8 @@ namespace ArticlesStore {
   export type State = UnsafeState | SafeState;
 
   export interface Actions {
-    sync(filters: Filters, articles: Articles): void;
+    syncFromClient(lang: Lang): void;
+    syncFromServer(filters: Filters, articles: Articles): void;
     load(filters: Partial<Filters>): void;
   }
 
@@ -79,6 +81,10 @@ namespace ArticlesStore {
     safeState(): SafeState;
     useState(): State;
     state(): State;
+  }
+
+  export interface Factories {
+    defaultFilters(lang: Lang): Filters;
   }
 }
 

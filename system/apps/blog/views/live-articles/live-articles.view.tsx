@@ -38,7 +38,7 @@ const ConnectedLiveArticlesView = ({
   const articlesStore = useArticlesStore();
 
   if (articlesStore.is === 'idle') {
-    articles_actions.sync(params, response.data);
+    articles_actions.syncFromServer(params, response.data);
   }
 
   return <LiveArticlesView />;
