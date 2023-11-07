@@ -1,4 +1,4 @@
-import { type ReactNode, useContext, createContext } from 'react';
+import { useContext, createContext } from 'react';
 
 import { isArticleStatus } from '@system/blog-api';
 import { Lang } from '@system/blog-api-models';
@@ -8,6 +8,7 @@ import { articles_selectors } from '../../store/articles/articles.selectors';
 import { useRouter } from 'next/router';
 import { useCallback, useMemo } from 'react';
 import { isEqual } from 'lodash';
+import { ArticlesFiltersProviderProps } from './defs';
 
 const getFilters = (lang: Lang, isReady: boolean): ArticlesStore.Filters => {
   const { defaultFilters } = articles_selectors.state();
@@ -87,10 +88,6 @@ const useArticlesFilters = () => {
 };
 
 const Ctx = createContext<ReturnType<typeof useArticlesFilters> | null>(null);
-
-interface ArticlesFiltersProviderProps {
-  children: ReactNode;
-}
 
 const ArticlesFiltersProvider = ({
   children,

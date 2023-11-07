@@ -1,7 +1,7 @@
 import { Button, CloseIcon, Field } from '@system/figa-ui';
 import { ArticlesStatusSelect } from '../articles-status-select';
 import { ArticlesSearchInput } from '../articles-search-input';
-import { useArticlesFiltersProvider } from '../../views/live-articles/articles-filters-provider';
+import { useArticlesFiltersProvider } from '../../core/articles-filters-provider/articles-filters-provider';
 import { ArticlesTagsSelect } from '../articles-tags-select';
 
 const ArticlesFiltersBar = () => {

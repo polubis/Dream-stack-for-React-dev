@@ -1,7 +1,7 @@
 import { Select } from '@system/figa-ui';
 import { ARTICLE_STATUSES } from '@system/blog-api';
 import type { StatusLabelMap } from './defs';
-import { useArticlesFiltersProvider } from '../../views/live-articles/articles-filters-provider';
+import { useArticlesFiltersProvider } from '../../core/articles-filters-provider/articles-filters-provider';
 
 const labels: StatusLabelMap = {
   Draft: 'Draft',

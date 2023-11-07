@@ -16,7 +16,7 @@ import { articles_tags_actions } from '../../store/articles-tags/articles-tags.a
 import type { ArticleTag, ArticleTags } from '@system/blog-api-models';
 import type { TagsObject } from './defs';
 import styled from 'styled-components';
-import { useArticlesFiltersProvider } from 'apps/blog/views/live-articles/articles-filters-provider';
+import { useArticlesFiltersProvider } from '../../core/articles-filters-provider/articles-filters-provider';
 
 const createTagsObject = (tags: ArticleTags): TagsObject => {
   return tags.reduce((acc, tag) => {

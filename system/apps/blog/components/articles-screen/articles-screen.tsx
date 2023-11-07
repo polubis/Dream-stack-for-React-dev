@@ -1,7 +1,7 @@
 import {
   ArticlesFiltersProvider,
   useArticlesFiltersProvider,
-} from '../../views/live-articles/articles-filters-provider';
+} from '../../core/articles-filters-provider/articles-filters-provider';
 import { MainLayout } from '../main-layout';
 import { Bar } from '../bar';
 import { ArticlesScreenContentProps, ArticlesScreenProps } from './defs';

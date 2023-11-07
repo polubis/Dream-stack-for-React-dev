@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useState, useCallback, useEffect } from 'react';
 import { useSubject } from '@system/figa-hooks';
 import { articles_selectors } from '../../store/articles/articles.selectors';
-import { useArticlesFiltersProvider } from 'apps/blog/views/live-articles/articles-filters-provider';
+import { useArticlesFiltersProvider } from '../../core/articles-filters-provider/articles-filters-provider';
 
 const Container = styled.div`
   .input {
