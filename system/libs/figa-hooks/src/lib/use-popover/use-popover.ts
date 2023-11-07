@@ -38,14 +38,13 @@ const usePopover = <
     const isRight = triggerRect.left >= windowHalfWidth;
     const isBottom = triggerRect.top >= windowHalfHeight;
 
-    // const x = '-' + (contentRect.width - triggerRect.width) + 'px';
-    // const y = +offsetY + triggerRect.height + 'px';
-
     const leftDiff = isRight ? contentRect.width - triggerRect.width : 0;
-    console.log(contentRect.width - triggerRect.width);
-    const x = triggerRect.left - leftDiff
-    const y = triggerRect.top + triggerRect.height + offsetY;
-    console.log(triggerRect.left);
+
+    const x = triggerRect.left - leftDiff;
+    const y = isBottom
+      ? triggerRect.top - (offsetY + contentRect.height)
+      : triggerRect.top + triggerRect.height + offsetY;
+
     contentElement.style.top = `${y}px`;
     contentElement.style.left = `${x}px`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
