@@ -33,7 +33,7 @@ const ArticlesSearchInput = () => {
     filters: { Search },
     change,
   } = useArticlesFiltersProvider();
-  const { is } = articles_selectors.useSafeState();
+  const { is } = articles_selectors.useState();
 
   const [search, setSearch] = useState('');
 
