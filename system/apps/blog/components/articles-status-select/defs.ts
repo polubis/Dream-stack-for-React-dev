@@ -1,8 +1,5 @@
 import type { ArticleStatus } from '@system/blog-api-models';
 
-interface ArticlesStatusSelectProps {
-  status: ArticleStatus;
-  onChange(status: ArticleStatus): void;
-}
+type StatusLabelMap = Record<ArticleStatus, string>;
 
-export type { ArticlesStatusSelectProps };
+export type { StatusLabelMap };

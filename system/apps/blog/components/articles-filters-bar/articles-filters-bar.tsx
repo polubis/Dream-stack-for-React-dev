@@ -5,7 +5,7 @@ import { useArticlesFiltersProvider } from '../../views/live-articles/articles-f
 import { ArticlesTagsSelect } from '../articles-tags-select';
 
 const ArticlesFiltersBar = () => {
-  const { filters, change, changed, reset } = useArticlesFiltersProvider();
+  const { changed, reset } = useArticlesFiltersProvider();
 
   return (
     <>
@@ -14,12 +14,7 @@ const ArticlesFiltersBar = () => {
       </Field>
 
       <Field label="Status">
-        <ArticlesStatusSelect
-          status={filters.Status}
-          onChange={(Status) => {
-            change({ Status });
-          }}
-        />
+        <ArticlesStatusSelect />
       </Field>
 
       <Field label="Tags">
