@@ -4,7 +4,7 @@ import {
 } from '../../views/live-articles/articles-filters-provider';
 import { MainLayout } from '../main-layout';
 import { Bar } from '../bar';
-import { ArticlesScreenProps } from './defs';
+import { ArticlesScreenContentProps, ArticlesScreenProps } from './defs';
 import { useRouter } from 'next/router';
 import { articles_selectors } from '../../store/articles/articles.selectors';
 import { useLang } from '../../dk';
@@ -13,9 +13,9 @@ import { ArticlesGrid, OnGoToClick } from '../articles-grid';
 import { Box, Button, Loader } from '@system/figa-ui';
 import { InfoSection } from '../info-section';
 import { ScrollState, useScroll } from '@system/figa-hooks';
-import { articles_actions } from 'apps/blog/store/articles';
+import { articles_actions } from '../../store/articles';
 
-const Content = () => {
+const Content = ({ path }: ArticlesScreenContentProps) => {
   const { change } = useArticlesFiltersProvider();
   const router = useRouter();
   const articlesStore = articles_selectors.useState();
@@ -34,9 +34,9 @@ const Content = () => {
 
       if (!article) throw Error('Cannot find article');
 
-      router.push(`/${lang}/articles/${article.url}`);
+      router.push(path(lang, article));
     },
-    [router, lang]
+    [router, lang, path]
   );
 
   const { is } = articlesStore;

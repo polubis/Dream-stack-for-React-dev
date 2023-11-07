@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import { column, tokens } from '@system/figa-ui';
 import { ArticlesJumbo } from './articles-jumbo';
 import { articles_actions, useArticlesStore } from '../../store/articles';
-import { ArticlesScreen } from '../../components/articles-screen';
+import {
+  ArticlesScreen,
+  type ArticlesScreenContentProps,
+} from '../../components/articles-screen';
 
 const Container = styled.div`
   ${column()}
@@ -13,12 +16,16 @@ const Container = styled.div`
   }
 `;
 
+const path: ArticlesScreenContentProps['path'] = (lang, article) => {
+  return `/${lang}/articles/${article.url}`;
+};
+
 const LiveArticlesView = () => {
   return (
     <ArticlesScreen>
       <Container>
         <ArticlesJumbo />
-        <ArticlesScreen.Content />
+        <ArticlesScreen.Content path={path} />
       </Container>
     </ArticlesScreen>
   );
