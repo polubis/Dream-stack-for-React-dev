@@ -58,7 +58,7 @@ const Template: Story = () => {
           ))}
         </div>
 
-        <div
+        {/* <div
           style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -86,7 +86,7 @@ const Template: Story = () => {
               )}
             </Popover>
           ))}
-        </div>
+        </div> */}
       </div>
     </Box>
   );

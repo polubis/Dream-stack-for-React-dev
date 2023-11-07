@@ -1226,12 +1226,10 @@ const GlobalStyle = createGlobalStyle`
     /* popover.tsx */
 
     .popover {
-        position: relative;
-
         &-content {
             ${slideIn(tokens.spacing[0], tokens.spacing[0])};
-            position: absolute;
-            z-index: ${tokens.z[50]};
+            position: fixed;
+            z-index: ${tokens.z[500]};
         }
     }
 
