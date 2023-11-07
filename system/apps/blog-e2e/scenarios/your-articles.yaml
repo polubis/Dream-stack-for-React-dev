@@ -4,6 +4,8 @@ Dictionary:
   DRAFT: Article status with "DRAFT" value
   LIVE: Article status with "LIVE" value
   DEFAULT_FILTERS: It means empty search field, the [DRAFT] article status and no selected tags
+  RESET_FILTERS_BUTTON: The button below "Reset" label 
+  SEARCH_FIELD: Text field with placeholder "Type to find article..."
 
 Scenario: I visit page with [DEFAULT_FILTERS] ✅
   Given: I sign in
@@ -21,7 +23,7 @@ Scenario: I visit page but error occurs ✅
 Scenario: I change filters ✅
   Given: I sign in
   And: I visit [YOUR_ARTICLES] page
-  When: I type "react" in search field
+  When: I type "react" in [SEARCH_FIELD]
   And: I change status to [LIVE] in status field
   And: I select first tag in tags field
   Then: I see only articles that contain "react" in title
@@ -32,6 +34,16 @@ Scenario: I change filters but error occurs ✅
   Given: I sign in
   And: I visit [YOUR_ARTICLES] page
   And: I see loading animation
-  When: I type "react" in search field
+  When: I type "react" in [SEARCH_FIELD]
   Then: I see loading animation
   And: I see error message
+
+Scenario: I reset filters ✅
+  Given: I sign in
+  And: I visit [YOUR_ARTICLES] page
+  And: I have selected [DEFAULT_FILTERS]
+  And: I see disabled [RESET_FILTERS_BUTTON]
+  When: I type "react" in [SEARCH_FIELD]
+  Then: I am able to click [RESET_FILTERS_BUTTON]
+  And: I see loading animation in [SEARCH_FIELD]
+  And: I see empty [SEARCH_FIELD]
