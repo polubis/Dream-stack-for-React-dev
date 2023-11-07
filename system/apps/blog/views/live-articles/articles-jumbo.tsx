@@ -55,20 +55,7 @@ const Container = styled.div`
 `;
 
 const ArticlesJumbo = () => {
-  // const searchParams = useSearchParams();
-  // const { getParams, go } = useLiveArticlesRouter();
-  // const [search, setSearch] = useState('');
   const lang = useLang();
-  // const liveArticlesState = live_articles_selectors.useSafeState();
-
-  // useEffect(() => setSearch(getParams().Search), [searchParams, getParams]);
-
-  // const handleSearchChange = (value: string): void => {
-  //   go(() => ({
-  //     Search: value,
-  //     CurrentPage: 1,
-  //   }));
-  // };
 
   return (
     <Container>
