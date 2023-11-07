@@ -8,7 +8,7 @@ import {
 } from '../../store/live-articles';
 import { ArticlesGrid, OnGoToClick } from '../../components/articles-grid';
 import { InfoSection } from '../../components/info-section';
-import { Button, column, tokens } from '@system/figa-ui';
+import { Box, Button, Loader, column, tokens } from '@system/figa-ui';
 import { useRouter } from 'next/router';
 import { useLang } from '../../dk';
 import { useCallback, useEffect } from 'react';
@@ -32,22 +32,37 @@ const Container = styled.div`
 const Content = () => {
   const { go } = useLiveArticlesRouter();
   const router = useRouter();
-  const { response, error } = live_articles_selectors.useSafeState();
+  const articlesStore = articles_selectors.useState();
   const lang = useLang();
 
   const handleGoToClick: OnGoToClick = useCallback(
     (e) => {
+      const { is } = articlesStore;
+
+      if (is === 'idle' || is === 'loading' || is === 'loading-fail')
+        throw Error(`Trying to go to in invalid state "${is}"`);
+
       const id = e.currentTarget.getAttribute('data-article-id');
-      const article = response.data.find((a) => a.id === id);
+      const article = articlesStore.articles.find((a) => a.id === id);
 
       if (!article) throw Error('Cannot find article');
 
       router.push(`/${lang}/articles/${article.url}`);
     },
-    [router, lang, response]
+    [router, lang, articlesStore]
   );
 
-  if (error) {
+  const { is } = articlesStore;
+
+  if (is === 'idle' || is === 'loading') {
+    return (
+      <Box margin="auto">
+        <Loader size="big" />
+      </Box>
+    );
+  }
+
+  if (is === 'loading-fail' || is === 'loading-more-fail') {
     return (
       <InfoSection
         title="❌ Ups... Something went wrong!"
@@ -57,14 +72,20 @@ const Content = () => {
     );
   }
 
-  return response.data.length > 0 ? (
-    <ArticlesGrid articles={response.data} onGoToClick={handleGoToClick} />
-  ) : (
-    <InfoSection
-      title="No data for provided filters 💨"
-      description="Change filters and try again 🔃."
-    />
-  );
+  if (is === 'all-loaded' || is === 'loaded' || is === 'loading-more') {
+    const { articles } = articlesStore;
+
+    return articles.length > 0 ? (
+      <ArticlesGrid articles={articles} onGoToClick={handleGoToClick} />
+    ) : (
+      <InfoSection
+        title="No data for provided filters 💨"
+        description="Change filters and try again 🔃."
+      />
+    );
+  }
+
+  throw Error('Trying to render in not allowed state');
 };
 
 const LiveArticlesView = () => {
@@ -96,7 +117,7 @@ const LiveArticlesView = () => {
       <MainLayout offPadding>
         <Container>
           <ArticlesJumbo />
-          {/* <Content /> */}
+          <Content />
         </Container>
       </MainLayout>
       <Bar />

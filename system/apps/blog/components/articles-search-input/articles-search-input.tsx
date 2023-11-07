@@ -1,6 +1,10 @@
 import { Button, CloseIcon, Input, M_UP, size, tokens } from '@system/figa-ui';
 import { useArticlesFilters } from 'apps/blog/views/live-articles/use-articles-filters';
 import styled from 'styled-components';
+import { useState, useCallback, useEffect } from 'react';
+import { useSubject } from '@system/figa-hooks';
+import { articles_actions } from 'apps/blog/store/articles';
+import { articles_selectors } from 'apps/blog/store/articles/articles.selectors';
 
 const Container = styled.div`
   .input {
@@ -30,26 +34,43 @@ const ArticlesSearchInput = () => {
     filters: { Search },
     change,
   } = useArticlesFilters();
+  const { is } = articles_selectors.useSafeState();
+
+  const [search, setSearch] = useState('');
+
+  const updateSearch = useCallback(
+    (value: string): void => {
+      const filters = { Search: value };
+      change(filters);
+      articles_actions.load(filters);
+    },
+    [change]
+  );
+
+  const { emit } = useSubject<string>({
+    delay: 500,
+    cb: updateSearch,
+  });
+
+  const handleChange = (value: string): void => {
+    setSearch(value);
+    emit(value);
+  };
+
+  useEffect(() => {
+    setSearch(Search);
+  }, [Search]);
 
   return (
     <Container>
       <Input
-        value={Search}
+        loading={is === 'loading'}
+        value={search}
         placeholder="🏸 Type to find article..."
-        onChange={(e) =>
-          change({
-            Search: e.target.value,
-          })
-        }
+        onChange={(e) => handleChange(e.target.value)}
         suffx={
           Search.length > 0 && (
-            <Button
-              onClick={() =>
-                change({
-                  Search: '',
-                })
-              }
-            >
+            <Button onClick={() => handleChange('')}>
               <CloseIcon />
             </Button>
           )

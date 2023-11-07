@@ -64,11 +64,13 @@ namespace ArticlesStore {
 
   export interface Actions {
     sync(filters: Filters, articles: Articles): void;
+    load(filters: Partial<Filters>): Promise<void>;
   }
 
   export interface Selectors {
     useSafeState(): SafeState;
     safeState(): SafeState;
+    useState(): State;
   }
 }
 

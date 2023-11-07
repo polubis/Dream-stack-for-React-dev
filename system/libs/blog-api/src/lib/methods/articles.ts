@@ -27,13 +27,10 @@ import {
 import { blogAPI } from '../instances';
 import { formData } from '../core/form-data';
 
-const getArticles = async ({
-  lang,
-  Tags,
-  CurrentPage,
-  ItemsPerPage,
-  ...params
-}: GetArticlesParams): Promise<GetArticlesResponse> => {
+const getArticles = async (
+  { lang, Tags, CurrentPage, ItemsPerPage, ...params }: GetArticlesParams,
+  signal?: AbortSignal
+): Promise<GetArticlesResponse> => {
   const search = new URLSearchParams({
     CurrentPage: CurrentPage.toString(),
     ItemsPerPage: ItemsPerPage.toString(),
@@ -47,7 +44,10 @@ const getArticles = async ({
       '?' +
       search.toString() +
       `${Tags.length > 0 ? '&' : ''}` +
-      tags
+      tags,
+    {
+      signal,
+    }
   );
 
   return data;

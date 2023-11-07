@@ -3,6 +3,7 @@ import { useArticlesStore } from './articles.store';
 import { ArticlesStore } from './defs';
 
 const articles_selectors: ArticlesStore.Selectors = {
+  useState: useArticlesStore,
   useSafeState: () =>
     useArticlesStore((state) => {
       if (state.is === 'idle')
