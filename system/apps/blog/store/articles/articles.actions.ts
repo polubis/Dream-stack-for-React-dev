@@ -45,13 +45,15 @@ const articles_actions: ArticlesStore.Actions = {
     changed.next(newFilters);
   },
   syncFromClient: (lang) => {
-    const filters = articles_factories.defaultFilters(lang)
+    const filters = articles_factories.defaultFilters(lang);
 
     set({
       is: 'loading',
       defaultFilters: filters,
       filters: filters,
     });
+
+    articles_actions.load(filters);
   },
 };
 
@@ -70,8 +72,8 @@ changed$
         defaultFilters,
       };
     }),
-    filter(
-      ({ newFilters, currentFilters }) => !isEqual(newFilters, currentFilters)
+    filter(({ newFilters, currentFilters, state }) =>
+      state.is === 'loading' ? true : !isEqual(newFilters, currentFilters)
     ),
     tap(({ newFilters, defaultFilters, currentFilters }) => {
       const state = articles_selectors.safeState();
