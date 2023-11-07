@@ -3,6 +3,7 @@ import { useArticlesStore } from './articles.store';
 import { ArticlesStore } from './defs';
 
 const articles_selectors: ArticlesStore.Selectors = {
+  state: useArticlesStore.getState,
   useState: useArticlesStore,
   useSafeState: () =>
     useArticlesStore((state) => {

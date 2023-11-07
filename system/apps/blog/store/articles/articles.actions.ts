@@ -37,6 +37,7 @@ const articles_actions: ArticlesStore.Actions = {
       is: checkHasAllLoaded(filters, articles) ? 'all-loaded' : 'loaded',
       filters,
       articles,
+      defaultFilters: filters,
     });
   },
   load: async (newFilters) => {
@@ -50,21 +51,23 @@ changed$
       const state = articles_selectors.safeState();
       const newFilters = { ...state.filters, ...filters };
       const currentFilters = state.filters;
+      const defaultFilters = state.defaultFilters;
 
       return {
         state,
         newFilters,
         currentFilters,
+        defaultFilters,
       };
     }),
     filter(
       ({ newFilters, currentFilters }) => !isEqual(newFilters, currentFilters)
     ),
-    tap(({ newFilters }) => {
-      set({ is: 'loading', filters: newFilters });
+    tap(({ newFilters, defaultFilters }) => {
+      set({ is: 'loading', filters: newFilters, defaultFilters });
     }),
     debounceTime(500),
-    switchMap(({ newFilters }) => {
+    switchMap(({ newFilters, defaultFilters }) => {
       return from(getArticles(newFilters)).pipe(
         tap(({ data: articles }) => {
           set({
@@ -73,6 +76,7 @@ changed$
               : 'loaded',
             articles,
             filters: newFilters,
+            defaultFilters,
           });
         }),
         catchError((error) => {
@@ -80,6 +84,7 @@ changed$
             is: 'loading-fail',
             error: getError(error),
             filters: newFilters,
+            defaultFilters,
           });
           return EMPTY;
         })

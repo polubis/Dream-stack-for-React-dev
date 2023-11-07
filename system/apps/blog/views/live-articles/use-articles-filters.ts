@@ -7,21 +7,22 @@ import { useRouter } from 'next/router';
 import { useCallback, useMemo } from 'react';
 
 const getFilters = (lang: Lang, isReady: boolean): ArticlesStore.Filters => {
+  const { defaultFilters } = articles_selectors.state();
+
   if (!isReady) {
-    return articles_selectors.safeState().filters;
+    return defaultFilters;
   }
 
-  const { filters } = articles_selectors.safeState();
   const params = new URLSearchParams(window.location.search);
   const status = params.get('Status');
   const tags = params.get('Tags');
-  
+
   return {
-    Search: params.get('Search') ?? filters.Search,
-    CurrentPage: +(params.get('CurrentPage') ?? filters.CurrentPage),
-    ItemsPerPage: +(params.get('ItemsPerPage') ?? filters.ItemsPerPage),
-    Status: isArticleStatus(status) ? status : filters.Status,
-    Tags: tags ? decodeURIComponent(tags).split(',') : filters.Tags,
+    Search: params.get('Search') ?? defaultFilters.Search,
+    CurrentPage: +(params.get('CurrentPage') ?? defaultFilters.CurrentPage),
+    ItemsPerPage: +(params.get('ItemsPerPage') ?? defaultFilters.ItemsPerPage),
+    Status: isArticleStatus(status) ? status : defaultFilters.Status,
+    Tags: tags ? decodeURIComponent(tags).split(',') : defaultFilters.Tags,
     lang,
   };
 };

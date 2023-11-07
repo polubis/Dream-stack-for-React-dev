@@ -13,23 +13,27 @@ namespace ArticlesStore {
 
   export interface Idle {
     is: 'idle';
+    defaultFilters: Filters;
   }
 
   export interface Loading {
     is: 'loading';
     filters: Filters;
+    defaultFilters: Filters;
   }
 
   export interface LoadingMore {
     is: 'loading-more';
     articles: Articles;
     filters: Filters;
+    defaultFilters: Filters;
   }
 
   export interface LoadingFail {
     is: 'loading-fail';
     error: ResponseError;
     filters: Filters;
+    defaultFilters: Filters;
   }
 
   export interface LoadingMoreFail {
@@ -37,18 +41,21 @@ namespace ArticlesStore {
     error: ResponseError;
     articles: Articles;
     filters: Filters;
+    defaultFilters: Filters;
   }
 
   export interface Loaded {
     is: 'loaded';
     articles: Articles;
     filters: Filters;
+    defaultFilters: Filters;
   }
 
   export interface AllLoaded {
     is: 'all-loaded';
     articles: Articles;
     filters: Filters;
+    defaultFilters: Filters;
   }
 
   type UnsafeState = Idle;
@@ -71,6 +78,7 @@ namespace ArticlesStore {
     useSafeState(): SafeState;
     safeState(): SafeState;
     useState(): State;
+    state(): State;
   }
 }
 
