@@ -13,6 +13,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TagsPopover } from './tags-popover';
 import { ArticlesSearchInput } from '../../components/articles-search-input';
+import { useLang } from 'apps/blog/dk';
 
 const Container = styled.div`
   position: relative;
@@ -57,7 +58,7 @@ const ArticlesJumbo = () => {
   // const searchParams = useSearchParams();
   // const { getParams, go } = useLiveArticlesRouter();
   // const [search, setSearch] = useState('');
-  // const lang = useLang();
+  const lang = useLang();
   // const liveArticlesState = live_articles_selectors.useSafeState();
 
   // useEffect(() => setSearch(getParams().Search), [searchParams, getParams]);
@@ -99,14 +100,14 @@ const ArticlesJumbo = () => {
           </Font>
           <Divider motive="primary" />
         </div>
-        {/* <Link
+        <Link
           className="articles-jumbo-create-link"
-          // href={`/${lang}/articles-creator`}
+          href={`/${lang}/articles-creator`}
         >
           <Button size={2} variant="outlined">
             Create article
           </Button>
-        </Link> */}
+        </Link>
       </div>
     </Container>
   );
