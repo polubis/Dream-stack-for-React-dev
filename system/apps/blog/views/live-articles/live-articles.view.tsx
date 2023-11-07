@@ -1,22 +1,13 @@
 import { MainLayout } from '../../components';
 import type { LiveArticlesViewProps } from './defs';
 import styled from 'styled-components';
-import { useStoreSync } from '../../store/use-store-sync';
-import {
-  live_articles_selectors,
-  useLiveArticlesStore,
-} from '../../store/live-articles';
 import { ArticlesGrid, OnGoToClick } from '../../components/articles-grid';
 import { InfoSection } from '../../components/info-section';
 import { Box, Button, Loader, column, tokens } from '@system/figa-ui';
 import { useRouter } from 'next/router';
 import { useLang } from '../../dk';
 import { useCallback, useEffect } from 'react';
-import { live_articles_actions } from '../../store/live-articles/live-articles.actions';
 import { ArticlesJumbo } from './articles-jumbo';
-import { useSearchParams } from 'next/navigation';
-import { useLiveArticlesRouter } from './use-live-articles-router';
-import { type ScrollState, useScroll } from '@system/figa-hooks';
 import { Bar } from '../../components/bar';
 import { articles_actions, useArticlesStore } from '../../store/articles';
 import { articles_selectors } from 'apps/blog/store/articles/articles.selectors';
@@ -38,6 +29,7 @@ const Content = () => {
 
   const handleGoToClick: OnGoToClick = useCallback(
     (e) => {
+      const articlesStore = articles_selectors.state();
       const { is } = articlesStore;
 
       if (is === 'idle' || is === 'loading' || is === 'loading-fail')
@@ -50,7 +42,7 @@ const Content = () => {
 
       router.push(`/${lang}/articles/${article.url}`);
     },
-    [router, lang, articlesStore]
+    [router, lang]
   );
 
   const { is } = articlesStore;
@@ -94,9 +86,6 @@ const Content = () => {
 };
 
 const LiveArticlesView = () => {
-  // const { go, getParams } = useLiveArticlesRouter();
-  // const searchParams = useSearchParams();
-
   // const handleLoadMore = useCallback(
   //   (scroll: ScrollState): void => {
   //     const { allLoaded } = live_articles_selectors.safeState();
