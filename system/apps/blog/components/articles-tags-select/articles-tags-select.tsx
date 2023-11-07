@@ -14,8 +14,9 @@ import { useState, useCallback, useEffect, useMemo } from 'react';
 import { useArticlesTagsStore } from '../../store/articles-tags/articles-tags.store';
 import { articles_tags_actions } from '../../store/articles-tags/articles-tags.actions';
 import type { ArticleTag, ArticleTags } from '@system/blog-api-models';
-import type { ArticlesTagsSelectProps, TagsObject } from './defs';
+import type { TagsObject } from './defs';
 import styled from 'styled-components';
+import { useArticlesFiltersProvider } from 'apps/blog/views/live-articles/articles-filters-provider';
 
 const createTagsObject = (tags: ArticleTags): TagsObject => {
   return tags.reduce((acc, tag) => {
@@ -42,7 +43,9 @@ const Tags = styled.div`
   }
 `;
 
-const ArticlesTagsSelect = ({ tags, onConfirm }: ArticlesTagsSelectProps) => {
+const ArticlesTagsSelect = () => {
+  const { filters, change } = useArticlesFiltersProvider();
+  const tags = filters.Tags;
   const articlesTagsState = useArticlesTagsStore();
   const [activeTags, setActiveTags] = useState<TagsObject>({});
 
@@ -133,7 +136,7 @@ const ArticlesTagsSelect = ({ tags, onConfirm }: ArticlesTagsSelectProps) => {
                   size={2}
                   onClick={() => {
                     close();
-                    onConfirm(articleTags);
+                    change({ Tags: articleTags });
                   }}
                 >
                   Accept

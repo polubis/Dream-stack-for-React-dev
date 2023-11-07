@@ -11,9 +11,9 @@ import {
 } from '@system/figa-ui';
 import Image from 'next/image';
 import Link from 'next/link';
-import { TagsPopover } from './tags-popover';
 import { ArticlesSearchInput } from '../../components/articles-search-input';
 import { useLang } from '../../dk';
+import { ArticlesTagsSelect } from '../../components/articles-tags-select';
 
 const Container = styled.div`
   position: relative;
@@ -78,7 +78,7 @@ const ArticlesJumbo = () => {
         </Font>
         <div className="articles-jumbo-filters">
           <ArticlesSearchInput />
-          <TagsPopover />
+          <ArticlesTagsSelect />
         </div>
         <div className="articles-jumbo-divider">
           <Divider motive="primary" />

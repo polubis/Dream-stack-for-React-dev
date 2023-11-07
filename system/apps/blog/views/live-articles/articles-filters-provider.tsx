@@ -7,6 +7,7 @@ import { ArticlesStore } from '../../store/articles';
 import { articles_selectors } from '../../store/articles/articles.selectors';
 import { useRouter } from 'next/router';
 import { useCallback, useMemo } from 'react';
+import { isEqual } from 'lodash';
 
 const getFilters = (lang: Lang, isReady: boolean): ArticlesStore.Filters => {
   const { defaultFilters } = articles_selectors.state();
@@ -32,6 +33,7 @@ const getFilters = (lang: Lang, isReady: boolean): ArticlesStore.Filters => {
 const useArticlesFilters = () => {
   const router = useRouter();
   const lang = useLang();
+  const articlesStore = articles_selectors.useState();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const filters = useMemo(
     () => getFilters(lang, router.isReady),
@@ -59,9 +61,28 @@ const useArticlesFilters = () => {
     [router, filters]
   );
 
+  const reset = useCallback(() => {
+    router.replace(
+      router.asPath,
+      {
+        query: {
+          ...articles_selectors.state().defaultFilters,
+        },
+      },
+      { shallow: true, scroll: false }
+    );
+  }, [router]);
+
+  const changed = useMemo(
+    () => !isEqual(articlesStore.defaultFilters, filters),
+    [articlesStore, filters]
+  );
+
   return {
     filters,
+    changed,
     change,
+    reset,
   };
 };
 

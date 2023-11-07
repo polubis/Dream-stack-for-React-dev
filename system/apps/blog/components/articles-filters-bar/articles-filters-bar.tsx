@@ -2,10 +2,10 @@ import { Button, CloseIcon, Field } from '@system/figa-ui';
 import { ArticlesStatusSelect } from '../articles-status-select';
 import { ArticlesSearchInput } from '../articles-search-input';
 import { useArticlesFiltersProvider } from '../../views/live-articles/articles-filters-provider';
-import { TagsPopover } from '../../views/live-articles/tags-popover';
+import { ArticlesTagsSelect } from '../articles-tags-select';
 
 const ArticlesFiltersBar = () => {
-  const { filters, change } = useArticlesFiltersProvider();
+  const { filters, change, changed, reset } = useArticlesFiltersProvider();
 
   return (
     <>
@@ -23,16 +23,16 @@ const ArticlesFiltersBar = () => {
       </Field>
 
       <Field label="Tags">
-        <TagsPopover />
+        <ArticlesTagsSelect />
       </Field>
 
       <Field label="Reset">
         <Button
-          //   disabled={!hasNotDefaultParams}
+          disabled={!changed}
           variant="outlined"
           size={2}
           equal
-        //   onClick={() => {}} reset
+          onClick={reset}
         >
           <CloseIcon />
         </Button>
