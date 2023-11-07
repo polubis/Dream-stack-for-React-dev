@@ -44,8 +44,8 @@ const articles_actions: ArticlesStore.Actions = {
   load: async (newFilters) => {
     changed.next(newFilters);
   },
-  syncFromClient: (lang) => {
-    const filters = articles_factories.defaultFilters(lang);
+  syncFromClient: (lang, yours) => {
+    const filters = articles_factories.defaultFilters(lang, yours);
 
     set({
       is: 'loading',

@@ -1,16 +1,12 @@
 import type { GetStaticProps } from 'next';
 import { HomeView, type HomeViewProps } from '../views/home';
 import { getArticles } from '@system/blog-api';
+import { articles_factories } from '../store/articles';
 
 export const getStaticProps: GetStaticProps<HomeViewProps> = async () => {
-  const response = await getArticles({
-    lang: 'en',
-    CurrentPage: 1,
-    ItemsPerPage: 20,
-    Status: 'Accepted',
-    Search: '',
-    Tags: [],
-  });
+  const response = await getArticles(
+    articles_factories.defaultFilters('en', false)
+  );
 
   return {
     props: {

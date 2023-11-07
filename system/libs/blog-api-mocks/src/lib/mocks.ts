@@ -56,6 +56,7 @@ const mockGetArticlesParams = mock<GetArticlesParams>({
   Status: 'Accepted',
   lang: 'en',
   Tags: [],
+  yours: false
 });
 
 const mockGetArticleParams = mock<GetArticleParams>({

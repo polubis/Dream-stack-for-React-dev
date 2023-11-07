@@ -71,7 +71,7 @@ namespace ArticlesStore {
   export type State = UnsafeState | SafeState;
 
   export interface Actions {
-    syncFromClient(lang: Lang): void;
+    syncFromClient(lang: Lang, yours: boolean): void;
     syncFromServer(filters: Filters, articles: Articles): void;
     load(filters: Partial<Filters>): void;
   }
@@ -84,7 +84,7 @@ namespace ArticlesStore {
   }
 
   export interface Factories {
-    defaultFilters(lang: Lang): Filters;
+    defaultFilters(lang: Lang, yours: boolean): Filters;
   }
 }
 

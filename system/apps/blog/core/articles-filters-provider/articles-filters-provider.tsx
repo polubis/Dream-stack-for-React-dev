@@ -20,6 +20,7 @@ const getFilters = (lang: Lang, isReady: boolean): ArticlesStore.Filters => {
   const params = new URLSearchParams(window.location.search);
   const status = params.get('Status');
   const tags = params.get('Tags');
+  const yours = params.get('Yours');
 
   return {
     Search: params.get('Search') ?? defaultFilters.Search,
@@ -28,6 +29,12 @@ const getFilters = (lang: Lang, isReady: boolean): ArticlesStore.Filters => {
     Status: isArticleStatus(status) ? status : defaultFilters.Status,
     Tags: tags ? decodeURIComponent(tags).split(',') : defaultFilters.Tags,
     lang,
+    yours:
+      yours === 'true'
+        ? true
+        : yours === 'false'
+        ? false
+        : defaultFilters.yours,
   };
 };
 

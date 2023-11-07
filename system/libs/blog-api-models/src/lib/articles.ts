@@ -51,14 +51,12 @@ interface ArticlesParams {
   Status: ArticleStatus;
   Tags: ArticleTags;
   lang: Lang;
+  yours: boolean;
 }
 type PaginatedArticlesResponse = PaginatedResponse<ArticleDto[]>;
 
 type GetArticlesResponse = PaginatedArticlesResponse;
 type GetArticlesParams = ArticlesParams;
-
-type GetYourArticlesResponse = PaginatedArticlesResponse;
-type GetYourArticlesParams = ArticlesParams;
 
 type GetArticleParams = { url: Url; lang: Lang };
 type GetArticleResponse = Response<FullArticleDto>;
@@ -132,8 +130,6 @@ export type {
   GetArticleReviewsPayload,
   CreateArticleReviewPayload,
   CreateArticleReviewResponse,
-  GetYourArticlesParams,
-  GetYourArticlesResponse,
   ArticleTag,
   ArticleTags,
   GetArticlesTagsResponse,

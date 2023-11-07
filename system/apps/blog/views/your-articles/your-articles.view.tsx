@@ -18,7 +18,7 @@ const YourArticlesView = () => {
   const { is } = articles_selectors.useState();
 
   if (is === 'idle') {
-    articles_actions.syncFromClient(lang);
+    articles_actions.syncFromClient(lang, true);
   }
 
   return (

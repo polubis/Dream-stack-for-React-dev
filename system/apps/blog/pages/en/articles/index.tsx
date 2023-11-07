@@ -5,7 +5,7 @@ import { getArticles } from '@system/blog-api';
 import { articles_factories } from '../../../store/articles';
 
 export const getStaticProps: GetStaticProps<ArticlesPageProps> = async () => {
-  const params = articles_factories.defaultFilters('en');
+  const params = articles_factories.defaultFilters('en', false);
 
   return {
     props: {

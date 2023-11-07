@@ -4,7 +4,7 @@ import { articles_factories } from './articles.factories';
 
 const useArticlesStore = create<ArticlesStore.State>(() => ({
   is: 'idle',
-  defaultFilters: articles_factories.defaultFilters('en'),
+  defaultFilters: articles_factories.defaultFilters('en', false),
 }));
 
 export { useArticlesStore };

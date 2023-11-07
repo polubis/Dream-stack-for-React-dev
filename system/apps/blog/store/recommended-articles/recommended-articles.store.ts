@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import type { RecommendedArticlesStore } from './defs';
 import { getArticles, getError } from '@system/blog-api';
+import { articles_factories } from '../articles';
 
 const useRecommendedArticlesStore = create<RecommendedArticlesStore>((set) => ({
   key: 'idle',
@@ -10,14 +11,9 @@ const useRecommendedArticlesStore = create<RecommendedArticlesStore>((set) => ({
     set({ key: 'pending', articles: [], error: null });
 
     try {
-      const { data } = await getArticles({
-        CurrentPage: 1,
-        ItemsPerPage: 16,
-        lang: 'en',
-        Tags: [],
-        Search: '',
-        Status: 'Accepted',
-      });
+      const { data } = await getArticles(
+        articles_factories.defaultFilters('en', false)
+      );
       set({ key: 'ok', articles: data });
     } catch (error: unknown) {
       set({ key: 'error', error: getError(error) });

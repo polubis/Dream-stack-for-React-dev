@@ -4,15 +4,12 @@ import type { ArticlePageParams, ArticlePageProps } from '../../../models';
 import { serialize } from 'next-mdx-remote/serialize';
 import { getArticle, getArticles } from '@system/blog-api';
 import { ArticleView } from '../../../views/article';
+import { articles_factories } from 'apps/blog/store/articles';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await getArticles({
+    ...articles_factories.defaultFilters('pl', false),
     ItemsPerPage: 50,
-    lang: 'pl',
-    Search: '',
-    CurrentPage: 1,
-    Status: 'Accepted',
-    Tags: [],
   });
 
   return {

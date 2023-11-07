@@ -20,17 +20,19 @@ import {
   GetArticleReviewsPayload,
   CreateArticleReviewPayload,
   CreateArticleReviewResponse,
-  GetYourArticlesResponse,
-  GetYourArticlesParams,
   GetArticlesTagsResponse,
 } from '@system/blog-api-models';
 import { blogAPI } from '../instances';
 import { formData } from '../core/form-data';
 
-const getArticles = async (
-  { lang, Tags, CurrentPage, ItemsPerPage, ...params }: GetArticlesParams,
-  signal?: AbortSignal
-): Promise<GetArticlesResponse> => {
+const getArticles = async ({
+  lang,
+  Tags,
+  CurrentPage,
+  ItemsPerPage,
+  yours,
+  ...params
+}: GetArticlesParams): Promise<GetArticlesResponse> => {
   const search = new URLSearchParams({
     CurrentPage: CurrentPage.toString(),
     ItemsPerPage: ItemsPerPage.toString(),
@@ -38,16 +40,13 @@ const getArticles = async (
   });
   const tags = Tags.map((tag) => `tags=${tag}`).join('&');
   const { data } = await blogAPI.get<GetArticlesResponse>(
-    getPath('Articles') +
-      '/' +
-      lang +
-      '?' +
-      search.toString() +
-      `${Tags.length > 0 ? '&' : ''}` +
-      tags,
-    {
-      signal,
-    }
+    (yours ? getPath('Articles/my') : getPath('Articles')) +
+      ('/' +
+        lang +
+        '?' +
+        search.toString() +
+        `${Tags.length > 0 ? '&' : ''}` +
+        tags)
   );
 
   return data;
@@ -58,31 +57,6 @@ const getArticlesTags = async (): Promise<GetArticlesTagsResponse> => {
     getPath('Articles/Tags')
   );
 
-  return data;
-};
-
-const getYourArticles = async ({
-  lang,
-  Tags,
-  CurrentPage,
-  ItemsPerPage,
-  ...params
-}: GetYourArticlesParams): Promise<GetYourArticlesResponse> => {
-  const search = new URLSearchParams({
-    CurrentPage: CurrentPage.toString(),
-    ItemsPerPage: ItemsPerPage.toString(),
-    ...params,
-  });
-  const tags = Tags.map((tag) => `tags=${tag}`).join('&');
-  const { data } = await blogAPI.get<GetYourArticlesResponse>(
-    getPath('Articles/my') +
-      '/' +
-      lang +
-      '?' +
-      search.toString() +
-      `${Tags.length > 0 ? '&' : ''}` +
-      tags
-  );
   return data;
 };
 
@@ -207,6 +181,5 @@ export {
   sendArticleForApproval,
   getArticleReviews,
   createArticleReview,
-  getYourArticles,
   getArticlesTags,
 };
