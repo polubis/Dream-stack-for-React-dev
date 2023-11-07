@@ -1,9 +1,9 @@
 import { Button, CloseIcon, Input, M_UP, size, tokens } from '@system/figa-ui';
-import { useArticlesFilters } from '../../views/live-articles/use-articles-filters';
 import styled from 'styled-components';
 import { useState, useCallback, useEffect } from 'react';
 import { useSubject } from '@system/figa-hooks';
 import { articles_selectors } from '../../store/articles/articles.selectors';
+import { useArticlesFiltersProvider } from 'apps/blog/views/live-articles/articles-filters-provider';
 
 const Container = styled.div`
   .input {
@@ -32,7 +32,7 @@ const ArticlesSearchInput = () => {
   const {
     filters: { Search },
     change,
-  } = useArticlesFilters();
+  } = useArticlesFiltersProvider();
   const { is } = articles_selectors.useSafeState();
 
   const [search, setSearch] = useState('');

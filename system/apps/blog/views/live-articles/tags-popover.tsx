@@ -1,8 +1,8 @@
 import { ArticlesTagsSelect } from '../../components/articles-tags-select';
-import { useArticlesFilters } from './use-articles-filters';
+import { useArticlesFiltersProvider } from './articles-filters-provider';
 
 const TagsPopover = () => {
-  const { filters, change } = useArticlesFilters();
+  const { filters, change } = useArticlesFiltersProvider();
 
   return (
     <ArticlesTagsSelect

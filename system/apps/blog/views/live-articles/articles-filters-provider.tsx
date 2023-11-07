@@ -1,3 +1,5 @@
+import { type ReactNode, useContext, createContext } from 'react';
+
 import { isArticleStatus } from '@system/blog-api';
 import { Lang } from '@system/blog-api-models';
 import { useLang } from '../../dk';
@@ -63,4 +65,26 @@ const useArticlesFilters = () => {
   };
 };
 
-export { useArticlesFilters };
+const Ctx = createContext<ReturnType<typeof useArticlesFilters> | null>(null);
+
+interface ArticlesFiltersProviderProps {
+  children: ReactNode;
+}
+
+const ArticlesFiltersProvider = ({
+  children,
+}: ArticlesFiltersProviderProps) => {
+  const value = useArticlesFilters();
+
+  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
+};
+
+const useArticlesFiltersProvider = () => {
+  const ctx = useContext(Ctx);
+
+  if (!ctx) throw Error('Lack of provider');
+
+  return ctx;
+};
+
+export { ArticlesFiltersProvider, useArticlesFiltersProvider };

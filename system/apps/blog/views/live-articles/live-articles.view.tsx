@@ -11,8 +11,11 @@ import { ArticlesJumbo } from './articles-jumbo';
 import { Bar } from '../../components/bar';
 import { articles_actions, useArticlesStore } from '../../store/articles';
 import { articles_selectors } from '../../store/articles/articles.selectors';
-import { useArticlesFilters } from './use-articles-filters';
 import { ScrollState, useScroll } from '@system/figa-hooks';
+import {
+  ArticlesFiltersProvider,
+  useArticlesFiltersProvider,
+} from './articles-filters-provider';
 
 const Container = styled.div`
   ${column()}
@@ -23,7 +26,7 @@ const Container = styled.div`
 `;
 
 const Content = () => {
-  const { change } = useArticlesFilters();
+  const { change } = useArticlesFiltersProvider();
   const router = useRouter();
   const articlesStore = articles_selectors.useState();
   const lang = useLang();
@@ -87,7 +90,7 @@ const Content = () => {
 };
 
 const LiveArticlesView = () => {
-  const { change } = useArticlesFilters();
+  const { change } = useArticlesFiltersProvider();
 
   const handleLoadMore = useCallback(
     (scroll: ScrollState): void => {
@@ -107,7 +110,7 @@ const LiveArticlesView = () => {
 
   useScroll({ onScroll: handleLoadMore, throttle: true, delay: 1000 });
 
-  const { filters } = useArticlesFilters();
+  const { filters } = useArticlesFiltersProvider();
 
   useEffect(() => {
     articles_actions.load(filters);
@@ -136,7 +139,11 @@ const ConnectedLiveArticlesView = ({
     articles_actions.sync(params, response.data);
   }
 
-  return <LiveArticlesView />;
+  return (
+    <ArticlesFiltersProvider>
+      <LiveArticlesView />
+    </ArticlesFiltersProvider>
+  );
 };
 
 export { ConnectedLiveArticlesView as LiveArticlesView };
