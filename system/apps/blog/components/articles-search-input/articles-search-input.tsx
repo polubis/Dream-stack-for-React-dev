@@ -3,7 +3,6 @@ import { useArticlesFilters } from 'apps/blog/views/live-articles/use-articles-f
 import styled from 'styled-components';
 import { useState, useCallback, useEffect } from 'react';
 import { useSubject } from '@system/figa-hooks';
-import { articles_actions } from 'apps/blog/store/articles';
 import { articles_selectors } from 'apps/blog/store/articles/articles.selectors';
 
 const Container = styled.div`
@@ -40,9 +39,8 @@ const ArticlesSearchInput = () => {
 
   const updateSearch = useCallback(
     (value: string): void => {
-      const filters = { Search: value };
+      const filters = { Search: value, CurrentPage: 1 };
       change(filters);
-      articles_actions.load(filters);
     },
     [change]
   );

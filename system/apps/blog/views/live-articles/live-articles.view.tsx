@@ -20,6 +20,7 @@ import { type ScrollState, useScroll } from '@system/figa-hooks';
 import { Bar } from '../../components/bar';
 import { articles_actions, useArticlesStore } from '../../store/articles';
 import { articles_selectors } from 'apps/blog/store/articles/articles.selectors';
+import { useArticlesFilters } from './use-articles-filters';
 
 const Container = styled.div`
   ${column()}
@@ -30,7 +31,7 @@ const Container = styled.div`
 `;
 
 const Content = () => {
-  const { go } = useLiveArticlesRouter();
+  const { change } = useArticlesFilters();
   const router = useRouter();
   const articlesStore = articles_selectors.useState();
   const lang = useLang();
@@ -67,7 +68,11 @@ const Content = () => {
       <InfoSection
         title="❌ Ups... Something went wrong!"
         description="Try again with button below or refresh page if problem occurs 🔃."
-        footer={<Button onClick={() => go(() => ({}))}>Retry</Button>}
+        footer={
+          <Button onClick={() => change({ Search: '', CurrentPage: 1 })}>
+            Retry
+          </Button>
+        }
       />
     );
   }
@@ -107,10 +112,11 @@ const LiveArticlesView = () => {
 
   // useScroll({ onScroll: handleLoadMore });
 
-  // useEffect(
-  //   () => live_articles_actions.load(getParams()),
-  //   [searchParams, getParams]
-  // );
+  const { filters } = useArticlesFilters();
+
+  useEffect(() => {
+    articles_actions.load(filters);
+  }, [filters]);
 
   return (
     <>
