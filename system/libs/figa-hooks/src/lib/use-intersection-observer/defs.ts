@@ -3,7 +3,9 @@ import type { MutableRefObject } from 'react';
 /**
  * We'll pass this config object to hook.
  */
-type IntersectionObserverConfig = IntersectionObserverInit;
+type IntersectionObserverConfig = IntersectionObserverInit & {
+  once?: boolean;
+};
 
 /**
  * We'll return this object from hook.

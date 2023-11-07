@@ -54,6 +54,7 @@ const MainLayout = ({
 
   const { ref: footerRef, visible } = useIntersectionObserver<HTMLDivElement>({
     threshold: 0.1,
+    once: true,
   });
 
   return (
