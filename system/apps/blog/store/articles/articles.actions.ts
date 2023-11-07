@@ -46,7 +46,6 @@ const articles_actions: ArticlesStore.Actions = {
 
 changed$
   .pipe(
-    debounceTime(500),
     map((filters) => {
       const state = articles_selectors.safeState();
       const newFilters = { ...state.filters, ...filters };
@@ -64,6 +63,7 @@ changed$
     tap(({ newFilters }) => {
       set({ is: 'loading', filters: newFilters });
     }),
+    debounceTime(500),
     switchMap(({ newFilters }) => {
       return from(getArticles(newFilters)).pipe(
         tap(({ data: articles }) => {
