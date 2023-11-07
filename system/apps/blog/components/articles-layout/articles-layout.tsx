@@ -4,6 +4,10 @@ import type { ArticlesLayoutProps } from './defs';
 
 const Container = styled.div`
   ${column()}
+
+  .articles-grid {
+    margin: ${tokens.spacing[200]} 0 ${tokens.spacing[300]} 0;
+  }
 `;
 
 const Filters = styled.div`
@@ -20,17 +24,10 @@ const Filters = styled.div`
   }
 `;
 
-const Content = styled.div`
-  .articles-grid {
-    margin: ${tokens.spacing[200]} 0 ${tokens.spacing[300]} 0;
-  }
-`;
-
 const ArticlesLayout = ({ children }: ArticlesLayoutProps) => {
   return <Container>{children}</Container>;
 };
 
 ArticlesLayout.Filters = Filters;
-ArticlesLayout.Content = Content;
 
 export { ArticlesLayout };
