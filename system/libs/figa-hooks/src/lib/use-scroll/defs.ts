@@ -35,6 +35,7 @@ type ScrollResult = ScrollState['is'];
 interface ScrollConfig {
   axis?: ScrollAxis;
   delay?: number;
+  throttle?: boolean;
   onScroll?(state: ScrollState): void;
 }
 

@@ -13,7 +13,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TagsPopover } from './tags-popover';
 import { ArticlesSearchInput } from '../../components/articles-search-input';
-import { useLang } from 'apps/blog/dk';
+import { useLang } from '../../dk';
 
 const Container = styled.div`
   position: relative;

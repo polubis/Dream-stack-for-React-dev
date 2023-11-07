@@ -10,8 +10,9 @@ import { useCallback, useEffect } from 'react';
 import { ArticlesJumbo } from './articles-jumbo';
 import { Bar } from '../../components/bar';
 import { articles_actions, useArticlesStore } from '../../store/articles';
-import { articles_selectors } from 'apps/blog/store/articles/articles.selectors';
+import { articles_selectors } from '../../store/articles/articles.selectors';
 import { useArticlesFilters } from './use-articles-filters';
+import { ScrollState, useScroll } from '@system/figa-hooks';
 
 const Container = styled.div`
   ${column()}
@@ -86,20 +87,25 @@ const Content = () => {
 };
 
 const LiveArticlesView = () => {
-  // const handleLoadMore = useCallback(
-  //   (scroll: ScrollState): void => {
-  //     const { allLoaded } = live_articles_selectors.safeState();
-  //     const shouldLoad =
-  //       scroll.is === 'progress' && scroll.value > 20 && !allLoaded;
+  const { change } = useArticlesFilters();
 
-  //     if (!shouldLoad) return;
+  const handleLoadMore = useCallback(
+    (scroll: ScrollState): void => {
+      const articlesStore = articles_selectors.safeState();
+      const { is } = articlesStore;
+      const shouldLoad =
+        scroll.is === 'progress' && scroll.value > 20 && is === 'loaded';
 
-  //     go(({ CurrentPage }) => ({ CurrentPage: CurrentPage + 1 }));
-  //   },
-  //   [go]
-  // );
+      if (!shouldLoad) return;
 
-  // useScroll({ onScroll: handleLoadMore });
+      change({
+        CurrentPage: articlesStore.filters.CurrentPage + 1,
+      });
+    },
+    [change]
+  );
+
+  useScroll({ onScroll: handleLoadMore, throttle: true, delay: 1000 });
 
   const { filters } = useArticlesFilters();
 

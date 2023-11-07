@@ -7,7 +7,7 @@ import type {
   ScrollResult,
   ScrollState,
 } from './defs';
-import { debounceTime, fromEvent } from 'rxjs';
+import { debounceTime, fromEvent, throttleTime } from 'rxjs';
 
 const warn = (): void => {
   console.warn(`
@@ -81,6 +81,7 @@ const getScrollResult = (prev: number, curr: number): ScrollResult => {
 const useScroll = <T extends HTMLElement = HTMLElement>({
   axis = 'y',
   delay = 150,
+  throttle,
   onScroll,
 }: ScrollConfig = {}): ScrollReturn<T> => {
   const ref = useRef<T>(null);
@@ -97,7 +98,7 @@ const useScroll = <T extends HTMLElement = HTMLElement>({
     let prev = getScrollValue(axis, target);
 
     const obs$ = fromEvent(target, 'scroll')
-      .pipe(debounceTime(delay))
+      .pipe(throttle ? throttleTime(delay) : debounceTime(delay))
       .subscribe(() => {
         const curr = getScrollValue(axis, target);
         const newState = {

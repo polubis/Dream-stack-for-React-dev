@@ -1,9 +1,9 @@
 import { Button, CloseIcon, Input, M_UP, size, tokens } from '@system/figa-ui';
-import { useArticlesFilters } from 'apps/blog/views/live-articles/use-articles-filters';
+import { useArticlesFilters } from '../../views/live-articles/use-articles-filters';
 import styled from 'styled-components';
 import { useState, useCallback, useEffect } from 'react';
 import { useSubject } from '@system/figa-hooks';
-import { articles_selectors } from 'apps/blog/store/articles/articles.selectors';
+import { articles_selectors } from '../../store/articles/articles.selectors';
 
 const Container = styled.div`
   .input {

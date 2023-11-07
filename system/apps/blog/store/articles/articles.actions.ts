@@ -63,29 +63,61 @@ changed$
     filter(
       ({ newFilters, currentFilters }) => !isEqual(newFilters, currentFilters)
     ),
-    tap(({ newFilters, defaultFilters }) => {
-      set({ is: 'loading', filters: newFilters, defaultFilters });
+    tap(({ newFilters, defaultFilters, currentFilters }) => {
+      const state = articles_selectors.safeState();
+
+      if (
+        state.is === 'loaded' &&
+        newFilters.CurrentPage > currentFilters.CurrentPage
+      ) {
+        set({
+          is: 'loading-more',
+          filters: newFilters,
+          defaultFilters,
+          articles: state.articles,
+        });
+      } else {
+        set({ is: 'loading', filters: newFilters, defaultFilters });
+      }
     }),
     debounceTime(500),
     switchMap(({ newFilters, defaultFilters }) => {
       return from(getArticles(newFilters)).pipe(
         tap(({ data: articles }) => {
+          const state = articles_selectors.safeState();
+
           set({
             is: checkHasAllLoaded(newFilters, articles)
               ? 'all-loaded'
               : 'loaded',
-            articles,
+            articles:
+              state.is === 'loading-more'
+                ? [...state.articles, ...articles]
+                : articles,
             filters: newFilters,
             defaultFilters,
           });
         }),
-        catchError((error) => {
-          set({
-            is: 'loading-fail',
-            error: getError(error),
-            filters: newFilters,
-            defaultFilters,
-          });
+        catchError((error: unknown) => {
+          const state = articles_selectors.safeState();
+
+          if (state.is === 'loading-more') {
+            set({
+              is: 'loading-more-fail',
+              error: getError(error),
+              filters: newFilters,
+              articles: state.articles,
+              defaultFilters,
+            });
+          } else {
+            set({
+              is: 'loading-fail',
+              error: getError(error),
+              filters: newFilters,
+              defaultFilters,
+            });
+          }
+
           return EMPTY;
         })
       );

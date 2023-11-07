@@ -1,8 +1,8 @@
 import { isArticleStatus } from '@system/blog-api';
 import { Lang } from '@system/blog-api-models';
-import { useLang } from 'apps/blog/dk';
-import { ArticlesStore } from 'apps/blog/store/articles';
-import { articles_selectors } from 'apps/blog/store/articles/articles.selectors';
+import { useLang } from '../../dk';
+import { ArticlesStore } from '../../store/articles';
+import { articles_selectors } from '../../store/articles/articles.selectors';
 import { useRouter } from 'next/router';
 import { useCallback, useMemo } from 'react';
 
