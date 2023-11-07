@@ -78,7 +78,7 @@ const ArticlesJumbo = () => {
         </Font>
         <div className="articles-jumbo-filters">
           <ArticlesSearchInput />
-          {/* <TagsPopover /> */}
+          <TagsPopover />
         </div>
         <div className="articles-jumbo-divider">
           <Divider motive="primary" />

@@ -1,23 +1,14 @@
-import { useMemo } from 'react';
-import { useLiveArticlesRouter } from './use-live-articles-router';
 import { ArticlesTagsSelect } from '../../components/articles-tags-select';
-import { useSearchParams } from 'next/navigation';
+import { useArticlesFilters } from './use-articles-filters';
 
 const TagsPopover = () => {
-  const searchParams = useSearchParams();
-  const { go, getParams } = useLiveArticlesRouter();
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const params = useMemo(() => getParams(), [searchParams, getParams]);
+  const { filters, change } = useArticlesFilters();
 
   return (
     <ArticlesTagsSelect
-      tags={params.Tags}
+      tags={filters.Tags}
       onConfirm={(Tags) => {
-        go(() => ({
-          Tags,
-          CurrentPage: 1,
-        }));
+        change({ Tags, CurrentPage: 1 });
       }}
     />
   );

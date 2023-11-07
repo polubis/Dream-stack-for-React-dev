@@ -15,7 +15,7 @@ const getFilters = (lang: Lang, isReady: boolean): ArticlesStore.Filters => {
   const params = new URLSearchParams(window.location.search);
   const status = params.get('Status');
   const tags = params.get('Tags');
-
+  
   return {
     Search: params.get('Search') ?? filters.Search,
     CurrentPage: +(params.get('CurrentPage') ?? filters.CurrentPage),
