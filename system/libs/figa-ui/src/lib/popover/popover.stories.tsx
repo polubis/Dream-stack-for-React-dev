@@ -9,6 +9,9 @@ import { Box, BoxProps } from '../box';
 export default {
   component: Popover,
   title: 'Popover',
+  play: async () => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+  },
 } as Meta;
 
 const Trigger = () => {
@@ -111,12 +114,6 @@ const WithScrollOnXAxisTemplate: Story = () => {
 
 export const Default = DefaultTemplate.bind({});
 Default.args = {};
-Default.parameters = {
-  chromatic: { delay: 1000 },
-};
 
 export const WithScrollOnXAxis = WithScrollOnXAxisTemplate.bind({});
 WithScrollOnXAxis.args = {};
-WithScrollOnXAxis.parameters = {
-  chromatic: { delay: 1000 },
-};
