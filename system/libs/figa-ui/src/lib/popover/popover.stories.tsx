@@ -9,9 +9,6 @@ import { Box, BoxProps } from '../box';
 export default {
   component: Popover,
   title: 'Popover',
-  play: async () => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-  },
 } as Meta;
 
 const Trigger = () => {
