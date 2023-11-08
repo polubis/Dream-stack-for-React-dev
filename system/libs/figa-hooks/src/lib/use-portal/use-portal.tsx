@@ -1,27 +1,25 @@
-import { useEffect, useMemo } from 'react';
+import { useRef } from 'react';
 import { createPortal } from 'react-dom';
 import type { UsePortal } from './defs';
+import { useIsomorphicLayoutEffect } from '../use-isomorphic-layout-effect';
 
-// usePortal is an implementation of the facade pattern.
 const usePortal: UsePortal = () => {
-  // Creates only one instance of div.
-  const wrapper = useMemo(() => document.createElement('div'), []);
+  const wrapper = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    // Adds div tag to body.
-    document.body.appendChild(wrapper);
+  useIsomorphicLayoutEffect(() => {
+    const div = document.createElement('div');
+    wrapper.current = div;
+
+    document.body.appendChild(div);
 
     return () => {
-      // After unmounting the component - removes the div created earlier.
-      document.body.removeChild(wrapper);
+      document.body.removeChild(div);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Returns an object with function that will allow you to use the portal.
   return {
-    // This anonymous function is an implementation of the factory method pattern.
-    render: (children) => createPortal(children, wrapper),
+    render: (children) =>
+      wrapper.current ? createPortal(children, wrapper.current) : null,
   };
 };
 
