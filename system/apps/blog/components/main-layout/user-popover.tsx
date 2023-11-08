@@ -47,6 +47,8 @@ const UserPopover = () => {
           spacing={[200, 400, 400, 100, 400]}
           padding={[250, 250, 250, 250]}
           variant="outlined"
+          minWidth="280px"
+          maxWidth="420px"
         >
           <Box orientation="row" between>
             <Font variant="h5" motive="primary">

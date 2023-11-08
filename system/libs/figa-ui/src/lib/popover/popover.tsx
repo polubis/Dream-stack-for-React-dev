@@ -1,6 +1,6 @@
 import type { PopoverProps } from './defs';
 import c from 'classnames';
-import { tokens } from '../theme-provider';
+import { isMDown, tokens } from '../theme-provider';
 import { useRef } from 'react';
 import {
   useClickOutside,
@@ -17,28 +17,28 @@ const updateContentXY = (
   const triggerRect = triggerElement.getBoundingClientRect();
   const contentRect = contentElement.getBoundingClientRect();
 
-  const isRight = triggerRect.left >= window.innerWidth / 2;
-  const isBottom = triggerRect.top >= window.innerHeight / 2;
+  const isTriggerRight = triggerRect.left >= window.innerWidth / 2;
+  const isTriggerBottom = triggerRect.top >= window.innerHeight / 2;
+  const triggerRightOffset = window.innerWidth - triggerRect.right;
+  const isContentExceedingWindow =
+    contentRect.width + triggerRightOffset > window.innerWidth;
 
-  const x =
-    triggerRect.left - (isRight ? contentRect.width - triggerRect.width : 0);
-  const y = isBottom
+  const offsetTop = isTriggerBottom
     ? triggerRect.top - (offsetY + contentRect.height)
     : triggerRect.top + triggerRect.height + offsetY;
+  contentElement.style.top = `${offsetTop}px`;
 
-  contentElement.style.top = `${y}px`;
-
-  const triggerElementRightOffset = window.innerWidth - triggerRect.right;
-  const isExceedingWindow =
-    contentRect.width + triggerElementRightOffset > window.innerWidth;
-
-  if (isExceedingWindow) {
+  if (isMDown(window.innerWidth) && isContentExceedingWindow) {
     contentElement.style.width = '94%';
     contentElement.style.left = '3%';
     return;
   }
 
-  contentElement.style.left = `${x}px`;
+  const offsetLeft =
+    triggerRect.left -
+    (isTriggerRight ? contentRect.width - triggerRect.width : 0);
+
+  contentElement.style.left = `${offsetLeft}px`;
 };
 
 const Popover = ({
