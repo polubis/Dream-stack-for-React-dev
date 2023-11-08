@@ -111,6 +111,12 @@ const WithScrollOnXAxisTemplate: Story = () => {
 
 export const Default = DefaultTemplate.bind({});
 Default.args = {};
+Default.parameters = {
+  chromatic: { delay: 1000 },
+};
 
 export const WithScrollOnXAxis = WithScrollOnXAxisTemplate.bind({});
 WithScrollOnXAxis.args = {};
+WithScrollOnXAxis.parameters = {
+  chromatic: { delay: 1000 },
+};
