@@ -17,11 +17,8 @@ const updateContentXY = (
   const triggerRect = triggerElement.getBoundingClientRect();
   const contentRect = contentElement.getBoundingClientRect();
 
-  const windowHalfWidth = window.innerWidth / 2;
-  const windowHalfHeight = window.innerHeight / 2;
-
-  const isRight = triggerRect.left >= windowHalfWidth;
-  const isBottom = triggerRect.top >= windowHalfHeight;
+  const isRight = triggerRect.left >= window.innerWidth / 2;
+  const isBottom = triggerRect.top >= window.innerHeight / 2;
 
   const x =
     triggerRect.left - (isRight ? contentRect.width - triggerRect.width : 0);
@@ -30,16 +27,18 @@ const updateContentXY = (
     : triggerRect.top + triggerRect.height + offsetY;
 
   contentElement.style.top = `${y}px`;
-  contentElement.style.left = `${x}px`;
 
   const triggerElementRightOffset = window.innerWidth - triggerRect.right;
-  const isExceeding =
+  const isExceedingWindow =
     contentRect.width + triggerElementRightOffset > window.innerWidth;
 
-  if (isExceeding) {
+  if (isExceedingWindow) {
     contentElement.style.width = '94%';
     contentElement.style.left = '3%';
+    return;
   }
+
+  contentElement.style.left = `${x}px`;
 };
 
 const Popover = ({
