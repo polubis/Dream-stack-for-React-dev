@@ -2,7 +2,7 @@ import type { PopoverProps } from './defs';
 import c from 'classnames';
 import { tokens } from '../theme-provider';
 import { useMemo } from 'react';
-import { usePopover } from '@system/figa-hooks';
+import { usePopover, usePortal } from '@system/figa-hooks';
 
 const Popover = ({
   className,
@@ -15,6 +15,7 @@ const Popover = ({
     () => +tokens.spacing[offsetY].replace('px', ''),
     [offsetY]
   );
+  const { render } = usePortal();
   const { popoverRef, popover, triggerRef, contentRef } = usePopover<
     HTMLDivElement,
     HTMLDivElement,
@@ -27,11 +28,12 @@ const Popover = ({
         {trigger(popover)}
       </div>
 
-      {popover.opened && (
-        <div className="popover-content" ref={contentRef}>
-          {children(popover)}
-        </div>
-      )}
+      {popover.opened &&
+        render(
+          <div className="popover-content" ref={contentRef}>
+            {children(popover)}
+          </div>
+        )}
     </div>
   );
 };

@@ -15,6 +15,8 @@ const LABELS = [
   'Popover 2',
   'Popover 3 a little bit bigger',
   'Popover 4',
+  'Popover 5',
+  'Popover 6',
 ];
 
 const Template: Story = () => {
@@ -34,7 +36,7 @@ const Template: Story = () => {
             justifyContent: 'space-between',
           }}
         >
-          {LABELS.slice(0, 2).map((label) => (
+          {LABELS.slice(0, 3).map((label) => (
             <Popover
               key={label}
               initialOpen
@@ -64,7 +66,37 @@ const Template: Story = () => {
             justifyContent: 'space-between',
           }}
         >
-          {LABELS.slice(2, 4).map((label) => (
+          {LABELS.slice(0, 3).map((label) => (
+            <Popover
+              key={label}
+              initialOpen
+              trigger={({ opened, toggle }) => (
+                <Button onClick={toggle}>
+                  {opened ? 'Hide me' : 'Show me'}
+                </Button>
+              )}
+            >
+              {({ close }) => (
+                <Box
+                  spacing={[400]}
+                  padding={[250, 250, 250, 250]}
+                  variant="outlined"
+                >
+                  <Font variant="h6">{label}</Font>
+                  <Button onClick={close}>Close Me</Button>
+                </Box>
+              )}
+            </Popover>
+          ))}
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
+          {LABELS.slice(3, 6).map((label) => (
             <Popover
               key={label}
               initialOpen
