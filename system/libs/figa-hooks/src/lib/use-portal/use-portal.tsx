@@ -1,12 +1,18 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import type { UsePortal } from './defs';
 import { useIsomorphicLayoutEffect } from '../use-isomorphic-layout-effect';
+import { isServer } from '@system/utils';
 
 const usePortal: UsePortal = () => {
-  const wrapper = useMemo(() => document.createElement('div'), []);
+  const wrapper = useMemo(
+    () => (isServer() ? null : document.createElement('div')),
+    []
+  );
 
   useIsomorphicLayoutEffect(() => {
+    if (!wrapper) return;
+
     document.body.appendChild(wrapper);
 
     return () => {
@@ -15,7 +21,7 @@ const usePortal: UsePortal = () => {
   }, []);
 
   return {
-    render: (children) => createPortal(children, wrapper),
+    render: (children) => (wrapper ? createPortal(children, wrapper) : null),
   };
 };
 
