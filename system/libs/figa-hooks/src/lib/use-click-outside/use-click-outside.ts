@@ -1,6 +1,6 @@
 import type { UseClickOutsideConfig } from './defs';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useId, useRef } from 'react';
 
 const assertIsNode = (target: EventTarget | Node | null): target is Node =>
   !!target && 'nodeType' in target;
@@ -9,7 +9,8 @@ const useClickOutside = <T extends HTMLElement>({
   onOutside,
   exceptionRefs = [],
 }: UseClickOutsideConfig) => {
-  const ref = useRef<T>(null);
+  const contentRef = useRef<T>(null);
+  const id = useId();
 
   useEffect(() => {
     const handleClickOutside = ({ target }: MouseEvent) => {
@@ -17,7 +18,7 @@ const useClickOutside = <T extends HTMLElement>({
 
       if (
         !assertIsNode(trg) ||
-        ref.current?.contains(trg) ||
+        contentRef.current?.contains(trg) ||
         exceptionRefs.some((ref) => ref.current?.contains(trg))
       )
         return;
@@ -33,7 +34,7 @@ const useClickOutside = <T extends HTMLElement>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onOutside]);
 
-  return { ref };
+  return { id, contentRef };
 };
 
 export { useClickOutside };

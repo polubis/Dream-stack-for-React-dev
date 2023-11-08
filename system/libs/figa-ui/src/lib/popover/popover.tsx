@@ -43,7 +43,7 @@ const Popover = ({
   const triggerRef = useRef<HTMLDivElement>(null);
   const popover = useToggle({ opened: initialOpen });
   const { render } = usePortal();
-  const { ref: contentRef } = useClickOutside<HTMLDivElement>({
+  const { contentRef } = useClickOutside<HTMLDivElement>({
     onOutside: popover.close,
     exceptionRefs: [triggerRef],
   });
