@@ -10,14 +10,7 @@ export default {
   title: 'Popover',
 } as Meta;
 
-const LABELS = [
-  'Popover 1',
-  'Popover 2',
-  'Popover 3 a little bit bigger',
-  'Popover 4',
-  'Popover 5',
-  'Popover 6',
-];
+const LABELS = ['Popover 1', 'Popover 2', 'Popover 3 a little bit bigger'];
 
 const Template: Story = () => {
   return (
@@ -30,99 +23,42 @@ const Template: Story = () => {
           height: '100vh',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}
-        >
-          {LABELS.slice(0, 3).map((label) => (
-            <Popover
-              key={label}
-              initialOpen
-              trigger={({ opened, toggle }) => (
-                <Button onClick={toggle}>
-                  {opened ? 'Hide me' : 'Show me'}
-                </Button>
-              )}
-            >
-              {({ close }) => (
-                <Box
-                  spacing={[400]}
-                  padding={[250, 250, 250, 250]}
-                  variant="outlined"
-                >
-                  <Font variant="h6">{label}</Font>
-                  <Button onClick={close}>Close Me</Button>
-                </Box>
-              )}
-            </Popover>
-          ))}
-        </div>
-
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}
-        >
-          {LABELS.slice(0, 3).map((label) => (
-            <Popover
-              key={label}
-              initialOpen
-              trigger={({ opened, toggle }) => (
-                <Button onClick={toggle}>
-                  {opened ? 'Hide me' : 'Show me'}
-                </Button>
-              )}
-            >
-              {({ close }) => (
-                <Box
-                  spacing={[400]}
-                  padding={[250, 250, 250, 250]}
-                  variant="outlined"
-                >
-                  <Font variant="h6">{label}</Font>
-                  <Button onClick={close}>Close Me</Button>
-                </Box>
-              )}
-            </Popover>
-          ))}
-        </div>
-
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}
-        >
-          {LABELS.slice(3, 6).map((label) => (
-            <Popover
-              key={label}
-              initialOpen
-              trigger={({ opened, toggle }) => (
-                <Button onClick={toggle}>
-                  {opened ? 'Hide me' : 'Show me'}
-                </Button>
-              )}
-            >
-              {({ close }) => (
-                <Box
-                  spacing={[400]}
-                  padding={[250, 250, 250, 250]}
-                  variant="outlined"
-                >
-                  <Font variant="h6">{label}</Font>
-                  <Button onClick={close}>Close Me</Button>
-                </Box>
-              )}
-            </Popover>
-          ))}
-        </div>
+        {['top', 'middle', 'bottom'].map((align) => (
+          <div
+            key={align}
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            {LABELS.map((label) => (
+              <Popover
+                key={label}
+                initialOpen
+                trigger={({ opened, toggle }) => (
+                  <Button onClick={toggle}>
+                    {opened ? 'Hide me' : 'Show me'}
+                  </Button>
+                )}
+              >
+                {({ close }) => (
+                  <Box
+                    spacing={[400]}
+                    padding={[250, 250, 250, 250]}
+                    variant="outlined"
+                  >
+                    <Font variant="h6">{label}</Font>
+                    <Button onClick={close}>Close Me</Button>
+                  </Box>
+                )}
+              </Popover>
+            ))}
+          </div>
+        ))}
       </div>
     </Box>
   );
 };
 
 export const Default = Template.bind({});
-Default.args = {};
+Template.args = {};
