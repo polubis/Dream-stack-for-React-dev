@@ -10,8 +10,13 @@ interface PopoverProps {
   children: [ReactNode, ReactNode];
 }
 
-interface PopoverContext extends Omit<PopoverProps, 'children'> {
+interface PopoverContext
+  extends Required<
+    Omit<PopoverProps, 'children' | 'className' | 'openOnInit'>
+  > {
   opened: boolean;
+  triggerId: string;
+  contentId: string;
   closed: boolean;
   open(): void;
   close(): void;

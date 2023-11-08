@@ -2,7 +2,14 @@
 // 1. When resize of the window - the update of content is added.
 // 2. When change content inside happen, the content position is updated.
 
-import { createContext, useContext, useMemo, useState } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useId,
+  useMemo,
+  useState,
+} from 'react';
 import type {
   PopoverContentProps,
   PopoverContext,
@@ -11,41 +18,34 @@ import type {
 } from './defs';
 import styled from 'styled-components';
 import c from 'classnames';
-import { usePortal } from '@system/figa-hooks';
-import { slideIn } from '../shared';
+import { useIsomorphicLayoutEffect, usePortal } from '@system/figa-hooks';
+import { slideIn, spacing, streched } from '../shared';
 import { tokens } from '../theme-provider';
-{
-  /* <Popover
-    closeMode='outside' | 'backdrop' | 'own'
-    offsetY={150}
-    offsetX={150}
->
-  <Popover.Trigger></Popover.Trigger>
-  <Popover.Content
-
-  ></Popover.Content>
-</Popover>; */
-}
 
 const Context = createContext<PopoverContext | null>(null);
 
-const Container = styled.div`
-  &-content {
-    ${slideIn(tokens.spacing[0], tokens.spacing[0])};
-    position: fixed;
-    z-index: ${tokens.z[1000]};
-  }
+const PopoverContentContainer = styled.div`
+  ${slideIn(tokens.spacing[0], tokens.spacing[0])};
+  position: fixed;
+  z-index: ${tokens.z[1000]};
+  width: max-content;
 `;
 
 const Popover = ({
   className,
-  closeMode,
-  offsetX,
-  offsetY,
+  closeMode = 'own',
+  offsetX = 0,
+  offsetY = 150,
   children,
   openOnInit = false,
 }: PopoverProps) => {
-  const [opened, setOpened] = useState(openOnInit);
+  const id = useId();
+  const [opened, setOpened] = useState(false);
+
+  useEffect(() => {
+    openOnInit && setOpened(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -53,24 +53,26 @@ const Popover = ({
       offsetX,
       offsetY,
       opened,
+      triggerId: `popover-trigger-${id}`,
+      contentId: `popover-content-${id}`,
       closed: !opened,
       open: () => {
         setOpened(true);
       },
       close: () => {
-        setOpened(true);
+        setOpened(false);
       },
       toggle: () => {
         setOpened((opened) => !opened);
       },
     }),
-    [closeMode, offsetX, offsetY, opened]
+    [closeMode, offsetX, offsetY, opened, id]
   );
 
   return (
-    <Container className={c('popover', className)}>
+    <div className={c('popover', className)}>
       <Context.Provider value={value}>{children}</Context.Provider>
-    </Container>
+    </div>
   );
 };
 
@@ -83,16 +85,78 @@ const usePopover = () => {
 };
 
 const Trigger = ({ children }: PopoverTriggerProps) => {
-  return <div className="popover-trigger">{children}</div>;
+  const { triggerId } = usePopover();
+
+  return (
+    <div id={triggerId} className="popover-trigger">
+      {children}
+    </div>
+  );
 };
 
+const Backdrop = styled.div`
+  ${streched('fixed')}
+  z-index: ${tokens.z[950]};
+  background: ${(props) => props.theme.modal.backdrop};
+`;
+
 const Content = ({ children }: PopoverContentProps) => {
-  const { closed } = usePopover();
+  const { triggerId, contentId, close, closed, offsetY, offsetX, closeMode } =
+    usePopover();
   const { render } = usePortal();
+
+  useIsomorphicLayoutEffect(() => {
+    if (closed) return;
+
+    const trigger = document.getElementById(triggerId);
+    const content = document.getElementById(contentId);
+
+    if (!trigger || !content) throw Error('Cannot find Trigger or Content');
+
+    const triggerRect = trigger.getBoundingClientRect();
+    const contentRect = content.getBoundingClientRect();
+
+    const isTriggerRight = triggerRect.left >= window.innerWidth / 2;
+    const isTriggerBottom = triggerRect.top >= window.innerHeight / 2;
+
+    content.style.left = `${
+      isTriggerRight
+        ? triggerRect.left - contentRect.width + triggerRect.width
+        : triggerRect.left
+    }px`;
+    content.style.top = `${
+      isTriggerBottom
+        ? triggerRect.top - contentRect.height - spacing.parse(offsetY)
+        : triggerRect.top + triggerRect.height + spacing.parse(offsetY)
+    }px`;
+
+    const isExceedingWindowWidth = contentRect.width > window.innerWidth;
+
+    if (isExceedingWindowWidth) {
+      content.style.width = '96%';
+      content.style.left = '2%';
+      content.style.overflowX = 'auto';
+    }
+  }, [closed, offsetX, offsetY, triggerId, contentId]);
 
   if (closed) return null;
 
-  return render(<div className="popover-content">{children}</div>);
+  if (closeMode === 'backdrop') {
+    return render(
+      <>
+        <Backdrop onClick={close} />
+        <PopoverContentContainer id={contentId} className="popover-content">
+          {children}
+        </PopoverContentContainer>
+      </>
+    );
+  }
+
+  return render(
+    <PopoverContentContainer id={contentId} className="popover-content">
+      {children}
+    </PopoverContentContainer>
+  );
 };
 
 Popover.Trigger = Trigger;
