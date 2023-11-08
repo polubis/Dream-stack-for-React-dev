@@ -1,9 +1,8 @@
 import type { PopoverProps } from './defs';
 import c from 'classnames';
 import { tokens } from '../theme-provider';
-import { ReactNode, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import {
-  ToggleReturn,
   useClickOutside,
   useIsomorphicLayoutEffect,
   usePortal,
@@ -42,16 +41,11 @@ const Popover = ({
   initialOpen,
 }: PopoverProps) => {
   const triggerRef = useRef<HTMLDivElement>(null);
-  const popover = useToggle();
+  const popover = useToggle({ opened: initialOpen });
   const { render } = usePortal();
   const { ref: contentRef } = useClickOutside<HTMLDivElement>({
     onOutside: popover.close,
   });
-
-  useEffect(() => {
-    if (initialOpen) popover.open();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useIsomorphicLayoutEffect(() => {
     const triggerElement = triggerRef.current;

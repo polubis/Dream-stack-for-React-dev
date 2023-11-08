@@ -1,25 +1,21 @@
-import { useRef } from 'react';
+import { useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import type { UsePortal } from './defs';
 import { useIsomorphicLayoutEffect } from '../use-isomorphic-layout-effect';
 
 const usePortal: UsePortal = () => {
-  const wrapper = useRef<HTMLDivElement | null>(null);
+  const wrapper = useMemo(() => document.createElement('div'), []);
 
   useIsomorphicLayoutEffect(() => {
-    const div = document.createElement('div');
-    wrapper.current = div;
-
-    document.body.appendChild(div);
+    document.body.appendChild(wrapper);
 
     return () => {
-      document.body.removeChild(div);
+      document.body.removeChild(wrapper);
     };
   }, []);
 
   return {
-    render: (children) =>
-      wrapper.current ? createPortal(children, wrapper.current) : null,
+    render: (children) => createPortal(children, wrapper),
   };
 };
 
