@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import type { SpacingKey } from '../theme-provider';
+import { BoxProps } from '../box';
 
 interface PopoverProps {
   className?: string;
@@ -27,7 +28,7 @@ interface PopoverTriggerProps {
   children: ReactNode;
 }
 
-interface PopoverContentProps {
+interface PopoverContentProps extends Omit<BoxProps, 'children' | 'id'> {
   children: ReactNode;
 }
 

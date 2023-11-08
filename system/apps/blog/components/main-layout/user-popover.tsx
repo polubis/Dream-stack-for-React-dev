@@ -32,93 +32,91 @@ const Content = () => {
   const signOutStore = useSignOutStore();
 
   return (
-    <Popover.Content>
-      <Box
-        spacing={[200, 400, 400, 100, 400]}
-        padding={[250, 250, 250, 250]}
-        variant="outlined"
-      >
-        <Box orientation="row" between>
-          <Font variant="h5" motive="primary">
-            Hi, {authStore.user.username}!
+    <Popover.Content
+      spacing={[200, 400, 400, 100, 400]}
+      padding={[250, 250, 250, 250]}
+      variant="outlined"
+    >
+      <Box orientation="row" between>
+        <Font variant="h5" motive="primary">
+          Hi, {authStore.user.username}!
+        </Font>
+        <Button size={1} shape="rounded" onClick={close}>
+          <CloseIcon />
+        </Button>
+      </Box>
+
+      <UserInfoContainer>
+        <Avatar
+          size="big"
+          alt="My alt text"
+          src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/220805-domestic-cat-mjf-1540-382ba2.jpg"
+        />
+        <Box spacing={[50]}>
+          <Font variant="h6" trim data-i={get('app-nav-user-username')}>
+            {authStore.user.username}
           </Font>
-          <Button size={1} shape="rounded" onClick={close}>
-            <CloseIcon />
-          </Button>
+          <Font variant="b1" trim data-i={get('app-nav-user-email')}>
+            {authStore.user.email}
+          </Font>
         </Box>
+      </UserInfoContainer>
 
-        <UserInfoContainer>
-          <Avatar
-            size="big"
-            alt="My alt text"
-            src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/220805-domestic-cat-mjf-1540-382ba2.jpg"
-          />
-          <Box spacing={[50]}>
-            <Font variant="h6" trim data-i={get('app-nav-user-username')}>
-              {authStore.user.username}
-            </Font>
-            <Font variant="b1" trim data-i={get('app-nav-user-email')}>
-              {authStore.user.email}
-            </Font>
-          </Box>
-        </UserInfoContainer>
+      <Box spacing={[100, 100]}>
+        <Font variant="b3">Navigation</Font>
+        <FigaUILink variant="b1">
+          <Link href={`/${lang}/your-articles`}>Profile</Link>
+        </FigaUILink>
+        <FigaUILink variant="b1">
+          <Link href={`/${lang}/your-articles`}>Your articles</Link>
+        </FigaUILink>
+      </Box>
 
-        <Box spacing={[100, 100]}>
-          <Font variant="b3">Navigation</Font>
-          <FigaUILink variant="b1">
-            <Link href={`/${lang}/your-articles`}>Profile</Link>
-          </FigaUILink>
-          <FigaUILink variant="b1">
-            <Link href={`/${lang}/your-articles`}>Your articles</Link>
-          </FigaUILink>
+      <Font variant="b3">Information / statistics</Font>
+
+      <Box orientation="row" spacing={[250, 250]}>
+        <Box spacing={[50]}>
+          <Font variant="b2">12</Font>
+          <Font variant="b1" motive="primary">
+            Articles
+          </Font>
         </Box>
-
-        <Font variant="b3">Information / statistics</Font>
-
-        <Box orientation="row" spacing={[250, 250]}>
-          <Box spacing={[50]}>
-            <Font variant="b2">12</Font>
-            <Font variant="b1" motive="primary">
-              Articles
-            </Font>
-          </Box>
-          <Box spacing={[50]}>
-            <Font variant="b2" data-i={get('app-nav-user-roles')}>
-              {authStore.user.roles.join(', ')}
-            </Font>
-            <Font variant="b1" motive="primary">
-              Roles
-            </Font>
-          </Box>
-          <Box spacing={[50]}>
-            <Font variant="b2">12</Font>
-            <Font variant="b1" motive="primary">
-              Reviews
-            </Font>
-          </Box>
+        <Box spacing={[50]}>
+          <Font variant="b2" data-i={get('app-nav-user-roles')}>
+            {authStore.user.roles.join(', ')}
+          </Font>
+          <Font variant="b1" motive="primary">
+            Roles
+          </Font>
         </Box>
+        <Box spacing={[50]}>
+          <Font variant="b2">12</Font>
+          <Font variant="b1" motive="primary">
+            Reviews
+          </Font>
+        </Box>
+      </Box>
 
-        <Box right spacing={[200]} orientation="row">
-          <AdminsOnly>
-            <Button
-              size={2}
-              variant="outlined"
-              onClick={() => router.push('/en/admin')}
-              loading={signOutStore.key === 'pending'}
-            >
-              Admin panel
-            </Button>
-          </AdminsOnly>
+      <Box right spacing={[200]} orientation="row">
+        <AdminsOnly>
           <Button
-            variant="outlined"
             size={2}
-            onClick={signOutStore.signOut}
-            data-i={get('app-nav-sign-out-btn')}
+            variant="outlined"
+            onClick={() => router.push('/en/admin')}
             loading={signOutStore.key === 'pending'}
           >
-            Sign Out
+            Admin panel
           </Button>
-        </Box>
+        </AdminsOnly>
+        <Button
+          variant="outlined"
+          size={2}
+          onClick={signOutStore.signOut}
+          data-i={get('app-nav-sign-out-btn')}
+          loading={signOutStore.key === 'pending'}
+        >
+          Sign Out
+        </Button>
       </Box>
     </Popover.Content>
   );

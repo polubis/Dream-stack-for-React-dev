@@ -25,20 +25,18 @@ const Content = (props: BoxProps) => {
   const { close } = Popover.use();
 
   return (
-    <Popover.Content>
-      <Box
-        padding={[250, 250, 250, 250]}
-        orientation="row"
-        variant="outlined"
-        minWidth="300px"
-        maxWidth="250px"
-        {...props}
-      >
-        <Font variant="h5">My content is here</Font>
-        <Button onClick={close}>
-          <CloseIcon />
-        </Button>
-      </Box>
+    <Popover.Content
+      padding={[250, 250, 250, 250]}
+      orientation="row"
+      variant="outlined"
+      minWidth="300px"
+      maxWidth="250px"
+      {...props}
+    >
+      <Font variant="h5">My content is here</Font>
+      <Button onClick={close}>
+        <CloseIcon />
+      </Button>
     </Popover.Content>
   );
 };

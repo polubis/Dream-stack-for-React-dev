@@ -1,7 +1,3 @@
-// Creates a context per usage.
-// 1. When resize of the window - the update of content is added.
-// 2. When change content inside happen, the content position is updated.
-
 import {
   createContext,
   useContext,
@@ -16,11 +12,10 @@ import type {
   PopoverProps,
   PopoverTriggerProps,
 } from './defs';
-import styled from 'styled-components';
 import c from 'classnames';
 import { useIsomorphicLayoutEffect, usePortal } from '@system/figa-hooks';
-import { slideIn, spacing, streched } from '../shared';
-import { tokens } from '../theme-provider';
+import { spacing } from '../shared';
+import { Box } from '../box';
 
 const Context = createContext<PopoverContext | null>(null);
 
@@ -87,7 +82,7 @@ const Trigger = ({ children }: PopoverTriggerProps) => {
   );
 };
 
-const Content = ({ children }: PopoverContentProps) => {
+const Content = ({ children, className, ...props }: PopoverContentProps) => {
   const { triggerId, contentId, close, closed, offsetY, offsetX, closeMode } =
     usePopover();
   const { render } = usePortal();
@@ -121,8 +116,9 @@ const Content = ({ children }: PopoverContentProps) => {
 
     if (isExceedingWindowWidth) {
       content.style.width = '96%';
+      content.style.maxWidth = 'unset';
+      content.style.minWidth = 'unset';
       content.style.left = '2%';
-      content.style.overflowX = 'auto';
     }
   }, [closed, offsetX, offsetY, triggerId, contentId]);
 
@@ -132,17 +128,17 @@ const Content = ({ children }: PopoverContentProps) => {
     return render(
       <>
         <div className="backdrop popover-backdrop" onClick={close} />
-        <div id={contentId} className="popover-content">
+        <Box {...props} id={contentId} className="popover-content">
           {children}
-        </div>
+        </Box>
       </>
     );
   }
 
   return render(
-    <div id={contentId} className="popover-content">
+    <Box {...props} id={contentId} className="popover-content">
       {children}
-    </div>
+    </Box>
   );
 };
 
