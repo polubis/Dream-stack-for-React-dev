@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Portal is created when:  moves passed JSX node outside of the main application wrapper 1`] = `
+Object {
+  "$$typeof": Symbol(react.portal),
+  "children": <div>
+    Content
+  </div>,
+  "containerInfo": <div />,
+  "implementation": null,
+  "key": null,
+}
+`;
