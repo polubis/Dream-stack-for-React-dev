@@ -31,6 +31,15 @@ const updateContentXY = (
 
   contentElement.style.top = `${y}px`;
   contentElement.style.left = `${x}px`;
+
+  const triggerElementRightOffset = window.innerWidth - triggerRect.right;
+  const isExceeding =
+    contentRect.width + triggerElementRightOffset > window.innerWidth;
+
+  if (isExceeding) {
+    contentElement.style.width = '94%';
+    contentElement.style.left = '3%';
+  }
 };
 
 const Popover = ({
