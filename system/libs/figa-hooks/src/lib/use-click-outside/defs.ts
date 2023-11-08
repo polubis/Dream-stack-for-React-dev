@@ -6,7 +6,7 @@ interface UseClickOutsideConfig {
 }
 
 interface UseClickOutsideReturn<T extends HTMLElement> {
-  contentRef: MutableRefObject<T | null>;
+  ref: MutableRefObject<T | null>;
 }
 
 export type { UseClickOutsideConfig, UseClickOutsideReturn };
