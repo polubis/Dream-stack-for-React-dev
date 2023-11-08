@@ -97,5 +97,6 @@ const Content = ({ children }: PopoverContentProps) => {
 
 Popover.Trigger = Trigger;
 Popover.Content = Content;
+Popover.use = usePopover;
 
-export { Popover, usePopover };
+export { Popover };
