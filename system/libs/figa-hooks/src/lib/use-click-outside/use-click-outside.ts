@@ -7,12 +7,22 @@ const assertIsNode = (target: EventTarget | Node | null): target is Node =>
 
 const useClickOutside = <T extends HTMLElement>({
   onOutside,
+  exceptionRefs = [],
 }: UseClickOutsideConfig) => {
   const ref = useRef<T>(null);
 
   useEffect(() => {
     const handleClickOutside = ({ target }: MouseEvent) => {
-      (assertIsNode(target) && ref.current?.contains(target)) || onOutside();
+      const trg = target;
+
+      if (
+        !assertIsNode(trg) ||
+        ref.current?.contains(trg) ||
+        exceptionRefs.some((ref) => ref.current?.contains(trg))
+      )
+        return;
+
+      onOutside();
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -20,6 +30,7 @@ const useClickOutside = <T extends HTMLElement>({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onOutside]);
 
   return { ref };

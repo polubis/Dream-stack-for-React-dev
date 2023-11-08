@@ -1,7 +1,8 @@
-import type { MutableRefObject } from 'react';
+import type { MutableRefObject, RefObject } from 'react';
 
 interface UseClickOutsideConfig {
   onOutside: () => void;
+  exceptionRefs?: RefObject<HTMLDivElement>[];
 }
 
 interface UseClickOutsideReturn<T extends HTMLElement> {

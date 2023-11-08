@@ -45,6 +45,7 @@ const Popover = ({
   const { render } = usePortal();
   const { ref: contentRef } = useClickOutside<HTMLDivElement>({
     onOutside: popover.close,
+    exceptionRefs: [triggerRef],
   });
 
   useIsomorphicLayoutEffect(() => {
