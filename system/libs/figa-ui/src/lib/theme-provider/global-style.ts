@@ -1223,6 +1223,21 @@ const GlobalStyle = createGlobalStyle`
 
     /* list.tsx */
 
+    /* popover.tsx */
+
+    .popover-content {
+        ${slideIn(tokens.spacing[0], tokens.spacing[0])};
+        position: fixed;
+        z-index: ${tokens.z[1000]};
+        width: max-content;
+    }
+
+    .popover-backdrop {
+        z-index: ${tokens.z[950]};
+    }
+
+    /* popover.tsx */
+
     /* blockquote.tsx */
 
     .blockquote {

@@ -24,13 +24,6 @@ import { tokens } from '../theme-provider';
 
 const Context = createContext<PopoverContext | null>(null);
 
-const PopoverContentContainer = styled.div`
-  ${slideIn(tokens.spacing[0], tokens.spacing[0])};
-  position: fixed;
-  z-index: ${tokens.z[1000]};
-  width: max-content;
-`;
-
 const Popover = ({
   className,
   closeMode = 'own',
@@ -94,12 +87,6 @@ const Trigger = ({ children }: PopoverTriggerProps) => {
   );
 };
 
-const Backdrop = styled.div`
-  ${streched('fixed')}
-  z-index: ${tokens.z[950]};
-  background: ${(props) => props.theme.modal.backdrop};
-`;
-
 const Content = ({ children }: PopoverContentProps) => {
   const { triggerId, contentId, close, closed, offsetY, offsetX, closeMode } =
     usePopover();
@@ -144,18 +131,18 @@ const Content = ({ children }: PopoverContentProps) => {
   if (closeMode === 'backdrop') {
     return render(
       <>
-        <Backdrop onClick={close} />
-        <PopoverContentContainer id={contentId} className="popover-content">
+        <div className="backdrop popover-backdrop" onClick={close} />
+        <div id={contentId} className="popover-content">
           {children}
-        </PopoverContentContainer>
+        </div>
       </>
     );
   }
 
   return render(
-    <PopoverContentContainer id={contentId} className="popover-content">
+    <div id={contentId} className="popover-content">
       {children}
-    </PopoverContentContainer>
+    </div>
   );
 };
 

@@ -6,6 +6,7 @@ import {
   Font,
   Popover,
   Link as FigaUILink,
+  tokens,
 } from '@system/figa-ui';
 import { useSignOutStore } from '../../store/sign-out';
 import { get } from '@system/blog-selectors';
@@ -14,6 +15,14 @@ import { useRouter } from 'next/navigation';
 import { AdminsOnly } from '../../core';
 import { Link } from '../link';
 import { useLang } from '../../dk';
+import styled from 'styled-components';
+
+const UserInfoContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto minmax(120px, 1fr);
+  gap: ${tokens.spacing[200]};
+  align-items: center;
+`;
 
 const Content = () => {
   const { close } = Popover.use();
@@ -28,8 +37,6 @@ const Content = () => {
         spacing={[200, 400, 400, 100, 400]}
         padding={[250, 250, 250, 250]}
         variant="outlined"
-        minWidth="280px"
-        maxWidth="420px"
       >
         <Box orientation="row" between>
           <Font variant="h5" motive="primary">
@@ -40,21 +47,21 @@ const Content = () => {
           </Button>
         </Box>
 
-        <Box orientation="row" spacing={[200]}>
+        <UserInfoContainer>
           <Avatar
             size="big"
             alt="My alt text"
             src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/220805-domestic-cat-mjf-1540-382ba2.jpg"
           />
           <Box spacing={[50]}>
-            <Font variant="h6" data-i={get('app-nav-user-username')}>
+            <Font variant="h6" trim data-i={get('app-nav-user-username')}>
               {authStore.user.username}
             </Font>
-            <Font variant="b1" data-i={get('app-nav-user-email')}>
+            <Font variant="b1" trim data-i={get('app-nav-user-email')}>
               {authStore.user.email}
             </Font>
           </Box>
-        </Box>
+        </UserInfoContainer>
 
         <Box spacing={[100, 100]}>
           <Font variant="b3">Navigation</Font>
@@ -135,7 +142,7 @@ const Trigger = () => {
 
 const UserPopover = () => {
   return (
-    <Popover>
+    <Popover closeMode="backdrop">
       <Trigger />
       <Content />
     </Popover>
