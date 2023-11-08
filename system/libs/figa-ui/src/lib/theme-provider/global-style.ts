@@ -1229,7 +1229,7 @@ const GlobalStyle = createGlobalStyle`
         &-content {
             ${slideIn(tokens.spacing[0], tokens.spacing[0])};
             position: fixed;
-            z-index: ${tokens.z[500]};
+            z-index: ${tokens.z[1000]};
         }
     }
 
