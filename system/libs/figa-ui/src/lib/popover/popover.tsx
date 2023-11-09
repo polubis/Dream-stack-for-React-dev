@@ -106,7 +106,10 @@ const Content = ({ children, className, ...props }: PopoverContentProps) => {
         : triggerRect.top + triggerRect.height + spacing.parse(offsetY)
     }px`;
 
-    const isExceedingWindowWidth = contentRect.width > window.innerWidth;
+    const triggerRightOffset = window.innerWidth - triggerRect.right;
+    const isExceedingWindowWidth = isTriggerRight
+      ? contentRect.width + triggerRightOffset > window.innerWidth
+      : contentRect.width + triggerRect.left > window.innerWidth;
 
     if (isExceedingWindowWidth) {
       content.style.width = '96%';
