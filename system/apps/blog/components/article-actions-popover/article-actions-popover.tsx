@@ -13,9 +13,30 @@ import { article_selectors } from '../../store/article';
 import { article_management_actions } from '../../store/article-management';
 import { change_article_status_selectors } from '../../store/change-article-status';
 
-const ArticleActionsPopover = () => {
+const Trigger = () => {
+  const { toggle } = Popover.use();
+  const is = change_article_status_selectors.useIs();
+  const loading = is === 'busy';
+
+  return (
+    <Popover.Trigger>
+      <Button
+        size={2}
+        shape="rounded"
+        loading={loading}
+        title="Actions"
+        onClick={toggle}
+      >
+        <ActionsIcon />
+      </Button>
+    </Popover.Trigger>
+  );
+};
+
+const Content = () => {
+  const { close } = Popover.use();
+
   const modal = useToggle<ArticleStatus>();
-  const { id } = article_selectors.useArticle();
   const is = change_article_status_selectors.useIs();
 
   const handleAcceptClick = (): void => {
@@ -25,6 +46,45 @@ const ArticleActionsPopover = () => {
   const handleRejectClick = (): void => {
     modal.openWithData('NeedWork');
   };
+
+  const loading = is === 'busy';
+
+  return (
+    <Popover.Content
+      padding={[250, 250, 250, 250]}
+      variant="outlined"
+      spacing={[250]}
+      minWidth="280px"
+      maxWidth="600px"
+    >
+      <Box orientation="row" between>
+        <Font variant="h6">Actions to perform</Font>
+        <Button
+          size={1}
+          shape="rounded"
+          variant="outlined"
+          motive="tertiary"
+          onClick={close}
+        >
+          <CloseIcon />
+        </Button>
+      </Box>
+      <Box orientation="row" spacing={[150]}>
+        <Button size={2} loading={loading} onClick={handleRejectClick}>
+          Reject
+        </Button>
+        <Button size={2} loading={loading} onClick={handleAcceptClick}>
+          Accept
+        </Button>
+      </Box>
+    </Popover.Content>
+  );
+};
+
+const ArticleActionsPopover = () => {
+  const modal = useToggle<ArticleStatus>();
+  const { id } = article_selectors.useArticle();
+  const is = change_article_status_selectors.useIs();
 
   const handleConfirm = (): void => {
     article_management_actions.changeStatus(id, modal.data);
@@ -56,49 +116,9 @@ const ArticleActionsPopover = () => {
           </Box>
         </Modal>
       )}
-      <Popover
-        trigger={({ toggle }) => (
-          <Button
-            size={2}
-            shape="rounded"
-            loading={loading}
-            title="Actions"
-            onClick={toggle}
-          >
-            <ActionsIcon />
-          </Button>
-        )}
-      >
-        {({ close }) => (
-          <Box
-            padding={[250, 250, 250, 250]}
-            variant="outlined"
-            spacing={[250]}
-            minWidth="280px"
-            maxWidth="600px"
-          >
-            <Box orientation="row" between>
-              <Font variant="h6">Actions to perform</Font>
-              <Button
-                size={1}
-                shape="rounded"
-                variant="outlined"
-                motive="tertiary"
-                onClick={close}
-              >
-                <CloseIcon />
-              </Button>
-            </Box>
-            <Box orientation="row" spacing={[150]}>
-              <Button size={2} loading={loading} onClick={handleRejectClick}>
-                Reject
-              </Button>
-              <Button size={2} loading={loading} onClick={handleAcceptClick}>
-                Accept
-              </Button>
-            </Box>
-          </Box>
-        )}
+      <Popover>
+        <Trigger />
+        <Content />
       </Popover>
     </>
   );
