@@ -3,7 +3,7 @@ import type { SpacingKey } from '../theme-provider';
 import { BoxProps } from '../box';
 
 interface PopoverProps {
-  closeMode?: 'outside' | 'backdrop' | 'own';
+  closeMode?: 'backdrop' | 'own';
   offsetY?: SpacingKey;
   offsetX?: SpacingKey;
   openOnInit?: boolean;
