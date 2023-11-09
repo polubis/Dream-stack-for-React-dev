@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import type { SpacingKey } from '../theme-provider';
-import { BoxProps } from '../box';
+import type { BoxProps } from '../box';
 
 interface PopoverProps {
   closeMode?: 'backdrop' | 'own';

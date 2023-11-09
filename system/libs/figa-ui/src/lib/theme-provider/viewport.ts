@@ -69,9 +69,4 @@ export {
   L_DOWN,
   D_DOWN,
   VIEWPORT,
-  smallMobile,
-  mobile,
-  tablet,
-  laptop,
-  desktop,
 };

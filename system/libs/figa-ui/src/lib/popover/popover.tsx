@@ -183,7 +183,12 @@ const Content = ({ children, className, ...props }: PopoverContentProps) => {
           className="backdrop"
           onClick={close}
         />
-        <Box {...props} id={contentId} className="popover-content">
+        <Box
+          {...props}
+          id={contentId}
+          aria-label="Popover content"
+          className="popover-content"
+        >
           {children}
         </Box>
       </>
@@ -191,7 +196,12 @@ const Content = ({ children, className, ...props }: PopoverContentProps) => {
   }
 
   return render(
-    <Box {...props} id={contentId} className="popover-content">
+    <Box
+      {...props}
+      aria-label="Popover content"
+      id={contentId}
+      className="popover-content"
+    >
       {children}
     </Box>
   );

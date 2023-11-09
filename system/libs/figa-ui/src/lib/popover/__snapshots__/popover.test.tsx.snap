@@ -96,6 +96,7 @@ Object {
     </div>
     <div>
       <div
+        aria-label="Popover content"
         class="box popover-content column empty"
         id="popover-content-:r0:"
         style="padding: 16px 16px 16px 16px; margin: 16px 16px 16px 16px;"
@@ -363,6 +364,7 @@ Object {
         class="backdrop"
       />
       <div
+        aria-label="Popover content"
         class="box popover-content column empty"
         id="popover-content-:r0:"
         style="padding: 16px 16px 16px 16px; margin: 16px 16px 16px 16px;"

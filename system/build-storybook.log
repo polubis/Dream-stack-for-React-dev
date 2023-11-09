@@ -1,5 +1,5 @@
 
-> nx run figa-ui:build-storybook -s public --output-dir C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--31332-bgeHuToR53cK
+> nx run figa-ui:build-storybook -s public --output-dir C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21916-1AhPYNW2Hs4i
 
 
 >  NX  ui framework: @storybook/react
@@ -7,11 +7,11 @@
 
 >  NX  Storybook builder starting ...
 
-info => Cleaning outputDir: C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--31332-bgeHuToR53cK
+info => Cleaning outputDir: C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21916-1AhPYNW2Hs4i
 info => Loading presets
-info => Copying static files: C:\Users\apolubinski\Dream-stack-for-React-dev\system\assets at C:\Users\APOLUB~1\AppData\Local\Temp\chromatic--31332-bgeHuToR53cK\
+info => Copying static files: C:\Users\apolubinski\Dream-stack-for-React-dev\system\assets at C:\Users\APOLUB~1\AppData\Local\Temp\chromatic--21916-1AhPYNW2Hs4i\
 info => Compiling manager..
-info => Manager built (22 s)
+info => Manager built (21 s)
 [36mvite v4.1.4 [32mbuilding for production...[36m[39m
 transforming...
 
@@ -28,31 +28,31 @@ Use of eval in "node_modules/@storybook/components/dist/esm/index-681e4b07.js" i
 [32m✓[39m 2061 modules transformed.
 rendering chunks...
 computing gzip size...
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[32miframe.html                                         [39m[1m[2m   13.71 kB[22m[1m[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[35miframe-039374ed.css                          [39m[1m[2m    0.55 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36mes.string.from-code-point-4b10465f.js        [39m[1m[2m    0.59 kB[22m[1m[22m[2m │ gzip:   0.44 kB[22m[2m │ map:     2.25 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36mes.regexp.flags-3a524e2b.js                  [39m[1m[2m    0.67 kB[22m[1m[22m[2m │ gzip:   0.47 kB[22m[2m │ map:     2.81 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36mclient-691778e6.js                           [39m[1m[2m    0.72 kB[22m[1m[22m[2m │ gzip:   0.47 kB[22m[2m │ map:     0.97 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36mrenderDocs-fd305b16.js                       [39m[1m[2m    2.67 kB[22m[1m[22m[2m │ gzip:   1.33 kB[22m[2m │ map:     9.90 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36mGlobalScrollAreaStyles-8793ce4a-96cac562.js  [39m[1m[2m   10.50 kB[22m[1m[22m[2m │ gzip:   2.39 kB[22m[2m │ map:    20.95 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36mColor-f953d088-8a855be1.js                   [39m[1m[2m   34.27 kB[22m[1m[22m[2m │ gzip:  13.00 kB[22m[2m │ map:   134.17 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36mWithTooltip-167e9982-e4402040.js             [39m[1m[2m   40.96 kB[22m[1m[22m[2m │ gzip:  13.78 kB[22m[2m │ map:   181.36 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36mOverlayScrollbars-1355f44c-4e9cff56.js       [39m[1m[2m   64.54 kB[22m[1m[22m[2m │ gzip:  27.41 kB[22m[2m │ map:   444.01 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36msyntaxhighlighter-b07b042a-134a11ba.js       [39m[1m[2m  117.17 kB[22m[1m[22m[2m │ gzip:  48.78 kB[22m[2m │ map:   468.63 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36mindex-790574a2.js                            [39m[1m[2m  496.03 kB[22m[1m[22m[2m │ gzip: 146.15 kB[22m[2m │ map: 1,180.90 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36mformatter-0d5cb0eb-2769de4a.js               [39m[1m[33m  742.26 kB[39m[22m[2m │ gzip: 239.76 kB[22m[2m │ map: 1,799.10 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--31332-bgeHuToR53cK/[22m[2massets/[22m[36miframe-4352408a.js                           [39m[1m[33m2,231.00 kB[39m[22m[2m │ gzip: 614.99 kB[22m[2m │ map: 5,993.92 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[32miframe.html                                         [39m[1m[2m   13.71 kB[22m[1m[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[35miframe-039374ed.css                          [39m[1m[2m    0.55 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36mes.string.from-code-point-3793a3a5.js        [39m[1m[2m    0.59 kB[22m[1m[22m[2m │ gzip:   0.44 kB[22m[2m │ map:     2.25 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36mes.regexp.flags-97ddb820.js                  [39m[1m[2m    0.67 kB[22m[1m[22m[2m │ gzip:   0.47 kB[22m[2m │ map:     2.81 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36mclient-86e1afc1.js                           [39m[1m[2m    0.72 kB[22m[1m[22m[2m │ gzip:   0.46 kB[22m[2m │ map:     0.97 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36mrenderDocs-bc680d5d.js                       [39m[1m[2m    2.67 kB[22m[1m[22m[2m │ gzip:   1.32 kB[22m[2m │ map:     9.90 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36mGlobalScrollAreaStyles-8793ce4a-8a02aa49.js  [39m[1m[2m   10.50 kB[22m[1m[22m[2m │ gzip:   2.39 kB[22m[2m │ map:    20.95 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36mColor-f953d088-c562a412.js                   [39m[1m[2m   34.27 kB[22m[1m[22m[2m │ gzip:  13.00 kB[22m[2m │ map:   134.17 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36mWithTooltip-167e9982-77d9581d.js             [39m[1m[2m   40.96 kB[22m[1m[22m[2m │ gzip:  13.78 kB[22m[2m │ map:   181.36 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36mOverlayScrollbars-1355f44c-41937749.js       [39m[1m[2m   64.54 kB[22m[1m[22m[2m │ gzip:  27.40 kB[22m[2m │ map:   444.01 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36msyntaxhighlighter-b07b042a-6a8de946.js       [39m[1m[2m  117.17 kB[22m[1m[22m[2m │ gzip:  48.79 kB[22m[2m │ map:   468.63 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36mindex-a8e6b027.js                            [39m[1m[2m  496.03 kB[22m[1m[22m[2m │ gzip: 146.15 kB[22m[2m │ map: 1,180.90 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36mformatter-0d5cb0eb-ffa0cf70.js               [39m[1m[33m  742.26 kB[39m[22m[2m │ gzip: 239.76 kB[22m[2m │ map: 1,799.10 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21916-1AhPYNW2Hs4i/[22m[2massets/[22m[36miframe-d1b53ce7.js                           [39m[1m[33m2,234.70 kB[39m[22m[2m │ gzip: 615.21 kB[22m[2m │ map: 5,995.55 kB[22m
 [33m
 (!) Some chunks are larger than 500 kBs after minification. Consider:
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
-info => Output directory: C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--31332-bgeHuToR53cK
+info => Output directory: C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21916-1AhPYNW2Hs4i
 
 >  NX  Storybook builder finished ...
 
 
->  NX  Storybook files available in C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--31332-bgeHuToR53cK
+>  NX  Storybook files available in C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21916-1AhPYNW2Hs4i
 
 
  

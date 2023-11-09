@@ -4,7 +4,7 @@ import { Popover } from './popover';
 import { Button } from '../button';
 import { Font } from '../font';
 import { CloseIcon } from '../icon';
-import { Box, BoxProps } from '../box';
+import { Box, type BoxProps } from '../box';
 
 export default {
   component: Popover,
