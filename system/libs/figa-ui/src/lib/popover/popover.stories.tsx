@@ -9,6 +9,27 @@ import { Box, BoxProps } from '../box';
 export default {
   component: Popover,
   title: 'Popover',
+  parameters: {
+    viewport: {
+      viewports: {
+        tinyMobile: {
+          name: 'tinyMobile',
+          styles: {
+            width: '300px',
+            height: '800px',
+          },
+        },
+        default: {
+          name: 'default',
+          styles: {
+            width: '1920px',
+            height: '1080px',
+          },
+        },
+      },
+      defaultViewport: 'default',
+    },
+  },
 } as Meta;
 
 const Trigger = () => {
@@ -141,7 +162,9 @@ const WithCustomScrollInsideTemplate: Story = () => {
       <Popover openOnInit>
         <Trigger />
         <Content maxWidth={undefined} minWidth={undefined}>
-          <div style={{ maxHeight: '400px', maxWidth: '300px', overflowY: 'auto' }}>
+          <div
+            style={{ maxHeight: '400px', maxWidth: '300px', overflowY: 'auto' }}
+          >
             <Font variant="h1">
               s simply dummy text of the printing and typesetting industry.
               Lorem Ipsum has been the industry's standard dummy text ever since
@@ -171,3 +194,12 @@ WithBackdropCloseMode.args = {};
 
 export const WithCustomScrollInside = WithCustomScrollInsideTemplate.bind({});
 WithCustomScrollInside.args = {};
+
+export const OnMobile = DefaultTemplate.bind({});
+OnMobile.args = {};
+OnMobile.parameters = {
+  viewport: {
+    defaultViewport: 'tinyMobile',
+  },
+  chromatic: { delay: 1000 },
+};
