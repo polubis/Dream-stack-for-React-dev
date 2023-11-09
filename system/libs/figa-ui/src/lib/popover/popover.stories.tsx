@@ -135,13 +135,13 @@ const WithCloseModeBackdrop: Story = () => {
   );
 };
 
-const WithTooBigContentInYAxisTemplate: Story = () => {
+const WithCustomScrollInsideTemplate: Story = () => {
   return (
     <Box padding={[300, 300, 300, 300]}>
       <Popover openOnInit>
         <Trigger />
         <Content maxWidth={undefined} minWidth={undefined}>
-          <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
+          <div style={{ maxHeight: '400px', maxWidth: '300px', overflowY: 'auto' }}>
             <Font variant="h1">
               s simply dummy text of the printing and typesetting industry.
               Lorem Ipsum has been the industry's standard dummy text ever since
@@ -169,7 +169,5 @@ WithTooBigContentOnXAxis.args = {};
 export const WithBackdropCloseMode = WithCloseModeBackdrop.bind({});
 WithBackdropCloseMode.args = {};
 
-export const WithTooBigContentInYAxis = WithTooBigContentInYAxisTemplate.bind(
-  {}
-);
-WithTooBigContentInYAxis.args = {};
+export const WithCustomScrollInside = WithCustomScrollInsideTemplate.bind({});
+WithCustomScrollInside.args = {};
