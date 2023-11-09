@@ -19,15 +19,7 @@ export default {
             height: '800px',
           },
         },
-        default: {
-          name: 'default',
-          styles: {
-            width: '1920px',
-            height: '1080px',
-          },
-        },
       },
-      defaultViewport: 'default',
     },
   },
 } as Meta;
