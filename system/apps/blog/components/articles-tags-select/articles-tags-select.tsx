@@ -4,6 +4,7 @@ import {
   Button,
   CloseIcon,
   Font,
+  Loader,
   Popover,
   TagsIcon,
   tokens,
@@ -48,15 +49,8 @@ const Tags = styled.div`
 `;
 
 const Trigger = ({ children }: { children: ReactNode }) => {
-  const { open } = Popover.use();
+  const { toggle } = Popover.use();
   const articlesTagsState = useArticlesTagsStore();
-
-  useEffect(() => {
-    if (articlesTagsState.is === 'ok') {
-      open();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [articlesTagsState]);
 
   return (
     <Popover.Trigger>
@@ -66,12 +60,8 @@ const Trigger = ({ children }: { children: ReactNode }) => {
         className="articles-tags-select-trigger"
         loading={articlesTagsState.is === 'busy'}
         onClick={() => {
-          if (articlesTagsState.is !== 'ok') {
-            articles_tags_actions.load();
-            return;
-          }
-
-          open();
+          toggle();
+          articlesTagsState.is !== 'ok' && articles_tags_actions.load();
         }}
       >
         {children}
@@ -103,6 +93,12 @@ const Content = ({ tags, onConfirm }: ArticlesTagsSelectProps) => {
       minWidth="280px"
       maxWidth="500px"
     >
+      {(articlesTagsState.is === 'busy' || articlesTagsState.is === 'idle') && (
+        <Box margin="auto">
+          <Loader size="small" />
+        </Box>
+      )}
+
       {articlesTagsState.is === 'ok' && (
         <Box spacing={[250, 500]}>
           <Box orientation="row" between>

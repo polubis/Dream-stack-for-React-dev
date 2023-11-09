@@ -11,7 +11,21 @@ import { article_selectors } from '../../store/article';
 import { article_management_actions } from '../../store/article-management';
 import { change_article_status_selectors } from '../../store/change-article-status';
 
-const ArticleStatusPopover = () => {
+const Trigger = () => {
+  const { toggle } = Popover.use();
+
+  return (
+    <Popover.Trigger>
+      <Button size={2} shape="rounded" title="Status" onClick={toggle}>
+        <StatusIcon />
+      </Button>
+    </Popover.Trigger>
+  );
+};
+
+const Content = () => {
+  const { close } = Popover.use();
+
   const article = article_selectors.useArticle();
   const confirmation = useToggle();
   const is = change_article_status_selectors.useIs();
@@ -26,47 +40,46 @@ const ArticleStatusPopover = () => {
   };
 
   return (
-    <Popover
-      trigger={({ toggle }) => (
-        <Button size={2} shape="rounded" title="Status" onClick={toggle}>
-          <StatusIcon />
-        </Button>
-      )}
+    <Popover.Content
+      padding={[250, 250, 250, 250]}
+      variant="outlined"
+      spacing={[250, 200, 400]}
+      minWidth="280px"
+      maxWidth="600px"
     >
-      {({ close }) => (
-        <Box
-          padding={[250, 250, 250, 250]}
+      <Box orientation="row" between spacing={[250]}>
+        <Font variant="h6">Send for approval</Font>
+        <Button
+          size={1}
+          shape="rounded"
           variant="outlined"
-          spacing={[250, 200, 400]}
-          minWidth="280px"
-          maxWidth="600px"
+          motive="tertiary"
+          onClick={close}
         >
-          <Box orientation="row" between spacing={[250]}>
-            <Font variant="h6">Send for approval</Font>
-            <Button
-              size={1}
-              shape="rounded"
-              variant="outlined"
-              motive="tertiary"
-              onClick={close}
-            >
-              <CloseIcon />
-            </Button>
-          </Box>
-          <Box spacing={[250]}>
-            <Font variant="b2">
-              After this change, your article will go into{' '}
-              <Font variant="b2" motive="primary" element="span">
-                Review
-              </Font>{' '}
-              status. Our moderators will take care of its approval.
-            </Font>
-            <Button loading={is === 'busy'} size={2} onClick={handleConfirm}>
-              {confirmation.opened ? 'Sure?' : 'Confirm'}
-            </Button>
-          </Box>
-        </Box>
-      )}
+          <CloseIcon />
+        </Button>
+      </Box>
+      <Box spacing={[250]}>
+        <Font variant="b2">
+          After this change, your article will go into{' '}
+          <Font variant="b2" motive="primary" element="span">
+            Review
+          </Font>{' '}
+          status. Our moderators will take care of its approval.
+        </Font>
+        <Button loading={is === 'busy'} size={2} onClick={handleConfirm}>
+          {confirmation.opened ? 'Sure?' : 'Confirm'}
+        </Button>
+      </Box>
+    </Popover.Content>
+  );
+};
+
+const ArticleStatusPopover = () => {
+  return (
+    <Popover closeMode="backdrop">
+      <Trigger />
+      <Content />
     </Popover>
   );
 };
