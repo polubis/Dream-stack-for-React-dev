@@ -137,11 +137,17 @@ const Content = ({ children, className, ...props }: PopoverContentProps) => {
 
       return resizeObserver;
     };
+    const listenWindowResize = () => {
+      setContentOffset(trigger, content, offsetY);
+    };
+
+    window.addEventListener('resize', listenWindowResize);
 
     const resizeObserver = listenContentResize();
 
     return () => {
       resizeObserver.disconnect();
+      window.removeEventListener('resize', listenWindowResize);
     };
   }, [closed, offsetX, offsetY, triggerId, contentId]);
 
