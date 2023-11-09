@@ -178,7 +178,11 @@ const Content = ({ children, className, ...props }: PopoverContentProps) => {
   if (closeMode === 'backdrop') {
     return render(
       <>
-        <div className="backdrop" onClick={close} />
+        <div
+          aria-label="Dialog backdrop"
+          className="backdrop"
+          onClick={close}
+        />
         <Box {...props} id={contentId} className="popover-content">
           {children}
         </Box>
