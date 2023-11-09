@@ -12,6 +12,7 @@ import {
 import { article_selectors } from '../../store/article';
 import { article_management_actions } from '../../store/article-management';
 import { change_article_status_selectors } from '../../store/change-article-status';
+import type { ReactNode } from 'react';
 
 const Trigger = () => {
   const { toggle } = Popover.use();
@@ -33,21 +34,8 @@ const Trigger = () => {
   );
 };
 
-const Content = () => {
+const Content = ({ children }: { children: ReactNode }) => {
   const { close } = Popover.use();
-
-  const modal = useToggle<ArticleStatus>();
-  const is = change_article_status_selectors.useIs();
-
-  const handleAcceptClick = (): void => {
-    modal.openWithData('Accepted');
-  };
-
-  const handleRejectClick = (): void => {
-    modal.openWithData('NeedWork');
-  };
-
-  const loading = is === 'busy';
 
   return (
     <Popover.Content
@@ -69,14 +57,7 @@ const Content = () => {
           <CloseIcon />
         </Button>
       </Box>
-      <Box orientation="row" spacing={[150]}>
-        <Button size={2} loading={loading} onClick={handleRejectClick}>
-          Reject
-        </Button>
-        <Button size={2} loading={loading} onClick={handleAcceptClick}>
-          Accept
-        </Button>
-      </Box>
+      {children}
     </Popover.Content>
   );
 };
@@ -88,6 +69,14 @@ const ArticleActionsPopover = () => {
 
   const handleConfirm = (): void => {
     article_management_actions.changeStatus(id, modal.data);
+  };
+
+  const handleAcceptClick = (): void => {
+    modal.openWithData('Accepted');
+  };
+
+  const handleRejectClick = (): void => {
+    modal.openWithData('NeedWork');
   };
 
   const loading = is === 'busy';
@@ -118,7 +107,16 @@ const ArticleActionsPopover = () => {
       )}
       <Popover>
         <Trigger />
-        <Content />
+        <Content>
+          <Box orientation="row" spacing={[150]}>
+            <Button size={2} loading={loading} onClick={handleRejectClick}>
+              Reject
+            </Button>
+            <Button size={2} loading={loading} onClick={handleAcceptClick}>
+              Accept
+            </Button>
+          </Box>
+        </Content>
       </Popover>
     </>
   );

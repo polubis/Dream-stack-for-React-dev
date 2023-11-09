@@ -178,7 +178,7 @@ const Content = ({ children, className, ...props }: PopoverContentProps) => {
   if (closeMode === 'backdrop') {
     return render(
       <>
-        <div className="backdrop popover-backdrop" onClick={close} />
+        <div className="backdrop" onClick={close} />
         <Box {...props} id={contentId} className="popover-content">
           {children}
         </Box>

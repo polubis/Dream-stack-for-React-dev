@@ -1228,11 +1228,7 @@ const GlobalStyle = createGlobalStyle`
     .popover-content {
         ${slideIn(tokens.spacing[0], tokens.spacing[0])};
         position: fixed;
-        z-index: ${tokens.z[1000]};
-    }
-
-    .popover-backdrop {
-        z-index: ${tokens.z[950]};
+        z-index: ${tokens.z[500]};
     }
 
     /* popover.tsx */
