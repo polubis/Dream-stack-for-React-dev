@@ -137,7 +137,6 @@ const Trigger = ({ children }: PopoverTriggerProps) => {
 const Content = ({
   children,
   className,
-  scrollHide = true,
   ...props
 }: PopoverContentProps) => {
   const { triggerId, contentId, close, closed, offsetY, offsetX, closeMode } =
@@ -183,7 +182,6 @@ const Content = ({
   if (closeMode === 'backdrop') {
     return render(
       <>
-        {scrollHide && <ScrollHide />}
         <div className="backdrop popover-backdrop" onClick={close} />
         <Box {...props} id={contentId} className="popover-content">
           {children}
@@ -193,12 +191,9 @@ const Content = ({
   }
 
   return render(
-    <>
-      {scrollHide && <ScrollHide />}
-      <Box {...props} id={contentId} className="popover-content">
-        {children}
-      </Box>
-    </>
+    <Box {...props} id={contentId} className="popover-content">
+      {children}
+    </Box>
   );
 };
 
