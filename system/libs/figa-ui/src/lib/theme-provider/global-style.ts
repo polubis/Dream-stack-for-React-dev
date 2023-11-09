@@ -1229,7 +1229,6 @@ const GlobalStyle = createGlobalStyle`
         ${slideIn(tokens.spacing[0], tokens.spacing[0])};
         position: fixed;
         z-index: ${tokens.z[1000]};
-        width: max-content;
     }
 
     .popover-backdrop {

@@ -12,11 +12,7 @@ import type {
   PopoverProps,
   PopoverTriggerProps,
 } from './defs';
-import {
-  useIsomorphicLayoutEffect,
-  usePortal,
-  useScrollHide,
-} from '@system/figa-hooks';
+import { useIsomorphicLayoutEffect, usePortal } from '@system/figa-hooks';
 import { spacing } from '../shared';
 import { Box } from '../box';
 import type { SpacingKey } from '../theme-provider';
@@ -63,11 +59,6 @@ const Popover = ({
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 
-const ScrollHide = () => {
-  useScrollHide();
-  return null;
-};
-
 const setContentOffset = (
   trigger: HTMLElement,
   content: HTMLElement,
@@ -96,8 +87,10 @@ const setContentOffset = (
     ? contentRect.width + triggerRightOffset > window.innerWidth
     : contentRect.width + triggerRect.left > window.innerWidth;
   const isExceedingWindowHeight = isTriggerBottom
-    ? contentRect.height + triggerBottomOffset > window.innerHeight
-    : contentRect.height + triggerRect.top > window.innerHeight;
+    ? contentRect.height + triggerBottomOffset + spacing.parse(offsetY) >
+      window.innerHeight
+    : contentRect.height + triggerRect.top + spacing.parse(offsetY) >
+      window.innerHeight;
 
   if (isExceedingWindowWidth) {
     content.style.width = '96%';
@@ -134,11 +127,7 @@ const Trigger = ({ children }: PopoverTriggerProps) => {
   );
 };
 
-const Content = ({
-  children,
-  className,
-  ...props
-}: PopoverContentProps) => {
+const Content = ({ children, className, ...props }: PopoverContentProps) => {
   const { triggerId, contentId, close, closed, offsetY, offsetX, closeMode } =
     usePopover();
   const { render } = usePortal();
