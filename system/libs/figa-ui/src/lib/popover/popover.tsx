@@ -64,6 +64,7 @@ const Popover = ({
 // 2. Add option to click outside
 // 3. Add option for empty backdrop to close.
 // 4. Fix chromatic snapshot tests.
+// 5. Fix too big content scroll trim.
 
 const setContentOffset = (
   trigger: HTMLElement,
