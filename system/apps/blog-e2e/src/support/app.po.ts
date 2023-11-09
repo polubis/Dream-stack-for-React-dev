@@ -1,7 +1,7 @@
 export const app_nav_selectors = {
   sign_in_btn: () => cy.get(`.nav .button:contains("Sign In")`),
-  sign_out_btn: () => cy.get(`.nav .button:contains("Sign Out")`),
-  user_avatar_btn: () => cy.get(`.nav .popover .button`),
+  sign_out_btn: () => cy.get(`.popover-content .button:contains("Sign Out")`),
+  user_avatar_btn: () => cy.get(`.nav .popover-trigger .button`),
 };
 
 export const sign_in_feature_selectors = {

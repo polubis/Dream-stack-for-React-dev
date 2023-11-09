@@ -48,15 +48,40 @@ const Container = styled.ul`
   }
 `;
 
-const ArticleReviewsPopover = () => {
+const Trigger = ({ id }: { id: string }) => {
+  const { toggle } = Popover.use();
+
+  const articleReviewsStore = useArticleReviewsStore();
+
+  return (
+    <Popover.Trigger>
+      <Button
+        size={2}
+        title="Reviews"
+        loading={articleReviewsStore.is === 'busy'}
+        shape="rounded"
+        onClick={async () => {
+          if (articleReviewsStore.is === 'ok') {
+            toggle();
+            return;
+          }
+
+          await article_reviews_actions.load(id);
+          toggle();
+        }}
+      >
+        <ReviewsIcon />
+      </Button>
+    </Popover.Trigger>
+  );
+};
+
+const Content = () => {
+  const { close } = Popover.use();
+
   const article = article_selectors.useArticle();
   const articleReviewsStore = useArticleReviewsStore();
   const addArticleReviewStore = useAddArticleReviewStore();
-  const params = useArticleParams();
-  const isAuthor = auth_selectors.useIsAuthor(article.authorName);
-  const isAdmin = auth_selectors.useIsAdmin();
-
-  if (params.is !== 'ok' || (!isAuthor && !isAdmin)) return null;
 
   const AddReviewSection = article.status === 'WaitingForApproval' && (
     <AdminsOnly>
@@ -93,96 +118,88 @@ const ArticleReviewsPopover = () => {
   );
 
   return (
-    <Popover
-      trigger={({ toggle }) => (
-        <Button
-          size={2}
-          title="Reviews"
-          loading={articleReviewsStore.is === 'busy'}
-          shape="rounded"
-          onClick={async () => {
-            if (articleReviewsStore.is === 'ok') {
-              toggle();
-              return;
-            }
-
-            await article_reviews_actions.load(params.query.id);
-            toggle();
-          }}
-        >
-          <ReviewsIcon />
-        </Button>
+    <Popover.Content variant="outlined" minWidth="280px" maxWidth="500px">
+      {(articleReviewsStore.is === 'idle' ||
+        articleReviewsStore.is === 'busy') && (
+        <Box margin="auto">
+          <Loader />
+        </Box>
       )}
-    >
-      {({ close }) => (
-        <Box variant="outlined" minWidth="280px" maxWidth="500px">
-          {(articleReviewsStore.is === 'idle' ||
-            articleReviewsStore.is === 'busy') && (
-            <Box margin="auto">
-              <Loader />
-            </Box>
-          )}
 
-          {articleReviewsStore.is === 'fail' && (
-            <InfoSection
-              padding={[0, 0, 0, 0]}
-              title="❌ Ups... Something went wrong!"
-              description="Try again with button below or refresh page if problem occurs 🔃."
-              footer={
-                <Button onClick={() => window.location.reload()}>Retry</Button>
-              }
-            />
-          )}
-          {articleReviewsStore.is === 'ok' && (
-            <Box spacing={[200]} padding={[200, 200, 200, 200]}>
-              <Box orientation="row" between>
-                <Font variant="h6">
-                  Reviews {`(${articleReviewsStore.reviews.length})`}
-                </Font>
-                <Button
-                  size={1}
-                  shape="rounded"
-                  variant="outlined"
-                  motive="tertiary"
-                  onClick={close}
-                >
-                  <CloseIcon />
-                </Button>
-              </Box>
-              {articleReviewsStore.reviews.length > 0 ? (
-                <Box spacing={[200]}>
-                  <Container className="reviews-list">
-                    {articleReviewsStore.reviews.map(
-                      ({ id, reviewerName, createdDate }) => (
-                        <li className="review-list-item" key={id}>
-                          <div>
-                            <Avatar
-                              alt={reviewerName}
-                              src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/220805-domestic-cat-mjf-1540-382ba2.jpg"
-                            />
-                            <div>
-                              <Font variant="b3">{createdDate}</Font>
-                              <Font variant="b2">{reviewerName}</Font>
-                              {/* @TODO: Ask backend for content model and author avatar src. */}
-                              <Font variant="b1">Some content</Font>
-                            </div>
-                          </div>
-                        </li>
-                      )
-                    )}
-                  </Container>
-                  {AddReviewSection}
-                </Box>
-              ) : (
-                <Box spacing={[200]}>
-                  <Font variant="b2">No reviews added yet</Font>
-                  {AddReviewSection}
-                </Box>
-              )}
+      {articleReviewsStore.is === 'fail' && (
+        <InfoSection
+          padding={[0, 0, 0, 0]}
+          title="❌ Ups... Something went wrong!"
+          description="Try again with button below or refresh page if problem occurs 🔃."
+          footer={
+            <Button onClick={() => window.location.reload()}>Retry</Button>
+          }
+        />
+      )}
+      {articleReviewsStore.is === 'ok' && (
+        <Box spacing={[200]} padding={[200, 200, 200, 200]}>
+          <Box orientation="row" between>
+            <Font variant="h6">
+              Reviews {`(${articleReviewsStore.reviews.length})`}
+            </Font>
+            <Button
+              size={1}
+              shape="rounded"
+              variant="outlined"
+              motive="tertiary"
+              onClick={close}
+            >
+              <CloseIcon />
+            </Button>
+          </Box>
+          {articleReviewsStore.reviews.length > 0 ? (
+            <Box spacing={[200]}>
+              <Container className="reviews-list">
+                {articleReviewsStore.reviews.map(
+                  ({ id, reviewerName, createdDate }) => (
+                    <li className="review-list-item" key={id}>
+                      <div>
+                        <Avatar
+                          alt={reviewerName}
+                          src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/220805-domestic-cat-mjf-1540-382ba2.jpg"
+                        />
+                        <div>
+                          <Font variant="b3">{createdDate}</Font>
+                          <Font variant="b2">{reviewerName}</Font>
+                          {/* @TODO: Ask backend for content model and author avatar src. */}
+                          <Font variant="b1">Some content</Font>
+                        </div>
+                      </div>
+                    </li>
+                  )
+                )}
+              </Container>
+              {AddReviewSection}
+            </Box>
+          ) : (
+            <Box spacing={[200]}>
+              <Font variant="b2">No reviews added yet</Font>
+              {AddReviewSection}
             </Box>
           )}
         </Box>
       )}
+    </Popover.Content>
+  );
+};
+
+const ArticleReviewsPopover = () => {
+  const article = article_selectors.useArticle();
+  const params = useArticleParams();
+  const isAuthor = auth_selectors.useIsAuthor(article.authorName);
+  const isAdmin = auth_selectors.useIsAdmin();
+
+  if (params.is !== 'ok' || (!isAuthor && !isAdmin)) return null;
+
+  return (
+    <Popover closeMode="backdrop">
+      <Trigger id={params.query.id} />
+      <Content />
     </Popover>
   );
 };

@@ -1,13 +1,39 @@
-import type { ToggleReturn } from '@system/figa-hooks';
 import type { ReactNode } from 'react';
 import type { SpacingKey } from '../theme-provider';
+import type { BoxProps } from '../box';
 
 interface PopoverProps {
-  className?: string;
-  initialOpen?: boolean;
+  closeMode?: 'backdrop' | 'own';
   offsetY?: SpacingKey;
-  children: (toggler: ToggleReturn) => ReactNode;
-  trigger: (toggler: ToggleReturn) => ReactNode;
+  offsetX?: SpacingKey;
+  openOnInit?: boolean;
+  children: [ReactNode, ReactNode];
 }
 
-export type { PopoverProps };
+interface PopoverContext
+  extends Required<
+    Omit<PopoverProps, 'children' | 'className' | 'openOnInit'>
+  > {
+  opened: boolean;
+  triggerId: string;
+  contentId: string;
+  closed: boolean;
+  open(): void;
+  close(): void;
+  toggle(): void;
+}
+
+interface PopoverTriggerProps {
+  children: ReactNode;
+}
+
+interface PopoverContentProps extends Omit<BoxProps, 'children' | 'id'> {
+  children: ReactNode;
+}
+
+export type {
+  PopoverProps,
+  PopoverContext,
+  PopoverTriggerProps,
+  PopoverContentProps,
+};

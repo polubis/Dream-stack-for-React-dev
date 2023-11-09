@@ -1,90 +1,79 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Popover } from './popover';
+import React from 'react';
 
-describe('Popover can be used when', () => {
-  it('[FRAGILE] assigns classes', () => {
-    const { container, asFragment } = render(
-      <Popover className="my-class" trigger={() => <button>Click</button>}>
-        {() => <div>Content</div>}
-      </Popover>
-    );
+describe('Popover can be used when: ', () => {
+  jest.spyOn(React, 'useId').mockImplementation(() => ':r0:');
 
-    const component = container.querySelector('.popover');
-
-    expect(component?.className).toContain('popover my-class');
-    expect(asFragment()).toMatchSnapshot();
+  beforeEach(() => {
+    global.ResizeObserver = class MockedResizeObserver {
+      observe = jest.fn();
+      unobserve = jest.fn();
+      disconnect = jest.fn();
+    };
   });
 
-  it('allows to open content initially', () => {
-    render(
-      <Popover initialOpen trigger={() => <button>Click</button>}>
-        {() => <div>Content</div>}
-      </Popover>
-    );
+  const Content = () => {
+    const { close } = Popover.use();
 
-    screen.getByText(/Content/);
-  });
-
-  it('opens content', () => {
-    render(
-      <Popover
-        trigger={({ toggle }) => <button onClick={toggle}>Click</button>}
+    return (
+      <Popover.Content
+        className="my-content"
+        margin={[200, 200, 200, 200]}
+        padding={[200, 200, 200, 200]}
+        spacing={[200, 200]}
       >
-        {({ toggle }) => <div onClick={toggle}>Content</div>}
+        <span>Content</span>
+        <button onClick={close}>Close</button>
+      </Popover.Content>
+    );
+  };
+
+  const Trigger = () => {
+    const { open } = Popover.use();
+
+    return (
+      <Popover.Trigger>
+        <button onClick={open}>Trigger</button>
+      </Popover.Trigger>
+    );
+  };
+
+  it('[FRAGILE] can be closed after clicking backdrop', async () => {
+    const result = render(
+      <Popover closeMode="backdrop">
+        <Trigger />
+        <Content />
       </Popover>
     );
 
-    fireEvent.click(screen.getByText(/Click/));
+    expect(result).toMatchSnapshot();
 
-    screen.getByText(/Content/);
+    fireEvent.click(screen.getByText(/Trigger/));
+
+    expect(result).toMatchSnapshot();
+
+    fireEvent.click(screen.getByLabelText(/Dialog backdrop/));
+
+    expect(result).toMatchSnapshot();
   });
 
-  it('closes content', () => {
-    render(
-      <Popover initialOpen trigger={() => <button>Click</button>}>
-        {({ toggle }) => <div onClick={toggle}>Content</div>}
+  it('[FRAGILE] assigns classes and allows to use box setup', async () => {
+    const result = render(
+      <Popover>
+        <Trigger />
+        <Content />
       </Popover>
     );
 
-    fireEvent.click(screen.getByText(/Content/));
+    expect(result).toMatchSnapshot();
 
-    expect(screen.queryByText(/Content/)).toBeFalsy();
-  });
+    fireEvent.click(screen.getByText(/Trigger/));
 
-  it('[FRAGILE] shifts popover content to left/right and top/bottom', () => {
-    const initialWidth = window.innerWidth;
-    const initialHeight = window.innerHeight;
+    expect(result).toMatchSnapshot();
 
-    window.innerWidth = 900;
-    window.innerHeight = 800;
+    fireEvent.click(screen.getByText(/Close/));
 
-    const { asFragment } = render(
-      <Popover
-        trigger={({ toggle }) => (
-          <button style={{ width: '150px', height: '100px' }} onClick={toggle}>
-            Click
-          </button>
-        )}
-      >
-        {({ toggle }) => (
-          <div
-            style={{
-              height: '200px',
-              width: '200px',
-            }}
-            onClick={toggle}
-          >
-            Content
-          </div>
-        )}
-      </Popover>
-    );
-
-    fireEvent.click(screen.getByText(/Click/));
-
-    expect(asFragment()).toMatchSnapshot();
-
-    window.innerWidth = initialWidth;
-    window.innerHeight = initialHeight;
+    expect(result).toMatchSnapshot();
   });
 });
