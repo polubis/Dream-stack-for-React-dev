@@ -59,6 +59,12 @@ const Popover = ({
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 
+// @TODO:
+// 1. Add scroll hide option.
+// 2. Add option to click outside
+// 3. Add option for empty backdrop to close.
+// 4. Fix chromatic snapshot tests.
+
 const setContentOffset = (
   trigger: HTMLElement,
   content: HTMLElement,
