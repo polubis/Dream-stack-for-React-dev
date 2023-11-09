@@ -193,5 +193,4 @@ OnMobile.parameters = {
   viewport: {
     defaultViewport: 'tinyMobile',
   },
-  chromatic: { delay: 1000 },
 };
