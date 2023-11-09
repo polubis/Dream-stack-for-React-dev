@@ -12,7 +12,11 @@ import type {
   PopoverProps,
   PopoverTriggerProps,
 } from './defs';
-import { useIsomorphicLayoutEffect, usePortal } from '@system/figa-hooks';
+import {
+  useIsomorphicLayoutEffect,
+  usePortal,
+  useScrollHide,
+} from '@system/figa-hooks';
 import { spacing } from '../shared';
 import { Box } from '../box';
 import type { SpacingKey } from '../theme-provider';
@@ -59,6 +63,11 @@ const Popover = ({
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 
+const ScrollHide = () => {
+  useScrollHide();
+  return null;
+};
+
 const setContentOffset = (
   trigger: HTMLElement,
   content: HTMLElement,
@@ -82,15 +91,28 @@ const setContentOffset = (
   }px`;
 
   const triggerRightOffset = window.innerWidth - triggerRect.right;
+  const triggerBottomOffset = window.innerHeight - triggerRect.bottom;
   const isExceedingWindowWidth = isTriggerRight
     ? contentRect.width + triggerRightOffset > window.innerWidth
     : contentRect.width + triggerRect.left > window.innerWidth;
+  const isExceedingWindowHeight = isTriggerBottom
+    ? contentRect.height + triggerBottomOffset > window.innerHeight
+    : contentRect.height + triggerRect.top > window.innerHeight;
 
   if (isExceedingWindowWidth) {
     content.style.width = '96%';
     content.style.maxWidth = 'unset';
     content.style.minWidth = 'unset';
     content.style.left = '2%';
+    content.style.overflowX = 'auto';
+  }
+
+  if (isExceedingWindowHeight) {
+    content.style.height = '96%';
+    content.style.maxHeight = 'unset';
+    content.style.minHeight = 'unset';
+    content.style.top = '2%';
+    content.style.overflowY = 'auto';
   }
 };
 
@@ -112,7 +134,12 @@ const Trigger = ({ children }: PopoverTriggerProps) => {
   );
 };
 
-const Content = ({ children, className, ...props }: PopoverContentProps) => {
+const Content = ({
+  children,
+  className,
+  scrollHide = true,
+  ...props
+}: PopoverContentProps) => {
   const { triggerId, contentId, close, closed, offsetY, offsetX, closeMode } =
     usePopover();
   const { render } = usePortal();
@@ -156,6 +183,7 @@ const Content = ({ children, className, ...props }: PopoverContentProps) => {
   if (closeMode === 'backdrop') {
     return render(
       <>
+        {scrollHide && <ScrollHide />}
         <div className="backdrop popover-backdrop" onClick={close} />
         <Box {...props} id={contentId} className="popover-content">
           {children}
@@ -165,9 +193,12 @@ const Content = ({ children, className, ...props }: PopoverContentProps) => {
   }
 
   return render(
-    <Box {...props} id={contentId} className="popover-content">
-      {children}
-    </Box>
+    <>
+      {scrollHide && <ScrollHide />}
+      <Box {...props} id={contentId} className="popover-content">
+        {children}
+      </Box>
+    </>
   );
 };
 
