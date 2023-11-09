@@ -12,7 +12,6 @@ import type {
   PopoverProps,
   PopoverTriggerProps,
 } from './defs';
-import c from 'classnames';
 import { useIsomorphicLayoutEffect, usePortal } from '@system/figa-hooks';
 import { spacing } from '../shared';
 import { Box } from '../box';
@@ -20,7 +19,6 @@ import { Box } from '../box';
 const Context = createContext<PopoverContext | null>(null);
 
 const Popover = ({
-  className,
   closeMode = 'own',
   offsetX = 0,
   offsetY = 150,
@@ -57,11 +55,7 @@ const Popover = ({
     [closeMode, offsetX, offsetY, opened, id]
   );
 
-  return (
-    <div className={c('popover', className)}>
-      <Context.Provider value={value}>{children}</Context.Provider>
-    </div>
-  );
+  return <Context.Provider value={value}>{children}</Context.Provider>;
 };
 
 const usePopover = () => {

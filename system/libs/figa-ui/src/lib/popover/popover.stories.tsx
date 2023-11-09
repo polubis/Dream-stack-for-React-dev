@@ -90,7 +90,7 @@ const DefaultTemplate: Story = () => {
   );
 };
 
-const WithScrollOnXAxisTemplate: Story = () => {
+const WithTooBigContentInXAxis: Story = () => {
   return (
     <Box padding={[300, 300, 300, 300]}>
       <Box spacing={[2000]}>
@@ -109,8 +109,33 @@ const WithScrollOnXAxisTemplate: Story = () => {
   );
 };
 
+const WithCloseModeBackdrop: Story = () => {
+  return (
+    <Box padding={[300, 300, 300, 300]}>
+      <Font variant="h6">
+        s simply dummy text of the printing and typesetting industry. Lorem
+        Ipsum has been the industry's standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a
+        type specimen book. It has survived not only five centuries, but also
+        the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets
+        containing Lorem Ipsum passages, and more recently with desktop
+        publishing software like Aldus PageMaker including versions of Lorem
+        Ipsum.
+      </Font>
+      <Popover openOnInit closeMode="backdrop">
+        <Trigger />
+        <Content />
+      </Popover>
+    </Box>
+  );
+};
+
 export const Default = DefaultTemplate.bind({});
 Default.args = {};
 
-export const WithScrollOnXAxis = WithScrollOnXAxisTemplate.bind({});
-WithScrollOnXAxis.args = {};
+export const WithTooBigContentOnXAxis = WithTooBigContentInXAxis.bind({});
+WithTooBigContentOnXAxis.args = {};
+
+export const WithBackdropCloseMode = WithCloseModeBackdrop.bind({});
+WithBackdropCloseMode.args = {};

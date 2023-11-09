@@ -3,7 +3,6 @@ import type { SpacingKey } from '../theme-provider';
 import { BoxProps } from '../box';
 
 interface PopoverProps {
-  className?: string;
   closeMode?: 'outside' | 'backdrop' | 'own';
   offsetY?: SpacingKey;
   offsetX?: SpacingKey;
