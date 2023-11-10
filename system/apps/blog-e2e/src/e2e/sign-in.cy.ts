@@ -1,26 +1,26 @@
 import {
+  mockGetArticlesResponse,
   mockSignInResponse,
-  mockResponse,
-  mockErrorResponse,
 } from '@system/blog-api-mocks';
-import {
-  components_selectors,
-  app_nav_selectors,
-  sign_in_feature_selectors,
-} from '../support/app.po';
+import { sign_in_selectors } from '../support/app.po';
 
 describe('Sign in works when: ', () => {
-  it('after sign in, user is able to sign out', () => {
+  it('Scenario(1.0): User can sign in', () => {
     const signInResponse = mockSignInResponse();
+    cy.intercept('GET', Cypress.env('NEXT_PUBLIC_API_URL') + 'Articles/en*', {
+      statusCode: 201,
+      body: mockGetArticlesResponse(),
+      delay: 1000,
+    }).as('getRecommendedArticles');
     cy.intercept(
-      'POST',
-      Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignOut',
+      'GET',
+      Cypress.env('NEXT_PUBLIC_API_URL') + 'Articles/my/en*',
       {
         statusCode: 201,
-        body: mockResponse(null),
+        body: mockGetArticlesResponse(),
         delay: 1000,
       }
-    ).as('signOut');
+    ).as('getYourArticles');
     cy.intercept(
       'POST',
       Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
@@ -31,108 +31,35 @@ describe('Sign in works when: ', () => {
       }
     ).as('signIn');
 
-    cy.visit('/');
+    cy.visit('/en/sign-in');
 
-    app_nav_selectors.sign_in_btn().should('be.disabled');
-    app_nav_selectors.sign_in_btn().should('not.be.disabled').click();
+    sign_in_selectors.heading();
+    sign_in_selectors.login_input();
+    sign_in_selectors.password_input();
+    sign_in_selectors.confirm_btn_loading_animation().should('not.exist');
+    sign_in_selectors.confirm_btn().should('not.be.disabled');
 
-    cy.url().should('include', '/en/sign-in');
+    sign_in_selectors.login_input().type('tom199423');
+    sign_in_selectors.password_input().type('tom199423');
 
-    sign_in_feature_selectors.login_input().type('tom199423');
-    sign_in_feature_selectors.password_input().type('tom199423');
-
-    sign_in_feature_selectors.confirm_btn().should('not.be.disabled').click();
-    app_nav_selectors.sign_in_btn().should('be.disabled');
-    sign_in_feature_selectors.confirm_btn().should('be.disabled');
-
-    cy.wait(['@signIn']);
-
-    components_selectors.alert('You are logged in!');
-
-    sign_in_feature_selectors.confirm_btn().should('not.be.disabled');
-    app_nav_selectors.user_avatar_btn().click();
-    app_nav_selectors
-      .sign_out_btn()
-      .should('not.be.disabled')
-      .should('be.visible');
-    cy.contains(signInResponse.data.email);
-    cy.contains(signInResponse.data.username);
-    cy.contains(`Hi, ${signInResponse.data.username}`);
-    cy.contains(signInResponse.data.roles[0]);
-    app_nav_selectors.sign_out_btn().click();
-    app_nav_selectors.sign_out_btn().should('be.disabled');
-    sign_in_feature_selectors.confirm_btn().should('be.disabled');
-
-    cy.wait(['@signOut']);
-
-    app_nav_selectors.sign_in_btn().should('not.be.disabled');
-    sign_in_feature_selectors.confirm_btn().should('not.be.disabled');
-  });
-
-  it('after sign in, the user sees the message', () => {
-    cy.intercept(
-      'POST',
-      Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
-      {
-        statusCode: 201,
-        body: mockSignInResponse(),
-        delay: 1000,
-      }
-    ).as('signIn');
-
-    cy.visit('/');
-
-    app_nav_selectors.sign_in_btn().should('be.disabled');
-    app_nav_selectors.sign_in_btn().should('not.be.disabled').click();
-
-    cy.url().should('include', '/en/sign-in');
-
-    sign_in_feature_selectors.login_input().type('tom199423');
-    sign_in_feature_selectors.password_input().type('tom199423');
-
-    sign_in_feature_selectors.confirm_btn().should('not.be.disabled').click();
-    app_nav_selectors.sign_in_btn().should('be.disabled');
-    sign_in_feature_selectors.confirm_btn().should('be.disabled');
+    sign_in_selectors.confirm_btn().click();
+    sign_in_selectors.confirm_btn().should('be.disabled');
+    sign_in_selectors.confirm_btn_loading_animation();
 
     cy.wait(['@signIn']);
 
-    app_nav_selectors.user_avatar_btn().should('not.be.disabled');
-    components_selectors.alert('You are logged in!');
-  });
+    sign_in_selectors.firstTimeSignedInHeading();
+    sign_in_selectors.firstTimeSignedInDescription();
 
-  it('user cannot sign in the interface display error message', () => {
-    const errorResponse = mockErrorResponse();
+    cy.url().should('include', '/en/your-articles');
 
-    cy.intercept(
-      'POST',
-      Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
-      {
-        statusCode: 400,
-        body: errorResponse,
-        delay: 1000,
-      }
-    ).as('signIn');
+    cy.wait(['@getYourArticles']);
 
-    cy.visit('/');
-
-    app_nav_selectors.sign_in_btn().should('be.disabled');
-    app_nav_selectors.sign_in_btn().should('not.be.disabled').click();
+    cy.go(-1);
 
     cy.url().should('include', '/en/sign-in');
 
-    sign_in_feature_selectors.login_input().type('tom199423');
-    sign_in_feature_selectors.password_input().type('tom199423');
-
-    sign_in_feature_selectors.confirm_btn().should('not.be.disabled').click();
-    app_nav_selectors.sign_in_btn().should('be.disabled');
-    sign_in_feature_selectors.confirm_btn().should('be.disabled');
-
-    cy.wait(['@signIn']);
-
-    app_nav_selectors.sign_in_btn().should('not.be.disabled');
-    sign_in_feature_selectors.confirm_btn().should('not.be.disabled');
-    components_selectors
-      .alert(errorResponse.errors[0].message)
-      .contains(errorResponse.errors[0].message);
+    sign_in_selectors.alreadySignedInHeading();
+    sign_in_selectors.alreadySignedInDescription();
   });
 });

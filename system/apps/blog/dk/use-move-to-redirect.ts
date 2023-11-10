@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
 import { getLang } from './lang';
 
-const useMoveToRedirect = () => {
+const useMoveToRedirect = (defaultRedirectionUrl?: string) => {
   const router = useRouter();
 
   const redirect = (): void => {
     const lang = getLang(router.pathname);
-    const moveToPath = new URLSearchParams(window.location.search).get(
-      'moveTo'
-    );
+    const moveToPath =
+      new URLSearchParams(window.location.search).get('moveTo') ??
+      defaultRedirectionUrl;
 
     if (!moveToPath) return;
 

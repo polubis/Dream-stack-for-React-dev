@@ -12,4 +12,10 @@ const SignedInOnly = ({ children, fallback }: GuardProps) => {
   return <>{authorized ? children : fallback ?? null}</>;
 };
 
-export { AdminsOnly, SignedInOnly };
+const NotSignedInOnly = ({ children, fallback }: GuardProps) => {
+  const authorized = auth_selectors.useIsAuthorized();
+
+  return <>{!authorized ? children : fallback ?? null}</>;
+};
+
+export { AdminsOnly, SignedInOnly, NotSignedInOnly };
