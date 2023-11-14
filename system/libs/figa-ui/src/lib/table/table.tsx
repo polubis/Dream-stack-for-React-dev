@@ -42,11 +42,19 @@ const Table = ({
   pageSize,
   columns,
   onPageChange,
+  onRowsPerPageChange, // Dodajemy propa do obsługi zmiany ilości wierszy na stronie
 }: TableProps<RowData>) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedRowsPerPage, setSelectedRowsPerPage] = useState(pageSize);
+
+  const handleRowsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = Number(e.target.value) as 10 | 15 | 20 | 30;
+    setSelectedRowsPerPage(selectedValue);
+    onRowsPerPageChange(selectedValue);
+  };
 
   const nextPage = () => {
-    if (currentPage < Math.ceil(data.length / pageSize)) {
+    if (currentPage < Math.ceil(data.length / selectedRowsPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -57,8 +65,8 @@ const Table = ({
     }
   };
 
-  const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
+  const startIndex = (currentPage - 1) * selectedRowsPerPage;
+  const endIndex = startIndex + selectedRowsPerPage;
   const visibleData = data.slice(startIndex, endIndex);
 
   const toggleEdit = (row: RowData) => {
@@ -85,57 +93,75 @@ const Table = ({
   };
 
   return (
-    <TableWrapper>
-      <TableHeader>
-        {columns.map((column) => (
-          <TableCell key={column.key}>{column.label}</TableCell>
-        ))}
-      </TableHeader>
-
-      {visibleData.map((row) => (
-        <div key={row.ID}>
-          {columns.map((column) => (
-            <TableCell key={column.key}>
-              {row.isEditing ? (
-                <input
-                  type="text"
-                  value={row[column.key] as string}
-                  onChange={(_) => {
-                    // Handle input changes for editing
-                  }}
-                />
-              ) : (
-                <>{row[column.key]}</>
-              )}
-            </TableCell>
-          ))}
-          <TableCell>
-            {row.isEditing ? (
-              <>
-                <button onClick={() => confirmEdit(row)}>Confirm</button>
-                <button onClick={() => cancelEdit(row)}>Cancel</button>
-              </>
-            ) : (
-              <EditButton onClick={() => toggleEdit(row)}>
-                {row.isEditing ? 'Save' : 'Edit'}
-              </EditButton>
-            )}
-          </TableCell>
+      <TableWrapper>
+        <table>
+          <thead>
+            <tr>
+              {columns.map((column) => (
+                <th key={column.key}>{column.label}</th>
+              ))}
+              <th>Actions</th>
+            </tr>
+          </thead>
+    
+          <tbody>
+            {visibleData.map((row) => (
+              <tr key={row.ID}>
+                {columns.map((column) => (
+                  <td key={column.key}>
+                    {row.isEditing ? (
+                      <input
+                        type="text"
+                        value={row[column.key] as string}
+                        onChange={(_) => {
+                          // Handle input changes for editing
+                        }}
+                      />
+                    ) : (
+                      <>{row[column.key]}</>
+                    )}
+                  </td>
+                ))}
+                <td>
+                  {row.isEditing ? (
+                    <>
+                      <button onClick={() => confirmEdit(row)}>Confirm</button>
+                      <button onClick={() => cancelEdit(row)}>Cancel</button>
+                    </>
+                  ) : (
+                    <EditButton onClick={() => toggleEdit(row)}>
+                      {row.isEditing ? 'Save' : 'Edit'}
+                    </EditButton>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+    
+        <div>
+          <button onClick={prevPage} disabled={currentPage === 1}>
+            Prev
+          </button>
+          <button
+            onClick={nextPage}
+            disabled={currentPage === Math.ceil(data.length / selectedRowsPerPage)}
+          >
+            Next
+          </button>
+          <select value={selectedRowsPerPage} onChange={handleRowsPerPageChange}>
+            {[10, 15, 20, 30].map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+          <span>
+            Page {currentPage} of {Math.ceil(data.length / selectedRowsPerPage)}
+          </span>
         </div>
-      ))}
-      <div>
-        <button onClick={prevPage} disabled={currentPage === 1}>
-          Prev
-        </button>
-        <button
-          onClick={nextPage}
-          disabled={currentPage === Math.ceil(data.length / pageSize)}
-        >
-          Next
-        </button>
-      </div>
-    </TableWrapper>
-  );
+      </TableWrapper>
+    );
 };
 
 export { Table };

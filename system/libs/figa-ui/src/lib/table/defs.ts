@@ -11,8 +11,8 @@ type RowData = {
   nickName: string;
   status: StatusLabel;
   email: string;
-  isEditing: boolean;
-  originalData: Omit<RowData, 'isEditing' | 'originalData'>;
+  isEditing?: boolean; // Dodajemy opcjonalne pole isEditing
+  originalData?: Omit<RowData, 'isEditing' | 'originalData'>; // Dodajemy opcjonalne pole originalData
 };
 
 type TableColumn<T> = {
@@ -25,6 +25,7 @@ type TableProps<T> = {
   data: T[];
   pageSize: RowsNumber;
   onPageChange: (page: number) => void;
+  onRowsPerPageChange: (value: RowsNumber) => void; // Dodajemy obsługę zmiany ilości wierszy na stronie
 };
 
 export type { TableProps, TableColumn, RowData };
