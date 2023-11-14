@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { TableProps, RowData } from './defs';
+import { useState, useReducer } from 'react';
+import { TableProps, RowData, TableState, TableAction } from './defs';
+import { ROWS_PER_PAGE } from './consts';
 import styled from 'styled-components';
 
 const TableWrapper = styled.div`
@@ -37,43 +38,55 @@ const EditWindow = styled.div`
   z-index: 1;
 `;
 
-const Table = ({
-  data,
-  pageSize,
-  columns,
-  onPageChange,
-  onRowsPerPageChange, // Dodajemy propa do obsługi zmiany ilości wierszy na stronie
-}: TableProps<RowData>) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [selectedRowsPerPage, setSelectedRowsPerPage] = useState(pageSize);
+const tableReducer = (state: TableState, action: TableAction): TableState => {
+  switch (action.type) {
+    case 'SET_PAGE':
+      return { ...state, page: action.payload };
 
-  const handleRowsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = Number(e.target.value) as 10 | 15 | 20 | 30;
-    setSelectedRowsPerPage(selectedValue);
-    onRowsPerPageChange(selectedValue);
-  };
+    case 'SET_ROWS_PER_PAGE':
+      return { ...state, rowsPerPage: action.payload };
+
+    default:
+      return state;
+  }
+};
+
+const initialState = {
+  page: 1,
+  rowsPerPage: 10,
+};
+
+const Table = ({ data, columns, onPageChange, onRowsPerPageChange }: TableProps<RowData>) => {
+  const [tableState, dispatch] = useReducer(tableReducer, initialState);
+  const { page, rowsPerPage } = tableState;
 
   const nextPage = () => {
-    if (currentPage < Math.ceil(data.length / selectedRowsPerPage)) {
-      setCurrentPage(currentPage + 1);
+    if (page < Math.ceil(data.length / rowsPerPage)) {
+      dispatch({ type: 'SET_PAGE', payload: page + 1 });
     }
   };
 
   const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+    if (page > 1) {
+      dispatch({ type: 'SET_PAGE', payload: page - 1 });
     }
   };
 
-  const startIndex = (currentPage - 1) * selectedRowsPerPage;
-  const endIndex = startIndex + selectedRowsPerPage;
+  const handleRowsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = Number(e.target.value) as typeof ROWS_PER_PAGE[number];
+    dispatch({ type: 'SET_ROWS_PER_PAGE', payload: selectedValue });
+    onRowsPerPageChange(selectedValue);
+  };
+
+  const startIndex = (page - 1) * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
   const visibleData = data.slice(startIndex, endIndex);
 
   const toggleEdit = (row: RowData) => {
     const updatedData = data.map((d) =>
       d.ID === row.ID ? { ...d, isEditing: !d.isEditing } : d
     );
-    onPageChange(currentPage);
+    onPageChange(page);
   };
 
   const confirmEdit = (row: RowData) => {
@@ -89,79 +102,79 @@ const Table = ({
     const updatedData = data.map((d) =>
       d.ID === row.ID ? { ...d, isEditing: false } : d
     );
-    onPageChange(currentPage);
+    onPageChange(page);
   };
 
   return (
-      <TableWrapper>
-        <table>
-          <thead>
-            <tr>
+    <TableWrapper>
+      <table>
+        <thead>
+          <tr>
+            {columns.map((column) => (
+              <th key={column.key}>{column.label}</th>
+            ))}
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {visibleData.map((row) => (
+            <tr key={row.ID}>
               {columns.map((column) => (
-                <th key={column.key}>{column.label}</th>
-              ))}
-              <th>Actions</th>
-            </tr>
-          </thead>
-    
-          <tbody>
-            {visibleData.map((row) => (
-              <tr key={row.ID}>
-                {columns.map((column) => (
-                  <td key={column.key}>
-                    {row.isEditing ? (
-                      <input
-                        type="text"
-                        value={row[column.key] as string}
-                        onChange={(_) => {
-                          // Handle input changes for editing
-                        }}
-                      />
-                    ) : (
-                      <>{row[column.key]}</>
-                    )}
-                  </td>
-                ))}
-                <td>
+                <td key={column.key}>
                   {row.isEditing ? (
-                    <>
-                      <button onClick={() => confirmEdit(row)}>Confirm</button>
-                      <button onClick={() => cancelEdit(row)}>Cancel</button>
-                    </>
+                    <input
+                      type="text"
+                      value={row[column.key] as string}
+                      onChange={(_) => {
+                        // Handle input changes for editing
+                      }}
+                    />
                   ) : (
-                    <EditButton onClick={() => toggleEdit(row)}>
-                      {row.isEditing ? 'Save' : 'Edit'}
-                    </EditButton>
+                    <>{row[column.key]}</>
                   )}
                 </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-    
-        <div>
-          <button onClick={prevPage} disabled={currentPage === 1}>
-            Prev
-          </button>
-          <button
-            onClick={nextPage}
-            disabled={currentPage === Math.ceil(data.length / selectedRowsPerPage)}
-          >
-            Next
-          </button>
-          <select value={selectedRowsPerPage} onChange={handleRowsPerPageChange}>
-            {[10, 15, 20, 30].map((value) => (
-              <option key={value} value={value}>
-                {value}
-              </option>
-            ))}
-          </select>
-          <span>
-            Page {currentPage} of {Math.ceil(data.length / selectedRowsPerPage)}
-          </span>
-        </div>
-      </TableWrapper>
-    );
+              ))}
+              <td>
+                {row.isEditing ? (
+                  <>
+                    <button onClick={() => confirmEdit(row)}>Confirm</button>
+                    <button onClick={() => cancelEdit(row)}>Cancel</button>
+                  </>
+                ) : (
+                  <EditButton onClick={() => toggleEdit(row)}>
+                    {row.isEditing ? 'Save' : 'Edit'}
+                  </EditButton>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <div>
+        <button onClick={prevPage} disabled={page === 1}>
+          Prev
+        </button>
+        <button
+          onClick={nextPage}
+          disabled={page === Math.ceil(data.length / rowsPerPage)}
+        >
+          Next
+        </button>
+        <select value={rowsPerPage} onChange={handleRowsPerPageChange}>
+          {[10, 15, 20, 30].map((value) => (
+            <option key={value} value={value}>
+              {value}
+            </option>
+          ))}
+        </select>
+        <span>
+          Page {page} of {Math.ceil(data.length / rowsPerPage)}
+        </span>
+      </div>
+    </TableWrapper>
+  );
 };
 
 export { Table };
