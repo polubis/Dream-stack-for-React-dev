@@ -42,7 +42,6 @@ const Links = styled.ul`
 
 const CompanyLink = styled.a`
   ${row()}
-  text-decoration: none;
 
   @media ${M_DOWN} {
     .font {
