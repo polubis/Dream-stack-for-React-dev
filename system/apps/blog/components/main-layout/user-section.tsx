@@ -1,10 +1,31 @@
-import { Box, Button } from '@system/figa-ui';
+import {
+  Box,
+  Button,
+  HalfMoonIcon,
+  SunIcon,
+  useThemeProvider,
+} from '@system/figa-ui';
 import { Link } from '../link';
 import { useLang } from '../../dk';
 import { useAuthStore } from '../../store/auth';
 import { useSignInStore } from '../../store/sign-in';
 import { get } from '@system/blog-selectors';
 import { UserPopover } from './user-popover';
+
+const ThemeSwitcher = ({ disabled }: { disabled?: boolean }) => {
+  const theme = useThemeProvider();
+
+  return (
+    <Button
+      size={2}
+      shape="rounded"
+      disabled={disabled}
+      onClick={() => theme.setTheme(theme.key === 'dark' ? 'light' : 'dark')}
+    >
+      {theme.key === 'dark' ? <SunIcon /> : <HalfMoonIcon />}
+    </Button>
+  );
+};
 
 const SignInButton = () => {
   const lang = useLang();
@@ -29,6 +50,7 @@ const SignInButton = () => {
 
 const RegisterButton = () => {
   const lang = useLang();
+
   return (
     <Link href={`/${lang}/register/`}>
       <Button size={2} data-i={get('app-nav-register-btn')}>
@@ -43,9 +65,15 @@ const UserSection = () => {
 
   if (key === 'idle') {
     return (
-      <Button size={2} data-i={get('app-nav-sign-in-btn')} disabled>
-        Sign In
-      </Button>
+      <Box orientation="row" spacing={[150, 150]}>
+        <ThemeSwitcher disabled />
+        <Button size={2} data-i={get('app-nav-register-btn')} disabled>
+          Register
+        </Button>
+        <Button size={2} data-i={get('app-nav-sign-in-btn')} disabled>
+          Sign In
+        </Button>
+      </Box>
     );
   }
 
@@ -54,7 +82,8 @@ const UserSection = () => {
   }
 
   return (
-    <Box orientation="row" spacing={[150]}>
+    <Box orientation="row" spacing={[150, 150]}>
+      <ThemeSwitcher />
       {key === 'unauthorized' && <RegisterButton />}
       <SignInButton />
     </Box>

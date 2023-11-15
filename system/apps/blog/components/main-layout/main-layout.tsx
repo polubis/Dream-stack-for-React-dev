@@ -13,6 +13,8 @@ import {
   NavBar,
   Nav,
   tokens,
+  row,
+  M_DOWN,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -35,6 +37,24 @@ const URLS = ['/articles/', '/articles-creator/'] as const;
 const Links = styled.ul`
   & > *:not(:last-child) {
     margin-bottom: ${tokens.spacing[100]};
+  }
+`;
+
+const CompanyLink = styled.a`
+  ${row()}
+
+  @media ${M_DOWN} {
+    .font {
+      display: none;
+    }
+  }
+
+  .font {
+    margin-right: ${tokens.spacing[150]};
+  }
+
+  * {
+    flex-shrink: 0;
   }
 `;
 
@@ -74,19 +94,17 @@ const MainLayout = ({
         >
           <Footer
             logo={
-              <Box orientation="row" spacing={[150]}>
-                <FigaUILink variant="b2" motive="primary">
-                  <a
-                    href={GREEN_ON_SOFTWARE_COMPANY}
-                    title="GreenOn Software company"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Powered by GreenOn Software
-                  </a>
-                </FigaUILink>
+              <CompanyLink
+                href={GREEN_ON_SOFTWARE_COMPANY}
+                title="GreenOn Software company"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Font variant="b2" motive="primary">
+                  Powered by GreenOn Software community
+                </Font>
                 <LogoGraphic size={32} />
-              </Box>
+              </CompanyLink>
             }
             socials={
               <Box orientation="row" spacing={[150, 150]}>
