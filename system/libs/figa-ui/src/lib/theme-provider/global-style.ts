@@ -789,7 +789,7 @@ const GlobalStyle = createGlobalStyle`
         &.textarea {
             textarea {
                 resize: vertical;
-                min-height: ${tokens.spacing[1000]};
+                min-height: ${tokens.spacing[2000]};
             }
 
             .input-loader, .input-icon {
