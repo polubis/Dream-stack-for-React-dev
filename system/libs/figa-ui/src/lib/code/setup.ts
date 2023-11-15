@@ -19,6 +19,7 @@ export const setup = ({
     javascript(),
     DEFAULT_THEME,
     keymap.of([indentWithTab]),
+    EditorView.lineWrapping,
   ];
 
   if (readonly) {
