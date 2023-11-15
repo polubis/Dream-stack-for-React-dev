@@ -1,9 +1,10 @@
 import { basicSetup } from 'codemirror';
-import { EditorView } from '@codemirror/view';
+import { EditorView, keymap } from '@codemirror/view';
 import { javascript } from '@codemirror/lang-javascript';
 import { DEFAULT_THEME } from './consts';
 import { EditorState, type Extension } from '@codemirror/state';
 import type { SetupConfig } from './defs';
+import { indentWithTab } from '@codemirror/commands';
 
 const selectionExtensionIdx = 15;
 
@@ -14,7 +15,11 @@ export const setup = ({
   onChange,
 }: SetupConfig): EditorView => {
   let setup = basicSetup;
-  const extensions: Extension[] = [javascript(), DEFAULT_THEME];
+  const extensions: Extension[] = [
+    javascript(),
+    DEFAULT_THEME,
+    keymap.of([indentWithTab]),
+  ];
 
   if (readonly) {
     setup = (setup as Extension[]).filter(

@@ -7,9 +7,9 @@ import {
   Input,
   PlusIcon,
   Textarea,
-  row,
   size,
   tokens,
+  wrap,
 } from '@system/figa-ui';
 import {
   articles_creator_actions,
@@ -40,10 +40,10 @@ const PlusButton = styled.div`
 `;
 
 const ArticleTags = styled.div`
-  ${row()}
+  ${wrap()}
 
   & > * {
-    margin-right: ${tokens.spacing[100]};
+    margin: 0 ${tokens.spacing[100]} ${tokens.spacing[100]} 0;
   }
 `;
 
