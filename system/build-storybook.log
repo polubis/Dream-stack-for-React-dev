@@ -1,5 +1,5 @@
 
-> nx run figa-ui:build-storybook -s public --output-dir C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--11372-kfi5425c6Foe
+> nx run figa-ui:build-storybook -s public --output-dir C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21696-wytkVbvZvZm9
 
 
 >  NX  ui framework: @storybook/react
@@ -7,11 +7,11 @@
 
 >  NX  Storybook builder starting ...
 
-info => Cleaning outputDir: C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--11372-kfi5425c6Foe
+info => Cleaning outputDir: C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21696-wytkVbvZvZm9
 info => Loading presets
-info => Copying static files: C:\Users\apolubinski\Dream-stack-for-React-dev\system\assets at C:\Users\APOLUB~1\AppData\Local\Temp\chromatic--11372-kfi5425c6Foe\
+info => Copying static files: C:\Users\apolubinski\Dream-stack-for-React-dev\system\assets at C:\Users\APOLUB~1\AppData\Local\Temp\chromatic--21696-wytkVbvZvZm9\
 info => Compiling manager..
-info => Manager built (17 s)
+info => Manager built (21 s)
 [36mvite v4.1.4 [32mbuilding for production...[36m[39m
 transforming...
 
@@ -25,34 +25,34 @@ transforming...
 Use of eval in "node_modules/telejson/dist/esm/index.js" is strongly discouraged as it poses security risks and may cause issues with minification.
 Use of eval in "node_modules/telejson/dist/esm/index.js" is strongly discouraged as it poses security risks and may cause issues with minification.
 Use of eval in "node_modules/@storybook/components/dist/esm/index-681e4b07.js" is strongly discouraged as it poses security risks and may cause issues with minification.
-[32m✓[39m 2063 modules transformed.
+[32m✓[39m 2066 modules transformed.
 rendering chunks...
 computing gzip size...
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[32miframe.html                                         [39m[1m[2m   13.71 kB[22m[1m[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[35miframe-039374ed.css                          [39m[1m[2m    0.55 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36mes.string.from-code-point-4c3114d0.js        [39m[1m[2m    0.59 kB[22m[1m[22m[2m │ gzip:   0.44 kB[22m[2m │ map:     2.25 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36mes.regexp.flags-3ea59f5e.js                  [39m[1m[2m    0.67 kB[22m[1m[22m[2m │ gzip:   0.47 kB[22m[2m │ map:     2.81 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36mclient-702a47f3.js                           [39m[1m[2m    0.72 kB[22m[1m[22m[2m │ gzip:   0.46 kB[22m[2m │ map:     0.97 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36mrenderDocs-6ecf2ae9.js                       [39m[1m[2m    2.67 kB[22m[1m[22m[2m │ gzip:   1.32 kB[22m[2m │ map:     9.90 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36mGlobalScrollAreaStyles-8793ce4a-26cb8c49.js  [39m[1m[2m   10.50 kB[22m[1m[22m[2m │ gzip:   2.39 kB[22m[2m │ map:    20.95 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36mColor-f953d088-e8d2f459.js                   [39m[1m[2m   34.27 kB[22m[1m[22m[2m │ gzip:  13.00 kB[22m[2m │ map:   134.17 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36mWithTooltip-167e9982-059127b0.js             [39m[1m[2m   40.96 kB[22m[1m[22m[2m │ gzip:  13.78 kB[22m[2m │ map:   181.36 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36mOverlayScrollbars-1355f44c-45a41682.js       [39m[1m[2m   64.54 kB[22m[1m[22m[2m │ gzip:  27.40 kB[22m[2m │ map:   444.01 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36msyntaxhighlighter-b07b042a-a092439c.js       [39m[1m[2m  117.17 kB[22m[1m[22m[2m │ gzip:  48.79 kB[22m[2m │ map:   468.63 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36mindex-1be2c739.js                            [39m[1m[2m  496.03 kB[22m[1m[22m[2m │ gzip: 146.16 kB[22m[2m │ map: 1,180.90 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36mformatter-0d5cb0eb-6182607b.js               [39m[1m[33m  742.26 kB[39m[22m[2m │ gzip: 239.76 kB[22m[2m │ map: 1,799.10 kB[22m
-[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--11372-kfi5425c6Foe/[22m[2massets/[22m[36miframe-1c144a8c.js                           [39m[1m[33m2,227.45 kB[39m[22m[2m │ gzip: 614.25 kB[22m[2m │ map: 5,994.81 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[32miframe.html                                         [39m[1m[2m   13.71 kB[22m[1m[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[35miframe-039374ed.css                          [39m[1m[2m    0.55 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36mes.string.from-code-point-57694c82.js        [39m[1m[2m    0.59 kB[22m[1m[22m[2m │ gzip:   0.44 kB[22m[2m │ map:     2.25 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36mes.regexp.flags-9cc5e116.js                  [39m[1m[2m    0.67 kB[22m[1m[22m[2m │ gzip:   0.47 kB[22m[2m │ map:     2.81 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36mclient-533be614.js                           [39m[1m[2m    0.72 kB[22m[1m[22m[2m │ gzip:   0.46 kB[22m[2m │ map:     0.97 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36mrenderDocs-f08c0f46.js                       [39m[1m[2m    2.67 kB[22m[1m[22m[2m │ gzip:   1.32 kB[22m[2m │ map:     9.90 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36mGlobalScrollAreaStyles-8793ce4a-877d266c.js  [39m[1m[2m   10.50 kB[22m[1m[22m[2m │ gzip:   2.39 kB[22m[2m │ map:    20.95 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36mColor-f953d088-592bab58.js                   [39m[1m[2m   34.27 kB[22m[1m[22m[2m │ gzip:  13.00 kB[22m[2m │ map:   134.17 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36mWithTooltip-167e9982-75475bbc.js             [39m[1m[2m   40.96 kB[22m[1m[22m[2m │ gzip:  13.78 kB[22m[2m │ map:   181.36 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36mOverlayScrollbars-1355f44c-e95b14ef.js       [39m[1m[2m   64.54 kB[22m[1m[22m[2m │ gzip:  27.40 kB[22m[2m │ map:   444.01 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36msyntaxhighlighter-b07b042a-ec1f7875.js       [39m[1m[2m  117.17 kB[22m[1m[22m[2m │ gzip:  48.79 kB[22m[2m │ map:   468.63 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36mindex-16e612b5.js                            [39m[1m[2m  496.03 kB[22m[1m[22m[2m │ gzip: 146.16 kB[22m[2m │ map: 1,180.90 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36mformatter-0d5cb0eb-4cf1a5ee.js               [39m[1m[33m  742.26 kB[39m[22m[2m │ gzip: 239.76 kB[22m[2m │ map: 1,799.10 kB[22m
+[2m../../../../../APOLUB~1/AppData/Local/Temp/chromatic--21696-wytkVbvZvZm9/[22m[2massets/[22m[36miframe-73f8eac0.js                           [39m[1m[33m2,227.99 kB[39m[22m[2m │ gzip: 614.51 kB[22m[2m │ map: 5,997.03 kB[22m
 [33m
 (!) Some chunks are larger than 500 kBs after minification. Consider:
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
-info => Output directory: C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--11372-kfi5425c6Foe
+info => Output directory: C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21696-wytkVbvZvZm9
 
 >  NX  Storybook builder finished ...
 
 
->  NX  Storybook files available in C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--11372-kfi5425c6Foe
+>  NX  Storybook files available in C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--21696-wytkVbvZvZm9
 
 
  
@@ -60,5 +60,8 @@ info => Output directory: C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\
  >  NX   Successfully ran target build-storybook for project figa-ui
 
 
-   View logs and investigate cache misses at https://nx.app/runs/KX0rDv8A2y
+
+ >  NX   Nx Cloud Problems
+
+   - Error when connecting to Nx Cloud. Code: 401. Error: This workspace is more than a week old and is unclaimed. Workspaces must be claimed within 7 days of creation. Claim your workspace at https://cloud.nx.app/orgs/workspace-setup?accessToken=OGY4M2UzNmItYmNiNi00YzlkLWEzMmUtNGI2MDFkZmQ2MWUxfHJlYWQtd3JpdGU=.
 

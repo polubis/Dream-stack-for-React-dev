@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expansion list can be used when:  [FRAGILE] allows to toggle items 1`] = `
+<DocumentFragment>
+  <ul
+    class="sc-bcXHqe gHHzcE expansion-list my-class-container"
+  >
+    <li
+      class="expansion-list-item my-class-item"
+    >
+      <div
+        class="expansion-list-header"
+      >
+        <span>
+          This is header 1
+        </span>
+        <button>
+          C0
+        </button>
+      </div>
+      <div
+        class="expansion-list-content"
+      >
+        Content
+      </div>
+    </li>
+    <li
+      class="expansion-list-item"
+    >
+      <div
+        class="expansion-list-header"
+      >
+        <span>
+          This is header 2
+        </span>
+        <button>
+          O1
+        </button>
+      </div>
+    </li>
+  </ul>
+</DocumentFragment>
+`;
+
+exports[`Expansion list can be used when:  [FRAGILE] allows to toggle items 2`] = `
+<DocumentFragment>
+  <ul
+    class="sc-bcXHqe gHHzcE expansion-list my-class-container"
+  >
+    <li
+      class="expansion-list-item my-class-item"
+    >
+      <div
+        class="expansion-list-header"
+      >
+        <span>
+          This is header 1
+        </span>
+        <button>
+          O0
+        </button>
+      </div>
+    </li>
+    <li
+      class="expansion-list-item"
+    >
+      <div
+        class="expansion-list-header"
+      >
+        <span>
+          This is header 2
+        </span>
+        <button>
+          C1
+        </button>
+      </div>
+      <div
+        class="expansion-list-content"
+      >
+        Content
+      </div>
+    </li>
+  </ul>
+</DocumentFragment>
+`;
+
+exports[`Expansion list can be used when:  [FRAGILE] allows to toggle items 3`] = `
+<DocumentFragment>
+  <ul
+    class="sc-bcXHqe gHHzcE expansion-list my-class-container"
+  >
+    <li
+      class="expansion-list-item my-class-item"
+    >
+      <div
+        class="expansion-list-header"
+      >
+        <span>
+          This is header 1
+        </span>
+        <button>
+          C0
+        </button>
+      </div>
+      <div
+        class="expansion-list-content"
+      >
+        Content
+      </div>
+    </li>
+    <li
+      class="expansion-list-item"
+    >
+      <div
+        class="expansion-list-header"
+      >
+        <span>
+          This is header 2
+        </span>
+        <button>
+          O1
+        </button>
+      </div>
+    </li>
+  </ul>
+</DocumentFragment>
+`;
