@@ -2,6 +2,7 @@ import { useReducer } from 'react';
 import { TableProps, RowData, TableState, TableAction } from './defs';
 import { ROWS_PER_PAGE } from './consts';
 import styled from 'styled-components';
+import { Select } from '../select';
 import { Font } from '../font';
 import { Button } from '../button';
 
@@ -15,39 +16,6 @@ const TableWrapper = styled.div`
   }
 `;
 
-// const TableHeader = styled.thead`
-//   display: flex;
-//   background-color: #f0f0f0;
-//   font-weight: bold;
-//   font: th {
-//     flex: 1;
-//     padding: 8px;
-//   }
-// `;
-
-// const TableCell = styled.td`
-//   flex: 1;
-//   padding: 8px;
-// `;
-
-// const EditButton = styled.button`
-//   background-color: #007bff;
-//   color: #fff;
-//   border: none;
-//   padding: 6px 12px;
-//   cursor: pointer;
-// `;
-
-// const EditWindow = styled.div`
-//   background-color: #fff;
-//   border: 1px solid #ccc;
-//   padding: 12px;
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   z-index: 1;
-// `;
 
 const tableReducer = (state: TableState, action: TableAction): TableState => {
   switch (action.type) {
