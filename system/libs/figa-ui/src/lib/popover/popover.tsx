@@ -69,7 +69,8 @@ const Popover = ({
 const setContentOffset = (
   trigger: HTMLElement,
   content: HTMLElement,
-  offsetY: SpacingKey
+  offsetY: SpacingKey,
+  fullWidth: boolean
 ): void => {
   const triggerRect = trigger.getBoundingClientRect();
   const contentRect = content.getBoundingClientRect();
@@ -114,6 +115,12 @@ const setContentOffset = (
     content.style.top = '2%';
     content.style.overflowY = 'auto';
   }
+
+  if (fullWidth) {
+    content.style.maxWidth = 'unset';
+    content.style.width = `${triggerRect.width}px`;
+    content.style.left = `${triggerRect.left}px`;
+  }
 };
 
 const usePopover = () => {
@@ -134,7 +141,12 @@ const Trigger = ({ children }: PopoverTriggerProps) => {
   );
 };
 
-const Content = ({ children, className, ...props }: PopoverContentProps) => {
+const Content = ({
+  children,
+  className,
+  fullWidth = false,
+  ...props
+}: PopoverContentProps) => {
   const { triggerId, contentId, close, closed, offsetY, offsetX, closeMode } =
     usePopover();
   const { render } = usePortal();
@@ -151,7 +163,7 @@ const Content = ({ children, className, ...props }: PopoverContentProps) => {
       const resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
           entry.target === content &&
-            setContentOffset(trigger, content, offsetY);
+            setContentOffset(trigger, content, offsetY, fullWidth);
         }
       });
 
@@ -160,7 +172,7 @@ const Content = ({ children, className, ...props }: PopoverContentProps) => {
       return resizeObserver;
     };
     const listenWindowResize = () => {
-      setContentOffset(trigger, content, offsetY);
+      setContentOffset(trigger, content, offsetY, fullWidth);
     };
 
     window.addEventListener('resize', listenWindowResize);
@@ -171,7 +183,7 @@ const Content = ({ children, className, ...props }: PopoverContentProps) => {
       resizeObserver.disconnect();
       window.removeEventListener('resize', listenWindowResize);
     };
-  }, [closed, offsetX, offsetY, triggerId, contentId]);
+  }, [closed, offsetX, offsetY, triggerId, contentId, fullWidth]);
 
   if (closed) return null;
 

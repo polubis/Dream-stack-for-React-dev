@@ -510,68 +510,65 @@ const GlobalStyle = createGlobalStyle`
 
     /* select.tsx */
 
-    .select {
-        position: relative;
-        width: 100%;
+    .select-expander {
+        ${size(tokens.spacing[500], '100%')}
+        ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
+        ${row()}
+        padding: 0 ${tokens.spacing[150]};
+        border-radius: ${tokens.radius[50]};
+        background: ${(props) => props.theme.select.bg};
+        color: ${(props) => props.theme.select.color};
+        min-width: 220px;
+        cursor: pointer;
+        border: none;
 
-        .select-expander {
-            ${size(tokens.spacing[500], '100%')}
-            ${font('1.5rem', '0.15px', 'LexendMedium', 500)}
-            ${row()}
-            padding: 0 ${tokens.spacing[150]};
-            border-radius: ${tokens.radius[50]};
-            background: ${(props) => props.theme.select.bg};
+        &.select-expander-empty {
+            color: ${(props) => props.theme.select.placeholderColor};
+        }
+
+        &.select-expander-opened {
+            background: ${(props) => props.theme.select.hoverBg};
             color: ${(props) => props.theme.select.color};
-            min-width: 220px;
-            cursor: pointer;
-            border: none;
+            cursor: initial;
+        }
 
-            &.select-expander-empty {
-                color: ${(props) => props.theme.select.placeholderColor};
+        &:hover {
+            background: ${(props) => props.theme.select.hoverBg};
+            color: ${(props) => props.theme.select.color};
+        }
+    }
+
+    .select-list {
+        background: ${(props) => props.theme.select.bg};
+        border-radius: ${tokens.radius[50]};
+
+        & > *:first-child {
+            border-top-left-radius: ${tokens.radius[50]};
+            border-top-right-radius: ${tokens.radius[50]};
+        }
+
+        & > *:last-child {
+            border-bottom-left-radius: ${tokens.radius[50]};
+            border-bottom-right-radius: ${tokens.radius[50]};
+        }
+
+        .select-list-option {
+            ${font('1.4rem', '0.15px', 'LexendMedium', 500)}
+            padding: ${tokens.spacing[150]};
+            cursor: pointer;
+
+            &:not(:last-of-type) {
+                border-bottom: 1px solid ${(props) =>
+                  props.theme.select.optionSeparator};
             }
 
-            &.select-expander-opened {
-                background: ${(props) => props.theme.select.hoverBg};
-                color: ${(props) => props.theme.select.color};
+            &.select-list-option-active {
+                color: ${(props) => props.theme.select.optionActiveColor};
                 cursor: initial;
             }
 
-            &:hover {
+            &:hover:not(.select-list-option-active) {
                 background: ${(props) => props.theme.select.hoverBg};
-                color: ${(props) => props.theme.select.color};
-            }
-        }
-
-        .select-list {
-            ${slideIn(tokens.spacing[200], tokens.spacing[100])}
-            position: absolute;
-            margin: 0;
-            padding: 0;
-            left: 0;
-            transform: translateY(8px);
-            width: 100%;
-            background: ${(props) => props.theme.select.bg};
-            border-radius: ${tokens.radius[50]};
-            z-index: ${tokens.z[50]};
-
-            .select-list-option {
-                ${font('1.4rem', '0.15px', 'LexendMedium', 500)}
-                padding: ${tokens.spacing[150]};
-                cursor: pointer;
-
-                &:not(:last-of-type) {
-                    border-bottom: 1px solid ${(props) =>
-                      props.theme.select.optionSeparator};
-                }
-
-                &.select-list-option-active {
-                    color: ${(props) => props.theme.select.optionActiveColor};
-                    cursor: initial;
-                }
-
-                &:hover:not(.select-list-option-active) {
-                    background: ${(props) => props.theme.select.hoverBg};
-                }
             }
         }
     }

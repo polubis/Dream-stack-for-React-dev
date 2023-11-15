@@ -1,97 +1,292 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`select can be used when:  [FRAGILE] assigns correct HTML metadata when closed 1`] = `
-<DocumentFragment>
-  <div
-    class="select"
-  >
-    <button
-      class="select-expander select-expander-empty"
-    >
-      Choose an option
-    </button>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`select can be used when:  [FRAGILE] assigns correct HTML metadata when element is choosed 1`] = `
-<DocumentFragment>
-  <div
-    class="select"
-  >
-    <button
-      class="select-expander select-expander-empty select-expander-opened"
-    >
-      Trigger
-    </button>
-    <ul
-      class="select-list"
-    >
-      <li
-        class="select-list-option"
-        data-key="0"
-      >
-        <div>
-          Child 0
-        </div>
-      </li>
-      <li
-        class="select-list-option"
-        data-key="1"
-      >
-        <div>
-          Child 1
-        </div>
-      </li>
-    </ul>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`select can be used when:  [FRAGILE] assigns correct HTML metadata when opened 1`] = `
-<DocumentFragment>
-  <div
-    class="select"
-  >
-    <button
-      class="select-expander select-expander-empty select-expander-opened"
-    >
-      Choose an option
-    </button>
-    <ul
-      class="select-list"
-    >
-      <li
-        class="select-list-option"
-        data-key="0"
-      >
-        <div>
-          Child 0
-        </div>
-      </li>
-      <li
-        class="select-list-option"
-        data-key="1"
-      >
-        <div>
-          Child 1
-        </div>
-      </li>
-    </ul>
-  </div>
-</DocumentFragment>
-`;
-
 exports[`select can be used when:  [FRAGILE] renders with default props 1`] = `
-<DocumentFragment>
-  <div
-    class="select"
-  >
-    <button
-      class="select-expander select-expander-empty"
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="popover-trigger"
+        id="popover-trigger-:r0:"
+      >
+        <button
+          class="select-expander my-class select-expander-empty"
+        >
+          placeholder
+        </button>
+      </div>
+    </div>
+    <div />
+  </body>,
+  "container": <div>
+    <div
+      class="popover-trigger"
+      id="popover-trigger-:r0:"
     >
-      Choose an option
-    </button>
-  </div>
-</DocumentFragment>
+      <button
+        class="select-expander my-class select-expander-empty"
+      >
+        placeholder
+      </button>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`select can be used when:  [FRAGILE] toggles option menu and selects item 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="popover-trigger"
+        id="popover-trigger-:r0:"
+      >
+        <button
+          class="select-expander select-expander-opened"
+        >
+          <div>
+            Child 0
+          </div>
+        </button>
+      </div>
+    </div>
+    <div>
+      <div
+        aria-label="Dialog backdrop"
+        class="backdrop"
+      />
+      <div
+        aria-label="Popover content"
+        class="box popover-content column empty"
+        id="popover-content-:r0:"
+      >
+        <ul
+          class="select-list"
+        >
+          <li
+            class="select-list-option select-list-option-active"
+            data-key="0"
+          >
+            <div>
+              Child 0
+            </div>
+          </li>
+          <li
+            class="select-list-option"
+            data-key="1"
+          >
+            <div>
+              Child 1
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="popover-trigger"
+      id="popover-trigger-:r0:"
+    >
+      <button
+        class="select-expander select-expander-opened"
+      >
+        <div>
+          Child 0
+        </div>
+      </button>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`select can be used when:  [FRAGILE] toggles option menu and selects item 2`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="popover-trigger"
+        id="popover-trigger-:r0:"
+      >
+        <button
+          class="select-expander"
+        >
+          <div>
+            Child 0
+          </div>
+        </button>
+      </div>
+    </div>
+    <div />
+  </body>,
+  "container": <div>
+    <div
+      class="popover-trigger"
+      id="popover-trigger-:r0:"
+    >
+      <button
+        class="select-expander"
+      >
+        <div>
+          Child 0
+        </div>
+      </button>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;

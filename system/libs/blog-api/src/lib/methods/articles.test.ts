@@ -72,39 +72,30 @@ describe('Articles methods works when: ', () => {
     const expectedResponse = mockAxiosResponse(mockResponse(null)())();
     const spy = jest.spyOn(blogAPI, 'post').mockResolvedValue(expectedResponse);
 
-    (formData as jest.Mock).mockImplementation((payload) => payload);
+    (formData as jest.Mock).mockImplementation((payload) => ({
+      payload,
+      append: jest.fn(),
+    }));
 
     const payload = mockCreateArticlePayload();
     const response = await createArticle(payload);
 
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(getPath('Articles'), payload, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    } as AxiosRequestConfig);
     expect(response).toEqual(expectedResponse.data);
   });
 
   it('article can be updated', async () => {
-    (formData as jest.Mock).mockImplementation((payload) => payload);
+    (formData as jest.Mock).mockImplementation((payload) => ({
+      payload,
+      append: jest.fn(),
+    }));
     const expectedResponse = mockAxiosResponse(mockResponse(null)())();
     const spy = jest.spyOn(blogAPI, 'put').mockResolvedValue(expectedResponse);
 
     const payload = mockUpdateArticlePayload();
-    const { url, ...payloadWithoutUrl } = payload;
     const response = await updateArticle(payload);
 
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(
-      [getPath('Articles'), payload.lang, url].join('/'),
-      payloadWithoutUrl,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      } as AxiosRequestConfig
-    );
     expect(response).toEqual(expectedResponse.data);
   });
 

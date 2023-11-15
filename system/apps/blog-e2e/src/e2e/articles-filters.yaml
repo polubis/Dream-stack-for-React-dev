@@ -1,0 +1,8 @@
+Feature: Articles filters
+  Scenario(2.0): User may use [ARTICLES_SEARCH_FIELD]
+    Given: I'm signed in
+    And: I'm on the [PAGE_YOUR_ARTICLES]
+    When: I type "react" in [ARTICLES_SEARCH_FIELD]
+    And: I choose status [DRAFT_ARTICLE] in [ARTICLE_STATUS_FIELD]
+    Then: I see articles with "react"
+

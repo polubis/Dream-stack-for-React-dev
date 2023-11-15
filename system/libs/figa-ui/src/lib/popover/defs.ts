@@ -29,6 +29,7 @@ interface PopoverTriggerProps {
 
 interface PopoverContentProps extends Omit<BoxProps, 'children' | 'id'> {
   children: ReactNode;
+  fullWidth?: boolean;
 }
 
 export type {

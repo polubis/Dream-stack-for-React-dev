@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Popover } from './popover';
 import React from 'react';
+import type { PopoverContentProps } from './defs';
 
 describe('Popover can be used when: ', () => {
   jest.spyOn(React, 'useId').mockImplementation(() => ':r0:');
@@ -13,7 +14,7 @@ describe('Popover can be used when: ', () => {
     };
   });
 
-  const Content = () => {
+  const Content = (props: Partial<PopoverContentProps>) => {
     const { close } = Popover.use();
 
     return (
@@ -22,6 +23,7 @@ describe('Popover can be used when: ', () => {
         margin={[200, 200, 200, 200]}
         padding={[200, 200, 200, 200]}
         spacing={[200, 200]}
+        {...props}
       >
         <span>Content</span>
         <button onClick={close}>Close</button>
@@ -73,6 +75,21 @@ describe('Popover can be used when: ', () => {
     expect(result).toMatchSnapshot();
 
     fireEvent.click(screen.getByText(/Close/));
+
+    expect(result).toMatchSnapshot();
+  });
+
+  it('[FRAGILE] allows to set full width based on trigger', () => {
+    const result = render(
+      <Popover>
+        <Trigger />
+        <Content fullWidth />
+      </Popover>
+    );
+
+    expect(result).toMatchSnapshot();
+
+    fireEvent.click(screen.getByText(/Trigger/));
 
     expect(result).toMatchSnapshot();
   });
