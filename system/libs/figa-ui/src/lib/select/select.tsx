@@ -2,21 +2,46 @@ import type { SelectOptionKey, SelectProps } from './defs';
 import type { MouseEventHandler } from 'react';
 
 import { useMemo } from 'react';
-import { useClickOutside, useToggle } from '@system/figa-hooks';
 import c from 'classnames';
+import { Popover } from '../popover';
 
-const Select = <K extends SelectOptionKey = SelectOptionKey>({
+const Trigger = <K extends SelectOptionKey = SelectOptionKey>({
   className,
-  placeholder = 'Choose an option',
   value,
   options,
-  initialOpen,
+  placeholder,
+}: Pick<SelectProps<K>, 'className' | 'value' | 'options' | 'placeholder'>) => {
+  const { toggle, opened } = Popover.use();
+
+  const valueToDisplay = useMemo(
+    () =>
+      value
+        ? options.find((option) => option.key === value)?.child ?? placeholder
+        : placeholder,
+    [value, options, placeholder]
+  );
+
+  return (
+    <Popover.Trigger>
+      <button
+        className={c('select-expander', className, {
+          'select-expander-empty': value === '' || value === undefined,
+          'select-expander-opened': opened,
+        })}
+        onClick={toggle}
+      >
+        {valueToDisplay}
+      </button>
+    </Popover.Trigger>
+  );
+};
+
+const Content = <K extends SelectOptionKey = SelectOptionKey>({
+  options,
+  value,
   onChange,
-}: SelectProps<K>) => {
-  const { opened, toggle, close } = useToggle({ opened: initialOpen });
-  const { ref } = useClickOutside<HTMLDivElement>({
-    onOutside: close,
-  });
+}: Pick<SelectProps<K>, 'value' | 'options' | 'onChange'>) => {
+  const { close } = Popover.use();
 
   const handleChange: MouseEventHandler<HTMLLIElement> = (e) => {
     const key = e.currentTarget.getAttribute('data-key');
@@ -29,43 +54,44 @@ const Select = <K extends SelectOptionKey = SelectOptionKey>({
     onChange(key as K);
   };
 
-  const valueToDisplay = useMemo(
-    () =>
-      value
-        ? options.find((option) => option.key === value)?.child ?? placeholder
-        : placeholder,
-    [value, options, placeholder]
-  );
-
   return (
-    <div ref={ref} className={c('select', className)}>
-      <button
-        className={c('select-expander', {
-          'select-expander-empty': value === '' || value === undefined,
-          'select-expander-opened': opened,
-        })}
-        onClick={toggle}
-      >
-        {valueToDisplay}
-      </button>
+    <Popover.Content fullWidth>
+      <ul className="select-list">
+        {options.map(({ key, child }) => (
+          <li
+            key={key}
+            data-key={key}
+            className={c('select-list-option', {
+              'select-list-option-active': key === value,
+            })}
+            onClick={handleChange}
+          >
+            {child}
+          </li>
+        ))}
+      </ul>
+    </Popover.Content>
+  );
+};
 
-      {opened && (
-        <ul className="select-list">
-          {options.map(({ key, child }) => (
-            <li
-              key={key}
-              data-key={key}
-              className={c('select-list-option', {
-                'select-list-option-active': key === value,
-              })}
-              onClick={handleChange}
-            >
-              {child}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+const Select = <K extends SelectOptionKey = SelectOptionKey>({
+  className,
+  placeholder = 'Choose an option',
+  value,
+  options,
+  initialOpen,
+  onChange,
+}: SelectProps<K>) => {
+  return (
+    <Popover openOnInit={initialOpen} closeMode="backdrop">
+      <Trigger
+        className={className}
+        value={value}
+        options={options}
+        placeholder={placeholder}
+      />
+      <Content options={options} onChange={onChange} value={value} />
+    </Popover>
   );
 };
 

@@ -1,6 +1,8 @@
 import { Button, CloseIcon, Input, M_UP, size, tokens } from '@system/figa-ui';
 import type { ArticlesSearchProps } from './defs';
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import { useSubject } from '@system/figa-hooks';
 
 const Container = styled.div`
   .input {
@@ -26,20 +28,33 @@ const Container = styled.div`
 `;
 
 const ArticlesSearchInput = ({
-  search,
+  search: initialSearch,
   loading,
   onChange,
 }: ArticlesSearchProps) => {
+  const [search, setSearch] = useState('');
+
+  const { emit } = useSubject({ delay: 700, cb: onChange });
+
+  const handleChange = (value: string): void => {
+    emit(value);
+    setSearch(value);
+  };
+
+  useEffect(() => {
+    setSearch(initialSearch);
+  }, [initialSearch]);
+
   return (
     <Container>
       <Input
         value={search}
         loading={loading}
         placeholder="🏸 Type to find article..."
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => handleChange(e.target.value)}
         suffx={
           search.length > 0 && (
-            <Button onClick={() => onChange('')}>
+            <Button onClick={() => handleChange('')}>
               <CloseIcon />
             </Button>
           )

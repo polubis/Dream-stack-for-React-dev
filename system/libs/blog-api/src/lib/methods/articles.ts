@@ -96,12 +96,19 @@ const getArticle = async (
   return data;
 };
 
-const createArticle = async (
-  payload: CreateArticlePayload
-): Promise<CreateArticleResponse> => {
+const createArticle = async ({
+  tags,
+  ...payload
+}: CreateArticlePayload): Promise<CreateArticleResponse> => {
+  const fData = formData(payload);
+
+  tags.forEach((tag) => {
+    fData.append('Tags', tag);
+  });
+
   const { data } = await blogAPI.post<CreateArticleResponse>(
     getPath('Articles'),
-    formData(payload),
+    fData,
     {
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -114,11 +121,18 @@ const createArticle = async (
 
 const updateArticle = async ({
   url,
+  tags,
   ...payload
 }: UpdateArticlePayload): Promise<UpdateArticleResponse> => {
+  const fData = formData(payload);
+
+  tags.forEach((tag) => {
+    fData.append('Tags', tag);
+  });
+
   const { data } = await blogAPI.put<UpdateArticleResponse>(
     [getPath('Articles'), payload.lang, url].join('/'),
-    formData(payload),
+    fData,
     {
       headers: {
         'Content-Type': 'multipart/form-data',

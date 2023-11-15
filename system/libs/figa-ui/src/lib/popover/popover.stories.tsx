@@ -5,6 +5,7 @@ import { Button } from '../button';
 import { Font } from '../font';
 import { CloseIcon } from '../icon';
 import { Box, type BoxProps } from '../box';
+import { PopoverContentProps } from './defs';
 
 export default {
   component: Popover,
@@ -34,7 +35,7 @@ const Trigger = () => {
   );
 };
 
-const Content = (props: BoxProps) => {
+const Content = (props: BoxProps & Pick<PopoverContentProps, 'fullWidth'>) => {
   const { close } = Popover.use();
 
   return (
@@ -58,49 +59,87 @@ const Content = (props: BoxProps) => {
   );
 };
 
-const DefaultTemplate: Story = () => {
+const DefaultTemplate: Story<
+  Pick<PopoverContentProps, 'fullWidth'> & BoxProps
+> = ({ fullWidth, minWidth, maxWidth }) => {
   return (
     <Box between style={{ minHeight: '100vh' }} padding={[300, 300, 300, 300]}>
       <Box orientation="row" between>
         <Popover openOnInit>
           <Trigger />
-          <Content />
+          <Content
+            fullWidth={fullWidth}
+            minWidth={minWidth}
+            maxWidth={maxWidth}
+          />
         </Popover>
         <Popover openOnInit>
           <Trigger />
-          <Content />
+          <Content
+            fullWidth={fullWidth}
+            minWidth={minWidth}
+            maxWidth={maxWidth}
+          />
         </Popover>
         <Popover openOnInit>
           <Trigger />
-          <Content />
-        </Popover>
-      </Box>
-      <Box orientation="row" between>
-        <Popover openOnInit>
-          <Trigger />
-          <Content />
-        </Popover>
-        <Popover openOnInit>
-          <Trigger />
-          <Content />
-        </Popover>
-        <Popover openOnInit>
-          <Trigger />
-          <Content />
+          <Content
+            fullWidth={fullWidth}
+            minWidth={minWidth}
+            maxWidth={maxWidth}
+          />
         </Popover>
       </Box>
       <Box orientation="row" between>
         <Popover openOnInit>
           <Trigger />
-          <Content />
+          <Content
+            fullWidth={fullWidth}
+            minWidth={minWidth}
+            maxWidth={maxWidth}
+          />
         </Popover>
         <Popover openOnInit>
           <Trigger />
-          <Content />
+          <Content
+            fullWidth={fullWidth}
+            minWidth={minWidth}
+            maxWidth={maxWidth}
+          />
         </Popover>
         <Popover openOnInit>
           <Trigger />
-          <Content />
+          <Content
+            fullWidth={fullWidth}
+            minWidth={minWidth}
+            maxWidth={maxWidth}
+          />
+        </Popover>
+      </Box>
+      <Box orientation="row" between>
+        <Popover openOnInit>
+          <Trigger />
+          <Content
+            fullWidth={fullWidth}
+            minWidth={minWidth}
+            maxWidth={maxWidth}
+          />
+        </Popover>
+        <Popover openOnInit>
+          <Trigger />
+          <Content
+            fullWidth={fullWidth}
+            minWidth={minWidth}
+            maxWidth={maxWidth}
+          />
+        </Popover>
+        <Popover openOnInit>
+          <Trigger />
+          <Content
+            fullWidth={fullWidth}
+            minWidth={minWidth}
+            maxWidth={maxWidth}
+          />
         </Popover>
       </Box>
     </Box>
@@ -219,4 +258,11 @@ OnMobile.parameters = {
   viewport: {
     defaultViewport: 'tinyMobile',
   },
+};
+
+export const WithFullWidthOption = DefaultTemplate.bind({});
+WithFullWidthOption.args = {
+  fullWidth: true,
+  maxWidth: 'unset',
+  minWidth: 'unset',
 };

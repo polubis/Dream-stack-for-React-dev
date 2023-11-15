@@ -83,7 +83,7 @@ exports[`Nav can be used when:  [FRAGILE] assigns classes 1`] = `
 exports[`Nav can be used when:  [FRAGILE] open/close mobile navigation 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe dXhBab nav-mobile"
+    class="sc-bcXHqe kIUTKk nav-mobile"
   >
     <header
       class="nav-mobile-header"

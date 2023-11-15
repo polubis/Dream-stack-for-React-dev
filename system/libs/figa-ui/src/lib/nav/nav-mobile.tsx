@@ -11,7 +11,7 @@ const Container = styled.div`
   ${column()}
   background: ${(props) => props.theme.nav.bg};
   z-index: ${tokens.z[400]};
-  height: 100vh;
+  height: 100%;
 
   .nav-mobile-header {
     ${row()}

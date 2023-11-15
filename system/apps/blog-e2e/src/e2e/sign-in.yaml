@@ -1,20 +1,17 @@
 Feature: Sign in
 
   Dictionary: 
-    LANAGUAGE: Can be english (en) or polish (pl)
-    SIGN_IN_PAGE: /[LANGUAGE]/sign-in url
     SIGN_IN_FORM: The sign in form with two fields for login, password and confirm button
     LOGIN_FIELD: The field for user login
     PASSWORD_FIELD: The field for user password
     CONFIRM_BUTTON: The button which allows user to sign in
     LOADING_ANIMATION: The loading animation
     SUCCESS_SECTION: The section which displays success message
-    YOUR_ARTICLES_PAGE: The page which displays signed in user articles
     YOU_ARE_SIGNED_IN_SECTION: The section that shows communicate about being signed in
 
   Scenario(1.0): User can sign in 💻
     Given: I'm not signed in
-    And: I'm on the [SIGN_IN_PAGE]
+    And: I'm on the [PAGE_SIGN_IN]
     And: I see the [SIGN_IN_FORM]
     And: [CONFIRM_BUTTON] is enabled
     When: I type login in [LOGIN_FIELD]
@@ -24,7 +21,7 @@ Feature: Sign in
     And: [CONFIRM_BUTTON] shows [LOADING_ANIMATION]
     When: User is signed in
     Then: [SUCCESS_SECTION] is displayed
-    And: After 3s-5s user is redirected to [YOUR_ARTICLES_PAGE]
+    And: After 3s-5s user is redirected to [PAGE_YOUR_ARTICLES]
     When: User clicks back button in browser
-    Then: [SIGN_IN_PAGE] displays [YOU_ARE_SIGNED_IN_SECTION]
+    Then: [PAGE_SIGN_IN] displays [YOU_ARE_SIGNED_IN_SECTION]
     And: [SIGN_IN_FORM] is not displayed
