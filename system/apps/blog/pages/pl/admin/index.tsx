@@ -1,12 +1,7 @@
-import { AdminsOnly } from '../../../core';
 import { AdminView } from '../../../views/admin';
 
 const AdminPage = () => {
-  return (
-    <AdminsOnly>
-      <AdminView />
-    </AdminsOnly>
-  );
+  return <AdminView />;
 };
 
 export default AdminPage;

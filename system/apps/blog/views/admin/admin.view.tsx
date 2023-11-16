@@ -12,6 +12,7 @@ import { ArticlesGrid, OnGoToClick } from '../../components/articles-grid';
 import { useLang } from '../../dk';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
+import { ExpirationInfo } from '../../components/expiration-info-section';
 
 const Content = () => {
   const router = useRouter();
@@ -81,51 +82,51 @@ const AdminView = () => {
   useScroll({ onScroll: changeToNextPage });
 
   return (
-    <MainLayout offPadding>
-      <ArticlesLayout>
-        <ArticlesLayout.Filters>
-          <Field label="Search phrase">
-            <ArticlesSearchInput
-              loading={Array.isArray(articles) && loading}
-              search={params.Search}
-              onChange={changeSearch}
-            />
-          </Field>
+    <ArticlesLayout>
+      <ArticlesLayout.Filters>
+        <Field label="Search phrase">
+          <ArticlesSearchInput
+            loading={Array.isArray(articles) && loading}
+            search={params.Search}
+            onChange={changeSearch}
+          />
+        </Field>
 
-          <Field label="Status">
-            <ArticlesStatusSelect
-              status={params.Status}
-              onChange={changeStatus}
-            />
-          </Field>
+        <Field label="Status">
+          <ArticlesStatusSelect
+            status={params.Status}
+            onChange={changeStatus}
+          />
+        </Field>
 
-          <Field label="Tags">
-            <ArticlesTagsSelect tags={params.Tags} onConfirm={changeTags} />
-          </Field>
+        <Field label="Tags">
+          <ArticlesTagsSelect tags={params.Tags} onConfirm={changeTags} />
+        </Field>
 
-          <Field label="Reset">
-            <Button
-              disabled={!hasNotDefaultParams}
-              variant="outlined"
-              size={2}
-              equal
-              onClick={reset}
-            >
-              <CloseIcon />
-            </Button>
-          </Field>
-        </ArticlesLayout.Filters>
-        <Content />
-      </ArticlesLayout>
-    </MainLayout>
+        <Field label="Reset">
+          <Button
+            disabled={!hasNotDefaultParams}
+            variant="outlined"
+            size={2}
+            equal
+            onClick={reset}
+          >
+            <CloseIcon />
+          </Button>
+        </Field>
+      </ArticlesLayout.Filters>
+      <Content />
+    </ArticlesLayout>
   );
 };
 
 const ProtectedAdminView = () => {
   return (
-    <AdminsOnly>
-      <AdminView />
-    </AdminsOnly>
+    <MainLayout offPadding>
+      <AdminsOnly fallback={<ExpirationInfo />}>
+        <AdminView />
+      </AdminsOnly>
+    </MainLayout>
   );
 };
 
