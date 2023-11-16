@@ -13,6 +13,7 @@ export * from './lib/input';
 export * from './lib/footer';
 export * from './lib/box';
 export * from './lib/layout';
+export * from './lib/expansion-list';
 export * from './lib/nav-bar';
 export * from './lib/popover';
 export * from './lib/badge';
