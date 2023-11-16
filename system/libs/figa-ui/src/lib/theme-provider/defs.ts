@@ -448,11 +448,6 @@ interface Theme {
       outline: string;
     };
   };
-  tooltip: {
-    color: string;
-    bg: string;
-    borderColor: string;
-  };
 }
 
 type ThemeKey = 'dark' | 'light';
