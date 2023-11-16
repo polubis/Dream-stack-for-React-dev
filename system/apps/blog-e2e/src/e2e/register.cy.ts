@@ -1,14 +1,23 @@
 import { mockErrorResponse, mockResponse } from '@system/blog-api-mocks';
 import { getter } from '@system/blog-selectors';
+import { Gherkin } from './gherkin';
+import { commands } from './commands';
 
 describe('Register works when: ', () => {
   const get = getter(cy);
+  const { Given } = Gherkin(commands);
 
   it('register button moves to register page', () => {
-    cy.visit('/');
-    cy.get('header nav a button:contains("Register")').first().click();
-    cy.url().should('include', '/register');
-    cy.get('.button:contains("Confirm")');
+    Given('I go to page', '/')
+      .And('I see button', 'Register')
+      .When('I click button', 'Register')
+      .Then('I see disabled button', 'Register')
+      .And('Im on page', '/register')
+      .And('I see button', 'Confirm');
+    // cy.visit('/');
+    // cy.get('header nav a button:contains("Register")').first().click();
+    // cy.url().should('include', '/register');
+    // cy.get('.button:contains("Confirm")');
   });
 
   it('error occurs user can see error alert', () => {

@@ -1,5 +1,5 @@
 Feature: Articles management
-  Scenario(3.0): User with [ADMIN_USER_ROLE] approves article with [REVIEW_ARTICLE_STATUS] 💻
+  Scenario(3.0): User with [ADMIN_USER_ROLE] may approve article with [REVIEW_ARTICLE_STATUS]
     Given: I'm signed in
     And: I've [ADMIN_USER_ROLE]
     And: I'm on the [PAGE_ADMIN_ARTICLES]
@@ -29,7 +29,7 @@ Feature: Articles management
     And: I choose [REVIEW_ARTICLE_STATUS] in [ARTICLES_STATUS_FIELD]
     Then: Newly created article is displayed at first position
 
-  Scenario(3.1): User with [ADMIN_USER_ROLE] rejects article with [REVIEW_ARTICLE_STATUS] 💻
+  Scenario(3.1): User with [ADMIN_USER_ROLE] rejects article with [REVIEW_ARTICLE_STATUS]
      Given: I'm signed in
       And: I've [ADMIN_USER_ROLE]
       And: I'm on the [PAGE_ADMIN_ARTICLES]
