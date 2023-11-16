@@ -60,6 +60,7 @@ const tokens: Tokens = {
     400: '8',
     450: '9',
     500: '10',
+    550: '11',
   },
   common: {
     black: '#000000',
@@ -458,8 +459,8 @@ const light: Theme = {
   tooltip: {
     color: tokens.common.white,
     bg: tokens.common.black,
-    borderColor: tokens.common.black
-  }
+    borderColor: tokens.common.black,
+  },
 };
 
 const dark: Theme = {
@@ -783,8 +784,8 @@ const dark: Theme = {
   tooltip: {
     color: tokens.common.black,
     bg: tokens.common.white,
-    borderColor: tokens.common.white
-  }
+    borderColor: tokens.common.white,
+  },
 };
 
 const themes: Themes = {

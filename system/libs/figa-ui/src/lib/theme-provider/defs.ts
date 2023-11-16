@@ -91,6 +91,7 @@ interface Tokens {
     400: string;
     450: string;
     500: string;
+    550: string;
   };
   common: {
     black: string;
@@ -451,7 +452,7 @@ interface Theme {
     color: string;
     bg: string;
     borderColor: string;
-  }
+  };
 }
 
 type ThemeKey = 'dark' | 'light';
