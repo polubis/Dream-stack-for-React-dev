@@ -90,6 +90,10 @@ const GlobalStyle = createGlobalStyle`
     /* font.tsx */
 
     .font {
+        text-rendering: optimizeLegibility;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+
         &.default, &.default > * {
             color: ${(props) => props.theme.font.default.color};
         }

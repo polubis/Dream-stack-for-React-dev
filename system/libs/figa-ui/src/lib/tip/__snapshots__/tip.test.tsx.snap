@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tip can be used when:  [FRAGILE] assigns classes and orientation 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe gkSkjw tip my-class right"
+    offset="150"
+  >
+    <div>
+      Content
+    </div>
+    <div
+      class="tip-content"
+    >
+      <p
+        class="font b3 default"
+      >
+        My tip here
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Tip can be used when:  [FRAGILE] works by default 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcXHqe hCKYQI tip bottom"
+    offset="50"
+  >
+    <div>
+      Content
+    </div>
+    <div
+      class="tip-content"
+    >
+      <p
+        class="font b3 default"
+      >
+        My tip here
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
