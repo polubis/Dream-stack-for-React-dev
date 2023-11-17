@@ -1,28 +1,5 @@
 Feature: Articles management
   Scenario(3.0): User with [ADMIN_USER_ROLE] may approve article with [REVIEW_ARTICLE_STATUS]
-    Given: I'm signed in
-    And: I've [ADMIN_USER_ROLE]
-    And: I'm on the [PAGE_ADMIN_ARTICLES]
-    And: [ARTICLES_SEARCH_FIELD] is empty
-    And: [ARTICLES_TAGS_SELECT] is empty
-    When: I choose [REVIEW_ARTICLE_STATUS] in [ARTICLES_STATUS_FIELD]
-    Then: I see articles with [REVIEW_ARTICLE_STATUS]
-    When: I click [GO_TO_ARTICLE_BUTTON]
-    Then: I see [PAGE_ARTICLE_PREVIEW]
-    And: Url contains [ARTICLE_ID]
-    And: Url contains [ARTICLE_URL]
-    And: I see [ARTICLE_TITLE]
-    When: I click [ARTICLE_ACTIONS_TRIGGER]
-    Then: I see [ARTICLE_ACTIONS_MENU]
-    When: I click [ARTICLE_ACCEPT_BUTTON]
-    Then: I see [ARTICLE_ACCEPT_CONFIRMATION]
-    When: I click [ACCEPT_BUTTON]
-    Then: [ACCEPT_BUTTON, CANCEL_BUTTON, ARTICLE_ACTIONS_TRIGGER, ARTICLE_REJECT_BUTTON] is loading
-    And: [ACCEPT_BUTTON, CANCEL_BUTTON, ARTICLE_ACTIONS_TRIGGER, ARTICLE_REJECT_BUTTON] is disabled
-    When: Request is finished
-    Then: [ARTICLE_ACCEPT_CONFIRMATION] is closed
-    And: [ARTICLE_ACTIONS_TRIGGER] disappears
-    And: [REVIEW_ARTICLE_STATUS] is changed to [REFINE_ARTICLE_PUBLISHED]
     When: I go to [PAGE_ADMIN_ARTICLES]
     Then: I've [ARTICLES_SEARCH_FIELD] empty
     And: I've [ARTICLES_TAGS_SELECT] empty

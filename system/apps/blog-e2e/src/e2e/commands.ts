@@ -23,21 +23,35 @@ const commands = {
   'I see button': (name: string) => {
     cy.get(`button.button:contains(${name})`);
   },
-  'I see disabled button': (name: string) => {
-    cy.get(`button.button:contains(${name})`).should('be.disabled');
+  'I see disabled button': (...names: string[]) => {
+    names.forEach((name) => {
+      cy.get(`button.button:contains(${name})`).should('be.disabled');
+    });
   },
   'I see empty input': (placeholder: string) => {
     cy.get(`.input input[placeholder="${placeholder}"]`).should('be.empty');
   },
-  'I see loading button': (name: string) => {
-    commands['I see disabled button'](name);
-    cy.get(`button.button:contains(${name}) .loader`).should('exist');
+  'I see loading button': (...names: string[]) => {
+    names.forEach((name) => {
+      commands['I see disabled button'](name);
+      cy.get(`button.button:contains(${name}) .loader`).should('exist');
+    });
   },
   'I see empty article search input': () => {
     commands['I see empty input']('🏸 Type to find article...');
   },
   'I see empty article tags field': () => {
     cy.get(`button.button[title="Articles tags"]`).find('svg').should('exist');
+  },
+  'I see text': (...values: string[]) => {
+    values.forEach((text) => {
+      cy.get(text).should('exist');
+    });
+  },
+  'I not see text': (...values: string[]) => {
+    values.forEach((text) => {
+      cy.get(text).should('not.exist');
+    });
   },
   'Im signed in': (role: UserRole) => {
     cy.visit('/en/sign-in');
@@ -62,6 +76,31 @@ const commands = {
     cy.get(`.article-tile .badge:contains(${status})`).should(
       'have.length.greaterThan',
       0
+    );
+  },
+  'I click go to first found article': () => {
+    cy.get(`.button button[title="Read article"]`).first().click();
+  },
+  'Im on article preview page': () => {
+    cy.url().should('match', /^\/en\/preview\?id=.+&url=.+$/);
+  },
+  'I see article': () => {
+    cy.get(`[title="Author name"]`);
+    cy.get(`[title="Article title"]`);
+    cy.get(`[title="Article description"]`);
+  },
+  'I accept article': () => {
+    cy.get(`[title="Actions"]`).click();
+    commands['I click button']('Accept');
+    commands['I click button']('Confirm');
+    commands['I see loading button']('Accept', 'Reject', 'Cancel', 'Confirm');
+    commands['I not see text'](
+      'Actions to perform',
+      'Accept',
+      'Reject',
+      'Cancel',
+      'Confirm',
+      'Are you sure that you want to perform this action?'
     );
   },
 } as const;

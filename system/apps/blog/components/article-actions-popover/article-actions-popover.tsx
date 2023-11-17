@@ -100,7 +100,7 @@ const ArticleActionsPopover = () => {
               Cancel
             </Button>
             <Button size={2} loading={loading} onClick={handleConfirm}>
-              Accept
+              Confirm
             </Button>
           </Box>
         </Modal>

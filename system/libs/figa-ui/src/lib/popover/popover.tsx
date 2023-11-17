@@ -155,7 +155,7 @@ const Content = ({
     usePopover();
   const { render } = usePortal();
 
-  const { emit } = useSubject({ cb: setContentOffset });
+  const { emit } = useSubject({ cb: setContentOffset, delay: 10 });
 
   useIsomorphicLayoutEffect(() => {
     if (closed) return;
