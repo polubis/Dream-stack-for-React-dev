@@ -15,6 +15,11 @@ describe('Articles management works when: ', () => {
       .Then('Im on article preview page')
       .And('I see article')
       .When('I accept article')
-      .Then('I see text', 'Published');
+      .Then('I see text', 'Published')
+      .When('I navigate to admin articles page')
+      .Then('I see empty article search input')
+      .And('I see empty article tags field')
+      .When('I select status in article status field', 'Draft', 'Published')
+      .Then('I see articles only with status', 'Published');
   });
 });

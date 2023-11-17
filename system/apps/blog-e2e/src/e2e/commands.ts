@@ -45,12 +45,12 @@ const commands = {
   },
   'I see text': (...values: string[]) => {
     values.forEach((text) => {
-      cy.get(text).should('exist');
+      cy.get(`*:contains(${text})`).should('exist');
     });
   },
   'I not see text': (...values: string[]) => {
     values.forEach((text) => {
-      cy.get(text).should('not.exist');
+      cy.get(`*:contains(${text})`).should('not.exist');
     });
   },
   'Im signed in': (role: UserRole) => {
@@ -63,6 +63,7 @@ const commands = {
 
     commands['I click button']('Confirm');
     commands['I see loading button']('Confirm');
+    commands['I see text']("You're signed in 💚", "We're redirecting you...");
     commands['Im on page']('/en/your-articles');
   },
   'I select status in article status field': (
@@ -79,7 +80,7 @@ const commands = {
     );
   },
   'I click go to first found article': () => {
-    cy.get(`.button button[title="Read article"]`).first().click();
+    cy.get(`button.button[title="Read article"]`).first().click();
   },
   'Im on article preview page': () => {
     cy.url().should('match', /^\/en\/preview\?id=.+&url=.+$/);
