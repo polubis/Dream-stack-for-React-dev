@@ -1,8 +1,11 @@
 import { mockGetArticlesResponse } from '@system/blog-api-mocks';
 import type { UserRole } from '@system/blog-api-models';
+import { getter } from '@system/blog-selectors';
 
 type ArticleStatusLabel = 'Published' | 'Review' | 'Refine' | 'Draft';
 type Endpoint = 'getRecommendedArticles';
+
+const get = getter(cy);
 
 const commands = {
   'I go to page': (url: string) => {
@@ -16,6 +19,12 @@ const commands = {
         delay: 1000,
       }).as('getRecommendedArticles' as Endpoint);
     }
+  },
+  'I see articles thumbnails in footer': () => {
+    get('app-footer-recommended-articles-list');
+  },
+  'I scroll to bottom of page': (duration = 1000) => {
+    cy.scrollTo('bottom', { duration });
   },
   'I wait for endpoint': (endpoint: Endpoint) => {
     cy.wait(`@${endpoint}`);
