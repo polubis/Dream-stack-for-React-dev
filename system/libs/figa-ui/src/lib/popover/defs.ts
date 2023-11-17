@@ -32,9 +32,17 @@ interface PopoverContentProps extends Omit<BoxProps, 'children' | 'id'> {
   fullWidth?: boolean;
 }
 
+interface SetContentPayload {
+  trigger: HTMLElement;
+  content: HTMLElement;
+  offsetY: SpacingKey;
+  fullWidth: boolean;
+}
+
 export type {
   PopoverProps,
   PopoverContext,
   PopoverTriggerProps,
   PopoverContentProps,
+  SetContentPayload,
 };
