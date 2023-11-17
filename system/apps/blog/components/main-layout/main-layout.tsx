@@ -28,7 +28,6 @@ import { UserSection } from './user-section';
 import { useLang } from '../../dk/use-lang';
 import { RecommendedArticles } from './recommended-articles';
 import { useIntersectionObserver } from '@system/figa-hooks';
-import { get } from '@system/blog-selectors';
 import styled from 'styled-components';
 
 const LABELS = ['Articles', 'Creator'] as const;
@@ -92,7 +91,6 @@ const MainLayout = ({
       footer={
         <div
           ref={footerRef}
-          data-i={get('app-footer-recommended-articles-section')}
         >
           <Footer
             logo={

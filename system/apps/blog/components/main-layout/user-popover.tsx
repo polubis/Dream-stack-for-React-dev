@@ -9,7 +9,6 @@ import {
   tokens,
 } from '@system/figa-ui';
 import { useSignOutStore } from '../../store/sign-out';
-import { get } from '@system/blog-selectors';
 import { useAuthStore } from '../../store/auth';
 import { useRouter } from 'next/navigation';
 import { AdminsOnly } from '../../core';
@@ -53,10 +52,10 @@ const Content = () => {
           src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/220805-domestic-cat-mjf-1540-382ba2.jpg"
         />
         <Box spacing={[50]}>
-          <Font variant="h6" trim data-i={get('app-nav-user-username')}>
+          <Font variant="h6" trim>
             {authStore.user.username}
           </Font>
-          <Font variant="b1" trim data-i={get('app-nav-user-email')}>
+          <Font variant="b1" trim>
             {authStore.user.email}
           </Font>
         </Box>
@@ -86,9 +85,7 @@ const Content = () => {
           </Font>
         </Box>
         <Box spacing={[50]}>
-          <Font variant="b2" data-i={get('app-nav-user-roles')}>
-            {authStore.user.roles.join(', ')}
-          </Font>
+          <Font variant="b2">{authStore.user.roles.join(', ')}</Font>
           <Font variant="b1" motive="primary">
             Roles
           </Font>
@@ -116,7 +113,6 @@ const Content = () => {
           variant="outlined"
           size={2}
           onClick={signOutStore.signOut}
-          data-i={get('app-nav-sign-out-btn')}
           loading={signOutStore.key === 'pending'}
         >
           Sign Out
@@ -131,7 +127,7 @@ const Trigger = () => {
 
   return (
     <Popover.Trigger>
-      <Button shape="rounded" data-i={get('app-nav-user-avatar-btn')}>
+      <Button shape="rounded">
         <Avatar
           alt="My alt text"
           src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/220805-domestic-cat-mjf-1540-382ba2.jpg"

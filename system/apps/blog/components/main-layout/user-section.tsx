@@ -9,7 +9,6 @@ import { Link } from '../link';
 import { useLang } from '../../dk';
 import { useAuthStore } from '../../store/auth';
 import { useSignInStore } from '../../store/sign-in';
-import { get } from '@system/blog-selectors';
 import { UserPopover } from './user-popover';
 
 const ThemeSwitcher = ({ disabled }: { disabled?: boolean }) => {
@@ -33,7 +32,7 @@ const SignInButton = () => {
 
   if (key === 'pending') {
     return (
-      <Button size={2} data-i={get('app-nav-sign-in-btn')} loading>
+      <Button size={2} loading>
         Sign In
       </Button>
     );
@@ -41,9 +40,7 @@ const SignInButton = () => {
 
   return (
     <Link title="Sign In" href={`/${lang}/sign-in/`}>
-      <Button size={2} data-i={get('app-nav-sign-in-btn')}>
-        Sign In
-      </Button>
+      <Button size={2}>Sign In</Button>
     </Link>
   );
 };
@@ -53,9 +50,7 @@ const RegisterButton = () => {
 
   return (
     <Link title="Register" href={`/${lang}/register/`}>
-      <Button size={2} data-i={get('app-nav-register-btn')}>
-        Register
-      </Button>
+      <Button size={2}>Register</Button>
     </Link>
   );
 };
@@ -67,10 +62,10 @@ const UserSection = () => {
     return (
       <Box orientation="row" spacing={[150, 150]}>
         <ThemeSwitcher disabled />
-        <Button size={2} data-i={get('app-nav-register-btn')} disabled>
+        <Button size={2} disabled>
           Register
         </Button>
-        <Button size={2} data-i={get('app-nav-sign-in-btn')} disabled>
+        <Button size={2} disabled>
           Sign In
         </Button>
       </Box>

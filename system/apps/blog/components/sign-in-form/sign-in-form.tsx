@@ -9,7 +9,6 @@ import {
 import { useSignInStore } from '../../store/sign-in';
 import { useSignOutStore } from '../../store/sign-out';
 import { useState, useRef, useEffect } from 'react';
-import { get } from '@system/blog-selectors';
 import { useMoveToRedirect } from '../../dk';
 import { NotSignedInOnly, SignedInOnly } from '../../core';
 import { InfoSection } from '../info-section';
@@ -64,19 +63,16 @@ const SignInForm = () => {
           <Input
             value={login}
             autoFocus
-            data-i={get('sign-in-login-input')}
             placeholder="Login*"
             onChange={(e) => setLogin(e.target.value)}
           />
           <Input
             value={password}
             type="password"
-            data-i={get('sign-in-password-input')}
             placeholder="Password*"
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button
-            data-i={get('sign-in-confirm-btn')}
             loading={
               signInStore.key === 'pending' || signOutStore.key === 'pending'
             }
@@ -85,9 +81,7 @@ const SignInForm = () => {
             Confirm
           </Button>
           {signInStore.key === 'error' && (
-            <Alert data-i={get('sign-in-error-alert')} type="error">
-              {signInStore.error.message}
-            </Alert>
+            <Alert type="error">{signInStore.error.message}</Alert>
           )}
         </Box>
       </NotSignedInOnly>
