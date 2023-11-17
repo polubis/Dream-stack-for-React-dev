@@ -1,4 +1,6 @@
-import type { ArticleStatus, UserRole } from '@system/blog-api-models';
+import type { UserRole } from '@system/blog-api-models';
+
+type ArticleStatusLabel = 'Published' | 'Review' | 'Refine' | 'Draft';
 
 const commands = {
   'I go to page': (url: string) => {
@@ -51,10 +53,16 @@ const commands = {
   },
   'I select status in article status field': (
     name: string,
-    status: 'Published' | 'Review' | 'Refine' | 'Draft'
+    status: ArticleStatusLabel
   ) => {
     cy.get(`.select-expander:contains(${name})`).click();
     cy.get(`.select-list-option:contains(${status})`).click();
+  },
+  'I see articles only with status': (status: ArticleStatusLabel) => {
+    cy.get(`.article-tile .badge:contains(${status})`).should(
+      'have.length.greaterThan',
+      0
+    );
   },
 } as const;
 
