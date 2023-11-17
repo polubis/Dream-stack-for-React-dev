@@ -8,6 +8,7 @@ describe('Articles management works when: ', () => {
     Given('Im signed in', 'Admin')
       .When('I navigate to admin articles page')
       .Then('I see empty article search input')
-      .And('I see empty article tags field');
+      .And('I see empty article tags field')
+      .When('I select status in article status field', 'Draft', 'Review');
   });
 });

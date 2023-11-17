@@ -1,4 +1,4 @@
-import type { UserRole } from '@system/blog-api-models';
+import type { ArticleStatus, UserRole } from '@system/blog-api-models';
 
 const commands = {
   'I go to page': (url: string) => {
@@ -48,6 +48,13 @@ const commands = {
     commands['I click button']('Confirm');
     commands['I see loading button']('Confirm');
     commands['Im on page']('/en/your-articles');
+  },
+  'I select status in article status field': (
+    name: string,
+    status: 'Published' | 'Review' | 'Refine' | 'Draft'
+  ) => {
+    cy.get(`.select-expander:contains(${name})`).click();
+    cy.get(`.select-list-option:contains(${status})`).click();
   },
 } as const;
 
