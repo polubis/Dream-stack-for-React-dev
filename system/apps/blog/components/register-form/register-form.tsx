@@ -16,6 +16,7 @@ const RegisterForm = () => {
         <Input
           invalid={form.result.login}
           value={form.values.login}
+          placeholder="Login*"
           autoFocus
           data-i={get('register-login-input')}
           onChange={(e) => setField('login', e.target.value)}
@@ -26,6 +27,7 @@ const RegisterForm = () => {
         <Input
           value={form.values.email}
           invalid={form.result.email}
+          placeholder="Email*"
           type="email"
           data-i={get('register-email-input')}
           onChange={(e) => setField('email', e.target.value)}
@@ -41,6 +43,7 @@ const RegisterForm = () => {
           value={form.values.password}
           invalid={form.result.password}
           type="password"
+          placeholder="Password*"
           data-i={get('register-password-input')}
           onChange={(e) => setField('password', e.target.value)}
         />
@@ -54,6 +57,7 @@ const RegisterForm = () => {
         <Input
           value={form.values.confirmPassword}
           invalid={form.result.confirmPassword}
+          placeholder="Repeat your password*"
           type="password"
           data-i={get('register-repeated-password-input')}
           onChange={(e) => setField('confirmPassword', e.target.value)}

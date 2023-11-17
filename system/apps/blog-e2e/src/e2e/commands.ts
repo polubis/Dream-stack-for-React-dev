@@ -1,20 +1,64 @@
-import { mockGetArticlesResponse } from '@system/blog-api-mocks';
+import {
+  mockGetArticlesResponse,
+  mockResponse,
+  mockSignInResponse,
+} from '@system/blog-api-mocks';
 import type { UserRole } from '@system/blog-api-models';
 
 type ArticleStatusLabel = 'Published' | 'Review' | 'Refine' | 'Draft';
-type Endpoint = 'getRecommendedArticles';
+type Endpoint =
+  | 'getRecommendedArticles'
+  | 'postSignIn'
+  | 'getYourArticles'
+  | 'postRegister';
 
 const commands = {
-  'I go to page': (url: string) => {
+  'Page is': (url: string) => {
     cy.visit(url);
   },
-  'I have mocked endpoint': (endpoint: Endpoint) => {
+  'System mocked endpoint': (endpoint: Endpoint) => {
     if (endpoint === 'getRecommendedArticles') {
       cy.intercept('GET', Cypress.env('NEXT_PUBLIC_API_URL') + 'Articles/en*', {
         statusCode: 201,
         body: mockGetArticlesResponse(),
         delay: 1000,
       }).as('getRecommendedArticles' as Endpoint);
+    }
+
+    if (endpoint === 'postSignIn') {
+      cy.intercept(
+        'POST',
+        Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
+        {
+          statusCode: 201,
+          body: mockSignInResponse(),
+          delay: 1000,
+        }
+      ).as('postSignIn' as Endpoint);
+    }
+
+    if (endpoint === 'getYourArticles') {
+      cy.intercept(
+        'GET',
+        Cypress.env('NEXT_PUBLIC_API_URL') + 'Articles/my/en*',
+        {
+          statusCode: 201,
+          body: mockGetArticlesResponse(),
+          delay: 1000,
+        }
+      ).as('getYourArticles' as Endpoint);
+    }
+
+    if (endpoint === 'postRegister') {
+      cy.intercept(
+        'POST',
+        Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/Register',
+        {
+          statusCode: 204,
+          body: mockResponse(null),
+          delay: 1000,
+        }
+      ).as('postRegister');
     }
   },
   'I see articles thumbnails in footer': () => {
@@ -23,7 +67,7 @@ const commands = {
   'I scroll to bottom of page': (duration = 1000) => {
     cy.scrollTo('bottom', { duration });
   },
-  'I wait for endpoint': (endpoint: Endpoint) => {
+  'System recieved response from endpoint': (endpoint: Endpoint) => {
     cy.wait(`@${endpoint}`);
   },
   'I click button': (name: string) => {
@@ -67,6 +111,9 @@ const commands = {
     values.forEach((text) => {
       cy.get(`*:contains(${text})`).should('exist');
     });
+  },
+  'I go back': () => {
+    cy.go('back');
   },
   'I not see text': (...values: string[]) => {
     values.forEach((text) => {

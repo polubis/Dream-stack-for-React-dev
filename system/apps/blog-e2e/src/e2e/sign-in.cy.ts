@@ -1,65 +1,30 @@
-import {
-  mockGetArticlesResponse,
-  mockSignInResponse,
-} from '@system/blog-api-mocks';
-import { sign_in_selectors } from '../support/app.po';
+import { Gherkin } from './gherkin';
+import { commands } from './commands';
 
 describe('Sign in works when: ', () => {
-  it('Scenario(1.0): User can sign in', () => {
-    const signInResponse = mockSignInResponse();
-    cy.intercept('GET', Cypress.env('NEXT_PUBLIC_API_URL') + 'Articles/en*', {
-      statusCode: 201,
-      body: mockGetArticlesResponse(),
-      delay: 1000,
-    }).as('getRecommendedArticles');
-    cy.intercept(
-      'GET',
-      Cypress.env('NEXT_PUBLIC_API_URL') + 'Articles/my/en*',
-      {
-        statusCode: 201,
-        body: mockGetArticlesResponse(),
-        delay: 1000,
-      }
-    ).as('getYourArticles');
-    cy.intercept(
-      'POST',
-      Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/SignIn',
-      {
-        statusCode: 201,
-        body: signInResponse,
-        delay: 1000,
-      }
-    ).as('signIn');
+  const { Given } = Gherkin(commands);
 
-    cy.visit('/en/sign-in');
-
-    sign_in_selectors.heading();
-    sign_in_selectors.login_input();
-    sign_in_selectors.password_input();
-    sign_in_selectors.confirm_btn_loading_animation().should('not.exist');
-    sign_in_selectors.confirm_btn().should('not.be.disabled');
-
-    sign_in_selectors.login_input().type('tom199423');
-    sign_in_selectors.password_input().type('tom199423');
-
-    sign_in_selectors.confirm_btn().click();
-    sign_in_selectors.confirm_btn().should('be.disabled');
-    sign_in_selectors.confirm_btn_loading_animation();
-
-    cy.wait(['@signIn']);
-
-    sign_in_selectors.firstTimeSignedInHeading();
-    sign_in_selectors.firstTimeSignedInDescription();
-
-    cy.url().should('include', '/en/your-articles');
-
-    cy.wait(['@getYourArticles']);
-
-    cy.go(-1);
-
-    cy.url().should('include', '/en/sign-in');
-
-    sign_in_selectors.alreadySignedInHeading();
-    sign_in_selectors.alreadySignedInDescription();
+  it('user can sign in', () => {
+    Given('System mocked endpoint', 'postSignIn')
+      .And('System mocked endpoint', 'getRecommendedArticles')
+      .And('System mocked endpoint', 'getYourArticles')
+      .And('Page is', '/')
+      .When('I click button', 'Sign In')
+      .Then('Im on page', '/en/sign-in')
+      .And('I see text', 'Sign in into your account', 'Confirm')
+      .When('I type in input', 'Login*', 'tomcio1994')
+      .And('I type in input', 'Password*', 'tomcio1994')
+      .And('I click button', 'Confirm')
+      .Then('I see loading button', 'Confirm')
+      .When('System recieved response from endpoint', 'postSignIn')
+      .Then('I see text', "You're signed in 💚", "We're redirecting you...")
+      .And('Im on page', '/en/your-articles')
+      .When('System recieved response from endpoint', 'getYourArticles')
+      .And('I go back')
+      .Then(
+        'I see text',
+        "You're already signed in 💚",
+        'Only testers 👨‍👦 are trying to double sign in...'
+      );
   });
 });

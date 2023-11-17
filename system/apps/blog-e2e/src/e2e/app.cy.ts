@@ -5,11 +5,11 @@ describe('Blog works when: ', () => {
   const { Given } = Gherkin(commands);
 
   it('loads articles in footer when scrolled down', () => {
-    Given('I have mocked endpoint', 'getRecommendedArticles')
-      .And('I go to page', '/')
+    Given('System mocked endpoint', 'getRecommendedArticles')
+      .And('Page is', '/')
       .Then('I see text', 'About us', 'Recommended articles', 'Navigation')
       .When('I scroll to bottom of page')
-      .And('I wait for endpoint', 'getRecommendedArticles')
+      .And('System recieved response from endpoint', 'getRecommendedArticles')
       .Then('I see articles thumbnails in footer');
   });
 });
