@@ -68,7 +68,9 @@ const MainLayout = ({
 
   const links = LABELS.map((label, idx) => (
     <Nav.Link variant="h6" key={label}>
-      <Link href={'/' + lang + URLS[idx]}>{label}</Link>
+      <Link title={label} href={'/' + lang + URLS[idx]}>
+        {label}
+      </Link>
     </Nav.Link>
   ));
 
@@ -149,7 +151,9 @@ const MainLayout = ({
                     articles, courses and teaching materials. You can join our
                     community via{' '}
                     <FigaUILink variant="b1" motive="primary">
-                      <Link href="/community-form/">this form</Link>
+                      <Link title="Community form" href="/community-form/">
+                        this form
+                      </Link>
                     </FigaUILink>
                     .
                   </Font>

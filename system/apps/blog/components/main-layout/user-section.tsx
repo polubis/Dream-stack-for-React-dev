@@ -40,7 +40,7 @@ const SignInButton = () => {
   }
 
   return (
-    <Link href={`/${lang}/sign-in/`}>
+    <Link title="Sign In" href={`/${lang}/sign-in/`}>
       <Button size={2} data-i={get('app-nav-sign-in-btn')}>
         Sign In
       </Button>
@@ -52,7 +52,7 @@ const RegisterButton = () => {
   const lang = useLang();
 
   return (
-    <Link href={`/${lang}/register/`}>
+    <Link title="Register" href={`/${lang}/register/`}>
       <Button size={2} data-i={get('app-nav-register-btn')}>
         Register
       </Button>

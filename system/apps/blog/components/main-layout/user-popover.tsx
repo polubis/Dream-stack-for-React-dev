@@ -65,10 +65,14 @@ const Content = () => {
       <Box spacing={[100, 100]}>
         <Font variant="b3">Navigation</Font>
         <FigaUILink variant="b1">
-          <Link href={`/${lang}/your-articles`}>Profile</Link>
+          <Link title="Profile" href={`/${lang}/your-articles`}>
+            Profile
+          </Link>
         </FigaUILink>
         <FigaUILink variant="b1">
-          <Link href={`/${lang}/your-articles`}>Your articles</Link>
+          <Link title="Your articles" href={`/${lang}/your-articles`}>
+            Your articles
+          </Link>
         </FigaUILink>
       </Box>
 

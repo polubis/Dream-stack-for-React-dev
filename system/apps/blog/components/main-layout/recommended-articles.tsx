@@ -5,7 +5,6 @@ import { Link } from '../link';
 import Image from 'next/image';
 import { useRecommendedArticlesStore } from '../../store/recommended-articles';
 import { useLang } from '../../dk';
-import { get } from '@system/blog-selectors';
 
 const Container = styled.div`
   ${wrap()}
@@ -38,9 +37,13 @@ const RecommendedArticles = () => {
 
   if (key === 'ok') {
     return (
-      <Container data-i={get('app-footer-recommended-articles-list')}>
+      <Container>
         {articles.map((article) => (
-          <Link key={article.id} href={`/${lang}/articles/${article.title}`}>
+          <Link
+            title="Footer thumbnail"
+            key={article.id}
+            href={`/${lang}/articles/${article.title}`}
+          >
             <Image
               alt={article.title}
               src={article.thumbnailUrl}
