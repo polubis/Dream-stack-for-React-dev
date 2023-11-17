@@ -1,10 +1,24 @@
+import { mockGetArticlesResponse } from '@system/blog-api-mocks';
 import type { UserRole } from '@system/blog-api-models';
 
 type ArticleStatusLabel = 'Published' | 'Review' | 'Refine' | 'Draft';
+type Endpoint = 'getRecommendedArticles';
 
 const commands = {
   'I go to page': (url: string) => {
     cy.visit(url);
+  },
+  'I have mocked endpoint': (endpoint: Endpoint) => {
+    if (endpoint === 'getRecommendedArticles') {
+      cy.intercept('GET', Cypress.env('NEXT_PUBLIC_API_URL') + 'Articles/en*', {
+        statusCode: 201,
+        body: mockGetArticlesResponse(),
+        delay: 1000,
+      }).as('getRecommendedArticles' as Endpoint);
+    }
+  },
+  'I wait for endpoint': (endpoint: Endpoint) => {
+    cy.wait(`@${endpoint}`);
   },
   'I click button': (name: string) => {
     cy.get(`button.button:contains(${name})`).click();
