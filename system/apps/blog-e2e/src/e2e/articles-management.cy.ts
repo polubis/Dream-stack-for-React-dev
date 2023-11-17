@@ -12,7 +12,7 @@ describe('Articles management works when: ', () => {
       .When('I select status in article status field', 'Draft', 'Review')
       .Then('I see articles only with status', 'Review')
       .When('I click go to first found article')
-      .Then('Im on article preview page')
+      .Then('Im on article review page')
       .And('I see article')
       .When('I accept article')
       .Then('I see text', 'Published')

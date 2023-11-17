@@ -82,8 +82,11 @@ const commands = {
   'I click go to first found article': () => {
     cy.get(`button.button[title="Read article"]`).first().click();
   },
-  'Im on article preview page': () => {
-    cy.url().should('match', /^\/en\/preview\?id=.+&url=.+$/);
+  'Im on article review page': () => {
+    cy.url()
+      .should('contain', '/en/admin/article-review')
+      .and('contain', 'url=')
+      .and('contain', 'id=');
   },
   'I see article': () => {
     cy.get(`[title="Author name"]`);
