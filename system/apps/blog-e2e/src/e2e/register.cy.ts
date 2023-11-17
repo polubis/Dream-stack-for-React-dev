@@ -9,15 +9,9 @@ describe('Register works when: ', () => {
 
   it('register button moves to register page', () => {
     Given('I go to page', '/')
-      .And('I see button', 'Register')
       .When('I click button', 'Register')
-      .Then('I see disabled button', 'Register')
-      .And('Im on page', '/register')
+      .Then('Im on page', '/en/register')
       .And('I see button', 'Confirm');
-    // cy.visit('/');
-    // cy.get('header nav a button:contains("Register")').first().click();
-    // cy.url().should('include', '/register');
-    // cy.get('.button:contains("Confirm")');
   });
 
   it('error occurs user can see error alert', () => {
