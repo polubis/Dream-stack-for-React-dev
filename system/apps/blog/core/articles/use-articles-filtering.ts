@@ -114,7 +114,7 @@ const useArticlesFiltering = (config: ArticlesFilteringConfig) => () => {
   const changeToNextPage = useCallback(() => {
     const state = config.selectors.state();
 
-    if (state.allLoaded) return;
+    if (state.allLoaded || state.loading) return;
 
     change({ CurrentPage: params.CurrentPage + 1 });
   }, [change, params]);
