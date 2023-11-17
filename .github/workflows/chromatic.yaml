@@ -2,7 +2,7 @@ name: Chromatic
 
 on:
   pull_request:
-    branches: ["develop", "main"]
+    branches: ["develop"]
 
 jobs:
   chromatic-deployment:

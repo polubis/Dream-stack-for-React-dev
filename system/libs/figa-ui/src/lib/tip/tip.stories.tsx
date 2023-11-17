@@ -11,7 +11,10 @@ export default {
 
 const Template: Story = () => {
   return (
-    <Box padding={[300, 300, 300, 300]} spacing={[1000, 1000, 1000, 1000, 1000]}>
+    <Box
+      padding={[300, 300, 300, 300]}
+      spacing={[1000, 1000, 1000, 1000, 1000]}
+    >
       <Box padding={[1000, 0, 0, 0]}>
         <Tip content="This is my tip!" orientation="top">
           <Font variant="h5">I'm top and have content</Font>

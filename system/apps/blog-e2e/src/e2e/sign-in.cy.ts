@@ -8,7 +8,7 @@ describe('Sign in works when: ', () => {
     Given('System mocked endpoint', 'postSignIn')
       .And('System mocked endpoint', 'getRecommendedArticles')
       .And('System mocked endpoint', 'getYourArticles')
-      .And('Page is', '/')
+      .And('System sets page as', '/')
       .When('I click button', 'Sign In')
       .Then('Im on page', '/en/sign-in')
       .And('I see text', 'Sign in into your account', 'Confirm')

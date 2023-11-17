@@ -44,7 +44,7 @@ exports[`User can register when:  validation messages are displayed 1`] = `
             />
           </svg>
           <input
-            data-i="register-login-input"
+            placeholder="Login*"
             value="23"
           />
         </div>
@@ -83,7 +83,7 @@ exports[`User can register when:  validation messages are displayed 1`] = `
             />
           </svg>
           <input
-            data-i="register-email-input"
+            placeholder="Email*"
             type="email"
             value=""
           />
@@ -123,7 +123,7 @@ exports[`User can register when:  validation messages are displayed 1`] = `
             />
           </svg>
           <input
-            data-i="register-password-input"
+            placeholder="Password*"
             type="password"
             value="dd"
           />
@@ -163,7 +163,7 @@ exports[`User can register when:  validation messages are displayed 1`] = `
             />
           </svg>
           <input
-            data-i="register-repeated-password-input"
+            placeholder="Repeat your password*"
             type="password"
             value="D3"
           />
@@ -184,7 +184,6 @@ exports[`User can register when:  validation messages are displayed 1`] = `
       >
         <button
           class="button size-3 rectangle filled primary"
-          data-i="register-confirm-btn"
           disabled=""
         >
           Confirm
