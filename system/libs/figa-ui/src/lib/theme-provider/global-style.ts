@@ -1647,6 +1647,40 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
+    /* placeholder.tsx */
+
+    .placeholder {
+        ${center()}
+        padding: ${tokens.spacing[250]};
+        border-radius: ${tokens.radius[50]};
+        min-height: ${tokens.spacing[1250]};
+        min-width: ${tokens.spacing[1250]};
+        max-width: max-content;
+        max-height: max-content;
+        border: ${tokens.spacing[12]} solid transparent;
+
+        &.full {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        &.filled {
+            background: ${(props) => props.theme.placeholder.filled.bg};
+        }
+
+        &.outlined {
+            background: ${(props) => props.theme.placeholder.outlined.bg};
+            border-color: ${(props) =>
+              props.theme.placeholder.outlined.borderColor};
+        }
+
+        .logo-graphic {
+            opacity: 0.4;
+        }
+    }
+
+    /* placeholder.tsx */
+
     /* file-picker.tsx */
 
     /* thumbnail.tsx */

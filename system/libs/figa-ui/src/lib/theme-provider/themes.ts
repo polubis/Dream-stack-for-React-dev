@@ -2,6 +2,7 @@ import type { Spacing, Theme, Themes, Tokens } from './defs';
 
 const spacing: Spacing = {
   0: '0',
+  12: '1px',
   25: '2px',
   50: '4px',
   75: '6px',
@@ -401,6 +402,15 @@ const light: Theme = {
     },
     invalid: tokens.red[150],
   },
+  placeholder: {
+    filled: {
+      bg: tokens.light[50],
+    },
+    outlined: {
+      bg: tokens.common.white,
+      borderColor: tokens.light[100],
+    },
+  },
   box: {
     filled: {
       bg: tokens.light[50],
@@ -720,6 +730,15 @@ const dark: Theme = {
       fxColor: tokens.common.white,
     },
     invalid: tokens.red[150],
+  },
+  placeholder: {
+    filled: {
+      bg: tokens.gray[300],
+    },
+    outlined: {
+      bg: tokens.common.black,
+      borderColor: tokens.gray[300],
+    },
   },
   box: {
     filled: {

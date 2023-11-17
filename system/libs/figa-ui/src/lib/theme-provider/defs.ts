@@ -16,6 +16,7 @@ interface Viewport {
 
 type Spacing = Readonly<{
   0: string;
+  12: string;
   25: string;
   50: string;
   75: string;
@@ -374,6 +375,15 @@ interface Theme {
       fxColor: string;
     };
     invalid: string;
+  };
+  placeholder: {
+    filled: {
+      bg: string;
+    };
+    outlined: {
+      borderColor: string;
+      bg: string;
+    };
   };
   box: {
     filled: {
