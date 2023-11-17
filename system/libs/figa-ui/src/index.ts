@@ -25,6 +25,7 @@ export * from './lib/list';
 export * from './lib/chips';
 export * from './lib/blockquote';
 export * from './lib/image';
+export * from './lib/placeholder';
 export * from './lib/code';
 export * from './lib/icon';
 export * from './lib/file-picker';
