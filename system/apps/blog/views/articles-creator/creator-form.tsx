@@ -81,7 +81,7 @@ const TagsForm = () => {
       <Field label="Tags*">
         <Input
           invalid={form.touch.tag && form.invalid}
-          placeholder="React, Angular, RxJs, etc..."
+          placeholder="React, Angular, RxJs, ...etc"
           value={form.values.tag}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
@@ -91,7 +91,11 @@ const TagsForm = () => {
           onChange={(e) => setForm(tagForm.set(form)({ tag: e.target.value }))}
           suffx={
             <PlusButton>
-              <Button disabled={form.invalid} onClick={handleConfirm}>
+              <Button
+                title="Confirm article tag"
+                disabled={form.invalid}
+                onClick={handleConfirm}
+              >
                 <PlusIcon />
               </Button>
             </PlusButton>
@@ -170,7 +174,7 @@ const CreatorForm = () => {
             });
           }}
         >
-          <Font variant="h5">Pick the thumbnail from your disc</Font>
+          <Font variant="h5">Add thumbnail</Font>
         </FilePicker>
       </Field>
     </Box>

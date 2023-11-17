@@ -198,6 +198,7 @@ const ArticleTile = ({
             <Button
               variant="outlined"
               shape="rounded"
+              data-article-title={title}
               data-article-id={id}
               size={1}
               title="Read article"
@@ -255,6 +256,7 @@ const ArticleTile = ({
                 variant="outlined"
                 shape="rounded"
                 data-article-id={id}
+                data-article-title={title}
                 size={1}
                 title="Read article"
                 onClick={onGoToClick}

@@ -3,7 +3,7 @@ import {
   mockResponse,
   mockSignInResponse,
 } from '@system/blog-api-mocks';
-import type { UserRole } from '@system/blog-api-models';
+import type { FullArticleDto, UserRole } from '@system/blog-api-models';
 
 type ArticleStatusLabel = 'Published' | 'Review' | 'Refine' | 'Draft';
 type Endpoint =
@@ -13,7 +13,7 @@ type Endpoint =
   | 'postRegister';
 
 const commands = {
-  'Page is': (url: string) => {
+  'System sets page as': (url: string) => {
     cy.visit(url);
   },
   'System mocked endpoint': (endpoint: Endpoint) => {
@@ -67,19 +67,53 @@ const commands = {
   'I scroll to bottom of page': (duration = 1000) => {
     cy.scrollTo('bottom', { duration });
   },
+  'I scroll to top of page': (duration = 1000) => {
+    cy.scrollTo('top', { duration });
+  },
   'System recieved response from endpoint': (endpoint: Endpoint) => {
     cy.wait(`@${endpoint}`);
+  },
+  'I click checkbox': (title: string) => {
+    cy.get(`.checkbox .font.b2:contains(${title})`).click();
   },
   'I click button': (name: string) => {
     cy.get(`button.button:contains(${name})`).click();
   },
+  'I click tab': (name: string) => {
+    cy.get(`.tabs .font.b1:contains(${name})`).click();
+  },
+  'I click icon button': (name: string) => {
+    cy.get(`button.button[title="${name}"]`).click();
+  },
   'I navigate to admin articles page': () => {
+    commands['I scroll to top of page']();
     cy.get(`.nav .popover-trigger button.button`).click();
     commands['I click button']('Admin panel');
     commands['Im on page']('/en/admin');
   },
+  'I navigate to your articles page': () => {
+    commands['I scroll to top of page']();
+    cy.get(`.nav .popover-trigger button.button`).click();
+    commands['I click button']('Your articles');
+    commands['Im on page']('/en/your-articles');
+  },
+  'I navigate to sign in page': () => {
+    commands['I click button']('Sign In');
+  },
+  'I change article content': (content: string) => {
+    // @TODO How to set codemirror type event?
+  },
+  'I pick thumbnail': () => {
+    cy.get('input[type="file"]').attachFile('../assets/cringe.jpg');
+  },
+  'I click navbar link': (name: 'Creator') => {
+    cy.get(`.nav-bar a[title="${name}"]`).click();
+  },
   'I type in input': (placeholder: string, value: string) => {
     cy.get(`.input input[placeholder="${placeholder}"]`).type(value);
+  },
+  'I type in textarea': (placeholder: string, value: string) => {
+    cy.get(`.textarea textarea[placeholder="${placeholder}"]`).type(value);
   },
   'Im on page': (url: string) => {
     cy.url().should('include', url);
@@ -109,7 +143,7 @@ const commands = {
   },
   'I see text': (...values: string[]) => {
     values.forEach((text) => {
-      cy.get(`*:contains(${text})`).should('exist');
+      cy.contains(text, { matchCase: true }).should('exist');
     });
   },
   'I go back': () => {
@@ -117,12 +151,10 @@ const commands = {
   },
   'I not see text': (...values: string[]) => {
     values.forEach((text) => {
-      cy.get(`*:contains(${text})`).should('not.exist');
+      cy.contains(text, { matchCase: true }).should('not.exist');
     });
   },
-  'Im signed in': (role: UserRole) => {
-    cy.visit('/en/sign-in');
-
+  'I sign in as': (role: UserRole) => {
     if (role === 'Admin') {
       commands['I type in input']('Login*', Cypress.env('ADMIN_LOGIN'));
       commands['I type in input']('Password*', Cypress.env('ADMIN_PASSWORD'));
@@ -131,7 +163,6 @@ const commands = {
     commands['I click button']('Confirm');
     commands['I see loading button']('Confirm');
     commands['I see text']("You're signed in 💚", "We're redirecting you...");
-    commands['Im on page']('/en/your-articles');
   },
   'I select status in article status field': (
     name: string,
@@ -146,8 +177,9 @@ const commands = {
       0
     );
   },
-  'I click go to first found article': () => {
-    cy.get(`button.button[title="Read article"]`).first().click();
+  'I click founded article': (title: FullArticleDto['title']) => {
+    commands['I type in input']('🏸 Type to find article...', title);
+    cy.get(`[data-article-title="${title}"]`).click();
   },
   'Im on article review page': () => {
     cy.url()
@@ -163,6 +195,21 @@ const commands = {
   'I accept article': () => {
     cy.get(`[title="Actions"]`).click();
     commands['I click button']('Accept');
+    commands['I click button']('Confirm');
+    commands['I see loading button']('Accept', 'Reject', 'Cancel', 'Confirm');
+    commands['I see text']('Published');
+    commands['I not see text'](
+      'Actions to perform',
+      'Accept',
+      'Reject',
+      'Cancel',
+      'Confirm',
+      'Are you sure that you want to perform this action?'
+    );
+  },
+  'I reject article': () => {
+    cy.get(`[title="Actions"]`).click();
+    commands['I click button']('Reject');
     commands['I click button']('Confirm');
     commands['I see loading button']('Accept', 'Reject', 'Cancel', 'Confirm');
     commands['I not see text'](

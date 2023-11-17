@@ -13,7 +13,7 @@ const ExpirationInfo = () => {
       description="Sign in again to explore our application 🔃"
       footer={
         <Link href={`/${lang}/sign-in/`}>
-          <Button size={2}>Sign In</Button>
+          <Button size={2}>Sign In again</Button>
         </Link>
       }
     />

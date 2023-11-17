@@ -89,9 +89,7 @@ const MainLayout = ({
       }
       sidebar={sidebar}
       footer={
-        <div
-          ref={footerRef}
-        >
+        <div ref={footerRef}>
           <Footer
             logo={
               <CompanyLink
