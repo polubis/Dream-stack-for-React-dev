@@ -28,7 +28,6 @@ import { UserSection } from './user-section';
 import { useLang } from '../../dk/use-lang';
 import { RecommendedArticles } from './recommended-articles';
 import { useIntersectionObserver } from '@system/figa-hooks';
-import { get } from '@system/blog-selectors';
 import styled from 'styled-components';
 
 const LABELS = ['Articles', 'Creator'] as const;
@@ -68,7 +67,9 @@ const MainLayout = ({
 
   const links = LABELS.map((label, idx) => (
     <Nav.Link variant="h6" key={label}>
-      <Link href={'/' + lang + URLS[idx]}>{label}</Link>
+      <Link title={label} href={'/' + lang + URLS[idx]}>
+        {label}
+      </Link>
     </Nav.Link>
   ));
 
@@ -88,10 +89,7 @@ const MainLayout = ({
       }
       sidebar={sidebar}
       footer={
-        <div
-          ref={footerRef}
-          data-i={get('app-footer-recommended-articles-section')}
-        >
+        <div ref={footerRef}>
           <Footer
             logo={
               <CompanyLink
@@ -149,7 +147,9 @@ const MainLayout = ({
                     articles, courses and teaching materials. You can join our
                     community via{' '}
                     <FigaUILink variant="b1" motive="primary">
-                      <Link href="/community-form/">this form</Link>
+                      <Link title="Community form" href="/community-form/">
+                        this form
+                      </Link>
                     </FigaUILink>
                     .
                   </Font>

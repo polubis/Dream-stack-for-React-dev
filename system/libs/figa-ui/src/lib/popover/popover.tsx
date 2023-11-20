@@ -11,11 +11,15 @@ import type {
   PopoverContext,
   PopoverProps,
   PopoverTriggerProps,
+  SetContentPayload,
 } from './defs';
-import { useIsomorphicLayoutEffect, usePortal } from '@system/figa-hooks';
+import {
+  useIsomorphicLayoutEffect,
+  usePortal,
+  useSubject,
+} from '@system/figa-hooks';
 import { spacing } from '../shared';
 import { Box } from '../box';
-import type { SpacingKey } from '../theme-provider';
 
 const Context = createContext<PopoverContext | null>(null);
 
@@ -66,12 +70,12 @@ const Popover = ({
 // 4. Fix chromatic snapshot tests.
 // 5. Fix too big content scroll trim.
 
-const setContentOffset = (
-  trigger: HTMLElement,
-  content: HTMLElement,
-  offsetY: SpacingKey,
-  fullWidth: boolean
-): void => {
+const setContentOffset = ({
+  trigger,
+  content,
+  offsetY,
+  fullWidth,
+}: SetContentPayload): void => {
   const triggerRect = trigger.getBoundingClientRect();
   const contentRect = content.getBoundingClientRect();
 
@@ -151,6 +155,8 @@ const Content = ({
     usePopover();
   const { render } = usePortal();
 
+  const { emit } = useSubject({ cb: setContentOffset, delay: 10 });
+
   useIsomorphicLayoutEffect(() => {
     if (closed) return;
 
@@ -163,7 +169,7 @@ const Content = ({
       const resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
           entry.target === content &&
-            setContentOffset(trigger, content, offsetY, fullWidth);
+            emit({ trigger, content, offsetY, fullWidth });
         }
       });
 
@@ -172,7 +178,7 @@ const Content = ({
       return resizeObserver;
     };
     const listenWindowResize = () => {
-      setContentOffset(trigger, content, offsetY, fullWidth);
+      emit({ trigger, content, offsetY, fullWidth });
     };
 
     window.addEventListener('resize', listenWindowResize);

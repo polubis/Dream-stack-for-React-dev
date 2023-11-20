@@ -55,6 +55,7 @@ const Trigger = ({ children }: { children: ReactNode }) => {
   return (
     <Popover.Trigger>
       <Button
+        title="Articles tags"
         size={2}
         equal
         className="articles-tags-select-trigger"

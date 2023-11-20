@@ -10,7 +10,7 @@ const Bar = ({ children, ...props }: BarProps) => {
   return (
     <UIBar right {...props}>
       {children}
-      {state.is === 'regress' && state.value < 90 && (
+      {state.is !== 'idle' && state.value < 96 && (
         <Button shape="rounded" size={2} onClick={() => toTop()}>
           <ArrowTopIcon />
         </Button>

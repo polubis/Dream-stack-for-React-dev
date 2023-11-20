@@ -1,67 +1,21 @@
-import { mockErrorResponse, mockResponse } from '@system/blog-api-mocks';
-import { getter } from '@system/blog-selectors';
+import { Gherkin } from './gherkin';
+import { commands } from './commands';
 
 describe('Register works when: ', () => {
-  const get = getter(cy);
-
-  it('register button moves to register page', () => {
-    cy.visit('/');
-    cy.get('header nav a button:contains("Register")').first().click();
-    cy.url().should('include', '/register');
-    cy.get('.button:contains("Confirm")');
-  });
-
-  it('error occurs user can see error alert', () => {
-    cy.intercept(
-      'POST',
-      Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/Register',
-      {
-        statusCode: 404,
-        body: mockErrorResponse(),
-        delay: 1000,
-      }
-    ).as('register');
-
-    cy.visit('/en/register');
-
-    get('register-login-input').type('piotr1994');
-    get('register-email-input').type('piotr1994@wp.pl');
-    get('register-password-input').type('piotr1994');
-    get('register-repeated-password-input').type('piotr1994');
-
-    get('register-confirm-btn').should('not.be.disabled').click();
-    get('register-confirm-btn').should('be.disabled');
-
-    cy.wait(['@register']);
-
-    get('register-confirm-btn').should('not.be.disabled');
-    get('register-error-alert');
-  });
+  const { Given } = Gherkin(commands);
 
   it('user is able to create an account and success alert is displayed', () => {
-    cy.intercept(
-      'POST',
-      Cypress.env('NEXT_PUBLIC_API_URL') + 'Account/Register',
-      {
-        statusCode: 204,
-        body: mockResponse(null),
-        delay: 1000,
-      }
-    ).as('register');
-
-    cy.visit('/en/register');
-
-    get('register-login-input').type('piotr1994');
-    get('register-email-input').type('piotr1994@wp.pl');
-    get('register-password-input').type('piotr1994');
-    get('register-repeated-password-input').type('piotr1994');
-
-    get('register-confirm-btn').should('not.be.disabled').click();
-    get('register-confirm-btn').should('be.disabled');
-
-    cy.wait(['@register']);
-
-    get('register-confirm-btn').should('not.be.disabled');
-    get('register-ok-alert');
+    Given('System mocked endpoint', 'postRegister')
+      .And('System sets page as', '/')
+      .When('I click button', 'Register')
+      .Then('Im on page', '/en/register')
+      .When('I type in input', 'Login*', 'tomcio1994')
+      .And('I type in input', 'Email*', 'tomcio1994@wp.pl')
+      .And('I type in input', 'Password*', 'tomcio1994')
+      .And('I type in input', 'Repeat your password*', 'tomcio1994')
+      .And('I click button', 'Confirm')
+      .Then('I see loading button', 'Confirm')
+      .When('System recieved response from endpoint', 'postRegister')
+      .Then('I see text', 'You are logged in!');
   });
 });

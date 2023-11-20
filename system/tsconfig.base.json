@@ -18,7 +18,6 @@
       "@system/blog-api": ["libs/blog-api/src/index.ts"],
       "@system/blog-api-mocks": ["libs/blog-api-mocks/src/index.ts"],
       "@system/blog-api-models": ["libs/blog-api-models/src/index.ts"],
-      "@system/blog-selectors": ["libs/blog-selectors/src/index.ts"],
       "@system/figa-hooks": ["libs/figa-hooks/src/index.ts"],
       "@system/figa-ui": ["libs/figa-ui/src/index.ts"],
       "@system/utils": ["libs/utils/src/index.ts"]
