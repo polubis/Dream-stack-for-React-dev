@@ -9,7 +9,6 @@ import { ArticleDetails } from '../article-details';
 import { ArticleThumbnail } from '../article-thumbnail';
 import { ArticleTags } from '../article-tags';
 import { ArticleStatusBadge } from '../article-status-badge';
-import { Bar } from '../bar';
 import Link from 'next/link';
 import { Button, EditIcon, Font } from '@system/figa-ui';
 import type { ArticleScreenProps } from './defs';
@@ -23,6 +22,7 @@ import { useArticleParams } from '../../core/articles';
 import { InfoSection } from '../info-section';
 import { ArticleActionsPopover } from '../article-actions-popover';
 import { ArticleStatusPopover } from '../article-status-popover';
+import { RightBar } from '../main-layout/right-bar';
 
 const Content = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
   const {
@@ -64,7 +64,7 @@ const Toolbox = () => {
   useEffect(() => article_reviews_actions.reset(), []);
 
   return (
-    <Bar>
+    <RightBar>
       {isAuthor && (status === 'Draft' || status === 'NeedWork') && (
         <ArticleStatusPopover />
       )}
@@ -77,7 +77,7 @@ const Toolbox = () => {
           </Button>
         </Link>
       )}
-    </Bar>
+    </RightBar>
   );
 };
 

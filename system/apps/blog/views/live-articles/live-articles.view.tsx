@@ -17,7 +17,7 @@ import { ArticlesJumbo } from './articles-jumbo';
 import { useSearchParams } from 'next/navigation';
 import { useLiveArticlesRouter } from './use-live-articles-router';
 import { type ScrollState, useScroll } from '@system/figa-hooks';
-import { Bar } from '../../components/bar';
+import { LeftBar } from '../../components/main-layout/left-bar';
 
 const Container = styled.div`
   ${column()}
@@ -97,7 +97,7 @@ const LiveArticlesView = () => {
           <Content />
         </Container>
       </MainLayout>
-      <Bar />
+      <LeftBar />
     </>
   );
 };

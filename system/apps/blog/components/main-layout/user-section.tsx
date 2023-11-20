@@ -1,30 +1,9 @@
-import {
-  Box,
-  Button,
-  HalfMoonIcon,
-  SunIcon,
-  useThemeProvider,
-} from '@system/figa-ui';
+import { Box, Button } from '@system/figa-ui';
 import { Link } from '../link';
 import { useLang } from '../../dk';
 import { useAuthStore } from '../../store/auth';
 import { useSignInStore } from '../../store/sign-in';
 import { UserPopover } from './user-popover';
-
-const ThemeSwitcher = ({ disabled }: { disabled?: boolean }) => {
-  const theme = useThemeProvider();
-
-  return (
-    <Button
-      size={2}
-      shape="rounded"
-      disabled={disabled}
-      onClick={() => theme.setTheme(theme.key === 'dark' ? 'light' : 'dark')}
-    >
-      {theme.key === 'dark' ? <SunIcon /> : <HalfMoonIcon />}
-    </Button>
-  );
-};
 
 const SignInButton = () => {
   const lang = useLang();
@@ -60,8 +39,7 @@ const UserSection = () => {
 
   if (key === 'idle') {
     return (
-      <Box orientation="row" spacing={[150, 150]}>
-        <ThemeSwitcher disabled />
+      <Box orientation="row" spacing={[150]}>
         <Button size={2} disabled>
           Register
         </Button>
@@ -77,8 +55,7 @@ const UserSection = () => {
   }
 
   return (
-    <Box orientation="row" spacing={[150, 150]}>
-      <ThemeSwitcher />
+    <Box orientation="row" spacing={[150]}>
       {key === 'unauthorized' && <RegisterButton />}
       <SignInButton />
     </Box>

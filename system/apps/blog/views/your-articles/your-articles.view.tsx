@@ -12,7 +12,6 @@ import { useRouter } from 'next/router';
 import { useLang } from '../../dk';
 import { useScroll } from '@system/figa-hooks';
 import { ArticlesLayout } from '../../components/articles-layout';
-import { Bar } from '../../components/bar';
 import { ExpirationInfo } from '../../components/expiration-info-section';
 
 const Content = () => {
@@ -124,14 +123,11 @@ const YourArticlesView = () => {
 };
 
 const ProtectedYourArticlesView = () => (
-  <>
-    <MainLayout offPadding>
-      <SignedInOnly fallback={<ExpirationInfo />}>
-        <YourArticlesView />
-      </SignedInOnly>
-    </MainLayout>
-    <Bar />
-  </>
+  <MainLayout offPadding>
+    <SignedInOnly fallback={<ExpirationInfo />}>
+      <YourArticlesView />
+    </SignedInOnly>
+  </MainLayout>
 );
 
 export { ProtectedYourArticlesView as YourArticlesView };
