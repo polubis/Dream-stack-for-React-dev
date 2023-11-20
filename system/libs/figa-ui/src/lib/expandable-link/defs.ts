@@ -7,9 +7,11 @@ type DefaultComponentProps = {
 
 interface ExpandableLinkProps extends DefaultComponentProps {}
 
-interface ExpandableLinkItemProps extends DefaultComponentProps {}
+interface ExpandableLinkItemProps extends DefaultComponentProps {
+  path: string;
+}
 
-interface ExpandableLinkBaseProps extends DefaultComponentProps {
+interface ExpandableLinkNameProps extends DefaultComponentProps {
   isActive: boolean;
 }
 
@@ -21,6 +23,6 @@ interface ExpandableLinkListProps
 export type {
   ExpandableLinkProps,
   ExpandableLinkItemProps,
-  ExpandableLinkBaseProps,
+  ExpandableLinkNameProps,
   ExpandableLinkListProps,
 };

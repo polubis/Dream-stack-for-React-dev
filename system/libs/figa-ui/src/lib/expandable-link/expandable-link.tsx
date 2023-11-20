@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import type {
   ExpandableLinkProps,
   ExpandableLinkItemProps,
-  ExpandableLinkBaseProps,
+  ExpandableLinkNameProps,
   ExpandableLinkListProps,
 } from './defs';
 import c from 'classnames';
@@ -14,16 +14,31 @@ import { Link } from '../link';
 const Container = styled.section`
   ${column()}
   user-select: none;
+  position: relative;
+
+  .expandable-link-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    visibility: hidden;
+    white-space: nowrap;
+
+    &:hover {
+      visibility: visible;
+    }
+  }
 
   .expandable-link-name {
     cursor: pointer;
     width: fit-content;
     padding: ${tokens.spacing[400]} ${tokens.spacing[300]};
-    position: relative;
     background-color: ${(props) => props.theme.box.filled.bg};
 
     &:hover {
       color: ${(props) => props.theme.font.primary.color};
+      & + .expandable-link-list {
+        visibility: visible;
+      }
     }
 
     &--active {
@@ -43,17 +58,21 @@ const Container = styled.section`
     background-color: ${(props) => props.theme.box.filled.bg};
     padding: ${tokens.spacing[100]} ${tokens.spacing[200]};
 
-    &:hover span {
+    & a {
+      text-decoration: none;
+    }
+
+    &:hover a {
       color: ${(props) => props.theme.font.primary.color};
     }
   }
 `;
 
-const ExpandableLinkBase = ({
+const ExpandableLinkName = ({
   className,
   children,
   isActive,
-}: ExpandableLinkBaseProps) => {
+}: ExpandableLinkNameProps) => {
   return (
     <Link
       variant="h3"
@@ -71,10 +90,13 @@ const ExpandableLinkBase = ({
 const ExpandableLinkItem = ({
   children,
   className,
+  path,
 }: ExpandableLinkItemProps) => {
   return (
     <ListItem className={c('expandable-link-list-item', className)}>
-      <Link variant="h3">{children}</Link>
+      <Link variant="h3">
+        <a href={path}>{children}</a>
+      </Link>
     </ListItem>
   );
 };
@@ -90,7 +112,7 @@ const ExpandableLink = ({ className, children }: ExpandableLinkProps) => {
   return <Container className={className}>{children}</Container>;
 };
 
-ExpandableLink.Base = ExpandableLinkBase;
+ExpandableLink.Name = ExpandableLinkName;
 ExpandableLink.List = ExpandableLinkList;
 ExpandableLink.Item = ExpandableLinkItem;
 
