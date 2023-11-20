@@ -3,6 +3,7 @@ import {
   Button,
   Divider,
   Font,
+  M_DOWN,
   SM_DOWN,
   T_DOWN,
   center,
@@ -45,6 +46,11 @@ const Container = styled.div`
 
     & > *:first-child {
       margin-right: ${tokens.spacing[150]};
+      width: 300px;
+
+      @media ${M_DOWN} {
+        width: 240px;
+      }
     }
   }
 

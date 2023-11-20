@@ -61,10 +61,15 @@ const Content = () => {
         </Box>
       </UserInfoContainer>
 
-      <Box spacing={[100, 100]}>
+      <Box spacing={[100, 100, 100]}>
         <Font variant="b3">Navigation</Font>
         <FigaUILink variant="b1">
-          <Link title="Profile" href={`/${lang}/your-articles`}>
+          <Link title="Profile" href={`/${lang}/account`}>
+            Account
+          </Link>
+        </FigaUILink>
+        <FigaUILink variant="b1">
+          <Link title="Profile" href={`/${lang}/profile`}>
             Profile
           </Link>
         </FigaUILink>
