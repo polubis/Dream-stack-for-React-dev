@@ -11,7 +11,7 @@ import { tokens } from '../theme-provider';
 import { ListItem } from '../list';
 import { Link } from '../link';
 
-const Container = styled.section`
+const Container = styled.nav`
   ${column()}
   user-select: none;
   position: relative;
@@ -20,11 +20,12 @@ const Container = styled.section`
     position: absolute;
     top: 100%;
     left: 0;
-    visibility: hidden;
+    display: none;
     white-space: nowrap;
 
+    &:focus-within,
     &:hover {
-      visibility: visible;
+      display: block;
     }
   }
 
@@ -34,10 +35,11 @@ const Container = styled.section`
     padding: ${tokens.spacing[400]} ${tokens.spacing[300]};
     background-color: ${(props) => props.theme.box.filled.bg};
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: ${(props) => props.theme.font.primary.color};
       & + .expandable-link-list {
-        visibility: visible;
+        display: block;
       }
     }
 
@@ -81,6 +83,7 @@ const ExpandableLinkName = ({
         isActive ? 'expandable-link-name--active' : null,
         className
       )}
+      tabIndex={0}
     >
       {children}
     </Link>
