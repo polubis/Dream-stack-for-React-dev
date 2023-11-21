@@ -6,7 +6,7 @@ describe('Exapndable link can be used when:', () => {
   const Fixture = () => {
     return (
       <ThemeProvider>
-        <ExpandableLink className="my-class-container">
+        <ExpandableLink isActive className="my-class-container">
           <ExpandableLink.Name className="my-class-name">
             Inputs
           </ExpandableLink.Name>

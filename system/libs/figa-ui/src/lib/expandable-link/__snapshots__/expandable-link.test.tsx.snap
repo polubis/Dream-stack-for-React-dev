@@ -3,43 +3,41 @@
 exports[`Exapndable link can be used when: [FRAGILE] assigns class names for particular nodes 1`] = `
 <DocumentFragment>
   <nav
-    class="sc-bcXHqe dLrCwQ my-class-container"
+    class="sc-bcXHqe fYMbQz my-class-container"
+    tabindex="0"
   >
     <span
-      class="font h3 default link expandable-link-name expandable-link-name--active my-class-name"
-      tabindex="0"
+      class="font h3 default link expandable-link-name my-class-name"
     >
       Inputs
     </span>
     <ul
       class="expandable-link-list my-class-list"
     >
-      <li
+      <a
         class="expandable-link-list-item my-class-item"
+        href="/?path=/story/input--empty-input"
       >
-        <span
-          class="font h3 default link"
-        >
-          <a
-            href="/?path=/story/input--empty-input"
+        <li>
+          <span
+            class="font h3 default link"
           >
             Empty Input
-          </a>
-        </span>
-      </li>
-      <li
+          </span>
+        </li>
+      </a>
+      <a
         class="expandable-link-list-item"
+        href="/?path=/story/input--filled-input"
       >
-        <span
-          class="font h3 default link"
-        >
-          <a
-            href="/?path=/story/input--filled-input"
+        <li>
+          <span
+            class="font h3 default link"
           >
             Filled Input
-          </a>
-        </span>
-      </li>
+          </span>
+        </li>
+      </a>
     </ul>
   </nav>
 </DocumentFragment>

@@ -5,15 +5,15 @@ type DefaultComponentProps = {
   className?: string;
 };
 
-interface ExpandableLinkProps extends DefaultComponentProps {}
+interface ExpandableLinkProps extends DefaultComponentProps {
+  active: boolean;
+}
 
 interface ExpandableLinkItemProps extends DefaultComponentProps {
   path: string;
 }
 
-interface ExpandableLinkNameProps extends DefaultComponentProps {
-  isActive: boolean;
-}
+interface ExpandableLinkNameProps extends DefaultComponentProps {}
 
 interface ExpandableLinkListProps
   extends Omit<DefaultComponentProps, 'children'> {

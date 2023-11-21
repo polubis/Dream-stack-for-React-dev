@@ -16,6 +16,29 @@ const Container = styled.nav`
   user-select: none;
   position: relative;
 
+  &:hover,
+  &:focus {
+    color: ${(props) => props.theme.font.primary.color};
+    & .expandable-link-list {
+      display: block;
+    }
+  }
+
+  &.active {
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      ${size(tokens.spacing[50], '100%')};
+      background-color: ${(props) => props.theme.outline.color};
+    }
+
+    & .expandable-link-name {
+      color: ${(props) => props.theme.font.primary.color};
+    }
+  }
+
   .expandable-link-list {
     position: absolute;
     top: 100%;
@@ -34,37 +57,19 @@ const Container = styled.nav`
     width: fit-content;
     padding: ${tokens.spacing[400]} ${tokens.spacing[300]};
     background-color: ${(props) => props.theme.box.filled.bg};
-
-    &:hover,
-    &:focus {
-      color: ${(props) => props.theme.font.primary.color};
-      & + .expandable-link-list {
-        display: block;
-      }
-    }
-
-    &--active {
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        ${size(tokens.spacing[50], '100%')};
-        background-color: ${(props) => props.theme.outline.color};
-      }
-    }
   }
 
   .expandable-link-list-item {
     cursor: pointer;
     background-color: ${(props) => props.theme.box.filled.bg};
     padding: ${tokens.spacing[100]} ${tokens.spacing[200]};
+    display: block;
 
-    & a {
+    & {
       text-decoration: none;
     }
 
-    &:hover a {
+    &:hover span {
       color: ${(props) => props.theme.font.primary.color};
     }
   }
@@ -73,18 +78,9 @@ const Container = styled.nav`
 const ExpandableLinkName = ({
   className,
   children,
-  isActive,
 }: ExpandableLinkNameProps) => {
   return (
-    <Link
-      variant="h3"
-      className={c(
-        'expandable-link-name',
-        isActive ? 'expandable-link-name--active' : null,
-        className
-      )}
-      tabIndex={0}
-    >
+    <Link variant="h3" className={c('expandable-link-name', className)}>
       {children}
     </Link>
   );
@@ -96,11 +92,11 @@ const ExpandableLinkItem = ({
   path,
 }: ExpandableLinkItemProps) => {
   return (
-    <ListItem className={c('expandable-link-list-item', className)}>
-      <Link variant="h3">
-        <a href={path}>{children}</a>
-      </Link>
-    </ListItem>
+    <a className={c('expandable-link-list-item', className)} href={path}>
+      <ListItem>
+        <Link variant="h3">{children}</Link>
+      </ListItem>
+    </a>
   );
 };
 
@@ -111,8 +107,16 @@ const ExpandableLinkList = ({
   return <ul className={c('expandable-link-list', className)}>{children}</ul>;
 };
 
-const ExpandableLink = ({ className, children }: ExpandableLinkProps) => {
-  return <Container className={className}>{children}</Container>;
+const ExpandableLink = ({
+  className,
+  children,
+  active,
+}: ExpandableLinkProps) => {
+  return (
+    <Container className={c(className, { active })} tabIndex={0}>
+      {children}
+    </Container>
+  );
 };
 
 ExpandableLink.Name = ExpandableLinkName;
