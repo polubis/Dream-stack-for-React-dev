@@ -22,14 +22,10 @@ export const useIntersectionObserver = <T extends HTMLElement>(
     const isSupported = 'IntersectionObserver' in window;
 
     if (!isSupported) {
-      console.error(
-        'IntersectionObserver is not supported. Try to use polyfill.'
-      );
       return;
     }
 
     if (!currentRef) {
-      console.error('Cannot find element');
       return;
     }
 
