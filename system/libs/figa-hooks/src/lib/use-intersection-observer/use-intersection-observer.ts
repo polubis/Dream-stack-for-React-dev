@@ -5,26 +5,17 @@ import type {
 
 import { useEffect, useRef, useState } from 'react';
 
-/**
- * Hook responsible for detecting the moment
- * when the user is near a particular HTML element.
- *
- * @param {IntersectionObserverConfig} - Configuration object.
- * @returns {IntersectionObserverReturn} - API that any component will use.
- */
 export const useIntersectionObserver = <T extends HTMLElement>(
   config: IntersectionObserverConfig = {}
 ): IntersectionObserverReturn<T> => {
-  const { threshold, root, rootMargin } = config;
+  const { threshold, root, rootMargin, once } = config;
 
-  // Stores a reference to the HTML element that will be observed.
   const ref = useRef<T>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Here we're checking support and blocking execution
-    // on server-side.
     const isClient = typeof window !== 'undefined';
+    const currentRef = ref.current;
 
     if (!isClient) return;
 
@@ -37,30 +28,32 @@ export const useIntersectionObserver = <T extends HTMLElement>(
       return;
     }
 
-    // When the treshold value changes we'll start a new subscription.
-    const listen: IntersectionObserverCallback = ([entry]) => {
-      setVisible(entry.isIntersecting);
-    };
+    if (!currentRef) {
+      console.error('Cannot find element');
+      return;
+    }
 
-    // Variable to avoid multiple use of ref.current.
-    const currentRef = ref.current;
-    // Natively available API that supports detection.
-    // It will call the listen function if it's near the element.
-    const observer = new IntersectionObserver(listen, {
-      threshold,
-      root,
-      rootMargin,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
 
-    // We're starting observations.
+          once && observer.unobserve(currentRef);
+        }
+      },
+      {
+        threshold,
+        root,
+        rootMargin,
+      }
+    );
+
     currentRef && observer.observe(currentRef);
 
     return () => {
-      // We detach our listener.
       currentRef && observer.unobserve(currentRef);
     };
-    // If any of the values change we'll start a new subscription.
-  }, [threshold, root, rootMargin]);
+  }, [threshold, root, rootMargin, once]);
 
   return { ref, visible };
 };

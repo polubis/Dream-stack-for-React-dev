@@ -1,22 +1,35 @@
-import type { ArticleDto, ResponseError } from '@system/blog-api-models';
+/* eslint-disable @typescript-eslint/no-namespace */
+import type {
+  ArticleDto,
+  GetArticlesParams,
+  Lang,
+  ResponseError,
+} from '@system/blog-api-models';
 
-interface RecommendedArticlesActions {
-  load: () => Promise<void>;
+namespace RecommendedArticlesStore {
+  export interface Idle {
+    is: 'idle';
+  }
+
+  export interface Busy {
+    is: 'busy';
+  }
+
+  export interface Ok {
+    is: 'ok';
+    articles: ArticleDto[];
+  }
+
+  export interface Fail {
+    is: 'fail';
+    error: ResponseError;
+  }
+
+  export type State = Idle | Busy | Ok | Fail;
+
+  export interface Actions {
+    load(limit: GetArticlesParams['ItemsPerPage'], lang: Lang): Promise<void>;
+  }
 }
 
-interface RecommendedArticlesState {
-  key: 'idle' | 'pending' | 'ok' | 'error';
-  articles: ArticleDto[];
-  error: ResponseError | null;
-}
-
-type RecommendedArticlesStore = RecommendedArticlesState &
-  RecommendedArticlesActions;
-
-type RecommendedArticlesStateKey = RecommendedArticlesState['key'];
-
-export type {
-  RecommendedArticlesStore,
-  RecommendedArticlesState,
-  RecommendedArticlesStateKey,
-};
+export type { RecommendedArticlesStore };
