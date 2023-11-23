@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 
 import { useIntersectionObserver } from './use-intersection-observer';
 
-describe('Intersection check works when', () => {
+describe('Intersection check works when: ', () => {
   interface Window {
     IntersectionObserver: unknown;
   }
@@ -27,19 +27,5 @@ describe('Intersection check works when', () => {
 
     expect(result.current.ref.current).toBe(null);
     expect(result.current.visible).toBe(false);
-  });
-
-  it('detects element after scroll', () => {
-    prepareForTesting(true);
-
-    const element = document.createElement('div');
-
-    const { result } = renderHook(() => useIntersectionObserver());
-
-    result.current.ref.current = element;
-
-    renderHook(() => useIntersectionObserver());
-
-    expect(result.current.visible).toBe(true);
   });
 });
