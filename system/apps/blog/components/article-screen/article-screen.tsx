@@ -23,6 +23,7 @@ import { InfoSection } from '../info-section';
 import { ArticleActionsPopover } from '../article-actions-popover';
 import { ArticleStatusPopover } from '../article-status-popover';
 import { RightBar } from '../main-layout/right-bar';
+import { DeleteArticlePopover } from '../delete-article-popover';
 
 const Content = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
   const {
@@ -77,6 +78,7 @@ const Toolbox = () => {
           </Button>
         </Link>
       )}
+      {(isAdmin || isAuthor) && <DeleteArticlePopover />}
     </RightBar>
   );
 };
