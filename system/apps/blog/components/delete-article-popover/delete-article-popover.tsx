@@ -10,11 +10,12 @@ import {
 } from '@system/figa-ui';
 import { article_selectors } from '../../store/article';
 import { useToggle } from '@system/figa-hooks';
-import { type FormEventHandler, useState } from 'react';
+import { type FormEventHandler, useState, useEffect } from 'react';
+import { delete_article_store_actions } from '../../store/delete-article';
 
 const Content = () => {
   const { close } = Popover.use();
-  const { title } = article_selectors.useArticle();
+  const { title, id } = article_selectors.useArticle();
   const confirm = useToggle();
   const [currentTitle, setCurrentTitle] = useState('');
 
@@ -25,7 +26,15 @@ const Content = () => {
       confirm.open();
       return;
     }
+
+    delete_article_store_actions.delete(id);
   };
+
+  useEffect(() => {
+    return () => {
+      delete_article_store_actions.reset();
+    };
+  }, []);
 
   return (
     <Popover.Content

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-namespace */
-import type { ResponseError } from '@system/blog-api-models';
+import type { Id, ResponseError } from '@system/blog-api-models';
 
 namespace DeleteArticleStore {
   export type Idle = { is: 'idle' };
@@ -13,12 +13,15 @@ namespace DeleteArticleStore {
   export type State = Idle | Busy | Ok | Fail;
 
   export interface Actions {
-    
+    reset(): void;
+    delete(id: Id): Promise<void>;
   }
 
   export interface Selectors {
     state(): State;
     useState(): State;
+    safeState(): Ok;
+    useSafeState(): Ok;
   }
 }
 
