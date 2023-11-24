@@ -23,6 +23,7 @@ export namespace ArticlesStore {
   export interface Actions {
     init(): Subscription;
     load(params: Params): void;
+    reset(): void;
   }
 
   export interface Selectors {

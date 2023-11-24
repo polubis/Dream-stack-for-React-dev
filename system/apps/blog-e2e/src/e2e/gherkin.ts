@@ -12,7 +12,7 @@ function Gherkin<C extends Commands, D extends Data>(commands: C) {
     return data;
   }
 
-  function Background(newData: Data) {
+  function Background(newData: D) {
     data = { ...data, ...newData };
 
     return {
@@ -58,7 +58,7 @@ function Gherkin<C extends Commands, D extends Data>(commands: C) {
     };
   }
 
-  return { Given, GetData, Background, GetBackground };
+  return { Given, When, GetData, Background, GetBackground };
 }
 
 export { Gherkin };

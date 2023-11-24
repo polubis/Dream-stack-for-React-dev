@@ -15,13 +15,15 @@ import { isEqual } from 'lodash';
 import { getError } from '@system/blog-api';
 
 const createArticlesStore = (config: ArticlesStore.CreatorConfig) => {
-  const useStore = create<ArticlesStore.State>(() => ({
+  const initialState: ArticlesStore.State = {
     loading: false,
     error: null,
     articles: null,
     params: null,
     allLoaded: false,
-  }));
+  };
+
+  const useStore = create(() => initialState);
 
   const selectors: ArticlesStore.Selectors = {
     state: () => useStore.getState(),
@@ -34,6 +36,9 @@ const createArticlesStore = (config: ArticlesStore.CreatorConfig) => {
   const actions: ArticlesStore.Actions = {
     load: (params) => {
       changed.next(params);
+    },
+    reset: () => {
+      useStore.setState(initialState);
     },
     init: () => {
       return changed$
