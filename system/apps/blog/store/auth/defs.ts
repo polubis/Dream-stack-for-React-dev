@@ -23,6 +23,7 @@ interface AuthSelectors {
   useIsAuthor(username: Username): boolean;
   useIsAdmin(): boolean;
   useIsAuthorized(): boolean;
+  useState(): AuthState;
 }
 
 export type {
