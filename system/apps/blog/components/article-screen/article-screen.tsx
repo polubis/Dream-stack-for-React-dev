@@ -78,7 +78,7 @@ const Toolbox = () => {
           </Button>
         </Link>
       )}
-      {(isAdmin || isAuthor) && <DeleteArticlePopover />}
+      <DeleteArticlePopover />
     </RightBar>
   );
 };

@@ -11,15 +11,25 @@ import {
 import { article_selectors } from '../../store/article';
 import { useToggle } from '@system/figa-hooks';
 import { type FormEventHandler, useState, useEffect } from 'react';
-import { delete_article_store_actions } from '../../store/delete-article';
+import {
+  delete_article_store_actions,
+  delete_article_store_selectors,
+} from '../../store/delete-article';
+import { useRouter } from 'next/router';
+import { useLang } from '../../dk';
+import { auth_selectors } from '../../store/auth';
 
 const Content = () => {
   const { close } = Popover.use();
   const { title, id } = article_selectors.useArticle();
   const confirm = useToggle();
   const [currentTitle, setCurrentTitle] = useState('');
+  const { is } = delete_article_store_selectors.useState();
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+  const router = useRouter();
+  const lang = useLang();
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
 
     if (confirm.closed) {
@@ -27,14 +37,15 @@ const Content = () => {
       return;
     }
 
-    delete_article_store_actions.delete(id);
+    try {
+      await delete_article_store_actions.delete(id);
+      router.push(`/${lang}/your-articles`);
+    } catch {
+      confirm.close();
+    }
   };
 
-  useEffect(() => {
-    return () => {
-      delete_article_store_actions.reset();
-    };
-  }, []);
+  const busy = is === 'busy';
 
   return (
     <Popover.Content
@@ -51,6 +62,7 @@ const Content = () => {
           shape="rounded"
           variant="outlined"
           motive="tertiary"
+          disabled={busy}
           onClick={close}
         >
           <CloseIcon />
@@ -72,14 +84,24 @@ const Content = () => {
       </Font>
       <form onSubmit={handleSubmit}>
         <Box spacing={[300]}>
-          <Field label="Article title*">
+          <Field
+            label="Article title*"
+            error={
+              is === 'fail' ? 'Something went wrong, try again.' : undefined
+            }
+          >
             <Input
               placeholder="Type article title to confirm..."
               onChange={(e) => setCurrentTitle(e.target.value)}
             />
           </Field>
           <Box orientation="row" spacing={[150]}>
-            <Button type="submit" size={2} disabled={currentTitle !== title}>
+            <Button
+              loading={busy || is === 'ok'}
+              type="submit"
+              size={2}
+              disabled={currentTitle !== title}
+            >
               {confirm.opened ? 'Sure?' : 'Delete'}
             </Button>
             <Button
@@ -87,6 +109,7 @@ const Content = () => {
               variant="outlined"
               motive="tertiary"
               size={2}
+              disabled={busy}
               onClick={close}
             >
               Cancel
@@ -103,7 +126,7 @@ const Trigger = () => {
 
   return (
     <Popover.Trigger>
-      <Button shape="rounded" size={2} onClick={toggle}>
+      <Button title="Delete article" shape="rounded" size={2} onClick={toggle}>
         <TrashIcon />
       </Button>
     </Popover.Trigger>
@@ -111,12 +134,26 @@ const Trigger = () => {
 };
 
 const DeleteArticlePopover = () => {
+  useEffect(() => {
+    return () => {
+      delete_article_store_actions.reset();
+    };
+  }, []);
+
   return (
-    <Popover closeMode="backdrop">
+    <Popover>
       <Trigger />
       <Content />
     </Popover>
   );
 };
 
-export { DeleteArticlePopover };
+const ProtectedDeleteArticlePopover = () => {
+  const { authorName } = article_selectors.useArticle();
+  const isAuthor = auth_selectors.useIsAuthor(authorName);
+  const isAdmin = auth_selectors.useIsAdmin();
+
+  return isAdmin || isAuthor ? <DeleteArticlePopover /> : null;
+};
+
+export { ProtectedDeleteArticlePopover as DeleteArticlePopover };

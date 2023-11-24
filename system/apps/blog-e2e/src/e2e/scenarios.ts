@@ -9,11 +9,10 @@ const scenarios = {
       Pick<FullArticleDto, 'title' | 'description' | 'content'>
     >(commands);
 
-    const content = '### My dummy content';
-
     Background({
       title: 'Dummy article to create for e2e tests' + new Date().toISOString(),
       description: 'My dummy article description',
+      content: '### My dummy content',
     })
       .Given('System sets page as', '/')
       .When('I click navbar link', 'Creator')
@@ -38,7 +37,7 @@ const scenarios = {
       )
       .And('I pick thumbnail')
       .And('I click tab', 'Content')
-      .And('I change article content', content)
+      .And('I change article content', GetData('content'))
       .And('I click button', 'Submit')
       .Then('I see text', 'Do you want to submit an article for review?')
       .When('I click checkbox', 'Send to review')
@@ -59,11 +58,10 @@ const scenarios = {
       Pick<FullArticleDto, 'title' | 'description' | 'content'>
     >(commands);
 
-    const content = '### My dummy content';
-
     Background({
       title: 'Dummy article to create for e2e tests' + new Date().toISOString(),
       description: 'My dummy article description',
+      content: '### My dummy content',
     })
       .Given('System sets page as', '/')
       .When('I click navbar link', 'Creator')
@@ -88,7 +86,7 @@ const scenarios = {
       )
       .And('I pick thumbnail')
       .And('I click tab', 'Content')
-      .And('I change article content', content)
+      .And('I change article content', GetData('content'))
       .And('I click button', 'Submit')
       .Then('I see text', 'Do you want to submit an article for review?')
       .When('I click button', 'Submit')
@@ -101,6 +99,20 @@ const scenarios = {
       .Then('I see text', 'Article has been created ❤!');
 
     return GetBackground();
+  },
+  'I delete article': (title: FullArticleDto['title']) => {
+    const { When } = Gherkin(commands);
+
+    When('I click founded article', title)
+      .Then('Im on article review page')
+      .When('I click icon button', 'Delete article')
+      .Then('I see text', 'Are you sure you want to delete the article?')
+      .When('I type in input', 'Type article title to confirm...', title)
+      .And('I click button', 'Delete')
+      .And('I click button', 'Sure?')
+      .Then('I see disabled button', 'Cancel')
+      .And('I see loading button', 'Sure?')
+      .And('Im on page', '/en/your-articles');
   },
 };
 
