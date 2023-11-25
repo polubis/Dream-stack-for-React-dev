@@ -51,14 +51,6 @@ const Content = () => {
           description={article.description}
           thumbnail={article.thumbnailUrl}
           author={article.authorName}
-          stack={[
-            'React',
-            'Angular',
-            'NX',
-            'TypeScript',
-            'JavaScript',
-            'NodeJS',
-          ]}
           tags={article.tags}
           width={ArticlesGrid.tile_width}
           url={`/${lang}/articles/${article.url}`}

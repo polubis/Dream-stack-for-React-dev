@@ -8,7 +8,6 @@ interface ArticleTileProps {
   thumbnail: string;
   description: string;
   author: string;
-  stack: string[];
   width: number;
   status: ArticleStatus;
   tags: string[];
