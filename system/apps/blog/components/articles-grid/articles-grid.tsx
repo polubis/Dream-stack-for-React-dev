@@ -30,28 +30,12 @@ const Container = styled.div`
   }
 `;
 
-const stack = ['React', 'Angular', 'NX', 'TypeScript', 'JavaScript', 'NodeJS'];
-
-const ArticlesGrid = ({ articles, url }: ArticlesGridProps) => {
-  return (
-    <Container className="articles-grid">
-      {articles.map((article) => (
-        <ArticleTile
-          key={article.id}
-          id={article.id}
-          status={article.status}
-          title={article.title}
-          description={article.description}
-          thumbnail={article.thumbnailUrl}
-          author={article.authorName}
-          stack={stack}
-          tags={article.tags}
-          width={tile_width}
-          url={url(article)}
-        />
-      ))}
-    </Container>
-  );
+const ArticlesGrid = ({ children }: ArticlesGridProps) => {
+  return <Container className="articles-grid">{children}</Container>;
 };
+
+ArticlesGrid.Tile = ArticleTile;
+ArticlesGrid.tile_width = tile_width;
+ArticlesGrid.tile_height = tile_height;
 
 export { ArticlesGrid };

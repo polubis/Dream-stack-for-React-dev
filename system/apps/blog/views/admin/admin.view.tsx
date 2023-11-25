@@ -8,18 +8,9 @@ import { ArticlesTagsSelect } from '../../components/articles-tags-select';
 import { useAdminArticles } from './use-admin-articles';
 import { useScroll } from '@system/figa-hooks';
 import { InfoSection } from '../../components/info-section';
-import {
-  ArticlesGrid,
-  type ArticlesGridProps,
-} from '../../components/articles-grid';
+import { ArticlesGrid } from '../../components/articles-grid';
 import { useLang } from '../../dk';
 import { ExpirationInfo } from '../../components/expiration-info-section';
-import type { Lang } from '@system/blog-api-models';
-
-const createUrl =
-  (lang: Lang): ArticlesGridProps['url'] =>
-  ({ url, id }) =>
-    `/${lang}/admin/article-review?url=${url}&id=${id}`;
 
 const Content = () => {
   const lang = useLang();
@@ -49,7 +40,29 @@ const Content = () => {
   if (Array.isArray(articles) && articles.length > 0) {
     return (
       <ArticlesLayout.Content>
-        <ArticlesGrid articles={articles} url={createUrl(lang)} />
+        <ArticlesGrid>
+          {articles.map((article) => (
+            <ArticlesGrid.Tile
+              key={article.id}
+              status={article.status}
+              title={article.title}
+              description={article.description}
+              thumbnail={article.thumbnailUrl}
+              author={article.authorName}
+              stack={[
+                'React',
+                'Angular',
+                'NX',
+                'TypeScript',
+                'JavaScript',
+                'NodeJS',
+              ]}
+              tags={article.tags}
+              width={ArticlesGrid.tile_width}
+              url={`/${lang}/admin/article-review?url=${article.url}&id=${article.id}`}
+            />
+          ))}
+        </ArticlesGrid>
       </ArticlesLayout.Content>
     );
   }

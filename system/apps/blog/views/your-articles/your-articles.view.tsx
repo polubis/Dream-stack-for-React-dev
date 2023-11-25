@@ -5,21 +5,12 @@ import { Box, Button, CloseIcon, Field, Loader } from '@system/figa-ui';
 import { ArticlesSearchInput } from '../../components/articles-search-input';
 import { ArticlesStatusSelect } from '../../components/articles-status-select';
 import { ArticlesTagsSelect } from '../../components/articles-tags-select';
-import {
-  ArticlesGrid,
-  type ArticlesGridProps,
-} from '../../components/articles-grid';
+import { ArticlesGrid } from '../../components/articles-grid';
 import { InfoSection } from '../../components/info-section';
 import { useLang } from '../../dk';
 import { useScroll } from '@system/figa-hooks';
 import { ArticlesLayout } from '../../components/articles-layout';
 import { ExpirationInfo } from '../../components/expiration-info-section';
-import type { Lang } from '@system/blog-api-models';
-
-const createUrl =
-  (lang: Lang): ArticlesGridProps['url'] =>
-  ({ url, id }) =>
-    `/${lang}/articles/preview?id=${id}&url=${url}`;
 
 const Content = () => {
   const lang = useLang();
@@ -48,9 +39,29 @@ const Content = () => {
 
   if (Array.isArray(articles) && articles.length > 0) {
     return (
-      <ArticlesLayout.Content>
-        <ArticlesGrid articles={articles} url={createUrl(lang)} />
-      </ArticlesLayout.Content>
+      <ArticlesGrid>
+        {articles.map((article) => (
+          <ArticlesGrid.Tile
+            key={article.id}
+            status={article.status}
+            title={article.title}
+            description={article.description}
+            thumbnail={article.thumbnailUrl}
+            author={article.authorName}
+            stack={[
+              'React',
+              'Angular',
+              'NX',
+              'TypeScript',
+              'JavaScript',
+              'NodeJS',
+            ]}
+            tags={article.tags}
+            width={ArticlesGrid.tile_width}
+            url={`/${lang}/articles/preview?id=${article.id}&url=${article.url}`}
+          />
+        ))}
+      </ArticlesGrid>
     );
   }
 

@@ -6,10 +6,7 @@ import {
   live_articles_selectors,
   useLiveArticlesStore,
 } from '../../store/live-articles';
-import {
-  ArticlesGrid,
-  ArticlesGridProps,
-} from '../../components/articles-grid';
+import { ArticlesGrid } from '../../components/articles-grid';
 import { InfoSection } from '../../components/info-section';
 import { Button, column, tokens } from '@system/figa-ui';
 import { useLang } from '../../dk';
@@ -20,12 +17,6 @@ import { useSearchParams } from 'next/navigation';
 import { useLiveArticlesRouter } from './use-live-articles-router';
 import { type ScrollState, useScroll } from '@system/figa-hooks';
 import { LeftBar } from '../../components/main-layout/left-bar';
-import type { Lang } from '@system/blog-api-models';
-
-const createUrl =
-  (lang: Lang): ArticlesGridProps['url'] =>
-  ({ url }) =>
-    `/${lang}/articles/${url}`;
 
 const Container = styled.div`
   ${column()}
@@ -51,10 +42,29 @@ const Content = () => {
   }
 
   return response.data.length > 0 ? (
-    <ArticlesGrid
-      articles={response.data}
-      url={createUrl(lang)}
-    />
+    <ArticlesGrid>
+      {response.data.map((article) => (
+        <ArticlesGrid.Tile
+          key={article.id}
+          status={article.status}
+          title={article.title}
+          description={article.description}
+          thumbnail={article.thumbnailUrl}
+          author={article.authorName}
+          stack={[
+            'React',
+            'Angular',
+            'NX',
+            'TypeScript',
+            'JavaScript',
+            'NodeJS',
+          ]}
+          tags={article.tags}
+          width={ArticlesGrid.tile_width}
+          url={`/${lang}/articles/${article.url}`}
+        />
+      ))}
+    </ArticlesGrid>
   ) : (
     <InfoSection
       title="No data for provided filters 💨"

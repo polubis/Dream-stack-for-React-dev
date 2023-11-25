@@ -1,10 +1,9 @@
-import type { ArticleDto, ArticleStatus } from '@system/blog-api-models';
-import type { MouseEvent as ReactMouseEvent } from 'react';
+import type { ArticleStatus } from '@system/blog-api-models';
+import type { MouseEvent as ReactMouseEvent, ReactNode } from 'react';
 
 type OnGoToClickEvent = ReactMouseEvent<HTMLButtonElement, MouseEvent>;
 
 interface ArticleTileProps {
-  id: string;
   title: string;
   thumbnail: string;
   description: string;
@@ -17,8 +16,7 @@ interface ArticleTileProps {
 }
 
 interface ArticlesGridProps {
-  url(article: ArticleDto): string;
-  articles: ArticleDto[];
+  children: ReactNode[];
 }
 
 export type { ArticlesGridProps, ArticleTileProps, OnGoToClickEvent };

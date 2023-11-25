@@ -138,7 +138,6 @@ const Container = styled.div`
 `;
 
 const ArticleTile = ({
-  id,
   title,
   thumbnail,
   description,
