@@ -179,7 +179,7 @@ const commands = {
   },
   'I click founded article': (title: FullArticleDto['title']) => {
     commands['I type in input']('🏸 Type to find article...', title);
-    cy.get(`[data-article-title="${title}"]`).dblclick();
+    cy.get(`[data-article-title="${title}"]`).click();
   },
   'Im on article review page': () => {
     cy.url()

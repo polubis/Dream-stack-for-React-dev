@@ -30,38 +30,12 @@ const Container = styled.div`
   }
 `;
 
-const stack = ['React', 'Angular', 'NX', 'TypeScript', 'JavaScript', 'NodeJS'];
-
-const ArticlesGrid = ({ articles, onGoToClick }: ArticlesGridProps) => {
-  return (
-    <Container className="articles-grid">
-      {articles.map(
-        ({
-          id,
-          title,
-          description,
-          thumbnailUrl,
-          authorName,
-          status,
-          tags,
-        }) => (
-          <ArticleTile
-            key={id}
-            id={id}
-            status={status}
-            title={title}
-            description={description}
-            thumbnail={thumbnailUrl}
-            author={authorName}
-            stack={stack}
-            tags={tags}
-            width={tile_width}
-            onGoToClick={onGoToClick}
-          />
-        )
-      )}
-    </Container>
-  );
+const ArticlesGrid = ({ children }: ArticlesGridProps) => {
+  return <Container className="articles-grid">{children}</Container>;
 };
+
+ArticlesGrid.Tile = ArticleTile;
+ArticlesGrid.tile_width = tile_width;
+ArticlesGrid.tile_height = tile_height;
 
 export { ArticlesGrid };

@@ -6,10 +6,9 @@ import {
   live_articles_selectors,
   useLiveArticlesStore,
 } from '../../store/live-articles';
-import { ArticlesGrid, OnGoToClick } from '../../components/articles-grid';
+import { ArticlesGrid } from '../../components/articles-grid';
 import { InfoSection } from '../../components/info-section';
 import { Button, column, tokens } from '@system/figa-ui';
-import { useRouter } from 'next/router';
 import { useLang } from '../../dk';
 import { useCallback, useEffect } from 'react';
 import { live_articles_actions } from '../../store/live-articles/live-articles.actions';
@@ -29,21 +28,8 @@ const Container = styled.div`
 
 const Content = () => {
   const { go } = useLiveArticlesRouter();
-  const router = useRouter();
   const { response, error } = live_articles_selectors.useSafeState();
   const lang = useLang();
-
-  const handleGoToClick: OnGoToClick = useCallback(
-    (e) => {
-      const id = e.currentTarget.getAttribute('data-article-id');
-      const article = response.data.find((a) => a.id === id);
-
-      if (!article) throw Error('Cannot find article');
-
-      router.push(`/${lang}/articles/${article.url}`);
-    },
-    [router, lang, response]
-  );
 
   if (error) {
     return (
@@ -56,7 +42,21 @@ const Content = () => {
   }
 
   return response.data.length > 0 ? (
-    <ArticlesGrid articles={response.data} onGoToClick={handleGoToClick} />
+    <ArticlesGrid>
+      {response.data.map((article) => (
+        <ArticlesGrid.Tile
+          key={article.id}
+          status={article.status}
+          title={article.title}
+          description={article.description}
+          thumbnail={article.thumbnailUrl}
+          author={article.authorName}
+          tags={article.tags}
+          width={ArticlesGrid.tile_width}
+          url={`/${lang}/articles/${article.url}`}
+        />
+      ))}
+    </ArticlesGrid>
   ) : (
     <InfoSection
       title="No data for provided filters 💨"

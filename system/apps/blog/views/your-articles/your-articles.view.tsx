@@ -5,35 +5,18 @@ import { Box, Button, CloseIcon, Field, Loader } from '@system/figa-ui';
 import { ArticlesSearchInput } from '../../components/articles-search-input';
 import { ArticlesStatusSelect } from '../../components/articles-status-select';
 import { ArticlesTagsSelect } from '../../components/articles-tags-select';
-import { ArticlesGrid, type OnGoToClick } from '../../components/articles-grid';
+import { ArticlesGrid } from '../../components/articles-grid';
 import { InfoSection } from '../../components/info-section';
-import { useCallback } from 'react';
-import { useRouter } from 'next/router';
 import { useLang } from '../../dk';
 import { useScroll } from '@system/figa-hooks';
 import { ArticlesLayout } from '../../components/articles-layout';
 import { ExpirationInfo } from '../../components/expiration-info-section';
 
 const Content = () => {
-  const router = useRouter();
   const lang = useLang();
   const {
     state: { articles, error },
   } = useYourArticles();
-
-  const handleGoToClick: OnGoToClick = useCallback(
-    (e) => {
-      const id = e.currentTarget.getAttribute('data-article-id');
-      const article = (articles ?? []).find((a) => a.id === id);
-
-      if (!article) throw Error('Cannot find article');
-
-      router.push(
-        `/${lang}/articles/preview?id=${article.id}&url=${article.url}`
-      );
-    },
-    [articles, router, lang]
-  );
 
   if (error) {
     return (
@@ -56,9 +39,21 @@ const Content = () => {
 
   if (Array.isArray(articles) && articles.length > 0) {
     return (
-      <ArticlesLayout.Content>
-        <ArticlesGrid articles={articles} onGoToClick={handleGoToClick} />
-      </ArticlesLayout.Content>
+      <ArticlesGrid>
+        {articles.map((article) => (
+          <ArticlesGrid.Tile
+            key={article.id}
+            status={article.status}
+            title={article.title}
+            description={article.description}
+            thumbnail={article.thumbnailUrl}
+            author={article.authorName}
+            tags={article.tags}
+            width={ArticlesGrid.tile_width}
+            url={`/${lang}/articles/preview?id=${article.id}&url=${article.url}`}
+          />
+        ))}
+      </ArticlesGrid>
     );
   }
 

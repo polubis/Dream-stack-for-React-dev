@@ -11,6 +11,7 @@ const auth_selectors: AuthSelectors = {
     ),
   useIsAdmin: () => useAuthStore(checkIsAdmin),
   useIsAuthorized: () => useAuthStore((state) => state.key === 'authorized'),
+  useState: () => useAuthStore(),
 };
 
 export { auth_selectors };
