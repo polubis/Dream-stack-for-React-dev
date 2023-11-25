@@ -5,35 +5,27 @@ import { Box, Button, CloseIcon, Field, Loader } from '@system/figa-ui';
 import { ArticlesSearchInput } from '../../components/articles-search-input';
 import { ArticlesStatusSelect } from '../../components/articles-status-select';
 import { ArticlesTagsSelect } from '../../components/articles-tags-select';
-import { ArticlesGrid, type OnGoToClick } from '../../components/articles-grid';
+import {
+  ArticlesGrid,
+  type ArticlesGridProps,
+} from '../../components/articles-grid';
 import { InfoSection } from '../../components/info-section';
-import { useCallback } from 'react';
-import { useRouter } from 'next/router';
 import { useLang } from '../../dk';
 import { useScroll } from '@system/figa-hooks';
 import { ArticlesLayout } from '../../components/articles-layout';
 import { ExpirationInfo } from '../../components/expiration-info-section';
+import type { Lang } from '@system/blog-api-models';
+
+const createUrl =
+  (lang: Lang): ArticlesGridProps['url'] =>
+  ({ url, id }) =>
+    `/${lang}/articles/preview?id=${id}&url=${url}`;
 
 const Content = () => {
-  const router = useRouter();
   const lang = useLang();
   const {
     state: { articles, error },
   } = useYourArticles();
-
-  const handleGoToClick: OnGoToClick = useCallback(
-    (e) => {
-      const id = e.currentTarget.getAttribute('data-article-id');
-      const article = (articles ?? []).find((a) => a.id === id);
-
-      if (!article) throw Error('Cannot find article');
-
-      router.push(
-        `/${lang}/articles/preview?id=${article.id}&url=${article.url}`
-      );
-    },
-    [articles, router, lang]
-  );
 
   if (error) {
     return (
@@ -57,7 +49,7 @@ const Content = () => {
   if (Array.isArray(articles) && articles.length > 0) {
     return (
       <ArticlesLayout.Content>
-        <ArticlesGrid articles={articles} onGoToClick={handleGoToClick} />
+        <ArticlesGrid articles={articles} url={createUrl(lang)} />
       </ArticlesLayout.Content>
     );
   }

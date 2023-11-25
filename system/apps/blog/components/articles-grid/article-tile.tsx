@@ -20,6 +20,7 @@ import { useToggle } from '@system/figa-hooks';
 import { useMemo } from 'react';
 import type { ArticleTileProps } from './defs';
 import { ArticleStatusBadge } from '../article-status-badge';
+import Link from 'next/link';
 
 const avatar_size = {
   height: spacing.parse(400),
@@ -145,7 +146,7 @@ const ArticleTile = ({
   tags,
   status,
   width,
-  onGoToClick,
+  url,
 }: ArticleTileProps) => {
   const toggler = useToggle();
 
@@ -195,17 +196,16 @@ const ArticleTile = ({
             >
               <SwapIcon className="r-90" />
             </Button>
-            <Button
-              variant="outlined"
-              shape="rounded"
-              data-article-title={title}
-              data-article-id={id}
-              size={1}
-              title="Read article"
-              onClick={onGoToClick}
-            >
-              <ArrowTopIcon className="r-90" />
-            </Button>
+            <Link href={url} data-article-title={title}>
+              <Button
+                variant="outlined"
+                shape="rounded"
+                size={1}
+                title="Read article"
+              >
+                <ArrowTopIcon className="r-90" />
+              </Button>
+            </Link>
           </div>
         </div>
       ) : (
@@ -252,17 +252,16 @@ const ArticleTile = ({
               >
                 <SwapIcon />
               </Button>
-              <Button
-                variant="outlined"
-                shape="rounded"
-                data-article-id={id}
-                data-article-title={title}
-                size={1}
-                title="Read article"
-                onClick={onGoToClick}
-              >
-                <ArrowTopIcon className="r-90" />
-              </Button>
+              <Link href={url} data-article-title={title}>
+                <Button
+                  variant="outlined"
+                  shape="rounded"
+                  size={1}
+                  title="Read article"
+                >
+                  <ArrowTopIcon className="r-90" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

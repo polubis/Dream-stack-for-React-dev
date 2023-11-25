@@ -8,30 +8,24 @@ import { ArticlesTagsSelect } from '../../components/articles-tags-select';
 import { useAdminArticles } from './use-admin-articles';
 import { useScroll } from '@system/figa-hooks';
 import { InfoSection } from '../../components/info-section';
-import { ArticlesGrid, OnGoToClick } from '../../components/articles-grid';
+import {
+  ArticlesGrid,
+  type ArticlesGridProps,
+} from '../../components/articles-grid';
 import { useLang } from '../../dk';
-import { useRouter } from 'next/router';
-import { useCallback } from 'react';
 import { ExpirationInfo } from '../../components/expiration-info-section';
+import type { Lang } from '@system/blog-api-models';
+
+const createUrl =
+  (lang: Lang): ArticlesGridProps['url'] =>
+  ({ url, id }) =>
+    `/${lang}/admin/article-review?url=${url}&id=${id}`;
 
 const Content = () => {
-  const router = useRouter();
   const lang = useLang();
   const {
     state: { articles, error },
   } = useAdminArticles();
-
-  const handleGoToClick: OnGoToClick = useCallback(
-    (e) => {
-      const id = e.currentTarget.getAttribute('data-article-id');
-      const article = (articles ?? []).find((a) => a.id === id);
-
-      if (!article) throw Error('Cannot find article');
-
-      router.push(`/${lang}/admin/article-review?url=${article.url}&id=${id}`);
-    },
-    [articles, router, lang]
-  );
 
   if (error) {
     return (
@@ -55,7 +49,7 @@ const Content = () => {
   if (Array.isArray(articles) && articles.length > 0) {
     return (
       <ArticlesLayout.Content>
-        <ArticlesGrid articles={articles} onGoToClick={handleGoToClick} />
+        <ArticlesGrid articles={articles} url={createUrl(lang)} />
       </ArticlesLayout.Content>
     );
   }

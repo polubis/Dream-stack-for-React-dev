@@ -2,7 +2,6 @@ import type { ArticleDto, ArticleStatus } from '@system/blog-api-models';
 import type { MouseEvent as ReactMouseEvent } from 'react';
 
 type OnGoToClickEvent = ReactMouseEvent<HTMLButtonElement, MouseEvent>;
-type OnGoToClick = (e: OnGoToClickEvent) => void;
 
 interface ArticleTileProps {
   id: string;
@@ -14,17 +13,12 @@ interface ArticleTileProps {
   width: number;
   status: ArticleStatus;
   tags: string[];
-  onGoToClick: OnGoToClick;
+  url: string;
 }
 
 interface ArticlesGridProps {
-  onGoToClick: OnGoToClick;
+  url(article: ArticleDto): string;
   articles: ArticleDto[];
 }
 
-export type {
-  ArticlesGridProps,
-  ArticleTileProps,
-  OnGoToClickEvent,
-  OnGoToClick,
-};
+export type { ArticlesGridProps, ArticleTileProps, OnGoToClickEvent };
