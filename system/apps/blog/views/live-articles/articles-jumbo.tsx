@@ -13,19 +13,19 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLang } from '../../dk';
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
-import { useLiveArticlesRouter } from './use-live-articles-router';
 import { TagsPopover } from './tags-popover';
 import { ArticlesSearchInput } from '../../components/articles-search-input';
-import { live_articles_selectors } from '../../store/live-articles';
+import {
+  live_articles_actions,
+  live_articles_selectors,
+} from '../../store/live-articles';
 
 const Container = styled.div`
   position: relative;
   padding: ${tokens.spacing[500]} ${tokens.spacing[250]};
   border-bottom: ${tokens.spacing[25]} solid
     ${(props) => props.theme.box.outlined.borderColor};
-
+    
   .articles-jumbo-content {
     ${center('column')}
     max-width: 500px;
@@ -65,20 +65,8 @@ const Container = styled.div`
 `;
 
 const ArticlesJumbo = () => {
-  const searchParams = useSearchParams();
-  const { getParams, go } = useLiveArticlesRouter();
-  const [search, setSearch] = useState('');
   const lang = useLang();
-  const liveArticlesState = live_articles_selectors.useSafeState();
-
-  useEffect(() => setSearch(getParams().Search), [searchParams, getParams]);
-
-  const handleSearchChange = (value: string): void => {
-    go(() => ({
-      Search: value,
-      CurrentPage: 1,
-    }));
-  };
+  const { is, params } = live_articles_selectors.useSafeState();
 
   return (
     <Container>
@@ -101,9 +89,9 @@ const ArticlesJumbo = () => {
         </Font>
         <div className="articles-jumbo-filters">
           <ArticlesSearchInput
-            loading={liveArticlesState.loading}
-            search={search}
-            onChange={handleSearchChange}
+            loading={is === 'changing'}
+            search={params.Search}
+            onChange={(Search) => live_articles_actions.change({ Search })}
           />
           <TagsPopover />
         </div>

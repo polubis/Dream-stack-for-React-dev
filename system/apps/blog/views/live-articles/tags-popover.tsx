@@ -1,24 +1,16 @@
-import { useMemo } from 'react';
-import { useLiveArticlesRouter } from './use-live-articles-router';
 import { ArticlesTagsSelect } from '../../components/articles-tags-select';
-import { useSearchParams } from 'next/navigation';
+import {
+  live_articles_actions,
+  live_articles_selectors,
+} from '../../store/live-articles';
 
 const TagsPopover = () => {
-  const searchParams = useSearchParams();
-  const { go, getParams } = useLiveArticlesRouter();
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const params = useMemo(() => getParams(), [searchParams, getParams]);
+  const state = live_articles_selectors.useSafeState();
 
   return (
     <ArticlesTagsSelect
-      tags={params.Tags}
-      onConfirm={(Tags) => {
-        go(() => ({
-          Tags,
-          CurrentPage: 1,
-        }));
-      }}
+      tags={state.params.Tags}
+      onConfirm={(Tags) => live_articles_actions.change({ Tags })}
     />
   );
 };

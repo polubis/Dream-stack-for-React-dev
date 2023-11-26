@@ -12,7 +12,7 @@ describe('Articles management works when: ', () => {
       .When('I navigate to admin articles page')
       .Then('I see empty article search input')
       .And('I see empty article tags field')
-      .When('I select status in article status field', 'Draft', 'Review')
+      .When('I select status in article status field', 'Review')
       .Then('I see articles only with status', 'Review')
       .When('I click founded article', title)
       .Then('Im on article review page')
@@ -21,7 +21,7 @@ describe('Articles management works when: ', () => {
       .And('I navigate to admin articles page')
       .Then('I see empty article search input')
       .And('I see empty article tags field')
-      .When('I select status in article status field', 'Draft', 'Published')
+      .When('I select status in article status field', 'Published')
       .Then('I see articles only with status', 'Published');
 
     scenarios['I delete article'](title);
@@ -34,7 +34,7 @@ describe('Articles management works when: ', () => {
       .When('I navigate to admin articles page')
       .Then('I see empty article search input')
       .And('I see empty article tags field')
-      .When('I select status in article status field', 'Draft', 'Review')
+      .When('I select status in article status field', 'Review')
       .Then('I see articles only with status', 'Review')
       .When('I click founded article', title)
       .Then('Im on article review page')
@@ -43,7 +43,7 @@ describe('Articles management works when: ', () => {
       .And('I navigate to admin articles page')
       .Then('I see empty article search input')
       .And('I see empty article tags field')
-      .When('I select status in article status field', 'Draft', 'Refine')
+      .When('I select status in article status field', 'Refine')
       .Then('I see articles only with status', 'Refine');
 
     scenarios['I delete article'](title);
