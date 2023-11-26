@@ -8,40 +8,12 @@ import type { Subscription } from 'rxjs';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace ArticlesStore {
-  //   export type Article = ArticleDto;
-  //   export type Articles = Article[];
-  //   export type Params = ArticlesParams;
-
-  // export interface State {
-  //   loading: boolean;
-  //   error: ResponseError | null;
-  //   params: Params | null;
-  //   articles: Articles | null;
-  //   allLoaded: boolean;
-  // }
-
-  // export interface Actions {
-  //   init(): Subscription;
-  //   load(params: Params): void;
-  //   reset(): void;
-  // }
-
-  // export interface Selectors {
-  //   state(): State;
-  //   useState(): State;
-  // }
-
-  // export interface CreatorConfig {
-  //   service: (params: Params) => Promise<PaginatedArticlesResponse>;
-  // }
-
   export type Article = ArticleDto;
   export type Articles = Article[];
   export type Params = ArticlesParams;
 
   export interface ParamsState {
-    current: Params;
-    previous: Params;
+    params: Params;
   }
 
   // Nothing happened yet.
@@ -50,43 +22,43 @@ export namespace ArticlesStore {
   }
 
   // Initial loading...
-  export interface Loading {
+  export interface Loading extends ParamsState {
     is: 'loading';
   }
 
-  export interface LoadingMore {
+  export interface LoadingMore extends ParamsState {
     is: 'loading_more';
   }
 
-  export interface Loaded {
+  export interface Loaded extends ParamsState {
     is: 'loaded';
     articles: Articles;
   }
 
-  export interface Changing {
+  export interface Changing extends ParamsState {
     is: 'changing';
   }
 
-  export interface LoadedAll {
+  export interface LoadedAll extends ParamsState {
     is: 'loaded_all';
   }
 
-  export interface LoadingMoreFail {
+  export interface LoadingMoreFail extends ParamsState {
     is: 'load_more_fail';
     error: ResponseError;
   }
 
-  export interface LoadingFail {
-    is: 'load_fail';
+  export interface LoadingFail extends ParamsState {
+    is: 'loading_fail';
     error: ResponseError;
   }
 
-  export interface ChangingFail {
+  export interface ChangingFail extends ParamsState {
     is: 'changing_fail';
     error: ResponseError;
   }
 
-  export type State = (
+  export type State =
     | Idle
     | Loading
     | LoadingMore
@@ -95,18 +67,21 @@ export namespace ArticlesStore {
     | LoadedAll
     | LoadingMoreFail
     | LoadingFail
-    | ChangingFail
-  ) &
-    ParamsState;
+    | ChangingFail;
 
   export interface Actions {
-    load(): void;
+    sync(params: Params, articles: Articles): void;
+    load(params: Params): void;
+  }
+
+  export interface Selectors {
+    state(): State;
+    useState(): State;
   }
 
   export type Store = State & Actions;
 
   export interface Config {
-    state?: State;
     service(params: Params): Promise<PaginatedArticlesResponse>;
   }
 }
