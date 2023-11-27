@@ -15,7 +15,7 @@ interface ArticleTileProps {
 }
 
 interface ArticlesGridProps {
-  children: ReactNode[];
+  children: ReactNode | ReactNode[];
 }
 
 export type { ArticlesGridProps, ArticleTileProps, OnGoToClickEvent };

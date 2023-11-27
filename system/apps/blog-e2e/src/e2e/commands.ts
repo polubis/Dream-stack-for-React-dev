@@ -164,11 +164,8 @@ const commands = {
     commands['I see loading button']('Confirm');
     commands['I see text']("You're signed in 💚", "We're redirecting you...");
   },
-  'I select status in article status field': (
-    name: string,
-    status: ArticleStatusLabel
-  ) => {
-    cy.get(`.select-expander:contains(${name})`).click();
+  'I select status in article status field': (status: ArticleStatusLabel) => {
+    cy.get(`.select-expander`).click();
     cy.get(`.select-list-option:contains(${status})`).click();
   },
   'I see articles only with status': (status: ArticleStatusLabel) => {
