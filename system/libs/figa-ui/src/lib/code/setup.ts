@@ -1,6 +1,5 @@
 import { basicSetup } from 'codemirror';
 import { EditorView, keymap } from '@codemirror/view';
-// import { javascript } from '@codemirror/lang-javascript';
 import { DEFAULT_THEME } from './consts';
 import { EditorState, type Extension } from '@codemirror/state';
 import type { SetupConfig } from './defs';

@@ -12,12 +12,12 @@ import {
 
 const Container = styled.div`
   position: relative;
-  aspect-ratio: 4/3;
+  aspect-ratio: 4/2;
   border-top: ${tokens.spacing[100]} solid transparent;
   border-bottom: ${tokens.spacing[100]} solid transparent;
 
   @media ${T_UP} {
-    aspect-ratio: 62/20;
+    aspect-ratio: 62/40;
     border-radius: ${tokens.spacing[50]};
   }
 

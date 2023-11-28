@@ -20,7 +20,7 @@ const scenarios = {
       .And('I see text', 'Try to use our editor')
       .When('I click button', 'Start')
       .Then('I see text', 'Article creator')
-      .And('I see disabled button', 'Submit')
+      .And('I see disabled icon button', 'Submit article')
       .When(
         'I type in input',
         'The best title is between 80 and 130 characters',
@@ -38,7 +38,7 @@ const scenarios = {
       .And('I pick thumbnail')
       .And('I click tab', 'Content')
       .And('I change article content', GetData('content'))
-      .And('I click button', 'Submit')
+      .And('I click icon button', 'Submit article')
       .Then('I see text', 'Do you want to submit an article for review?')
       .When('I click checkbox', 'Send to review')
       .And('I click button', 'Submit')
@@ -69,7 +69,7 @@ const scenarios = {
       .And('I see text', 'Try to use our editor')
       .When('I click button', 'Start')
       .Then('I see text', 'Article creator')
-      .And('I see disabled button', 'Submit')
+      .And('I see disabled icon button', 'Submit article')
       .When(
         'I type in input',
         'The best title is between 80 and 130 characters',
@@ -87,7 +87,7 @@ const scenarios = {
       .And('I pick thumbnail')
       .And('I click tab', 'Content')
       .And('I change article content', GetData('content'))
-      .And('I click button', 'Submit')
+      .And('I click icon button', 'Submit article')
       .Then('I see text', 'Do you want to submit an article for review?')
       .When('I click button', 'Submit')
       .And('I click button', 'Sure?')

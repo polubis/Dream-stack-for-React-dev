@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { column, row, tokens } from '@system/figa-ui';
+import { T_DOWN, column, font, row, tokens } from '@system/figa-ui';
 import type { ArticleBodyProps } from './defs';
 
 const Container = styled.article`
@@ -30,13 +30,19 @@ const Details = styled.section`
     }
 
     & > *:nth-child(3) {
-      margin: ${tokens.spacing[350]} 0 ${tokens.spacing[200]} 0;
+      margin: ${tokens.spacing[200]} 0 ${tokens.spacing[200]} 0;
       max-width: 700px;
     }
 
     & > *:nth-child(4) {
       margin: 0 0 ${tokens.spacing[600]} 0;
       max-width: 700px;
+    }
+
+    .h1 {
+      @media ${T_DOWN} {
+        ${font('4.4rem', '-1.5px', 'LexendLight', 300)}
+      }
     }
   }
 `;
@@ -50,8 +56,16 @@ const Content = styled.section`
     padding: ${tokens.spacing[200]} 0;
   }
 
-  .b1 {
-    padding: ${tokens.spacing[25]} 0;
+  .link {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .b1 ~ .b1 {
+    padding-bottom: ${tokens.spacing[150]};
   }
 
   .h1 {
@@ -120,6 +134,56 @@ const Content = styled.section`
     & + .italic {
       display: block;
       transform: translateY(-${tokens.spacing[150]});
+    }
+  }
+
+  .h1 {
+    ${font('6.2rem', '-1.5px', 'LexendLight', 300)}
+  }
+
+  .h2 {
+    ${font('5.9rem', '-0.5px', 'LexendLight', 300)}
+  }
+
+  .h3 {
+    ${font('5rem', '0px', 'LexendRegular', 400)}
+  }
+
+  .h4 {
+    ${font('4.6rem', '0.25px', 'LexendRegular', 400)}
+  }
+
+  .h5 {
+    ${font('4.2rem', '0px', 'LexendRegular', 400)}
+  }
+
+  .h6 {
+    ${font('3.8rem', '0.15px', 'LexendMedium', 500)}
+  }
+
+  @media ${T_DOWN} {
+    .h1 {
+      ${font('4rem', '-1.5px', 'LexendLight', 300)}
+    }
+
+    .h2 {
+      ${font('3.7rem', '-0.5px', 'LexendLight', 300)}
+    }
+
+    .h3 {
+      ${font('3.4rem', '0px', 'LexendRegular', 400)}
+    }
+
+    .h4 {
+      ${font('3.1rem', '0.25px', 'LexendRegular', 400)}
+    }
+
+    .h5 {
+      ${font('2.8rem', '0px', 'LexendRegular', 400)}
+    }
+
+    .h6 {
+      ${font('2.5rem', '0.15px', 'LexendMedium', 500)}
     }
   }
 `;

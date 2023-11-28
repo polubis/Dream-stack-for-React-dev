@@ -85,6 +85,11 @@ const commands = {
   'I click icon button': (name: string) => {
     cy.get(`button.button[title="${name}"]`).click();
   },
+  'I see disabled icon button': (...names: string[]) => {
+    names.forEach((name) => {
+      cy.get(`button.button[title="${name}"]`).should('be.disabled');
+    });
+  },
   'I navigate to admin articles page': () => {
     commands['I scroll to top of page']();
     cy.get(`.nav .popover-trigger button.button`).click();

@@ -17,6 +17,7 @@ type TabHTMLElementProps = Omit<
 
 interface TabsProps extends TabsHTMLElementProps {
   children: ReactNode;
+  rounded?: boolean;
 }
 
 interface TabProps extends TabHTMLElementProps {

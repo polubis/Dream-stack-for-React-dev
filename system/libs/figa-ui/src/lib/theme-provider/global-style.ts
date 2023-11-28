@@ -177,6 +177,7 @@ const GlobalStyle = createGlobalStyle`
         cursor: pointer;
         position: relative;
         border: none;
+        flex-shrink: 0;
 
         &.size-1 {
             ${font('1.3rem', '0.15px', 'LexendMedium', 500)}
