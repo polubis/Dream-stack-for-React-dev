@@ -188,7 +188,7 @@ const EditorScreen = () => {
         </div>
       </main>
       <footer className="creator-layout-footer">
-        <Box minWidth="100%" orientation="row" right spacing={[150]}>
+        <Box minWidth="100%" orientation="row" right spacing={[200]}>
           {view !== 'both' && (
             <Button
               size={2}
