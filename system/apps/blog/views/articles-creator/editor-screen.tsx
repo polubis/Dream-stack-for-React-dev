@@ -1,9 +1,12 @@
 import {
   Box,
   Button,
+  CheckIcon,
   CloseIcon,
   Code,
+  ContentEditIcon,
   Font,
+  PreviewIcon,
   isTDown,
   row,
   streched,
@@ -30,7 +33,7 @@ import type { ArticleStatus } from '@system/blog-api-models';
 import type { EditorScreenView } from './defs';
 
 const topbarHeight = tokens.spacing[850];
-const footerHeight = tokens.spacing[850];
+const footerHeight = tokens.spacing[1000];
 
 const Container = styled.main`
   display: grid;
@@ -40,7 +43,7 @@ const Container = styled.main`
   .creator-layout-topbar,
   .creator-layout-footer {
     ${row()}
-    padding: ${tokens.spacing[200]};
+    padding: 0 ${tokens.spacing[250]};
   }
 
   .creator-layout-content {
@@ -120,12 +123,12 @@ const EditorScreen = () => {
     <Container className={view}>
       <header className="creator-layout-topbar">
         <Box minWidth="100%" orientation="row" between>
-          <Font variant="h5">Article creator</Font>
+          <Font variant="h6">Article creator</Font>
           <Button
             size={2}
-            shape="rounded"
-            variant="outlined"
+            variant="ghost"
             motive="tertiary"
+            shape="rounded"
             title="Close creator"
             onClick={handleClose}
           >
@@ -188,16 +191,24 @@ const EditorScreen = () => {
           {view !== 'both' && (
             <Button
               size={2}
-              variant="outlined"
+              variant="ghost"
               motive="tertiary"
+              shape="rounded"
+              title="Change view button"
               onClick={toggleView}
             >
-              {view === 'code' ? 'Preview' : 'Content'}
+              {view === 'code' ? <PreviewIcon /> : <ContentEditIcon />}
             </Button>
           )}
 
-          <Button disabled={invalid} size={2} onClick={handleConfirm}>
-            Submit
+          <Button
+            disabled={invalid}
+            size={2}
+            shape="rounded"
+            title="Confirm article content"
+            onClick={handleConfirm}
+          >
+            <CheckIcon />
           </Button>
         </Box>
       </footer>
