@@ -144,6 +144,7 @@ const EditorScreen = () => {
                 <>
                   {activeTab === 'Content' && (
                     <Code
+                      lang="md"
                       onChange={(content) =>
                         articles_creator_actions.change('content', content)
                       }

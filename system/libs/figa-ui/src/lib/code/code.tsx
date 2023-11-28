@@ -5,6 +5,7 @@ import { CODE_LINE_HEIGHT } from './consts';
 import c from 'classnames';
 import { setup } from './setup';
 import { useIsomorphicLayoutEffect } from '@system/figa-hooks';
+import type { EditorView } from 'codemirror';
 
 const CodeContent = ({
   children,
@@ -21,17 +22,21 @@ const CodeContent = ({
 
     if (!parent) return;
 
-    const view = setup({
-      children,
-      readonly,
-      lang,
-      parent,
-      wrapLines,
-      onChange,
-    });
+    let view: EditorView | undefined;
+
+    (async () => {
+      view = await setup({
+        children,
+        readonly,
+        lang,
+        parent,
+        wrapLines,
+        onChange,
+      });
+    })();
 
     return () => {
-      view.destroy();
+      view?.destroy();
     };
   }, [wrapLines, readonly, lang]);
 

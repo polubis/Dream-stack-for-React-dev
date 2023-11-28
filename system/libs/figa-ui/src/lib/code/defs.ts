@@ -1,4 +1,4 @@
-type CodeLang = 'js' | 'ts' | 'tsx' | 'jsx' | 'md' | 'css';
+type CodeLang = 'js' | 'html' | 'md' | 'css';
 
 interface CodeProps {
   className?: string;
