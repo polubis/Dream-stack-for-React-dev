@@ -138,7 +138,6 @@ const CreatorForm = () => {
     >
       <Field label="Title*">
         <Input
-          autoFocus
           value={title}
           placeholder="The best title is between 80 and 130 characters"
           onChange={(e) =>

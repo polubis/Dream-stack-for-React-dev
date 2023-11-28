@@ -12,6 +12,8 @@ export const setup = ({
   readonly,
   children,
   parent,
+  lang,
+  wrapLines,
   onChange,
 }: SetupConfig): EditorView => {
   let setup = basicSetup;
@@ -19,8 +21,11 @@ export const setup = ({
     javascript(),
     DEFAULT_THEME,
     keymap.of([indentWithTab]),
-    EditorView.lineWrapping,
   ];
+
+  if (wrapLines) {
+    extensions.push(EditorView.lineWrapping);
+  }
 
   if (readonly) {
     setup = (setup as Extension[]).filter(
