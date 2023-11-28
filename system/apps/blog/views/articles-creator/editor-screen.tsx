@@ -58,7 +58,7 @@ const Container = styled.main`
 
     .creator-layout-code,
     .creator-layout-preview {
-      overflow-y: auto;
+      overflow-y: scroll;
     }
   }
 

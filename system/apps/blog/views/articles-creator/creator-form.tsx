@@ -173,7 +173,10 @@ const CreatorForm = () => {
             });
           }}
         >
-          <Font variant="h5">Add thumbnail</Font>
+          <Box orientation='row' between>
+            <Font variant="h5">Add thumbnail</Font>
+            <PlusIcon />
+          </Box>
         </FilePicker>
       </Field>
     </Box>
