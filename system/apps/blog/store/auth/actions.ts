@@ -1,8 +1,6 @@
-import { getError } from '@system/blog-api';
 import { type AuthStore } from './defs';
 import { useAuthStore } from './store';
 import { authStorage } from './core';
-import { SignedInUserDto } from '@system/blog-api-models';
 
 const { setState } = useAuthStore;
 
@@ -15,19 +13,19 @@ const auth_store_actions: AuthStore.Actions = {
     const user = authStorage.get('user');
 
     if (user) {
-      set({ key: 'authorized', user });
+      set({ is: 'authorized', user });
       return;
     }
 
-    set({ key: 'unauthorized', user: null });
+    set({ is: 'unauthorized', user: null });
   },
   authorize: (user) => {
     authStorage.set('user', user);
-    useAuthStore.setState({ key: 'authorized', user });
+    useAuthStore.setState({ is: 'authorized', user });
   },
   unauthorize: () => {
     authStorage.set('user', null);
-    useAuthStore.setState({ key: 'unauthorized', user: null });
+    useAuthStore.setState({ is: 'unauthorized', user: null });
   },
 };
 

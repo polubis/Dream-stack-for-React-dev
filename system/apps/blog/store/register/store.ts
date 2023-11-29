@@ -3,7 +3,7 @@ import { RegisterStore } from './defs';
 import { registerForm } from './core';
 
 const useRegisterStore = create<RegisterStore.State>(() => ({
-  key: 'idle',
+  is: 'idle',
   error: null,
   form: registerForm.init({
     login: '',

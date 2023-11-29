@@ -73,9 +73,7 @@ const SignInForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button
-            loading={
-              signInStore.is === 'busy' || signOutStore.key === 'pending'
-            }
+            loading={signInStore.is === 'busy' || signOutStore.is === 'busy'}
             onClick={handleSignIn}
           >
             Confirm

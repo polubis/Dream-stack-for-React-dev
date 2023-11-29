@@ -8,7 +8,7 @@ import {
   Link as FigaUILink,
   tokens,
 } from '@system/figa-ui';
-import { useSignOutStore } from '../../store/sign-out';
+import { sign_out_store_actions, useSignOutStore } from '../../store/sign-out';
 import { useAuthStore } from '../../store/auth';
 import { useRouter } from 'next/navigation';
 import { AdminsOnly } from '../../core';
@@ -109,7 +109,7 @@ const Content = () => {
             size={2}
             variant="outlined"
             onClick={() => router.push('/en/admin')}
-            loading={signOutStore.key === 'pending'}
+            loading={signOutStore.is === 'busy'}
           >
             Admin panel
           </Button>
@@ -117,8 +117,8 @@ const Content = () => {
         <Button
           variant="outlined"
           size={2}
-          onClick={signOutStore.signOut}
-          loading={signOutStore.key === 'pending'}
+          onClick={sign_out_store_actions.signOut}
+          loading={signOutStore.is === 'busy'}
         >
           Sign Out
         </Button>

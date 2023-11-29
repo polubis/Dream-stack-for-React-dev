@@ -3,7 +3,6 @@ import { storeFixture } from '../test-utils';
 import { useAuthStore } from './store';
 import { storage } from '@system/utils';
 import { mockSignedInUser } from '@system/blog-api-mocks';
-import { AuthStore } from './defs';
 import { auth_store_actions } from './actions';
 
 describe('Authorization works when: ', () => {
@@ -18,13 +17,13 @@ describe('Authorization works when: ', () => {
     authStorage.set('user', mockSignedInUser());
     const { result, restore } = storeFixture(useAuthStore);
 
-    expect(result.current.key).toBe('idle' as AuthStore.Is);
+    expect(result.current.is).toBe('idle');
 
     act(() => {
       auth_store_actions.check();
     });
 
-    expect(result.current.key).toBe('authorized' as AuthStore.Is);
+    expect(result.current.is).toBe('authorized');
 
     restore();
   });
@@ -32,13 +31,13 @@ describe('Authorization works when: ', () => {
   it('marks as unauthorized if no authorization info in local storage', () => {
     const { result, restore } = storeFixture(useAuthStore);
 
-    expect(result.current.key).toBe('idle' as AuthStore.Is);
+    expect(result.current.is).toBe('idle');
 
     act(() => {
       auth_store_actions.check();
     });
 
-    expect(result.current.key).toBe('unauthorized' as AuthStore.Is);
+    expect(result.current.is).toBe('unauthorized');
 
     restore();
   });
@@ -47,13 +46,13 @@ describe('Authorization works when: ', () => {
     authStorage.set('user', null);
     const { result, restore } = storeFixture(useAuthStore);
 
-    expect(result.current.key).toBe('idle' as AuthStore.Is);
+    expect(result.current.is).toBe('idle');
 
     act(() => {
       auth_store_actions.check();
     });
 
-    expect(result.current.key).toBe('unauthorized' as AuthStore.Is);
+    expect(result.current.is).toBe('unauthorized');
 
     restore();
   });
@@ -61,7 +60,7 @@ describe('Authorization works when: ', () => {
   it('allows to authorize', () => {
     const { result, restore } = storeFixture(useAuthStore);
 
-    expect(result.current.key).toBe('idle' as AuthStore.Is);
+    expect(result.current.is).toBe('idle');
 
     const user = mockSignedInUser();
 
@@ -70,7 +69,7 @@ describe('Authorization works when: ', () => {
     });
 
     expect(authStorage.get('user')).toEqual(user);
-    expect(result.current.key).toBe('authorized' as AuthStore.Is);
+    expect(result.current.is).toBe('authorized');
 
     restore();
   });
@@ -78,14 +77,14 @@ describe('Authorization works when: ', () => {
   it('allows to unauthorize', () => {
     const { result, restore } = storeFixture(useAuthStore);
 
-    expect(result.current.key).toBe('idle' as AuthStore.Is);
+    expect(result.current.is).toBe('idle');
 
     act(() => {
       auth_store_actions.unauthorize();
     });
 
     expect(authStorage.get('user')).toBe(null);
-    expect(result.current.key).toBe('unauthorized' as AuthStore.Is);
+    expect(result.current.is).toBe('unauthorized');
 
     restore();
   });

@@ -25,9 +25,8 @@ describe('Delete article feature works when: ', () => {
       article,
     });
     const authStore = storeFixture(useAuthStore, {
-      key: 'authorized',
+      is: 'authorized',
       user,
-      check: jest.fn(),
     });
 
     const { asFragment, unmount } = render(<DeleteArticlePopover />);
@@ -36,10 +35,9 @@ describe('Delete article feature works when: ', () => {
 
     act(() => {
       useAuthStore.setState({
-        key: 'authorized',
+        is: 'authorized',
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         user: { ...user, roles: ['User'] as any },
-        check: jest.fn(),
       });
       useArticleStore.setState({
         is: 'ok',
@@ -54,10 +52,9 @@ describe('Delete article feature works when: ', () => {
 
     act(() => {
       useAuthStore.setState({
-        key: 'authorized',
+        is: 'authorized',
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         user: { ...user, roles: ['User'] as any },
-        check: jest.fn(),
       });
       useArticleStore.setState({
         is: 'ok',

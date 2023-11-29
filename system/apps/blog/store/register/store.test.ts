@@ -16,7 +16,7 @@ describe('Register feature works when: ', () => {
   it('initial state is correct', () => {
     const { result, restore } = storeFixture(useRegisterStore);
 
-    expect(result.current.is).toBe('idle' as RegisterStore.Is);
+    expect(result.current.is).toBe('idle');
     expect(result.current).toMatchSnapshot();
 
     restore();
@@ -31,7 +31,7 @@ describe('Register feature works when: ', () => {
     const payload = mockRegisterPayload();
     const { result, restore } = storeFixture(useRegisterStore);
 
-    expect(result.current.is).toBe('idle' as RegisterStore.Is);
+    expect(result.current.is).toBe('idle');
 
     act(() => {
       for (const key in payload) {
@@ -44,13 +44,13 @@ describe('Register feature works when: ', () => {
       register_store_actions.submit();
     });
 
-    expect(result.current.is).toBe('busy' as RegisterStore.Is);
+    expect(result.current.is).toBe('busy');
 
     await waitFor(() => {
       expect(register).toHaveBeenCalledTimes(1);
     });
 
-    expect(result.current.is).toBe('fail' as RegisterStore.Is);
+    expect(result.current.is).toBe('fail');
     expect(result.current.error).toEqual(mockResponseError());
 
     restore();
@@ -108,10 +108,10 @@ describe('Register feature works when: ', () => {
     });
 
     expect(result.current.form).toMatchSnapshot();
-    expect(result.current.is).toBe('busy' as RegisterStore.Is);
+    expect(result.current.is).toBe('busy');
 
     await waitFor(() => {
-      expect(result.current.is).toBe('ok' as RegisterStore.Is);
+      expect(result.current.is).toBe('ok');
     });
 
     restore();

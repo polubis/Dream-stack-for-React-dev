@@ -10,7 +10,6 @@ import {
 } from '@system/blog-api-mocks';
 import { auth_store_actions } from '../auth';
 import { sign_in_store_actions } from './actions';
-import type { SignInStore } from './defs';
 
 jest.mock('@system/blog-api');
 jest.mock('../auth');
@@ -34,20 +33,20 @@ describe('Allows to sign in user when: ', () => {
     );
     (auth_store_actions.authorize as jest.Mock).mockImplementation(jest.fn());
 
-    expect(result.current.is).toBe('idle' as SignInStore.Is);
+    expect(result.current.is).toBe('idle');
 
     act(() => {
       sign_in_store_actions.signIn(mockSignInPayload());
     });
 
-    expect(result.current.is).toBe('busy' as SignInStore.Is);
+    expect(result.current.is).toBe('busy');
 
     await waitFor(() => {
       expect(signIn).toHaveBeenCalledTimes(1);
     });
 
     expect(auth_store_actions.authorize).toHaveBeenCalledTimes(1);
-    expect(result.current.is).toBe('ok' as SignInStore.Is);
+    expect(result.current.is).toBe('ok');
 
     restore();
   });
@@ -59,20 +58,20 @@ describe('Allows to sign in user when: ', () => {
       Promise.reject(mockErrorResponse())
     );
 
-    expect(result.current.is).toBe('idle' as SignInStore.Is);
+    expect(result.current.is).toBe('idle');
 
     act(() => {
       sign_in_store_actions.signIn(mockSignInPayload());
     });
 
-    expect(result.current.is).toBe('busy' as SignInStore.Is);
+    expect(result.current.is).toBe('busy');
 
     await waitFor(() => {
       expect(signIn).toHaveBeenCalledTimes(1);
     });
 
     expect(auth_store_actions.authorize).not.toHaveBeenCalled();
-    expect(result.current.is).toBe('fail' as SignInStore.Is);
+    expect(result.current.is).toBe('fail');
     expect(result.current.error).toEqual(mockResponseError());
 
     restore();
@@ -84,13 +83,13 @@ describe('Allows to sign in user when: ', () => {
       error: null,
     });
 
-    expect(result.current.is).toBe('busy' as SignInStore.Is);
+    expect(result.current.is).toBe('busy');
 
     act(() => {
       sign_in_store_actions.reset();
     });
 
-    expect(result.current.is).toBe('idle' as SignInStore.Is);
+    expect(result.current.is).toBe('idle');
 
     restore();
   });

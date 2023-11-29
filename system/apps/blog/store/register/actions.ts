@@ -17,14 +17,14 @@ const register_store_actions: RegisterStore.Actions = {
       return;
     }
 
-    set({ key: 'pending' });
+    set({ is: 'busy' });
 
     try {
       await register(useRegisterStore.getState().form.values);
 
-      set({ key: 'ok' });
+      set({ is: 'ok' });
     } catch (error: unknown) {
-      set({ key: 'error', error: getError(error) });
+      set({ is: 'fail', error: getError(error) });
     }
   },
 };

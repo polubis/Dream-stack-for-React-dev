@@ -179,7 +179,10 @@ const EditorScreen = () => {
                     <Code
                       lang="md"
                       onChange={(content) =>
-                        articles_creator_store_actions.change('content', content)
+                        articles_creator_store_actions.change(
+                          'content',
+                          content
+                        )
                       }
                     >
                       {content}
