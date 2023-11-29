@@ -17,7 +17,7 @@ import {
 } from '../../store/delete-article';
 import { useRouter } from 'next/router';
 import { useLang } from '../../dk';
-import { auth_selectors } from '../../store/auth';
+import { auth_store_selectors } from '../../store/auth';
 
 const Content = () => {
   const { close } = Popover.use();
@@ -150,8 +150,8 @@ const DeleteArticlePopover = () => {
 
 const ProtectedDeleteArticlePopover = () => {
   const { authorName } = article_store_selectors.useArticle();
-  const isAuthor = auth_selectors.useIsAuthor(authorName);
-  const isAdmin = auth_selectors.useIsAdmin();
+  const isAuthor = auth_store_selectors.useIsAuthor(authorName);
+  const isAdmin = auth_store_selectors.useIsAdmin();
 
   return isAdmin || isAuthor ? <DeleteArticlePopover /> : null;
 };

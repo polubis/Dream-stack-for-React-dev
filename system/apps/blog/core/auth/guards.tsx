@@ -1,9 +1,9 @@
-import { auth_selectors } from '../../store/auth';
+import { auth_store_selectors } from '../../store/auth';
 import type { GuardProps } from './models';
 
 const AdminsOnly = ({ children, fallback = null }: GuardProps) => {
-  const authStore = auth_selectors.useState();
-  const isAdmin = auth_selectors.useIsAdmin();
+  const authStore = auth_store_selectors.useState();
+  const isAdmin = auth_store_selectors.useIsAdmin();
 
   if (authStore.key === 'idle') {
     return null;
@@ -13,8 +13,8 @@ const AdminsOnly = ({ children, fallback = null }: GuardProps) => {
 };
 
 const SignedInOnly = ({ children, fallback = null }: GuardProps) => {
-  const authStore = auth_selectors.useState();
-  const authorized = auth_selectors.useIsAuthorized();
+  const authStore = auth_store_selectors.useState();
+  const authorized = auth_store_selectors.useIsAuthorized();
 
   if (authStore.key === 'idle') {
     return null;
@@ -24,8 +24,8 @@ const SignedInOnly = ({ children, fallback = null }: GuardProps) => {
 };
 
 const NotSignedInOnly = ({ children, fallback = null }: GuardProps) => {
-  const authStore = auth_selectors.useState();
-  const authorized = auth_selectors.useIsAuthorized();
+  const authStore = auth_store_selectors.useState();
+  const authorized = auth_store_selectors.useIsAuthorized();
 
   if (authStore.key === 'idle') {
     return null;

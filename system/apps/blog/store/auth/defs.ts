@@ -1,37 +1,34 @@
 import type { SignedInUserDto, Username } from '@system/blog-api-models';
 
-type NullableSignedInUser = SignedInUserDto | null;
+// eslint-disable-next-line @typescript-eslint/no-namespace
+namespace AuthStore {
+  export type User = SignedInUserDto;
 
-interface AuthStorage {
-  user: NullableSignedInUser;
+  export type NullableUser = User | null;
+
+  export interface Storage {
+    user: NullableUser;
+  }
+
+  export interface Actions {
+    check(): void;
+    authorize(user: User): void;
+    unauthorize(): void;
+  }
+
+  export interface State {
+    key: 'idle' | 'authorized' | 'unauthorized';
+    user: NullableUser;
+  }
+
+  export type StateKey = State['key'];
+
+  export interface Selectors {
+    useIsAuthor(username: Username): boolean;
+    useIsAdmin(): boolean;
+    useIsAuthorized(): boolean;
+    useState(): State;
+  }
 }
 
-interface AuthActions {
-  check: () => void;
-}
-
-interface AuthState {
-  key: 'idle' | 'authorized' | 'unauthorized';
-  user: NullableSignedInUser;
-}
-
-type AuthStore = AuthState & AuthActions;
-
-type AuthStoreStateKey = AuthState['key'];
-
-interface AuthSelectors {
-  useIsAuthor(username: Username): boolean;
-  useIsAdmin(): boolean;
-  useIsAuthorized(): boolean;
-  useState(): AuthState;
-}
-
-export type {
-  AuthStore,
-  AuthActions,
-  AuthState,
-  AuthStorage,
-  AuthStoreStateKey,
-  NullableSignedInUser,
-  AuthSelectors,
-};
+export type { AuthStore };

@@ -1,10 +1,10 @@
-import { type AuthSelectors, type AuthStore } from './defs';
+import type { AuthStore } from './defs';
 import { useAuthStore } from './store';
 
-const checkIsAdmin = (state: AuthStore): boolean =>
+const checkIsAdmin = (state: AuthStore.State): boolean =>
   state.key === 'authorized' ? state.user.roles.includes('Admin') : false;
 
-const auth_selectors: AuthSelectors = {
+const auth_store_selectors: AuthStore.Selectors = {
   useIsAuthor: (username) =>
     useAuthStore(
       (state) => state.key === 'authorized' && state.user.username === username
@@ -14,4 +14,4 @@ const auth_selectors: AuthSelectors = {
   useState: () => useAuthStore(),
 };
 
-export { auth_selectors };
+export { auth_store_selectors };

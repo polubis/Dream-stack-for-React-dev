@@ -27,7 +27,7 @@ import {
 } from '../../store/article-reviews';
 import { InfoSection } from '../info-section';
 import styled from 'styled-components';
-import { auth_selectors } from '../../store/auth';
+import { auth_store_selectors } from '../../store/auth';
 
 const Container = styled.ul`
   ${column()}
@@ -194,8 +194,8 @@ const Content = () => {
 const ArticleReviewsPopover = () => {
   const article = article_store_selectors.useArticle();
   const params = useArticleParams();
-  const isAuthor = auth_selectors.useIsAuthor(article.authorName);
-  const isAdmin = auth_selectors.useIsAdmin();
+  const isAuthor = auth_store_selectors.useIsAuthor(article.authorName);
+  const isAdmin = auth_store_selectors.useIsAdmin();
 
   if (params.is !== 'ok' || (!isAuthor && !isAdmin)) return null;
 
