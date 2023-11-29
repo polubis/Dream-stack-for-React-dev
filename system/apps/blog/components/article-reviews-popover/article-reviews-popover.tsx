@@ -22,7 +22,7 @@ import {
 import { article_store_selectors } from '../../store/article';
 import { article_management_store_actions } from '../../store/article-management';
 import {
-  article_reviews_actions,
+  article_reviews_store_actions,
   useArticleReviewsStore,
 } from '../../store/article-reviews';
 import { InfoSection } from '../info-section';
@@ -66,7 +66,7 @@ const Trigger = ({ id }: { id: string }) => {
             return;
           }
 
-          await article_reviews_actions.load(id);
+          await article_reviews_store_actions.load(id);
           toggle();
         }}
       >

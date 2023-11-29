@@ -15,7 +15,7 @@ import type { ArticleScreenProps } from './defs';
 import { ArticleReviewsPopover } from '../article-reviews-popover';
 import { auth_selectors } from '../../store/auth';
 import { useLang } from '../../dk';
-import { article_reviews_actions } from '../../store/article-reviews';
+import { article_reviews_store_actions } from '../../store/article-reviews';
 import { useEffect } from 'react';
 import { article_mdx_options } from '../../core';
 import { useArticleParams } from '../../core/articles';
@@ -62,7 +62,7 @@ const Toolbox = () => {
   const isAuthor = auth_selectors.useIsAuthor(authorName);
   const isAdmin = auth_selectors.useIsAdmin();
 
-  useEffect(() => article_reviews_actions.reset(), []);
+  useEffect(() => article_reviews_store_actions.reset(), []);
 
   return (
     <RightBar>
