@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import { Article } from './defs';
+import type { ArticleStore } from './defs';
 
-const useArticleStore = create<Article.State>(() => ({ is: 'idle' }));
+const useArticleStore = create<ArticleStore.State>(() => ({ is: 'idle' }));
 
 export { useArticleStore };

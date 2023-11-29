@@ -1,10 +1,10 @@
 import { useArticleStore } from './store';
 import { getArticle, getError } from '@system/blog-api';
-import type { Article } from './defs';
+import type { ArticleStore } from './defs';
 
 const { getState: get, setState: set } = useArticleStore;
 
-const article_actions: Article.Actions = {
+const article_actions: ArticleStore.Actions = {
   reset: () => {
     set({ is: 'idle' });
   },

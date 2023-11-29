@@ -1,7 +1,7 @@
-import { Article } from './defs';
+import type { ArticleStore } from './defs';
 import { useArticleStore } from './store';
 
-const article_selectors: Article.Selectors = {
+const article_selectors: ArticleStore.Selectors = {
   useArticle: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     return useArticleStore((state) => {
