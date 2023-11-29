@@ -22,7 +22,7 @@ import {
   tokens,
 } from '@system/figa-ui';
 import {
-  articles_creator_actions,
+  articles_creator_store_actions,
   useArticlesCreatorStore,
 } from '../../store/articles-creator';
 import { CreatorForm } from './creator-form';
@@ -122,7 +122,7 @@ const EditorScreen = () => {
   }, [size]);
 
   const handleClose = (): void => {
-    articles_creator_actions.setView('initial');
+    articles_creator_store_actions.setView('initial');
   };
 
   const changeView = (): void => {
@@ -139,7 +139,7 @@ const EditorScreen = () => {
   };
 
   const handleConfirm = (): void => {
-    articles_creator_actions.setView('confirm');
+    articles_creator_store_actions.setView('confirm');
   };
 
   const {
@@ -179,7 +179,7 @@ const EditorScreen = () => {
                     <Code
                       lang="md"
                       onChange={(content) =>
-                        articles_creator_actions.change('content', content)
+                        articles_creator_store_actions.change('content', content)
                       }
                     >
                       {content}

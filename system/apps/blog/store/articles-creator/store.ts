@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import type { ArticlesCreator } from './defs';
+import type { ArticlesCreatorStore } from './defs';
 import { creatorForm } from './form';
 
-const useArticlesCreatorStore = create<ArticlesCreator.State>(() => ({
+const useArticlesCreatorStore = create<ArticlesCreatorStore.State>(() => ({
   is: 'idle',
   view: 'initial',
   form: creatorForm.init({

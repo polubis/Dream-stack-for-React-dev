@@ -12,7 +12,7 @@ import {
   wrap,
 } from '@system/figa-ui';
 import {
-  articles_creator_actions,
+  articles_creator_store_actions,
   useArticlesCreatorStore,
 } from '../../store/articles-creator';
 import { useEffect, useState } from 'react';
@@ -71,7 +71,7 @@ const TagsForm = () => {
   };
 
   useEffect(() => {
-    articles_creator_actions.change('tags', form.values.tags);
+    articles_creator_store_actions.change('tags', form.values.tags);
   }, [form.values.tags]);
 
   return (
@@ -124,7 +124,7 @@ const CreatorForm = () => {
   const { thumbnail, title, description } = articlesCreatorStore.form.values;
 
   useEffect(() => {
-    articles_creator_actions.change('lang', lang);
+    articles_creator_store_actions.change('lang', lang);
   }, [lang]);
 
   return (
@@ -139,7 +139,7 @@ const CreatorForm = () => {
           value={title}
           placeholder="The best title is between 80 and 130 characters"
           onChange={(e) =>
-            articles_creator_actions.change('title', e.target.value)
+            articles_creator_store_actions.change('title', e.target.value)
           }
         />
       </Field>
@@ -151,7 +151,7 @@ const CreatorForm = () => {
           value={description}
           placeholder="The best description is between 80 and 130 characters"
           onChange={(e) =>
-            articles_creator_actions.change('description', e.target.value)
+            articles_creator_store_actions.change('description', e.target.value)
           }
         />
       </Field>
@@ -159,13 +159,13 @@ const CreatorForm = () => {
         <FilePicker
           preview={thumbnail.preview}
           onChange={(files, preview) =>
-            articles_creator_actions.change('thumbnail', {
+            articles_creator_store_actions.change('thumbnail', {
               file: files[0],
               preview,
             })
           }
           onConfirm={() => {
-            articles_creator_actions.change('thumbnail', {
+            articles_creator_store_actions.change('thumbnail', {
               file: null,
               preview: [],
             });

@@ -9,14 +9,14 @@ import {
   switchMap,
   tap,
 } from 'rxjs';
-import { useArticlesTagsStore } from './articles-tags.store';
+import { useArticlesTagsStore } from './store';
 
 const { setState } = useArticlesTagsStore;
 
 const loadAction = new Subject<void>();
 const loadAction$ = loadAction.asObservable();
 
-const articles_tags_actions: ArticlesTagsStore.Actions = {
+const articles_tags_store_actions: ArticlesTagsStore.Actions = {
   load: () => {
     loadAction.next();
   },
@@ -46,6 +46,6 @@ const articles_tags_actions: ArticlesTagsStore.Actions = {
   },
 };
 
-articles_tags_actions.init();
+articles_tags_store_actions.init();
 
-export { articles_tags_actions };
+export { articles_tags_store_actions };

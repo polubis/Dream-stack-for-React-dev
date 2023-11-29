@@ -9,7 +9,7 @@ import {
   Loader,
 } from '@system/figa-ui';
 import {
-  articles_creator_actions,
+  articles_creator_store_actions,
   useArticlesCreatorStore,
 } from '../../store/articles-creator';
 import { MainLayout } from '../../components';
@@ -26,7 +26,7 @@ const ConfirmScreen = () => {
   const confirmation = useToggle();
 
   const handleClose = (): void => {
-    articles_creator_actions.setView('creator');
+    articles_creator_store_actions.setView('creator');
   };
 
   const handleSubmit = (): void => {
@@ -36,7 +36,7 @@ const ConfirmScreen = () => {
     }
 
     if (authStore.key === 'authorized') {
-      articles_creator_actions.confirm(
+      articles_creator_store_actions.confirm(
         new URLSearchParams(window.location.search).get('url')
       );
       confirmation.close();
@@ -98,7 +98,7 @@ const ConfirmScreen = () => {
               label="Send to review"
               checked={articleCreatorState.form.values.sendToReview}
               onClick={() =>
-                articles_creator_actions.change(
+                articles_creator_store_actions.change(
                   'sendToReview',
                   !articleCreatorState.form.values.sendToReview
                 )

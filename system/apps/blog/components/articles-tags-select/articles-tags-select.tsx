@@ -17,8 +17,8 @@ import {
   useMemo,
   type ReactNode,
 } from 'react';
-import { useArticlesTagsStore } from '../../store/articles-tags/articles-tags.store';
-import { articles_tags_actions } from '../../store/articles-tags/articles-tags.actions';
+import { useArticlesTagsStore } from '../../store/articles-tags/store';
+import { articles_tags_store_actions } from '../../store/articles-tags';
 import type { ArticleTag, ArticleTags } from '@system/blog-api-models';
 import type { ArticlesTagsSelectProps, TagsObject } from './defs';
 import styled from 'styled-components';
@@ -62,7 +62,7 @@ const Trigger = ({ children }: { children: ReactNode }) => {
         loading={articlesTagsState.is === 'busy'}
         onClick={() => {
           toggle();
-          articlesTagsState.is !== 'ok' && articles_tags_actions.load();
+          articlesTagsState.is !== 'ok' && articles_tags_store_actions.load();
         }}
       >
         {children}
