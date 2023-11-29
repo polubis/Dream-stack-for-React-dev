@@ -9,7 +9,7 @@ import {
   Modal,
   Popover,
 } from '@system/figa-ui';
-import { article_selectors } from '../../store/article';
+import { article_store_selectors } from '../../store/article';
 import { article_management_actions } from '../../store/article-management';
 import { change_article_status_selectors } from '../../store/change-article-status';
 import type { ReactNode } from 'react';
@@ -64,7 +64,7 @@ const Content = ({ children }: { children: ReactNode }) => {
 
 const ArticleActionsPopover = () => {
   const modal = useToggle<ArticleStatus>();
-  const { id } = article_selectors.useArticle();
+  const { id } = article_store_selectors.useArticle();
   const is = change_article_status_selectors.useIs();
 
   const handleConfirm = (): void => {

@@ -1,6 +1,6 @@
 import {
-  article_actions,
-  article_selectors,
+  article_store_actions,
+  article_store_selectors,
   useArticleStore,
 } from '../../store/article';
 import { ArticleBody } from '../article-body';
@@ -34,7 +34,7 @@ const Content = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
     status,
     content,
     tags,
-  } = article_selectors.useArticle();
+  } = article_store_selectors.useArticle();
 
   return (
     <ArticleBody
@@ -58,7 +58,7 @@ const Content = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
 
 const Toolbox = () => {
   const lang = useLang();
-  const { authorName, url, status } = article_selectors.useArticle();
+  const { authorName, url, status } = article_store_selectors.useArticle();
   const isAuthor = auth_selectors.useIsAuthor(authorName);
   const isAdmin = auth_selectors.useIsAdmin();
 
@@ -90,7 +90,7 @@ const DynamicArticleScreen = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
 
   useEffect(() => {
     if (params.is !== 'ok') return;
-    article_actions.load({ url: params.query.url, lang });
+    article_store_actions.load({ url: params.query.url, lang });
   }, [lang, params]);
 
   const articleLoaded = articleStore.is === 'ok';

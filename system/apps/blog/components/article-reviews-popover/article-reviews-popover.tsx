@@ -19,7 +19,7 @@ import {
   add_article_review_store_actions,
   add_article_review_store_selectors,
 } from '../../store/add-article-review';
-import { article_selectors } from '../../store/article';
+import { article_store_selectors } from '../../store/article';
 import { article_management_actions } from '../../store/article-management';
 import {
   article_reviews_actions,
@@ -79,7 +79,7 @@ const Trigger = ({ id }: { id: string }) => {
 const Content = () => {
   const { close } = Popover.use();
 
-  const article = article_selectors.useArticle();
+  const article = article_store_selectors.useArticle();
   const articleReviewsStore = useArticleReviewsStore();
   const addArticleReviewStore = add_article_review_store_selectors.useState();
 
@@ -192,7 +192,7 @@ const Content = () => {
 };
 
 const ArticleReviewsPopover = () => {
-  const article = article_selectors.useArticle();
+  const article = article_store_selectors.useArticle();
   const params = useArticleParams();
   const isAuthor = auth_selectors.useIsAuthor(article.authorName);
   const isAdmin = auth_selectors.useIsAdmin();

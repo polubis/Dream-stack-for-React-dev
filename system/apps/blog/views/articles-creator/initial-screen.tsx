@@ -8,7 +8,7 @@ import {
   Loader,
 } from '@system/figa-ui';
 import { MainLayout } from '../../components';
-import { article_actions, useArticleStore } from '../../store/article';
+import { article_store_actions, useArticleStore } from '../../store/article';
 import { useRouter } from 'next/router';
 import { getLang } from '../../dk';
 import { articles_creator_actions } from '../../store/articles-creator';
@@ -77,7 +77,7 @@ const InitialScreen = () => {
 
     if (url) {
       try {
-        const article = await article_actions.load({ lang, url });
+        const article = await article_store_actions.load({ lang, url });
 
         articles_creator_actions.setView('creator');
         articles_creator_actions.setForm({

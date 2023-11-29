@@ -4,7 +4,7 @@ import type { ArticleStore } from './defs';
 
 const { getState: get, setState: set } = useArticleStore;
 
-const article_actions: ArticleStore.Actions = {
+const article_store_actions: ArticleStore.Actions = {
   reset: () => {
     set({ is: 'idle' });
   },
@@ -34,4 +34,4 @@ const article_actions: ArticleStore.Actions = {
   },
 };
 
-export { article_actions };
+export { article_store_actions };

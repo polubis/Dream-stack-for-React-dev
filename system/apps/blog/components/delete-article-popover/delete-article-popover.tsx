@@ -8,7 +8,7 @@ import {
   Popover,
   TrashIcon,
 } from '@system/figa-ui';
-import { article_selectors } from '../../store/article';
+import { article_store_selectors } from '../../store/article';
 import { useToggle } from '@system/figa-hooks';
 import { type FormEventHandler, useState, useEffect } from 'react';
 import {
@@ -21,7 +21,7 @@ import { auth_selectors } from '../../store/auth';
 
 const Content = () => {
   const { close } = Popover.use();
-  const { title, id } = article_selectors.useArticle();
+  const { title, id } = article_store_selectors.useArticle();
   const confirm = useToggle();
   const [currentTitle, setCurrentTitle] = useState('');
   const { is } = delete_article_store_selectors.useState();
@@ -149,7 +149,7 @@ const DeleteArticlePopover = () => {
 };
 
 const ProtectedDeleteArticlePopover = () => {
-  const { authorName } = article_selectors.useArticle();
+  const { authorName } = article_store_selectors.useArticle();
   const isAuthor = auth_selectors.useIsAuthor(authorName);
   const isAdmin = auth_selectors.useIsAdmin();
 

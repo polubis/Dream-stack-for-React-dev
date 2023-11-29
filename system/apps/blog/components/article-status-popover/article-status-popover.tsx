@@ -7,7 +7,7 @@ import {
   StatusIcon,
 } from '@system/figa-ui';
 import { useToggle } from '@system/figa-hooks';
-import { article_selectors } from '../../store/article';
+import { article_store_selectors } from '../../store/article';
 import { article_management_actions } from '../../store/article-management';
 import { change_article_status_selectors } from '../../store/change-article-status';
 
@@ -26,7 +26,7 @@ const Trigger = () => {
 const Content = () => {
   const { close } = Popover.use();
 
-  const article = article_selectors.useArticle();
+  const article = article_store_selectors.useArticle();
   const confirmation = useToggle();
   const is = change_article_status_selectors.useIs();
 
