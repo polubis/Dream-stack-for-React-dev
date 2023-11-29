@@ -1,10 +1,10 @@
 import { act, waitFor } from '@testing-library/react';
-import { useRegisterStore } from './register.store';
+import { useRegisterStore } from './store';
 import { storeFixture } from '../test-utils';
 import { register, getError } from '@system/blog-api';
-import type { RegisterStateKey } from './defs';
-import type { RegisterPayload } from '@system/blog-api-models';
 import { mockRegisterPayload, mockResponseError } from '@system/blog-api-mocks';
+import type { RegisterStore } from './defs';
+import { register_store_actions } from './actions';
 
 jest.mock('@system/blog-api');
 
@@ -16,10 +16,8 @@ describe('Register feature works when: ', () => {
   it('initial state is correct', () => {
     const { result, restore } = storeFixture(useRegisterStore);
 
-    const { setField, submit, ...state } = result.current;
-
-    expect(state.key).toBe('idle' as RegisterStateKey);
-    expect(state).toMatchSnapshot();
+    expect(result.current.is).toBe('idle' as RegisterStore.Is);
+    expect(result.current).toMatchSnapshot();
 
     restore();
   });
@@ -33,23 +31,26 @@ describe('Register feature works when: ', () => {
     const payload = mockRegisterPayload();
     const { result, restore } = storeFixture(useRegisterStore);
 
-    expect(result.current.key).toBe('idle' as RegisterStateKey);
+    expect(result.current.is).toBe('idle' as RegisterStore.Is);
 
     act(() => {
       for (const key in payload) {
-        result.current.setField(key as keyof RegisterPayload, payload[key]);
+        register_store_actions.setField(
+          key as keyof RegisterStore.FormData,
+          payload[key]
+        );
       }
 
-      result.current.submit();
+      register_store_actions.submit();
     });
 
-    expect(result.current.key).toBe('pending' as RegisterStateKey);
+    expect(result.current.is).toBe('busy' as RegisterStore.Is);
 
     await waitFor(() => {
       expect(register).toHaveBeenCalledTimes(1);
     });
 
-    expect(result.current.key).toBe('error' as RegisterStateKey);
+    expect(result.current.is).toBe('fail' as RegisterStore.Is);
     expect(result.current.error).toEqual(mockResponseError());
 
     restore();
@@ -63,7 +64,7 @@ describe('Register feature works when: ', () => {
     const value = 'd';
 
     act(() => {
-      result.current.setField('confirmPassword', value);
+      register_store_actions.setField('confirmPassword', value);
     });
 
     expect(result.current.form.values.confirmPassword).toBe(value);
@@ -75,7 +76,7 @@ describe('Register feature works when: ', () => {
     const { result, restore } = storeFixture(useRegisterStore);
 
     act(() => {
-      result.current.submit();
+      register_store_actions.submit();
     });
 
     expect(result.current.form).toMatchSnapshot();
@@ -91,7 +92,10 @@ describe('Register feature works when: ', () => {
 
     act(() => {
       for (const key in payload) {
-        result.current.setField(key as keyof RegisterPayload, payload[key]);
+        register_store_actions.setField(
+          key as keyof RegisterStore.FormData,
+          payload[key]
+        );
       }
     });
 
@@ -100,14 +104,14 @@ describe('Register feature works when: ', () => {
     }
 
     act(() => {
-      result.current.submit();
+      register_store_actions.submit();
     });
 
     expect(result.current.form).toMatchSnapshot();
-    expect(result.current.key).toBe('pending' as RegisterStateKey);
+    expect(result.current.is).toBe('busy' as RegisterStore.Is);
 
     await waitFor(() => {
-      expect(result.current.key).toBe('ok' as RegisterStateKey);
+      expect(result.current.is).toBe('ok' as RegisterStore.Is);
     });
 
     restore();

@@ -8,7 +8,7 @@ const set = (state: RecommendedArticlesStore.State): void => {
   setState(state, true);
 };
 
-const recommended_articles_actions = {
+const recommended_articles_store_actions: RecommendedArticlesStore.Actions = {
   load: async (limit, lang) => {
     const { is } = get();
 
@@ -33,4 +33,4 @@ const recommended_articles_actions = {
   },
 };
 
-export { recommended_articles_actions };
+export { recommended_articles_store_actions };
