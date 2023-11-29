@@ -7,9 +7,9 @@ import { UserPopover } from './user-popover';
 
 const SignInButton = () => {
   const lang = useLang();
-  const { key } = useSignInStore();
+  const { is } = useSignInStore();
 
-  if (key === 'pending') {
+  if (is === 'busy') {
     return (
       <Button size={2} loading>
         Sign In
@@ -35,9 +35,9 @@ const RegisterButton = () => {
 };
 
 const UserSection = () => {
-  const { key } = useAuthStore();
+  const { is } = useAuthStore();
 
-  if (key === 'idle') {
+  if (is === 'idle') {
     return (
       <Box orientation="row" spacing={[150]}>
         <Button size={2} disabled>
@@ -50,13 +50,13 @@ const UserSection = () => {
     );
   }
 
-  if (key === 'authorized') {
+  if (is === 'authorized') {
     return <UserPopover />;
   }
 
   return (
     <Box orientation="row" spacing={[150]}>
-      {key === 'unauthorized' && <RegisterButton />}
+      {is === 'unauthorized' && <RegisterButton />}
       <SignInButton />
     </Box>
   );

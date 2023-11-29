@@ -1,2 +1,3 @@
-export * from './sign-in.store';
+export * from './store';
 export * from './defs';
+export * from './actions';

@@ -6,7 +6,7 @@ import {
   Input,
   ProgressCircle,
 } from '@system/figa-ui';
-import { useSignInStore } from '../../store/sign-in';
+import { sign_in_store_actions, useSignInStore } from '../../store/sign-in';
 import { useSignOutStore } from '../../store/sign-out';
 import { useState, useRef, useEffect } from 'react';
 import { useMoveToRedirect } from '../../dk';
@@ -23,7 +23,7 @@ const SignInForm = () => {
   const [justSignedIn, setJustSignedIn] = useState(false);
 
   const handleSignIn = async () => {
-    await signInStore.signIn({
+    await sign_in_store_actions.signIn({
       login,
       password,
     });
@@ -74,13 +74,13 @@ const SignInForm = () => {
           />
           <Button
             loading={
-              signInStore.key === 'pending' || signOutStore.key === 'pending'
+              signInStore.is === 'busy' || signOutStore.key === 'pending'
             }
             onClick={handleSignIn}
           >
             Confirm
           </Button>
-          {signInStore.key === 'error' && (
+          {signInStore.is === 'fail' && (
             <Alert type="error">{signInStore.error.message}</Alert>
           )}
         </Box>
