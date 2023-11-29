@@ -10,7 +10,7 @@ import {
   Popover,
 } from '@system/figa-ui';
 import { article_store_selectors } from '../../store/article';
-import { article_management_actions } from '../../store/article-management';
+import { article_management_store_actions } from '../../store/article-management';
 import { change_article_status_selectors } from '../../store/change-article-status';
 import type { ReactNode } from 'react';
 
@@ -68,7 +68,7 @@ const ArticleActionsPopover = () => {
   const is = change_article_status_selectors.useIs();
 
   const handleConfirm = (): void => {
-    article_management_actions.changeStatus(id, modal.data);
+    article_management_store_actions.changeStatus(id, modal.data);
   };
 
   const handleAcceptClick = (): void => {

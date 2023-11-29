@@ -1,14 +1,14 @@
 import { useArticleManagementStore } from './store';
-import type * as ArticleManagement from './defs';
 import { article_reviews_actions } from '../article-reviews';
 import { article_store_actions } from '../article/actions';
 import { add_article_review_store_actions } from '../add-article-review';
 import { mockArticleReview } from '@system/blog-api-mocks';
 import { change_article_status_actions } from '../change-article-status';
+import type { ArticleManagementStore } from './defs';
 
 const { setState: set } = useArticleManagementStore;
 
-const article_management_actions: ArticleManagement.Actions = {
+const article_management_store_actions: ArticleManagementStore.Actions = {
   start: (id, url, lang) => {
     set({ is: 'active', id });
     article_reviews_actions.load(id);
@@ -42,4 +42,4 @@ const article_management_actions: ArticleManagement.Actions = {
   },
 };
 
-export { article_management_actions };
+export { article_management_store_actions };

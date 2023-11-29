@@ -20,7 +20,7 @@ import {
   add_article_review_store_selectors,
 } from '../../store/add-article-review';
 import { article_store_selectors } from '../../store/article';
-import { article_management_actions } from '../../store/article-management';
+import { article_management_store_actions } from '../../store/article-management';
 import {
   article_reviews_actions,
   useArticleReviewsStore,
@@ -106,7 +106,7 @@ const Content = () => {
           />
         </Field>
         <Button
-          onClick={() => article_management_actions.confirm(article.id)}
+          onClick={() => article_management_store_actions.confirm(article.id)}
           disabled={
             addArticleReviewStore.form.untouched ||
             addArticleReviewStore.form.invalid
