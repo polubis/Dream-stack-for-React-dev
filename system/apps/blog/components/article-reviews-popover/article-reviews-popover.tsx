@@ -16,8 +16,8 @@ import {
 import { AdminsOnly } from '../../core';
 import { useArticleParams } from '../../core/articles';
 import {
-  add_article_review_actions,
-  useAddArticleReviewStore,
+  add_article_review_store_actions,
+  add_article_review_store_selectors,
 } from '../../store/add-article-review';
 import { article_selectors } from '../../store/article';
 import { article_management_actions } from '../../store/article-management';
@@ -81,7 +81,7 @@ const Content = () => {
 
   const article = article_selectors.useArticle();
   const articleReviewsStore = useArticleReviewsStore();
-  const addArticleReviewStore = useAddArticleReviewStore();
+  const addArticleReviewStore = add_article_review_store_selectors.useState();
 
   const AddReviewSection = article.status === 'WaitingForApproval' && (
     <AdminsOnly>
@@ -98,7 +98,10 @@ const Content = () => {
             }
             value={addArticleReviewStore.form.values.content}
             onChange={(e) =>
-              add_article_review_actions.setField('content', e.target.value)
+              add_article_review_store_actions.setField(
+                'content',
+                e.target.value
+              )
             }
           />
         </Field>
