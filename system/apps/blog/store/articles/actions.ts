@@ -13,11 +13,11 @@ import {
   tap,
   throttleTime,
 } from 'rxjs';
-import type * as Articles from './defs';
 import { useArticlesStore } from './store';
 import { getArticles, getError, getYourArticles } from '@system/blog-api';
 import type { GetArticlesParams } from '@system/blog-api-models';
-import { articles_states } from './states';
+import { articles_store_states } from './states';
+import type { ArticlesStore } from './defs';
 
 const { getState: get, setState: set } = useArticlesStore;
 
@@ -27,7 +27,7 @@ const toArticlesParams = ({
   limit,
   page,
   status,
-}: Articles.Filters): GetArticlesParams => ({
+}: ArticlesStore.Filters): GetArticlesParams => ({
   lang,
   Search: query,
   ItemsPerPage: limit,
@@ -36,15 +36,16 @@ const toArticlesParams = ({
   Tags: [],
 });
 
-const changed = new Subject<Articles.Filters>();
+const changed = new Subject<ArticlesStore.Filters>();
 const changed$ = changed.asObservable();
 
-const loadMore = new Subject<Articles.Filters>();
+const loadMore = new Subject<ArticlesStore.Filters>();
 const loadMore$ = loadMore.asObservable();
 
 const subs = new Subscription();
 
-const isOk = (state: Articles.State): state is Articles.Ok => state.is === 'ok';
+const isOk = (state: ArticlesStore.State): state is ArticlesStore.Ok =>
+  state.is === 'ok';
 const checkIsAllLoaded = (items: unknown[], limit: number): boolean =>
   items.length < limit;
 
@@ -88,7 +89,10 @@ subs.add(
       throttleTime(1000),
       map((filters) => ({ state: get(), filters })),
       filter(({ state }) => isOk(state)),
-      map(({ filters, state }) => ({ filters, state: state as Articles.Ok })),
+      map(({ filters, state }) => ({
+        filters,
+        state: state as ArticlesStore.Ok,
+      })),
       tap(({ filters }) => {
         set({ is: 'loading', filters });
       }),
@@ -117,13 +121,13 @@ subs.add(
     .subscribe()
 );
 
-const articles_actions: Articles.Actions = {
+const articles_actions: ArticlesStore.Actions = {
   reset: () => {
-    set(articles_states.idle());
+    set(articles_store_states.idle());
   },
   init: (filters = {}) => {
     changed.next({
-      ...articles_states.idle().filters,
+      ...articles_store_states.idle().filters,
       ...filters,
     });
   },
@@ -138,7 +142,7 @@ const articles_actions: Articles.Actions = {
   },
   loadMore: () => {
     const { filters } = get();
-    const newFilters: Articles.Filters = {
+    const newFilters: ArticlesStore.Filters = {
       ...filters,
       page: filters.page + 1,
     };

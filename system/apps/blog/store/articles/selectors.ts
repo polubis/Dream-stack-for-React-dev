@@ -1,9 +1,9 @@
-import type * as Articles from './defs';
+import type { ArticlesStore } from './defs';
 import { useArticlesStore } from './store';
 
 const { getState: get } = useArticlesStore;
 
-const articles_selectors: Articles.Selectors = {
+const articles_store_selectors: ArticlesStore.Selectors = {
   articles: () => {
     const state = get();
 
@@ -15,4 +15,4 @@ const articles_selectors: Articles.Selectors = {
   },
 };
 
-export { articles_selectors };
+export { articles_store_selectors };
