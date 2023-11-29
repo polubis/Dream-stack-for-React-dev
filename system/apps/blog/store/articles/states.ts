@@ -1,6 +1,6 @@
-import type * as Articles from './defs';
+import type { ArticlesStore } from './defs';
 
-const articles_store_states: Articles.States = {
+const articles_store_states: ArticlesStore.States = {
   filters: (filters = {}) => ({
     lang: 'en',
     page: 1,
