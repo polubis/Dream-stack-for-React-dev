@@ -5,7 +5,7 @@ const AdminsOnly = ({ children, fallback = null }: GuardProps) => {
   const authStore = auth_store_selectors.useState();
   const isAdmin = auth_store_selectors.useIsAdmin();
 
-  if (authStore.key === 'idle') {
+  if (authStore.is === 'idle') {
     return null;
   }
 
@@ -16,7 +16,7 @@ const SignedInOnly = ({ children, fallback = null }: GuardProps) => {
   const authStore = auth_store_selectors.useState();
   const authorized = auth_store_selectors.useIsAuthorized();
 
-  if (authStore.key === 'idle') {
+  if (authStore.is === 'idle') {
     return null;
   }
 
@@ -27,7 +27,7 @@ const NotSignedInOnly = ({ children, fallback = null }: GuardProps) => {
   const authStore = auth_store_selectors.useState();
   const authorized = auth_store_selectors.useIsAuthorized();
 
-  if (authStore.key === 'idle') {
+  if (authStore.is === 'idle') {
     return null;
   }
 

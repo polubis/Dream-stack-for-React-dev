@@ -17,11 +17,11 @@ namespace AuthStore {
   }
 
   export interface State {
-    key: 'idle' | 'authorized' | 'unauthorized';
+    is: 'idle' | 'authorized' | 'unauthorized';
     user: NullableUser;
   }
 
-  export type StateKey = State['key'];
+  export type Is = State['is'];
 
   export interface Selectors {
     useIsAuthor(username: Username): boolean;

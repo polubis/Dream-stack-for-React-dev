@@ -18,13 +18,13 @@ describe('Authorization works when: ', () => {
     authStorage.set('user', mockSignedInUser());
     const { result, restore } = storeFixture(useAuthStore);
 
-    expect(result.current.key).toBe('idle' as AuthStore.StateKey);
+    expect(result.current.key).toBe('idle' as AuthStore.Is);
 
     act(() => {
       auth_store_actions.check();
     });
 
-    expect(result.current.key).toBe('authorized' as AuthStore.StateKey);
+    expect(result.current.key).toBe('authorized' as AuthStore.Is);
 
     restore();
   });
@@ -32,13 +32,13 @@ describe('Authorization works when: ', () => {
   it('marks as unauthorized if no authorization info in local storage', () => {
     const { result, restore } = storeFixture(useAuthStore);
 
-    expect(result.current.key).toBe('idle' as AuthStore.StateKey);
+    expect(result.current.key).toBe('idle' as AuthStore.Is);
 
     act(() => {
       auth_store_actions.check();
     });
 
-    expect(result.current.key).toBe('unauthorized' as AuthStore.StateKey);
+    expect(result.current.key).toBe('unauthorized' as AuthStore.Is);
 
     restore();
   });
@@ -47,13 +47,13 @@ describe('Authorization works when: ', () => {
     authStorage.set('user', null);
     const { result, restore } = storeFixture(useAuthStore);
 
-    expect(result.current.key).toBe('idle' as AuthStore.StateKey);
+    expect(result.current.key).toBe('idle' as AuthStore.Is);
 
     act(() => {
       auth_store_actions.check();
     });
 
-    expect(result.current.key).toBe('unauthorized' as AuthStore.StateKey);
+    expect(result.current.key).toBe('unauthorized' as AuthStore.Is);
 
     restore();
   });
@@ -61,7 +61,7 @@ describe('Authorization works when: ', () => {
   it('allows to authorize', () => {
     const { result, restore } = storeFixture(useAuthStore);
 
-    expect(result.current.key).toBe('idle' as AuthStore.StateKey);
+    expect(result.current.key).toBe('idle' as AuthStore.Is);
 
     const user = mockSignedInUser();
 
@@ -70,7 +70,7 @@ describe('Authorization works when: ', () => {
     });
 
     expect(authStorage.get('user')).toEqual(user);
-    expect(result.current.key).toBe('authorized' as AuthStore.StateKey);
+    expect(result.current.key).toBe('authorized' as AuthStore.Is);
 
     restore();
   });
@@ -78,14 +78,14 @@ describe('Authorization works when: ', () => {
   it('allows to unauthorize', () => {
     const { result, restore } = storeFixture(useAuthStore);
 
-    expect(result.current.key).toBe('idle' as AuthStore.StateKey);
+    expect(result.current.key).toBe('idle' as AuthStore.Is);
 
     act(() => {
       auth_store_actions.unauthorize();
     });
 
     expect(authStorage.get('user')).toBe(null);
-    expect(result.current.key).toBe('unauthorized' as AuthStore.StateKey);
+    expect(result.current.key).toBe('unauthorized' as AuthStore.Is);
 
     restore();
   });
