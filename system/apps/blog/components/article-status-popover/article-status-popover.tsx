@@ -9,7 +9,7 @@ import {
 import { useToggle } from '@system/figa-hooks';
 import { article_store_selectors } from '../../store/article';
 import { article_management_store_actions } from '../../store/article-management';
-import { change_article_status_selectors } from '../../store/change-article-status';
+import { change_article_status_store_selectors } from '../../store/change-article-status';
 
 const Trigger = () => {
   const { toggle } = Popover.use();
@@ -28,7 +28,7 @@ const Content = () => {
 
   const article = article_store_selectors.useArticle();
   const confirmation = useToggle();
-  const is = change_article_status_selectors.useIs();
+  const is = change_article_status_store_selectors.useIs();
 
   const handleConfirm = (): void => {
     if (confirmation.closed) {

@@ -1,20 +1,23 @@
 import type { Id, ResponseError } from '@system/blog-api-models';
 
-type Idle = { is: 'idle' };
-type Busy = { is: 'busy' };
-type Ok = { is: 'ok' };
-type Fail = { is: 'fail'; error: ResponseError };
+// eslint-disable-next-line @typescript-eslint/no-namespace
+namespace ChangeArticleStatusStore {
+  export type Idle = { is: 'idle' };
+  export type Busy = { is: 'busy' };
+  export type Ok = { is: 'ok' };
+  export type Fail = { is: 'fail'; error: ResponseError };
 
-type State = Idle | Busy | Ok | Fail;
+  export type State = Idle | Busy | Ok | Fail;
 
-interface Actions {
-  accept(id: Id): Promise<void>;
-  reject(id: Id): Promise<void>;
-  sendForApproval(id: Id): Promise<void>;
+  export interface Actions {
+    accept(id: Id): Promise<void>;
+    reject(id: Id): Promise<void>;
+    sendForApproval(id: Id): Promise<void>;
+  }
+
+  export interface Selectors {
+    useIs(): State['is'];
+  }
 }
 
-interface Selectors {
-  useIs(): State['is'];
-}
-
-export type { Actions, State, Selectors, Idle, Busy, Ok, Fail };
+export type { ChangeArticleStatusStore };

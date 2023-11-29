@@ -1,8 +1,10 @@
 import { create } from 'zustand';
-import type * as ChangeArticleStatus from './defs';
+import type { ChangeArticleStatusStore } from './defs';
 
-const useChangeArticleStatusStore = create<ChangeArticleStatus.State>(() => ({
-  is: 'idle',
-}));
+const useChangeArticleStatusStore = create<ChangeArticleStatusStore.State>(
+  () => ({
+    is: 'idle',
+  })
+);
 
 export { useChangeArticleStatusStore };
