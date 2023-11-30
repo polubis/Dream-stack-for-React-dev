@@ -20,8 +20,6 @@ import styled from 'styled-components';
 import { tagForm } from '../../store/articles-creator/form';
 import { ArticleTag } from '@system/blog-api-models';
 import { useLang } from '../../dk';
-// @TODO: Backend returns invalid format for articles creation.
-// @TODO: Backend returns random errors on article creation???
 
 const PlusButton = styled.div`
   button.button.size-3 {
@@ -131,14 +129,13 @@ const CreatorForm = () => {
 
   return (
     <Box
-      padding={[400, 400, 400, 400]}
+      padding={[200, 250, 200, 250]}
       spacing={[200, 200, 200]}
       maxWidth="600px"
       margin="auto"
     >
       <Field label="Title*">
         <Input
-          autoFocus
           value={title}
           placeholder="The best title is between 80 and 130 characters"
           onChange={(e) =>
@@ -174,7 +171,10 @@ const CreatorForm = () => {
             });
           }}
         >
-          <Font variant="h5">Add thumbnail</Font>
+          <Box orientation="row" between>
+            <Font variant="h5">Add thumbnail</Font>
+            <PlusIcon />
+          </Box>
         </FilePicker>
       </Field>
     </Box>

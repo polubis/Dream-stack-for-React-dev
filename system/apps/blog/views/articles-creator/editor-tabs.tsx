@@ -17,7 +17,7 @@ const EditorTabs = ({ children }: EditorTabProps) => {
   return (
     <>
       <Container>
-        <Tabs>
+        <Tabs rounded={false}>
           {editor_tabs.map((tab) => (
             <Tab
               key={tab}

@@ -1,30 +1,44 @@
 import type { CodeProps } from './defs';
 
-import { useLayoutEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { CODE_LINE_HEIGHT } from './consts';
 import c from 'classnames';
 import { setup } from './setup';
+import { useIsomorphicLayoutEffect } from '@system/figa-hooks';
+import type { EditorView } from 'codemirror';
 
 const CodeContent = ({
   children,
   className,
-  readonly,
+  readonly = false,
+  wrapLines = false,
+  lang = 'js',
   onChange,
 }: CodeProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const parent = ref.current;
 
     if (!parent) return;
 
-    const view = setup({ children, readonly, parent, onChange });
+    let view: EditorView | undefined;
+
+    (async () => {
+      view = await setup({
+        children,
+        readonly,
+        lang,
+        parent,
+        wrapLines,
+        onChange,
+      });
+    })();
 
     return () => {
-      view.destroy();
+      view?.destroy();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [wrapLines, readonly, lang]);
 
   return <div className={c('code', className)} ref={ref} />;
 };

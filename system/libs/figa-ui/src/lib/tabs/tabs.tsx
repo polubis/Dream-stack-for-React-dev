@@ -8,23 +8,31 @@ const Container = styled.nav`
   ${row()}
   overflow-y: auto;
 
-  & > * {
-    &:first-child {
-      border-top-left-radius: ${tokens.radius[50]};
-      border-bottom-left-radius: ${tokens.radius[50]};
-    }
+  &.rounded {
+    & > * {
+      &:first-child {
+        border-top-left-radius: ${tokens.radius[50]};
+        border-bottom-left-radius: ${tokens.radius[50]};
+      }
 
-    &:last-child {
-      border-top-right-radius: ${tokens.radius[50]};
-      border-bottom-right-radius: ${tokens.radius[50]};
+      &:last-child {
+        border-top-right-radius: ${tokens.radius[50]};
+        border-bottom-right-radius: ${tokens.radius[50]};
+      }
     }
   }
 `;
 
-const Tabs = ({ className, ...props }: TabsProps) => {
+const Tabs = ({ className, rounded = true, ...props }: TabsProps) => {
   // @TODO Figure out how to improve types here with styled-components.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return <Container {...(props as any)} className={c('tabs', className)} />;
+  return (
+    <Container
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      {...(props as any)}
+      className={c('tabs', className, { rounded })}
+    />
+  );
 };
 
 export { Tabs };

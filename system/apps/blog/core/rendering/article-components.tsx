@@ -22,12 +22,12 @@ const ARTICLE_COMPONENTS: Components = {
     </Font>
   ),
   strong: ({ children }) => (
-    <Font element="strong" bold variant="b1">
+    <Font element="strong" bold variant="b1" motive="primary">
       {children}
     </Font>
   ),
   a: (props) => (
-    <Link motive="primary" variant="b1">
+    <Link motive="primary" variant="b1" italic>
       <a {...props} />
     </Link>
   ),

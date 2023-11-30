@@ -1,10 +1,22 @@
 import {
+  AttachmentIcon,
   Box,
   Button,
+  CheckIcon,
   CloseIcon,
   Code,
+  CodeIcon,
+  Divider,
   Font,
+  ImageIcon,
+  M_UP,
+  OListIcon,
+  SplitIcon,
+  SplitLeftIcon,
+  SplitRightIcon,
+  UListIcon,
   isTDown,
+  isTUp,
   row,
   streched,
   tokens,
@@ -30,7 +42,7 @@ import type { ArticleStatus } from '@system/blog-api-models';
 import type { EditorScreenView } from './defs';
 
 const topbarHeight = tokens.spacing[850];
-const footerHeight = tokens.spacing[850];
+const footerHeight = tokens.spacing[1000];
 
 const Container = styled.main`
   display: grid;
@@ -40,7 +52,22 @@ const Container = styled.main`
   .creator-layout-topbar,
   .creator-layout-footer {
     ${row()}
-    padding: ${tokens.spacing[200]};
+    padding: 0 ${tokens.spacing[250]};
+  }
+
+  .creator-layout-footer {
+    gap: ${tokens.spacing[100]};
+    overflow-x: auto;
+
+    .editor-screen-confirm-btn {
+      @media ${M_UP} {
+        margin-left: auto;
+      }
+    }
+
+    .divider {
+      margin: 0 ${tokens.spacing[50]};
+    }
   }
 
   .creator-layout-content {
@@ -58,7 +85,7 @@ const Container = styled.main`
 
     .creator-layout-code,
     .creator-layout-preview {
-      overflow-y: auto;
+      overflow-y: scroll;
     }
   }
 
@@ -98,8 +125,17 @@ const EditorScreen = () => {
     articles_creator_actions.setView('initial');
   };
 
-  const toggleView = (): void => {
-    setView((view) => (view === 'code' ? 'preview' : 'code'));
+  const changeView = (): void => {
+    setView((view) => {
+      if (isTUp(window.innerWidth)) {
+        if (view === 'code') return 'preview';
+        if (view === 'preview') return 'both';
+
+        return 'code';
+      }
+
+      return view === 'code' ? 'preview' : 'code';
+    });
   };
 
   const handleConfirm = (): void => {
@@ -120,12 +156,12 @@ const EditorScreen = () => {
     <Container className={view}>
       <header className="creator-layout-topbar">
         <Box minWidth="100%" orientation="row" between>
-          <Font variant="h5">Article creator</Font>
+          <Font variant="h6">Article creator</Font>
           <Button
             size={2}
-            shape="rounded"
-            variant="outlined"
+            variant="ghost"
             motive="tertiary"
+            shape="rounded"
             title="Close creator"
             onClick={handleClose}
           >
@@ -141,6 +177,7 @@ const EditorScreen = () => {
                 <>
                   {activeTab === 'Content' && (
                     <Code
+                      lang="md"
                       onChange={(content) =>
                         articles_creator_actions.change('content', content)
                       }
@@ -184,22 +221,72 @@ const EditorScreen = () => {
         </div>
       </main>
       <footer className="creator-layout-footer">
-        <Box minWidth="100%" orientation="row" right spacing={[150]}>
-          {view !== 'both' && (
-            <Button
-              size={2}
-              variant="outlined"
-              motive="tertiary"
-              onClick={toggleView}
-            >
-              {view === 'code' ? 'Preview' : 'Content'}
-            </Button>
-          )}
-
-          <Button disabled={invalid} size={2} onClick={handleConfirm}>
-            Submit
-          </Button>
-        </Box>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          h1
+        </Button>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          h2
+        </Button>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          h3
+        </Button>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          h4
+        </Button>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          h5
+        </Button>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          h6
+        </Button>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          B
+        </Button>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          I
+        </Button>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          A
+        </Button>
+        <Divider axis="y" />
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          <OListIcon />
+        </Button>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          <UListIcon />
+        </Button>
+        <Divider axis="y" />
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          <ImageIcon />
+        </Button>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          <CodeIcon />
+        </Button>
+        <Button size={2} variant="ghost" motive="tertiary" shape="rounded">
+          <AttachmentIcon />
+        </Button>
+        <Divider axis="y" />
+        <Button
+          size={2}
+          variant="ghost"
+          motive="tertiary"
+          shape="rounded"
+          onClick={changeView}
+        >
+          {view === 'code' && <SplitLeftIcon />}
+          {view === 'preview' && <SplitRightIcon />}
+          {view === 'both' && <SplitIcon />}
+        </Button>
+        <Button
+          disabled={invalid}
+          size={2}
+          shape="rounded"
+          className="editor-screen-confirm-btn"
+          title="Submit article"
+          onClick={handleConfirm}
+        >
+          <CheckIcon />
+        </Button>
       </footer>
     </Container>
   );

@@ -25,7 +25,7 @@ const Container = styled.div`
   padding: ${tokens.spacing[500]} ${tokens.spacing[250]};
   border-bottom: ${tokens.spacing[25]} solid
     ${(props) => props.theme.box.outlined.borderColor};
-    
+
   .articles-jumbo-content {
     ${center('column')}
     max-width: 500px;
