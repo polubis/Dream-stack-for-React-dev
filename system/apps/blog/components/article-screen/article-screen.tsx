@@ -1,6 +1,6 @@
 import {
-  article_actions,
-  article_selectors,
+  article_store_actions,
+  article_store_selectors,
   useArticleStore,
 } from '../../store/article';
 import { ArticleBody } from '../article-body';
@@ -13,9 +13,9 @@ import Link from 'next/link';
 import { Button, EditIcon, Font } from '@system/figa-ui';
 import type { ArticleScreenProps } from './defs';
 import { ArticleReviewsPopover } from '../article-reviews-popover';
-import { auth_selectors } from '../../store/auth';
+import { auth_store_selectors } from '../../store/auth';
 import { useLang } from '../../dk';
-import { article_reviews_actions } from '../../store/article-reviews';
+import { article_reviews_store_actions } from '../../store/article-reviews';
 import { useEffect } from 'react';
 import { article_mdx_options } from '../../core';
 import { useArticleParams } from '../../core/articles';
@@ -34,7 +34,7 @@ const Content = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
     status,
     content,
     tags,
-  } = article_selectors.useArticle();
+  } = article_store_selectors.useArticle();
 
   return (
     <ArticleBody
@@ -58,11 +58,11 @@ const Content = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
 
 const Toolbox = () => {
   const lang = useLang();
-  const { authorName, url, status } = article_selectors.useArticle();
-  const isAuthor = auth_selectors.useIsAuthor(authorName);
-  const isAdmin = auth_selectors.useIsAdmin();
+  const { authorName, url, status } = article_store_selectors.useArticle();
+  const isAuthor = auth_store_selectors.useIsAuthor(authorName);
+  const isAdmin = auth_store_selectors.useIsAdmin();
 
-  useEffect(() => article_reviews_actions.reset(), []);
+  useEffect(() => article_reviews_store_actions.reset(), []);
 
   return (
     <RightBar>
@@ -90,7 +90,7 @@ const DynamicArticleScreen = ({ body }: Pick<ArticleScreenProps, 'body'>) => {
 
   useEffect(() => {
     if (params.is !== 'ok') return;
-    article_actions.load({ url: params.query.url, lang });
+    article_store_actions.load({ url: params.query.url, lang });
   }, [lang, params]);
 
   const articleLoaded = articleStore.is === 'ok';

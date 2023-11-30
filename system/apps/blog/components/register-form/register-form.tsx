@@ -1,8 +1,8 @@
 import { Alert, Box, Button, Field, Font, Input } from '@system/figa-ui';
-import { useRegisterStore } from '../../store/register';
+import { register_store_actions, useRegisterStore } from '../../store/register';
 
 const RegisterForm = () => {
-  const { key, form, setField, submit, error } = useRegisterStore();
+  const { is, form, error } = useRegisterStore();
 
   return (
     <Box
@@ -17,7 +17,9 @@ const RegisterForm = () => {
           value={form.values.login}
           placeholder="Login*"
           autoFocus
-          onChange={(e) => setField('login', e.target.value)}
+          onChange={(e) =>
+            register_store_actions.setField('login', e.target.value)
+          }
         />
       </Field>
 
@@ -27,7 +29,9 @@ const RegisterForm = () => {
           invalid={form.result.email}
           placeholder="Email*"
           type="email"
-          onChange={(e) => setField('email', e.target.value)}
+          onChange={(e) =>
+            register_store_actions.setField('email', e.target.value)
+          }
         />
       </Field>
 
@@ -41,7 +45,9 @@ const RegisterForm = () => {
           invalid={form.result.password}
           type="password"
           placeholder="Password*"
-          onChange={(e) => setField('password', e.target.value)}
+          onChange={(e) =>
+            register_store_actions.setField('password', e.target.value)
+          }
         />
       </Field>
 
@@ -55,22 +61,24 @@ const RegisterForm = () => {
           invalid={form.result.confirmPassword}
           placeholder="Repeat your password*"
           type="password"
-          onChange={(e) => setField('confirmPassword', e.target.value)}
+          onChange={(e) =>
+            register_store_actions.setField('confirmPassword', e.target.value)
+          }
         />
       </Field>
 
       <Box right>
         <Button
-          onClick={submit}
+          onClick={register_store_actions.submit}
           disabled={(form.touched || form.dirty) && form.invalid}
-          loading={key === 'pending'}
+          loading={is === 'busy'}
         >
           Confirm
         </Button>
       </Box>
 
-      {key === 'error' && <Alert type="error">{error.message}</Alert>}
-      {key === 'ok' && <Alert type="ok">You are logged in!</Alert>}
+      {is === 'fail' && <Alert type="error">{error.message}</Alert>}
+      {is === 'ok' && <Alert type="ok">You are logged in!</Alert>}
     </Box>
   );
 };

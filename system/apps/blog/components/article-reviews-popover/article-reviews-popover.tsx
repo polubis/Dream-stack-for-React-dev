@@ -16,18 +16,18 @@ import {
 import { AdminsOnly } from '../../core';
 import { useArticleParams } from '../../core/articles';
 import {
-  add_article_review_actions,
-  useAddArticleReviewStore,
+  add_article_review_store_actions,
+  add_article_review_store_selectors,
 } from '../../store/add-article-review';
-import { article_selectors } from '../../store/article';
-import { article_management_actions } from '../../store/article-management';
+import { article_store_selectors } from '../../store/article';
+import { article_management_store_actions } from '../../store/article-management';
 import {
-  article_reviews_actions,
+  article_reviews_store_actions,
   useArticleReviewsStore,
 } from '../../store/article-reviews';
 import { InfoSection } from '../info-section';
 import styled from 'styled-components';
-import { auth_selectors } from '../../store/auth';
+import { auth_store_selectors } from '../../store/auth';
 
 const Container = styled.ul`
   ${column()}
@@ -66,7 +66,7 @@ const Trigger = ({ id }: { id: string }) => {
             return;
           }
 
-          await article_reviews_actions.load(id);
+          await article_reviews_store_actions.load(id);
           toggle();
         }}
       >
@@ -79,9 +79,9 @@ const Trigger = ({ id }: { id: string }) => {
 const Content = () => {
   const { close } = Popover.use();
 
-  const article = article_selectors.useArticle();
+  const article = article_store_selectors.useArticle();
   const articleReviewsStore = useArticleReviewsStore();
-  const addArticleReviewStore = useAddArticleReviewStore();
+  const addArticleReviewStore = add_article_review_store_selectors.useState();
 
   const AddReviewSection = article.status === 'WaitingForApproval' && (
     <AdminsOnly>
@@ -98,12 +98,15 @@ const Content = () => {
             }
             value={addArticleReviewStore.form.values.content}
             onChange={(e) =>
-              add_article_review_actions.setField('content', e.target.value)
+              add_article_review_store_actions.setField(
+                'content',
+                e.target.value
+              )
             }
           />
         </Field>
         <Button
-          onClick={() => article_management_actions.confirm(article.id)}
+          onClick={() => article_management_store_actions.confirm(article.id)}
           disabled={
             addArticleReviewStore.form.untouched ||
             addArticleReviewStore.form.invalid
@@ -189,10 +192,10 @@ const Content = () => {
 };
 
 const ArticleReviewsPopover = () => {
-  const article = article_selectors.useArticle();
+  const article = article_store_selectors.useArticle();
   const params = useArticleParams();
-  const isAuthor = auth_selectors.useIsAuthor(article.authorName);
-  const isAdmin = auth_selectors.useIsAdmin();
+  const isAuthor = auth_store_selectors.useIsAuthor(article.authorName);
+  const isAdmin = auth_store_selectors.useIsAdmin();
 
   if (params.is !== 'ok' || (!isAuthor && !isAdmin)) return null;
 

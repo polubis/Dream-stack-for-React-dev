@@ -1,7 +1,7 @@
 import { create } from 'zustand';
-import type * as ArticleManagement from './defs';
+import type { ArticleManagementStore } from './defs';
 
-const useArticleManagementStore = create<ArticleManagement.State>(() => ({
+const useArticleManagementStore = create<ArticleManagementStore.State>(() => ({
   is: 'idle',
 }));
 

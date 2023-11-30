@@ -8,10 +8,10 @@ import {
   Loader,
 } from '@system/figa-ui';
 import { MainLayout } from '../../components';
-import { article_actions, useArticleStore } from '../../store/article';
+import { article_store_actions, useArticleStore } from '../../store/article';
 import { useRouter } from 'next/router';
 import { getLang } from '../../dk';
-import { articles_creator_actions } from '../../store/articles-creator';
+import { articles_creator_store_actions } from '../../store/articles-creator';
 
 const mdx = `#### Quick start
 
@@ -77,10 +77,10 @@ const InitialScreen = () => {
 
     if (url) {
       try {
-        const article = await article_actions.load({ lang, url });
+        const article = await article_store_actions.load({ lang, url });
 
-        articles_creator_actions.setView('creator');
-        articles_creator_actions.setForm({
+        articles_creator_store_actions.setView('creator');
+        articles_creator_store_actions.setForm({
           ...article,
           thumbnail: {
             file: null,
@@ -94,8 +94,8 @@ const InitialScreen = () => {
       return;
     }
 
-    articles_creator_actions.setView('creator');
-    articles_creator_actions.setForm({ content: mdx });
+    articles_creator_store_actions.setView('creator');
+    articles_creator_store_actions.setForm({ content: mdx });
   };
 
   const { is } = articleStore;

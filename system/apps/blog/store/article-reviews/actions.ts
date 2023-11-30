@@ -1,10 +1,10 @@
 import { getArticleReviews, getError } from '@system/blog-api';
-import type * as ArticleReviews from './defs';
 import { useArticleReviewsStore } from './store';
+import type { ArticleReviewsStore } from './defs';
 
 const { setState: set, getState: get } = useArticleReviewsStore;
 
-const article_reviews_actions: ArticleReviews.Actions = {
+const article_reviews_store_actions: ArticleReviewsStore.Actions = {
   load: async (id) => {
     set({ is: 'busy' }, true);
 
@@ -30,4 +30,4 @@ const article_reviews_actions: ArticleReviews.Actions = {
   },
 };
 
-export { article_reviews_actions };
+export { article_reviews_store_actions };

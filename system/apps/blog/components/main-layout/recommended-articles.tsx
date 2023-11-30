@@ -4,7 +4,7 @@ import { size, spacing, tokens, wrap } from '@system/figa-ui';
 import { Link } from '../link';
 import Image from 'next/image';
 import {
-  recommended_articles_actions,
+  recommended_articles_store_actions,
   useRecommendedArticlesStore,
 } from '../../store/recommended-articles';
 import { useLang } from '../../dk';
@@ -50,7 +50,7 @@ const RecommendedArticles = () => {
   });
 
   useEffect(() => {
-    recommended_articles_actions.load(articles_limit, lang);
+    recommended_articles_store_actions.load(articles_limit, lang);
   }, [lang]);
 
   const Content =

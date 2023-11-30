@@ -5,7 +5,7 @@ import type {
   ResponseError,
 } from '@system/blog-api-models';
 
-namespace Article {
+namespace ArticleStore {
   export type Idle = { is: 'idle' };
   export type Busy = { is: 'busy' };
   export type Ok = { is: 'ok'; article: FullArticleDto };
@@ -24,4 +24,4 @@ namespace Article {
   }
 }
 
-export type { Article };
+export type { ArticleStore };

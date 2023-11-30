@@ -16,7 +16,7 @@ describe('Guards can be used when: ', () => {
 
     act(() => {
       useAuthStore.setState({
-        key: 'unauthorized',
+        is: 'unauthorized',
       });
     });
 
@@ -24,7 +24,7 @@ describe('Guards can be used when: ', () => {
 
     act(() => {
       useAuthStore.setState({
-        key: 'authorized',
+        is: 'authorized',
         user: mockSignedInUser(),
       });
     });
@@ -46,7 +46,7 @@ describe('Guards can be used when: ', () => {
 
     act(() => {
       useAuthStore.setState({
-        key: 'unauthorized',
+        is: 'unauthorized',
       });
     });
 
@@ -54,7 +54,7 @@ describe('Guards can be used when: ', () => {
 
     act(() => {
       useAuthStore.setState({
-        key: 'authorized',
+        is: 'authorized',
         user: mockSignedInUser(),
       });
     });
@@ -76,7 +76,7 @@ describe('Guards can be used when: ', () => {
 
     act(() => {
       useAuthStore.setState({
-        key: 'unauthorized',
+        is: 'unauthorized',
       });
     });
 
@@ -84,7 +84,7 @@ describe('Guards can be used when: ', () => {
 
     act(() => {
       useAuthStore.setState({
-        key: 'authorized',
+        is: 'authorized',
         user: {
           ...mockSignedInUser(),
           roles: ['Admin'],

@@ -7,7 +7,7 @@ import type {
 } from '@system/blog-api-models';
 import type { FormState } from '@system/utils';
 
-namespace ArticlesCreator {
+namespace ArticlesCreatorStore {
   export interface TagFormData {
     tag: ArticleTag;
     tags: ArticleTags;
@@ -34,4 +34,4 @@ namespace ArticlesCreator {
   export type State = Idle | Busy | Ok | Fail;
 }
 
-export type { ArticlesCreator };
+export type { ArticlesCreatorStore };

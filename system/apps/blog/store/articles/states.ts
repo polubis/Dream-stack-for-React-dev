@@ -1,6 +1,6 @@
-import type * as Articles from './defs';
+import type { ArticlesStore } from './defs';
 
-const articles_states: Articles.States = {
+const articles_store_states: ArticlesStore.States = {
   filters: (filters = {}) => ({
     lang: 'en',
     page: 1,
@@ -10,13 +10,13 @@ const articles_states: Articles.States = {
     yours: false,
     ...filters,
   }),
-  idle: () => ({ is: 'idle', filters: articles_states.filters() }),
-  busy: () => ({ is: 'busy', filters: articles_states.filters() }),
+  idle: () => ({ is: 'idle', filters: articles_store_states.filters() }),
+  busy: () => ({ is: 'busy', filters: articles_store_states.filters() }),
   ok: (articles, filters = {}) => ({
     is: 'ok',
-    filters: articles_states.filters(filters),
+    filters: articles_store_states.filters(filters),
     articles,
   }),
 };
 
-export { articles_states };
+export { articles_store_states };

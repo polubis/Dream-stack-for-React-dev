@@ -1,10 +1,10 @@
 import { createArticleReview, getError } from '@system/blog-api';
-import type * as AddArticleReview from './defs';
+import type { AddArticleReviewStore } from './defs';
 import { addArticleReviewForm, useAddArticleReviewStore } from './store';
 
 const { setState: set, getState: get } = useAddArticleReviewStore;
 
-const add_article_review_actions: AddArticleReview.Actions = {
+const add_article_review_store_actions: AddArticleReviewStore.Actions = {
   setField: (key, value) => {
     set({ form: addArticleReviewForm.set(get().form)({ [key]: value }) });
   },
@@ -25,7 +25,7 @@ const add_article_review_actions: AddArticleReview.Actions = {
       });
 
       set({ is: 'ok' });
-      add_article_review_actions.setField('content', '');
+      add_article_review_store_actions.setField('content', '');
 
       return response;
     } catch (error: unknown) {
@@ -34,4 +34,4 @@ const add_article_review_actions: AddArticleReview.Actions = {
   },
 };
 
-export { add_article_review_actions };
+export { add_article_review_store_actions };

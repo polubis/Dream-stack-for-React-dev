@@ -1,8 +1,6 @@
 import { act, waitFor } from '@testing-library/react';
-import { reset, useSignInStore } from './sign-in.store';
+import { useSignInStore } from './store';
 import { storeFixture } from '../test-utils';
-import type { SignInStateKey } from './defs';
-import { authorize } from '../auth';
 import { getError, signIn } from '@system/blog-api';
 import {
   mockErrorResponse,
@@ -10,6 +8,8 @@ import {
   mockSignInPayload,
   mockSignInResponse,
 } from '@system/blog-api-mocks';
+import { auth_store_actions } from '../auth';
+import { sign_in_store_actions } from './actions';
 
 jest.mock('@system/blog-api');
 jest.mock('../auth');
@@ -31,22 +31,22 @@ describe('Allows to sign in user when: ', () => {
     (signIn as jest.Mock).mockImplementation(() =>
       Promise.resolve(mockSignInResponse())
     );
-    (authorize as jest.Mock).mockImplementation(jest.fn());
+    (auth_store_actions.authorize as jest.Mock).mockImplementation(jest.fn());
 
-    expect(result.current.key).toBe('idle' as SignInStateKey);
+    expect(result.current.is).toBe('idle');
 
     act(() => {
-      result.current.signIn(mockSignInPayload());
+      sign_in_store_actions.signIn(mockSignInPayload());
     });
 
-    expect(result.current.key).toBe('pending' as SignInStateKey);
+    expect(result.current.is).toBe('busy');
 
     await waitFor(() => {
       expect(signIn).toHaveBeenCalledTimes(1);
     });
 
-    expect(authorize).toHaveBeenCalledTimes(1);
-    expect(result.current.key).toBe('ok' as SignInStateKey);
+    expect(auth_store_actions.authorize).toHaveBeenCalledTimes(1);
+    expect(result.current.is).toBe('ok');
 
     restore();
   });
@@ -58,20 +58,20 @@ describe('Allows to sign in user when: ', () => {
       Promise.reject(mockErrorResponse())
     );
 
-    expect(result.current.key).toBe('idle' as SignInStateKey);
+    expect(result.current.is).toBe('idle');
 
     act(() => {
-      result.current.signIn(mockSignInPayload());
+      sign_in_store_actions.signIn(mockSignInPayload());
     });
 
-    expect(result.current.key).toBe('pending' as SignInStateKey);
+    expect(result.current.is).toBe('busy');
 
     await waitFor(() => {
       expect(signIn).toHaveBeenCalledTimes(1);
     });
 
-    expect(authorize).not.toHaveBeenCalled();
-    expect(result.current.key).toBe('error' as SignInStateKey);
+    expect(auth_store_actions.authorize).not.toHaveBeenCalled();
+    expect(result.current.is).toBe('fail');
     expect(result.current.error).toEqual(mockResponseError());
 
     restore();
@@ -79,18 +79,17 @@ describe('Allows to sign in user when: ', () => {
 
   it('allows to reset state to default', () => {
     const { result, restore } = storeFixture(useSignInStore, {
-      key: 'pending',
+      is: 'busy',
       error: null,
-      signIn: jest.fn(),
     });
 
-    expect(result.current.key).toBe('pending' as SignInStateKey);
+    expect(result.current.is).toBe('busy');
 
     act(() => {
-      reset();
+      sign_in_store_actions.reset();
     });
 
-    expect(result.current.key).toBe('idle' as SignInStateKey);
+    expect(result.current.is).toBe('idle');
 
     restore();
   });

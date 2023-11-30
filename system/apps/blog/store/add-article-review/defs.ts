@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 import type {
   CreateArticleReviewPayload,
   CreateArticleReviewResponse,
@@ -5,21 +6,30 @@ import type {
 } from '@system/blog-api-models';
 import type { FormState } from '@system/utils';
 
-type FormData = Pick<CreateArticleReviewPayload, 'content'>;
-type Form = FormState<FormData>;
+namespace AddArticleReviewStore {
+  export type FormData = Pick<CreateArticleReviewPayload, 'content'>;
+  export type Form = FormState<FormData>;
 
-type Idle = { is: 'idle'; form: Form };
-type Busy = { is: 'busy'; form: Form };
-type Ok = { is: 'ok'; form: Form };
-type Fail = { is: 'fail'; error: ResponseError; form: Form };
+  export type Idle = { is: 'idle' };
+  export type Busy = { is: 'busy' };
+  export type Ok = { is: 'ok' };
+  export type Fail = {
+    is: 'fail';
+    error: ResponseError;
+  };
 
-type State = Idle | Busy | Ok | Fail;
+  export type State = (Idle | Busy | Ok | Fail) & { form: Form };
 
-interface Actions {
-  setField<K extends keyof FormData>(key: K, value: FormData[K]): void;
-  confirm(
-    id: CreateArticleReviewPayload['id']
-  ): Promise<CreateArticleReviewResponse>;
+  export interface Actions {
+    setField<K extends keyof FormData>(key: K, value: FormData[K]): void;
+    confirm(
+      id: CreateArticleReviewPayload['id']
+    ): Promise<CreateArticleReviewResponse>;
+  }
+
+  export interface Selectors {
+    useState(): State;
+  }
 }
 
-export type { Actions, State, FormData, Form };
+export type { AddArticleReviewStore };

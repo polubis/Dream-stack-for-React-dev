@@ -1,25 +1,24 @@
 import type { ArticleStatus, Id, Lang, Url } from '@system/blog-api-models';
 
-interface Idle {
-  is: 'idle';
-}
-interface Active {
-  is: 'active';
-  id: Id;
+// eslint-disable-next-line @typescript-eslint/no-namespace
+namespace ArticleManagementStore {
+  export interface Idle {
+    is: 'idle';
+  }
+  export interface Active {
+    is: 'active';
+    id: Id;
+  }
+
+  export type State = Idle | Active;
+
+  export interface Actions {
+    start(id: Id, url: Url, lang: Lang): void;
+    reset(): void;
+    confirm(id: Id): Promise<void>;
+    changeStatus(id: Id, status: ArticleStatus): Promise<void>;
+    sendForApproval(id: Id): Promise<void>;
+  }
 }
 
-type State = Idle | Active;
-
-interface Actions {
-  start(id: Id, url: Url, lang: Lang): void;
-  reset(): void;
-  confirm(id: Id): Promise<void>;
-  changeStatus(id: Id, status: ArticleStatus): Promise<void>;
-  sendForApproval(id: Id): Promise<void>;
-}
-
-interface Selectors {
-  active: () => Active;
-}
-
-export type { Actions, State, Idle, Active, Selectors };
+export type { ArticleManagementStore };

@@ -1,5 +1,5 @@
 import { useArticlesCreatorStore } from './store';
-import type { ArticlesCreator } from './defs';
+import type { ArticlesCreatorStore } from './defs';
 import { creatorForm } from './form';
 import {
   createArticle,
@@ -11,11 +11,11 @@ import { Url } from '@system/blog-api-models';
 
 const { getState: get, setState: set } = useArticlesCreatorStore;
 
-const articles_creator_actions = {
-  setView: (view: ArticlesCreator.View): void => {
+const articles_creator_store_actions = {
+  setView: (view: ArticlesCreatorStore.View): void => {
     set({ view });
   },
-  setForm: (values: Partial<ArticlesCreator.FormData> = {}): void => {
+  setForm: (values: Partial<ArticlesCreatorStore.FormData> = {}): void => {
     set({
       form: creatorForm.init({
         ...get().form.values,
@@ -24,8 +24,8 @@ const articles_creator_actions = {
     });
   },
   change: <
-    K extends keyof ArticlesCreator.FormData,
-    V extends ArticlesCreator.FormData[K]
+    K extends keyof ArticlesCreatorStore.FormData,
+    V extends ArticlesCreatorStore.FormData[K]
   >(
     key: K,
     value: V
@@ -73,4 +73,4 @@ const articles_creator_actions = {
   },
 };
 
-export { articles_creator_actions };
+export { articles_creator_store_actions };
