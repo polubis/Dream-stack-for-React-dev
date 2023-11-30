@@ -1,21 +1,20 @@
-import { unauthorize, useAuthStore } from '../../store/auth';
+import { auth_store_actions } from '../../store/auth';
 import { interceptUnauthorized } from '@system/blog-api';
 import { useEffect } from 'react';
 
 const useAuth = () => {
-  const authStore = useAuthStore();
-
   useEffect(() => {
-    const { listen, clean } = interceptUnauthorized(unauthorize);
+    const { listen, clean } = interceptUnauthorized(
+      auth_store_actions.unauthorize
+    );
 
     listen();
 
-    authStore.check();
+    auth_store_actions.check();
 
     return () => {
       clean();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 

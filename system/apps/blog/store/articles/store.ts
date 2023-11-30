@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import type * as Articles from './defs';
 import { articles_store_states } from './states';
+import type { ArticlesStore } from './defs';
 
-const useArticlesStore = create<Articles.State>(() =>
+const useArticlesStore = create<ArticlesStore.State>(() =>
   articles_store_states.idle()
 );
 

@@ -35,7 +35,7 @@ const ConfirmScreen = () => {
       return;
     }
 
-    if (authStore.key === 'authorized') {
+    if (authStore.is === 'authorized') {
       articles_creator_store_actions.confirm(
         new URLSearchParams(window.location.search).get('url')
       );

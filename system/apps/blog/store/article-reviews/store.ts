@@ -1,7 +1,7 @@
 import { create } from 'zustand';
-import type * as ArticleReviews from './defs';
+import type { ArticleReviewsStore } from './defs';
 
-const useArticleReviewsStore = create<ArticleReviews.State>(() => ({
+const useArticleReviewsStore = create<ArticleReviewsStore.State>(() => ({
   is: 'idle',
 }));
 
