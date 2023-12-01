@@ -47,7 +47,13 @@ const Alert = ({
       <Font variant="b2" trim>
         {children}
       </Font>
-      <Button size={1} variant="ghost" motive="tertiary" shape="rounded">
+      <Button
+        size={1}
+        variant="ghost"
+        motive="tertiary"
+        shape="rounded"
+        onClick={onClose}
+      >
         <CloseIcon />
       </Button>
     </div>

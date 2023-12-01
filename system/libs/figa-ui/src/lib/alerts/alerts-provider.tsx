@@ -4,8 +4,10 @@ import { Alert, AlertProps } from '../alert';
 import { usePortal } from '@system/figa-hooks';
 import { tokens } from '../theme-provider';
 import type { AlertData, AlertsProps, AlertsValue } from './defs';
+import { center } from '../shared';
 
 const Container = styled.div`
+  ${center('column')}
   position: fixed;
   top: 0;
   z-index: ${tokens.z[800]};
@@ -15,6 +17,10 @@ const Container = styled.div`
 
   & > *:not(:last-child) {
     margin-bottom: ${tokens.spacing[150]};
+  }
+
+  & > * {
+    max-width: 420px;
   }
 `;
 
@@ -50,7 +56,11 @@ const AlertsProvider = ({ children }: AlertsProps) => {
         render(
           <Container>
             {alerts.map((alert) => (
-              <Alert key={alert.id} {...alert} />
+              <Alert
+                key={alert.id}
+                {...alert}
+                onClose={() => value.hide(alert.id)}
+              />
             ))}
           </Container>
         )}

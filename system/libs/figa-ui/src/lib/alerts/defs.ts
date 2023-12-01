@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import type { AlertProps } from '../alert/defs';
+import type { AlertProps } from '../alert';
 
-interface AlertData extends AlertProps {
+interface AlertData extends Omit<AlertProps, 'onClose'> {
   id: string;
 }
 
