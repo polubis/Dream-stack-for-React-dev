@@ -92,6 +92,7 @@ interface Tokens {
     450: string;
     500: string;
     550: string;
+    800: string;
   };
   common: {
     black: string;

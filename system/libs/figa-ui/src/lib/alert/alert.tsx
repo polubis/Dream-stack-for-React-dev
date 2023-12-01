@@ -3,7 +3,15 @@ import { Font } from '../font';
 import type { AlertProps, AlertType } from './defs';
 
 import c from 'classnames';
-import { ErrorIcon, type IconProps, InfoIcon, OkIcon, WarnIcon } from '../icon';
+import {
+  ErrorIcon,
+  type IconProps,
+  InfoIcon,
+  OkIcon,
+  WarnIcon,
+  CloseIcon,
+} from '../icon';
+import { Button } from '../button';
 
 const ICONS_MAP: Record<AlertType, (props: IconProps) => ReactElement> = {
   info: InfoIcon,
@@ -21,6 +29,7 @@ const Alert = ({
   maxWidth,
   trimmed,
   style,
+  onClose,
   ...props
 }: AlertProps) => {
   const Icon = ICONS_MAP[type];
@@ -38,6 +47,9 @@ const Alert = ({
       <Font variant="b2" trim>
         {children}
       </Font>
+      <Button size={1} variant="ghost" motive="tertiary" shape="rounded">
+        <CloseIcon />
+      </Button>
     </div>
   );
 };

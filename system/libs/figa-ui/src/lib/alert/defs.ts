@@ -16,6 +16,7 @@ interface AlertProps extends AlertHTMLElementProps {
   maxWidth?: string;
   fixed?: boolean;
   children: ReactNode;
+  onClose?(): void;
 }
 
 export type { AlertProps, AlertVariant, AlertType };

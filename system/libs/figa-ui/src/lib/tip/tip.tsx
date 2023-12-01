@@ -68,7 +68,7 @@ const Container = styled.div<Required<Pick<TipProps, 'offset'>>>`
     padding: ${tokens.spacing[100]};
     background: ${(props) => props.theme.box.filled.bg};
     border-radius: ${tokens.radius[50]};
-    z-index: ${tokens.z[550]};
+    z-index: ${tokens.z[800]};
     width: max-content;
   }
 `;
