@@ -1447,7 +1447,6 @@ const GlobalStyle = createGlobalStyle`
 
     .alert {
         ${row()}
-        justify-content: space-between;
         padding: ${tokens.spacing[100]} ${tokens.spacing[150]};
         border-radius: ${tokens.radius[50]};
         border: ${tokens.spacing[25]} solid transparent;
@@ -1457,18 +1456,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         .font {
-            padding-right: ${tokens.spacing[150]};
-        }
-
-        &.fixed {
-            position: fixed;
-            top: ${tokens.spacing[150]};
-            left: ${tokens.spacing[250]};
-            right: ${tokens.spacing[250]};
-        }
-
-        &.trimmed .font {
-            ${trim()}
+            padding-left: ${tokens.spacing[100]};
         }
 
         &.filled {

@@ -27,15 +27,15 @@ const Alert = ({
 
   return (
     <div
-      className={c('alert', type, variant, { fixed }, { trimmed }, className)}
+      className={c('alert', type, variant, { fixed }, className)}
       style={{
         ...style,
         maxWidth,
       }}
       {...props}
     >
-      <Font variant="b2">{children}</Font>
       <Icon />
+      <Font variant="b2" trim>{children}</Font>
     </div>
   );
 };
