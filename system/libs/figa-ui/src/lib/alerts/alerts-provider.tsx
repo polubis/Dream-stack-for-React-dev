@@ -1,18 +1,27 @@
 import styled from 'styled-components';
-import { createContext, useContext, useMemo, useState } from 'react';
-import { Alert, AlertProps } from '../alert';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import { Alert } from '../alert';
 import { usePortal } from '@system/figa-hooks';
 import { tokens } from '../theme-provider';
 import type { AlertData, AlertsProps, AlertsValue } from './defs';
-import { center } from '../shared';
+import { appearIn, center } from '../shared';
 
 const Container = styled.div`
   ${center('column')}
   position: fixed;
   top: 0;
-  z-index: ${tokens.z[800]};
+  z-index: ${tokens.z[750]};
   left: 0;
   right: 0;
+  margin: 0 auto;
   padding: ${tokens.spacing[250]};
 
   & > *:not(:last-child) {
@@ -20,7 +29,7 @@ const Container = styled.div`
   }
 
   & > * {
-    max-width: 420px;
+    ${appearIn()}
   }
 `;
 
@@ -28,26 +37,46 @@ const Context = createContext<AlertsValue | null>(null);
 
 const AlertsProvider = ({ children }: AlertsProps) => {
   const [alerts, setAlerts] = useState<AlertData[]>([]);
+  const timeoutRefs = useRef(new Map<string, NodeJS.Timeout>());
+
+  const hide = useCallback((id: string): void => {
+    setAlerts((prevAlerts) => prevAlerts.filter((a) => a.id !== id));
+  }, []);
 
   const value = useMemo(
     (): AlertsValue => ({
-      show: (alert: AlertProps) => {
+      show: (alert) => {
+        const id = new Date().toISOString();
+        timeoutRefs.current.set(
+          id,
+          setTimeout(() => {
+            hide(id);
+          }, alert.delay ?? 5000)
+        );
+
         setAlerts((prevAlerts) => [
           ...prevAlerts,
           {
             ...alert,
-            id: new Date().toISOString(),
+            id,
           },
         ]);
       },
-      hide: (id) => {
-        setAlerts((prevAlerts) => prevAlerts.filter((a) => a.id !== id));
-      },
     }),
-    []
+    [hide]
   );
 
   const { render } = usePortal();
+
+  useEffect(() => {
+    const timeouts = timeoutRefs.current;
+
+    return () => {
+      timeouts.forEach((timeout) => {
+        clearTimeout(timeout);
+      });
+    };
+  }, []);
 
   return (
     <Context.Provider value={value}>
@@ -58,8 +87,12 @@ const AlertsProvider = ({ children }: AlertsProps) => {
             {alerts.map((alert) => (
               <Alert
                 key={alert.id}
+                maxWidth="420px"
                 {...alert}
-                onClose={() => value.hide(alert.id)}
+                onClose={() => {
+                  hide(alert.id);
+                  alert.onClose?.();
+                }}
               />
             ))}
           </Container>

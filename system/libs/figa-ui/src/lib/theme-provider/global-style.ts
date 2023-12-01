@@ -11,8 +11,6 @@ import {
   size,
   streched,
   buttonBaseEffects,
-  setupFilledIcon,
-  setupOutlinedIcon,
   trim,
   appearIn,
   disabled,
@@ -1442,83 +1440,6 @@ const GlobalStyle = createGlobalStyle`
     }
 
     /* avatars.tsx */
-
-    /* alert.tsx */
-
-    .alert {
-        ${row()}
-        padding: ${tokens.spacing[100]} ${tokens.spacing[150]};
-        border-radius: ${tokens.radius[50]};
-        border: ${tokens.spacing[25]} solid transparent;
-
-        .icon {
-            flex-shrink: 0;
-        }
-
-        .font {
-            padding-left: ${tokens.spacing[100]};
-        }
-
-        &.filled {
-            box-shadow: ${tokens.shadow[50]};
-
-            &.info {
-                ${(props) =>
-                  setupFilledIcon(
-                    props.theme.alert.filled.info.bg,
-                    props.theme.alert.filled.info.color
-                  )}
-            }
-
-            &.ok {
-                ${(props) =>
-                  setupFilledIcon(
-                    props.theme.alert.filled.ok.bg,
-                    props.theme.alert.filled.ok.color
-                  )}
-            }
-
-            &.error {
-                ${(props) =>
-                  setupFilledIcon(
-                    props.theme.alert.filled.error.bg,
-                    props.theme.alert.filled.error.color
-                  )}
-            }
-
-            &.warn {
-                ${(props) =>
-                  setupFilledIcon(
-                    props.theme.alert.filled.warn.bg,
-                    props.theme.alert.filled.warn.color
-                  )}
-            }
-        }
-
-        &.outlined {
-            &.info {
-                ${(props) =>
-                  setupOutlinedIcon(props.theme.alert.outlined.info.color)}
-            }
-
-            &.ok {
-                ${(props) =>
-                  setupOutlinedIcon(props.theme.alert.outlined.ok.color)}
-            }
-
-            &.error {
-                ${(props) =>
-                  setupOutlinedIcon(props.theme.alert.outlined.error.color)}
-            }
-
-            &.warn {
-                ${(props) =>
-                  setupOutlinedIcon(props.theme.alert.outlined.warn.color)}
-            }
-        }
-    }
-
-    /* alert.tsx */
 
     /* field.tsx */
 

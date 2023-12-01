@@ -28,6 +28,25 @@ const Template: Story = () => {
         </Box>
       ))}
 
+      {ALERT_VARIANTS.map((variant) => (
+        <Box key={variant} spacing={ALERT_VARIANTS.map(() => 250)}>
+          <Font variant="h5">Variant {variant} closeable</Font>
+          <Box orientation="row" spacing={ALERT_TYPES.map(() => 150)}>
+            {ALERT_TYPES.map((type) => (
+              <Alert
+                key={type}
+                type={type}
+                variant={variant}
+                // eslint-disable-next-line @typescript-eslint/no-empty-function
+                onClose={() => {}}
+              >
+                This is [{variant}] variant with type [{type}].
+              </Alert>
+            ))}
+          </Box>
+        </Box>
+      ))}
+
       <Box spacing={[200, 200]}>
         <Font variant="h4">Trimmed</Font>
 
@@ -42,6 +61,27 @@ const Template: Story = () => {
                   type={type}
                   maxWidth="150px"
                   variant={variant}
+                >
+                  This is [{variant}] variant with type [{type}].
+                </Alert>
+              ))}
+            </Box>
+          </Box>
+        ))}
+
+        {ALERT_VARIANTS.map((variant) => (
+          <Box key={variant} spacing={ALERT_VARIANTS.map(() => 250)}>
+            <Font variant="h5">Variant {variant} closeable</Font>
+            <Box orientation="row" spacing={ALERT_TYPES.map(() => 150)}>
+              {ALERT_TYPES.map((type) => (
+                <Alert
+                  trimmed
+                  key={type}
+                  type={type}
+                  maxWidth="150px"
+                  variant={variant}
+                  // eslint-disable-next-line @typescript-eslint/no-empty-function
+                  onClose={() => {}}
                 >
                   This is [{variant}] variant with type [{type}].
                 </Alert>

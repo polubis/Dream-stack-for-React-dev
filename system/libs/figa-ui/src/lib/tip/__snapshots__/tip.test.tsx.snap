@@ -3,7 +3,7 @@
 exports[`Tip can be used when:  [FRAGILE] assigns classes and orientation 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe gkSkjw tip my-class right"
+    class="sc-bcXHqe fXbzPf tip my-class right"
     offset="150"
   >
     <div>
@@ -25,7 +25,7 @@ exports[`Tip can be used when:  [FRAGILE] assigns classes and orientation 1`] = 
 exports[`Tip can be used when:  [FRAGILE] works by default 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe hCKYQI tip bottom"
+    class="sc-bcXHqe jlLCWP tip bottom"
     offset="50"
   >
     <div>

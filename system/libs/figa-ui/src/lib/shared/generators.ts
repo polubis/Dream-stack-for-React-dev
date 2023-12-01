@@ -104,30 +104,6 @@ const shape = (size: string, radius: string) =>
     border-radius: ${radius};
   `;
 
-const setupFilledIcon = (bg: string, color: string) => css`
-  background: ${bg};
-
-  .font {
-    color: ${color};
-  }
-
-  .icon path {
-    fill: ${color};
-  }
-`;
-
-const setupOutlinedIcon = (color: string) => css`
-  border-color: ${color};
-
-  .font {
-    color: ${color};
-  }
-
-  .icon path {
-    fill: ${color};
-  }
-`;
-
 const buttonBaseEffects = (outlineColor: string) =>
   css`
     transition: 0.2s all ease-in-out;
@@ -193,8 +169,6 @@ export {
   shape,
   buttonBaseEffects,
   appearInAnimation,
-  setupFilledIcon,
-  setupOutlinedIcon,
   appearIn,
   clamp,
 };

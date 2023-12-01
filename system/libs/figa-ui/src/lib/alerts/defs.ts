@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
 import type { AlertProps } from '../alert';
 
-interface AlertData extends Omit<AlertProps, 'onClose'> {
+interface AlertData extends AlertProps {
   id: string;
+  delay?: number;
 }
 
 interface AlertsValue {
-  show(alert: AlertProps): void;
-  hide(alert: AlertData['id']): void;
+  show(alert: Omit<AlertData, 'id'>): void;
 }
 
 interface AlertsProps {
