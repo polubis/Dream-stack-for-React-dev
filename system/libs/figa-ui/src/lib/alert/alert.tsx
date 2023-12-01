@@ -35,7 +35,9 @@ const Alert = ({
       {...props}
     >
       <Icon />
-      <Font variant="b2" trim>{children}</Font>
+      <Font variant="b2" trim>
+        {children}
+      </Font>
     </div>
   );
 };

@@ -41,4 +41,5 @@ export * from './lib/switch';
 export * from './lib/checkbox';
 export * from './lib/shared';
 export * from './lib/bar';
+export * from './lib/alerts';
 export * from './lib/divider';
