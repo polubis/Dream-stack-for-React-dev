@@ -1,6 +1,6 @@
 import type { Story, Meta } from '@storybook/react';
 
-import { Bar } from './Bar';
+import { Bar } from './bar';
 import type { BarProps } from './defs';
 import { Button } from '../button';
 import { ArrowTopIcon, CloseIcon } from '../icon';

@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Exapndable link can be used when: [FRAGILE] assigns class names for particular nodes 1`] = `
+<DocumentFragment>
+  <nav
+    class="sc-bcXHqe fYMbQz my-class-container"
+    tabindex="0"
+  >
+    <span
+      class="font h3 default link expandable-link-name my-class-name"
+    >
+      Inputs
+    </span>
+    <ul
+      class="expandable-link-list my-class-list"
+    >
+      <a
+        class="expandable-link-list-item my-class-item"
+        href="/?path=/story/input--empty-input"
+      >
+        <li>
+          <span
+            class="font h3 default link"
+          >
+            Empty Input
+          </span>
+        </li>
+      </a>
+      <a
+        class="expandable-link-list-item"
+        href="/?path=/story/input--filled-input"
+      >
+        <li>
+          <span
+            class="font h3 default link"
+          >
+            Filled Input
+          </span>
+        </li>
+      </a>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;
