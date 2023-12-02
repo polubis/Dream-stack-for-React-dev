@@ -48,7 +48,7 @@ const invalid = red,
 const gruvboxDarkTheme = EditorView.theme(
   {
     '&': {
-      color: fg1,
+      color: 'red',
       backgroundColor: background,
     },
 
