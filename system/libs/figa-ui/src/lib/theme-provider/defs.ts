@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { TagStyle } from '@codemirror/language';
 
 interface ThemeProviderProps {
   children: ReactNode;
@@ -399,6 +400,9 @@ interface Theme {
   footer: {
     bg: string;
     borderColor: string;
+  };
+  code: {
+    tags: TagStyle[];
   };
   codeBlock: {
     header: {
