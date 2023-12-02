@@ -1,20 +1,56 @@
 import { basicSetup } from 'codemirror';
 import { EditorView, keymap } from '@codemirror/view';
-import { DEFAULT_THEME } from './consts';
 import { EditorState, type Extension } from '@codemirror/state';
 import type { SetupConfig } from './defs';
 import { indentWithTab } from '@codemirror/commands';
+import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
+import { tokens } from '../theme-provider';
 
 const selectionExtensionIdx = 15;
 
 const createBasicExtensions = ({
   readonly,
   wrapLines,
-}: Pick<SetupConfig, 'readonly' | 'wrapLines'>): Extension[] => {
+  theme,
+}: Pick<SetupConfig, 'readonly' | 'wrapLines' | 'theme'>): Extension[] => {
   let setup = basicSetup;
+
+  const themeSetup: Extension[] = [
+    EditorView.theme({
+      '&': {
+        backgroundColor: '#050404',
+      },
+
+      '.cm-scroller': {
+        fontSize: '1.6rem',
+      },
+
+      '.cm-cursor, .cm-dropCursor': { borderLeftColor: '#fff' },
+      '&.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection':
+        { backgroundColor: '#404040' },
+
+      '*[title="Fold line"], *[title="Unfold line"]': {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: tokens.spacing[300],
+      },
+
+      '.cm-gutters': {
+        backgroundColor: '#050404',
+        color: '#fff',
+        border: 'none',
+      },
+
+      '.cm-activeLineGutter': {
+        backgroundColor: '#4d4d4d',
+      },
+    }),
+    syntaxHighlighting(HighlightStyle.define(theme.tags)),
+  ];
   const extensions: Extension[] = [];
 
-  extensions.push(DEFAULT_THEME);
+  extensions.push(themeSetup);
   extensions.push(keymap.of([indentWithTab]));
 
   if (wrapLines) {
@@ -38,10 +74,11 @@ const viewFactory = ({
   children,
   parent,
   wrapLines,
+  theme,
   onChange,
 }: Omit<SetupConfig, 'lang'>) => {
   const extensions: Extension[] = [
-    ...createBasicExtensions({ readonly, wrapLines }),
+    ...createBasicExtensions({ readonly, wrapLines, theme }),
     ...(!readonly && onChange
       ? [
           EditorView.updateListener.of((v) => {
@@ -73,6 +110,7 @@ export const setup = ({
   parent,
   lang,
   wrapLines,
+  theme,
   onChange,
 }: SetupConfig): Promise<EditorView> => {
   return new Promise((resolve) => {
@@ -81,6 +119,7 @@ export const setup = ({
       children,
       parent,
       wrapLines,
+      theme,
       onChange,
     });
 

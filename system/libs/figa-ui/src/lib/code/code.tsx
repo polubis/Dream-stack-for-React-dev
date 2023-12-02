@@ -6,6 +6,8 @@ import c from 'classnames';
 import { setup } from './setup';
 import { useIsomorphicLayoutEffect } from '@system/figa-hooks';
 import type { EditorView } from 'codemirror';
+import { useThemeProvider } from '../theme-provider';
+import { isServer } from '@system/utils';
 
 const CodeContent = ({
   children,
@@ -16,6 +18,7 @@ const CodeContent = ({
   onChange,
 }: CodeProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const theme = useThemeProvider();
 
   useIsomorphicLayoutEffect(() => {
     const parent = ref.current;
@@ -31,6 +34,7 @@ const CodeContent = ({
         lang,
         parent,
         wrapLines,
+        theme: theme.theme.code,
         onChange,
       });
     })();
@@ -38,13 +42,13 @@ const CodeContent = ({
     return () => {
       view?.destroy();
     };
-  }, [wrapLines, readonly, lang]);
+  }, [wrapLines, readonly, lang, theme.key]);
 
   return <div className={c('code', className)} ref={ref} />;
 };
 
 const Code = ({ children, className, readonly, onChange }: CodeProps) => {
-  if (typeof window === 'undefined') {
+  if (isServer()) {
     return (
       <div
         className={c('code', className)}
