@@ -169,7 +169,7 @@ const gruvboxDarkHighlightStyle = HighlightStyle.define([
   },
   {
     tag: [t.operator, t.operatorKeyword],
-    color: red,
+    color: '#c78982',
   },
   {
     tag: [t.tagName],
