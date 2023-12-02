@@ -63,7 +63,7 @@ const gruvboxDarkTheme = EditorView.theme(
     },
 
     '.selectionLayer': {
-      backgroundColor: 'red'
+      backgroundColor: 'red',
     },
 
     '.cm-cursor, .cm-dropCursor': { borderLeftColor: '#fff' },
@@ -137,38 +137,75 @@ const gruvboxDarkTheme = EditorView.theme(
     //   },
     // },
   },
-  { dark: true }
 );
 
 const gruvboxDarkHighlightStyle = HighlightStyle.define([
   { tag: t.keyword, color: '#7fdbca' },
-  {
-    tag: [t.name, t.deleted, t.character, t.propertyName, t.macroName],
-    color: '#82aaff',
-  },
+  { tag: t.name, color: '#82aaff' },
+  { tag: t.deleted, color: '#82aaff' },
+  { tag: t.character, color: '#82aaff' },
+  { tag: t.propertyName, color: '#82aaff' },
+  { tag: t.macroName, color: '#82aaff' },
   { tag: [t.variableName], color: '#82aaff' },
   { tag: [t.function(t.variableName)], color: green, fontStyle: 'bold' },
   { tag: [t.labelName], color: '#82aaff' },
   {
-    tag: [t.color, t.constant(t.name), t.standard(t.name)],
+    tag: [t.color],
     color: purple,
   },
-  { tag: [t.definition(t.name), t.separator], color: fg1 },
+  {
+    tag: [t.constant(t.name)],
+    color: purple,
+  },
+  {
+    tag: [t.standard(t.name)],
+    color: purple,
+  },
+  { tag: [t.definition(t.name)], color: fg1 },
+  { tag: [t.separator], color: fg1 },
   { tag: [t.brace], color: '#fff' },
   {
     tag: [t.annotation],
     color: invalid,
   },
   {
-    tag: [t.number, t.changed, t.annotation, t.modifier, t.self, t.namespace],
+    tag: [t.namespace],
     color: purple,
   },
   {
-    tag: [t.typeName, t.className],
+    tag: [t.self],
+    color: purple,
+  },
+  {
+    tag: [t.modifier],
+    color: purple,
+  },
+  {
+    tag: [t.annotation],
+    color: purple,
+  },
+  {
+    tag: [t.changed],
+    color: purple,
+  },
+  {
+    tag: [t.number],
+    color: purple,
+  },
+  {
+    tag: [t.className],
     color: yellow,
   },
   {
-    tag: [t.operator, t.operatorKeyword],
+    tag: [t.typeName],
+    color: yellow,
+  },
+  {
+    tag: [t.operatorKeyword],
+    color: '#c78982',
+  },
+  {
+    tag: [t.operator],
     color: '#c78982',
   },
   {
@@ -204,7 +241,15 @@ const gruvboxDarkHighlightStyle = HighlightStyle.define([
     textUnderlinePosition: 'under',
   },
   {
-    tag: [t.url, t.escape, t.special(t.string)],
+    tag: [t.url],
+    color: purple,
+  },
+  {
+    tag: [t.escape],
+    color: purple,
+  },
+  {
+    tag: [t.special(t.string)],
     color: purple,
   },
   { tag: [t.meta], color: yellow },
@@ -213,19 +258,35 @@ const gruvboxDarkHighlightStyle = HighlightStyle.define([
   { tag: t.emphasis, fontStyle: 'italic', color: green },
   { tag: t.strikethrough, textDecoration: 'line-through' },
   { tag: t.heading, fontWeight: 'bold', color: green },
-  { tag: [t.heading1, t.heading2], fontWeight: 'bold', color: green },
+  { tag: [t.heading1], fontWeight: 'bold', color: green },
+  { tag: [t.heading2], fontWeight: 'bold', color: green },
   {
-    tag: [t.heading3, t.heading4],
+    tag: [t.heading3],
     fontWeight: 'bold',
     color: yellow,
   },
   {
-    tag: [t.heading5, t.heading6],
+    tag: [t.heading4],
+    fontWeight: 'bold',
     color: yellow,
   },
-  { tag: [t.atom, t.bool, t.special(t.variableName)], color: purple },
   {
-    tag: [t.processingInstruction, t.inserted],
+    tag: [t.heading5],
+    color: yellow,
+  },
+  {
+    tag: [t.heading6],
+    color: yellow,
+  },
+  { tag: [t.atom], color: purple },
+  { tag: [t.bool], color: purple },
+  { tag: [t.special(t.variableName)], color: purple },
+  {
+    tag: [t.inserted],
+    color: bright_blue,
+  },
+  {
+    tag: [t.processingInstruction],
     color: bright_blue,
   },
   {
