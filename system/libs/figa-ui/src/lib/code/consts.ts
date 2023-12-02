@@ -2,6 +2,7 @@ import { EditorView } from '@codemirror/view';
 import type { Extension } from '@codemirror/state';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
 import { tags as t } from '@lezer/highlight';
+import { tokens } from '../theme-provider';
 
 const CODE_LINE_HEIGHT = 22;
 
@@ -90,9 +91,16 @@ const gruvboxDarkTheme = EditorView.theme(
       backgroundColor: bg3,
     },
 
+    '*[title="Fold line"], *[title="Unfold line"]': {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: tokens.spacing[300]
+    },
+
     '.cm-gutters': {
-      backgroundColor: bg1,
-      color: fg3,
+      backgroundColor: '#282a36',
+      color: '#fff',
       border: 'none',
     },
 

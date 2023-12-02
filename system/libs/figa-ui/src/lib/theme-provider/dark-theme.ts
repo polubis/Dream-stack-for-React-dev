@@ -288,7 +288,7 @@ const dark: Theme = {
   },
   codeBlock: {
     header: {
-      bg: tokens.gray[350],
+      bg: '#282a36',
       dots: {
         first: {
           bg: tokens.green[50],
@@ -302,7 +302,7 @@ const dark: Theme = {
       },
     },
     content: {
-      bg: tokens.dark[150],
+      bg: '#282a36',
     },
   },
   list: {
