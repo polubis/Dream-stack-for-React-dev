@@ -1,3 +1,4 @@
+npm WARN config global `--global`, `--local` are deprecated. Use `--location=global` instead.
 
 > nx run figa-ui:build-storybook -s public --output-dir C:\\\\Users\\\\APOLUB~1\\\\AppData\\\\Local\\\\Temp\\\\chromatic--5604-6HevjztcWblb
 
@@ -15,13 +16,13 @@ info => Manager built (24 s)
 [36mvite v4.1.4 [32mbuilding for production...[36m[39m
 transforming...
 
-/fonts/LexendBold.ttf referenced in C:/Users/apolubinski/Dream-stack-for-React-dev/system/libs/figa-ui/src/index.css didn't resolve at build time, it will remain unchanged to be resolved at runtime
+/fonts/LexendBold.ttf referenced in C:/Users/polub/Dream-stack-for-React-dev/system/libs/figa-ui/src/index.css didn't resolve at build time, it will remain unchanged to be resolved at runtime
 
-/fonts/LexendMedium.ttf referenced in C:/Users/apolubinski/Dream-stack-for-React-dev/system/libs/figa-ui/src/index.css didn't resolve at build time, it will remain unchanged to be resolved at runtime
+/fonts/LexendMedium.ttf referenced in C:/Users/polub/Dream-stack-for-React-dev/system/libs/figa-ui/src/index.css didn't resolve at build time, it will remain unchanged to be resolved at runtime
 
-/fonts/LexendRegular.ttf referenced in C:/Users/apolubinski/Dream-stack-for-React-dev/system/libs/figa-ui/src/index.css didn't resolve at build time, it will remain unchanged to be resolved at runtime
+/fonts/LexendRegular.ttf referenced in C:/Users/polub/Dream-stack-for-React-dev/system/libs/figa-ui/src/index.css didn't resolve at build time, it will remain unchanged to be resolved at runtime
 
-/fonts/LexendLight.ttf referenced in C:/Users/apolubinski/Dream-stack-for-React-dev/system/libs/figa-ui/src/index.css didn't resolve at build time, it will remain unchanged to be resolved at runtime
+/fonts/LexendLight.ttf referenced in C:/Users/polub/Dream-stack-for-React-dev/system/libs/figa-ui/src/index.css didn't resolve at build time, it will remain unchanged to be resolved at runtime
 Use of eval in "node_modules/telejson/dist/esm/index.js" is strongly discouraged as it poses security risks and may cause issues with minification.
 Use of eval in "node_modules/telejson/dist/esm/index.js" is strongly discouraged as it poses security risks and may cause issues with minification.
 Use of eval in "node_modules/@storybook/components/dist/esm/index-681e4b07.js" is strongly discouraged as it poses security risks and may cause issues with minification.
