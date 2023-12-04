@@ -11,13 +11,7 @@ import {
 import { Alert } from '../alert';
 import { usePortal } from '@system/figa-hooks';
 import { tokens } from '../theme-provider';
-import type {
-  AlertData,
-  AlertPosition,
-  Alerts,
-  AlertsProps,
-  AlertsValue,
-} from './defs';
+import type { AlertData, Alerts, AlertsProps, AlertsValue } from './defs';
 import { appearIn, center } from '../shared';
 
 const offset = tokens.spacing[200];
@@ -26,7 +20,6 @@ const Container = styled.div`
   ${center('column')}
   position: fixed;
   z-index: ${tokens.z[750]};
-  padding: ${tokens.spacing[250]};
   width: max-content;
   height: max-content;
 
