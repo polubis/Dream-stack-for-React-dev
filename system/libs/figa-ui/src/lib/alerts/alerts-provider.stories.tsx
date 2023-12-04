@@ -1,8 +1,10 @@
 import type { Story, Meta } from '@storybook/react';
 
 import { AlertsProvider, useAlert } from './alerts-provider';
-import { Button } from '../button';
+import { useEffect, useState } from 'react';
+import { ALERT_POSITIONS } from './consts';
 import { Box } from '../box';
+import { Button } from '../button';
 
 export default {
   component: AlertsProvider,
@@ -10,22 +12,27 @@ export default {
 } as Meta;
 
 const Content = () => {
+  const [counter, setCounter] = useState(0);
   const alert = useAlert();
 
+  useEffect(() => {
+    ALERT_POSITIONS.forEach((position) => {
+      alert.show({
+        variant: 'filled',
+        children: 'Something went wrong',
+        position,
+      });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [counter]);
+
   return (
-    <Box padding={[300, 300, 300, 300]} style={{ minHeight: '100vh' }} center>
-      <Box margin="auto">
-        <Button
-          onClick={() =>
-            alert.show({
-              variant: 'filled',
-              children: 'Something went wrong',
-            })
-          }
-        >
-          Open
-        </Button>
-      </Box>
+    <Box
+      style={{ minHeight: '100vh', marginLeft: '400px', marginTop: '20px' }}
+    >
+      <Button onClick={() => setCounter((prevCounter) => prevCounter + 1)}>
+        Open
+      </Button>
     </Box>
   );
 };
