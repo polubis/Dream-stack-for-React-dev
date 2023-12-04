@@ -1,21 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Alerts works when:  alerts may be opened/closed and are closed after timeouts 1`] = `
+exports[`Alerts works when:  [FRAGILE] alerts are closed after timeouts 1`] = `
 Array [
   <p
-    class="font b2 default trim"
+    class="font b2 default"
   >
     Alert content
   </p>,
   <p
-    class="font b2 default trim"
+    class="font b2 default"
   >
     Alert content
   </p>,
   <p
-    class="font b2 default trim"
+    class="font b2 default"
   >
     Alert content
   </p>,
 ]
+`;
+
+exports[`Alerts works when:  [FRAGILE] assigns class names and required properties 1`] = `
+<body>
+  <div>
+    <button>
+      Show
+    </button>
+  </div>
+  <div>
+    <div
+      class="sc-gswNZR hXVVmY alerts t-r"
+    >
+      <div
+        class="sc-bcXHqe ezgtjF alert ok outlined my-class"
+      >
+        <svg
+          class="icon success-icon"
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.243 16.3139L6 12.0699L7.414 10.6559L10.243 13.4839L15.899 7.8269L17.314 9.2419L10.243 16.3119V16.3139Z"
+          />
+          <path
+            clip-rule="evenodd"
+            d="M1 12C1 5.925 5.925 1 12 1C18.075 1 23 5.925 23 12C23 18.075 18.075 23 12 23C5.925 23 1 18.075 1 12ZM12 21C10.8181 21 9.64778 20.7672 8.55585 20.3149C7.46392 19.8626 6.47177 19.1997 5.63604 18.364C4.80031 17.5282 4.13738 16.5361 3.68508 15.4442C3.23279 14.3522 3 13.1819 3 12C3 10.8181 3.23279 9.64778 3.68508 8.55585C4.13738 7.46392 4.80031 6.47177 5.63604 5.63604C6.47177 4.80031 7.46392 4.13738 8.55585 3.68508C9.64778 3.23279 10.8181 3 12 3C14.3869 3 16.6761 3.94821 18.364 5.63604C20.0518 7.32387 21 9.61305 21 12C21 14.3869 20.0518 16.6761 18.364 18.364C16.6761 20.0518 14.3869 21 12 21Z"
+            fill-rule="evenodd"
+          />
+        </svg>
+        <p
+          class="font b2 default"
+        >
+          Alert content
+        </p>
+        <button
+          aria-label="Close alert"
+          class="button size-1 rounded ghost tertiary"
+          motive="tertiary"
+          shape="rounded"
+          size="1"
+          variant="ghost"
+        >
+          <svg
+            class="icon close-icon"
+            fill="none"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
 `;

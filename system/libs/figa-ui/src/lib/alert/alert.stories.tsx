@@ -56,7 +56,7 @@ const Template: Story = () => {
             <Box orientation="row" spacing={ALERT_TYPES.map(() => 150)}>
               {ALERT_TYPES.map((type) => (
                 <Alert
-                  trimmed
+                  trim
                   key={type}
                   type={type}
                   maxWidth="150px"
@@ -75,7 +75,7 @@ const Template: Story = () => {
             <Box orientation="row" spacing={ALERT_TYPES.map(() => 150)}>
               {ALERT_TYPES.map((type) => (
                 <Alert
-                  trimmed
+                  trim
                   key={type}
                   type={type}
                   maxWidth="150px"

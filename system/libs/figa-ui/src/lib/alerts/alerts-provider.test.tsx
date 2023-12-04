@@ -25,8 +25,59 @@ describe('Alerts works when: ', () => {
     );
   };
 
-  it('alerts may be opened/closed and are closed after timeouts', async () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(jest.fn());
+  it('[FRAGILE] assigns class names and required properties', () => {
+    let acc = 0;
+    jest.spyOn(Date.prototype, 'toISOString').mockImplementation(() => {
+      const date = `2023-12-04T18:02:0${acc}.848Z`;
+      acc++;
+      return date;
+    });
+
+    const { baseElement } = render(
+      <ThemeProvider>
+        <AlertsProvider>
+          <ComponentFixture />
+        </AlertsProvider>
+      </ThemeProvider>
+    );
+
+    fireEvent.click(screen.getByText(/Show/));
+
+    expect(baseElement).toMatchSnapshot();
+  });
+
+  it('alerts may be closed manually after close button click', () => {
+    let acc = 0;
+    jest.spyOn(Date.prototype, 'toISOString').mockImplementation(() => {
+      const date = `2023-12-04T18:02:0${acc}.848Z`;
+      acc++;
+      return date;
+    });
+
+    render(
+      <ThemeProvider>
+        <AlertsProvider>
+          <ComponentFixture />
+        </AlertsProvider>
+      </ThemeProvider>
+    );
+
+    fireEvent.click(screen.getByText(/Show/));
+
+    expect(screen.queryAllByText(/Alert content/)).toHaveLength(1);
+
+    fireEvent.click(screen.getByLabelText(/Close alert/));
+
+    expect(screen.queryAllByText(/Alert content/)).toHaveLength(0);
+  });
+
+  it('[FRAGILE] alerts are closed after timeouts', async () => {
+    let acc = 0;
+    jest.spyOn(Date.prototype, 'toISOString').mockImplementation(() => {
+      const date = `2023-12-04T18:02:0${acc}.848Z`;
+      acc++;
+      return date;
+    });
 
     render(
       <ThemeProvider>
@@ -51,7 +102,5 @@ describe('Alerts works when: ', () => {
     });
 
     expect(screen.queryAllByText(/Alert content/)).toHaveLength(0);
-
-    errorSpy.mockRestore();
   });
 });

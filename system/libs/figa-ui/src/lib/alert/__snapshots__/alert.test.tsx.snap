@@ -1,9 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Alert can be used when:  [FRAGILE] alert can be closed 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bcXHqe ezgtjF alert info filled my-class"
+    >
+      <svg
+        class="icon info-icon"
+        fill="none"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 17C12.2833 17 12.521 16.904 12.713 16.712C12.905 16.52 13.0007 16.2827 13 16C13 15.7167 12.904 15.479 12.712 15.287C12.52 15.095 12.2827 14.9993 12 15C11.7167 15 11.479 15.096 11.287 15.288C11.095 15.48 10.9993 15.7173 11 16C11 16.2833 11.096 16.521 11.288 16.713C11.48 16.905 11.7173 17.0007 12 17ZM11 13H13V7H11V13ZM12 22C10.6167 22 9.31667 21.7373 8.1 21.212C6.88333 20.6867 5.825 19.9743 4.925 19.075C4.025 18.175 3.31267 17.1167 2.788 15.9C2.26333 14.6833 2.00067 13.3833 2 12C2 10.6167 2.26267 9.31667 2.788 8.1C3.31333 6.88333 4.02567 5.825 4.925 4.925C5.825 4.025 6.88333 3.31267 8.1 2.788C9.31667 2.26333 10.6167 2.00067 12 2C13.3833 2 14.6833 2.26267 15.9 2.788C17.1167 3.31333 18.175 4.02567 19.075 4.925C19.975 5.825 20.6877 6.88333 21.213 8.1C21.7383 9.31667 22.0007 10.6167 22 12C22 13.3833 21.7373 14.6833 21.212 15.9C20.6867 17.1167 19.9743 18.175 19.075 19.075C18.175 19.975 17.1167 20.6877 15.9 21.213C14.6833 21.7383 13.3833 22.0007 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z"
+        />
+      </svg>
+      <p
+        class="font b2 default"
+      >
+        My text
+      </p>
+      <button
+        aria-label="Close alert"
+        class="button size-1 rounded ghost tertiary"
+        motive="tertiary"
+        shape="rounded"
+        size="1"
+        variant="ghost"
+      >
+        <svg
+          class="icon close-icon"
+          fill="none"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</body>
+`;
+
 exports[`Alert can be used when:  [FRAGILE] assigns classes 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe dDlXhy alert info filled my-class"
+    class="sc-bcXHqe ezgtjF alert info filled my-class"
   >
     <svg
       class="icon info-icon"
@@ -18,7 +67,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns classes 1`] = `
       />
     </svg>
     <p
-      class="font b2 default trim"
+      class="font b2 default"
     >
       My text
     </p>
@@ -26,10 +75,10 @@ exports[`Alert can be used when:  [FRAGILE] assigns classes 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Alert can be used when:  [FRAGILE] assigns classes when fixed and trimmed 1`] = `
+exports[`Alert can be used when:  [FRAGILE] assigns classes when trimmed 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe dDlXhy alert info filled fixed my-class"
+    class="sc-bcXHqe ezgtjF alert info filled my-class"
   >
     <svg
       class="icon info-icon"
@@ -55,7 +104,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns classes when fixed and trimm
 exports[`Alert can be used when:  [FRAGILE] assigns type classes 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe dDlXhy alert ok filled"
+    class="sc-bcXHqe ezgtjF alert ok filled"
   >
     <svg
       class="icon success-icon"
@@ -75,7 +124,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns type classes 1`] = `
       />
     </svg>
     <p
-      class="font b2 default trim"
+      class="font b2 default"
     >
       My text
     </p>
@@ -86,7 +135,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns type classes 1`] = `
 exports[`Alert can be used when:  [FRAGILE] assigns type classes 2`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe dDlXhy alert warn filled"
+    class="sc-bcXHqe ezgtjF alert warn filled"
   >
     <svg
       class="icon warn-icon"
@@ -104,7 +153,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns type classes 2`] = `
       />
     </svg>
     <p
-      class="font b2 default trim"
+      class="font b2 default"
     >
       My text
     </p>
@@ -115,7 +164,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns type classes 2`] = `
 exports[`Alert can be used when:  [FRAGILE] assigns type classes 3`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe dDlXhy alert error filled"
+    class="sc-bcXHqe ezgtjF alert error filled"
   >
     <svg
       class="icon error-icon"
@@ -130,7 +179,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns type classes 3`] = `
       />
     </svg>
     <p
-      class="font b2 default trim"
+      class="font b2 default"
     >
       My text
     </p>
@@ -141,7 +190,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns type classes 3`] = `
 exports[`Alert can be used when:  [FRAGILE] assigns type classes 4`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe dDlXhy alert info filled"
+    class="sc-bcXHqe ezgtjF alert info filled"
   >
     <svg
       class="icon info-icon"
@@ -156,7 +205,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns type classes 4`] = `
       />
     </svg>
     <p
-      class="font b2 default trim"
+      class="font b2 default"
     >
       My text
     </p>
@@ -167,7 +216,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns type classes 4`] = `
 exports[`Alert can be used when:  [FRAGILE] assigns variant classes 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe dDlXhy alert info filled"
+    class="sc-bcXHqe ezgtjF alert info filled"
   >
     <svg
       class="icon info-icon"
@@ -182,7 +231,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns variant classes 1`] = `
       />
     </svg>
     <p
-      class="font b2 default trim"
+      class="font b2 default"
     >
       My text
     </p>
@@ -193,7 +242,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns variant classes 1`] = `
 exports[`Alert can be used when:  [FRAGILE] assigns variant classes 2`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe dDlXhy alert info outlined"
+    class="sc-bcXHqe ezgtjF alert info outlined"
   >
     <svg
       class="icon info-icon"
@@ -208,7 +257,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns variant classes 2`] = `
       />
     </svg>
     <p
-      class="font b2 default trim"
+      class="font b2 default"
     >
       My text
     </p>
@@ -219,7 +268,7 @@ exports[`Alert can be used when:  [FRAGILE] assigns variant classes 2`] = `
 exports[`Alert can be used when:  [FRAGILE] works with default setup 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bcXHqe dDlXhy alert info filled"
+    class="sc-bcXHqe ezgtjF alert info filled"
   >
     <svg
       class="icon info-icon"
@@ -234,7 +283,7 @@ exports[`Alert can be used when:  [FRAGILE] works with default setup 1`] = `
       />
     </svg>
     <p
-      class="font b2 default trim"
+      class="font b2 default"
     >
       My text
     </p>

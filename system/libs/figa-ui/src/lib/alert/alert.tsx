@@ -74,6 +74,7 @@ const Container = styled.div`
 
   .font {
     padding-left: ${tokens.spacing[100]};
+    margin-right: auto;
   }
 
   &.filled {
@@ -136,24 +137,21 @@ const Alert = ({
   type = 'info',
   variant = 'filled',
   children,
-  fixed,
   maxWidth,
-  trimmed,
+  trim,
   onClose,
-  ...props
 }: AlertProps) => {
   const Icon = ICONS_MAP[type];
 
   return (
     <Container
-      className={c('alert', type, variant, { fixed }, className)}
+      className={c('alert', type, variant, className)}
       style={{
         maxWidth,
       }}
-      {...props}
     >
       <Icon />
-      <Font variant="b2" trim>
+      <Font variant="b2" trim={trim}>
         {children}
       </Font>
       {onClose && (
@@ -162,6 +160,7 @@ const Alert = ({
           variant="ghost"
           motive="tertiary"
           shape="rounded"
+          aria-label="Close alert"
           onClick={onClose}
         >
           <CloseIcon />
