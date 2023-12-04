@@ -10,30 +10,23 @@ import {
 } from 'react';
 import { Alert } from '../alert';
 import { usePortal } from '@system/figa-hooks';
-import { tokens } from '../theme-provider';
+import { M_DOWN, tokens } from '../theme-provider';
 import type { AlertData, Alerts, AlertsProps, AlertsValue } from './defs';
-import { appearIn, center } from '../shared';
+import { appearIn } from '../shared';
+import c from 'classnames';
 
 const offset = tokens.spacing[200];
 
 const Container = styled.div`
-  ${center('column')}
   position: fixed;
   z-index: ${tokens.z[750]};
   width: max-content;
   height: max-content;
 
-  & > *:not(:last-child) {
-    margin-bottom: ${tokens.spacing[150]};
-  }
-
-  & > * {
-    ${appearIn()}
-  }
-
   &.t-l {
     top: ${offset};
     left: ${offset};
+    margin: unset;
   }
 
   &.t-c {
@@ -46,6 +39,7 @@ const Container = styled.div`
   &.t-r {
     top: ${offset};
     right: ${offset};
+    margin: unset;
   }
 
   &.c-l {
@@ -73,6 +67,7 @@ const Container = styled.div`
   &.b-l {
     bottom: ${offset};
     left: ${offset};
+    margin: unset;
   }
 
   &.b-c {
@@ -85,6 +80,23 @@ const Container = styled.div`
   &.b-r {
     bottom: ${offset};
     right: ${offset};
+    margin: unset;
+  }
+
+  &.alerts {
+    @media ${M_DOWN} {
+      width: calc(100% - ${offset} - ${offset});
+      left: ${offset};
+      right: unset;
+    }
+  }
+
+  & > *:not(:last-child) {
+    margin-bottom: ${tokens.spacing[150]};
+  }
+
+  & > * {
+    ${appearIn()}
   }
 `;
 
@@ -156,18 +168,16 @@ const AlertsProvider = ({ children }: AlertsProps) => {
     };
   }, []);
 
-  return (
-    <Context.Provider value={value}>
-      {children}
-      {Object.entries(alerts)
-        .filter(([, alertsArr]) => alertsArr.length > 0)
-        .map(([position, alertsArr]) =>
-          render(
-            <Container className={position}>
+  const content = useMemo(
+    () =>
+      render(
+        Object.entries(alerts)
+          .filter(([, alertsArr]) => alertsArr.length > 0)
+          .map(([position, alertsArr]) => (
+            <Container key={position} className={c('alerts', position)}>
               {alertsArr.map((alert) => (
                 <Alert
                   key={alert.id}
-                  maxWidth="420px"
                   {...alert}
                   onClose={() => {
                     hide(alert);
@@ -176,8 +186,16 @@ const AlertsProvider = ({ children }: AlertsProps) => {
                 />
               ))}
             </Container>
-          )
-        )}
+          ))
+      ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [alerts]
+  );
+
+  return (
+    <Context.Provider value={value}>
+      {children}
+      {content}
     </Context.Provider>
   );
 };
