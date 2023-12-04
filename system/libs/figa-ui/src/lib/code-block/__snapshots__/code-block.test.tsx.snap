@@ -3,7 +3,7 @@
 exports[`Code block can be used when [FRAGILE] assigns class names by properties 1`] = `
 <DocumentFragment>
   <div
-    class="code-block my-class"
+    class="sc-bcXHqe jtoMJG code-block my-class"
   >
     <div
       class="code-block-header"
@@ -18,7 +18,11 @@ exports[`Code block can be used when [FRAGILE] assigns class names by properties
     </div>
     <div
       class="code-block-content"
-    />
+    >
+      <div>
+        Content
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -26,7 +30,7 @@ exports[`Code block can be used when [FRAGILE] assigns class names by properties
 exports[`Code block can be used when [FRAGILE] renders default dots as header 1`] = `
 <DocumentFragment>
   <div
-    class="code-block"
+    class="sc-bcXHqe jtoMJG code-block"
   >
     <div
       class="code-block-header"
@@ -41,7 +45,11 @@ exports[`Code block can be used when [FRAGILE] renders default dots as header 1`
     </div>
     <div
       class="code-block-content"
-    />
+    >
+      <div>
+        Content
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;

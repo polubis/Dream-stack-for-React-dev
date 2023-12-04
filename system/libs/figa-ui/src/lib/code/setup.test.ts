@@ -1,3 +1,4 @@
+import { dark } from '../theme-provider/dark-theme';
 import { setup } from './setup';
 
 describe('Code works when: ', () => {
@@ -10,6 +11,7 @@ describe('Code works when: ', () => {
       lang: 'js',
       wrapLines: false,
       readonly: false,
+      theme: dark.code,
     });
 
     expect(view.state.doc.toString()).toBe(children);
@@ -23,6 +25,7 @@ describe('Code works when: ', () => {
       readonly: true,
       lang: 'js',
       wrapLines: false,
+      theme: dark.code,
     });
 
     expect(view.state.doc.toString()).toBe(children);

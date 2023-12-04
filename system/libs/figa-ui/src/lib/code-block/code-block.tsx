@@ -41,7 +41,7 @@ const Container = styled.div`
   }
 
   .code-block-content {
-    padding: ${tokens.spacing[200]} ${tokens.spacing[100]};
+    padding: ${tokens.spacing[200]};
     background: ${(props) => props.theme.codeBlock.content.bg};
     border-bottom-right-radius: ${tokens.radius[50]};
     border-bottom-left-radius: ${tokens.radius[50]};

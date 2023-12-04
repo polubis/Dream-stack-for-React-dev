@@ -1,6 +1,6 @@
 import type { Theme } from '../theme-provider';
 
-type CodeLang = 'js' | 'html' | 'md' | 'css';
+type CodeLang = 'js' | 'md';
 
 interface CodeProps {
   className?: string;
