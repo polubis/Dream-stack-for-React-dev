@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alerts works when:  alerts may be opened/closed and are closed after timeouts 1`] = `
+Array [
+  <p
+    class="font b2 default trim"
+  >
+    Alert content
+  </p>,
+  <p
+    class="font b2 default trim"
+  >
+    Alert content
+  </p>,
+  <p
+    class="font b2 default trim"
+  >
+    Alert content
+  </p>,
+]
+`;
