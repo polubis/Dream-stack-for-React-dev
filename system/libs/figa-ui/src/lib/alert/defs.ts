@@ -8,9 +8,8 @@ interface AlertProps {
   className?: string;
   variant?: AlertVariant;
   type?: AlertType;
-  trimmed?: boolean;
+  trim?: boolean;
   maxWidth?: string;
-  fixed?: boolean;
   children: ReactNode;
   onClose?(): void;
 }
