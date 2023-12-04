@@ -6,8 +6,58 @@ import c from 'classnames';
 import { setup } from './setup';
 import { useIsomorphicLayoutEffect } from '@system/figa-hooks';
 import type { EditorView } from 'codemirror';
-import { useThemeProvider } from '../theme-provider';
+import { tokens, useThemeProvider } from '../theme-provider';
 import { isServer } from '@system/utils';
+import styled from 'styled-components';
+import { center } from '../shared';
+
+const Container = styled.div`
+  .cm-editor {
+    background: ${(props) => props.theme.code.bg};
+
+    &.cm-focused {
+      outline: none;
+    }
+
+    .cm-scroller {
+      font-size: 1.6rem;
+    }
+
+    .cm-cursor,
+    .cm-dropCursor {
+      border-left-color: ${(props) => props.theme.font.default.color};
+    }
+
+    *[title='Fold line'],
+    *[title='Unfold line'] {
+      ${center()}
+      width: ${tokens.spacing[300]};
+    }
+
+    .cm-gutters {
+      background: ${(props) => props.theme.code.gutters};
+      color: ${(props) => props.theme.font.default.color};
+      border: none;
+    }
+
+    .cm-activeLineGutter {
+      background: ${(props) => props.theme.code.selectionBg};
+    }
+
+    .cm-foldPlaceholder {
+      background: ${(props) => props.theme.code.foldPlaceholder};
+      border-color: ${(props) => props.theme.code.foldPlaceholder};
+    }
+
+    .cm-selectionBackground {
+      background: transparent;
+    }
+
+    &.cm-focused .cm-selectionBackground {
+      background: ${(props) => props.theme.code.selectionBg} !important;
+    }
+  }
+`;
 
 const CodeContent = ({
   children,
@@ -44,13 +94,13 @@ const CodeContent = ({
     };
   }, [wrapLines, readonly, lang, theme.key]);
 
-  return <div className={c('code', className)} ref={ref} />;
+  return <Container className={c('code', className)} ref={ref} />;
 };
 
-const Code = ({ children, className, readonly, onChange }: CodeProps) => {
+const Code = ({ children, className, readonly, lang, onChange }: CodeProps) => {
   if (isServer()) {
     return (
-      <div
+      <Container
         className={c('code', className)}
         style={{ height: children.split('\n').length * CODE_LINE_HEIGHT }}
       />
@@ -60,6 +110,7 @@ const Code = ({ children, className, readonly, onChange }: CodeProps) => {
   return (
     <CodeContent
       children={children}
+      lang={lang}
       className={className}
       readonly={readonly}
       onChange={onChange}

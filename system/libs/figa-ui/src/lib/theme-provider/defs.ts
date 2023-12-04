@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import type { TagStyle } from '@codemirror/language';
+import type { tags } from '@lezer/highlight';
 
 interface ThemeProviderProps {
   children: ReactNode;
@@ -14,6 +14,8 @@ interface Viewport {
   laptop: ViewportValue;
   desktop: ViewportValue;
 }
+
+type CodeTag = keyof typeof tags;
 
 type Spacing = Readonly<{
   0: string;
@@ -402,7 +404,14 @@ interface Theme {
     borderColor: string;
   };
   code: {
-    tags: TagStyle[];
+    tags: {
+      tag: CodeTag;
+      color: string;
+    }[];
+    bg: string;
+    gutters: string;
+    foldPlaceholder: string;
+    selectionBg: string;
   };
   codeBlock: {
     header: {
@@ -503,4 +512,5 @@ export type {
   SpacingKey,
   Viewport,
   ViewportValue,
+  CodeTag,
 };
