@@ -7,7 +7,6 @@ import {
   ListItem,
   Loader,
 } from '@system/figa-ui';
-import { MainLayout } from '../../components';
 import { article_store_actions, useArticleStore } from '../../store/article';
 import { useRouter } from 'next/router';
 import { getLang } from '../../dk';
@@ -101,7 +100,7 @@ const InitialScreen = () => {
   const { is } = articleStore;
 
   return (
-    <MainLayout>
+    <>
       {is === 'busy' ? (
         <Box margin="auto">
           <Box margin="auto">
@@ -136,7 +135,7 @@ const InitialScreen = () => {
           )}
         </Box>
       )}
-    </MainLayout>
+    </>
   );
 };
 

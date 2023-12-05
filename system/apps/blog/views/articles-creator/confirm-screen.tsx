@@ -13,7 +13,6 @@ import {
   articles_creator_store_actions,
   useArticlesCreatorStore,
 } from '../../store/articles-creator';
-import { MainLayout } from '../../components';
 import { useAuthStore } from '../../store/auth';
 import { useLang, useMoveToRedirect } from '../../dk';
 import { useArticleStore } from '../../store/article';
@@ -60,11 +59,12 @@ const ConfirmScreen = () => {
         } ❤!`,
         type: 'ok',
       });
-      articles_creator_store_actions.reset();
 
       router.push(
         `/${lang}/articles/preview?id=${articleCreatorState.data.id}&url=${articleCreatorState.data.url}`
       );
+
+      articles_creator_store_actions.reset();
     }
   }, [articleCreatorState, lang, router, articleStore, alert]);
 
@@ -72,7 +72,7 @@ const ConfirmScreen = () => {
     articleStore.is === 'ok' && articleStore.article.status === 'Accepted';
 
   return (
-    <MainLayout>
+    <>
       {articleCreatorState.is === 'busy' ? (
         <Box margin="auto">
           <Box margin="auto">
@@ -145,7 +145,7 @@ const ConfirmScreen = () => {
           )}
         </Box>
       )}
-    </MainLayout>
+    </>
   );
 };
 
