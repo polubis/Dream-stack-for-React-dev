@@ -1,4 +1,6 @@
-type CodeLang = 'js' | 'html' | 'md' | 'css';
+import type { Theme } from '../theme-provider';
+
+type CodeLang = 'js' | 'md';
 
 interface CodeProps {
   className?: string;
@@ -15,6 +17,7 @@ interface SetupConfig {
   lang: CodeLang;
   wrapLines: CodeProps['wrapLines'];
   parent: Element;
+  theme: Theme['code'];
   onChange?: CodeProps['onChange'];
 }
 

@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import type { tags } from '@lezer/highlight';
 
 interface ThemeProviderProps {
   children: ReactNode;
@@ -13,6 +14,8 @@ interface Viewport {
   laptop: ViewportValue;
   desktop: ViewportValue;
 }
+
+type CodeTag = keyof typeof tags;
 
 type Spacing = Readonly<{
   0: string;
@@ -159,7 +162,10 @@ interface Tokens {
   secondary: Palette;
 }
 
+type ThemeKey = 'dark' | 'light';
+
 interface Theme {
+  key: ThemeKey;
   outline: {
     color: string;
   };
@@ -400,6 +406,16 @@ interface Theme {
     bg: string;
     borderColor: string;
   };
+  code: {
+    tags: {
+      tag: CodeTag;
+      color: string;
+    }[];
+    bg: string;
+    gutters: string;
+    foldPlaceholder: string;
+    selectionBg: string;
+  };
   codeBlock: {
     header: {
       bg: string;
@@ -461,7 +477,6 @@ interface Theme {
   };
 }
 
-type ThemeKey = 'dark' | 'light';
 type Themes = Record<ThemeKey, Theme>;
 type ThemesList = [ThemeKey, Theme][];
 
@@ -499,4 +514,5 @@ export type {
   SpacingKey,
   Viewport,
   ViewportValue,
+  CodeTag,
 };

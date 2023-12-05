@@ -9,7 +9,7 @@ import type {
 
 import { useState, createContext, useMemo, useContext } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { themes } from './themes';
+import { themes } from './setup';
 import { GlobalStyle } from './global-style';
 
 const Ctx = createContext<UnsafeThemeProviderValue>(null);

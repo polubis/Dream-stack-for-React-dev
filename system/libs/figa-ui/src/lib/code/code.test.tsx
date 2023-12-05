@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { Code } from './code';
+import { ThemeProvider } from '../theme-provider';
 
 describe('Code can be used when: ', () => {
   const children = `  const { mergeConfig } = require('vite');
@@ -29,7 +30,11 @@ describe('Code can be used when: ', () => {
   // and https://nx.dev/packages/storybook/documents/custom-builder-configs`;
 
   it('renders given code snippet', async () => {
-    render(<Code children={children} />);
+    render(
+      <ThemeProvider>
+        <Code children={children} />
+      </ThemeProvider>
+    );
 
     await waitFor(() => {
       screen.getByText(
@@ -40,7 +45,9 @@ describe('Code can be used when: ', () => {
 
   it('[FRAGILE] assigns class names for code component', async () => {
     const { container } = render(
-      <Code children={children} className="my-class" />
+      <ThemeProvider>
+        <Code children={children} className="my-class" />
+      </ThemeProvider>
     );
 
     await waitFor(() => {
@@ -50,13 +57,21 @@ describe('Code can be used when: ', () => {
 
   describe('during readonly mode', () => {
     it('[FRAGILE] disables selection', async () => {
-      const readonly = render(<Code children={children} readonly />);
+      const readonly = render(
+        <ThemeProvider>
+          <Code children={children} readonly />
+        </ThemeProvider>
+      );
 
       await waitFor(() => {
         expect(readonly.container.querySelector('.cm-activeLine')).toBeFalsy();
       });
 
-      const editable = render(<Code children={children} />);
+      const editable = render(
+        <ThemeProvider>
+          <Code children={children} />
+        </ThemeProvider>
+      );
 
       await waitFor(() => {
         expect(editable.container.querySelector('.cm-activeLine')).toBeTruthy();

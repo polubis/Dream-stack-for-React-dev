@@ -1,20 +1,44 @@
 import { basicSetup } from 'codemirror';
 import { EditorView, keymap } from '@codemirror/view';
-import { DEFAULT_THEME } from './consts';
 import { EditorState, type Extension } from '@codemirror/state';
 import type { SetupConfig } from './defs';
 import { indentWithTab } from '@codemirror/commands';
+import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
+import { tags as t } from '@lezer/highlight';
 
 const selectionExtensionIdx = 15;
 
 const createBasicExtensions = ({
   readonly,
   wrapLines,
-}: Pick<SetupConfig, 'readonly' | 'wrapLines'>): Extension[] => {
+  theme,
+}: Pick<SetupConfig, 'readonly' | 'wrapLines' | 'theme'>): Extension[] => {
   let setup = basicSetup;
+
+  const themeSetup: Extension[] = [
+    syntaxHighlighting(
+      HighlightStyle.define(
+        theme.tags.map(({ tag, color }) => {
+          const handler = t[tag];
+
+          if (typeof handler === 'function') {
+            return {
+              tag: handler(t.name),
+              color,
+            };
+          }
+
+          return {
+            tag: handler,
+            color,
+          };
+        })
+      )
+    ),
+  ];
   const extensions: Extension[] = [];
 
-  extensions.push(DEFAULT_THEME);
+  extensions.push(themeSetup);
   extensions.push(keymap.of([indentWithTab]));
 
   if (wrapLines) {
@@ -38,10 +62,11 @@ const viewFactory = ({
   children,
   parent,
   wrapLines,
+  theme,
   onChange,
 }: Omit<SetupConfig, 'lang'>) => {
   const extensions: Extension[] = [
-    ...createBasicExtensions({ readonly, wrapLines }),
+    ...createBasicExtensions({ readonly, wrapLines, theme }),
     ...(!readonly && onChange
       ? [
           EditorView.updateListener.of((v) => {
@@ -73,6 +98,7 @@ export const setup = ({
   parent,
   lang,
   wrapLines,
+  theme,
   onChange,
 }: SetupConfig): Promise<EditorView> => {
   return new Promise((resolve) => {
@@ -81,6 +107,7 @@ export const setup = ({
       children,
       parent,
       wrapLines,
+      theme,
       onChange,
     });
 
@@ -88,18 +115,6 @@ export const setup = ({
       case 'js':
         import('@codemirror/lang-javascript').then((mod) => {
           view.prependExtension(mod.javascript());
-          resolve(view.create());
-        });
-        break;
-      case 'css':
-        import('@codemirror/lang-css').then((mod) => {
-          view.prependExtension(mod.css());
-          resolve(view.create());
-        });
-        break;
-      case 'html':
-        import('@codemirror/lang-html').then((mod) => {
-          view.prependExtension(mod.html());
           resolve(view.create());
         });
         break;
