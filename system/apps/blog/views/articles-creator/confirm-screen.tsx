@@ -7,6 +7,7 @@ import {
   List,
   ListItem,
   Loader,
+  useAlert,
 } from '@system/figa-ui';
 import {
   articles_creator_store_actions,
@@ -14,9 +15,11 @@ import {
 } from '../../store/articles-creator';
 import { MainLayout } from '../../components';
 import { useAuthStore } from '../../store/auth';
-import { useMoveToRedirect } from '../../dk';
+import { useLang, useMoveToRedirect } from '../../dk';
 import { useArticleStore } from '../../store/article';
 import { useToggle } from '@system/figa-hooks';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const ConfirmScreen = () => {
   const articleCreatorState = useArticlesCreatorStore();
@@ -24,6 +27,9 @@ const ConfirmScreen = () => {
   const authStore = useAuthStore();
   const { go } = useMoveToRedirect();
   const confirmation = useToggle();
+  const router = useRouter();
+  const lang = useLang();
+  const alert = useAlert();
 
   const handleClose = (): void => {
     articles_creator_store_actions.setView('creator');
@@ -45,6 +51,22 @@ const ConfirmScreen = () => {
 
     go('/sign-in', '/articles-creator');
   };
+
+  useEffect(() => {
+    if (articleCreatorState.is === 'ok') {
+      alert.show({
+        children: `Article has been ${
+          articleStore.is === 'idle' ? 'created' : 'edited'
+        } ❤!`,
+        type: 'ok',
+      });
+      articles_creator_store_actions.reset();
+
+      router.push(
+        `/${lang}/articles/preview?id=${articleCreatorState.data.id}&url=${articleCreatorState.data.url}`
+      );
+    }
+  }, [articleCreatorState, lang, router, articleStore, alert]);
 
   const wantToChangePublishedArticle =
     articleStore.is === 'ok' && articleStore.article.status === 'Accepted';
@@ -68,9 +90,7 @@ const ConfirmScreen = () => {
             150,
             400,
             250,
-            articleCreatorState.is === 'fail' || articleCreatorState.is === 'ok'
-              ? 250
-              : 0,
+            articleCreatorState.is === 'fail' ? 250 : 0,
           ]}
         >
           {wantToChangePublishedArticle && (
@@ -120,12 +140,6 @@ const ConfirmScreen = () => {
               {confirmation.opened ? 'Sure?' : 'Submit'}
             </Button>
           </Box>
-          {articleCreatorState.is === 'ok' && (
-            <Alert type="ok">
-              Article has been{' '}
-              {articleStore.is === 'idle' ? 'created' : 'edited'} ❤!
-            </Alert>
-          )}
           {articleCreatorState.is === 'fail' && (
             <Alert type="error">{articleCreatorState.error.message}</Alert>
           )}

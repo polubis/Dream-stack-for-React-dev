@@ -7,15 +7,18 @@ import {
   sendArticleForApproval,
   updateArticle,
 } from '@system/blog-api';
-import { Url } from '@system/blog-api-models';
+import { articles_creator_store_states } from './states';
 
 const { getState: get, setState: set } = useArticlesCreatorStore;
 
-const articles_creator_store_actions = {
-  setView: (view: ArticlesCreatorStore.View): void => {
+const articles_creator_store_actions: ArticlesCreatorStore.Actions = {
+  reset: () => {
+    set(articles_creator_store_states.idle());
+  },
+  setView: (view) => {
     set({ view });
   },
-  setForm: (values: Partial<ArticlesCreatorStore.FormData> = {}): void => {
+  setForm: (values = {}) => {
     set({
       form: creatorForm.init({
         ...get().form.values,
@@ -23,18 +26,12 @@ const articles_creator_store_actions = {
       }),
     });
   },
-  change: <
-    K extends keyof ArticlesCreatorStore.FormData,
-    V extends ArticlesCreatorStore.FormData[K]
-  >(
-    key: K,
-    value: V
-  ): void => {
+  change: (key, value) => {
     set({
       form: creatorForm.set(get().form)({ [key]: value }),
     });
   },
-  confirm: async (url?: Url): Promise<void> => {
+  confirm: async (url) => {
     const state = get();
 
     set({
@@ -66,7 +63,7 @@ const articles_creator_store_actions = {
         await sendArticleForApproval({ id: data.id });
       }
 
-      set({ is: 'ok' });
+      set({ is: 'ok', data });
     } catch (error: unknown) {
       set({ is: 'fail', error: getError(error) });
     }
