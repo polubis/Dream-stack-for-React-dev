@@ -15,6 +15,7 @@ import {
   tokens,
   row,
   M_DOWN,
+  AlertsProvider,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -74,7 +75,7 @@ const MainLayout = ({
   ));
 
   return (
-    <>
+    <AlertsProvider>
       <Layout
         offPadding={offPadding}
         header={
@@ -166,7 +167,7 @@ const MainLayout = ({
         {children}
       </Layout>
       <LeftBar />
-    </>
+    </AlertsProvider>
   );
 };
 

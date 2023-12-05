@@ -11,13 +11,19 @@ describe('Sign in works when: ', () => {
       .And('System sets page as', '/')
       .When('I click button', 'Sign In')
       .Then('Im on page', '/en/sign-in')
+      .And('I see disabled button', 'Confirm')
       .And('I see text', 'Sign in into your account', 'Confirm')
       .When('I type in input', 'Login*', 'tomcio1994')
       .And('I type in input', 'Password*', 'tomcio1994')
       .And('I click button', 'Confirm')
       .Then('I see loading button', 'Confirm')
       .When('System recieved response from endpoint', 'postSignIn')
-      .Then('I see text', "You're signed in 💚", "We're redirecting you...")
+      .Then(
+        'I see text',
+        "You're signed in 💚",
+        "We're redirecting you...",
+        'Signed in'
+      )
       .And('Im on page', '/en/your-articles')
       .When('System recieved response from endpoint', 'getYourArticles')
       .And('I go back')
