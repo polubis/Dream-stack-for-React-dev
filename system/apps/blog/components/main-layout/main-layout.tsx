@@ -1,7 +1,6 @@
 import {
   Footer,
   Layout,
-  Logo,
   Link as FigaUILink,
   Button,
   Font,
@@ -30,6 +29,7 @@ import { useLang } from '../../dk/use-lang';
 import { RecommendedArticles } from './recommended-articles';
 import styled from 'styled-components';
 import { LeftBar } from './left-bar';
+import { TopNavigation } from '../top-navigation';
 
 const Links = styled.ul`
   & > *:not(:last-child) {
@@ -62,21 +62,6 @@ const MainLayout = ({
   sticky,
 }: MainLayoutProps) => {
   const lang = useLang();
-  const navigation = (
-    <>
-      <Nav.Link variant="h6">
-        <Link title="Articles" href={`/${lang}/articles/`}>
-          Articles
-        </Link>
-      </Nav.Link>
-      <Nav.Divider />
-      <Nav.Link variant="h6">
-        <Link title="Creator" href={`/${lang}/articles-creator/`}>
-          Creator
-        </Link>
-      </Nav.Link>
-    </>
-  );
 
   return (
     <AlertsProvider>
@@ -84,9 +69,20 @@ const MainLayout = ({
         offPadding={offPadding}
         header={
           <NavBar sticky={sticky}>
-            <Nav logo={<Logo />} actions={<UserSection />}>
-              {navigation}
-            </Nav>
+            <TopNavigation />
+            {/* <Nav logo={<Logo />} actions={<UserSection />}>
+              <Nav.Link variant="h6">
+                <Link title="Articles" href={`/${lang}/articles/`}>
+                  Articles
+                </Link>
+              </Nav.Link>
+              <Nav.Divider />
+              <Nav.Link variant="h6">
+                <Link title="Creator" href={`/${lang}/articles-creator/`}>
+                  Creator
+                </Link>
+              </Nav.Link>
+            </Nav> */}
           </NavBar>
         }
         sidebar={sidebar}
@@ -161,7 +157,18 @@ const MainLayout = ({
                 </Box>
                 <Box padding={[350, 250, 350, 250]} spacing={[150]}>
                   <Font variant="h5">Navigation</Font>
-                  <Links>{navigation}</Links>
+                  <Links>
+                    <Nav.Link variant="h6">
+                      <Link title="Articles" href={`/${lang}/articles/`}>
+                        Articles
+                      </Link>
+                    </Nav.Link>
+                    <Nav.Link variant="h6">
+                      <Link title="Creator" href={`/${lang}/articles-creator/`}>
+                        Creator
+                      </Link>
+                    </Nav.Link>
+                  </Links>
                 </Box>
               </>
             }
