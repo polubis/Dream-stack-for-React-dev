@@ -132,7 +132,7 @@ const Trigger = () => {
 
   return (
     <Popover.Trigger>
-      <Button shape="rounded">
+      <Button shape="rounded" size={2}>
         <Avatar
           alt="My alt text"
           src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-08/220805-domestic-cat-mjf-1540-382ba2.jpg"
