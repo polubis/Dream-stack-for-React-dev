@@ -3,7 +3,7 @@
 exports[`Nav can be used when:  [FRAGILE] assigns classes 1`] = `
 <DocumentFragment>
   <nav
-    class="sc-gswNZR ikrNAv nav my-nav"
+    class="sc-gswNZR cxrvnc nav my-nav"
   >
     <div
       class="nav-logo"
@@ -148,7 +148,7 @@ exports[`Nav can be used when:  [FRAGILE] open/close mobile navigation 1`] = `
     </footer>
   </div>
   <nav
-    class="sc-gswNZR ikrNAv nav my-nav"
+    class="sc-gswNZR cxrvnc nav my-nav"
   >
     <div
       class="nav-logo"
@@ -228,7 +228,7 @@ exports[`Nav can be used when:  [FRAGILE] open/close mobile navigation 1`] = `
 exports[`Nav can be used when:  [FRAGILE] open/close mobile navigation 2`] = `
 <DocumentFragment>
   <nav
-    class="sc-gswNZR ikrNAv nav my-nav"
+    class="sc-gswNZR cxrvnc nav my-nav"
   >
     <div
       class="nav-logo"

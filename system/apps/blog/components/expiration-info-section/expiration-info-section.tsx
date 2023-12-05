@@ -8,7 +8,7 @@ const ExpirationInfo = () => {
 
   return (
     <InfoSection
-      padding={[0, 0, 0, 0]}
+      padding={[250, 250, 250, 250]}
       title="Your session expired 💤"
       description="Sign in again to explore our application 🔃"
       footer={

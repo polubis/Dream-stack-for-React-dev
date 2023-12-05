@@ -28,8 +28,10 @@ const RegisterButton = () => {
   const lang = useLang();
 
   return (
-    <Link title="Register" href={`/${lang}/register/`}>
-      <Button size={2}>Register</Button>
+    <Link title="Sign Up" href={`/${lang}/register/`}>
+      <Button variant="ghost" motive="tertiary" size={2}>
+        Sign Up
+      </Button>
     </Link>
   );
 };
@@ -40,8 +42,8 @@ const UserSection = () => {
   if (is === 'idle') {
     return (
       <Box orientation="row" spacing={[150]}>
-        <Button size={2} disabled>
-          Register
+        <Button size={2} variant="ghost" disabled>
+          Sign Up
         </Button>
         <Button size={2} disabled>
           Sign In

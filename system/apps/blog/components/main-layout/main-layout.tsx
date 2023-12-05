@@ -16,6 +16,7 @@ import {
   row,
   M_DOWN,
   AlertsProvider,
+  size,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -58,6 +59,18 @@ const CompanyLink = styled.a`
   }
 `;
 
+const LogoWrapper = styled.div`
+  @media ${M_DOWN} {
+    .logo-graphic {
+      ${size(tokens.spacing[500])}
+    }
+
+    .logo-text {
+      display: none;
+    }
+  }
+`;
+
 const MainLayout = ({
   children,
   sidebar,
@@ -80,7 +93,14 @@ const MainLayout = ({
         offPadding={offPadding}
         header={
           <NavBar sticky={sticky}>
-            <Nav logo={<Logo />} actions={<UserSection />}>
+            <Nav
+              logo={
+                <LogoWrapper>
+                  <Logo />
+                </LogoWrapper>
+              }
+              actions={<UserSection />}
+            >
               {links}
             </Nav>
           </NavBar>
