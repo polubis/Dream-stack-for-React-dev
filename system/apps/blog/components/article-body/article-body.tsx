@@ -64,6 +64,15 @@ const Content = styled.section`
     }
   }
 
+  .h1 ~ .b1,
+  .h2 ~ .b1,
+  .h3 ~ .b1,
+  .h4 ~ .b1,
+  .h5 ~ .b1,
+  .h6 ~ .b1 {
+    padding-bottom: ${tokens.spacing[150]};
+  }
+
   .b1 ~ .b1 {
     padding-bottom: ${tokens.spacing[150]};
   }
