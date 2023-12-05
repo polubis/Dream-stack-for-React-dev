@@ -5,9 +5,9 @@ import {
   Font,
   Input,
   ProgressCircle,
+  useAlert,
 } from '@system/figa-ui';
 import { sign_in_store_actions, useSignInStore } from '../../store/sign-in';
-import { useSignOutStore } from '../../store/sign-out';
 import { useState, useRef, useEffect } from 'react';
 import { useMoveToRedirect } from '../../dk';
 import { NotSignedInOnly, SignedInOnly } from '../../core';
@@ -15,28 +15,28 @@ import { InfoSection } from '../info-section';
 
 const SignInForm = () => {
   const signInStore = useSignInStore();
-  const signOutStore = useSignOutStore();
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
   const { redirect } = useMoveToRedirect('/your-articles');
   const timeout = useRef<NodeJS.Timeout | null>(null);
   const [justSignedIn, setJustSignedIn] = useState(false);
-
-  const handleSignIn = async () => {
-    await sign_in_store_actions.signIn({
-      login,
-      password,
-    });
-
-    setJustSignedIn(true);
-    timeout.current = setTimeout(redirect, 1000);
-  };
+  const alert = useAlert();
 
   useEffect(() => {
     return () => {
       timeout.current && clearInterval(timeout.current);
     };
   }, []);
+
+  useEffect(() => {
+    if (signInStore.is === 'ok') {
+      alert.show({ children: 'Signed in', type: 'ok' });
+      setJustSignedIn(true);
+      timeout.current = setTimeout(() => {
+        redirect();
+        sign_in_store_actions.reset();
+      }, 1000);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signInStore.is]);
 
   return (
     <>
@@ -61,20 +61,25 @@ const SignInForm = () => {
         <Box spacing={[400, 150, 400, 400]} maxWidth="320px" margin="auto">
           <Font variant="h6">Sign in into your account</Font>
           <Input
-            value={login}
+            value={signInStore.form.values.login}
             autoFocus
             placeholder="Login*"
-            onChange={(e) => setLogin(e.target.value)}
+            onChange={(e) =>
+              sign_in_store_actions.setField('login', e.target.value)
+            }
           />
           <Input
-            value={password}
+            value={signInStore.form.values.password}
             type="password"
             placeholder="Password*"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) =>
+              sign_in_store_actions.setField('password', e.target.value)
+            }
           />
           <Button
-            loading={signInStore.is === 'busy' || signOutStore.is === 'busy'}
-            onClick={handleSignIn}
+            loading={signInStore.is === 'busy'}
+            disabled={signInStore.form.invalid}
+            onClick={sign_in_store_actions.submit}
           >
             Confirm
           </Button>

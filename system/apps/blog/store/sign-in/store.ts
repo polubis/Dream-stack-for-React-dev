@@ -1,9 +1,10 @@
 import { create } from 'zustand';
 import type { SignInStore } from './defs';
+import { signInForm } from './core';
 
 const useSignInStore = create<SignInStore.State>(() => ({
   is: 'idle',
-  error: null,
+  form: signInForm.init({ login: '', password: '' }),
 }));
 
 export { useSignInStore };
