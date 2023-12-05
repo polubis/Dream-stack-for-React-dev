@@ -7,7 +7,7 @@ describe('Register works when: ', () => {
   it('user is able to create an account and success alert is displayed', () => {
     Given('System mocked endpoint', 'postRegister')
       .And('System sets page as', '/')
-      .When('I click button', 'Register')
+      .When('I click button', 'Sign Up')
       .Then('Im on page', '/en/register')
       .When('I type in input', 'Login*', 'tomcio1994')
       .And('I type in input', 'Email*', 'tomcio1994@wp.pl')

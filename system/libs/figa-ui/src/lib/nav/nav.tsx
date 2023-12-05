@@ -47,13 +47,13 @@ const Container = styled.nav`
     justify-self: end;
 
     & > *:not(:first-child) {
-      margin: 0 0 0 ${tokens.spacing[200]};
+      margin: 0 0 0 ${tokens.spacing[150]};
     }
   }
 
   @media ${T_DOWN} {
     grid-template-columns: 1fr auto auto;
-    gap: ${tokens.spacing[250]};
+    gap: ${tokens.spacing[150]};
 
     .nav-links-wrapper {
       display: none;
@@ -69,10 +69,9 @@ const Container = styled.nav`
   }
 
   @media ${M_DOWN} {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto auto;
 
-    .nav-links-wrapper,
-    .nav-actions {
+    .nav-links-wrapper {
       display: none;
     }
 
