@@ -31,9 +31,6 @@ import { RecommendedArticles } from './recommended-articles';
 import styled from 'styled-components';
 import { LeftBar } from './left-bar';
 
-const LABELS = ['Articles', 'Creator'] as const;
-const URLS = ['/articles/', '/articles-creator/'] as const;
-
 const Links = styled.ul`
   & > *:not(:last-child) {
     margin-bottom: ${tokens.spacing[100]};
@@ -65,14 +62,21 @@ const MainLayout = ({
   sticky,
 }: MainLayoutProps) => {
   const lang = useLang();
-
-  const links = LABELS.map((label, idx) => (
-    <Nav.Link variant="h6" key={label}>
-      <Link title={label} href={'/' + lang + URLS[idx]}>
-        {label}
-      </Link>
-    </Nav.Link>
-  ));
+  const navigation = (
+    <>
+      <Nav.Link variant="h6">
+        <Link title="Articles" href={`/${lang}/articles/`}>
+          Articles
+        </Link>
+      </Nav.Link>
+      <Nav.Divider />
+      <Nav.Link variant="h6">
+        <Link title="Creator" href={`/${lang}/articles-creator/`}>
+          Creator
+        </Link>
+      </Nav.Link>
+    </>
+  );
 
   return (
     <AlertsProvider>
@@ -81,7 +85,7 @@ const MainLayout = ({
         header={
           <NavBar sticky={sticky}>
             <Nav logo={<Logo />} actions={<UserSection />}>
-              {links}
+              {navigation}
             </Nav>
           </NavBar>
         }
@@ -157,7 +161,7 @@ const MainLayout = ({
                 </Box>
                 <Box padding={[350, 250, 350, 250]} spacing={[150]}>
                   <Font variant="h5">Navigation</Font>
-                  <Links>{links}</Links>
+                  <Links>{navigation}</Links>
                 </Box>
               </>
             }

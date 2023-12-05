@@ -36,6 +36,10 @@ const Container = styled.nav`
         margin: 0 0 0 ${tokens.spacing[300]};
       }
 
+      & > * {
+        flex-shrink: 0;
+      }
+
       .divider {
         margin: ${0} ${tokens.spacing[150]} 0 ${tokens.spacing[450]};
       }

@@ -62,7 +62,7 @@ const Content = () => {
       </UserInfoContainer>
 
       <Box spacing={[100, 100, 100]}>
-        <Font variant="b3">Navigation</Font>
+        <Font variant="b3">Your stuff</Font>
         <FigaUILink variant="b1">
           <Link title="Profile" href={`/${lang}/account`}>
             Account
