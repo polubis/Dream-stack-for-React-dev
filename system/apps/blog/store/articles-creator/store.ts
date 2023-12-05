@@ -1,22 +1,9 @@
 import { create } from 'zustand';
 import type { ArticlesCreatorStore } from './defs';
-import { creatorForm } from './form';
+import { articles_creator_store_states } from './states';
 
-const useArticlesCreatorStore = create<ArticlesCreatorStore.State>(() => ({
-  is: 'idle',
-  view: 'initial',
-  form: creatorForm.init({
-    title: '',
-    description: '',
-    tags: [],
-    thumbnail: {
-      file: null,
-      preview: [],
-    },
-    content: '',
-    lang: 'en',
-    sendToReview: false,
-  }),
-}));
+const useArticlesCreatorStore = create<ArticlesCreatorStore.State>(() =>
+  articles_creator_store_states.idle()
+);
 
 export { useArticlesCreatorStore };
