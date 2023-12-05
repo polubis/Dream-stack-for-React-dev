@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { UserSection } from '../main-layout/user-section';
 import {
   Logo,
   Link as FigaUILink,
@@ -7,9 +6,14 @@ import {
   tokens,
   row,
   T_DOWN,
+  Button,
+  L_DOWN,
 } from '@system/figa-ui';
 import { Link } from '../link';
 import { useLang } from '../../dk';
+import { useAuthStore } from '../../store/auth';
+import { UserPopover } from '../main-layout/user-popover';
+import { useSignInStore } from '../../store/sign-in';
 
 const Container = styled.nav`
   display: grid;
@@ -31,8 +35,22 @@ const Container = styled.nav`
     }
   }
 
-  .top-navigation-user-section {
+  .top-navigation-signed-in-user-section,
+  .top-navigation-not-signed-in-user-section {
+    ${row()}
     justify-self: end;
+
+    & > * {
+      &:not(:first-child) {
+        margin-left: ${tokens.spacing[150]};
+      }
+    }
+  }
+
+  @media ${L_DOWN} {
+    .top-navigation-not-signed-in-user-section {
+      display: none;
+    }
   }
 
   @media ${T_DOWN} {
@@ -47,6 +65,8 @@ const Container = styled.nav`
 
 const TopNavigation = () => {
   const lang = useLang();
+  const authStore = useAuthStore();
+  const signInStore = useSignInStore();
 
   return (
     <Container>
@@ -68,9 +88,41 @@ const TopNavigation = () => {
           </FigaUILink>
         </li>
       </ul>
-      <div className="top-navigation-user-section">
-        <UserSection />
-      </div>
+      {authStore.is === 'authorized' && (
+        <div className="top-navigation-signed-in-user-section">
+          <UserPopover />
+        </div>
+      )}
+      {authStore.is !== 'authorized' && (
+        <div className="top-navigation-not-signed-in-user-section">
+          {authStore.is === 'idle' && (
+            <>
+              <Button size={2} disabled>
+                Register
+              </Button>
+              <Button size={2} disabled>
+                Sign In
+              </Button>
+            </>
+          )}
+          {authStore.is === 'unauthorized' && (
+            <>
+              <Link title="Register" href={`/${lang}/register/`}>
+                <Button size={2}>Register</Button>
+              </Link>
+              {signInStore.is === 'busy' ? (
+                <Button size={2} loading>
+                  Sign In
+                </Button>
+              ) : (
+                <Link title="Sign In" href={`/${lang}/sign-in/`}>
+                  <Button size={2}>Sign In</Button>
+                </Link>
+              )}
+            </>
+          )}
+        </div>
+      )}
     </Container>
   );
 };

@@ -24,7 +24,6 @@ import {
   GREEN_ON_SOFTWARE_LINKEDIN,
   GREEN_ON_SOFTWARE_COMPANY,
 } from '../../consts';
-import { UserSection } from './user-section';
 import { useLang } from '../../dk/use-lang';
 import { RecommendedArticles } from './recommended-articles';
 import styled from 'styled-components';
@@ -70,19 +69,6 @@ const MainLayout = ({
         header={
           <NavBar sticky={sticky}>
             <TopNavigation />
-            {/* <Nav logo={<Logo />} actions={<UserSection />}>
-              <Nav.Link variant="h6">
-                <Link title="Articles" href={`/${lang}/articles/`}>
-                  Articles
-                </Link>
-              </Nav.Link>
-              <Nav.Divider />
-              <Nav.Link variant="h6">
-                <Link title="Creator" href={`/${lang}/articles-creator/`}>
-                  Creator
-                </Link>
-              </Nav.Link>
-            </Nav> */}
           </NavBar>
         }
         sidebar={sidebar}
