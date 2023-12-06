@@ -3,8 +3,8 @@ import type { LayoutProps } from './defs';
 
 import c from 'classnames';
 import styled from 'styled-components';
-import { column, row, streched } from '../shared';
-import { tokens } from '../theme-provider';
+import { center, column, row, streched } from '../shared';
+import { T_UP, tokens } from '../theme-provider';
 
 const Container = styled.div`
   ${column()}
@@ -73,7 +73,7 @@ const Container = styled.div`
     }
   }
 
-  .layout-top-bar {
+  .layout-top-nav {
     ${row()}
     ${streched('fixed')}
         bottom: unset;
@@ -90,18 +90,69 @@ const Container = styled.div`
       transform: translateY(-${tokens.spacing[1000]});
     }
   }
+
+  .layout-bottom-nav {
+    ${streched('fixed')}
+    top: unset;
+    display: flex;
+    z-index: ${tokens.z[200]};
+    background: ${(props) => props.theme.nav.bg};
+    border-top: ${tokens.spacing[25]} solid
+      ${(props) => props.theme.nav.borderColor};
+    transform: translateY(0px);
+    transition: 0.93s transform cubic-bezier(0.19, 1, 0.22, 1);
+
+    @media ${T_UP} {
+      display: none;
+    }
+
+    &.out {
+      transform: translateY(${tokens.spacing[1000]});
+    }
+
+    ul {
+      display: flex;
+      margin: 0 auto;
+      padding: ${tokens.spacing[150]} ${tokens.spacing[100]};
+      overflow-x: auto;
+
+      & > * {
+        border-radius: ${tokens.radius[50]};
+        flex-shrink: 0;
+
+        &:not(:last-child) {
+          margin-right: ${tokens.spacing[200]};
+        }
+
+        &.active {
+          background: ${(props) => props.theme.button.ghost.hoverBg};
+        }
+
+        .button {
+          ${center('column')}
+
+          .font {
+            margin-top: ${tokens.spacing[50]};
+          }
+        }
+      }
+    }
+  }
 `;
 
 const Layout = ({
   className,
   children,
   topNav,
+  bottomNav,
   footer,
   offPadding,
   sidebar,
 }: LayoutProps) => {
   const toggler = useToggle({ opened: !!sidebar });
   const [state] = useScroll({ delay: 50 });
+
+  const out = state.is === 'progress' && state.value > 50;
 
   return (
     <Container
@@ -114,8 +165,8 @@ const Layout = ({
       )}
     >
       <header
-        className={c('layout-top-bar', className, {
-          out: state.is === 'progress' && state.value > 50,
+        className={c('layout-top-nav', {
+          out,
         })}
       >
         {topNav}
@@ -127,6 +178,9 @@ const Layout = ({
         {children}
       </main>
       <footer className="layout-footer">{footer}</footer>
+      <nav className={c('layout-bottom-nav', { out })}>
+        <ul>{bottomNav}</ul>
+      </nav>
     </Container>
   );
 };

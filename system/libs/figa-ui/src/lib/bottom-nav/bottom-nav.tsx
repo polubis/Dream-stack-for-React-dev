@@ -16,11 +16,6 @@ const Container = styled.nav`
     ${(props) => props.theme.nav.borderColor};
 
   ul {
-    display: flex;
-    margin: 0 auto;
-    padding: ${tokens.spacing[150]} ${tokens.spacing[100]};
-    overflow-x: auto;
-
     & > * {
       border-radius: ${tokens.radius[50]};
       flex-shrink: 0;

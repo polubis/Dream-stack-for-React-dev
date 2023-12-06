@@ -74,11 +74,7 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const MainLayout = ({
-  children,
-  sidebar,
-  offPadding,
-}: MainLayoutProps) => {
+const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
   const lang = useLang();
 
   const links = LABELS.map((label, idx) => (
@@ -104,6 +100,14 @@ const MainLayout = ({
           >
             {links}
           </Nav>
+        }
+        bottomNav={
+          <>
+            <BottomNav.Item icon={<HomeIcon />} text="Home" />
+            <BottomNav.Item icon={<ArticlesSearchIcon />} text="Articles" />
+            <BottomNav.Item icon={<PlusCircleIcon />} text="Create" />
+            <BottomNav.Item active icon={<MoreIcon />} text="More" />
+          </>
         }
         sidebar={sidebar}
         footer={
@@ -186,12 +190,6 @@ const MainLayout = ({
       >
         {children}
       </Layout>
-      <BottomNav>
-        <BottomNav.Item icon={<HomeIcon />} text="Home" />
-        <BottomNav.Item icon={<ArticlesSearchIcon />} text="Articles" />
-        <BottomNav.Item icon={<PlusCircleIcon />} text="Create" />
-        <BottomNav.Item active icon={<MoreIcon />} text="More" />
-      </BottomNav>
     </AlertsProvider>
   );
 };

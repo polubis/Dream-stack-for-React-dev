@@ -981,7 +981,6 @@ const GlobalStyle = createGlobalStyle`
 
     .footer {
         background: ${(props) => props.theme.footer.bg};
-        padding-bottom: ${tokens.spacing[1000]};
 
         .footer-container {
             ${column()}
