@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
+
 interface TopNavItemProps {
-  text: string;
+  children: ReactNode;
   active?: boolean;
   className?: string;
 }

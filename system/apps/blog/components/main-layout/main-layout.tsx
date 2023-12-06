@@ -98,10 +98,14 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
             actions={<UserSection />}
           >
             <Link title="Articles" href={`/${lang}/articles`}>
-              <TopNavItem text="Articles" />
+              <TopNavItem active={pathname === `/${lang}/articles`}>
+                Articles <ArticlesSearchIcon />
+              </TopNavItem>
             </Link>
             <Link title="Create" href={`/${lang}/articles-creator`}>
-              <TopNavItem text="Create" />
+              <TopNavItem active={pathname === `/${lang}/articles-creator`}>
+                Create <PlusCircleIcon />
+              </TopNavItem>
             </Link>
           </Nav>
         }
