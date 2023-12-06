@@ -1,10 +1,5 @@
 import type { ReactNode } from 'react';
 
-interface BottomNavProps {
-  className?: string;
-  children: ReactNode;
-}
-
 interface BottomNavItemProps {
   className?: string;
   text: string;
@@ -12,4 +7,4 @@ interface BottomNavItemProps {
   active?: boolean;
 }
 
-export type { BottomNavProps, BottomNavItemProps };
+export type { BottomNavItemProps };

@@ -16,9 +16,9 @@ import {
   M_DOWN,
   AlertsProvider,
   size,
-  BottomNav,
   HomeIcon,
   ArticlesSearchIcon,
+  BottomNavItem,
   PlusCircleIcon,
   MoreIcon,
 } from '@system/figa-ui';
@@ -103,10 +103,10 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
         }
         bottomNav={
           <>
-            <BottomNav.Item icon={<HomeIcon />} text="Home" />
-            <BottomNav.Item icon={<ArticlesSearchIcon />} text="Articles" />
-            <BottomNav.Item icon={<PlusCircleIcon />} text="Create" />
-            <BottomNav.Item active icon={<MoreIcon />} text="More" />
+            <BottomNavItem icon={<HomeIcon />} text="Home" />
+            <BottomNavItem icon={<ArticlesSearchIcon />} text="Articles" />
+            <BottomNavItem icon={<PlusCircleIcon />} text="Create" />
+            <BottomNavItem active icon={<MoreIcon />} text="More" />
           </>
         }
         sidebar={sidebar}
