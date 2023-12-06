@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import type { BottomNavItemProps, BottomNavProps } from './defs';
 import { tokens } from '../theme-provider';
-import { center, size, streched } from '../shared';
+import { center, streched } from '../shared';
 import { Font } from '../font';
 import c from 'classnames';
 import { Button } from '../button';
@@ -10,6 +10,7 @@ const Container = styled.nav`
   ${streched('fixed')}
   top: unset;
   display: flex;
+  z-index: ${tokens.z[200]};
   background: ${(props) => props.theme.nav.bg};
   border-top: ${tokens.spacing[25]} solid
     ${(props) => props.theme.nav.borderColor};
@@ -17,12 +18,20 @@ const Container = styled.nav`
   ul {
     display: flex;
     margin: 0 auto;
-    padding: ${tokens.spacing[150]} ${tokens.spacing[250]};
+    padding: ${tokens.spacing[150]} ${tokens.spacing[100]};
     overflow-x: auto;
 
     & > * {
       border-radius: ${tokens.radius[50]};
       flex-shrink: 0;
+
+      &:not(:last-child) {
+        margin-right: ${tokens.spacing[200]};
+      }
+
+      &.active {
+        background: ${props => props.theme.button.ghost.hoverBg};
+      }
 
       .button {
         ${center('column')}
@@ -43,9 +52,9 @@ const BottomNav = ({ className, children }: BottomNavProps) => {
   );
 };
 
-BottomNav.Item = ({ className, icon, text }: BottomNavItemProps) => {
+BottomNav.Item = ({ className, active, icon, text }: BottomNavItemProps) => {
   return (
-    <li className={c('bottom-nav-item', className)}>
+    <li className={c('bottom-nav-item', { active }, className)}>
       <Button variant="ghost" motive="tertiary">
         {icon}
         <Font variant="b3">{text}</Font>

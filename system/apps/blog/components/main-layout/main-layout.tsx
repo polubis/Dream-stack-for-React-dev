@@ -19,11 +19,9 @@ import {
   size,
   BottomNav,
   HomeIcon,
-  PlusIcon,
   ArticlesSearchIcon,
   PlusCircleIcon,
-  ArrowTopIcon,
-  HamburgerIcon,
+  MoreIcon,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -196,7 +194,7 @@ const MainLayout = ({
         <BottomNav.Item icon={<HomeIcon />} text="Home" />
         <BottomNav.Item icon={<ArticlesSearchIcon />} text="Articles" />
         <BottomNav.Item icon={<PlusCircleIcon />} text="Create" />
-        <BottomNav.Item icon={<HamburgerIcon />} text="More" />
+        <BottomNav.Item active icon={<MoreIcon />} text="More" />
       </BottomNav>
     </AlertsProvider>
   );
