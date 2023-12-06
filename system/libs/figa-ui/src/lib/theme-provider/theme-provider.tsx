@@ -14,7 +14,7 @@ import { GlobalStyle } from './global-style';
 
 const Ctx = createContext<UnsafeThemeProviderValue>(null);
 
-const defaultKey = 'light' as ThemeKey;
+const defaultKey = 'dark' as ThemeKey;
 
 const getDefaultValue: GetDefaultValue = ({
   key = defaultKey,
