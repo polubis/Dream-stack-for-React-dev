@@ -284,7 +284,7 @@ const light: Theme = {
     },
   },
   footer: {
-    bg: tokens.common.white,
+    bg: '#fafafa',
   },
   code: {
     bg: tokens.light[150],
