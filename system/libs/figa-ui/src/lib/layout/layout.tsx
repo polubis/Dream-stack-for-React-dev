@@ -123,18 +123,6 @@ const Container = styled.div`
         &:not(:last-child) {
           margin-right: ${tokens.spacing[200]};
         }
-
-        &.active {
-          background: ${(props) => props.theme.button.ghost.hoverBg};
-        }
-
-        .button {
-          ${center('column')}
-
-          .font {
-            margin-top: ${tokens.spacing[50]};
-          }
-        }
       }
     }
   }

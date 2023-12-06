@@ -7,7 +7,7 @@ import { center } from '../shared';
 import c from 'classnames';
 
 const Container = styled.div`
-  &.active {
+  &.active .button {
     background: ${(props) => props.theme.button.ghost.hoverBg};
   }
 
