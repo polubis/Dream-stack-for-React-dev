@@ -26,6 +26,7 @@ const Trigger = () => {
         shape="rounded"
         loading={loading}
         title="Actions"
+        motive="tertiary"
         onClick={toggle}
       >
         <ActionsIcon />

@@ -219,7 +219,6 @@ const light: Theme = {
   nav: {
     bg: tokens.gray[0],
     borderColor: tokens.gray[50],
-    bgWithOpacity: tokens.light[200],
   },
   logo: {
     text: {
@@ -284,8 +283,7 @@ const light: Theme = {
     },
   },
   footer: {
-    bg: tokens.common.white,
-    borderColor: tokens.gray[50],
+    bg: '#fafafa',
   },
   code: {
     bg: tokens.light[150],

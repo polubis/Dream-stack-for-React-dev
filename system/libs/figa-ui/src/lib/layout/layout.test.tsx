@@ -1,13 +1,20 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import { Layout } from './layout';
+import { ThemeProvider } from '../theme-provider';
 
 describe('User is able to use layout when', () => {
   it('[FRAGILE] renders with default setup', () => {
     const { asFragment } = render(
-      <Layout header={<div>Header</div>} footer={<div>Footer</div>}>
-        <div>Content</div>
-      </Layout>
+      <ThemeProvider>
+        <Layout
+          topNav={<div>Header</div>}
+          bottomNav={<div>Bottom nav item</div>}
+          footer={<div>Footer</div>}
+        >
+          <div>Content</div>
+        </Layout>
+      </ThemeProvider>
     );
 
     expect(asFragment()).toMatchSnapshot();
@@ -15,9 +22,15 @@ describe('User is able to use layout when', () => {
 
   it('[FRAGILE] renders big contents', () => {
     const { asFragment } = render(
-      <Layout header={<div>Header</div>} footer={<div>Footer</div>}>
-        <div style={{ height: '110vh' }}>Content</div>
-      </Layout>
+      <ThemeProvider>
+        <Layout
+          bottomNav={null}
+          topNav={<div>Header</div>}
+          footer={<div>Footer</div>}
+        >
+          <div style={{ height: '110vh' }}>Content</div>
+        </Layout>
+      </ThemeProvider>
     );
 
     expect(asFragment()).toMatchSnapshot();
@@ -25,9 +38,15 @@ describe('User is able to use layout when', () => {
 
   it('renders passed components', () => {
     render(
-      <Layout header={<div>Header</div>} footer={<div>Footer</div>}>
-        <div style={{ height: '110vh' }}>Content</div>
-      </Layout>
+      <ThemeProvider>
+        <Layout
+          topNav={<div>Header</div>}
+          bottomNav={null}
+          footer={<div>Footer</div>}
+        >
+          <div style={{ height: '110vh' }}>Content</div>
+        </Layout>
+      </ThemeProvider>
     );
 
     screen.getByText(/Header/);
@@ -37,9 +56,11 @@ describe('User is able to use layout when', () => {
 
   it('[FRAGILE] allows to disable content padding', () => {
     const { asFragment } = render(
-      <Layout header={<div>Header</div>} offPadding>
-        <div>Content</div>
-      </Layout>
+      <ThemeProvider>
+        <Layout topNav={<div>Header</div>} bottomNav={null} offPadding>
+          <div>Content</div>
+        </Layout>
+      </ThemeProvider>
     );
 
     expect(asFragment()).toMatchSnapshot();
@@ -47,9 +68,11 @@ describe('User is able to use layout when', () => {
 
   it('[FRAGILE] allows to skip footer', () => {
     const { asFragment } = render(
-      <Layout header={<div>Header</div>}>
-        <div>Content</div>
-      </Layout>
+      <ThemeProvider>
+        <Layout topNav={<div>Header</div>} bottomNav={null}>
+          <div>Content</div>
+        </Layout>
+      </ThemeProvider>
     );
 
     expect(asFragment()).toMatchSnapshot();
@@ -57,16 +80,19 @@ describe('User is able to use layout when', () => {
 
   it('[FRAGILE] allows to pass sidebar and gives option to maintain it', () => {
     const { asFragment } = render(
-      <Layout
-        header={<div>Header</div>}
-        sidebar={(toggler) => (
-          <div onClick={toggler.toggle}>
-            Sidebar: {toggler.opened ? 'opened' : 'closed'}
-          </div>
-        )}
-      >
-        <div>Content</div>
-      </Layout>
+      <ThemeProvider>
+        <Layout
+          topNav={<div>Header</div>}
+          bottomNav={null}
+          sidebar={(toggler) => (
+            <div onClick={toggler.toggle}>
+              Sidebar: {toggler.opened ? 'opened' : 'closed'}
+            </div>
+          )}
+        >
+          <div>Content</div>
+        </Layout>
+      </ThemeProvider>
     );
 
     fireEvent.click(screen.getByText(/opened/));

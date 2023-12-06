@@ -15,7 +15,7 @@ const scenarios = {
       content: '### My dummy content',
     })
       .Given('System sets page as', '/')
-      .When('I click navbar link', 'Creator')
+      .When('I click navbar link', 'Create')
       .Then('Im on page', '/en/articles-creator')
       .And('I see text', 'Try to use our editor')
       .When('I click button', 'Start')
@@ -64,7 +64,7 @@ const scenarios = {
       content: '### My dummy content',
     })
       .Given('System sets page as', '/')
-      .When('I click navbar link', 'Creator')
+      .When('I click navbar link', 'Create')
       .Then('Im on page', '/en/articles-creator')
       .And('I see text', 'Try to use our editor')
       .When('I click button', 'Start')
@@ -100,12 +100,13 @@ const scenarios = {
 
     return GetBackground();
   },
-  'I delete article': (title: FullArticleDto['title']) => {
+  'I delete article': (title: FullArticleDto['title'], description: FullArticleDto['description']) => {
     const { When } = Gherkin(commands);
 
     When('I click founded article', title)
       .Then('Im on article review page')
-      .When('I click icon button', 'Delete article')
+      .When('I scroll to', description)
+      .And('I click icon button', 'Delete article')
       .Then('I see text', 'Are you sure you want to delete the article?')
       .When('I type in input', 'Type article title to confirm...', title)
       .And('I click button', 'Delete')

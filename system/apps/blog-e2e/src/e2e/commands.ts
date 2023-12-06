@@ -111,8 +111,8 @@ const commands = {
   'I pick thumbnail': () => {
     cy.get('input[type="file"]').attachFile('../assets/cringe.jpg');
   },
-  'I click navbar link': (name: 'Creator') => {
-    cy.get(`.nav-bar a[title="${name}"]`).click();
+  'I click navbar link': (name: string) => {
+    cy.get(`.nav-links a[title="${name}"]`).click();
   },
   'I type in input': (placeholder: string, value: string) => {
     cy.get(`.input input[placeholder="${placeholder}"]`).type(value);
@@ -193,6 +193,9 @@ const commands = {
     cy.get(`[title="Author name"]`);
     cy.get(`[title="Article title"]`);
     cy.get(`[title="Article description"]`);
+  },
+  'I scroll to': (text: string) => {
+    cy.contains(text, { matchCase: true }).should('exist').scrollIntoView();
   },
   'I accept article': () => {
     cy.get(`[title="Actions"]`).click();

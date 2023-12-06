@@ -58,6 +58,7 @@ const Trigger = ({ id }: { id: string }) => {
       <Button
         size={2}
         title="Reviews"
+        motive="tertiary"
         loading={articleReviewsStore.is === 'busy'}
         shape="rounded"
         onClick={async () => {

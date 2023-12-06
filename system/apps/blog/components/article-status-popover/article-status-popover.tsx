@@ -16,7 +16,13 @@ const Trigger = () => {
 
   return (
     <Popover.Trigger>
-      <Button size={2} shape="rounded" title="Status" onClick={toggle}>
+      <Button
+        size={2}
+        shape="rounded"
+        title="Status"
+        motive="tertiary"
+        onClick={toggle}
+      >
         <StatusIcon />
       </Button>
     </Popover.Trigger>

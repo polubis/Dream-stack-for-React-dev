@@ -470,7 +470,6 @@ const dark: Theme = {
   nav: {
     bg: tokens.dark[100],
     borderColor: tokens.gray[300],
-    bgWithOpacity: tokens.dark[200],
   },
   logo: {
     text: {

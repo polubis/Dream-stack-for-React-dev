@@ -597,28 +597,6 @@ const GlobalStyle = createGlobalStyle`
 
     /* link.tsx */
 
-    /* nav-bar.tsx */
-
-    .nav-bar {
-        ${row()}
-        ${streched('fixed')}
-        bottom: unset;
-        border-bottom: ${tokens.spacing[25]} solid ${(props) =>
-  props.theme.nav.borderColor};
-        background: ${(props) => props.theme.nav.bgWithOpacity};
-        padding: 0 ${tokens.spacing[250]};
-        z-index: ${tokens.z[200]};
-        height: ${tokens.spacing[1000]};
-        transform: translateY(0px);
-        transition: 0.93s transform cubic-bezier(0.19, 1, 0.22, 1);
-
-        &.out {
-            transform: translateY(-${tokens.spacing[1000]});
-        }   
-    }
-
-    /* nav-bar.tsx */
-
     /* logo.tsx */
 
     .logo {
@@ -946,78 +924,6 @@ const GlobalStyle = createGlobalStyle`
 
     /* input.tsx */
 
-    /* layout.tsx  */
-
-    .layout {
-        ${column()}
-        padding-top: ${tokens.spacing[1000]};
-
-        &.asided {
-            .layout-content {
-                padding: 0;
-                display: flex;
-                min-height: calc(100vh - ${tokens.spacing[1000]});
-                max-width: 100vw;
-
-                & > * {
-                    width: 100%;
-                }
-
-                & > *:first-child {
-                    border-right: ${tokens.spacing[25]} solid ${(props) =>
-  props.theme.nav.borderColor};
-                    background: ${(props) => props.theme.nav.bg};
-                    width: ${tokens.spacing[1000]};
-                    padding: ${tokens.spacing[350]} 0;
-                }
-
-                & > *:last-child {
-                    padding: ${tokens.spacing[350]} ${tokens.spacing[250]};
-                }
-            }
-
-            &.opened {
-                .layout-content {
-                    & > *:first-child {
-                        width: 300px;
-                        padding: ${tokens.spacing[350]} ${tokens.spacing[250]};
-                    }
-
-                    & > *:last-child {
-                        padding: ${tokens.spacing[350]} ${tokens.spacing[250]};
-                    }
-                }
-            }
-        }
-
-        .layout-content {
-            padding: ${tokens.spacing[350]} ${tokens.spacing[250]};
-            display: flex;
-            min-height: calc(100vh - 100px);
-            max-width: 100vw;
-
-            & > * {
-                width: 100%;
-            }
-        }
-
-        &.off-padding {
-            .layout-content {
-                padding: 0;
-            }
-
-            &.asided {
-                .layout-content {
-                    & > *:last-child {
-                        padding: 0;
-                    }
-                }
-            }
-        }
-    }
-
-    /* layout.tsx */
-
     /* box.tsx  */
 
     .box {
@@ -1075,8 +981,6 @@ const GlobalStyle = createGlobalStyle`
 
     .footer {
         background: ${(props) => props.theme.footer.bg};
-        border-top: ${tokens.spacing[25]} solid ${(props) =>
-  props.theme.footer.borderColor};
 
         .footer-container {
             ${column()}
@@ -1087,8 +991,6 @@ const GlobalStyle = createGlobalStyle`
             .footer-content {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
-                border-bottom: 1px solid ${(props) =>
-                  props.theme.footer.borderColor};
                 padding-bottom: ${tokens.spacing[200]};
 
                 @media ${T_DOWN} {

@@ -3,11 +3,15 @@
 exports[`User is able to use layout when [FRAGILE] allows to disable content padding 1`] = `
 <DocumentFragment>
   <div
-    class="layout off-padding"
+    class="sc-gswNZR kbHHIn layout off-padding"
   >
-    <div>
-      Header
-    </div>
+    <header
+      class="layout-top-nav"
+    >
+      <div>
+        Header
+      </div>
+    </header>
     <main
       class="layout-content"
     >
@@ -18,6 +22,11 @@ exports[`User is able to use layout when [FRAGILE] allows to disable content pad
     <footer
       class="layout-footer"
     />
+    <nav
+      class="layout-bottom-nav"
+    >
+      <div />
+    </nav>
   </div>
 </DocumentFragment>
 `;
@@ -25,11 +34,15 @@ exports[`User is able to use layout when [FRAGILE] allows to disable content pad
 exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gives option to maintain it 1`] = `
 <DocumentFragment>
   <div
-    class="layout asided"
+    class="sc-gswNZR kbHHIn layout asided"
   >
-    <div>
-      Header
-    </div>
+    <header
+      class="layout-top-nav"
+    >
+      <div>
+        Header
+      </div>
+    </header>
     <main
       class="layout-content"
     >
@@ -47,6 +60,11 @@ exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gi
     <footer
       class="layout-footer"
     />
+    <nav
+      class="layout-bottom-nav"
+    >
+      <div />
+    </nav>
   </div>
 </DocumentFragment>
 `;
@@ -54,11 +72,15 @@ exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gi
 exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gives option to maintain it 2`] = `
 <DocumentFragment>
   <div
-    class="layout asided opened"
+    class="sc-gswNZR kbHHIn layout asided opened"
   >
-    <div>
-      Header
-    </div>
+    <header
+      class="layout-top-nav"
+    >
+      <div>
+        Header
+      </div>
+    </header>
     <main
       class="layout-content"
     >
@@ -76,6 +98,11 @@ exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gi
     <footer
       class="layout-footer"
     />
+    <nav
+      class="layout-bottom-nav"
+    >
+      <div />
+    </nav>
   </div>
 </DocumentFragment>
 `;
@@ -83,11 +110,15 @@ exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gi
 exports[`User is able to use layout when [FRAGILE] allows to skip footer 1`] = `
 <DocumentFragment>
   <div
-    class="layout"
+    class="sc-gswNZR kbHHIn layout"
   >
-    <div>
-      Header
-    </div>
+    <header
+      class="layout-top-nav"
+    >
+      <div>
+        Header
+      </div>
+    </header>
     <main
       class="layout-content"
     >
@@ -98,6 +129,11 @@ exports[`User is able to use layout when [FRAGILE] allows to skip footer 1`] = `
     <footer
       class="layout-footer"
     />
+    <nav
+      class="layout-bottom-nav"
+    >
+      <div />
+    </nav>
   </div>
 </DocumentFragment>
 `;
@@ -105,11 +141,15 @@ exports[`User is able to use layout when [FRAGILE] allows to skip footer 1`] = `
 exports[`User is able to use layout when [FRAGILE] renders big contents 1`] = `
 <DocumentFragment>
   <div
-    class="layout"
+    class="sc-gswNZR kbHHIn layout"
   >
-    <div>
-      Header
-    </div>
+    <header
+      class="layout-top-nav"
+    >
+      <div>
+        Header
+      </div>
+    </header>
     <main
       class="layout-content"
     >
@@ -126,6 +166,11 @@ exports[`User is able to use layout when [FRAGILE] renders big contents 1`] = `
         Footer
       </div>
     </footer>
+    <nav
+      class="layout-bottom-nav"
+    >
+      <div />
+    </nav>
   </div>
 </DocumentFragment>
 `;
@@ -133,11 +178,15 @@ exports[`User is able to use layout when [FRAGILE] renders big contents 1`] = `
 exports[`User is able to use layout when [FRAGILE] renders with default setup 1`] = `
 <DocumentFragment>
   <div
-    class="layout"
+    class="sc-gswNZR kbHHIn layout"
   >
-    <div>
-      Header
-    </div>
+    <header
+      class="layout-top-nav"
+    >
+      <div>
+        Header
+      </div>
+    </header>
     <main
       class="layout-content"
     >
@@ -152,6 +201,15 @@ exports[`User is able to use layout when [FRAGILE] renders with default setup 1`
         Footer
       </div>
     </footer>
+    <nav
+      class="layout-bottom-nav"
+    >
+      <div>
+        <div>
+          Bottom nav item
+        </div>
+      </div>
+    </nav>
   </div>
 </DocumentFragment>
 `;

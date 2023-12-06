@@ -219,7 +219,6 @@ const dark: Theme = {
   nav: {
     bg: tokens.dark[100],
     borderColor: tokens.gray[300],
-    bgWithOpacity: tokens.dark[200],
   },
   logo: {
     text: {
@@ -284,8 +283,7 @@ const dark: Theme = {
     },
   },
   footer: {
-    bg: tokens.common.black,
-    borderColor: tokens.gray[300],
+    bg: '#1d1d1d',
   },
   code: {
     bg: tokens.dark[150],

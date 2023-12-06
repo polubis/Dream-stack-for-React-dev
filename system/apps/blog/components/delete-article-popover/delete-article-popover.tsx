@@ -126,7 +126,13 @@ const Trigger = () => {
 
   return (
     <Popover.Trigger>
-      <Button title="Delete article" shape="rounded" size={2} onClick={toggle}>
+      <Button
+        motive="tertiary"
+        title="Delete article"
+        shape="rounded"
+        size={2}
+        onClick={toggle}
+      >
         <TrashIcon />
       </Button>
     </Popover.Trigger>

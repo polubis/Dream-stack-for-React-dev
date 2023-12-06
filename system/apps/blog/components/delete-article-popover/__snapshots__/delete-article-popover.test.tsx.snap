@@ -7,7 +7,8 @@ exports[`Delete article feature works when:  only admin or author of article is 
     id="popover-trigger-:r1:"
   >
     <button
-      class="button size-2 rounded filled primary"
+      class="button size-2 rounded filled tertiary"
+      motive="tertiary"
       shape="rounded"
       size="2"
       title="Delete article"

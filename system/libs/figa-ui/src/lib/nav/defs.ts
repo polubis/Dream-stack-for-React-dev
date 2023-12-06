@@ -7,10 +7,4 @@ interface NavProps {
   logo: ReactNode;
 }
 
-interface NavMobileProps {
-  actions: ReactNode;
-  children: ReactNode;
-  onClose(): void;
-}
-
-export type { NavProps, NavMobileProps };
+export type { NavProps };

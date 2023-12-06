@@ -10,13 +10,21 @@ import {
   LinkedinIcon,
   UserIcon,
   LogoGraphic,
-  NavBar,
   Nav,
   tokens,
   row,
   M_DOWN,
   AlertsProvider,
   size,
+  HomeIcon,
+  ArticlesSearchIcon,
+  BottomNavItem,
+  PlusCircleIcon,
+  useThemeProvider,
+  SunIcon,
+  HalfMoonIcon,
+  TopNavItem,
+  column,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -30,12 +38,12 @@ import { UserSection } from './user-section';
 import { useLang } from '../../dk/use-lang';
 import { RecommendedArticles } from './recommended-articles';
 import styled from 'styled-components';
-import { LeftBar } from './left-bar';
-
-const LABELS = ['Articles', 'Creator'] as const;
-const URLS = ['/articles/', '/articles-creator/'] as const;
+import NextLink from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Links = styled.ul`
+  ${column()}
+
   & > *:not(:last-child) {
     margin-bottom: ${tokens.spacing[100]};
   }
@@ -71,39 +79,74 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const MainLayout = ({
-  children,
-  sidebar,
-  offPadding,
-  sticky,
-}: MainLayoutProps) => {
+const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
   const lang = useLang();
-
-  const links = LABELS.map((label, idx) => (
-    <Nav.Link variant="h6" key={label}>
-      <Link title={label} href={'/' + lang + URLS[idx]}>
-        {label}
-      </Link>
-    </Nav.Link>
-  ));
+  const theme = useThemeProvider();
+  const pathname = usePathname();
 
   return (
     <AlertsProvider>
       <Layout
         offPadding={offPadding}
-        header={
-          <NavBar sticky={sticky}>
-            <Nav
-              logo={
-                <LogoWrapper>
-                  <Logo />
-                </LogoWrapper>
+        topNav={
+          <Nav
+            logo={
+              <LogoWrapper>
+                <Logo />
+              </LogoWrapper>
+            }
+            actions={<UserSection />}
+          >
+            <Link title="Articles" href={`/${lang}/articles`}>
+              <TopNavItem active={pathname === `/${lang}/articles`}>
+                Articles <ArticlesSearchIcon />
+              </TopNavItem>
+            </Link>
+            <Link title="Create" href={`/${lang}/articles-creator`}>
+              <TopNavItem active={pathname === `/${lang}/articles-creator`}>
+                Create <PlusCircleIcon />
+              </TopNavItem>
+            </Link>
+            <TopNavItem
+              onClick={() =>
+                theme.setTheme(theme.key === 'dark' ? 'light' : 'dark')
               }
-              actions={<UserSection />}
             >
-              {links}
-            </Nav>
-          </NavBar>
+              Theme {theme.key === 'dark' ? <SunIcon /> : <HalfMoonIcon />}
+            </TopNavItem>
+          </Nav>
+        }
+        bottomNav={
+          <>
+            <NextLink title="Home" href={`/${lang}`}>
+              <BottomNavItem
+                icon={<HomeIcon />}
+                text="Home"
+                active={pathname === `/${lang}`}
+              />
+            </NextLink>
+            <NextLink title="Articles" href={`/${lang}/articles`}>
+              <BottomNavItem
+                icon={<ArticlesSearchIcon />}
+                text="Articles"
+                active={pathname === `/${lang}/articles`}
+              />
+            </NextLink>
+            <NextLink title="Create" href={`/${lang}/articles-creator`}>
+              <BottomNavItem
+                icon={<PlusCircleIcon />}
+                text="Create"
+                active={pathname === `/${lang}/articles-creator`}
+              />
+            </NextLink>
+            <BottomNavItem
+              icon={theme.key === 'dark' ? <SunIcon /> : <HalfMoonIcon />}
+              text="Theme"
+              onClick={() =>
+                theme.setTheme(theme.key === 'dark' ? 'light' : 'dark')
+              }
+            />
+          </>
         }
         sidebar={sidebar}
         footer={
@@ -115,9 +158,7 @@ const MainLayout = ({
                 target="_blank"
                 rel="noreferrer"
               >
-                <Font variant="b2" motive="primary">
-                  Powered by GreenOn Software community
-                </Font>
+                <Font variant="b2">Powered by GreenOn Software community</Font>
                 <LogoGraphic size={32} />
               </CompanyLink>
             }
@@ -129,7 +170,12 @@ const MainLayout = ({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Button shape="rounded" size={1}>
+                  <Button
+                    shape="rounded"
+                    motive="tertiary"
+                    variant="ghost"
+                    size={2}
+                  >
                     <DiscordIcon />
                   </Button>
                 </a>
@@ -139,7 +185,12 @@ const MainLayout = ({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Button shape="rounded" size={1}>
+                  <Button
+                    shape="rounded"
+                    variant="ghost"
+                    motive="tertiary"
+                    size={2}
+                  >
                     <UserIcon />
                   </Button>
                 </a>
@@ -149,7 +200,12 @@ const MainLayout = ({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Button shape="rounded" size={1}>
+                  <Button
+                    shape="rounded"
+                    motive="tertiary"
+                    variant="ghost"
+                    size={2}
+                  >
                     <LinkedinIcon />
                   </Button>
                 </a>
@@ -158,7 +214,7 @@ const MainLayout = ({
             blocks={
               <>
                 <Box padding={[350, 250, 350, 250]} spacing={[150]}>
-                  <Font variant="h5">About us</Font>
+                  <Font variant="h6">About us</Font>
                   <Font variant="b1">
                     We are an educational platform that produces high quality
                     articles, courses and teaching materials. You can join our
@@ -172,12 +228,19 @@ const MainLayout = ({
                   </Font>
                 </Box>
                 <Box padding={[350, 250, 350, 250]} spacing={[150]}>
-                  <Font variant="h5">Recommended articles</Font>
+                  <Font variant="h6">Recommended articles</Font>
                   <RecommendedArticles />
                 </Box>
                 <Box padding={[350, 250, 350, 250]} spacing={[150]}>
-                  <Font variant="h5">Navigation</Font>
-                  <Links>{links}</Links>
+                  <Font variant="h6">Navigation</Font>
+                  <Links>
+                    <Link title="Articles" href={`/${lang}/articles`}>
+                      <Font variant="b1">Articles</Font>
+                    </Link>
+                    <Link title="Create" href={`/${lang}/articles-creator`}>
+                      <Font variant="b1">Create</Font>
+                    </Link>
+                  </Links>
                 </Box>
               </>
             }
@@ -186,7 +249,6 @@ const MainLayout = ({
       >
         {children}
       </Layout>
-      <LeftBar />
     </AlertsProvider>
   );
 };

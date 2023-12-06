@@ -4,7 +4,6 @@ import {
   live_articles_actions,
   live_articles_selectors,
 } from '../../store/live-articles';
-import { LeftBar } from '../../components/main-layout/left-bar';
 import {
   ArticlesScreen,
   type ArticlesScreenProps,
@@ -22,17 +21,14 @@ const LiveArticlesView = ({ params, response }: LiveArticlesViewProps) => {
   }
 
   return (
-    <>
-      <MainLayout offPadding>
-        <ArticlesScreen
-          selectors={live_articles_selectors}
-          actions={live_articles_actions}
-          makeUrl={makeUrl}
-          filters={<ArticlesJumbo />}
-        />
-      </MainLayout>
-      <LeftBar />
-    </>
+    <MainLayout offPadding>
+      <ArticlesScreen
+        selectors={live_articles_selectors}
+        actions={live_articles_actions}
+        makeUrl={makeUrl}
+        filters={<ArticlesJumbo />}
+      />
+    </MainLayout>
   );
 };
 

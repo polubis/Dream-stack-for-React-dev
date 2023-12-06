@@ -10,7 +10,6 @@ import {
   Button,
   type BoxProps,
   Select,
-  NavBar,
   Nav,
 } from '@system/figa-ui';
 
@@ -41,20 +40,17 @@ const GuitarNotesTeacherView = ({
 }: GuitarNotesTeacherViewProps) => {
   return (
     <Layout
-      header={
-        <NavBar>
-          <Nav
-            logo={<Logo />}
-            actions={
-              <PlatformLink variant="h6">Check our platform</PlatformLink>
-            }
-          >
-            <Link variant="h6" key={0}>
-              <NextLink href="/">Learn guitar notes</NextLink>
-            </Link>
-          </Nav>
-        </NavBar>
+      topNav={
+        <Nav
+          logo={<Logo />}
+          actions={<PlatformLink variant="h6">Check our platform</PlatformLink>}
+        >
+          <Link variant="h6" key={0}>
+            <NextLink href="/">Learn guitar notes</NextLink>
+          </Link>
+        </Nav>
       }
+      bottomNav={null}
     >
       {state.key === 'idle' && (
         <Box {...commonBoxProps}>
