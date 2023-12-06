@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
+import { ButtonProps } from '../button';
 
-interface BottomNavItemProps {
+interface BottomNavItemProps
+  extends Omit<ButtonProps, 'children' | 'variant' | 'motive'> {
   className?: string;
   text: string;
   icon: ReactNode;

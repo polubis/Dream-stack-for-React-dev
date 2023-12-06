@@ -25,10 +25,11 @@ const BottomNavItem = ({
   active,
   icon,
   text,
+  ...props
 }: BottomNavItemProps) => {
   return (
     <Container className={c('bottom-nav-item', { active }, className)}>
-      <Button variant="ghost" motive="tertiary">
+      <Button {...props} variant="ghost" motive="tertiary">
         {icon}
         <Font variant="b3">{text}</Font>
       </Button>

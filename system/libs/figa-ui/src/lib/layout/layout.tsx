@@ -150,9 +150,9 @@ const Layout = ({
   sidebar,
 }: LayoutProps) => {
   const toggler = useToggle({ opened: !!sidebar });
-  const [state] = useScroll({ delay: 50 });
+  const [scroll] = useScroll({ delay: 50 });
 
-  const out = state.is === 'progress' && state.value > 50;
+  const out = scroll.is === 'progress' && scroll.value > 50;
 
   return (
     <Container

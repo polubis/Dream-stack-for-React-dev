@@ -21,6 +21,10 @@ import {
   BottomNavItem,
   PlusCircleIcon,
   MoreIcon,
+  ArrowTopIcon,
+  useThemeProvider,
+  SunIcon,
+  HalfMoonIcon,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -34,6 +38,7 @@ import { UserSection } from './user-section';
 import { useLang } from '../../dk/use-lang';
 import { RecommendedArticles } from './recommended-articles';
 import styled from 'styled-components';
+import { useScrollTo } from '@system/figa-hooks';
 
 const LABELS = ['Articles', 'Creator'] as const;
 const URLS = ['/articles/', '/articles-creator/'] as const;
@@ -76,6 +81,8 @@ const LogoWrapper = styled.div`
 
 const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
   const lang = useLang();
+  const [, { toTop }] = useScrollTo();
+  const theme = useThemeProvider();
 
   const links = LABELS.map((label, idx) => (
     <Nav.Link variant="h6" key={label}>
@@ -104,8 +111,21 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
         bottomNav={
           <>
             <BottomNavItem icon={<HomeIcon />} text="Home" />
+            <BottomNavItem
+              icon={<ArrowTopIcon />}
+              text="Top"
+              onClick={() => toTop()}
+            />
             <BottomNavItem icon={<ArticlesSearchIcon />} text="Articles" />
             <BottomNavItem icon={<PlusCircleIcon />} text="Create" />
+            <BottomNavItem
+              active
+              icon={theme.key === 'dark' ? <SunIcon /> : <HalfMoonIcon />}
+              text="Theme"
+              onClick={() =>
+                theme.setTheme(theme.key === 'dark' ? 'light' : 'dark')
+              }
+            />
             <BottomNavItem active icon={<MoreIcon />} text="More" />
           </>
         }
