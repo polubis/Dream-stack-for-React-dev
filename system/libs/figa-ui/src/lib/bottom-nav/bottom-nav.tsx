@@ -4,6 +4,7 @@ import { tokens } from '../theme-provider';
 import { center, size, streched } from '../shared';
 import { Font } from '../font';
 import c from 'classnames';
+import { Button } from '../button';
 
 const Container = styled.nav`
   ${streched('fixed')}
@@ -16,23 +17,19 @@ const Container = styled.nav`
   ul {
     display: flex;
     margin: 0 auto;
-    padding: ${tokens.spacing[150]} 0;
+    padding: ${tokens.spacing[150]} ${tokens.spacing[250]};
     overflow-x: auto;
 
     & > * {
-      ${size(tokens.spacing[600])};
-      ${center('column')}
       border-radius: ${tokens.radius[50]};
       flex-shrink: 0;
 
-      margin-right: ${tokens.spacing[400]};
+      .button {
+        ${center('column')}
 
-      &:first-child {
-        margin-left: ${tokens.spacing[400]};
-      }
-
-      .font {
-        margin-top: ${tokens.spacing[50]};
+        .font {
+          margin-top: ${tokens.spacing[50]};
+        }
       }
     }
   }
@@ -49,8 +46,10 @@ const BottomNav = ({ className, children }: BottomNavProps) => {
 BottomNav.Item = ({ className, icon, text }: BottomNavItemProps) => {
   return (
     <li className={c('bottom-nav-item', className)}>
-      {icon}
-      <Font variant="b3">{text}</Font>
+      <Button variant="ghost" motive="tertiary">
+        {icon}
+        <Font variant="b3">{text}</Font>
+      </Button>
     </li>
   );
 };

@@ -285,7 +285,6 @@ const dark: Theme = {
   },
   footer: {
     bg: tokens.common.black,
-    borderColor: tokens.gray[300],
   },
   code: {
     bg: tokens.dark[150],

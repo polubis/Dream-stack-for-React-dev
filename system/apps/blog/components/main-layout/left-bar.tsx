@@ -12,20 +12,22 @@ const LeftBar = () => {
   const theme = useThemeProvider();
   const [, { toTop }] = useScrollTo();
 
-  return (
-    <Bar>
-      <Button
-        size={2}
-        shape="rounded"
-        onClick={() => theme.setTheme(theme.key === 'dark' ? 'light' : 'dark')}
-      >
-        {theme.key === 'dark' ? <SunIcon /> : <HalfMoonIcon />}
-      </Button>
-      <Button shape="rounded" size={2} onClick={() => toTop()}>
-        <ArrowTopIcon />
-      </Button>
-    </Bar>
-  );
+  return null
+
+  // return (
+  //   <Bar>
+  //     <Button
+  //       size={2}
+  //       shape="rounded"
+  //       onClick={() => theme.setTheme(theme.key === 'dark' ? 'light' : 'dark')}
+  //     >
+  //       {theme.key === 'dark' ? <SunIcon /> : <HalfMoonIcon />}
+  //     </Button>
+  //     <Button shape="rounded" size={2} onClick={() => toTop()}>
+  //       <ArrowTopIcon />
+  //     </Button>
+  //   </Bar>
+  // );
 };
 
 export { LeftBar };

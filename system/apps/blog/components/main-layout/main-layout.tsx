@@ -17,6 +17,13 @@ import {
   M_DOWN,
   AlertsProvider,
   size,
+  BottomNav,
+  HomeIcon,
+  PlusIcon,
+  ArticlesSearchIcon,
+  PlusCircleIcon,
+  ArrowTopIcon,
+  HamburgerIcon,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -30,7 +37,6 @@ import { UserSection } from './user-section';
 import { useLang } from '../../dk/use-lang';
 import { RecommendedArticles } from './recommended-articles';
 import styled from 'styled-components';
-import { LeftBar } from './left-bar';
 
 const LABELS = ['Articles', 'Creator'] as const;
 const URLS = ['/articles/', '/articles-creator/'] as const;
@@ -186,7 +192,12 @@ const MainLayout = ({
       >
         {children}
       </Layout>
-      <LeftBar />
+      <BottomNav>
+        <BottomNav.Item icon={<HomeIcon />} text="Home" />
+        <BottomNav.Item icon={<ArticlesSearchIcon />} text="Articles" />
+        <BottomNav.Item icon={<PlusCircleIcon />} text="Create" />
+        <BottomNav.Item icon={<HamburgerIcon />} text="More" />
+      </BottomNav>
     </AlertsProvider>
   );
 };

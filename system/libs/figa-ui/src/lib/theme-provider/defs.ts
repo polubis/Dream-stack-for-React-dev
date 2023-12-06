@@ -404,7 +404,6 @@ interface Theme {
   };
   footer: {
     bg: string;
-    borderColor: string;
   };
   code: {
     tags: {

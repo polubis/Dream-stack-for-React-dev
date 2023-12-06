@@ -1075,8 +1075,7 @@ const GlobalStyle = createGlobalStyle`
 
     .footer {
         background: ${(props) => props.theme.footer.bg};
-        border-top: ${tokens.spacing[25]} solid ${(props) =>
-  props.theme.footer.borderColor};
+        padding-bottom: ${tokens.spacing[1000]};
 
         .footer-container {
             ${column()}
@@ -1087,8 +1086,6 @@ const GlobalStyle = createGlobalStyle`
             .footer-content {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
-                border-bottom: 1px solid ${(props) =>
-                  props.theme.footer.borderColor};
                 padding-bottom: ${tokens.spacing[200]};
 
                 @media ${T_DOWN} {

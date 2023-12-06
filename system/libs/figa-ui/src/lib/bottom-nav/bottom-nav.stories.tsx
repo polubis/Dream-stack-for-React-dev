@@ -6,6 +6,19 @@ import { LinkedinIcon } from '../icon';
 export default {
   component: BottomNav,
   title: 'BottomNav',
+  parameters: {
+    viewport: {
+      viewports: {
+        tinyMobile: {
+          name: 'tinyMobile',
+          styles: {
+            width: '300px',
+            height: '800px',
+          },
+        },
+      },
+    },
+  },
 } as Meta;
 
 const Template: Story = () => {
@@ -24,3 +37,11 @@ const Template: Story = () => {
 
 export const Default = Template.bind({});
 Default.args = {};
+
+export const OnMobile = Template.bind({});
+OnMobile.args = {};
+OnMobile.parameters = {
+  viewport: {
+    defaultViewport: 'tinyMobile',
+  },
+};
