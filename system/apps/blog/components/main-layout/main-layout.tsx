@@ -24,6 +24,7 @@ import {
   SunIcon,
   HalfMoonIcon,
   TopNavItem,
+  column,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -41,6 +42,8 @@ import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const Links = styled.ul`
+  ${column()}
+
   & > *:not(:last-child) {
     margin-bottom: ${tokens.spacing[100]};
   }
@@ -155,9 +158,7 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Font variant="b2">
-                  Powered by GreenOn Software community
-                </Font>
+                <Font variant="b2">Powered by GreenOn Software community</Font>
                 <LogoGraphic size={32} />
               </CompanyLink>
             }
@@ -213,7 +214,7 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
             blocks={
               <>
                 <Box padding={[350, 250, 350, 250]} spacing={[150]}>
-                  <Font variant="h5">About us</Font>
+                  <Font variant="h6">About us</Font>
                   <Font variant="b1">
                     We are an educational platform that produces high quality
                     articles, courses and teaching materials. You can join our
@@ -227,21 +228,17 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                   </Font>
                 </Box>
                 <Box padding={[350, 250, 350, 250]} spacing={[150]}>
-                  <Font variant="h5">Recommended articles</Font>
+                  <Font variant="h6">Recommended articles</Font>
                   <RecommendedArticles />
                 </Box>
                 <Box padding={[350, 250, 350, 250]} spacing={[150]}>
-                  <Font variant="h5">Navigation</Font>
+                  <Font variant="h6">Navigation</Font>
                   <Links>
                     <Link title="Articles" href={`/${lang}/articles`}>
-                      <Button variant="ghost" motive="tertiary">
-                        Articles
-                      </Button>
+                      <Font variant="b1">Articles</Font>
                     </Link>
                     <Link title="Create" href={`/${lang}/articles-creator`}>
-                      <Button variant="ghost" motive="tertiary">
-                        Create
-                      </Button>
+                      <Font variant="b1">Create</Font>
                     </Link>
                   </Links>
                 </Box>
