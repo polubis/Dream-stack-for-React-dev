@@ -40,7 +40,13 @@ const Content = () => {
         <Font variant="h5" motive="primary">
           Hi, {authStore.user.username}!
         </Font>
-        <Button size={1} shape="rounded" onClick={close}>
+        <Button
+          size={1}
+          shape="rounded"
+          onClick={close}
+          motive="tertiary"
+          variant="outlined"
+        >
           <CloseIcon />
         </Button>
       </Box>
@@ -108,6 +114,7 @@ const Content = () => {
           <Button
             size={2}
             variant="outlined"
+            motive="tertiary"
             onClick={() => router.push('/en/admin')}
             loading={signOutStore.is === 'busy'}
           >
@@ -119,6 +126,7 @@ const Content = () => {
           size={2}
           onClick={sign_out_store_actions.signOut}
           loading={signOutStore.is === 'busy'}
+          motive="tertiary"
         >
           Sign Out
         </Button>

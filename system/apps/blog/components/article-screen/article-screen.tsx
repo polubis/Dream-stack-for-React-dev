@@ -73,7 +73,7 @@ const Toolbox = () => {
       <ArticleReviewsPopover />
       {isAuthor && (
         <Link href={`/${lang}/articles-creator?url=${url}`}>
-          <Button size={2} shape="rounded">
+          <Button size={2} shape="rounded" motive="tertiary">
             <EditIcon />
           </Button>
         </Link>
