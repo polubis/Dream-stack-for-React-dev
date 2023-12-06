@@ -1,9 +1,7 @@
-import type { ReactNode } from "react";
+import type { ButtonProps } from '../button';
 
-interface TopNavItemProps {
-  children: ReactNode;
+interface TopNavItemProps extends Omit<ButtonProps, 'variant' | 'motive'> {
   active?: boolean;
-  className?: string;
 }
 
 export type { TopNavItemProps };

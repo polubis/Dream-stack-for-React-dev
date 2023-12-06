@@ -28,10 +28,15 @@ const Container = styled.div`
   }
 `;
 
-const TopNavItem = ({ children, active, className }: TopNavItemProps) => {
+const TopNavItem = ({
+  children,
+  active,
+  className,
+  ...props
+}: TopNavItemProps) => {
   return (
     <Container className={c('top-nav-item', { active }, className)}>
-      <Button variant="ghost" motive="tertiary">
+      <Button {...props} variant="ghost" motive="tertiary">
         {children}
       </Button>
     </Container>

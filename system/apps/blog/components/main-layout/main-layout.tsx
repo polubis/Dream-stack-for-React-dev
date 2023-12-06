@@ -107,6 +107,13 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                 Create <PlusCircleIcon />
               </TopNavItem>
             </Link>
+            <TopNavItem
+              onClick={() =>
+                theme.setTheme(theme.key === 'dark' ? 'light' : 'dark')
+              }
+            >
+              Theme {theme.key === 'dark' ? <SunIcon /> : <HalfMoonIcon />}
+            </TopNavItem>
           </Nav>
         }
         bottomNav={
