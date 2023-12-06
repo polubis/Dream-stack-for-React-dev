@@ -6,7 +6,7 @@ import { tokens } from '../theme-provider';
 import { center } from '../shared';
 import c from 'classnames';
 
-const Container = styled.li`
+const Container = styled.div`
   &.active {
     background: ${(props) => props.theme.button.ghost.hoverBg};
   }

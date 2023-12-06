@@ -20,7 +20,6 @@ import {
   ArticlesSearchIcon,
   BottomNavItem,
   PlusCircleIcon,
-  MoreIcon,
   ArrowTopIcon,
   useThemeProvider,
   SunIcon,
@@ -39,6 +38,8 @@ import { useLang } from '../../dk/use-lang';
 import { RecommendedArticles } from './recommended-articles';
 import styled from 'styled-components';
 import { useScrollTo } from '@system/figa-hooks';
+import NextLink from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const LABELS = ['Articles', 'Creator'] as const;
 const URLS = ['/articles/', '/articles-creator/'] as const;
@@ -83,6 +84,7 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
   const lang = useLang();
   const [, { toTop }] = useScrollTo();
   const theme = useThemeProvider();
+  const pathname = usePathname();
 
   const links = LABELS.map((label, idx) => (
     <Nav.Link variant="h6" key={label}>
@@ -110,13 +112,25 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
         }
         bottomNav={
           <>
-            <BottomNavItem icon={<HomeIcon />} text="Home" />
+            <NextLink title="Home" href={`/${lang}`}>
+              <BottomNavItem
+                icon={<HomeIcon />}
+                text="Home"
+                active={pathname === `/${lang}`}
+              />
+            </NextLink>
             <BottomNavItem
               icon={<ArrowTopIcon />}
               text="Top"
               onClick={() => toTop()}
             />
-            <BottomNavItem icon={<ArticlesSearchIcon />} text="Articles" />
+            <NextLink title="Articles" href={`/${lang}/articles`}>
+              <BottomNavItem
+                icon={<ArticlesSearchIcon />}
+                text="Articles"
+                active={pathname === `/${lang}/articles`}
+              />
+            </NextLink>
             <BottomNavItem icon={<PlusCircleIcon />} text="Create" />
             <BottomNavItem
               active
@@ -126,7 +140,6 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                 theme.setTheme(theme.key === 'dark' ? 'light' : 'dark')
               }
             />
-            <BottomNavItem active icon={<MoreIcon />} text="More" />
           </>
         }
         sidebar={sidebar}

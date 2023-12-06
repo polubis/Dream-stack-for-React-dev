@@ -110,7 +110,7 @@ const Container = styled.div`
       transform: translateY(${tokens.spacing[1000]});
     }
 
-    ul {
+    & > div {
       display: flex;
       margin: 0 auto;
       padding: ${tokens.spacing[150]} ${tokens.spacing[100]};
@@ -179,7 +179,7 @@ const Layout = ({
       </main>
       <footer className="layout-footer">{footer}</footer>
       <nav className={c('layout-bottom-nav', { out })}>
-        <ul>{bottomNav}</ul>
+        <div>{bottomNav}</div>
       </nav>
     </Container>
   );
