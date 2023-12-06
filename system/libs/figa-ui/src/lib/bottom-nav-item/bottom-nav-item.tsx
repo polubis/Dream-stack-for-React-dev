@@ -17,6 +17,10 @@ const Container = styled.div`
     svg.icon path {
       fill: ${(props) => props.theme.button.filled.secondary.color};
     }
+
+    &:not(.disabled):hover {
+      background: ${(props) => props.theme.button.filled.secondary.bg};
+    }
   }
 
   button.button {
