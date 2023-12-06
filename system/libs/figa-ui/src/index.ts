@@ -18,6 +18,7 @@ export * from './lib/popover';
 export * from './lib/badge';
 export * from './lib/code-block';
 export * from './lib/tip';
+export * from './lib/top-nav-item';
 export * from './lib/bottom-nav-item';
 export * from './lib/tabs';
 export * from './lib/logo-graphic';

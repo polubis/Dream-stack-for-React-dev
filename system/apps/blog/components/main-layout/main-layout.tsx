@@ -24,6 +24,7 @@ import {
   useThemeProvider,
   SunIcon,
   HalfMoonIcon,
+  TopNavItem,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -40,9 +41,6 @@ import styled from 'styled-components';
 import { useScrollTo } from '@system/figa-hooks';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
-
-const LABELS = ['Articles', 'Creator'] as const;
-const URLS = ['/articles/', '/articles-creator/'] as const;
 
 const Links = styled.ul`
   & > *:not(:last-child) {
@@ -86,14 +84,6 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
   const theme = useThemeProvider();
   const pathname = usePathname();
 
-  const links = LABELS.map((label, idx) => (
-    <Nav.Link variant="h6" key={label}>
-      <Link title={label} href={'/' + lang + URLS[idx]}>
-        {label}
-      </Link>
-    </Nav.Link>
-  ));
-
   return (
     <AlertsProvider>
       <Layout
@@ -107,7 +97,12 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
             }
             actions={<UserSection />}
           >
-            {links}
+            <Link title="Articles" href={`/${lang}/articles`}>
+              <TopNavItem text="Articles" />
+            </Link>
+            <Link title="Create" href={`/${lang}/articles-creator`}>
+              <TopNavItem text="Create" />
+            </Link>
           </Nav>
         }
         bottomNav={
@@ -219,7 +214,18 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                 </Box>
                 <Box padding={[350, 250, 350, 250]} spacing={[150]}>
                   <Font variant="h5">Navigation</Font>
-                  <Links>{links}</Links>
+                  <Links>
+                    <Link title="Articles" href={`/${lang}/articles`}>
+                      <Button variant="ghost" motive="tertiary">
+                        Articles
+                      </Button>
+                    </Link>
+                    <Link title="Create" href={`/${lang}/articles-creator`}>
+                      <Button variant="ghost" motive="tertiary">
+                        Create
+                      </Button>
+                    </Link>
+                  </Links>
                 </Box>
               </>
             }

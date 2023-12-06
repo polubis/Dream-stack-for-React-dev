@@ -20,25 +20,12 @@ const Template: Story<NavProps> = () => {
         </>
       }
     >
-      <Nav.Link variant="h6">
-        <a href="/test">Articles</a>
-      </Nav.Link>
-      <Nav.Link variant="h6">
-        <a href="/">Authors</a>
-      </Nav.Link>
-      <Nav.Link variant="h6">
-        <a href="/">Creator</a>
-      </Nav.Link>
-      <Nav.Link variant="h6">
-        <a href="/">Support</a>
-      </Nav.Link>
-      <Nav.Divider />
-      <Nav.Link variant="h6">
-        <a href="/">Admin</a>
-      </Nav.Link>
-      <Nav.Link variant="h6">
-        <a href="/">Yours</a>
-      </Nav.Link>
+      <a href="/test">Articles</a>
+      <a href="/">Authors</a>
+      <a href="/">Creator</a>
+      <a href="/">Support</a>
+      <a href="/">Admin</a>
+      <a href="/">Yours</a>
     </Nav>
   );
 };
