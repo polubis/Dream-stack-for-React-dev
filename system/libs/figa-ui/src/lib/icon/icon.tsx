@@ -182,19 +182,6 @@ const EditIcon = ({ className, ...props }: IconProps) => {
   );
 };
 
-const HamburgerIcon = ({ className, ...props }: IconProps) => {
-  return (
-    <Icon className={c('hamburger-icon', className)} {...props}>
-      <path
-        d="M4 7H7M20 7H11M20 17H17M4 17H13M4 12H20"
-        stroke="black"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </Icon>
-  );
-};
-
 const SearchIcon = ({ className, ...props }: IconProps) => {
   return (
     <Icon className={c('search-icon', className)} {...props}>
@@ -440,7 +427,6 @@ export {
   FormIcon,
   MobileIcon,
   EditIcon,
-  HamburgerIcon,
   SearchIcon,
   FiltersIcon,
   PlusIcon,
