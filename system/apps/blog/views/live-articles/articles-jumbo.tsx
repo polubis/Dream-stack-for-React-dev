@@ -33,10 +33,13 @@ const Container = styled.div`
 
     & > * {
       z-index: ${tokens.z[50]};
-      color: ${(props) =>
-        props.theme.key === 'light'
-          ? props.theme.body.bg
-          : props.theme.font.default.color};
+
+      &.font {
+        color: ${(props) =>
+          props.theme.key === 'light'
+            ? props.theme.body.bg
+            : props.theme.font.default.color};
+      }
 
       &.b1 {
         margin: ${tokens.spacing[150]} 0 ${tokens.spacing[350]} 0;
