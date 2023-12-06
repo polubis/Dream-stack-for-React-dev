@@ -10,7 +10,6 @@ import {
   LinkedinIcon,
   UserIcon,
   LogoGraphic,
-  NavBar,
   Nav,
   tokens,
   row,
@@ -79,7 +78,6 @@ const MainLayout = ({
   children,
   sidebar,
   offPadding,
-  sticky,
 }: MainLayoutProps) => {
   const lang = useLang();
 
@@ -95,19 +93,17 @@ const MainLayout = ({
     <AlertsProvider>
       <Layout
         offPadding={offPadding}
-        header={
-          <NavBar sticky={sticky}>
-            <Nav
-              logo={
-                <LogoWrapper>
-                  <Logo />
-                </LogoWrapper>
-              }
-              actions={<UserSection />}
-            >
-              {links}
-            </Nav>
-          </NavBar>
+        topNav={
+          <Nav
+            logo={
+              <LogoWrapper>
+                <Logo />
+              </LogoWrapper>
+            }
+            actions={<UserSection />}
+          >
+            {links}
+          </Nav>
         }
         sidebar={sidebar}
         footer={

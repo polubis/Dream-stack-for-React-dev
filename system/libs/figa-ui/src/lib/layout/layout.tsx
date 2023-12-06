@@ -1,17 +1,19 @@
-import { useToggle } from '@system/figa-hooks';
+import { useScroll, useToggle } from '@system/figa-hooks';
 import type { LayoutProps } from './defs';
 
 import c from 'classnames';
+import { NavBar } from '../nav-bar';
 
 const Layout = ({
   className,
   children,
-  header,
+  topNav,
   footer,
   offPadding,
   sidebar,
 }: LayoutProps) => {
   const toggler = useToggle({ opened: !!sidebar });
+  const [state] = useScroll({ delay: 50 });
 
   return (
     <div
@@ -23,7 +25,9 @@ const Layout = ({
         { 'off-padding': offPadding }
       )}
     >
-      {header}
+      <NavBar out={state.is === 'progress' && state.value > 50}>
+        {topNav}
+      </NavBar>
       <main className="layout-content">
         {sidebar && (
           <aside className="layout-content-sidebar">{sidebar(toggler)}</aside>

@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 interface LayoutProps {
   className?: string;
   children: ReactNode;
-  header: ReactNode;
+  topNav: ReactNode;
   footer?: ReactNode;
   offPadding?: boolean;
   sidebar?: (toggler: ToggleReturn) => ReactNode;

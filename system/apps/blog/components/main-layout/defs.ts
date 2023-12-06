@@ -1,9 +1,7 @@
-import type { LayoutProps, NavBarProps } from '@system/figa-ui';
+import type { LayoutProps } from '@system/figa-ui';
 import type { ReactNode } from 'react';
 
-interface MainLayoutProps
-  extends Pick<LayoutProps, 'sidebar' | 'offPadding'>,
-    Pick<NavBarProps, 'sticky'> {
+interface MainLayoutProps extends Pick<LayoutProps, 'sidebar' | 'offPadding'> {
   children: ReactNode;
 }
 
