@@ -338,7 +338,6 @@ interface Theme {
   nav: {
     bg: string;
     borderColor: string;
-    bgWithOpacity: string;
   };
   logo: {
     text: {

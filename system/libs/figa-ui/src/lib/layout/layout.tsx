@@ -82,7 +82,7 @@ const Container = styled.div`
         bottom: unset;
     border-bottom: ${tokens.spacing[25]} solid
       ${(props) => props.theme.nav.borderColor};
-    background: ${(props) => props.theme.nav.bgWithOpacity};
+    background: ${(props) => props.theme.nav.bg};
     padding: 0 ${tokens.spacing[250]};
     z-index: ${tokens.z[200]};
     height: ${tokens.spacing[1000]};
