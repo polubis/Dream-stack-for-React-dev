@@ -20,7 +20,6 @@ import {
   ArticlesSearchIcon,
   BottomNavItem,
   PlusCircleIcon,
-  ArrowTopIcon,
   useThemeProvider,
   SunIcon,
   HalfMoonIcon,
@@ -38,7 +37,6 @@ import { UserSection } from './user-section';
 import { useLang } from '../../dk/use-lang';
 import { RecommendedArticles } from './recommended-articles';
 import styled from 'styled-components';
-import { useScrollTo } from '@system/figa-hooks';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -80,7 +78,6 @@ const LogoWrapper = styled.div`
 
 const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
   const lang = useLang();
-  const [, { toTop }] = useScrollTo();
   const theme = useThemeProvider();
   const pathname = usePathname();
 
@@ -125,11 +122,6 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                 active={pathname === `/${lang}`}
               />
             </NextLink>
-            <BottomNavItem
-              icon={<ArrowTopIcon />}
-              text="Top"
-              onClick={() => toTop()}
-            />
             <NextLink title="Articles" href={`/${lang}/articles`}>
               <BottomNavItem
                 icon={<ArticlesSearchIcon />}
@@ -163,7 +155,7 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Font variant="b2" motive="primary">
+                <Font variant="b2">
                   Powered by GreenOn Software community
                 </Font>
                 <LogoGraphic size={32} />
@@ -177,7 +169,12 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Button shape="rounded" size={1}>
+                  <Button
+                    shape="rounded"
+                    motive="tertiary"
+                    variant="ghost"
+                    size={2}
+                  >
                     <DiscordIcon />
                   </Button>
                 </a>
@@ -187,7 +184,12 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Button shape="rounded" size={1}>
+                  <Button
+                    shape="rounded"
+                    variant="ghost"
+                    motive="tertiary"
+                    size={2}
+                  >
                     <UserIcon />
                   </Button>
                 </a>
@@ -197,7 +199,12 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Button shape="rounded" size={1}>
+                  <Button
+                    shape="rounded"
+                    motive="tertiary"
+                    variant="ghost"
+                    size={2}
+                  >
                     <LinkedinIcon />
                   </Button>
                 </a>

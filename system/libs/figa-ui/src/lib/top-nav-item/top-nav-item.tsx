@@ -5,7 +5,7 @@ import c from 'classnames';
 import { tokens } from '../theme-provider';
 
 const Container = styled.div`
-  &.active button.button.size-3.rectangle.ghost.tertiary {
+  &.active button.button.size-2.rectangle.ghost.tertiary {
     color: ${(props) => props.theme.font.primary.color};
 
     svg.icon path {
@@ -13,9 +13,9 @@ const Container = styled.div`
     }
   }
 
-  button.button.size-3.rectangle.ghost.tertiary {
+  button.button.size-2.rectangle.ghost.tertiary {
     svg.icon {
-      margin-left: ${tokens.spacing[150]};
+      margin-left: ${tokens.spacing[100]};
     }
 
     &:hover {
@@ -36,7 +36,7 @@ const TopNavItem = ({
 }: TopNavItemProps) => {
   return (
     <Container className={c('top-nav-item', { active }, className)}>
-      <Button {...props} variant="ghost" motive="tertiary">
+      <Button size={2} {...props} variant="ghost" motive="tertiary">
         {children}
       </Button>
     </Container>
