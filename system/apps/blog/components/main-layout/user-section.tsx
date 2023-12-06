@@ -1,53 +1,20 @@
-import { Box, Button } from '@system/figa-ui';
+import { Box, TopNavItem } from '@system/figa-ui';
 import { Link } from '../link';
 import { useLang } from '../../dk';
 import { useAuthStore } from '../../store/auth';
-import { useSignInStore } from '../../store/sign-in';
 import { UserPopover } from './user-popover';
-
-const SignInButton = () => {
-  const lang = useLang();
-  const { is } = useSignInStore();
-
-  if (is === 'busy') {
-    return (
-      <Button size={2} loading>
-        Sign In
-      </Button>
-    );
-  }
-
-  return (
-    <Link title="Sign In" href={`/${lang}/sign-in/`}>
-      <Button size={2}>Sign In</Button>
-    </Link>
-  );
-};
-
-const RegisterButton = () => {
-  const lang = useLang();
-
-  return (
-    <Link title="Sign Up" href={`/${lang}/register/`}>
-      <Button variant="ghost" motive="tertiary" size={2}>
-        Sign Up
-      </Button>
-    </Link>
-  );
-};
+import { usePathname } from 'next/navigation';
 
 const UserSection = () => {
   const { is } = useAuthStore();
+  const pathname = usePathname();
+  const lang = useLang();
 
   if (is === 'idle') {
     return (
       <Box orientation="row" spacing={[150]}>
-        <Button size={2} variant="ghost" disabled>
-          Sign Up
-        </Button>
-        <Button size={2} disabled>
-          Sign In
-        </Button>
+        <TopNavItem disabled>Sign Up</TopNavItem>
+        <TopNavItem disabled>Sign In</TopNavItem>
       </Box>
     );
   }
@@ -58,8 +25,16 @@ const UserSection = () => {
 
   return (
     <Box orientation="row" spacing={[150]}>
-      {is === 'unauthorized' && <RegisterButton />}
-      <SignInButton />
+      <Link title="Sign Up" href={`/${lang}/register/`}>
+        <TopNavItem active={pathname === `/${lang}/register`}>
+          Sign Up
+        </TopNavItem>
+      </Link>
+      <Link title="Sign In" href={`/${lang}/sign-in/`}>
+        <TopNavItem active={pathname === `/${lang}/sign-in`}>
+          Sign In
+        </TopNavItem>
+      </Link>
     </Box>
   );
 };

@@ -1,6 +1,7 @@
 import type { ButtonProps } from '../button';
 
-interface TopNavItemProps extends Omit<ButtonProps, 'variant' | 'motive'> {
+interface TopNavItemProps
+  extends Omit<ButtonProps, 'variant' | 'motive' | 'size'> {
   active?: boolean;
 }
 

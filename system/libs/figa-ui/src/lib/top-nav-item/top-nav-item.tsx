@@ -36,7 +36,7 @@ const TopNavItem = ({
 }: TopNavItemProps) => {
   return (
     <Container className={c('top-nav-item', { active }, className)}>
-      <Button size={2} {...props} variant="ghost" motive="tertiary">
+      <Button {...props} size={2} variant="ghost" motive="tertiary">
         {children}
       </Button>
     </Container>
