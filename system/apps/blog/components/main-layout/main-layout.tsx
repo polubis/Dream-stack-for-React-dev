@@ -131,9 +131,14 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
                 active={pathname === `/${lang}/articles`}
               />
             </NextLink>
-            <BottomNavItem icon={<PlusCircleIcon />} text="Create" />
+            <NextLink title="Create" href={`/${lang}/articles-creator`}>
+              <BottomNavItem
+                icon={<PlusCircleIcon />}
+                text="Create"
+                active={pathname === `/${lang}/articles-creator`}
+              />
+            </NextLink>
             <BottomNavItem
-              active
               icon={theme.key === 'dark' ? <SunIcon /> : <HalfMoonIcon />}
               text="Theme"
               onClick={() =>

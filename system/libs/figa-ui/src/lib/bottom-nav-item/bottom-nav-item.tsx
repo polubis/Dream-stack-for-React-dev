@@ -7,11 +7,19 @@ import { center } from '../shared';
 import c from 'classnames';
 
 const Container = styled.div`
-  &.active .button {
-    background: ${(props) => props.theme.button.ghost.hoverBg};
+  &.active button.button {
+    background: ${(props) => props.theme.button.filled.secondary.bg};
+
+    .font {
+      color: ${(props) => props.theme.button.filled.secondary.color};
+    }
+
+    svg.icon path {
+      fill: ${(props) => props.theme.button.filled.secondary.color};
+    }
   }
 
-  .button {
+  button.button {
     ${center('column')}
 
     .font {
