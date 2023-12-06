@@ -23,8 +23,9 @@ const Container = styled.div`
     }
   }
 
-  button.button {
+  button.button.size-3.rectangle.ghost.tertiary {
     ${center('column')}
+    width: ${tokens.spacing[800]};
 
     .font {
       margin-top: ${tokens.spacing[50]};
