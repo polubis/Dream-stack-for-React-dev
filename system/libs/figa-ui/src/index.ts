@@ -22,6 +22,7 @@ export * from './lib/tip';
 export * from './lib/tabs';
 export * from './lib/logo-graphic';
 export * from './lib/list';
+export * from './lib/bottom-nav';
 export * from './lib/chips';
 export * from './lib/blockquote';
 export * from './lib/image';
