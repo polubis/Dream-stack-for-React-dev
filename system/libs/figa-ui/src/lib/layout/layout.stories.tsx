@@ -3,49 +3,51 @@ import type { LayoutProps } from './defs';
 
 import { Layout } from './layout';
 import { Logo } from '../logo';
-import { Button } from '../button';
-import { Link } from '../link';
 import { Font } from '../font';
-import { NavBar, type NavBarProps } from '../nav-bar';
 import { Nav } from '../nav';
+import { TopNavItem } from '../top-nav-item';
+import { PlusCircleIcon } from '../icon';
 
 export default {
   component: Layout,
   title: 'Layout',
 } as Meta;
 
-const Header = (props: Pick<NavBarProps, 'sticky'>) => (
-  <NavBar {...props}>
-    <Nav
-      logo={<Logo />}
-      actions={
-        <>
-          <Button size={2}>Register</Button>
-          <Button size={2}>Sign In</Button>
-        </>
-      }
-    >
-      <Link variant="h6">
-        <a href="/test">Articles</a>
-      </Link>
-      <Link variant="h6">
-        <a href="/">Authors</a>
-      </Link>
-      <Link variant="h6">
-        <a href="/">Creator</a>
-      </Link>
-      <Link variant="h6">
-        <a href="/">Support</a>
-      </Link>
-      <Nav.Divider />
-      <Link variant="h6">
-        <a href="/">Admin</a>
-      </Link>
-      <Link variant="h6">
-        <a href="/">Yours</a>
-      </Link>
-    </Nav>
-  </NavBar>
+const Header = () => (
+  <Nav
+    logo={<Logo />}
+    actions={
+      <>
+        <TopNavItem active>
+          Create <PlusCircleIcon />
+        </TopNavItem>
+        <TopNavItem active>
+          Create <PlusCircleIcon />
+        </TopNavItem>
+      </>
+    }
+  >
+    <a href="/">
+      <TopNavItem active>
+        Create <PlusCircleIcon />
+      </TopNavItem>
+    </a>
+    <a href="/">
+      <TopNavItem active>
+        Create <PlusCircleIcon />
+      </TopNavItem>
+    </a>
+    <a href="/">
+      <TopNavItem active>
+        Create <PlusCircleIcon />
+      </TopNavItem>
+    </a>
+    <a href="/">
+      <TopNavItem active>
+        Create <PlusCircleIcon />
+      </TopNavItem>
+    </a>
+  </Nav>
 );
 
 const BigText = (
@@ -162,7 +164,7 @@ const Template: Story<LayoutProps> = (props) => <Layout {...props} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  header: <Header />,
+  topNav: <Header />,
   children: (
     <div>
       <Font variant="h6">Custom header</Font>
@@ -173,33 +175,33 @@ Default.args = {
 
 export const ALotOfContent = Template.bind({});
 ALotOfContent.args = {
-  header: <Header />,
+  topNav: <Header />,
   children: <div>{BigText}</div>,
   footer: <div>Footer</div>,
 };
 
 export const WithoutFooter = Template.bind({});
 WithoutFooter.args = {
-  header: <Header />,
+  topNav: <Header />,
   children: <div>{BigText}</div>,
 };
 
 export const WhenPageIsFull = Template.bind({});
 WhenPageIsFull.args = {
-  header: <Header />,
+  topNav: <Header />,
   children: <div style={{ background: 'red' }}>Text</div>,
 };
 
 export const WhenPageIsFullWithFooter = Template.bind({});
 WhenPageIsFullWithFooter.args = {
-  header: <Header />,
+  topNav: <Header />,
   children: <div style={{ background: 'red' }}>Text</div>,
   footer: <div>Footer</div>,
 };
 
 export const WithoutPadding = Template.bind({});
 WithoutPadding.args = {
-  header: <Header />,
+  topNav: <Header />,
   children: <div style={{ background: 'red' }}>Text</div>,
   footer: <div>Footer</div>,
   offPadding: true,
@@ -207,7 +209,7 @@ WithoutPadding.args = {
 
 export const AsidedWithoutPadding = Template.bind({});
 AsidedWithoutPadding.args = {
-  header: <Header />,
+  topNav: <Header />,
   children: (
     <div>
       <Font variant="h2">The content</Font>
@@ -224,23 +226,7 @@ AsidedWithoutPadding.args = {
 
 export const Asided = Template.bind({});
 Asided.args = {
-  header: <Header />,
-  children: (
-    <div>
-      <Font variant="h2">The content</Font>
-    </div>
-  ),
-  footer: <div>Footer</div>,
-  sidebar: (toggler) => (
-    <aside onClick={toggler.toggle}>
-      <Font variant="h5">The sidebar</Font>
-    </aside>
-  ),
-};
-
-export const WithStickyNavBar = Template.bind({});
-WithStickyNavBar.args = {
-  header: <Header sticky />,
+  topNav: <Header />,
   children: (
     <div>
       <Font variant="h2">The content</Font>

@@ -5,7 +5,7 @@ interface LayoutProps {
   className?: string;
   children: ReactNode;
   topNav: ReactNode;
-  bottomNav?: ReactNode;
+  bottomNav: ReactNode;
   footer?: ReactNode;
   offPadding?: boolean;
   sidebar?: (toggler: ToggleReturn) => ReactNode;
