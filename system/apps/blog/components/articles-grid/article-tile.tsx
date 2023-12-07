@@ -184,18 +184,20 @@ const ArticleTile = ({
           <div className="article-tile-content-footer">
             <Button
               className="article-flip-btn"
-              variant="outlined"
+              variant="ghost"
+              motive="tertiary"
               shape="rounded"
-              size={1}
+              size={2}
               onClick={toggler.close}
             >
               <SwapIcon className="r-90" />
             </Button>
             <Link href={url} data-article-title={title}>
               <Button
-                variant="outlined"
+                size={2}
+                variant="ghost"
+                motive="tertiary"
                 shape="rounded"
-                size={1}
                 title="Read article"
               >
                 <ArrowTopIcon className="r-90" />
@@ -239,19 +241,21 @@ const ArticleTile = ({
               </div>
               <Button
                 className="article-flip-btn"
-                variant="outlined"
+                motive="tertiary"
+                variant="ghost"
                 shape="rounded"
                 title="Show details"
-                size={1}
+                size={2}
                 onClick={toggler.open}
               >
                 <SwapIcon />
               </Button>
               <Link href={url} data-article-title={title}>
                 <Button
-                  variant="outlined"
+                  variant="ghost"
+                  motive="tertiary"
                   shape="rounded"
-                  size={1}
+                  size={2}
                   title="Read article"
                 >
                   <ArrowTopIcon className="r-90" />
