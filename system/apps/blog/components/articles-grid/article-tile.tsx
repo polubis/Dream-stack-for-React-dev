@@ -3,7 +3,6 @@ import {
   Badge,
   Button,
   Font,
-  SM_DOWN,
   SwapIcon,
   clamp,
   column,
@@ -209,7 +208,7 @@ const ArticleTile = ({
           <div className="article-tile-image">
             <Image
               fill
-              sizes={`${SM_DOWN} 100%, ${width}px`}
+              sizes={`${width}px`}
               src={thumbnail}
               loading="lazy"
               alt={`${title} thumbnail`}
