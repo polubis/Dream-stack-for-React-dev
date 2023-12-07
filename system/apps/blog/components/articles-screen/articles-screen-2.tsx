@@ -5,6 +5,7 @@ import {
   Field,
   Font,
   VIEWPORT,
+  column,
   tokens,
 } from '@system/figa-ui';
 import styled from 'styled-components';
@@ -26,7 +27,6 @@ const Container = styled.div`
   gap: ${tokens.spacing[250]};
   max-width: ${VIEWPORT.laptop}px;
   margin: 0 auto;
-  height: 100%;
 
   .articles-filters {
     background: ${(props) => props.theme.box.outlined.bg};
@@ -70,7 +70,7 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
             </Button>
           </Box>
           <Divider />
-          <Box padding={[250, 250, 250, 250]} spacing={[250, 250]}>
+          <Box padding={[250, 250, 250, 250]} spacing={[250, 250, 600]}>
             <Field label="Search phrase">
               <ArticlesSearchInput
                 loading={state.is === 'changing'}
@@ -90,6 +90,15 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
                 onConfirm={(Tags) => actions.change({ Tags })}
               />
             </Field>
+
+            <Box orientation="row" right spacing={[150]}>
+              <Button size={2} motive="tertiary" variant="ghost">
+                Save
+              </Button>
+              <Button size={2} motive="tertiary" variant="ghost">
+                Share
+              </Button>
+            </Box>
           </Box>
         </div>
         <div className="articles-content">Right</div>
