@@ -1,4 +1,4 @@
-import { getError } from '@system/blog-api';
+import { getArticles, getError, getYourArticles } from '@system/blog-api';
 import type { ArticlesStore } from './defs';
 import { create } from 'zustand';
 import {
@@ -22,7 +22,7 @@ const checkHasLoadedAll = (
   articles: ArticlesStore.Articles
 ): boolean => articles.length < itemsPerPage;
 
-const createArticlesStore = ({ service }: ArticlesStore.Config) => {
+const createArticlesStore = () => {
   const useStore = create<ArticlesStore.State>(() => ({
     is: 'idle',
   }));
@@ -91,7 +91,7 @@ const createArticlesStore = ({ service }: ArticlesStore.Config) => {
         });
       }),
       switchMap((params) =>
-        from(service(params)).pipe(
+        from(params.yours ? getArticles(params) : getYourArticles(params)).pipe(
           tap(({ data: articles }) => {
             set({
               is: checkHasLoadedAll(params.ItemsPerPage, articles)
@@ -132,7 +132,7 @@ const createArticlesStore = ({ service }: ArticlesStore.Config) => {
         });
       }),
       switchMap((params) =>
-        from(service(params)).pipe(
+        from(params.yours ? getArticles(params) : getYourArticles(params)).pipe(
           tap(({ data: articles }) => {
             set({
               is: checkHasLoadedAll(params.ItemsPerPage, articles)
@@ -179,7 +179,7 @@ const createArticlesStore = ({ service }: ArticlesStore.Config) => {
         });
       }),
       concatMap((params) =>
-        from(service(params)).pipe(
+        from(params.yours ? getArticles(params) : getYourArticles(params)).pipe(
           tap(({ data: articles }) => {
             set({
               is: checkHasLoadedAll(params.ItemsPerPage, articles)

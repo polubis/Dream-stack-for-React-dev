@@ -6,7 +6,6 @@ interface ArticlesScreenProps {
   selectors: ArticlesStore.Selectors;
   actions: ArticlesStore.Actions;
   makeUrl: (lang: Lang, article: ArticlesStore.Article) => string;
-  loadOnInit?: boolean;
   filters?: ReactNode;
 }
 

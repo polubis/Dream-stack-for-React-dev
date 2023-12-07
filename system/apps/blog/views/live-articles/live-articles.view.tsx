@@ -5,9 +5,9 @@ import {
   live_articles_selectors,
 } from '../../store/live-articles';
 import {
+  ArticlesScreen,
   type ArticlesScreenProps,
 } from '../../components/articles-screen';
-import { ArticlesScreen } from 'apps/blog/components/articles-screen/articles-screen-2';
 
 const makeUrl: ArticlesScreenProps['makeUrl'] = (lang, article) =>
   `/${lang}/articles/${article.url}`;
@@ -25,7 +25,6 @@ const LiveArticlesView = ({ params, response }: LiveArticlesViewProps) => {
         selectors={live_articles_selectors}
         actions={live_articles_actions}
         makeUrl={makeUrl}
-        // filters={<ArticlesJumbo />}
       />
     </MainLayout>
   );

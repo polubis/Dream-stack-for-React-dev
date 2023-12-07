@@ -12,6 +12,7 @@ export const getStaticProps: GetStaticProps<ArticlesPageProps> = async () => {
     lang: 'en',
     Search: '',
     Tags: [],
+    yours: false,
   };
 
   return {

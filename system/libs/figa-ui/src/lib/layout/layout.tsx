@@ -149,8 +149,6 @@ const Layout = ({
   const out = scroll.is === 'progress';
 
   const scrollTop = useMemo(() => {
-    if (isServer()) return null;
-
     const bar = (
       <Bar>
         <Button
@@ -164,7 +162,7 @@ const Layout = ({
       </Bar>
     );
 
-    if (isTUp(window.innerWidth)) {
+    if (isServer() || isTUp(window.innerWidth)) {
       return bar;
     }
 
