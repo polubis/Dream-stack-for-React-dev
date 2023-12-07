@@ -21,6 +21,8 @@ import { ArticlesGrid } from '../articles-grid';
 import { useLang } from 'apps/blog/dk';
 import { InfoSection } from '../info-section';
 import { ScrollState, useScroll } from '@system/figa-hooks';
+import { Lang } from '@system/blog-api-models';
+import type { ArticlesStore } from 'apps/blog/store-factories/articles';
 
 const Placeholder = styled.div`
   background: ${(props) => props.theme.box.filled.bg};
@@ -69,8 +71,16 @@ const Container = styled.div`
   }
 `;
 
+const makeUrl = (lang: Lang, article: ArticlesStore.Article): string => {
+  if (article.status === 'Accepted') {
+    return `/${lang}/articles/${article.url}`;
+  }
+
+  return `/${lang}/articles/preview?id=${article.id}&url=${article.url}`;
+};
+
 const ArticlesScreen = (props: ArticlesScreenProps) => {
-  const { selectors, actions, makeUrl } = props;
+  const { selectors, actions } = props;
   const state = selectors.useState();
   const lang = useLang();
 
@@ -123,7 +133,10 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
 
     return (
       <Box spacing={[250]}>
-        <Font variant='h6'>Results ({state.articles.length}) | Current Page ({state.params.CurrentPage})</Font>
+        <Font variant="h6">
+          Results ({state.articles.length}) | Current Page (
+          {state.params.CurrentPage})
+        </Font>
         <ArticlesGrid>
           {state.articles.map((article) => (
             <ArticlesGrid.Tile
@@ -144,7 +157,7 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
         </ArticlesGrid>
       </Box>
     );
-  }, [state, lang, makeUrl, actions.reset]);
+  }, [state, lang, actions.reset]);
 
   return (
     <Wrapper>
