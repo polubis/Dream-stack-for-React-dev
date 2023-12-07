@@ -14,7 +14,6 @@ import {
   tokens,
   row,
   M_DOWN,
-  AlertsProvider,
   size,
   HomeIcon,
   ArticlesSearchIcon,
@@ -26,6 +25,7 @@ import {
   TopNavItem,
   column,
   ArrowTopIcon,
+  Bar,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -93,7 +93,7 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
   }, []);
 
   return (
-    <AlertsProvider>
+    <>
       <Layout
         offPadding={offPadding}
         topNav={
@@ -126,11 +126,6 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
         }
         bottomNav={
           <>
-            <BottomNavItem
-              icon={<ArrowTopIcon />}
-              text="Top"
-              onClick={() => toTop()}
-            />
             <NextLink title="Home" href={`/${lang}`}>
               <BottomNavItem
                 icon={<HomeIcon />}
@@ -262,7 +257,17 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
       >
         {children}
       </Layout>
-    </AlertsProvider>
+      <Bar>
+        <Button
+          size={2}
+          shape="rounded"
+          motive="tertiary"
+          onClick={() => toTop()}
+        >
+          <ArrowTopIcon />
+        </Button>
+      </Bar>
+    </>
   );
 };
 
