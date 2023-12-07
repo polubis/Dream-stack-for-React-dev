@@ -25,6 +25,7 @@ import {
   HalfMoonIcon,
   TopNavItem,
   column,
+  ArrowTopIcon,
 } from '@system/figa-ui';
 import type { MainLayoutProps } from './defs';
 import { Link } from '../link';
@@ -125,6 +126,11 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
         }
         bottomNav={
           <>
+            <BottomNavItem
+              icon={<ArrowTopIcon />}
+              text="Top"
+              onClick={() => toTop()}
+            />
             <NextLink title="Home" href={`/${lang}`}>
               <BottomNavItem
                 icon={<HomeIcon />}
