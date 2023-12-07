@@ -4,10 +4,12 @@ import type { LayoutProps } from './defs';
 import c from 'classnames';
 import styled from 'styled-components';
 import { center, column, row, streched } from '../shared';
-import { T_UP, tokens } from '../theme-provider';
+import { T_UP, isTUp, tokens } from '../theme-provider';
 import { Bar } from '../bar';
 import { Button } from '../button';
 import { ArrowTopIcon } from '../icon';
+import { useMemo } from 'react';
+import { isServer } from '@system/utils';
 
 const Container = styled.div`
   ${column()}
@@ -146,6 +148,30 @@ const Layout = ({
 
   const out = scroll.is === 'progress';
 
+  const scrollTop = useMemo(() => {
+    if (isServer()) return null;
+
+    const bar = (
+      <Bar>
+        <Button
+          size={2}
+          shape="rounded"
+          motive="tertiary"
+          onClick={() => toTop()}
+        >
+          <ArrowTopIcon />
+        </Button>
+      </Bar>
+    );
+
+    if (isTUp(window.innerWidth)) {
+      return bar;
+    }
+
+    return scroll.is === 'progress' && scroll.value < 94 ? bar : null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scroll]);
+
   return (
     <>
       <Container
@@ -175,18 +201,7 @@ const Layout = ({
           <div>{bottomNav}</div>
         </nav>
       </Container>
-      {scroll.is === 'progress' && scroll.value < 94 && (
-        <Bar>
-          <Button
-            size={2}
-            shape="rounded"
-            motive="tertiary"
-            onClick={() => toTop()}
-          >
-            <ArrowTopIcon />
-          </Button>
-        </Bar>
-      )}
+      {scrollTop}
     </>
   );
 };
