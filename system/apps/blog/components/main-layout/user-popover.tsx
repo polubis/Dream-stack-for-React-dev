@@ -79,7 +79,7 @@ const Content = () => {
           </Link>
         </FigaUILink>
         <FigaUILink variant="b1">
-          <Link title="Your articles" href={`/${lang}/your-articles`}>
+          <Link title="Your articles" href={`/${lang}/articles`}>
             Your articles
           </Link>
         </FigaUILink>

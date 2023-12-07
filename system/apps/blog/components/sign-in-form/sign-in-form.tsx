@@ -15,7 +15,7 @@ import { InfoSection } from '../info-section';
 
 const SignInForm = () => {
   const signInStore = useSignInStore();
-  const { redirect } = useMoveToRedirect('/your-articles');
+  const { redirect } = useMoveToRedirect('/articles');
   const timeout = useRef<NodeJS.Timeout | null>(null);
   const [justSignedIn, setJustSignedIn] = useState(false);
   const alert = useAlert();

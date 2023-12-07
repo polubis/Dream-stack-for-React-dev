@@ -39,7 +39,7 @@ const Content = () => {
 
     try {
       await delete_article_store_actions.delete(id);
-      router.push(`/${lang}/your-articles`);
+      router.push(`/${lang}/articles`);
     } catch {
       confirm.close();
     }
