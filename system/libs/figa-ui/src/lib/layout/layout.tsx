@@ -1,15 +1,10 @@
-import { useScroll, useScrollTo, useToggle } from '@system/figa-hooks';
+import { useScroll, useToggle } from '@system/figa-hooks';
 import type { LayoutProps } from './defs';
 
 import c from 'classnames';
 import styled from 'styled-components';
 import { column, row, streched } from '../shared';
-import { T_UP, isTUp, tokens } from '../theme-provider';
-import { Bar } from '../bar';
-import { Button } from '../button';
-import { ArrowTopIcon } from '../icon';
-import { useMemo } from 'react';
-import { isServer } from '@system/utils';
+import { T_UP, tokens } from '../theme-provider';
 
 const Container = styled.div`
   ${column()}
@@ -144,63 +139,36 @@ const Layout = ({
 }: LayoutProps) => {
   const toggler = useToggle({ opened: !!sidebar });
   const [scroll] = useScroll({ delay: 50 });
-  const [, { toTop }] = useScrollTo();
-
   const out = scroll.is === 'progress';
 
-  const scrollTop = useMemo(() => {
-    const bar = (
-      <Bar>
-        <Button
-          size={2}
-          shape="rounded"
-          motive="tertiary"
-          onClick={() => toTop()}
-        >
-          <ArrowTopIcon />
-        </Button>
-      </Bar>
-    );
-
-    if (isServer() || isTUp(window.innerWidth)) {
-      return bar;
-    }
-
-    return scroll.is === 'progress' && scroll.value < 94 ? bar : null;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scroll]);
-
   return (
-    <>
-      <Container
-        className={c(
-          'layout',
-          className,
-          { asided: !!sidebar },
-          { opened: toggler.opened },
-          { 'off-padding': offPadding }
-        )}
+    <Container
+      className={c(
+        'layout',
+        className,
+        { asided: !!sidebar },
+        { opened: toggler.opened },
+        { 'off-padding': offPadding }
+      )}
+    >
+      <header
+        className={c('layout-top-nav', {
+          out,
+        })}
       >
-        <header
-          className={c('layout-top-nav', {
-            out,
-          })}
-        >
-          {topNav}
-        </header>
-        <main className="layout-content">
-          {sidebar && (
-            <aside className="layout-content-sidebar">{sidebar(toggler)}</aside>
-          )}
-          {children}
-        </main>
-        <footer className="layout-footer">{footer}</footer>
-        <nav className={c('layout-bottom-nav', { out })}>
-          <div>{bottomNav}</div>
-        </nav>
-      </Container>
-      {scrollTop}
-    </>
+        {topNav}
+      </header>
+      <main className="layout-content">
+        {sidebar && (
+          <aside className="layout-content-sidebar">{sidebar(toggler)}</aside>
+        )}
+        {children}
+      </main>
+      <footer className="layout-footer">{footer}</footer>
+      <nav className={c('layout-bottom-nav', { out })}>
+        <div>{bottomNav}</div>
+      </nav>
+    </Container>
   );
 };
 

@@ -1,12 +1,17 @@
 import { MDXRemote } from 'next-mdx-remote';
-import { PageWrapper } from '../../components';
+import { MainLayout, PageWrapper } from '../../components';
 import type { ArticleViewProps } from './defs';
 import { ArticleScreen } from '../../components/article-screen';
-import { useStoreSync } from '../../store/use-store-sync';
 import { useArticleStore } from '../../store/article';
+import { useRouter } from 'next/router';
+import { Box, Loader } from '@system/figa-ui';
 
-const ArticleView = ({ mdx, article }: ArticleViewProps) => {
-  useStoreSync(useArticleStore, { is: 'ok', article })();
+const Content = ({ mdx, article }: ArticleViewProps) => {
+  const articleStore = useArticleStore();
+
+  if (articleStore.is === 'idle') {
+    useArticleStore.setState({ is: 'ok', article });
+  }
 
   return (
     <ArticleScreen
@@ -17,6 +22,24 @@ const ArticleView = ({ mdx, article }: ArticleViewProps) => {
       )}
     />
   );
+};
+
+const ArticleView = (props: ArticleViewProps) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return (
+      <MainLayout>
+        <Box margin="auto">
+          <Box margin="auto">
+            <Loader size="big" />
+          </Box>
+        </Box>
+      </MainLayout>
+    );
+  }
+
+  return <Content {...props} />;
 };
 
 export { ArticleView };

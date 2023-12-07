@@ -192,7 +192,7 @@ const ArticleTile = ({
             >
               <SwapIcon className="r-90" />
             </Button>
-            <Link href={url} data-article-title={title}>
+            <Link href={url} data-article-title={title} prefetch={false}>
               <Button
                 size={2}
                 variant="ghost"
@@ -250,7 +250,7 @@ const ArticleTile = ({
               >
                 <SwapIcon />
               </Button>
-              <Link href={url} data-article-title={title}>
+              <Link href={url} data-article-title={title} prefetch={false}>
                 <Button
                   variant="ghost"
                   motive="tertiary"

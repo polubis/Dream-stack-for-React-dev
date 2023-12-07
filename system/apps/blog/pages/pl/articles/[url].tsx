@@ -21,7 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         url,
       },
     })),
-    fallback: false,
+    fallback: true,
   };
 };
 

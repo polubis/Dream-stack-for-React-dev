@@ -12,7 +12,7 @@ const ExpirationInfo = () => {
       title="Your session expired 💤"
       description="Sign in again to explore our application 🔃"
       footer={
-        <Link href={`/${lang}/sign-in/`}>
+        <Link prefetch={false} href={`/${lang}/sign-in/`}>
           <Button size={2}>Sign In again</Button>
         </Link>
       }

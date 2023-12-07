@@ -3,6 +3,7 @@ import type { Story, Meta } from '@storybook/react';
 import { Nav, type NavProps } from '.';
 import { Logo } from '../logo';
 import { Button } from '../button';
+import { TopNavItem } from '../top-nav-item';
 
 export default {
   component: Nav,
@@ -15,17 +16,26 @@ const Template: Story<NavProps> = () => {
       logo={<Logo />}
       actions={
         <>
-          <Button size={2}>Register</Button>
-          <Button size={2}>Sign In</Button>
+          <TopNavItem>Sign In</TopNavItem>
+          <TopNavItem>Register</TopNavItem>
         </>
       }
     >
-      <a href="/test">Articles</a>
-      <a href="/">Authors</a>
-      <a href="/">Creator</a>
-      <a href="/">Support</a>
-      <a href="/">Admin</a>
-      <a href="/">Yours</a>
+      <a href="/test">
+        <TopNavItem>Articles</TopNavItem>
+      </a>
+      <a href="/test">
+        <TopNavItem>Articles</TopNavItem>
+      </a>
+      <a href="/test">
+        <TopNavItem>Articles</TopNavItem>
+      </a>
+      <a href="/test">
+        <TopNavItem>Articles</TopNavItem>
+      </a>
+      <a href="/test">
+        <TopNavItem>Articles</TopNavItem>
+      </a>
     </Nav>
   );
 };

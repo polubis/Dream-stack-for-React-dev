@@ -3,7 +3,7 @@
 exports[`User is able to use layout when [FRAGILE] allows to disable content padding 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout off-padding"
+    class="sc-bcXHqe MLbvX layout off-padding"
   >
     <header
       class="layout-top-nav"
@@ -28,36 +28,13 @@ exports[`User is able to use layout when [FRAGILE] allows to disable content pad
       <div />
     </nav>
   </div>
-  <div
-    class="sc-bcXHqe AVuto bar"
-  >
-    <button
-      class="button size-2 rounded filled tertiary"
-      motive="tertiary"
-      shape="rounded"
-      size="2"
-    >
-      <svg
-        class="icon arrow-top-icon"
-        fill="none"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M13.0001 20H11.0001V8L5.50008 13.5L4.08008 12.08L12.0001 4.16L19.9201 12.08L18.5001 13.5L13.0001 8V20Z"
-        />
-      </svg>
-    </button>
-  </div>
 </DocumentFragment>
 `;
 
 exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gives option to maintain it 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout asided"
+    class="sc-bcXHqe MLbvX layout asided"
   >
     <header
       class="layout-top-nav"
@@ -89,36 +66,13 @@ exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gi
       <div />
     </nav>
   </div>
-  <div
-    class="sc-bcXHqe AVuto bar"
-  >
-    <button
-      class="button size-2 rounded filled tertiary"
-      motive="tertiary"
-      shape="rounded"
-      size="2"
-    >
-      <svg
-        class="icon arrow-top-icon"
-        fill="none"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M13.0001 20H11.0001V8L5.50008 13.5L4.08008 12.08L12.0001 4.16L19.9201 12.08L18.5001 13.5L13.0001 8V20Z"
-        />
-      </svg>
-    </button>
-  </div>
 </DocumentFragment>
 `;
 
 exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gives option to maintain it 2`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout asided opened"
+    class="sc-bcXHqe MLbvX layout asided opened"
   >
     <header
       class="layout-top-nav"
@@ -150,36 +104,13 @@ exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gi
       <div />
     </nav>
   </div>
-  <div
-    class="sc-bcXHqe AVuto bar"
-  >
-    <button
-      class="button size-2 rounded filled tertiary"
-      motive="tertiary"
-      shape="rounded"
-      size="2"
-    >
-      <svg
-        class="icon arrow-top-icon"
-        fill="none"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M13.0001 20H11.0001V8L5.50008 13.5L4.08008 12.08L12.0001 4.16L19.9201 12.08L18.5001 13.5L13.0001 8V20Z"
-        />
-      </svg>
-    </button>
-  </div>
 </DocumentFragment>
 `;
 
 exports[`User is able to use layout when [FRAGILE] allows to skip footer 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout"
+    class="sc-bcXHqe MLbvX layout"
   >
     <header
       class="layout-top-nav"
@@ -204,36 +135,13 @@ exports[`User is able to use layout when [FRAGILE] allows to skip footer 1`] = `
       <div />
     </nav>
   </div>
-  <div
-    class="sc-bcXHqe AVuto bar"
-  >
-    <button
-      class="button size-2 rounded filled tertiary"
-      motive="tertiary"
-      shape="rounded"
-      size="2"
-    >
-      <svg
-        class="icon arrow-top-icon"
-        fill="none"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M13.0001 20H11.0001V8L5.50008 13.5L4.08008 12.08L12.0001 4.16L19.9201 12.08L18.5001 13.5L13.0001 8V20Z"
-        />
-      </svg>
-    </button>
-  </div>
 </DocumentFragment>
 `;
 
 exports[`User is able to use layout when [FRAGILE] renders big contents 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout"
+    class="sc-bcXHqe MLbvX layout"
   >
     <header
       class="layout-top-nav"
@@ -264,36 +172,13 @@ exports[`User is able to use layout when [FRAGILE] renders big contents 1`] = `
       <div />
     </nav>
   </div>
-  <div
-    class="sc-bcXHqe AVuto bar"
-  >
-    <button
-      class="button size-2 rounded filled tertiary"
-      motive="tertiary"
-      shape="rounded"
-      size="2"
-    >
-      <svg
-        class="icon arrow-top-icon"
-        fill="none"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M13.0001 20H11.0001V8L5.50008 13.5L4.08008 12.08L12.0001 4.16L19.9201 12.08L18.5001 13.5L13.0001 8V20Z"
-        />
-      </svg>
-    </button>
-  </div>
 </DocumentFragment>
 `;
 
 exports[`User is able to use layout when [FRAGILE] renders with default setup 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout"
+    class="sc-bcXHqe MLbvX layout"
   >
     <header
       class="layout-top-nav"
@@ -325,29 +210,6 @@ exports[`User is able to use layout when [FRAGILE] renders with default setup 1`
         </div>
       </div>
     </nav>
-  </div>
-  <div
-    class="sc-bcXHqe AVuto bar"
-  >
-    <button
-      class="button size-2 rounded filled tertiary"
-      motive="tertiary"
-      shape="rounded"
-      size="2"
-    >
-      <svg
-        class="icon arrow-top-icon"
-        fill="none"
-        height="24"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M13.0001 20H11.0001V8L5.50008 13.5L4.08008 12.08L12.0001 4.16L19.9201 12.08L18.5001 13.5L13.0001 8V20Z"
-        />
-      </svg>
-    </button>
   </div>
 </DocumentFragment>
 `;
