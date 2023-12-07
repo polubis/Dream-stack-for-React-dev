@@ -1,7 +1,6 @@
 import type {
   ArticleDto,
   ArticlesParams,
-  PaginatedArticlesResponse,
   ResponseError,
 } from '@system/blog-api-models';
 

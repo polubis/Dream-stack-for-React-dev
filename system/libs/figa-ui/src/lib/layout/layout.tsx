@@ -3,7 +3,7 @@ import type { LayoutProps } from './defs';
 
 import c from 'classnames';
 import styled from 'styled-components';
-import { center, column, row, streched } from '../shared';
+import { column, row, streched } from '../shared';
 import { T_UP, isTUp, tokens } from '../theme-provider';
 import { Bar } from '../bar';
 import { Button } from '../button';

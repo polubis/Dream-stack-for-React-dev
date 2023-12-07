@@ -105,7 +105,7 @@ const commands = {
   'I navigate to sign in page': () => {
     commands['I click button']('Sign In');
   },
-  'I change article content': (content: string) => {
+  'I change article content': () => {
     // @TODO How to set codemirror type event?
   },
   'I pick thumbnail': () => {

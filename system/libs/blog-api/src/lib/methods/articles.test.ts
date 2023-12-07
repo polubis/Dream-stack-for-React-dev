@@ -1,4 +1,3 @@
-import type { AxiosRequestConfig } from 'axios';
 import { getPath } from '../core';
 import { blogAPI } from '../instances';
 import {
