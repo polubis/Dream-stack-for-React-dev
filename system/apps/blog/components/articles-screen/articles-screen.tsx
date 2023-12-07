@@ -5,6 +5,7 @@ import {
   Divider,
   Field,
   Font,
+  L_UP,
   Loader,
   VIEWPORT,
   column,
@@ -69,6 +70,21 @@ const Container = styled.div`
 
   .articles-content {
     ${column()}
+
+    & > .h6 {
+      margin-bottom: ${tokens.spacing[300]};
+    }
+
+    .articles-screen-tiles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: ${tokens.spacing[250]};
+    }
+  }
+
+  @media ${L_UP} {
+    /* grid-template-columns: repeat(3, 1fr); */
+    /* grid-auto-rows: minmax(250px, 400px); */
   }
 `;
 
@@ -134,12 +150,12 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
     }
 
     return (
-      <Box spacing={[250]}>
+      <>
         <Font variant="h6">
           Results ({state.articles.length}) | Current Page (
           {state.params.CurrentPage})
         </Font>
-        <ArticlesGrid>
+        <div className="articles-screen-tiles">
           {state.articles.map((article) => (
             <ArticlesGrid.Tile
               key={article.id}
@@ -156,8 +172,8 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
           {state.is === 'loading_more' && (
             <Placeholders length={state.params.ItemsPerPage} />
           )}
-        </ArticlesGrid>
-      </Box>
+        </div>
+      </>
     );
   }, [state, lang, actions.reset]);
 
