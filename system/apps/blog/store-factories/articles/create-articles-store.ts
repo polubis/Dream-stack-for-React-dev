@@ -91,7 +91,7 @@ const createArticlesStore = () => {
         });
       }),
       switchMap((params) =>
-        from(params.yours ? getArticles(params) : getYourArticles(params)).pipe(
+        from(params.yours ? getYourArticles(params) : getArticles(params)).pipe(
           tap(({ data: articles }) => {
             set({
               is: checkHasLoadedAll(params.ItemsPerPage, articles)
@@ -132,7 +132,7 @@ const createArticlesStore = () => {
         });
       }),
       switchMap((params) =>
-        from(params.yours ? getArticles(params) : getYourArticles(params)).pipe(
+        from(params.yours ? getYourArticles(params) : getArticles(params)).pipe(
           tap(({ data: articles }) => {
             set({
               is: checkHasLoadedAll(params.ItemsPerPage, articles)
@@ -179,7 +179,7 @@ const createArticlesStore = () => {
         });
       }),
       concatMap((params) =>
-        from(params.yours ? getArticles(params) : getYourArticles(params)).pipe(
+        from(params.yours ? getYourArticles(params) : getArticles(params)).pipe(
           tap(({ data: articles }) => {
             set({
               is: checkHasLoadedAll(params.ItemsPerPage, articles)

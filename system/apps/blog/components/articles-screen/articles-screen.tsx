@@ -18,11 +18,12 @@ import { memo, useCallback, useMemo } from 'react';
 import { ArticlesTagsSelect } from '../articles-tags-select';
 import { ArticlesSearchInput } from '../articles-search-input';
 import { ArticlesGrid } from '../articles-grid';
-import { useLang } from 'apps/blog/dk';
+import { useLang } from '../../dk';
 import { InfoSection } from '../info-section';
 import { ScrollState, useScroll } from '@system/figa-hooks';
 import { Lang } from '@system/blog-api-models';
-import type { ArticlesStore } from 'apps/blog/store-factories/articles';
+import type { ArticlesStore } from '../../store-factories/articles';
+import { auth_store_selectors } from '../../store/auth';
 
 const Placeholder = styled.div`
   background: ${(props) => props.theme.box.filled.bg};
@@ -80,6 +81,7 @@ const makeUrl = (lang: Lang, article: ArticlesStore.Article): string => {
 };
 
 const ArticlesScreen = (props: ArticlesScreenProps) => {
+  const authorized = auth_store_selectors.useIsAuthorized();
   const { selectors, actions } = props;
   const state = selectors.useState();
   const lang = useLang();
@@ -176,7 +178,10 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
             </Button>
           </Box>
           <Divider />
-          <Box padding={[250, 250, 250, 250]} spacing={[250, 250, 250, 600]}>
+          <Box
+            padding={[250, 250, 250, 250]}
+            spacing={[250, 250, authorized ? 250 : 0, 600]}
+          >
             <Field label="Search phrase">
               <ArticlesSearchInput
                 loading={state.is === 'changing'}
@@ -190,13 +195,15 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
                 onChange={(Status) => actions.change({ Status })}
               />
             </Field>
-            <Checkbox
-              label="Show your articles"
-              checked={state.is === 'idle' ? false : state.params.yours}
-              onChange={() =>
-                actions.change({ yours: !selectors.safeState().params.yours })
-              }
-            />
+            {authorized && (
+              <Checkbox
+                label="Show your articles"
+                checked={state.is === 'idle' ? false : state.params.yours}
+                onChange={() =>
+                  actions.change({ yours: !selectors.safeState().params.yours })
+                }
+              />
+            )}
             <Field label="Tags">
               <ArticlesTagsSelect
                 tags={state.is === 'idle' ? [] : state.params.Tags}

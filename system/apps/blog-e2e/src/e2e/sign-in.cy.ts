@@ -24,9 +24,10 @@ describe('Sign in works when: ', () => {
         "We're redirecting you...",
         'Signed in'
       )
-      .And('Im on page', '/en/your-articles')
-      .When('System recieved response from endpoint', 'getYourArticles')
-      .And('I go back')
+      .And('Im on page', '/en/articles')
+      .When('I click checkbox', 'Show your articles')
+      .Then('System recieved response from endpoint', 'getYourArticles')
+      .When('I go back')
       .Then(
         'I see text',
         "You're already signed in 💚",
