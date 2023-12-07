@@ -4,13 +4,7 @@ import {
   live_articles_actions,
   live_articles_selectors,
 } from '../../store/live-articles';
-import {
-  ArticlesScreen,
-  type ArticlesScreenProps,
-} from '../../components/articles-screen';
-
-const makeUrl: ArticlesScreenProps['makeUrl'] = (lang, article) =>
-  `/${lang}/articles/${article.url}`;
+import { ArticlesScreen } from '../../components/articles-screen';
 
 const LiveArticlesView = ({ params, response }: LiveArticlesViewProps) => {
   const state = live_articles_selectors.useState();
@@ -24,7 +18,6 @@ const LiveArticlesView = ({ params, response }: LiveArticlesViewProps) => {
       <ArticlesScreen
         selectors={live_articles_selectors}
         actions={live_articles_actions}
-        makeUrl={makeUrl}
       />
     </MainLayout>
   );
