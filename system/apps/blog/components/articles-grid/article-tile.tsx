@@ -89,7 +89,8 @@ const Container = styled.div`
 
     .article-tile-content {
       ${column()}
-      padding: ${tokens.spacing[200]};
+      padding: ${tokens.spacing[100]} ${tokens.spacing[50]} 0 ${tokens
+        .spacing[50]};
       height: 100%;
 
       & > .h6 {

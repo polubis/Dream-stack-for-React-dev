@@ -4,8 +4,12 @@ import {
   Checkbox,
   Divider,
   Field,
+  FiltersIcon,
   Font,
+  L_DOWN,
   Loader,
+  M_DOWN,
+  Popover,
   VIEWPORT,
   column,
   tokens,
@@ -14,7 +18,7 @@ import styled from 'styled-components';
 import { ArticlesStatusSelect } from '../articles-status-select';
 import { ArticlesScreenProps } from './defs';
 import { isEqual } from 'lodash';
-import { memo, useCallback, useMemo } from 'react';
+import { type ReactNode, memo, useCallback, useMemo } from 'react';
 import { ArticlesTagsSelect } from '../articles-tags-select';
 import { ArticlesSearchInput } from '../articles-search-input';
 import { ArticlesGrid } from '../articles-grid';
@@ -42,33 +46,102 @@ Placeholders.displayName = 'Placeholders';
 
 const Wrapper = styled.div`
   position: relative;
-  padding: ${tokens.spacing[600]} ${tokens.spacing[250]};
+  padding: ${tokens.spacing[500]} ${tokens.spacing[250]};
+
+  .articles-screen-mobile-filters {
+    display: none;
+  }
+
+  @media (max-width: 740px) {
+    padding: ${tokens.spacing[250]};
+
+    .articles-screen-mobile-filters {
+      display: flex;
+      margin: 0 0 ${tokens.spacing[300]} auto;
+    }
+  }
+
+  @media ${M_DOWN} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Container = styled.div`
   display: grid;
   grid-template-columns: ${tokens.spacing[3500]} 1fr;
   gap: ${tokens.spacing[400]};
-  max-width: ${VIEWPORT.laptop}px;
+  max-width: ${VIEWPORT.mdLaptop}px;
   margin: 0 auto;
 
-  .articles-filters {
-    background: ${(props) => props.theme.box.outlined.bg};
-    border: ${tokens.spacing[12]} solid
-      ${(props) => props.theme.box.outlined.borderColor};
-    border-radius: ${tokens.radius[100]};
-    height: max-content;
-    position: sticky;
-    top: ${tokens.spacing[1400]};
-
-    .divider div {
-      width: 100%;
-      background: ${(props) => props.theme.box.outlined.borderColor};
-    }
+  .articles-screen-mobile-filters {
+    display: none;
   }
 
   .articles-content {
     ${column()}
+
+    & > .h6 {
+      margin-bottom: ${tokens.spacing[250]};
+    }
+
+    .articles-screen-tiles {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: ${tokens.spacing[250]};
+
+      & > * {
+        height: 400px;
+      }
+    }
+  }
+
+  @media ${L_DOWN} {
+    .articles-content .articles-screen-tiles {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 940px) {
+    .articles-content .articles-screen-tiles {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 740px) {
+    grid-template-columns: 1fr;
+
+    .articles-content .articles-screen-tiles {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .articles-filters {
+      display: none;
+    }
+
+    .articles-content .info-section {
+      margin-top: ${tokens.spacing[1000]} !important;
+    }
+  }
+
+  @media ${M_DOWN} {
+    .articles-content .articles-screen-tiles {
+      grid-template-columns: 1fr;
+    }
+  }
+`;
+
+const Filters = styled.div`
+  background: ${(props) => props.theme.box.outlined.bg};
+  border: ${tokens.spacing[12]} solid
+    ${(props) => props.theme.box.outlined.borderColor};
+  border-radius: ${tokens.radius[100]};
+  height: max-content;
+  position: sticky;
+  top: ${tokens.spacing[1400]};
+
+  .divider div {
+    width: 100%;
+    background: ${(props) => props.theme.box.outlined.borderColor};
   }
 `;
 
@@ -78,6 +151,46 @@ const makeUrl = (lang: Lang, article: ArticlesStore.Article): string => {
   }
 
   return `/${lang}/articles/preview?id=${article.id}&url=${article.url}`;
+};
+
+const PopoverContent = ({ children }: { children: ReactNode }) => {
+  return (
+    <Popover.Content minWidth="280px" maxWidth="600px">
+      {children}
+    </Popover.Content>
+  );
+};
+
+const PopoverTrigger = ({
+  children,
+  active,
+}: {
+  children: ReactNode;
+  active: boolean;
+}) => {
+  const { toggle } = Popover.use();
+
+  return (
+    <Popover.Trigger>
+      <Box
+        className="articles-screen-mobile-filters"
+        spacing={[200]}
+        orientation="row"
+        between
+      >
+        {children}
+        <Button
+          size={2}
+          shape="rounded"
+          variant={active ? 'filled' : 'ghost'}
+          motive={active ? 'secondary' : 'tertiary'}
+          onClick={toggle}
+        >
+          <FiltersIcon />
+        </Button>
+      </Box>
+    </Popover.Trigger>
+  );
 };
 
 const ArticlesScreen = (props: ArticlesScreenProps) => {
@@ -101,6 +214,65 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
     [state]
   );
 
+  const filters = (
+    <Filters className="articles-filters">
+      <Box padding={[250, 200, 250, 300]} orientation="row" between>
+        <Font variant="h6">Filters</Font>
+        <Button
+          size={1}
+          variant="ghost"
+          motive="tertiary"
+          disabled={resetIsDisabled}
+          onClick={actions.reset}
+        >
+          Clear All
+        </Button>
+      </Box>
+      <Divider />
+      <Box
+        padding={[250, 250, 250, 250]}
+        spacing={[250, 250, authorized ? 250 : 0, 600]}
+      >
+        <Field label="Search phrase">
+          <ArticlesSearchInput
+            search={state.is === 'idle' ? '' : state.params.Search}
+            onChange={(Search) => actions.change({ Search })}
+          />
+        </Field>
+        <Field label="Status">
+          <ArticlesStatusSelect
+            status={state.is === 'idle' ? 'Draft' : state.params.Status}
+            onChange={(Status) => actions.change({ Status })}
+          />
+        </Field>
+        {authorized && (
+          <Checkbox
+            label="Show your articles"
+            checked={state.is === 'idle' ? false : state.params.yours}
+            onChange={() =>
+              actions.change({ yours: !selectors.safeState().params.yours })
+            }
+          />
+        )}
+        <Field label="Tags">
+          <ArticlesTagsSelect
+            tags={state.is === 'idle' ? [] : state.params.Tags}
+            onConfirm={(Tags) => actions.change({ Tags })}
+          />
+        </Field>
+
+        <Box orientation="row" right spacing={[150]}>
+          <Button size={2} motive="tertiary" variant="ghost">
+            Save
+          </Button>
+          <Button size={2} motive="tertiary" variant="ghost">
+            Share
+          </Button>
+        </Box>
+      </Box>
+    </Filters>
+  );
+
   const content = useMemo(() => {
     if (state.is === 'idle' || state.is === 'loading') {
       return (
@@ -117,6 +289,7 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
     ) {
       return (
         <InfoSection
+          padding={[0, 0, 0, 0]}
           title="❌ Ups... Something went wrong!"
           description="Try again with button below or refresh page if problem occurs 🔃."
           footer={<Button onClick={actions.reset}>Retry</Button>}
@@ -127,6 +300,7 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
     if (state.articles.length === 0) {
       return (
         <InfoSection
+          padding={[0, 0, 0, 0]}
           title="No data for provided filters 💨"
           description="Change filters and try again 🔃."
         />
@@ -134,12 +308,9 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
     }
 
     return (
-      <Box spacing={[250]}>
-        <Font variant="h6">
-          Results ({state.articles.length}) | Current Page (
-          {state.params.CurrentPage})
-        </Font>
-        <ArticlesGrid>
+      <>
+        <Font variant="h6">Results ({state.articles.length})</Font>
+        <div className="articles-screen-tiles">
           {state.articles.map((article) => (
             <ArticlesGrid.Tile
               key={article.id}
@@ -156,71 +327,21 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
           {state.is === 'loading_more' && (
             <Placeholders length={state.params.ItemsPerPage} />
           )}
-        </ArticlesGrid>
-      </Box>
+        </div>
+      </>
     );
   }, [state, lang, actions.reset]);
 
   return (
     <Wrapper>
+      <Popover closeMode="backdrop">
+        <PopoverTrigger active={!resetIsDisabled}>
+          <Font variant="h5">Articles</Font>
+        </PopoverTrigger>
+        <PopoverContent>{filters}</PopoverContent>
+      </Popover>
       <Container>
-        <div className="articles-filters">
-          <Box padding={[250, 200, 250, 300]} orientation="row" between>
-            <Font variant="h6">Filters</Font>
-            <Button
-              size={1}
-              variant="ghost"
-              motive="tertiary"
-              disabled={resetIsDisabled}
-              onClick={actions.reset}
-            >
-              Clear All
-            </Button>
-          </Box>
-          <Divider />
-          <Box
-            padding={[250, 250, 250, 250]}
-            spacing={[250, 250, authorized ? 250 : 0, 600]}
-          >
-            <Field label="Search phrase">
-              <ArticlesSearchInput
-                loading={state.is === 'changing'}
-                search={state.is === 'idle' ? '' : state.params.Search}
-                onChange={(Search) => actions.change({ Search })}
-              />
-            </Field>
-            <Field label="Status">
-              <ArticlesStatusSelect
-                status={state.is === 'idle' ? 'Draft' : state.params.Status}
-                onChange={(Status) => actions.change({ Status })}
-              />
-            </Field>
-            {authorized && (
-              <Checkbox
-                label="Show your articles"
-                checked={state.is === 'idle' ? false : state.params.yours}
-                onChange={() =>
-                  actions.change({ yours: !selectors.safeState().params.yours })
-                }
-              />
-            )}
-            <Field label="Tags">
-              <ArticlesTagsSelect
-                tags={state.is === 'idle' ? [] : state.params.Tags}
-                onConfirm={(Tags) => actions.change({ Tags })}
-              />
-            </Field>
-
-            <Box orientation="row" right spacing={[150]}>
-              <Button size={2} motive="tertiary" variant="ghost">
-                Save
-              </Button>
-              <Button size={2} motive="tertiary" variant="ghost">
-                Share
-              </Button>
-            </Box>
-          </Box>
-        </div>
+        {filters}
         <div className="articles-content">{content}</div>
       </Container>
     </Wrapper>
