@@ -48,6 +48,7 @@ const tokens: Tokens = {
   radius: {
     25: '2px',
     50: '4px',
+    100: '8px',
     1000: '50%',
   },
   z: {
