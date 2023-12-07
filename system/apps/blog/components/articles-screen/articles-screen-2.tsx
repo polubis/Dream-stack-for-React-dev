@@ -59,11 +59,15 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
         <div className="articles-filters">
           <Box padding={[250, 200, 250, 300]} orientation="row" between>
             <Font variant="h6">Filters</Font>
-            {resetIsDisabled || (
-              <Button size={1} variant="ghost" motive="tertiary">
-                Clear All
-              </Button>
-            )}
+            <Button
+              size={1}
+              variant="ghost"
+              motive="tertiary"
+              disabled={resetIsDisabled}
+              onClick={actions.reset}
+            >
+              Clear All
+            </Button>
           </Box>
           <Divider />
           <Box padding={[250, 250, 250, 250]} spacing={[250, 250]}>
