@@ -193,7 +193,7 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
             <Checkbox
               label="Show your articles"
               checked={state.is === 'idle' ? false : state.params.yours}
-              onClick={() =>
+              onChange={() =>
                 actions.change({ yours: !selectors.safeState().params.yours })
               }
             />
