@@ -41,7 +41,7 @@ const Placeholders = memo(({ length }: { length: number }) => (
 Placeholders.displayName = 'Placeholders';
 
 const Wrapper = styled.div`
-  background: #191919;
+  position: relative;
   padding: ${tokens.spacing[600]} ${tokens.spacing[250]};
 `;
 
@@ -54,8 +54,12 @@ const Container = styled.div`
 
   .articles-filters {
     background: ${(props) => props.theme.box.outlined.bg};
-    border: ${tokens.spacing[12]} solid #393939;
+    border: ${tokens.spacing[12]} solid
+      ${(props) => props.theme.box.outlined.borderColor};
     border-radius: ${tokens.radius[100]};
+    height: max-content;
+    position: sticky;
+    top: ${tokens.spacing[1400]};
 
     .divider div {
       width: 100%;

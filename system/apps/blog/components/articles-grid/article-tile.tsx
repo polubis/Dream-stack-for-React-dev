@@ -72,7 +72,7 @@ const Container = styled.div`
       flex-shrink: 0;
 
       img {
-        border-radius: ${tokens.radius[25]};
+        border-radius: ${tokens.radius[50]};
       }
 
       .article-tile-badges {
