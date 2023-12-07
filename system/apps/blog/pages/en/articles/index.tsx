@@ -1,6 +1,6 @@
 import type { ArticlesPageProps } from '../../../models';
 import type { GetStaticProps } from 'next';
-import { LiveArticlesView } from '../../../views/live-articles/live-articles.view';
+import { ArticlesView } from '../../../views/articles/articles.view';
 import { getArticles } from '@system/blog-api';
 import type { ArticlesStore } from '../../../store-factories/articles';
 
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps<ArticlesPageProps> = async () => {
 };
 
 const ArticlesPage = ({ response, params }: ArticlesPageProps) => {
-  return <LiveArticlesView response={response} params={params} />;
+  return <ArticlesView response={response} params={params} />;
 };
 
 export default ArticlesPage;

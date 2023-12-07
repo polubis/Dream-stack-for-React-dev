@@ -1,16 +1,16 @@
 import { ArticlesTagsSelect } from '../../components/articles-tags-select';
 import {
-  live_articles_actions,
-  live_articles_selectors,
-} from '../../store/live-articles';
+  articles_store_actions,
+  articles_store_selectors,
+} from '../../store/articles';
 
 const TagsPopover = () => {
-  const state = live_articles_selectors.useSafeState();
+  const state = articles_store_selectors.useSafeState();
 
   return (
     <ArticlesTagsSelect
       tags={state.params.Tags}
-      onConfirm={(Tags) => live_articles_actions.change({ Tags })}
+      onConfirm={(Tags) => articles_store_actions.change({ Tags })}
     />
   );
 };
