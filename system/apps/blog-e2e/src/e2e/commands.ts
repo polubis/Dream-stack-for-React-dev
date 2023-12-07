@@ -141,7 +141,7 @@ const commands = {
     });
   },
   'I see empty article search input': () => {
-    commands['I see empty input']('🏸 Type to find article...');
+    commands['I see empty input']('Type to find article...');
   },
   'I see empty article tags field': () => {
     cy.get(`button.button[title="Articles tags"]`).find('svg').should('exist');
@@ -180,7 +180,7 @@ const commands = {
     );
   },
   'I click founded article': (title: FullArticleDto['title']) => {
-    commands['I type in input']('🏸 Type to find article...', title);
+    commands['I type in input']('Type to find article...', title);
     cy.get(`[data-article-title="${title}"]`).click();
   },
   'Im on article review page': () => {
