@@ -40,6 +40,8 @@ import { RecommendedArticles } from './recommended-articles';
 import styled from 'styled-components';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useScrollTo } from '@system/figa-hooks';
+import { useLayoutEffect } from 'react';
 
 const Links = styled.ul`
   ${column()}
@@ -83,6 +85,13 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
   const lang = useLang();
   const theme = useThemeProvider();
   const pathname = usePathname();
+
+  const [, { toTop }] = useScrollTo();
+
+  useLayoutEffect(() => {
+    toTop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <AlertsProvider>
