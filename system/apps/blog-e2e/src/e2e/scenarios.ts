@@ -37,7 +37,7 @@ const scenarios = {
       )
       .And('I pick thumbnail')
       .And('I click tab', 'Content')
-      .And('I change article content', GetData('content'))
+      .And('I change article content')
       .And('I click icon button', 'Submit article')
       .Then('I see text', 'Do you want to submit an article for review?')
       .When('I click checkbox', 'Send to review')
@@ -86,7 +86,7 @@ const scenarios = {
       )
       .And('I pick thumbnail')
       .And('I click tab', 'Content')
-      .And('I change article content', GetData('content'))
+      .And('I change article content')
       .And('I click icon button', 'Submit article')
       .Then('I see text', 'Do you want to submit an article for review?')
       .When('I click button', 'Submit')
@@ -100,11 +100,14 @@ const scenarios = {
 
     return GetBackground();
   },
-  'I delete article': (title: FullArticleDto['title'], description: FullArticleDto['description']) => {
+  'I delete article': (
+    title: FullArticleDto['title'],
+    description: FullArticleDto['description']
+  ) => {
     const { When } = Gherkin(commands);
 
     When('I click founded article', title)
-      .Then('Im on article review page')
+      .And('I see article')
       .When('I scroll to', description)
       .And('I click icon button', 'Delete article')
       .Then('I see text', 'Are you sure you want to delete the article?')
@@ -113,7 +116,7 @@ const scenarios = {
       .And('I click button', 'Sure?')
       .Then('I see disabled button', 'Cancel')
       .And('I see loading button', 'Sure?')
-      .And('Im on page', '/en/your-articles');
+      .And('Im on page', '/en/articles');
   },
 };
 

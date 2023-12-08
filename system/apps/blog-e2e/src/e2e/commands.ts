@@ -90,22 +90,10 @@ const commands = {
       cy.get(`button.button[title="${name}"]`).should('be.disabled');
     });
   },
-  'I navigate to admin articles page': () => {
-    commands['I scroll to top of page']();
-    cy.get(`.nav .popover-trigger button.button`).click();
-    commands['I click button']('Admin panel');
-    commands['Im on page']('/en/admin');
-  },
-  'I navigate to your articles page': () => {
-    commands['I scroll to top of page']();
-    cy.get(`.nav .popover-trigger button.button`).click();
-    commands['I click button']('Your articles');
-    commands['Im on page']('/en/your-articles');
-  },
   'I navigate to sign in page': () => {
     commands['I click button']('Sign In');
   },
-  'I change article content': (content: string) => {
+  'I change article content': () => {
     // @TODO How to set codemirror type event?
   },
   'I pick thumbnail': () => {
@@ -141,7 +129,7 @@ const commands = {
     });
   },
   'I see empty article search input': () => {
-    commands['I see empty input']('🏸 Type to find article...');
+    commands['I see empty input']('Type to find article...');
   },
   'I see empty article tags field': () => {
     cy.get(`button.button[title="Articles tags"]`).find('svg').should('exist');
@@ -180,14 +168,8 @@ const commands = {
     );
   },
   'I click founded article': (title: FullArticleDto['title']) => {
-    commands['I type in input']('🏸 Type to find article...', title);
+    commands['I type in input']('Type to find article...', title);
     cy.get(`[data-article-title="${title}"]`).click();
-  },
-  'Im on article review page': () => {
-    cy.url()
-      .should('contain', '/en/admin/article-review')
-      .and('contain', 'url=')
-      .and('contain', 'id=');
   },
   'I see article': () => {
     cy.get(`[title="Author name"]`);

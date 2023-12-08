@@ -3,7 +3,7 @@
 exports[`User is able to use layout when [FRAGILE] allows to disable content padding 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout off-padding"
+    class="sc-bcXHqe MLbvX layout off-padding"
   >
     <header
       class="layout-top-nav"
@@ -34,7 +34,7 @@ exports[`User is able to use layout when [FRAGILE] allows to disable content pad
 exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gives option to maintain it 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout asided"
+    class="sc-bcXHqe MLbvX layout asided"
   >
     <header
       class="layout-top-nav"
@@ -72,7 +72,7 @@ exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gi
 exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gives option to maintain it 2`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout asided opened"
+    class="sc-bcXHqe MLbvX layout asided opened"
   >
     <header
       class="layout-top-nav"
@@ -110,7 +110,7 @@ exports[`User is able to use layout when [FRAGILE] allows to pass sidebar and gi
 exports[`User is able to use layout when [FRAGILE] allows to skip footer 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout"
+    class="sc-bcXHqe MLbvX layout"
   >
     <header
       class="layout-top-nav"
@@ -141,7 +141,7 @@ exports[`User is able to use layout when [FRAGILE] allows to skip footer 1`] = `
 exports[`User is able to use layout when [FRAGILE] renders big contents 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout"
+    class="sc-bcXHqe MLbvX layout"
   >
     <header
       class="layout-top-nav"
@@ -178,7 +178,7 @@ exports[`User is able to use layout when [FRAGILE] renders big contents 1`] = `
 exports[`User is able to use layout when [FRAGILE] renders with default setup 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gswNZR kbHHIn layout"
+    class="sc-bcXHqe MLbvX layout"
   >
     <header
       class="layout-top-nav"

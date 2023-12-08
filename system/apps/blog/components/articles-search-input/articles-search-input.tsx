@@ -1,4 +1,12 @@
-import { Button, CloseIcon, Input, M_UP, size, tokens } from '@system/figa-ui';
+import {
+  Button,
+  CloseIcon,
+  Input,
+  M_UP,
+  SearchIcon,
+  size,
+  tokens,
+} from '@system/figa-ui';
 import type { ArticlesSearchProps } from './defs';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
@@ -50,13 +58,15 @@ const ArticlesSearchInput = ({
       <Input
         value={search}
         loading={loading}
-        placeholder="🏸 Type to find article..."
+        placeholder="Type to find article..."
         onChange={(e) => handleChange(e.target.value)}
         suffx={
-          search.length > 0 && (
+          search.length > 0 ? (
             <Button onClick={() => handleChange('')}>
               <CloseIcon />
             </Button>
+          ) : (
+            <SearchIcon />
           )
         }
       />

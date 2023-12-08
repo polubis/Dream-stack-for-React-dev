@@ -11,7 +11,6 @@ import {
 import { sign_out_store_actions, useSignOutStore } from '../../store/sign-out';
 import { useAuthStore } from '../../store/auth';
 import { useRouter } from 'next/navigation';
-import { AdminsOnly } from '../../core';
 import { Link } from '../link';
 import { useLang } from '../../dk';
 import styled from 'styled-components';
@@ -80,7 +79,7 @@ const Content = () => {
           </Link>
         </FigaUILink>
         <FigaUILink variant="b1">
-          <Link title="Your articles" href={`/${lang}/your-articles`}>
+          <Link title="Your articles" href={`/${lang}/articles`}>
             Your articles
           </Link>
         </FigaUILink>
@@ -109,18 +108,7 @@ const Content = () => {
         </Box>
       </Box>
 
-      <Box right spacing={[200]} orientation="row">
-        <AdminsOnly>
-          <Button
-            size={2}
-            variant="outlined"
-            motive="tertiary"
-            onClick={() => router.push('/en/admin')}
-            loading={signOutStore.is === 'busy'}
-          >
-            Admin panel
-          </Button>
-        </AdminsOnly>
+      <Box right orientation="row">
         <Button
           variant="outlined"
           size={2}

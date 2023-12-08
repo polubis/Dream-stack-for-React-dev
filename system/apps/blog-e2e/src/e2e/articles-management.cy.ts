@@ -10,17 +10,18 @@ describe('Articles management works when: ', () => {
       scenarios['I create send to review article']();
 
     Given('Im on page', '/en/articles-creator')
-      .When('I navigate to admin articles page')
+      .When('I scroll to', 'Do you want to submit an article for review?')
+      .And('I click navbar link', 'Articles')
       .Then('I see empty article search input')
       .And('I see empty article tags field')
       .When('I select status in article status field', 'Review')
       .Then('I see articles only with status', 'Review')
       .When('I click founded article', title)
-      .Then('Im on article review page')
-      .And('I see article')
+      .Then('I see article')
       .When('I scroll to', description)
       .And('I accept article')
-      .And('I navigate to admin articles page')
+      .And('I scroll to', title)
+      .And('I click navbar link', 'Articles')
       .Then('I see empty article search input')
       .And('I see empty article tags field')
       .When('I select status in article status field', 'Published')
@@ -34,22 +35,45 @@ describe('Articles management works when: ', () => {
       scenarios['I create send to review article']();
 
     Given('Im on page', '/en/articles-creator')
-      .When('I navigate to admin articles page')
+      .When('I scroll to', 'Do you want to submit an article for review?')
+      .And('I click navbar link', 'Articles')
       .Then('I see empty article search input')
       .And('I see empty article tags field')
       .When('I select status in article status field', 'Review')
       .Then('I see articles only with status', 'Review')
       .When('I click founded article', title)
-      .Then('Im on article review page')
-      .And('I see article')
+      .Then('I see article')
       .When('I scroll to', description)
       .And('I reject article')
-      .And('I navigate to admin articles page')
+      .And('I scroll to', title)
+      .And('I click navbar link', 'Articles')
       .Then('I see empty article search input')
       .And('I see empty article tags field')
       .When('I select status in article status field', 'Refine')
       .Then('I see articles only with status', 'Refine');
 
     scenarios['I delete article'](title, description);
+
+    // const { title, description } =
+    //   scenarios['I create send to review article']();
+
+    // Given('Im on page', '/en/articles-creator')
+    //   .When('I navigate to admin articles page')
+    //   .Then('I see empty article search input')
+    //   .And('I see empty article tags field')
+    //   .When('I select status in article status field', 'Review')
+    //   .Then('I see articles only with status', 'Review')
+    //   .When('I click founded article', title)
+    //   .Then('Im on article review page')
+    //   .And('I see article')
+    //   .When('I scroll to', description)
+    //   .And('I reject article')
+    //   .And('I navigate to admin articles page')
+    //   .Then('I see empty article search input')
+    //   .And('I see empty article tags field')
+    //   .When('I select status in article status field', 'Refine')
+    //   .Then('I see articles only with status', 'Refine');
+
+    // scenarios['I delete article'](title, description);
   });
 });

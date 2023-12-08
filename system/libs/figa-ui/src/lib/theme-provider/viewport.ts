@@ -1,19 +1,19 @@
-import type { Viewport, ViewportValue } from './defs';
+import type { Viewport } from './defs';
 
 const VIEWPORT: Viewport = {
   smallMobile: 420,
   mobile: 600,
   tablet: 900,
+  mdLaptop: 1280,
   laptop: 1440,
   desktop: 1920,
 };
 
 const { smallMobile, mobile, tablet, laptop, desktop } = VIEWPORT;
 
-const getUpViewport = (value: ViewportValue): string =>
-  `(min-width: ${value}px)`;
+const getUpViewport = (value: number): string => `(min-width: ${value}px)`;
 
-const getDownViewport = (value: ViewportValue): string =>
+const getDownViewport = (value: number): string =>
   `(max-width: ${value - 1}px)`;
 
 const isUp = (limit: number) => (value: number) => value >= limit;

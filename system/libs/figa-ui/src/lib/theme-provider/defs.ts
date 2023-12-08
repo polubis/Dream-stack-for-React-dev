@@ -5,14 +5,13 @@ interface ThemeProviderProps {
   children: ReactNode;
 }
 
-type ViewportValue = number;
-
 interface Viewport {
-  smallMobile: ViewportValue;
-  mobile: ViewportValue;
-  tablet: ViewportValue;
-  laptop: ViewportValue;
-  desktop: ViewportValue;
+  smallMobile: number;
+  mobile: number;
+  tablet: number;
+  mdLaptop: number;
+  laptop: number;
+  desktop: number;
 }
 
 type CodeTag = keyof typeof tags;
@@ -44,10 +43,12 @@ type Spacing = Readonly<{
   950: string;
   1000: string;
   1250: string;
+  1400: string;
   1500: string;
   1750: string;
   2000: string;
   3000: string;
+  3500: string;
   4000: string;
 }>;
 
@@ -80,7 +81,9 @@ interface Tokens {
     100: string;
   };
   radius: {
+    25: string;
     50: string;
+    100: string;
     1000: string;
   };
   z: {
@@ -511,6 +514,5 @@ export type {
   Palette,
   SpacingKey,
   Viewport,
-  ViewportValue,
   CodeTag,
 };

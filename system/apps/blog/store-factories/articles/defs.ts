@@ -1,7 +1,6 @@
 import type {
   ArticleDto,
   ArticlesParams,
-  PaginatedArticlesResponse,
   ResponseError,
 } from '@system/blog-api-models';
 
@@ -9,7 +8,7 @@ import type {
 export namespace ArticlesStore {
   export type Article = ArticleDto;
   export type Articles = Article[];
-  export type Params = ArticlesParams;
+  export type Params = ArticlesParams & { yours: boolean };
 
   export interface ParamsState {
     params: Params;
@@ -90,8 +89,4 @@ export namespace ArticlesStore {
   }
 
   export type Store = State & Actions;
-
-  export interface Config {
-    service(params: Params): Promise<PaginatedArticlesResponse>;
-  }
 }

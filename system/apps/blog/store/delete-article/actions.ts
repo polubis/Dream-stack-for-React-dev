@@ -1,7 +1,7 @@
 import { deleteArticle, getError } from '@system/blog-api';
 import { type DeleteArticleStore } from './defs';
 import { useDeleteArticleStore } from './store';
-import { your_articles_actions } from '../your-articles';
+import { articles_store_actions } from '../articles';
 
 const { setState } = useDeleteArticleStore;
 
@@ -18,7 +18,7 @@ const delete_article_store_actions: DeleteArticleStore.Actions = {
 
     try {
       await deleteArticle({ id });
-      your_articles_actions.reset();
+      articles_store_actions.reset();
       set({ is: 'ok' });
     } catch (error: unknown) {
       set({ is: 'fail', error: getError(error) });

@@ -3,7 +3,6 @@ import {
   Badge,
   Button,
   Font,
-  SM_DOWN,
   SwapIcon,
   clamp,
   column,
@@ -73,7 +72,7 @@ const Container = styled.div`
       flex-shrink: 0;
 
       img {
-        border-radius: ${tokens.radius[25]};
+        border-radius: ${tokens.radius[50]};
       }
 
       .article-tile-badges {
@@ -90,7 +89,8 @@ const Container = styled.div`
 
     .article-tile-content {
       ${column()}
-      padding: ${tokens.spacing[200]};
+      padding: ${tokens.spacing[100]} ${tokens.spacing[50]} 0 ${tokens
+        .spacing[50]};
       height: 100%;
 
       & > .h6 {
@@ -185,18 +185,20 @@ const ArticleTile = ({
           <div className="article-tile-content-footer">
             <Button
               className="article-flip-btn"
-              variant="outlined"
+              variant="ghost"
+              motive="tertiary"
               shape="rounded"
-              size={1}
+              size={2}
               onClick={toggler.close}
             >
               <SwapIcon className="r-90" />
             </Button>
-            <Link href={url} data-article-title={title}>
+            <Link href={url} data-article-title={title} prefetch={false}>
               <Button
-                variant="outlined"
+                size={2}
+                variant="ghost"
+                motive="tertiary"
                 shape="rounded"
-                size={1}
                 title="Read article"
               >
                 <ArrowTopIcon className="r-90" />
@@ -209,7 +211,7 @@ const ArticleTile = ({
           <div className="article-tile-image">
             <Image
               fill
-              sizes={`${SM_DOWN} 100%, ${width}px`}
+              sizes={`${width}px`}
               src={thumbnail}
               loading="lazy"
               alt={`${title} thumbnail`}
@@ -240,19 +242,21 @@ const ArticleTile = ({
               </div>
               <Button
                 className="article-flip-btn"
-                variant="outlined"
+                motive="tertiary"
+                variant="ghost"
                 shape="rounded"
                 title="Show details"
-                size={1}
+                size={2}
                 onClick={toggler.open}
               >
                 <SwapIcon />
               </Button>
-              <Link href={url} data-article-title={title}>
+              <Link href={url} data-article-title={title} prefetch={false}>
                 <Button
-                  variant="outlined"
+                  variant="ghost"
+                  motive="tertiary"
                   shape="rounded"
-                  size={1}
+                  size={2}
                   title="Read article"
                 >
                   <ArrowTopIcon className="r-90" />

@@ -1,5 +1,5 @@
 import './index.css';
-import { ThemeProvider } from '@system/figa-ui';
+import { AlertsProvider, ThemeProvider } from '@system/figa-ui';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { useAuth } from '../core';
@@ -30,7 +30,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta title="App" />
       </Head>
       <ThemeProvider>
-        <Component {...pageProps} />
+        <AlertsProvider>
+          <Component {...pageProps} />
+        </AlertsProvider>
       </ThemeProvider>
     </>
   );

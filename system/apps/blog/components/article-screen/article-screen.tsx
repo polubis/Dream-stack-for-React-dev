@@ -72,7 +72,7 @@ const Toolbox = () => {
       {isAdmin && status === 'WaitingForApproval' && <ArticleActionsPopover />}
       <ArticleReviewsPopover />
       {isAuthor && (
-        <Link href={`/${lang}/articles-creator?url=${url}`}>
+        <Link prefetch={false} href={`/${lang}/articles-creator?url=${url}`}>
           <Button size={2} shape="rounded" motive="tertiary">
             <EditIcon />
           </Button>
