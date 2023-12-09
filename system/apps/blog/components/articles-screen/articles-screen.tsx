@@ -245,8 +245,8 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
       return false;
     }
 
-    const { CurrentPage, ...initialParams } = state.initialParams;
-    const { CurrentPage: cp, ...params } = state.params;
+    const { CurrentPage, yours, ...initialParams } = state.initialParams;
+    const { CurrentPage: cp, yours: y, ...params } = state.params;
 
     return !isEqual(initialParams, params);
   }, [state]);
