@@ -222,7 +222,16 @@ const createArticlesStore = () => {
         initialParams: params,
       });
     },
-    change: (params) => change.next(params),
+    change: (params) => {
+      const state = selectors.state();
+
+      if (state.is === 'changing_fail') {
+        actions.reset();
+        return;
+      }
+
+      change.next(params);
+    },
     reset: () => {
       const state = selectors.state();
 
