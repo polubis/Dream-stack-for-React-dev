@@ -28,6 +28,7 @@ import { ScrollState, useScroll } from '@system/figa-hooks';
 import { Lang } from '@system/blog-api-models';
 import type { ArticlesStore } from '../../store-factories/articles';
 import { auth_store_selectors } from '../../store/auth';
+import { SignedInOnly } from '../../core';
 
 const Placeholder = styled.div`
   background: ${(props) => props.theme.box.filled.bg};
@@ -143,6 +144,18 @@ const Filters = styled.div`
     width: 100%;
     background: ${(props) => props.theme.box.outlined.borderColor};
   }
+
+  .articles-screen-filters-content {
+    padding: ${tokens.spacing[250]};
+
+    & > *:not(:last-child) {
+      margin-bottom: ${tokens.spacing[200]};
+    }
+
+    & > *:last-child {
+      margin-top: ${tokens.spacing[450]};
+    }
+  }
 `;
 
 const makeUrl = (lang: Lang, article: ArticlesStore.Article): string => {
@@ -229,22 +242,21 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
         </Button>
       </Box>
       <Divider />
-      <Box
-        padding={[250, 250, 250, 250]}
-        spacing={[250, 250, authorized ? 250 : 0, 600]}
-      >
+      <div className="articles-screen-filters-content">
         <Field label="Search phrase">
           <ArticlesSearchInput
             search={state.is === 'idle' ? '' : state.params.Search}
             onChange={(Search) => actions.change({ Search })}
           />
         </Field>
-        <Field label="Status">
-          <ArticlesStatusSelect
-            status={state.is === 'idle' ? 'Draft' : state.params.Status}
-            onChange={(Status) => actions.change({ Status })}
-          />
-        </Field>
+        <SignedInOnly>
+          <Field label="Status">
+            <ArticlesStatusSelect
+              status={state.is === 'idle' ? 'Draft' : state.params.Status}
+              onChange={(Status) => actions.change({ Status })}
+            />
+          </Field>
+        </SignedInOnly>
         {authorized && (
           <Checkbox
             label="Show your articles"
@@ -269,7 +281,7 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
             Share
           </Button>
         </Box>
-      </Box>
+      </div>
     </Filters>
   );
 
