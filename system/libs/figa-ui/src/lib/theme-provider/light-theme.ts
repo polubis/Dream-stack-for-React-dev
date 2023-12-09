@@ -20,11 +20,11 @@ const light: Theme = {
     },
   },
   checkbox: {
-    borderColor: tokens.common.white,
+    borderColor: tokens.common.black,
     checked: {
       bg: tokens.primary[50],
       borderColor: tokens.primary[50],
-      color: tokens.common.white,
+      color: tokens.common.black,
     },
   },
   radio: {
