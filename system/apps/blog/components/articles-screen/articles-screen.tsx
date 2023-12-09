@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Checkbox,
   Divider,
   Field,
   FiltersIcon,
@@ -9,7 +8,10 @@ import {
   L_DOWN,
   Loader,
   M_DOWN,
+  M_UP,
   Popover,
+  Tab,
+  Tabs,
   VIEWPORT,
   column,
   tokens,
@@ -27,7 +29,6 @@ import { InfoSection } from '../info-section';
 import { ScrollState, useScroll } from '@system/figa-hooks';
 import { Lang } from '@system/blog-api-models';
 import type { ArticlesStore } from '../../store-factories/articles';
-import { auth_store_selectors } from '../../store/auth';
 import { SignedInOnly } from '../../core';
 
 const Placeholder = styled.div`
@@ -81,8 +82,8 @@ const Container = styled.div`
   .articles-content {
     ${column()}
 
-    & > .h6 {
-      margin-bottom: ${tokens.spacing[250]};
+    & > .b1 {
+      margin: 0 0 ${tokens.spacing[150]} 0;
     }
 
     .articles-screen-tiles {
@@ -129,6 +130,14 @@ const Container = styled.div`
       grid-template-columns: 1fr;
     }
   }
+
+  .tabs {
+    margin: 0 0 ${tokens.spacing[200]} 0;
+
+    @media ${M_UP} {
+      max-width: 280px;
+    }
+  }
 `;
 
 const Filters = styled.div`
@@ -142,6 +151,7 @@ const Filters = styled.div`
 
   .divider div {
     width: 100%;
+    height: ${tokens.spacing[12]};
     background: ${(props) => props.theme.box.outlined.borderColor};
   }
 
@@ -207,7 +217,6 @@ const PopoverTrigger = ({
 };
 
 const ArticlesScreen = (props: ArticlesScreenProps) => {
-  const authorized = auth_store_selectors.useIsAuthorized();
   const { selectors, actions } = props;
   const state = selectors.useState();
   const lang = useLang();
@@ -249,6 +258,7 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
             onChange={(Search) => actions.change({ Search })}
           />
         </Field>
+
         <SignedInOnly>
           <Field label="Status">
             <ArticlesStatusSelect
@@ -257,15 +267,7 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
             />
           </Field>
         </SignedInOnly>
-        {authorized && (
-          <Checkbox
-            label="Show your articles"
-            checked={state.is === 'idle' ? false : state.params.yours}
-            onChange={() =>
-              actions.change({ yours: !selectors.safeState().params.yours })
-            }
-          />
-        )}
+
         <Field label="Tags">
           <ArticlesTagsSelect
             tags={state.is === 'idle' ? [] : state.params.Tags}
@@ -321,7 +323,23 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
 
     return (
       <>
-        <Font variant="h6">Results ({state.articles.length})</Font>
+        <SignedInOnly>
+          <Tabs>
+            <Tab
+              active={!state.params.yours}
+              onClick={() => actions.change({ yours: false })}
+            >
+              All
+            </Tab>
+            <Tab
+              active={state.params.yours}
+              onClick={() => actions.change({ yours: true })}
+            >
+              Yours
+            </Tab>
+          </Tabs>
+        </SignedInOnly>
+        <Font variant="b1">Results ({state.articles.length})</Font>
         <div className="articles-screen-tiles">
           {state.articles.map((article) => (
             <ArticlesGrid.Tile
@@ -342,7 +360,8 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
         </div>
       </>
     );
-  }, [state, lang, actions.reset]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state, lang]);
 
   return (
     <Wrapper>
