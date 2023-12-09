@@ -26,8 +26,6 @@ const avatar_size = {
 };
 
 const Container = styled.div`
-  background: 1px solid ${(props) => props.theme.box.outlined.bg};
-
   .article-tile-flipped-container {
     ${column()}
     height: 100%;

@@ -88,8 +88,8 @@ const Container = styled.div`
 
     .articles-screen-tiles {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: ${tokens.spacing[250]};
+      grid-template-columns: 32.5% 32.5% 32.5%;
+      gap: ${tokens.spacing[300]} 2.5%;
 
       & > * {
         height: 400px;
@@ -99,21 +99,24 @@ const Container = styled.div`
 
   @media ${L_DOWN} {
     .articles-content .articles-screen-tiles {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 49% 49%;
+      gap: ${tokens.spacing[300]} 2%;
     }
   }
 
   @media (max-width: 940px) {
     .articles-content .articles-screen-tiles {
-      grid-template-columns: 1fr;
+      grid-template-columns: 100%;
+      gap: ${tokens.spacing[200]};
     }
   }
 
   @media (max-width: 740px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
 
     .articles-content .articles-screen-tiles {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 49% 49%;
+      gap: ${tokens.spacing[300]} 2%;
     }
 
     .articles-filters {
@@ -127,7 +130,8 @@ const Container = styled.div`
 
   @media ${M_DOWN} {
     .articles-content .articles-screen-tiles {
-      grid-template-columns: 1fr;
+      grid-template-columns: 100%;
+      gap: ${tokens.spacing[300]};
     }
   }
 
