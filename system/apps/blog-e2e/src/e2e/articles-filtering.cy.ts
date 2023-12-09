@@ -7,6 +7,6 @@ describe('Articles filtering works when: ', () => {
   it('not signed in user visits your articles page and session expiration section is displayed', () => {
     Given('System mocked endpoint', 'getRecommendedArticles')
       .And('System sets page as', '/en/articles')
-      .Then('I not see text', 'Show your articles');
+      .Then('I not see text', 'Yours', 'All')
   });
 });
