@@ -236,6 +236,17 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
     [state]
   );
 
+  const filtersChanged = useMemo(() => {
+    if (state.is === 'idle') {
+      return false;
+    }
+
+    const { CurrentPage, ...initialParams } = state.initialParams;
+    const { CurrentPage: cp, ...params } = state.params;
+
+    return !isEqual(initialParams, params);
+  }, [state]);
+
   const filters = (
     <Filters className="articles-filters">
       <Box padding={[250, 200, 250, 300]} orientation="row" between>
@@ -366,7 +377,7 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
   return (
     <Wrapper>
       <Popover closeMode="backdrop">
-        <PopoverTrigger active={!resetIsDisabled}>
+        <PopoverTrigger active={filtersChanged}>
           <Font variant="h5">Articles</Font>
         </PopoverTrigger>
         <PopoverContent>{filters}</PopoverContent>
