@@ -4,13 +4,11 @@ import { signOut, getError } from '@system/blog-api';
 import { storeFixture } from '../test-utils';
 import { mockResponseError } from '@system/blog-api-mocks';
 import { auth_store_actions } from '../auth';
-import { sign_in_store_actions } from '../sign-in';
 import type { SignOutStore } from './defs';
 import { sign_out_store_actions } from './actions';
 
 jest.mock('@system/blog-api');
 jest.mock('../auth');
-jest.mock('../sign-in');
 
 describe('Allows to sign out user when: ', () => {
   afterEach(() => {
@@ -22,7 +20,6 @@ describe('Allows to sign out user when: ', () => {
 
     (signOut as jest.Mock).mockImplementation(() => Promise.resolve());
     (auth_store_actions.unauthorize as jest.Mock).mockImplementation(jest.fn());
-    (sign_in_store_actions.reset as jest.Mock).mockImplementation(jest.fn());
 
     expect(result.current.is).toBe('idle');
 
@@ -37,7 +34,6 @@ describe('Allows to sign out user when: ', () => {
     });
 
     expect(auth_store_actions.unauthorize).toHaveBeenCalledTimes(1);
-    expect(sign_in_store_actions.reset).toHaveBeenCalledTimes(1);
     expect(result.current.is).toBe('ok');
 
     restore();
@@ -64,7 +60,6 @@ describe('Allows to sign out user when: ', () => {
     });
 
     expect(auth_store_actions.unauthorize).not.toHaveBeenCalled();
-    expect(sign_in_store_actions.reset).not.toHaveBeenCalled();
     expect(result.current.is).toBe('fail');
     expect((result.current as SignOutStore.Fail).error).toEqual(
       mockResponseError()

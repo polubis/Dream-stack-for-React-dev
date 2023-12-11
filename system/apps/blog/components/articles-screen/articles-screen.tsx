@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Checkbox,
   Divider,
   Field,
   FiltersIcon,
@@ -9,7 +8,10 @@ import {
   L_DOWN,
   Loader,
   M_DOWN,
+  M_UP,
   Popover,
+  Tab,
+  Tabs,
   VIEWPORT,
   column,
   tokens,
@@ -27,7 +29,7 @@ import { InfoSection } from '../info-section';
 import { ScrollState, useScroll } from '@system/figa-hooks';
 import { Lang } from '@system/blog-api-models';
 import type { ArticlesStore } from '../../store-factories/articles';
-import { auth_store_selectors } from '../../store/auth';
+import { SignedInOnly } from '../../core';
 
 const Placeholder = styled.div`
   background: ${(props) => props.theme.box.filled.bg};
@@ -80,14 +82,14 @@ const Container = styled.div`
   .articles-content {
     ${column()}
 
-    & > .h6 {
-      margin-bottom: ${tokens.spacing[250]};
+    & > .b1 {
+      margin: 0 0 ${tokens.spacing[150]} 0;
     }
 
     .articles-screen-tiles {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: ${tokens.spacing[250]};
+      grid-template-columns: 32.5% 32.5% 32.5%;
+      gap: ${tokens.spacing[300]} 2.5%;
 
       & > * {
         height: 400px;
@@ -97,21 +99,24 @@ const Container = styled.div`
 
   @media ${L_DOWN} {
     .articles-content .articles-screen-tiles {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 49% 49%;
+      gap: ${tokens.spacing[300]} 2%;
     }
   }
 
   @media (max-width: 940px) {
     .articles-content .articles-screen-tiles {
-      grid-template-columns: 1fr;
+      grid-template-columns: 100%;
+      gap: ${tokens.spacing[200]};
     }
   }
 
   @media (max-width: 740px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
 
     .articles-content .articles-screen-tiles {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 49% 49%;
+      gap: ${tokens.spacing[300]} 2%;
     }
 
     .articles-filters {
@@ -125,7 +130,16 @@ const Container = styled.div`
 
   @media ${M_DOWN} {
     .articles-content .articles-screen-tiles {
-      grid-template-columns: 1fr;
+      grid-template-columns: 100%;
+      gap: ${tokens.spacing[300]};
+    }
+  }
+
+  .tabs {
+    margin: 0 0 ${tokens.spacing[200]} 0;
+
+    @media ${M_UP} {
+      max-width: 280px;
     }
   }
 `;
@@ -141,7 +155,20 @@ const Filters = styled.div`
 
   .divider div {
     width: 100%;
+    height: ${tokens.spacing[12]};
     background: ${(props) => props.theme.box.outlined.borderColor};
+  }
+
+  .articles-screen-filters-content {
+    padding: ${tokens.spacing[250]};
+
+    & > *:not(:last-child) {
+      margin-bottom: ${tokens.spacing[200]};
+    }
+
+    & > *:last-child {
+      margin-top: ${tokens.spacing[450]};
+    }
   }
 `;
 
@@ -194,7 +221,6 @@ const PopoverTrigger = ({
 };
 
 const ArticlesScreen = (props: ArticlesScreenProps) => {
-  const authorized = auth_store_selectors.useIsAuthorized();
   const { selectors, actions } = props;
   const state = selectors.useState();
   const lang = useLang();
@@ -214,6 +240,17 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
     [state]
   );
 
+  const filtersChanged = useMemo(() => {
+    if (state.is === 'idle') {
+      return false;
+    }
+
+    const { CurrentPage, yours, ...initialParams } = state.initialParams;
+    const { CurrentPage: cp, yours: y, ...params } = state.params;
+
+    return !isEqual(initialParams, params);
+  }, [state]);
+
   const filters = (
     <Filters className="articles-filters">
       <Box padding={[250, 200, 250, 300]} orientation="row" between>
@@ -229,31 +266,23 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
         </Button>
       </Box>
       <Divider />
-      <Box
-        padding={[250, 250, 250, 250]}
-        spacing={[250, 250, authorized ? 250 : 0, 600]}
-      >
+      <div className="articles-screen-filters-content">
         <Field label="Search phrase">
           <ArticlesSearchInput
             search={state.is === 'idle' ? '' : state.params.Search}
             onChange={(Search) => actions.change({ Search })}
           />
         </Field>
-        <Field label="Status">
-          <ArticlesStatusSelect
-            status={state.is === 'idle' ? 'Draft' : state.params.Status}
-            onChange={(Status) => actions.change({ Status })}
-          />
-        </Field>
-        {authorized && (
-          <Checkbox
-            label="Show your articles"
-            checked={state.is === 'idle' ? false : state.params.yours}
-            onChange={() =>
-              actions.change({ yours: !selectors.safeState().params.yours })
-            }
-          />
-        )}
+
+        <SignedInOnly>
+          <Field label="Status">
+            <ArticlesStatusSelect
+              status={state.is === 'idle' ? 'Draft' : state.params.Status}
+              onChange={(Status) => actions.change({ Status })}
+            />
+          </Field>
+        </SignedInOnly>
+
         <Field label="Tags">
           <ArticlesTagsSelect
             tags={state.is === 'idle' ? [] : state.params.Tags}
@@ -269,7 +298,7 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
             Share
           </Button>
         </Box>
-      </Box>
+      </div>
     </Filters>
   );
 
@@ -309,7 +338,23 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
 
     return (
       <>
-        <Font variant="h6">Results ({state.articles.length})</Font>
+        <SignedInOnly>
+          <Tabs>
+            <Tab
+              active={!state.params.yours}
+              onClick={() => actions.change({ yours: false })}
+            >
+              All
+            </Tab>
+            <Tab
+              active={state.params.yours}
+              onClick={() => actions.change({ yours: true })}
+            >
+              Yours
+            </Tab>
+          </Tabs>
+        </SignedInOnly>
+        <Font variant="b1">Results ({state.articles.length})</Font>
         <div className="articles-screen-tiles">
           {state.articles.map((article) => (
             <ArticlesGrid.Tile
@@ -330,12 +375,13 @@ const ArticlesScreen = (props: ArticlesScreenProps) => {
         </div>
       </>
     );
-  }, [state, lang, actions.reset]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state, lang]);
 
   return (
     <Wrapper>
       <Popover closeMode="backdrop">
-        <PopoverTrigger active={!resetIsDisabled}>
+        <PopoverTrigger active={filtersChanged}>
           <Font variant="h5">Articles</Font>
         </PopoverTrigger>
         <PopoverContent>{filters}</PopoverContent>

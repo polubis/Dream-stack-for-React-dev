@@ -1,6 +1,8 @@
 import { type AuthStore } from './defs';
 import { useAuthStore } from './store';
 import { authStorage } from './core';
+import { articles_store_actions } from '../articles';
+import { sign_in_store_actions } from '../sign-in';
 
 const { setState } = useAuthStore;
 
@@ -26,6 +28,8 @@ const auth_store_actions: AuthStore.Actions = {
   unauthorize: () => {
     authStorage.set('user', null);
     useAuthStore.setState({ is: 'unauthorized', user: null });
+    articles_store_actions.reset();
+    sign_in_store_actions.reset();
   },
 };
 

@@ -19,9 +19,6 @@ import {
   ArticlesSearchIcon,
   BottomNavItem,
   PlusCircleIcon,
-  useThemeProvider,
-  SunIcon,
-  HalfMoonIcon,
   TopNavItem,
   column,
 } from '@system/figa-ui';
@@ -81,7 +78,6 @@ const LogoWrapper = styled.div`
 
 const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
   const lang = useLang();
-  const theme = useThemeProvider();
   const pathname = usePathname();
 
   const [, { toTop }] = useScrollTo();
@@ -112,13 +108,6 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
               Create <PlusCircleIcon />
             </TopNavItem>
           </Link>
-          <TopNavItem
-            onClick={() =>
-              theme.setTheme(theme.key === 'dark' ? 'light' : 'dark')
-            }
-          >
-            Theme {theme.key === 'dark' ? <SunIcon /> : <HalfMoonIcon />}
-          </TopNavItem>
         </Nav>
       }
       bottomNav={
@@ -144,13 +133,6 @@ const MainLayout = ({ children, sidebar, offPadding }: MainLayoutProps) => {
               active={pathname === `/${lang}/articles-creator`}
             />
           </NextLink>
-          <BottomNavItem
-            icon={theme.key === 'dark' ? <SunIcon /> : <HalfMoonIcon />}
-            text="Theme"
-            onClick={() =>
-              theme.setTheme(theme.key === 'dark' ? 'light' : 'dark')
-            }
-          />
         </>
       }
       sidebar={sidebar}

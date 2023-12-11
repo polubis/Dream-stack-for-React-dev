@@ -25,7 +25,7 @@ describe('Sign in works when: ', () => {
         'Signed in'
       )
       .And('Im on page', '/en/articles')
-      .When('I click checkbox', 'Show your articles')
+      .When('I click tab', 'Yours')
       .Then('System recieved response from endpoint', 'getYourArticles')
       .When('I go back')
       .Then(
