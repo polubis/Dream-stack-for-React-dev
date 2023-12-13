@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace GreenOnSoftware.Api.Startup;
 
-public static class IdentityConfig
+public static class AuthenticationConfig
 {
-    public static IServiceCollection AddIdentity(this IServiceCollection services)
+    public static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddIdentity<User, IdentityRole<Guid>>(options => options.SignIn.RequireConfirmedAccount = false)
             .AddEntityFrameworkStores<GreenOnSoftwareDbContext>()
@@ -52,6 +52,22 @@ public static class IdentityConfig
                 },
             };
         });
+
+        var githubConfig = configuration.GetSection("Github");
+
+        var siema = githubConfig["ClientSecret"];
+
+        services
+            .AddAuthentication(options =>
+            {
+                options.DefaultChallengeScheme = IdentityConstants.ExternalScheme;
+            })
+            .AddGitHub(options => {
+                options.ClientId = githubConfig["ClientId"];
+                options.ClientSecret = githubConfig["ClientSecret"];
+                options.Scope.Add("user:email");
+                options.SaveTokens = true;
+            });
 
         return services;
     }

@@ -41,7 +41,7 @@ builder.Services.AddIdentityContext();
 builder.Services.AddDbContext<GreenOnSoftwareDbContext>(options =>
   options.UseSqlServer(builder.Configuration.GetConnectionString("GreenOnSoftware")));
 
-builder.Services.AddIdentity();
+builder.Services.AddAuthentication(builder.Configuration);
 
 builder.Services.AddCors();
 
