@@ -70,6 +70,15 @@ namespace GreenOnSoftware.Commons.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This github account is already connected with another user..
+        /// </summary>
+        public static string AlreadyConnectedWithAnotherAccount {
+            get {
+                return ResourceManager.GetString("AlreadyConnectedWithAnotherAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Article already exists..
         /// </summary>
         public static string ArticleAlreadyExists {

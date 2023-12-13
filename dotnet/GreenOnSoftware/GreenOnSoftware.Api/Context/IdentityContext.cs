@@ -44,8 +44,13 @@ public class IdentityContext : IIdentityContext
 
     public IdentityContext(ClaimsPrincipal principal)
     {
-        _IdentityUserId = principal.FindFirst(ClaimTypes.NameIdentifier) is var idClaim && idClaim is not null
-            ? new Guid(idClaim.Value) : null;
+        if(principal.Identity!.AuthenticationType != "GitHub" 
+            && principal.FindFirst(ClaimTypes.NameIdentifier) is var idClaim
+            && idClaim is not null)
+        {
+            _IdentityUserId = Guid.Parse(idClaim.Value);
+        }
+            
         Name = principal.FindFirst(ClaimTypes.Name)?.Value;
         IsAdmin = principal.FindAll(ClaimTypes.Role).Any(x => x.Value == Role.Admin);
         IsContentEditor = principal.FindAll(ClaimTypes.Role).Any(x => x.Value == Role.ContentEditor) && !IsAdmin;

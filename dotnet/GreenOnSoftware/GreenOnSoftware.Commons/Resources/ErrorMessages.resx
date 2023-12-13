@@ -120,6 +120,9 @@
   <data name="ActionFailed" xml:space="preserve">
     <value>{0} failed.</value>
   </data>
+  <data name="AlreadyConnectedWithAnotherAccount" xml:space="preserve">
+    <value>This github account is already connected with another user.</value>
+  </data>
   <data name="ArticleAlreadyExists" xml:space="preserve">
     <value>Article already exists.</value>
   </data>
