@@ -1,6 +1,10 @@
 import { basicSetup } from 'codemirror';
 import { EditorView, keymap } from '@codemirror/view';
-import { EditorState, type Extension } from '@codemirror/state';
+import {
+  EditorState,
+  type Extension,
+  EditorSelection,
+} from '@codemirror/state';
 import type { SetupConfig } from './defs';
 import { indentWithTab } from '@codemirror/commands';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
@@ -37,7 +41,6 @@ const createBasicExtensions = ({
     ),
   ];
   const extensions: Extension[] = [];
-
   extensions.push(themeSetup);
   extensions.push(keymap.of([indentWithTab]));
 
@@ -53,6 +56,26 @@ const createBasicExtensions = ({
   }
 
   extensions.push(setup);
+
+  const handlePasteExtension = EditorView.domEventHandlers({
+    paste: (_, view) => {
+      // setTimeout allows the paste to complete before we get the cursor position
+      setTimeout(() => {
+        const { state } = view;
+        const cursorPosition = state.selection.main.head;
+        view.dispatch({
+          // Insert a newline at the cursor position
+          changes: { from: cursorPosition, insert: '\n' },
+          // Move the cursor to the next line
+          selection: EditorSelection.cursor(cursorPosition + 1),
+          // Scroll the editor to the cursor position
+          scrollIntoView: true,
+        });
+      }, 0);
+    },
+  });
+
+  extensions.push(handlePasteExtension);
 
   return extensions;
 };
